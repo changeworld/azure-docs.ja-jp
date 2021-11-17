@@ -1,18 +1,18 @@
 ---
 title: 組織向け Defender for IoT の用語集
 description: この用語集では、Defender for IoT プラットフォームに関する重要な用語と概念について簡単に説明しています。
-ms.date: 05/27/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 4d3467d6e3a2a4efacd6ed5671e9f2d7614ea143
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 2506ce3e78c7d8b1c5a5b888b8e645e113bdb105
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027767"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331359"
 ---
 # <a name="defender-for-iot-glossary-for-organizations"></a>組織向け Defender for IoT の用語集
 
-この用語集では、Azure Defender for IoT プラットフォームに関する重要な用語と概念について簡単に説明しています。 用語集の関連する用語に移動するには、**詳細情報** のリンクをクリックします。 これは、製品ツールをより迅速に学習して使用するために役立ちます。
+この用語集では、Microsoft Defender for IoT プラットフォームに関する重要な用語と概念について簡単に説明しています。 用語集の関連する用語に移動するには、**詳細情報** のリンクをクリックします。 これは、製品ツールをより迅速に学習して使用するために役立ちます。
 
 <a name="glossary-a"></a>
 
@@ -79,7 +79,7 @@ ms.locfileid: "132027767"
 
 | 項目 | 説明 | 詳細情報 |
 |--|--|--|
-| **Horizon オープン開発環境** | 独自のプロトコルやカスタム プロトコル、または標準から逸脱したプロトコルが実行されている IoT および ICS のデバイスをセキュリティで保護します。 Horizon Open Development Environment (ODE) SDK を使用して、定義されたプロトコルに基づいてネットワーク トラフィックをデコードする dissector プラグインを開発します。 Defender for IoT サービスを使用すると、トラフィックを分析して、完全な監視、アラート、レポートを実現できます。<br /><br />Horizon は次のことに使用します。<br /><br />- Defender for IoT プラットフォームのバージョンをアップグレードすることなく可視性と制御を **拡張** する。<br /><br />- 外部プラグインとしてサイト上で開発することで、機密情報をセキュリティで **保護** する。<br /><br />- アラート、イベント、プロトコルのパラメーターのテキストを **ローカライズ** する。<br /><br />詳細については、お客様サポート担当者にお問い合わせください。 | **[プロトコルのサポート](#p)<br /><br />[ローカライゼーション](#l)** |
+| **Horizon オープン開発環境** | 独自のプロトコルやカスタム プロトコル、または標準から逸脱したプロトコルが実行されている IoT および ICS のデバイスをセキュリティで保護します。 Horizon Open Development Environment (ODE) SDK を使用して、定義されたプロトコルに基づいてネットワーク トラフィックをデコードする dissector プラグインを開発します。 Defender for IoT サービスでは、トラフィックが分析され、完全な監視、アラート、レポートが提供されます。<br /><br />Horizon は次のことに使用します。<br /><br />- Defender for IoT プラットフォームのバージョンをアップグレードすることなく可視性と制御を **拡張** する。<br /><br />- 外部プラグインとしてサイト上で開発することで、機密情報をセキュリティで **保護** する。<br /><br />- アラート、イベント、プロトコルのパラメーターのテキストを **ローカライズ** する。<br /><br />詳細については、お客様サポート担当者にお問い合わせください。 | **[プロトコルのサポート](#p)<br /><br />[ローカライゼーション](#l)** |
 | **Horizon カスタム アラート** | (Horizon Framework のトラフィック dissector に基づいて) 任意のプロトコルのカスタム アラートをトリガーすることにより、企業内のアラート管理を強化します。<br /><br />これらのアラートを使用して情報を伝達することができます。<br /><br />- 独自の Horizon プラグイン内のプロトコルおよび基になるプロトコルに基づくトラフィックの検出について。<br /><br />- すべてのプロトコル レイヤーのプロトコル フィールドの組み合わせについて。 | **[プロトコルのサポート](#p)** |
 
 ## <a name="i"></a>I

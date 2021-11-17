@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 11/01/2021
-ms.openlocfilehash: 00ff941ccf008b84ac72191035cc9322d4d08c8c
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 56314c696b58f89144d171314709b5153d250a29
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579086"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551446"
 ---
 # <a name="tutorial-publish-and-subscribe-messages-using-websocket-api-and-azure-web-pubsub-service-sdk"></a>チュートリアル: WebSocket API と Azure Web PubSub サービス SDK を使用してメッセージの発行とサブスクライブを行う
 
@@ -82,7 +82,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     cd subscriber
     dotnet new console
     dotnet add package Websocket.Client --version 4.3.30
-    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
+    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0
     ```
 
 2. `Program.cs` ファイルを更新してサービスに接続します。
@@ -90,9 +90,11 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     ```csharp
     using System;
     using System.Threading.Tasks;
+    
     using Azure.Messaging.WebPubSub;
+    
     using Websocket.Client;
-
+    
     namespace subscriber
     {
         class Program
@@ -106,11 +108,11 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
                 }
                 var connectionString = args[0];
                 var hub = args[1];
-
+    
                 // Either generate the URL or fetch it from server or fetch a temp one from the portal
                 var serviceClient = new WebPubSubServiceClient(connectionString, hub);
-                var url = serviceClient.GenerateClientAccessUri();
-
+                var url = serviceClient.GetClientAccessUri();
+    
                 using (var client = new WebsocketClient(url))
                 {
                     // Disable the auto disconnect and reconnect because the sample would like the client to stay online even no data comes in
@@ -123,11 +125,12 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
             }
         }
     }
+    
     ```
 
     上記のコードでは、Azure Web PubSub のハブに接続するための WebSocket 接続を作成します。 ハブは Azure Web PubSub の論理ユニットです。ここで、クライアントのグループにメッセージを発行できます。 [主要な概念](./key-concepts.md)に関するページには、Azure Web PubSub で使用される用語に関する詳細な説明があります。
     
-    Azure Web PubSub サービスでは [JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) 認証が使用されます。そのため、コード サンプルでは、Web PubSub SDK で `WebPubSubServiceClient.GenerateClientAccessUri()` を使用して、有効なアクセス トークンを持つ完全な URL を含むサービスへの URL を生成します。
+    Azure Web PubSub サービスでは [JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) 認証が使用されます。そのため、コード サンプルでは、Web PubSub SDK で `WebPubSubServiceClient.GetClientAccessUri()` を使用して、有効なアクセス トークンを持つ完全な URL を含むサービスへの URL を生成します。
     
     接続が確立されると、WebSocket 接続を介してメッセージを受信します。 そのため、受信メッセージをリッスンするために `client.MessageReceived.Subscribe(msg => ...));` を使用します。
 
@@ -146,7 +149,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     cd subscriber
     npm init -y
     npm install --save ws
-    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
+    npm install --save @azure/web-pubsub
 
     ```
 2. 次に、WebSocket API を使用してサービスに接続します。 下のコードを使用して `subscribe.js` ファイルを作成します。
@@ -157,8 +160,8 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
 
     async function main() {
       const hub = "pubsub";
-      let serviceClient = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hub);
-      let token = await serviceClient.getClientAccessToken();
+      let service = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hub);
+      let token = await service.getClientAccessToken();
       let ws = new WebSocket(token.url);
       ws.on('open', () => console.log('connected'));
       ws.on('message', data => console.log('Message received: %s', data));
@@ -189,13 +192,10 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     cd subscriber
     # Create venv
     python -m venv env
+    # Activate venv
+    source ./env/bin/activate
 
-    # Active venv
-    ./env/Scripts/activate
-
-    # Or call .\env\Scripts\activate when you are using CMD under Windows
-
-    pip install azure-messaging-webpubsubservice==1.0.0b1
+    pip install azure-messaging-webpubsubservice
     pip install websockets
 
     ```
@@ -206,35 +206,38 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     import asyncio
     import sys
     import websockets
-    from azure.messaging.webpubsubservice import (
-        build_authentication_token
-    )
-
+    
+    from azure.messaging.webpubsubservice import WebPubSubServiceClient
+    
+    
     async def connect(url):
         async with websockets.connect(url) as ws:
             print('connected')
             while True:
-                print('Message received: ' + await ws.recv())
-
-    if len(sys.argv) != 3:
-        print('Usage: python subscribe.py <connection-string> <hub-name>')
-        exit(1)
-
-    connection_string = sys.argv[1]
-    hub_name = sys.argv[2]
-
-    token = build_authentication_token(connection_string, hub_name)
-
-    try:
-        asyncio.get_event_loop().run_until_complete(connect(token['url']))
-    except KeyboardInterrupt:
-        pass
-
+                print('Received message: ' + await ws.recv())
+    
+    if __name__ == '__main__':
+    
+        if len(sys.argv) != 3:
+            print('Usage: python subscribe.py <connection-string> <hub-name>')
+            exit(1)
+    
+        connection_string = sys.argv[1]
+        hub_name = sys.argv[2]
+    
+        service = WebPubSubServiceClient.from_connection_string(connection_string, hub=hub_name)
+        token = service.get_client_access_token()
+    
+        try:
+            asyncio.get_event_loop().run_until_complete(connect(token['url']))
+        except KeyboardInterrupt:
+            pass
+    
     ```
 
     上記のコードでは、Azure Web PubSub のハブに接続するための WebSocket 接続を作成します。 ハブは Azure Web PubSub の論理ユニットです。ここで、クライアントのグループにメッセージを発行できます。 [主要な概念](./key-concepts.md)に関するページには、Azure Web PubSub で使用される用語に関する詳細な説明があります。
     
-    Azure Web PubSub サービスでは [JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) 認証が使用されます。そのため、コード サンプルでは、Web PubSub SDK で `build_authentication_token()` を使用して、有効なアクセス トークンを持つ完全な URL を含むサービスへの URL を生成します。
+    Azure Web PubSub サービスでは [JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) 認証が使用されます。そのため、コード サンプルでは SDK で提供された `service.get_client_access_token()` を使用して、有効なアクセス トークンを持つ完全な URL を含むサービスへの URL を生成します。
     
     接続が確立されると、WebSocket 接続を介してメッセージを受信します。 そのため、受信メッセージをリッスンするために `await ws.recv()` を使用します。
 
@@ -267,7 +270,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-webpubsub</artifactId>
-        <version>1.0.0-beta.2</version>
+        <version>1.0.0-beta.6</version>
     </dependency>
 
     <dependency>
@@ -281,19 +284,18 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
 3. Azure Web PubSub では、サービスに接続し、WebSocket 接続を介してメッセージにサブスクライブできます。 WebSocket は全二重通信チャネルなので、サービスはリアルタイムでクライアントにメッセージをプッシュできます。 これを行うために、WebSocket をサポートする任意の API やライブラリを使用できます。 このサンプルでは、パッケージ [Java-WebSocket](https://github.com/TooTallNate/Java-WebSocket) を使用します。 */src/main/java/com/webpubsub/quickstart* ディレクトリに移動し、エディタで *App.java* ファイルをオープンして、下のコードに置き換えます。
 
     ```java
-    
     package com.webpubsub.quickstart;
-
+    
     import com.azure.messaging.webpubsub.*;
     import com.azure.messaging.webpubsub.models.*;
     
     import org.java_websocket.client.WebSocketClient;
     import org.java_websocket.handshake.ServerHandshake;
-
+    
     import java.io.IOException;
     import java.net.URI;
     import java.net.URISyntaxException;
-
+    
     /**
     * Connect to Azure Web PubSub service using WebSocket protocol
     *
@@ -306,37 +308,37 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
                 System.out.println("Expecting 2 arguments: <connection-string> <hub-name>");
                 return;
             }
-
-            WebPubSubServiceClient client = new WebPubSubClientBuilder()
+    
+            WebPubSubServiceClient service = new WebPubSubServiceClientBuilder()
                 .connectionString(args[0])
                 .hub(args[1])
                 .buildClient();
-
-            WebPubSubAuthenticationToken token = client.getAuthenticationToken(new GetAuthenticationTokenOptions());
-
+    
+            WebPubSubClientAccessToken token = service.getClientAccessToken(new GetClientAccessTokenOptions());
+    
             WebSocketClient webSocketClient = new WebSocketClient(new URI(token.getUrl())) {
                 @Override
                 public void onMessage(String message) {
                     System.out.println(String.format("Message received: %s", message));
                 }
-
+    
                 @Override
                 public void onClose(int arg0, String arg1, boolean arg2) {
                     // TODO Auto-generated method stub
                 }
-
+    
                 @Override
                 public void onError(Exception arg0) {
                     // TODO Auto-generated method stub
                 }
-
+    
                 @Override
                 public void onOpen(ServerHandshake arg0) {
                     // TODO Auto-generated method stub
                 }
-                
+    
             };
-
+    
             webSocketClient.connect();
             System.in.read();
         }
@@ -346,7 +348,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
 
     上記のコードでは、Azure Web PubSub のハブに接続するための WebSocket 接続を作成します。 ハブは Azure Web PubSub の論理ユニットです。ここで、クライアントのグループにメッセージを発行できます。 [主要な概念](./key-concepts.md)に関するページには、Azure Web PubSub で使用される用語に関する詳細な説明があります。
     
-    Azure Web PubSub サービスでは [JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) 認証が使用されます。そのため、コード サンプルでは、Web PubSub SDK で `WebPubSubServiceClient.getAuthenticationToken(new GetAuthenticationTokenOptions())` を使用して、有効なアクセス トークンを持つ完全な URL を含むサービスへの URL を生成します。
+    Azure Web PubSub サービスでは [JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) 認証が使用されます。そのため、コード サンプルでは、Web PubSub SDK で `WebPubSubServiceClient.getClientAccessToken(new GetClientAccessTokenOptions())` を使用して、有効なアクセス トークンを持つ完全な URL を含むサービスへの URL を生成します。
     
     接続が確立されると、WebSocket 接続を介してメッセージを受信します。 そのため、受信メッセージをリッスンするために `onMessage(String message)` を使用します。
 
@@ -370,7 +372,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     mkdir publisher
     cd publisher
     dotnet new console
-    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
+    dotnet add package Azure.Messaging.WebPubSub
     ```
 
 2. 次に、`Program.cs` ファイルを更新し、`WebPubSubServiceClient` クラスを使用してクライアントにメッセージを送信します。
@@ -379,7 +381,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     using System;
     using System.Threading.Tasks;
     using Azure.Messaging.WebPubSub;
-
+    
     namespace publisher
     {
         class Program
@@ -393,15 +395,14 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
                 var connectionString = args[0];
                 var hub = args[1];
                 var message = args[2];
-
-                var serviceClient = new WebPubSubServiceClient(connectionString, hub);
                 
-                // Send messages to all the connected clients
-                // You can also try SendToConnectionAsync to send messages to the specific connection
+                // Either generate the token or fetch it from server or fetch a temp one from the portal
+                var serviceClient = new WebPubSubServiceClient(connectionString, hub);
                 await serviceClient.SendToAllAsync(message);
             }
         }
     }
+    
     ```
 
     `SendToAllAsync()` の呼び出しでは、単純にハブ内のすべての接続済みクライアントにメッセージが送信されます。
@@ -426,7 +427,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     mkdir publisher
     cd publisher
     npm init -y
-    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
+    npm install --save @azure/web-pubsub
 
     ```
 2. 次に、Azure Web PubSub SDK を使用して、サービスにメッセージを発行しましょう。 下のコードを使用して `publish.js` ファイルを作成します。
@@ -435,13 +436,13 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     const { WebPubSubServiceClient } = require('@azure/web-pubsub');
 
     const hub = "pubsub";
-    let serviceClient = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hub);
+    let service = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hub);
 
     // by default it uses `application/json`, specify contentType as `text/plain` if you want plain-text
-    serviceClient.sendToAll(process.argv[2], { contentType: "text/plain" });
+    service.sendToAll(process.argv[2], { contentType: "text/plain" });
     ```
 
-    `sendToAll()` の呼び出しでは、単純にハブ内の接続されているすべてのクライアントにメッセージが送信されます。
+    `service.sendToAll()` の呼び出しでは、単純にハブ内の接続されているすべてのクライアントにメッセージが送信されます。
 
 3. [前の手順](#get-the-connectionstring-for-future-use)でフェッチされた **ConnectionString** で `<connection_string>` を置き換えて、下のコマンドを実行します。
 
@@ -459,46 +460,39 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
 # <a name="python"></a>[Python](#tab/python)
 
 1. まず、このプロジェクト用の新しいフォルダー `publisher` を作成し、必要な依存関係をインストールします。
-    * bash を使用する場合
-        ```bash
-        mkdir publisher
-        cd publisher
-        # Create venv
-        python -m venv env
+    ```bash
+    mkdir publisher
+    cd publisher
+    # Create venv
+    python -m venv env
+    # Active venv
+    source ./env/bin/activate
 
-        # Active venv
-        ./env/Scripts/activate
+    pip install azure-messaging-webpubsubservice
 
-        # Or call .\env\Scripts\activate when you are using CMD under windows
-
-        pip install azure-messaging-webpubsubservice==1.0.0b1
-
-        ```
+    ```
 2. 次に、Azure Web PubSub SDK を使用して、サービスにメッセージを発行しましょう。 下のコードを使用して `publish.py` ファイルを作成します。
 
     ```python
     import sys
-    from azure.messaging.webpubsubservice import (
-        WebPubSubServiceClient
-    )
-    from azure.messaging.webpubsubservice.rest import *
-
-    if len(sys.argv) != 4:
-        print('Usage: python publish.py <connection-string> <hub-name> <message>')
-        exit(1)
-
-    connection_string = sys.argv[1]
-    hub_name = sys.argv[2]
-    message = sys.argv[3]
-
-    service_client = WebPubSubServiceClient.from_connection_string(connection_string)
-    res = service_client.send_request(build_send_to_all_request(hub_name, content=message, content_type='text/plain'))
-    # res should be <HttpResponse: 202 Accepted>
-    print(res)
-
+    from azure.messaging.webpubsubservice import WebPubSubServiceClient
+    
+    if __name__ == '__main__':
+    
+        if len(sys.argv) != 4:
+            print('Usage: python publish.py <connection-string> <hub-name> <message>')
+            exit(1)
+    
+        connection_string = sys.argv[1]
+        hub_name = sys.argv[2]
+        message = sys.argv[3]
+    
+        service = WebPubSubServiceClient.from_connection_string(connection_string, hub=hub_name)
+        res = service.send_to_all(message, content_type='text/plain')
+        print(res)
     ```
 
-    `build_send_to_all_request()` ではメッセージが作成され、`send_request()` ではハブ内の全ての接続済みクライアントにメッセージが送信されます。
+    `send_to_all()` では、ハブ内の全ての接続済みクライアントにメッセージが送信されます。
 
 3. [前の手順](#get-the-connectionstring-for-future-use)でフェッチされた **ConnectionString** で `<connection_string>` を置き換えて、下のコマンドを実行します。
 
@@ -526,18 +520,19 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-webpubsub</artifactId>
-        <version>1.0.0-beta.2</version>
+        <version>1.0.0-beta.6</version>
     </dependency>
     ```
 
 3. 次に、Azure Web PubSub SDK を使用して、サービスにメッセージを発行しましょう。 */src/main/java/com/webpubsub/quickstart* ディレクトリに移動し、エディタで *App.java* ファイルをオープンして、下のコードに置き換えます。
 
     ```java
-    package com.webpubsub.quickstart;
 
+    package com.webpubsub.quickstart;
+    
     import com.azure.messaging.webpubsub.*;
     import com.azure.messaging.webpubsub.models.*;
-
+    
     /**
     * Publish messages using Azure Web PubSub service SDK
     *
@@ -550,12 +545,12 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
                 System.out.println("Expecting 3 arguments: <connection-string> <hub-name> <message>");
                 return;
             }
-
-            WebPubSubServiceClient client = new WebPubSubClientBuilder()
+    
+            WebPubSubServiceClient service = new WebPubSubServiceClientBuilder()
                 .connectionString(args[0])
                 .hub(args[1])
                 .buildClient();
-            client.sendToAll(args[2], WebPubSubContentType.TEXT_PLAIN);
+            service.sendToAll(args[2], WebPubSubContentType.TEXT_PLAIN);
         }
     }
 

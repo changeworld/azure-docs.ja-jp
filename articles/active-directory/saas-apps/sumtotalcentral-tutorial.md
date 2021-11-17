@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ff2ea6b4c230a2156a7a63287e8d940d1cb6f98
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 65cca7c82d37a0fc3684ed2daace201e3c95859f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124752072"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>チュートリアル: Azure Active Directory と SumTotalCentral の統合
 
@@ -43,7 +43,7 @@ Azure AD と SumTotalCentral の統合を構成するには、次のものが必
 
 * SumTotalCentral では、**SP** Initiated SSO がサポートされます
 
-* SumTotalCentral を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* SumTotalCentral を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。
     
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。

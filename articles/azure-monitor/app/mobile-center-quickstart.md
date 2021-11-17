@@ -1,23 +1,32 @@
 ---
 title: Azure Monitor Application Insights を使用してモバイル アプリを監視する
 description: Azure Monitor Application Insights と App Center で監視するモバイル アプリを迅速にセットアップする手順を説明します
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ddc8a10d3f68642a9fa17c02b937a536c150e3b7
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 2a5b33de0095cfe4def9bf766a4838b2869820e2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131716"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327445"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
-このクイックスタート ガイドでは、アプリの App Center インスタンスを Application Insights に接続する手順を説明します。 Application Insights を使用すると、App Center の [Analytics](/mobile-center/analytics/) サービスで提供されているツールよりも強力なツールを利用して、テレメトリのクエリ、セグメント化、フィルター、分析を実行できます。
+このチュートリアル ガイドでは、アプリの App Center インスタンスを Application Insights に接続する手順について説明します。 Application Insights を使用すると、App Center の [Analytics](/mobile-center/analytics/) サービスで提供されているツールよりも強力なツールを利用して、テレメトリのクエリ、セグメント化、フィルター、分析を実行できます。
+
+
+このチュートリアルでは、次の作業を行う方法について説明します。
+
+> [!div class="checklist"]
+> * アプリの App Center インスタンスを Application Insights に接続する
+> * アプリを変更して、Application Insights にカスタム テレメトリを送信する
+> * Log Analytics でカスタム テレメトリのクエリを実行する
+> * アプリのコンバージョン、リテンション、ナビゲーションのパターンを分析する
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次のものが必要です。
+このチュートリアルを完了するには、次のものが必要です。
 
 - Azure サブスクリプション。
 - iOS、Android、Xamarin、Universal Windows、または React Native アプリ。

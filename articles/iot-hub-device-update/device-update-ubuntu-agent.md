@@ -6,18 +6,18 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8a43995dd125a658e2efd397745a91d7bd822e00
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1cd4ea0d01299b8e361e65a1f8152c4222df3bf0
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130226036"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372172"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18.04 x64 上のパッケージ エージェントを使用した Device Update for Azure IoT Hub のチュートリアル
 
 Device Update for IoT Hub では、イメージベースとパッケージベースの 2 つの形式の更新がサポートされています。
 
-パッケージベースの更新は、デバイス上の特定のコンポーネントまたはアプリケーションのみを変更するターゲット指定の更新となります。 パッケージベースの更新により、帯域幅の消費量が少なくなるほか、更新のダウンロードとインストールにかかる時間が短縮されます。 通常、パッケージ更新プログラムを使用すると、更新プログラムを適用する際のデバイスのダウンタイムを短縮し、イメージ作成のオーバーヘッドを回避できます。
+パッケージベースの更新は、デバイス上の特定のコンポーネントまたはアプリケーションのみを変更するターゲット指定の更新となります。 これにより、帯域幅の消費量が少なくなるほか、更新のダウンロードとインストールにかかる時間が短縮されます。 また、通常、パッケージベースの更新プログラムを使用した場合も、更新プログラムを適用するときのデバイスのダウンタイムを短縮し、イメージ作成のオーバーヘッドを回避できます。 また、[APT マニフェスト](device-update-apt-manifest.md) ファイルで指定されたパッケージ (およびその依存関係) を指定されたリポジトリからダウンロードしてインストールするために必要な情報を、デバイス更新エージェントに提供する APT マニフェストが使用されています。
 
 このエンド ツー エンドのチュートリアルでは、Device Update パッケージ エージェントを使用して、Ubuntu Server 18.04 x64 の Azure IoT Edge を更新する手順について説明します。 このチュートリアルでは IoT Edge の更新を扱いますが、同様の手順を使用すれば、他のパッケージ、たとえば使用されているコンテナー エンジンを更新することもできます。
 
@@ -128,7 +128,7 @@ Device Update for Azure IoT Hub ソフトウェア パッケージには、次�
 
 3. [`Edge.package.update.samples.zip`] をクリックしてダウンロードします。
 
-5. フォルダーの内容を抽出して、更新プログラムのサンプルとそれに対応するインポー トマニフェストを見つけます。 
+5. フォルダーの内容を抽出して、サンプルの [APT マニフェスト](device-update-apt-manifest.md)とそれに対応する[インポート マニフェスト](import-concepts.md)を見つけます。 
 
 2. Azure portal で、IoT Hub の左側のナビゲーション バーから [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
 

@@ -10,18 +10,18 @@ ms.date: 11/02/2021
 author: ruixinxu
 ms.author: ruxu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bbbcad29737b46226c48ac9924e60e400327a518
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f15dfc216b664daf41a090189c29bd8772adc707
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030241"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292948"
 ---
 # <a name="tutorial-text-analytics-with-cognitive-service"></a>チュートリアル: コグニティブ サービスを使用した Text Analytics
 
 [Text Analytics](../../cognitive-services/text-analytics/index.yml) は、自然言語処理 (NLP) 機能を使用してテキスト マイニングとテキスト分析を実行できる [Azure Cognitive Service](../../cognitive-services/index.yml) です。 このチュートリアルでは、[Text Analytics](../../cognitive-services/text-analytics/index.yml) を使用して、Azure Synapse Analytics の非構造化テキストを分析する方法を説明します。
 
-このチュートリアルでは、[MMLSpark](https://github.com/Azure/mmlspark) でテキスト分析を使用して次の処理を行う方法について説明します。
+このチュートリアルでは、[SynapseML](https://github.com/microsoft/SynapseML) でテキスト分析を使用して次の処理を行う方法を示します。
 
 > [!div class="checklist"]
 > - 文またはドキュメント レベルでセンチメント ラベルを検出する
@@ -41,10 +41,11 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 
 ## <a name="get-started"></a>開始
-Synapse Studio を開き、新しいノートブックを作成します。 はじめに、[MMLSpark](https://github.com/Azure/mmlspark) をインポートします。 
+Synapse Studio を開き、新しいノートブックを作成します。 はじめに、[SynapseML](https://github.com/microsoft/SynapseML) をインポートします。 
 
 ```python
-from mmlspark.cognitive import *
+import synapse.ml
+from synapse.ml.cognitive import *
 from pyspark.sql.functions import col
 ```
 
@@ -356,4 +357,4 @@ Spark インスタンスがシャットダウンされるようにするには�
 ## <a name="next-steps"></a>次のステップ
 
 * [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
-* [MMLSpark GitHub リポジトリ](https://github.com/Azure/mmlspark)
+* [SynapseML GitHub リポジトリ](https://github.com/microsoft/SynapseML)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 4b333a8910277236c4d4f5f7f044f21f6ee03f74
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 60b5f21a03176d3488162b87cffc6aa229b1d687
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067111"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132295633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>チュートリアル: Azure Active Directory と itslearning の統合
 
@@ -146,4 +146,4 @@ itslearning に対して Azure AD SSO を構成してテストするには、次
 
 ## <a name="next-steps"></a>次のステップ
 
-itslearning を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+itslearning を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

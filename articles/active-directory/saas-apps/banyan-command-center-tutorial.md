@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 4661345a9550a417c162eb536cfb9f1ce7bfa4c2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fcb12035d97448793b5f074c6deb54fa685fabdb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814284"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132288656"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-banyan-security-zero-trust-remote-access-platform"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Banyan Security Zero Trust Remote Access Platform の統合
 
@@ -155,4 +155,4 @@ Banyan Security Zero Trust Remote Access Platform 用に Azure AD SSO を構成�
 
 ## <a name="next-steps"></a>次のステップ
 
-Banyan Security Zero Trust Remote Access Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Banyan Security Zero Trust Remote Access Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

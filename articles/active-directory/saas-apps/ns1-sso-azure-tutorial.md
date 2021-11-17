@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 38d64cc11889e3279d4e81ed2ab760ea50755f40
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 412380b71057580d13d7b41c6153ba1b6d08e290
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761038"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と NS1 SSO for Azure の統合
 
@@ -40,7 +40,7 @@ ms.locfileid: "124761038"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * NS1 SSO for Azure では、SP Initiated SSO と IDP Initiated SSO がサポートされます。
-* NS1 SSO for Azure を構成した後、セッション制御を適用できます。 これにより、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* NS1 SSO for Azure を構成した後、セッション制御を適用できます。 これにより、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。
 
 
 ## <a name="add-ns1-sso-for-azure-from-the-gallery"></a>ギャラリーからの NS1 SSO for Azure の追加
@@ -177,4 +177,4 @@ NS1 SSO for Azure 側でシングル サインオンを構成するには、ア�
 
 - [Azure AD で NS1 SSO for Azure を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)

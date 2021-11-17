@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: a0072466fbb351a5fa98689b4a6d54989fce5e6f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6ddafdeb15379bee87344e56e51def4a73bc1bf8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745026"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132303690"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Workteam の統合
 
@@ -189,4 +189,4 @@ Azure AD ユーザーが Workteam にサインインできるようにするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Workteam を構成したら、自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Workteam を構成したら、自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 2583397a34635d54fa7982656019433442e2e96b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8b60af46f12af84dc5e08fbce7010de95b9771d1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058884"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344372"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Oracle PeopleSoft - Protected by F5 BIG-IP APM の統合
 
@@ -341,4 +341,4 @@ Oracle PeopleSoft - Protected by F5 BIG-IP APM で Azure AD SSO を構成して�
 
 ## <a name="next-steps"></a>次のステップ
 
-Oracle PeopleSoft-Protected by F5 BIG-IP APM を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Oracle PeopleSoft-Protected by F5 BIG-IP APM を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

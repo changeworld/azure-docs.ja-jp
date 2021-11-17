@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 10/19/2021
 ms.author: itnorman
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 55a0a203bb359ca0d5cad44b5e773cee0f65edef
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8411add44f96d38778a589dcb59bf89142e97f80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131016970"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312644"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>メディア アカウント用の Video Analyzer を作成する
 

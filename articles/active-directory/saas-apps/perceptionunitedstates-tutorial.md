@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/05/2021
 ms.author: jeedes
-ms.openlocfilehash: d33c54bae01d6406e32a0a2c97ef7695df48da9a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: da72dc75cd512ad6d907101167d358335f53fceb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058851"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341961"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure AD SSO と Perception United States (非 UltiPro) の統合
 
@@ -172,4 +172,4 @@ Perception United States (非 UltiPro) に対して Azure AD SSO を構成して
 
 ## <a name="next-steps"></a>次のステップ
 
-Perception United States (非 UltiPro) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Perception United States (非 UltiPro) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

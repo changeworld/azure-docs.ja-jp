@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: baselden
 ms.custom: references_regions
-ms.openlocfilehash: 984b680c207c8c7e6bf404a7ced08f2fdcfd7b71
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 36eb4676c63a539004aba9c000702ba964f05d3c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984442"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332423"
 ---
 # <a name="plan-your-azure-active-directory-verifiable-credentials--verification-solution-preview"></a>Azure Active Directory Verifiable Credentials の検証ソリューションを計画する (プレビュー)
 
@@ -332,7 +332,7 @@ Microsoft Authenticator は、証明書利用者、ユーザー、Azure AD Verif
 
    * Key Vault のログ記録を有効にして、署名操作を追跡するだけでなく、構成の変更を監視して警告します。 詳細については、[Key Vault のログ記録を有効にする方法](../../key-vault/general/howto-logging.md)に関する記事を参照してください。
 
-   * 長期保有のため、[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) などのセキュリティ情報イベント管理 (SIEM) システムにログをアーカイブします。
+   * 長期保有のため、[Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel/) などのセキュリティ情報イベント管理 (SIEM) システムにログをアーカイブします。
 
  
 

@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: 60ae736d060030bfb535d3de917b4872517e1b5c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 08293d7961f7077ec6138c6f65e78de1322216fa
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690170"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132353962"
 ---
 このステップでは、AdventureWorksLT サンプル データを使用する[論理 SQL サーバー](../database/logical-servers.md)と[単一データベース](../database/single-database-overview.md)を作成します。 データベースを作成するには、Azure portal のメニューと画面を使用するか、Azure Cloud Shell で Azure CLI または PowerShell スクリプトを使用します。
 
@@ -69,7 +69,7 @@ Azure portal でリソース グループ、サーバー、単一データベー
    ファイアウォール設定の詳細については、[[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]](../database/network-access-controls-overview.md) および[プライベート エンドポイントの追加](../database/private-endpoint-overview.md)に関するページを参照してください。
 
 1. **[追加設定]** タブにある **[データ ソース]** セクションの **[既存のデータを使用します]** で、 **[サンプル]** を選択します。
-1. 必要に応じて、[Azure Defender for SQL](../database/azure-defender-for-sql.md) を有効にします。
+1. 必要に応じて、[Microsoft Defender for SQL](../database/azure-defender-for-sql.md) を有効にします。
 1. 必要に応じて、[メンテナンス期間](../database/maintenance-window.md)を設定して、ご利用のデータベースに対して計画メンテナンスが最適なタイミングで実行されるようにします。
 1. ページ下部にある **[確認と作成]** を選択します。
 
@@ -237,7 +237,7 @@ Azure Cloud Shell で次のコード サンプルを実行するには、コー�
 
 前述のコードでは、次の PowerShell コマンドレットを使用しています。
 
-| コマンド | Notes |
+| コマンド | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | データベースとエラスティック プールをホストするサーバーを作成します。 |

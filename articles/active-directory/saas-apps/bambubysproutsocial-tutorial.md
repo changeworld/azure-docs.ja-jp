@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: f42f393c9191a082231a4d0c16912d0ac1e2ead8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1058cce0e9e739c5e928369c00144e9d5681c2e3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814374"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132296586"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル: Azure Active Directory と Bambu by Sprout Social の統合
 
@@ -126,4 +126,4 @@ Bambu by Sprout Social 用に Azure AD SSO を構成してテストするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-Bambu by Sprout Social を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Bambu by Sprout Social を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

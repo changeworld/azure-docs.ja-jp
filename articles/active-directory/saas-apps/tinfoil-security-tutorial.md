@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: fafc2d390959fd87eaba1b4fc3dd657d331ea34e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 48d46916143fd219c81354a2d3f62ea260c9a2fb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128554767"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132303966"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-tinfoil-security"></a>チュートリアル: Azure AD SSO と TINFOIL SECURITY の統合
 
@@ -103,7 +103,7 @@ TINFOIL SECURITY に対して Azure AD SSO を構成してテストするには�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -115,7 +115,7 @@ TINFOIL SECURITY に対して Azure AD SSO を構成してテストするには�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に TINFOIL SECURITY へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -127,13 +127,13 @@ TINFOIL SECURITY に対して Azure AD SSO を構成してテストするには�
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-tinfoil-security-sso&quot;></a>TINFOIL SECURITY の SSO の構成
+## <a name="configure-tinfoil-security-sso"></a>TINFOIL SECURITY の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、TINFOIL SECURITY の企業サイトに管理者としてサインインします。
 
 1. 上部のツール バーの **[My Account]** をクリックします。
 
-    ![ダッシュボード](./media/tinfoil-security-tutorial/account.png &quot;ダッシュボード")
+    ![ダッシュボード](./media/tinfoil-security-tutorial/account.png "ダッシュボード")
 
 1. **[セキュリティ]** をクリックします。
 
@@ -178,4 +178,4 @@ Azure AD ユーザーが TINFOIL SECURITY にサインインできるように�
 
 ## <a name="next-steps"></a>次のステップ
 
-TINFOIL SECURITY を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+TINFOIL SECURITY を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

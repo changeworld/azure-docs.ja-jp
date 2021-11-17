@@ -5,24 +5,23 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2021
-ms.openlocfilehash: 52bb368ccf19c23c04bc062e7db50c07ecebaceb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 74d3544fd7e858a685b669ad826bc17e0eb6e64f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296062"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312922"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor-retired"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション (提供終了)
 
 ![ワイヤ データのシンボル](media/wire-data/wire-data2-symbol.png)
 
->[!NOTE]
->Wire Data ソリューションは、[VM insights](../vm/vminsights-overview.md) と [Service Map ソリューション](../vm/service-map.md)に置き換えられました。  どちらも、Log Analytics エージェントと Dependency Agent を使用して、Azure Monitor にネットワーク接続データを収集します。
+> [!NOTE]
+> Wire Data ソリューションは、[VM insights](../vm/vminsights-overview.md) と [Service Map ソリューション](../vm/service-map.md)に置き換えられました。  どちらも、Log Analytics エージェントと Dependency Agent を使用して、Azure Monitor にネットワーク接続データを収集します。
 >
->Wire Data ソリューションのサポートは、**2022 年 3 月 31 日** に終了します。  提供終了日まで、Wire Data 2.0 (プレビュー) ソリューションを使用している既存のお客様は、引き続きこれを使用できます。
+> Wire Data ソリューションのサポートは、**2022 年 3 月 31 日** に終了します。  提供終了日まで、Wire Data 2.0 (プレビュー) ソリューションを使用している既存のお客様は、引き続きこれを使用できます。
 >
->新規および既存のお客様は、[VM insights](../vm/vminsights-enable-overview.md) または [Service Map ソリューション](../vm/service-map.md)をインストールする必要があります。  これらが収集するマップ データセットは、Wire Data 2.0 (プレビュー) データセットに相当します。  VM insights には、Service Map データセットと、分析用の追加のパフォーマンス データおよび機能が含まれます。 どちらのオファリングにも、[Azure Sentinel との接続](../../sentinel/connect-data-sources.md#map-data-types-with-azure-sentinel-connection-options)があります。
- 
+> 新規および既存のお客様は、[VM insights](../vm/vminsights-enable-overview.md) または [Service Map ソリューション](../vm/service-map.md)をインストールする必要があります。  これらが収集するマップ データセットは、Wire Data 2.0 (プレビュー) データセットに相当します。  VM insights には、Service Map データセットと、分析用の追加のパフォーマンス データおよび機能が含まれます。 どちらのオファリングにも、[Microsoft Sentinel との接続](../../sentinel/connect-data-sources.md#map-data-types-with-microsoft-sentinel-connection-options)があります。
 
 ワイヤ データとは、Log Analytics エージェントがインストールされた Windows に接続されたコンピューターおよび Linux に接続されたコンピューター (環境内の Operations Manager によって監視されているコンピューターを含む) から収集したネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データを他のログ データと結び付けると、データを相関させるのに役立ちます。
 
@@ -130,8 +129,8 @@ VMConnection
 
 Wire Data 2.0 をアンインストールする場合、必要なのは Log Analytics ワークスペースからソリューションを削除することのみです。  この結果は、次のようになります。
 
-* ワークスペースに接続されている VM から Wire Data 管理パックが削除されます 
-* Wire Data データ型がワークスペースに表示されなくなります
+- ワークスペースに接続されている VM から Wire Data 管理パックが削除されます。
+- Wire Data データ型がワークスペースに表示されなくなります
 
 Wire Data ソリューションを削除するには、[こちらの手順](./solutions.md?tabs=portal#remove-a-monitoring-solution)に従ってください。
 
@@ -161,7 +160,7 @@ Dependency Agent を削除するには、次のセクションを使用します
 
 Linux から Dependency Agent を完全にアンインストールするには、エージェント自体と、エージェントと共に自動的にインストールされたコネクタを削除する必要があります。 次の 1 つのコマンドを使用して、両方ともアンインストールできます。
 
-```
+```bash
 rpm -e dependency-agent dependency-agent-connector
 ```
 

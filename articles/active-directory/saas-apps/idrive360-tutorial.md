@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: c695c5ae3a7480c6d8d301ea74eeb27b01590d26
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a1d0f63981c0a741b31a4b653498ed7e203d72e9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124749826"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317413"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idrive360"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IDrive360 の統合
 
@@ -166,4 +166,4 @@ Microsoft Azure Active Directory SSO を IDrive360 と一緒に構成してテ�
 
 ## <a name="next-steps"></a>次のステップ
 
-IDrive360 を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+IDrive360 を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

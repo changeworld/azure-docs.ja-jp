@@ -2,13 +2,13 @@
 title: Windows デバイスに C# エージェントをインストールする
 description: Defender for IoT エージェントを 32 ビットまたは 64 ビットの Windows デバイスにインストールする方法について説明します。
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 1a9bab1f9e24fba6a2b04b6d0bb5d9f2560dcc1d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 1bd5017f7c5e6a59aac29dfd35834ef5768682e8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643975"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306075"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Windows 用の Defender for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
@@ -131,5 +131,5 @@ Get-Help の例: ```Get-Help .\InstallSecurityAgent.ps1```
 * Defender for IoT サービスの[概要](overview.md)を確認する
 * 「[デバイス ビルダー向けのエージェントベースのソリューションとは](architecture-agent-based.md)」を参照して、Defender for IoT の詳細を学習します
 * [サービス](quickstart-onboard-iot-hub.md)を有効にします
-* [Azure Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをお読みください
+* [Microsoft Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをお読みください
 * [アラート](concept-security-alerts.md)について理解します

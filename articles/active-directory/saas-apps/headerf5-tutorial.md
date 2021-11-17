@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: fbc7df55d9c52b65a0f09569f8e65ff2db5efdd1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 39090563178be736c90d10d95be9b07c6434fefb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796231"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311756"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>チュートリアル:Azure Active Directory と F5 の間でのシングル サインオン (SSO) の構成
 
@@ -460,4 +460,4 @@ F5 に対する Azure AD SSO を構成してテストするには、次の手順
 
 ## <a name="next-steps"></a>次の手順
 
-F5 を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+F5 を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

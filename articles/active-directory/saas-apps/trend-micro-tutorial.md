@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 15f03bddb1537cfd8e447e00e91f262544ba3bf6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 65d63ea4a60b442a5db0910cdbe90c552aaf07ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131045978"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132303833"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>チュートリアル:Trend Micro Web Security (TMWS) と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -221,4 +221,4 @@ Azure AD サービスを構成し、ユーザーの認証方法として Azure A
 
 ## <a name="next-steps"></a>次の手順
 
-TMWS を構成したら、あなたの組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+TMWS を構成したら、あなたの組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

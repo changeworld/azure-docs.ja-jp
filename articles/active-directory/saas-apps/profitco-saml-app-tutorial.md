@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: c95eae59edc75e5d4394d4bbd9b07d6168f7b566
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ae8e76d33dbab90478a361c16f8f3abbb3346e36
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548770"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341770"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-profitco"></a>チュートリアル: Azure AD SSO と Profit.co の統合
 
@@ -121,4 +121,4 @@ Profit.co 側でシングル サインオンを構成するには、アプリの
 
 ## <a name="next-steps"></a>次のステップ
 
-Profit.co を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Profit.co を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

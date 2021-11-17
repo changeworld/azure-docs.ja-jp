@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: b4da231da354bf94947c663dafcb84617330535b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f0673692bd447bfa426a84f8d68a733502ed4517
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124756301"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341827"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-procaire"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Procaire の統合
 
@@ -132,4 +132,4 @@ Procaire に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="next-steps"></a>次のステップ
 
-Procaire を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Procaire を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

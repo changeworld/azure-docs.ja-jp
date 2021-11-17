@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 52b418ff7b14e939cc61146455c791ef7c143c0b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 518586bb7b0e7ac54e2fa9e0f4ca76e514a5abb1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131462586"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333411"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-humanity"></a>チュートリアル: Azure AD SSO と Humanity の統合
 
@@ -188,4 +188,4 @@ Azure AD ユーザーが Humanity にログインできるようにするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-Humanity を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Humanity を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -2,13 +2,13 @@
 title: セキュリティに関する推奨事項の調査
 description: Defender for IoT セキュリティ サービスを使用してセキュリティに関する推奨事項を調査します。
 ms.topic: quickstart
-ms.date: 05/26/2021
-ms.openlocfilehash: 29da5747afb36eea9e30d7179d06d69e60556e32
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.date: 11/09/2021
+ms.openlocfilehash: 7f4dab5ed0590d0e2658145f17d657beb5af1177
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062068"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306132"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>クイック スタート:セキュリティに関する推奨事項の調査
 
@@ -38,11 +38,11 @@ IoT Hub の推奨情報には、IoT Hub について集約されたセキュリ�
 
 1. 推奨事項の細目を確認した後、 **[Manual remediation step]\(手動による修復手順\)** に示されている手順を使用して、推奨事項の原因となった問題を修復したり解決したりすることができます。
 
-    :::image type="content" source="media/quickstart/remediate-security-recommendations-inline.png" alt-text="ASC for IoT でセキュリティに関する推奨事項を修復する" lightbox="media/quickstart/remediate-security-recommendations-expanded.png":::
+    :::image type="content" source="media/quickstart/remediate-security-recommendations-inline.png" alt-text="Defender for IoT でセキュリティに関する推奨事項を修復する" lightbox="media/quickstart/remediate-security-recommendations-expanded.png":::
 
 1. ドリルダウン ページで目的のデバイスを選択し、個別のデバイスについて推奨事項の詳細を調査します。
 
-    :::image type="content" source="media/quickstart/explore-security-recommendation-detail-inline.png" alt-text="ASC for IoT でデバイスのセキュリティに関する推奨事項を個別に調査する" lightbox="media/quickstart/explore-security-recommendation-detail-expanded.png":::
+    :::image type="content" source="media/quickstart/explore-security-recommendation-detail-inline.png" alt-text="Defender for IoT でデバイスのセキュリティに関する推奨事項を個別に調査する" lightbox="media/quickstart/explore-security-recommendation-detail-expanded.png":::
 
 1. さらに調査が必要な場合は、リンクを使用して **Log Analytics で推奨事項を調査します**。 
 

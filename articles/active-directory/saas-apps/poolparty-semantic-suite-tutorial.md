@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: b0312eb8f504a1783fe05b87ae2c5fa7dcbbfdbd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cc2b3c7b4748028e03b4ac3e17225ab2b9b73777
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124789847"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299994"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-poolparty-semantic-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PoolParty Semantic Suite の統合
 
@@ -138,4 +138,4 @@ PoolParty Semantic Suite に対して Azure AD SSO を構成してテストす�
 
 ## <a name="next-steps"></a>次のステップ
 
-PoolParty Semantic Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+PoolParty Semantic Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

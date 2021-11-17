@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
-ms.openlocfilehash: a8c3b6ec5df2e22524238878ea0df207f7594d39
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2ad97e6c3d28d1ab80960696fa190feadf60cce5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826146"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314042"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-humanage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Humanage の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Humanage では、**SP** Initiated SSO がサポートされます
-* Humanage を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Humanage を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-humanage-from-the-gallery"></a>ギャラリーからの Humanage の追加
 
@@ -149,6 +149,6 @@ Humanage に対する Azure AD SSO を構成してテストするには、次の
 
 - [Azure AD で Humanage を試用する](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Humanage を保護する方法](/cloud-app-security/proxy-intro-aad)

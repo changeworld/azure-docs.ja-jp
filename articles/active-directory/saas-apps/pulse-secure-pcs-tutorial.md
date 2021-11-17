@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: 743557b3171a0bee6615a875ff647107e81481d1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d5be0c4ac51675ead949a3e22a8abfef3c5661a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124749577"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132321361"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pulse Secure PCS の統合
 
@@ -188,4 +188,4 @@ Pulse Secure PCS に対して Azure AD SSO を構成してテストするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-Pulse Secure PCS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Pulse Secure PCS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

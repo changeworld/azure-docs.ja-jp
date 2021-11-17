@@ -1,0 +1,62 @@
+### YamlMime:Landing
+title: App Service 環境のドキュメント
+summary: Azure App Service Environment を使用すると、完全に分離された専用環境で Web アプリをホスティングして、App Service アプリを高スケールで安全に実行できます。
+metadata:
+  title: Azure App Service Environment のドキュメント
+  description: セキュリティで保護されたスケーラブルな環境で完全に分離された Web サイトをホスティングします。 App Service Environment を適切に使用するためのクイックスタート、チュートリアルを紹介し、概念について説明します。
+  ms.topic: landing-page
+  ms.service: app-service
+  ms.date: 11/15/2021
+  ms.openlocfilehash: e6dc1662808fa4faf58a22696f376f43a19cfc5b
+  ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132525082"
+landingContent:
+- title: App Service Environment について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: App Service Environment とは
+      url: overview.md
+    - text: App Service とは
+      url: ../overview.md
+  - linkListType: whats-new
+    links:
+    - text: サービスの更新情報
+      url: https://azure.microsoft.com/updates/?product=app-service
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: App Service Environment を作成する
+      url: creation.md
+  - linkListType: concept
+    links:
+    - text: ネットワークの概要
+      url: networking.md
+    - text: ゾーン冗長性
+      url: overview-zone-redundancy.md
+    - text: 証明書
+      url: overview-certificates.md
+- title: 一般的なタスク
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Application Gateway との統合
+      url: integrate-with-application-gateway.md
+  - linkListType: how-to-guide
+    links:
+    - text: App Service Environment の一般的なタスク
+      url: using.md
+    - text: ARM テンプレートから ASE をプロビジョニングする
+      url: create-from-template.md
+    - text: ASE カスタム設定を構成する
+      url: app-service-app-service-environment-custom-settings.md
+  - linkListType: reference
+    links:
+    - text: Azure CLI リファレンス
+      url: /cli/azure/appservice/ase
+    - text: リソース マネージャー
+      url: /azure/templates/microsoft.web/2021-02-01/hostingenvironments?tabs=json

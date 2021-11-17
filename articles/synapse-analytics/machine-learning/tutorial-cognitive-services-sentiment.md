@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: db7a9c7151c93142db9834fc0607f1786bc89aae
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a62feb0ea2aeb96a80002a40aa7bf905690e197c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074780"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318320"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services"></a>チュートリアル:Cognitive Services を使用した感情分析
 
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="run-the-notebook"></a>ノートブックを実行する
 
-先ほど開いたノートブックでは、[MMLSpark ライブラリ](https://github.com/microsoft/SynapseML)を使用して Cognitive Services に接続します。 指定した Azure Cognitive Services のリンク サービスを使用すると、シークレットを開示することなく、このエクスペリエンスからコグニティブ サービスを安全に参照できます。
+先ほど開いたノートブックでは、[SynapseML ライブラリ](https://github.com/microsoft/SynapseML)を使用して Cognitive Services に接続します。 指定した Azure Cognitive Services のリンク サービスを使用すると、シークレットを開示することなく、このエクスペリエンスからコグニティブ サービスを安全に参照できます。
 
  これで、すべてのセルを実行し、センチメントを使用してデータを強化できるようになりました。 **[すべて実行]** を選択します。 
 

@@ -6,36 +6,49 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 09/01/2021
+ms.date: 11/10/2021
 ms.author: victorh
-ms.openlocfilehash: bd773dd1a865f50d441ca09760a9ee3130ed3898
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 54f5de052c6fed4729a41e9f54c614480efc1e7e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130226321"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309925"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
 <!--- ![ICSA certification](media/overview/icsa-cert-firewall-small.png) --->
 
-Azure Firewall は、Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 組み込みの高可用性とクラウドの無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。
+Azure Firewall は、Azure で実行されているクラウド ワークロードに最高レベルの脅威保護を提供する、クラウドネイティブでインテリジェントなネットワーク ファイアウォールのセキュリティ サービスです。 組み込みの高可用性とクラウドの無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。 これは、東西と北南の両方のトラフィック検査を提供します。
 
-![ファイアウォールの概要](media/overview/firewall-threat.png)
+Azure Firewall は、Standard と Premium の 2 つの SKU で提供されています。
 
-サブスクリプションと仮想ネットワークをまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。 Azure Firewall では、外部のファイアウォールが仮想ネットワークからのトラフィックを識別できるよう、仮想ネットワーク リソースに静的パブリック IP アドレスが使用されます。  サービスはログ記録と分析を行うために Azure Monitor と完全に統合されます。
+## <a name="azure-firewall-standard"></a>Azure Firewall Standard
 
-Azure Firewall の機能の詳細については、「[Azure Firewall の機能](features.md)」を参照してください。
+   Azure Firewall Standard は、L3-L7 フィルタリングと脅威脅威インテリジェンスを、Microsoft Cyber Security から直接提供します。 脅威インテリジェンスベースのフィルタリングにより、既知の悪意のある IP アドレスやドメインとの間のトラフィックを警告したり、拒否したりすることができます。これらは、新たに出現した攻撃から保護するためにリアルタイムで更新されています。
+
+   ![Firewall Standard の概要](media/overview/firewall-standard.png)
+
+Firewall Standard の機能の詳細については、[Azure Firewall Standard の機能](features.md)に関するページを参照してください。
+
 
 ## <a name="azure-firewall-premium"></a>Azure Firewall Premium
 
-Azure Firewall Premium は、機密度が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。 そうした機能として、TLS 検査、IDPS、URL フィルタリング、Web カテゴリなどがあります。
+   Azure Firewall Premium には、特定のパターンを見つけることで攻撃を迅速に検知することができる、シグネチャベースの IDPS などの高度な機能が備わっています。 これらのパターンには、ネットワーク トラフィックのバイト シーケンスや、マルウェアで使用される既知の悪意のある命令シーケンスなどがあります。 また、リアルタイムに更新されている 50 以上のカテゴリに分類された 58,000 以上のシグネチャにより、新たに出現した悪用方法から保護します。 悪用のカテゴリには、マルウェア、フィッシング、コインのマイニング、およびトロイの木馬攻撃が含まれます。
 
-Azure Firewall Premium の機能については、[Azure Firewall Premium の機能](premium-features.md)に関するページを参照してください。
+   ![Firewall Premium の概要](media/overview/firewall-premium.png)
 
 
-Azure portal で Firewall Premium を構成する方法については、「[Azure portal での Azure Firewall Premium](premium-portal.md)」を参照してください。
+Firewall Premium の機能については、[Azure Firewall Premium の機能](premium-features.md)に関するページを参照してください。
 
+
+## <a name="azure-firewall-manager"></a>Azure Firewall Manager
+
+Azure Firewall Manager を使用して、複数のサブスクリプションにまたがる Azure Firewall を一元的に管理できます。 Firewall Manager は、ファイアウォール ポリシーを活用して、共通のネットワークまたはアプリケーション ルールと構成をテナント内のファイアウォールに適用します。
+ 
+Firewall Manager は、VNet と Virtual WAN (セキュリティ保護付き仮想ハブ) の両方の環境のファイアウォールに対応しています。 セキュリティ保護付き仮想ハブでは Virtual WAN ルートの自動化ソリューションが使用されているため、数回のクリックでファイアウォールにトラフィックをルーティングできるよう簡略化されています。
+
+Azure Firewall Manager の詳細については、[Azure Firewall Manager](../firewall-manager/overview.md) に関するページを参照してください。
 
 ## <a name="pricing-and-sla"></a>料金と SLA
 
@@ -69,7 +82,7 @@ Azure Firewall には、次の既知の問題があります。
 |強制トンネリングが有効になっている場合、DNAT はサポートされない|強制トンネリングが有効になった状態でデプロイされているファイアウォールは、非対称ルーティングのため、インターネットからの受信アクセスをサポートできません。|これは、非対称ルーティングのための仕様です。 受信接続のリターン パスは、確立された接続が検出されていないオンプレミスのファイアウォールを経由します。
 |FTP サーバーの構成によっては、複数のパブリック IP アドレスがあるファイアウォールでは、アウトバウンド パッシブ FTP が機能しないことがあります。|パッシブ FTP は、コントロールとデータのチャネルに対して異なる接続を確立します。 複数のパブリック IP アドレスを持つファイアウォールは、送信データを送信するときに、ソース IP アドレスとしてパブリック IP アドレスの 1 つをランダムに選択します。 データ チャネルとコントロール チャネルとで異なる送信元 IP アドレスが使用されていると、FTP サーバーの構成によっては FTP が失敗することがあります。|明示的な SNAT 構成が計画されています。 その間は、異なる送信元 IP アドレスからのデータ チャネルとコントロール チャネルを受け入れるように FTP サーバーを構成することができます ([IIS の例](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)を参照)。 ただし、このケースでは、1 つの IP アドレスを使用することを検討してください。|
 |FTP サーバーの構成によっては、インバウンド パッシブ FTP が機能しないことがあります。 |パッシブ FTP は、コントロールとデータのチャネルに対して異なる接続を確立します。 対称的なルーティングを実現するために、Azure Firewall へのインバウンド接続は、ファイアウォールのいずれかのプライベート IP アドレスに SNAT 変換されます。 データ チャネルとコントロール チャネルとで異なる送信元 IP アドレスが使用されていると、FTP サーバーの構成によっては FTP が失敗することがあります。|元の送信元 IP アドレスの保持機能を調査中です。 その間は、異なる送信元 IP アドレスからのデータ チャネルとコントロール チャネルを受け入れるように FTP サーバーを構成することができます。|
-|FTP クライアントがインターネット上の FTP サーバーに到達する必要がある場合、アクティブ FTP が機能しません。|アクティブ FTP では、FTP クライアントからの PORT コマンドを使用して、データ チャネルに使用する IP とポートを FTP サーバーに指示します。 この PORT コマンドは、変更できないクライアントのプライベート IP を使用します。 Azure Firewall を通過するクライアント側のトラフィックはインターネット ベースの通信でネットワーク アドレス変換されます。これにより、PORT コマンドは FTP サーバーによって無効と見なされます。|これは、アクティブ FTP をクライアント側 NAT と一緒に使用する場合の一般的な制限です。|
+|FTP クライアントがインターネット上の FTP サーバーに到達する必要がある場合、アクティブ FTP が機能しない。|アクティブ FTP では、FTP クライアントからの PORT コマンドを使用して、データ チャネルに使用する IP とポートを FTP サーバーに指示します。 この PORT コマンドは、変更できないクライアントのプライベート IP を使用します。 Azure Firewall を通過するクライアント側のトラフィックはインターネット ベースの通信でネットワーク アドレス変換されます。これにより、PORT コマンドは FTP サーバーによって無効と見なされます。|これは、アクティブ FTP をクライアント側 NAT と一緒に使用する場合の一般的な制限です。|
 |NetworkRuleHit メトリックにプロトコル ディメンションがない|ApplicationRuleHit メトリックでは、プロトコルに基づいたフィルター処理が許可されていますが、対応する NetworkRuleHit メトリックにこの機能がありません。|解決策を調査中です。|
 |64000 から 65535 の範囲のポートを使用した NAT ルールはサポートされません。|Azure Firewall では、ネットワーク ルールとアプリケーション ルールで 1 から 65535 の範囲の任意のポートを使用できますが、NAT ルールでサポートされるのは、1 から 63999 の範囲のポートのみです。|これは現在の制限です。
 |構成の更新に平均 5 分かかる|Azure Firewall 構成の更新は平均で 3 から 5 分かかる場合があり、並列更新はサポートされていません。|解決策を調査中です。|
@@ -82,7 +95,8 @@ Azure Firewall には、次の既知の問題があります。
 |ARM テンプレートを使用した RuleCollectionGroups の削除はサポートされていません。|ARM テンプレートを使用した RuleCollectionGroup の削除はサポートされていないため、エラーが発生します。|これはサポートされている操作ではありません。|
 |*any* (*) を許可する DNAT ルールではトラフィックが SNAT (送信元ネットワーク アドレス変換) されます。|DNAT ルールによって送信元 IP アドレスとして *any* (*) が許可される場合、暗黙的なネットワーク ルールによって VNet-VNet トラフィックが照合され、トラフィックが常に SNAT されます。|これは現在の制限です。|
 |セキュリティ プロバイダーを使用してセキュリティ保護付き仮想ハブに DNAT ルールを追加することはできません。|これは結果的に、返される DNAT トラフィックの非同期ルートになり、これがセキュリティ プロバイダーに送信されます。|サポートされていません。|
-| 2000 個を超えるルール コレクションを作成するときにエラーが発生しました。 | NAT/アプリケーションまたはネットワークのルール コレクションの最大数は、2000 個です (リソース マネージャーの制限)。 | これは現在の制限です。 |
+| 2000 個を超えるルール コレクションを作成するときにエラーが発生しました。 | NAT/アプリケーションまたはネットワークのルール コレクションの最大数は、2000 個です (Resource Manager の制限)。 | これは現在の制限です。 |
+|Azure Firewall のログにネットワーク ルール名が表示されない|Azure Firewall のネットワーク ルールのログ データに、ネットワーク トラフィックのルール名が表示されません。|これをサポートするための機能が検討されています。|
 
 ## <a name="next-steps"></a>次のステップ
 

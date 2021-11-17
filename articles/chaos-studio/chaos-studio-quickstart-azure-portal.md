@@ -4,23 +4,33 @@ description: Chaos Studio の実験を 10 分以内に作成して実行する�
 services: chaos-studio
 author: prashabora
 ms.topic: article
-ms.date: 10/21/2021
+ms.date: 11/10/2021
 ms.author: prashabora
 ms.service: chaos-studio
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a5635307b3b736f535dd21f54b3c2b1ec326e5b0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ec89106c1aee40bc11e6ee2246ef2e01cb8fd466
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091877"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282103"
 ---
 # <a name="quickstart-create-and-run-a-chaos-experiment-using-azure-chaos-studio"></a>クイック スタート: Azure Chaos Studio を使用してカオス実験を作成して実行する 
 はじめに、Chaos Studio で VM シャットダウンのサービス直接実験を使用して、実際の同様の障害に対するサービスの回復力を高めます。 
 
 ## <a name="prerequisites"></a>前提条件
-- [Azure Portal](https://portal.azure.com)を開きます。
-- 仮想マシン。 仮想マシンがない場合は、[この手順に従って仮想マシンを作成できます](../virtual-machines/linux/quick-create-portal.md)。
+- Azure サブスクリプション。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+- Linux 仮想マシン。 仮想マシンがない場合は、[次の手順に従って作成](../virtual-machines/linux/quick-create-portal.md)できます。
+
+## <a name="register-the-chaos-studio-resource-provider"></a>Chaos Studio リソース プロバイダーを登録する
+Chaos Studio を初めて使用する場合は、まず、リソースをオンボードして実験を作成する前に、Chaos Studio リソース プロバイダーを登録する必要があります。 これは、Chaos Studio を使用するサブスクリプションごとに行う必要があります。
+
+1. [Azure Portal](https://portal.azure.com)を開きます。
+2. **サブスクリプション** を検索し、サブスクリプション管理ページを開きます。
+3. Chaos Studio を使用するサブスクリプションをクリックします。
+4. 左側のナビゲーションで、 **[リソース プロバイダー]** をクリックします。
+5. 表示されるリソース プロバイダーの一覧で、**Microsoft.Chaos** を検索します。
+6. Microsoft.Chaos プロバイダーをクリックし、 **[登録]** ボタンをクリックします。
 
 ## <a name="enable-chaos-studio-on-the-virtual-machine-you-created"></a>作成した仮想マシンで Chaos Studio を有効にする
 1. [Azure Portal](https://portal.azure.com)を開きます。
@@ -121,4 +131,4 @@ ms.locfileid: "131091877"
 
 ## <a name="next-steps"></a>次のステップ
 これで、VM シャットダウンのサービスダイレクト実験を実施したので、次のことを行う準備ができました。
-- [エージェントベースの障害を使用する実験を作成する](chaos-studio-tutorial-agent-based.md)
+- [エージェントベースの障害を使用する実験を作成する](chaos-studio-tutorial-agent-based-portal.md)

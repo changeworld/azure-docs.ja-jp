@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: a2f25f25add82568b33bd5c8bfc9466b0c26580b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cc5ca6ac39baed5e9dec72f9daa540f7262eb5b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128650897"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317335"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-ipass-smartconnect"></a>チュートリアル: Azure AD SSO と iPass SmartConnect の統合
 
@@ -161,4 +161,4 @@ iPass SmartConnect に対して Azure AD SSO を構成してテストするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-iPass SmartConnect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+iPass SmartConnect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

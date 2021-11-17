@@ -7,12 +7,12 @@ metadata:
   ms.service: purview
   ms.topic: conceptual
   ms.date: 05/08/2021
-  ms.openlocfilehash: cdde004521c6f99136bfa75f33359f3599b675df
-  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+  ms.openlocfilehash: 8ab2749a1a0134f90644e1af082006b414a9b91f
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129213447"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132301363"
 title: Azure Purview に関してよく寄せられる質問 (FAQ)
 summary: ''
 sections:
@@ -93,7 +93,7 @@ sections:
   - question: >
       Azure Purview では、SharePoint や OneDrive 内の電子メール、PDF などをスキャンして分類しますか?
     answer: >
-      オンプレミスの SharePoint のサイトおよびライブラリのスキャンは、Azure Information Protection スキャナーを通じて提供されます。 このスキャナーは、次の SKU を含む顧客の Microsoft 365 サブスクリプションを通じて使用できます: AIP P1、EMS E3、Microsoft 365 E3。 これらの SKU のいずれかをお持ちの場合は、Azure Information Protection スキャナーの使用を開始するための適切な権利があるはずです。
+      現時点では、Purview では SharePoint や OneDrive のスキャンがサポートされていません。 オンプレミスの SharePoint のサイトおよびライブラリのスキャンは、Azure Information Protection スキャナーを通じて提供されます。 このスキャナーは、次の SKU を含む顧客の Microsoft 365 サブスクリプションを通じて使用できます: AIP P1、EMS E3、Microsoft 365 E3。 これらの SKU のいずれかをお持ちの場合は、Azure Information Protection スキャナーの使用を開始するための適切な権利があるはずです。
   - question: >
       スキャンに使用されるコンピューティングは何ですか?
     answer: >

@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 08/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ce9dc354ff4ed3f4ff5246ce761a481f220e263
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 0f8b01e54fbb7173a6d9dfba8a99a9f9ffb1aeb9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186283"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292891"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware VM を Azure に移行する (エージェントレス) - PowerShell
 
@@ -518,9 +518,9 @@ Write-Output $MigrateJob.State
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [Microsoft Defender for Cloud のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用し、インバウンド トラフィック アクセスをロックダウンし、制限します。
     - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
-    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
+    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
 -  [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。

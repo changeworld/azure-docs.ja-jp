@@ -16,12 +16,12 @@ ms.date: 06/01/2021
 ms.author: pamela
 ms.custom: contperf-fy21q3
 ms.reviewer: mathoma
-ms.openlocfilehash: bed0a193a66d9f7ae19a42b61ec4562d11448669
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: f698b4c9393d536152d7058115ab7d82ad29b151
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132157250"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298111"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>チェックリスト: Azure VM 上の SQL Server のベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -112,8 +112,8 @@ Azure VM で SQL Server を実行する場合のストレージ構成に関す�
 - [SQL IaaS Agent 拡張機能](sql-agent-extension-manually-register-single-vm.md)に登録して、多くの[機能面の利点](sql-server-iaas-agent-extension-automate-management.md#feature-benefits)を活用できるようにします。
 - SQL Server ワークロードに最適な[バックアップと復元](backup-restore.md#decision-matrix)の戦略を活用します。
 - 仮想マシンで[高速ネットワークが有効](../../../virtual-network/create-vm-accelerated-networking-cli.md#portal-creation)になっていることを確認します。
-- [Azure Security Center](../../../security-center/index.yml) を活用して、仮想マシンのデプロイの全体的なセキュリティ体制を改善します。
-- [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合された [Azure Defender](../../../security-center/azure-defender.md) を利用して、脆弱性評価や Just-In-Time アクセスなど、特定の [SQL Server VM の対象範囲](../../../security-center/defender-for-sql-introduction.md)に対応します。攻撃サービスが減る一方、正当なユーザーは必要に応じて仮想マシンにアクセスできます。 詳細については、[脆弱性評価](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md)、[SQL Server VM の脆弱性評価の有効化](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md)、[Just-In-Time アクセス](../../../security-center/just-in-time-explained.md)を参照してください。 
+- [Microsoft Defender for Cloud](../../../security-center/index.yml) を活用して、仮想マシンのデプロイの全体的なセキュリティ体制を改善します。
+- [Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) と統合された [Microsoft Defender for Cloud](../../../security-center/azure-defender.md) を利用して、脆弱性評価や Just-In-Time アクセスなど、特定の [SQL Server VM の対象範囲](../../../security-center/defender-for-sql-introduction.md)に対応します。攻撃サービスが減る一方、正当なユーザーは必要に応じて仮想マシンにアクセスできます。 詳細については、[脆弱性評価](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md)、[SQL Server VM の脆弱性評価の有効化](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md)、[Just-In-Time アクセス](../../../security-center/just-in-time-explained.md)を参照してください。 
 - [Azure Advisor](../../../advisor/advisor-overview.md) を活用して、[パフォーマンス](../../../advisor/advisor-performance-recommendations.md)、[コスト](../../../advisor/advisor-cost-recommendations.md)、[信頼性](../../../advisor/advisor-high-availability-recommendations.md)、[オペレーショナル エクセレンス](../../../advisor/advisor-operational-excellence-recommendations.md)、および[セキュリティに関する推奨事項](../../../advisor/advisor-security-recommendations.md)に対処します。
 - [Azure Monitor](../../../azure-monitor/vm/monitor-virtual-machine.md)を活用して、SQL Server 環境からテレメトリ データを収集、分析、操作します。 これには、より詳細なシンダンのために [VM insights](../../../azure-monitor/vm/vminsights-overview.md) を使用してインフラストラクチャの問題を特定することと、[Log Analytics](../../../azure-monitor/logs/log-query-overview.md) を使用してデータを監視することが含まれます。
 - 開発とテストの環境で[自動シャットダウン](../../../automation/automation-solution-vm-management.md)を有効にします。 

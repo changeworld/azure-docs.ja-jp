@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 10/05/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 507e7a97c0ec884580b0a29fd8a8691035221751
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 72e869b1439e5fd9bcb77af57bd4e0d3d8f6a677
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131085982"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324804"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Azure portal でシングルテナント Azure Logic Apps (Standard) を使用して統合ワークフローを作成する
 
@@ -148,7 +148,7 @@ ms.locfileid: "131085982"
 
 この例では、次のような手順のワークフローを作成します。
 
-* 組み込みの [Request トリガー](../connectors/connectors-native-reqres.md) **[HTTP 要求の受信時]** 。受信呼び出しまたは要求を受信し、他のサービスまたはロジック アプリが呼び出すことができるエンドポイントを作成します。
+* 組み込みの [要求トリガー](../connectors/connectors-native-reqres.md)である **[HTTP 要求の受信時]** 。入ってきた呼び出しまたは要求を受信し、他のサービスやロジック アプリで呼び出せるエンドポイントを作成します。
 
 * [Office 365 Outlook アクション](../connectors/connectors-create-api-office365-outlook.md) **[メールの送信]** 。
 
@@ -158,7 +158,7 @@ ms.locfileid: "131085982"
 
 1. デザイナー画面の横にある **[トリガーの追加]** ペインの **[操作を選択してください]** 検索ボックスの下で、 **[組み込み]** タブが選択されていることを確認します。 このタブには、Azure Logic Apps でネイティブに実行されるトリガーが表示されます。
 
-1. **[操作の選択]** 検索ボックスに「`when a http request`」と入力し、 **[HTTP 要求の受信時]** という名前の組み込みの Request トリガーを選択します。
+1. **[操作の選択]** 検索ボックスに「`when a http request`」と入力し、 **[HTTP 要求の受信時]** という名前の組み込みの要求トリガーを選択します。
 
    ![デザイナーと、[HTTP 要求の受信時] トリガーが選択された **[トリガーの追加]** ウィンドウを示すスクリーンショット。](./media/create-single-tenant-workflows-azure-portal/find-request-trigger.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: cbd4de11b575c3c8125b829d5636d22e3131bdc9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7e2285cf1ac9326c17076ddf3e879fc40021bb38
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124753799"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334513"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dotcom-monitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Dotcom-Monitor の統合
 
@@ -147,4 +147,4 @@ Dotcom-Monitor に対して Azure AD SSO を構成してテストするには、
 
 ## <a name="next-steps"></a>次のステップ
 
-Dotcom-Monitor を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Dotcom-Monitor を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

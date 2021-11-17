@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 06/09/2021
 ms.author: victorh
-ms.openlocfilehash: d7e0cc01d15e33e86f7e9446537fff6d43652256
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 09c184f9f3e62d8f26a2baaaa3fb31f06f4dbfca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892856"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292910"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上の Azure Web アプリケーション ファイアウォール
 
@@ -102,7 +102,7 @@ Azure で管理される規則セットでは、一般的なセキュリティ�
 
 サポートされるボット カテゴリは、悪性、良性、不明の 3 つです。 ボットの署名は、WAF プラットフォームによって管理され、動的に更新されます。
 
-悪性ボットの例として、悪意のある IP アドレスからのボットや、ID が偽装されたボットが挙げられます。 悪意のある IP アドレスは、Microsoft の脅威インテリジェンス フィードを情報源とし、1 時間おきに更新されます。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/operations/intelligence)は、Microsoft の脅威インテリジェンスを動作させ、Azure Security Center を含む複数のサービスによって使用されます。
+悪性ボットの例として、悪意のある IP アドレスからのボットや、ID が偽装されたボットが挙げられます。 悪意のある IP アドレスは、Microsoft の脅威インテリジェンス フィードを情報源とし、1 時間おきに更新されます。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/operations/intelligence)は Microsoft の脅威インテリジェンスの動力となるものであり、Microsoft Defender for Cloud を含む複数のサービスによって使用されます。
 
 良性ボットには、検証済みの検索エンジンが含まれます。 不明のカテゴリには、ボットを自称するその他のボット グループが含まれます。 たとえば、マーケット アナライザー、フィード フェッチャー、データ収集エージェントが該当します。 
 

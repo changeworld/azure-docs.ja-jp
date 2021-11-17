@@ -6,12 +6,12 @@ metadata:
   ms.topic: article
   ms.date: 09/17/2021
   ms.author: sajaya
-  ms.openlocfilehash: 9a1b4cdb33dc3499bdc027911dee5ac05c2f79b7
-  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+  ms.openlocfilehash: 4a7c640897fc40916d42b387aa1d3f73cba9e85b
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129545418"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132345453"
 title: よく寄せられる質問 - Azure Container Registry
 summary: >
   この記事では、Azure Container Registry に関するよく寄せられる質問および既知の問題について説明します。
@@ -19,11 +19,11 @@ summary: >
 
   レジストリのトラブルシューティング ガイダンスについては、以下を参照してください。
 
-  * <bpt id="p1">[</bpt>レジストリ ログインのトラブルシューティング<ept id="p1">](container-registry-troubleshoot-login.md)</ept>
+  * [レジストリ ログインのトラブルシューティング](container-registry-troubleshoot-login.md)
 
   * <bpt id="p1">[</bpt>レジストリに関するネットワークの問題のトラブルシューティング<ept id="p1">](container-registry-troubleshoot-access.md)</ept>
 
-  * <bpt id="p1">[</bpt>レジストリのパフォーマンスのトラブルシューティング<ept id="p1">](container-registry-troubleshoot-performance.md)</ept>
+  * [レジストリのパフォーマンスのトラブルシューティング](container-registry-troubleshoot-performance.md)
 sections:
 - name: リソース管理
   questions:
@@ -34,7 +34,7 @@ sections:
   - question: >
       ACR 内のイメージに対するセキュリティ脆弱性スキャンは存在しますか?
     answer: >
-      はい。 <bpt id="p1">[</bpt>Azure Security Center<ept id="p1">](../security-center/defender-for-container-registries-introduction.md)</ept>、<bpt id="p2">[</bpt>Twistlock<ept id="p2">](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)</ept>、および <bpt id="p3">[</bpt>Aqua<ept id="p3">](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)</ept> のドキュメントを参照してください。
+      はい。 [Microsoft Defender for Cloud](../security-center/defender-for-container-registries-introduction.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)、および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントをご覧ください。
   - question: >
       Azure Container Registry で Kubernetes を構成するにはどうすればよいですか?
     answer: >
@@ -113,7 +113,7 @@ sections:
   - question: >
       Docker Registry HTTP API V2 にアクセスするにはどうすればよいですか?
     answer: >
-      ACR は Docker Registry HTTP API V2 をサポートしています。 これらの API には <ph id="ph1">`https://<your registry login server>/v2/`</ph> でアクセスできます。 例: <ph id="ph1">`https://mycontainerregistry.azurecr.io/v2/`</ph>
+      ACR は Docker Registry HTTP API V2 をサポートしています。 これらの API には <ph id="ph1">`https://<your registry login server>/v2/`</ph> でアクセスできます。 例: `https://mycontainerregistry.azurecr.io/v2/`
   - question: >
       リポジトリ内のどのタグによっても参照されていないすべてのマニフェストを削除するにはどうすればよいですか?
     answer: "Bash を使用している場合:\n\n```azurecli\naz acr repository show-manifests -n myRegistry --repository myRepository --query \"[?tags[0]==null].digest\" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%\n```\n\nPowerShell の場合:\n\n```azurecli\naz acr repository show-manifests -n myRegistry --repository myRepository --query \"[?tags[0]==null].digest\" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }\n```\n\n> [!NOTE] \n> 削除コマンドで <ph id=\"ph1\">`-y`</ph> を追加すると、確認をスキップできます。\n\n詳細については、「<bpt id=\"p1\">[</bpt>Azure Container Registry のコンテナー イメージを削除する<ept id=\"p1\">](container-registry-delete.md)</ept>」を参照してください。\n"
@@ -490,5 +490,5 @@ sections:
 
       - <bpt id="p1">[</bpt>CircleCI<ept id="p1">](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)</ept>
 
-      - <bpt id="p1">[</bpt>GitHub のアクション<ept id="p1">](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)</ept>
+      - [GitHub のアクション](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n  * Azure Container Registry の<bpt id=\"p1\">[</bpt>詳細を学習<ept id=\"p1\">](container-registry-intro.md)</ept>します。"

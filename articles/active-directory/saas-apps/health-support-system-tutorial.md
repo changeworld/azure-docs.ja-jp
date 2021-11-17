@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 397f0549c3589f0b5fea8077587a9c337a02ba45
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 3521d5fca3d2916e79323fdff03f1faf0bdf81f0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093328"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311357"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-health-support-system"></a>チュートリアル: Azure AD SSO と Health Support System の統合
 
@@ -128,4 +128,4 @@ Health Support System 用に Azure AD SSO を構成してテストするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-Health Support System を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Health Support System を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

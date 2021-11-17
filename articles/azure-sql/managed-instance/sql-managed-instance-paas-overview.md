@@ -11,12 +11,12 @@ author: niko-neugebauer
 ms.author: nneugebauer
 ms.reviewer: mathoma, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 4073a78b9dcab9d6e9ce4b11c839c0c9785d3285
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 3e79b90356974e8ce5d77d639d2ca866624288d3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667347"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290497"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL Managed Instance とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ SQL Managed Instance では、Azure SQL Database と SQL Server データベー�
 
 SQL Managed Instance の主な機能を次の表に示します。
 
-|特徴量 | 説明|
+|機能 | 説明|
 |---|---|
 | SQL Server のバージョン/ビルド | SQL Server データベース エンジン (最新の安定版) |
 | 管理される自動バックアップ | はい |
@@ -150,7 +150,7 @@ Azure SQL Managed Instance は、データを保護するために使用でき�
 
 - [SQL Managed Instance の監査](auditing-configure.md)では、データベース イベントが追跡されて、Azure ストレージ アカウント内の監査ログ ファイルにイベントが書き込まれます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 - 移動中のデータの暗号化 - SQL Managed Instance では、トランスポート層セキュリティを使用して移動中のデータの暗号化を実現することにより、データがセキュリティで保護されます。 トランスポート層セキュリティに加えて、SQL Managed Instance では [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して、転送中、保存中、およびクエリの処理中の機密データが保護されます。 Always Encrypted は、重要なデータの盗難を伴う侵害に対するデータ セキュリティを提供します。 たとえば、クレジット カード番号は、Always Encrypted によって常に暗号化されてデータベースに格納されます。暗号化はクエリ処理中も行われます。復号化は、データを処理する必要がある承認されたスタッフまたはアプリケーションが使用するときに実行することができます。
-- [Advanced Threat Protection](threat-detection-configure.md) では、サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、[監査](auditing-configure.md)が補完されます。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作が検出されます。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 Advanced Threat Protection のアラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) でご確認いただけます。 不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が提供されます。  
+- [Advanced Threat Protection](threat-detection-configure.md) では、サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、[監査](auditing-configure.md)が補完されます。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作が検出されます。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 Advanced Threat Protection のアラートは [Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) でご確認いただけます。 不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が提供されます。  
 - [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)では、特権のないユーザーに対して機微なデータをマスクすることでデータの公開を制限します。 動的データ マスクでは、公開する機微なデータの量を指定することで、機微なデータに対する未承認のアクセスを防ぐことができ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能です。これにより、データベース内のデータはそのままで、指定されたデータベース フィールドに対するクエリの結果セットで機微なデータを非表示にすることができます。
 - [行レベルセキュリティ](/sql/relational-databases/security/row-level-security) (RLS) を使用して、クエリを実行しているユーザーの特性 (グループのメンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 RLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 RLS を使用すると、データ行のアクセスに対して制限を実装できます。 たとえば、ワーカーが自分の部署に関連するデータ行にのみアクセスできるようにしたり、データ アクセスを関連するデータにのみ制限したりできます。
 - [透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) では、SQL Managed Instance のデータ ファイルが暗号化されます。これは、保存データの暗号化として知られています。 TDE は、データとログ ファイルの I/O 暗号化と複合化をリアルタイムで実行します。 暗号化は、復旧中に、可用性のためのデータベース ブート レコードに格納されるデータベース暗号化キー (DEK) を使用します。 透過的なデータ暗号化でマネージド インスタンス内のすべてのデータベースを保護することができます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で要求されている、SQL Server での実証済みの保存データ暗号化テクノロジです。

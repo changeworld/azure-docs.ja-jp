@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 1be53ae920fe75616ae406fea6d64886c2ddf7d3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 92041863d72a4d8b62602ca05fac27bc24e17114
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745969"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316510"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WhosOnLocation の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * WhosOnLocation では、**SP** initiated SSO がサポートされます
 
-* WhosOnLocation を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* WhosOnLocation を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-whosonlocation-from-the-gallery"></a>ギャラリーからの WhosOnLocation の追加
 
@@ -173,6 +173,6 @@ WhosOnLocation で Azure AD SSO を構成してテストするには、次の構
 
 - [Azure AD で WhosOnLocation を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって WhosOnLocation を保護する方法](/cloud-app-security/proxy-intro-aad)

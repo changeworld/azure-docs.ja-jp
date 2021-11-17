@@ -1,22 +1,22 @@
 ---
-title: Azure Defender for IoT エージェントベースのソリューションを構成する
-description: Azure Defender for IoT エージェントベースのソリューションでデータ収集を構成する方法について説明します
-ms.date: 05/26/2021
+title: Microsoft Defender for IoT エージェントベースのソリューションを構成する
+description: Microsoft Defender for IoT エージェントベースのソリューションでデータ収集を構成する方法について説明します
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 94f8548895da57efe450342a25bd5de086af0998
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 65e3febe4a1715ee1a55b377a5c54cbb4f3f88c6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018157"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306208"
 ---
-# <a name="configure-azure-defender-for-iot-agent-based-solution"></a>Azure Defender for IoT エージェントベースのソリューションを構成する  
+# <a name="configure-microsoft-defender-for-iot-agent-based-solution"></a>Microsoft Defender for IoT エージェントベースのソリューションを構成する  
 
-この記事では、Azure Defender for IoT エージェントベースのソリューションでデータ収集を構成する方法について説明します。
+この記事では、Microsoft Defender for IoT エージェントベースのソリューションでデータ収集を構成する方法について説明します。
 
 ## <a name="configure-data-collection"></a>データ収集を構成する
 
-Azure Defender for IoT エージェントベースのソリューションでデータ収集を構成するには、以下の手順を実行します。 
+Microsoft Defender for IoT エージェントベースのソリューションでデータ収集を構成するには: 
 
 1. Azure portal に移動し、Defender for IoT がアタッチされている IoT Hub を選択します。 
 

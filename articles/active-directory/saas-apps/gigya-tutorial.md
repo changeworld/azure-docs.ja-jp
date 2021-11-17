@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: fa83ab96e329afcd89523fbda2bffae6a04e6f3e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6555b52447491834983d1b00417be69f4a096331
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124834119"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>チュートリアル: Azure Active Directory と Gigya の統合
 
@@ -90,7 +90,7 @@ Gigya に対して Azure AD SSO を構成してテストするには、次の手
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -102,7 +102,7 @@ Gigya に対して Azure AD SSO を構成してテストするには、次の手
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Gigya へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -114,13 +114,13 @@ Gigya に対して Azure AD SSO を構成してテストするには、次の手
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-gigya-sso&quot;></a>Gigya の SSO の構成
+## <a name="configure-gigya-sso"></a>Gigya の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Gigya 企業サイトに管理者としてログインします。
 
 2. **[設定] \> [SAML ログイン]** の順にクリックし、**[追加]** をクリックします。
    
-    ![SAML ログイン](./media/gigya-tutorial/login.png &quot;[Public]")
+    ![SAML ログイン](./media/gigya-tutorial/login.png "[Public]")
 
 3. [**SAML ログイン**] セクションで、以下の手順を実行します。
    
@@ -174,4 +174,4 @@ Azure AD ユーザーが Gigya にログインできるようにするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Gigya を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Gigya を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

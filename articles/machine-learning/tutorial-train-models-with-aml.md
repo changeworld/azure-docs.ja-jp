@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 10/21/2021
 ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 0284a6d0fe7eccf42f43ff7cebc33fe4fcb6fe66
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4f29290c96b5f9603b4d626a8f87ee1c75168abc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559563"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289720"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>チュートリアル: Jupyter Notebook の例を使用して画像分類モデルをトレーニングする 
 
@@ -35,7 +35,7 @@ ms.locfileid: "131559563"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
->[!NOTE]
+> [!NOTE]
 > この記事のコードは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) バージョン 1.13.0 を使用してテストされています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -52,6 +52,9 @@ Azure Machine Learning では、インストール不要であらかじめ構成
  次のビデオに従うか、詳細な手順を使用して、ワークスペースでチュートリアル ノートブックを複製して実行します。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
+
+> [!NOTE]
+> このビデオはプロセスを理解するのに役立ちますが、別のファイルを開く方法を示しています。  本チュートリアルでは、**tutorials** フォルダーを複製したら、**tutorials/image-classification-mnist-data** フォルダーから **img-classification-part1-training.ipynb** ファイルを開きます。
 
 ### <a name="clone-a-notebook-folder"></a><a name="clone"></a> ノートブック フォルダーを複製する
 

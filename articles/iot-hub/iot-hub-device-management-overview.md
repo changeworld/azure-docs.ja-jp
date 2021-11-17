@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: f76996f721287679982f92345ecc075c3db55aba
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7e21115bd1f55d79b1ba09b91cea05576a74dd75
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612930"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312536"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT Hub を使用したデバイス管理の概要
 
@@ -69,7 +69,7 @@ Azure IoT Hub には、デバイスやバックエンドの開発者が堅牢な
     * [デバイス ツインのプロパティの使用方法](tutorial-device-twins.md)
     * [デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語](iot-hub-devguide-query-language.md)
     * [多数の IoT デバイスの構成と監視](./iot-hub-automatic-device-management.md)
-    * [包括的な脅威検出を提供する組織向け Azure Defender for IoT](../defender-for-iot/organizations/overview.md)
+    * [包括的な脅威検出を提供する組織向け Microsoft Defender for IoT](../defender-for-iot/organizations/overview.md)
     * [IoT ソリューション内のデバイス構成のベスト プラクティス](iot-hub-configuration-best-practices.md)
 
 * **使用中止**: 故障後やアップグレード サイクルの終了後、またはサービス有効期間の経過後に、デバイスを交換またはデバイスの使用を停止します。  デバイス ツインを使用して、物理デバイスが交換されている場合は、デバイス情報を保持します。使用中止になっている場合はアーカイブされます。 IoT Hub ID レジストリを使用して、デバイス ID と資格情報を安全に失効します。

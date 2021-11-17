@@ -1,6 +1,6 @@
 ---
-title: ほぼリアルタイム (NRT) の検出分析ルールを使用して、Azure Sentinel |Microsoft Docs
-description: この記事では、ほぼリアルタイム (NRT) の検出分析ルールを表示して作成する方法について説明Azure Sentinel。
+title: Microsoft Sentinel でほぼリアルタイム (NRT) の検出分析ルールを使用する | Microsoft Docs
+description: この記事では、Microsoft Sentinel でほぼリアルタイム (NRT) の検出分析ルールを表示および作成する方法について説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 24492258021e3fc50a94926baad6578631b06125
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9e807363a1a1cc058d6b54c009f9ff90d6a5aa93
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091610"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277887"
 ---
-# <a name="work-with-near-real-time-nrt-detection-analytics-rules-in-azure-sentinel"></a>ほぼリアルタイム (NRT) の検出分析ルールを使用して、Azure Sentinel
+# <a name="work-with-near-real-time-nrt-detection-analytics-rules-in-microsoft-sentinel"></a>Microsoft Sentinel でほぼリアルタイム (NRT) の検出分析ルールを使用する
 
 > [!IMPORTANT]
 >
-> - ほぼリアルタイム (NRT) の規則は、現在プレビュー中 **です**。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> - ほぼリアルタイム (NRT) の規則は、現在 **プレビュー** 中です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Azure Sentinelの[ニア・リアルタイム分析ルール](near-real-time-rules.md)は、すぐにでも最新の脅威検知を提供します。 この種類のルールは、クエリを 1 分間隔で実行することで応答性が高く設計されています。
+Microsoft Sentinel の[ほぼリアルタイム分析ルール](near-real-time-rules.md)では、面倒な設定なし、かつ最新の方法で脅威を検出できます。 この種類のルールは、クエリを 1 分間隔で実行することで応答性が高く設計されています。
 
 当分の間、これらのテンプレートの適用は制限されますが、テクノロジは急速に進化し、成長しています。
 
 ## <a name="view-near-real-time-nrt-rules"></a>ほぼリアルタイム (NRT) の規則を表示する
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. [分析 **] ブレードの** **[アクティブなルール]** タブで **、NRT** テンプレートの一覧をフィルター処理します：
 
@@ -48,7 +48,7 @@ Azure Sentinelの[ニア・リアルタイム分析ルール](near-real-time-rul
 
 NRT ルールは、定期的なスケジュールされたクエリ分析ルールを作成 [するのと同じ方法で作成します](detect-threats-custom.md)：
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. ボタン **バーから** [作成] を選択し、ドロップダウン リストから **[NRT** クエリ規則] を選択します。
 
@@ -82,7 +82,7 @@ NRT ルールは、定期的なスケジュールされたクエリ分析ルー�
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、ほぼリアルタイム (NRT) の分析ルールを Azure Sentinel。
+このドキュメントでは、Microsoft Sentinel でほぼリアルタイム (NRT) の分析ルールを作成する方法について説明しました。
 
-- のほぼリアルタイム [(NRT)](near-real-time-rules.md)分析ルールの詳細については、Azure Sentinel。
+- [Microsoft Sentinel のほぼリアルタイム (NRT) の分析ルール](near-real-time-rules.md)詳細については確認してください。
 - その他の[分析ルールの種類](detect-threats-built-in.md)を確認します。

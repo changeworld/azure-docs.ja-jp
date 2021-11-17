@@ -1,20 +1,20 @@
 ---
 title: セキュリティ エージェント
-description: IoT デバイスでの Azure Defender for IoT セキュリティ サービス エージェントについて理解を深め、構成、デプロイ、および使用を開始します。
+description: IoT デバイスでの Microsoft Defender for IoT セキュリティ サービス エージェントについて理解を深め、構成、デプロイ、および使用を開始します。
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: d25adad695e12d7ee104fdf9af616baefb98150c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 86c0295726989d142e10e01e8f4950cfcf385126
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018805"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331549"
 ---
-# <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>Azure Defender for IoT デバイス マイクロ エージェントの使用を開始する
+# <a name="get-started-with-microsoft-defender-for-iot-device-micro-agents"></a>Microsoft Defender for IoT デバイス マイクロ エージェントの使用を開始する
 
 Defender for IoT セキュリティ エージェントでは、オペレーティング システム構成のベスト プラクティスの監視など、強化されたセキュリティ機能が提供されています。 1つのサービスで、デバイス フィールドの脅威保護とセキュリティ体制を制御します。
 
-Defenders for IoT セキュリティ エージェントでは、デバイスのオペレーティング システムからの未加工イベント収集、コストを削減するためのイベント集計、およびデバイス モジュール ツインを使用した構成が処理されます。 セキュリティ メッセージは、IoT Hub を介して Defender for IoT 分析サービスへ送信されます。
+Azure Defender for IoT セキュリティ エージェントでは、デバイスのオペレーティング システムからの未加工イベント収集、コストを削減するためのイベント集計、およびデバイス モジュール ツインを使用した構成が処理されます。 セキュリティ メッセージは、IoT Hub を介して Defender for IoT 分析サービスへ送信されます。
 
 次のワークフローを使用して、Defender for IoT セキュリティ エージェントをデプロイしてテストします。
 

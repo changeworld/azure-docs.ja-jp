@@ -6,16 +6,16 @@ manager: markkie
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 2/20/2019
+ms.date: 11/10/2021
 ms.author: raiye
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b6db47d812b13bced9d0e52530ec8c59b58be19
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c76e19101fbf6c325d66af2f14dbdc6e063ace9e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770799"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331055"
 ---
 # <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 
@@ -45,7 +45,7 @@ SAP 関連の VM 構成では、OS ディスクで書き込みアクセラレー
 Azure ディスク/VHD で書き込みアクセラレータを使うときは、次の制限が適用されます。
 
 - Premium ディスクのキャッシュを 'None' または 'Read Only' に設定する必要があります。 他のすべてのキャッシュ モードはサポートされていません。
-- 現在、書き込みアクセラレータ対応のディスクでは、スナップショットはサポートされていません。 バックアップ中、VM に接続されている書き込みアクセラレータ対応ディスクは Azure Backup サービスによって自動的に除外されます。
+- スナップショットは、現在、OS ディスクではなく、書き込みアクセラレータ対応のデータ ディスクでのみサポートされています。 バックアップ中、Azure Backup サービスは、VM に接続されている書き込みアクセラレータ対応データ ディスクを自動的にバックアップし、保護します。
 - 高速化パスは、I/O サイズが小さい場合 (512 KiB 以下) にのみ使用されます。 データが一括で読み込まれたり、ストレージに保存される前に複数の DBMS のトランザクション ログ バッファの大部分が入力されるようなワークロードの状況では、ディクスに書き込まれる I/O で高速化パスが使用される機会はありません。
 
 書き込みアクセラレータでサポートできる VM ごとの Azure Premium Storage VHD には制限があります。 現在の制限は次のとおりです。

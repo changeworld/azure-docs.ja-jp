@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: fdec259dc93e52a8bc1271de8af90f4b864afd49
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 52c59662e1dfa97e779cce0b812bcaf25a8494a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842057"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301629"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Azure Data Factory の新機能
 
@@ -25,6 +25,34 @@ Azure Data Factory サービスには継続的に改善が施されています�
 - 変更の計画
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。 
+
+## <a name="october-2021"></a>2021 年 10 月
+<br>
+<table>
+<tr><td><bpt id="p1"><b></bpt>サービス カテゴリ<ept id="p1"></b></ept></td><td><bpt id="p1"><b></bpt>サービスの機能強化<ept id="p1"></b></ept></td><td><b>詳細</b></td></tr>
+  
+<tr><td rowspan=3><b>データ フロー</b></td><td>Azure Data Explorer と アマゾン ウェブ サービス S3 コネクタ</td><td>Microsoft データ統合チームは、マッピング データ フロー用の新しいコネクタを 2 つリリースしました。 Azure Synapse を使用しているユーザーは、データ変換のために AWS S3 バケットに直接接続できるようになりました。 Azure Data Factory と Azure Synapse の両方とも、マッピング データ フローで Azure Data Explorer クラスターにネイティブに接続できるようになりました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/mapping-data-flow-gets-new-native-connectors/ba-p/2866754">詳細情報</a></td></tr>
+<tr><td>Power Query アクティビティがプレビューから一般提供 (GA) に</td><td>Microsoft は、Azure Data Factory Power Query パイプライン アクティビティを一般提供としてリリースしました。 この新機能によって、市民インテグレーター用にスケールアウトされたデータ準備とデータ ラングリングが ADF ブラウザー UI 内で利用可能となり、データ エンジニアに統合されたエクスペリエンスがもたらされます。 ADF Power Query のデータ ラングリング機能では、非常に複雑なデータ統合と ETL パターンを 1 つのサービスで解決することを可能にする、強力で使いやすいパイプライン機能が提供されます。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/data-wrangling-at-scale-with-adf-s-power-query-activity-now/ba-p/2824207">詳細情報</a></td></tr>
+<tr><td>マッピング データ フローでの新しい文字列化によるデータ変換</td><td>マッピング データ フローに文字列化 (Stringify) という新しいデータ変換が追加され、構造体や配列などの複雑なデータ型を、構造化された出力先に送信可能な文字列形式に簡単に変換できるようになりました。<br><a href="data-flow-stringify.md">詳細情報</a></td></tr>
+  
+<tr>
+  <td rowspan=2><bpt id="p1"><b></bpt>Integration Runtime<ept id="p1"></b></ept></td>
+  <td>Azure Data Factory マネージド VNet が GA になりました</td>
+  <td>マネージド仮想ネットワークの一部として Azure Integration Runtime をプロビジョニングし、プライベート エンドポイントを利用して、サポートされるデータ ストアに安全に接続できるようになりました。 データ トラフィックは、データ ソースへのセキュリティで保護された接続を提供する Azure Private Link を経由します。 また、パブリック インターネットへのデータ流出を防ぐことができます。<br><bpt id="p1"><a href="managed-virtual-network-private-endpoint.md"></bpt>詳細情報<ept id="p1"></a></ept></td>
+ </tr>
+ <tr>
+   <td>SSIS 統合ランタイムでの高速 VNet インジェクション (パブリック プレビュー)</td>
+   <td>SSIS 統合ランタイムで高速 VNet インジェクションがサポートされました。<br>
+詳細情報:<br>
+     <a href="join-azure-ssis-integration-runtime-virtual-network.md">SSIS 統合ランタイムでの VNet インジェクションの概要</a><br>
+     <a href="azure-ssis-integration-runtime-virtual-network-configuration.md">SSIS 統合ランタイムでの VNet インジェクション (標準と高速の比較)</a><br>
+     <a href="azure-ssis-integration-runtime-express-virtual-network-injection.md">SSIS 統合ランタイムでの高速 VNet インジェクション</a>
+   </td>
+ </tr>
+
+<tr><td rowspan=2><b>Security</b></td><td>Azure Key Vault 統合の改善</td><td>Azure Key Vault 統合の改善として、リンクされたサービスのシークレット値をユーザーが選択できるようにするドロップダウンを追加した結果、生産性が向上し、人的エラーの原因となるユーザーによるシークレットの入力が不要になりました。</td></tr>
+<tr><td>Azure Data Factory でのユーザー割り当てマネージド ID のサポート</td><td>資格情報の安全性は、あらゆる企業で重要です。 Azure Data Factory (ADF) チームはこの点を念頭に置いて、データ エンジニアリング プロセスを安全にしつつ、データ エンジニアにとって簡単なものになるよう取り組んでいます。 Azure Active Directory (Azure AD) ベースの認証をサポートしているすべてのコネクタとリンク されたサービスで、ユーザー割り当てマネージド ID (プレビュー) がサポートされたことをお知らせします。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/support-for-user-assigned-managed-identity-in-azure-data-factory/ba-p/2841013">詳細情報</a></td></tr>
+</table>
 
 ## <a name="september-2021"></a>2021 年 9 月
 <br>
@@ -59,7 +87,7 @@ Azure Data Factory サービスには継続的に改善が施されています�
 <table>
 <tr><td><bpt id="p1"><b></bpt>サービス カテゴリ<ept id="p1"></b></ept></td><td><bpt id="p1"><b></bpt>サービスの機能強化<ept id="p1"></b></ept></td><td><b>詳細</b></td></tr>
 <tr><td><bpt id="p1"><b></bpt>データの移動<ept id="p1"></b></ept></td><td>ADF のデータ コピー ツールでメタデータ駆動型のデータ インジェスト パイプラインを 10 分以内に取得します (パブリック プレビュー)</td><td>これにより、10 分以内に、データ コピー ツールでメタデータ駆動型アプローチを使用して大規模なデータ コピー パイプラインを作成できます (パブリック プレビュー)。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/get-metadata-driven-data-ingestion-pipelines-on-adf-within-10/ba-p/2528219">詳細情報</a></td></tr>
-<tr><td><bpt id="p1"><b></bpt>データ フロー<ept id="p1"></b></ept></td><td>データ フロー変換関数に新しいマップ関数が追加されました</td><td>データ エンジニアがマップのデータ型と複雑なマップ構造を簡単に生成、読み取り、および更新できるように、データ フロー変換関数の新しいセットが追加されました。<br><a href="data-flow-expression-functions.md#map-functions">詳細情報</a></td></tr>
+<tr><td><b>データ フロー</b></td><td>データ フロー変換関数に新しいマップ関数が追加されました</td><td>データ エンジニアがマップのデータ型と複雑なマップ構造を簡単に生成、読み取り、および更新できるように、データ フロー変換関数の新しいセットが追加されました。<br><a href="data-flow-expression-functions.md#map-functions">詳細情報</a></td></tr>
 <tr><td><bpt id="p1"><b></bpt>Integration Runtime<ept id="p1"></b></ept></td><td>Azure Data Factory のマネージド VNET で 5 つの新しいリージョンが利用可能になりました (パブリック プレビュー)</td><td>これらの 5 つの新しいリージョン (中国東部 2、中国北部 2、US Gov アリゾナ、US Gov テキサス、US Gov バージニア) は、Azure Data Factory のマネージド仮想ネットワークで利用できます (パブリック プレビュー)。<br><a href="managed-virtual-network-private-endpoint.md#azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions">詳細情報</a></td></tr>
 <tr><td rowspan=2><bpt id="p1"><b></bpt>開発者の生産性<ept id="p1"></b></ept></td><td>ADF ホームページの機能強化</td><td>Data Factory のホームページが再設計されて、コントラストとリフロー機能が改善されました。 さらに、データ統合体験で生産性を向上させるためのいくつかのセクションがホームページに追加されました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">詳細情報</a></td></tr>
 <tr><td>Azure Data Factory Studio の新しいランディング ページ</td><td>Azure portal の Data Factory ブレードのランディング ページ。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">詳細情報</a></td></tr>
@@ -83,6 +111,6 @@ Azure Data Factory サービスには継続的に改善が施されています�
 ## <a name="more-information"></a>説明を見る
 
 - <bpt id="p1">[</bpt>ブログ - Azure Data Factory<ept id="p1">](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)</ept>
-- <bpt id="p1">[</bpt>Stack Overflow フォーラム<ept id="p1">](https://stackoverflow.com/questions/tagged/azure-data-factory)</ept>
+- [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 - [Twitter](https://twitter.com/AzDataFactory?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
-- <bpt id="p1">[</bpt>ビデオ<ept id="p1">](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/featured)</ept>
+- [ビデオ](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/featured)

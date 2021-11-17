@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54155113920c61d2f32474f0fac2414a6751bcdf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 997b3ec9b784b8b52b826b526102a97bce7d3286
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067415"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301057"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
@@ -44,7 +44,7 @@ ms.locfileid: "131067415"
       - マネージド デバイス (準拠または Hybrid Azure AD Join) 
       - 使用条件 
       - カスタム コントロール  
-   - すべての許可の制御が満たされたら、セッション制御を適用します (アプリによって適用、Microsoft Cloud App Security、トークンの有効期間) 
+   - すべての許可の制御が満たされたら、セッション制御を適用します (アプリによって適用、Microsoft Defender for Cloud Apps、トークンの有効期間) 
    - ポリシー評価のフェーズ 2 は、すべての有効になっているポリシーで発生します。 
 
 ## <a name="assignments"></a>代入
@@ -128,7 +128,7 @@ ms.locfileid: "131067415"
    - 現在、Exchange Online と SharePoint Online でのみ機能します。
       - デバイス情報を渡して、フル アクセスまたは制限付きアクセスを許可するエクスペリエンスを制御できるようにします。
 - アプリの条件付きアクセス制御を使用する
-   - Microsoft Cloud App Security からのシグナルを使用して、次のようなことを行います。 
+   - Microsoft Defender for Cloud Apps からのシグナルを使用して、次のようなことを行います。 
       - 機密ドキュメントのダウンロード、切り取り、コピー、および印刷をブロックする。
       - 危険なセッションの動作を監視する。
       - 機密ファイルのラベル付けを必要とする。
@@ -162,4 +162,4 @@ ms.locfileid: "131067415"
 
 [Intune でのデバイス コンプライアンスの管理](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security と条件付きアクセス](/cloud-app-security/proxy-intro-aad)
+[Microsoft Defender for Cloud Apps と条件付きアクセス](/cloud-app-security/proxy-intro-aad)

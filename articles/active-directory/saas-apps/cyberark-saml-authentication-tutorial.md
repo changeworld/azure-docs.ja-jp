@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: c7045a61dcec8f149272d8cbd0ddc71e9543fa82
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 269d740399d8902d63e5ad5871aee09a44a5f3b7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783959"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334609"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cyberark-saml-authentication"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CyberArk SAML Authentication の統合
 
@@ -142,4 +142,4 @@ CyberArk SAML Authentication に対する Azure AD SSO を構成してテスト�
 
 ## <a name="next-steps"></a>次のステップ
 
-CyberArk SAML Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+CyberArk SAML Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

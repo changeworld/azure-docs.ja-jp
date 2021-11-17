@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/01/2021
 ms.author: jeedes
-ms.openlocfilehash: b6fdb6a6541bcb5b62f745f4319f1396a71cc94a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6a1ddd2be531f64485dcc25ef9f1c8a499607d52
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762742"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132288979"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-applied-mental-health"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Applied Mental Health の統合
 
@@ -143,4 +143,4 @@ Microsoft Azure Active Directory SSO を Applied Mental Health と一緒に構�
 
 ## <a name="next-steps"></a>次のステップ
 
-Applied Mental Health を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Applied Mental Health を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/03/2021
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 47d0862eefd713aa814ab7da2737565c33160cd3
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: fdf88bd530eedb37ff2637c7daf43433d9a0e427
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559297"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284419"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -76,6 +76,7 @@ ms.locfileid: "131559297"
 * 一般公開リリース
 
 ### <a name="0110-preview"></a><a name="0.11.0-preview"></a>0.11.0-preview
+
 * CloudTableClient を構成する方法が変更されました。 構築時に TableClientConfiguration オブジェクトを受け取るようになりました。 TableClientConfiguration では、対象のエンドポイントが Cosmos DB Table API であるかまたは Azure Storage Table API であるかによって、クライアントの動作を構成するさまざまなプロパティが提供されます。
 * カスタム列に並べ替えられた順序で結果を返すために TableQuery にサポートが追加されました。 この機能は、Cosmos DB テーブル エンドポイントでのみサポートされています。
 * さまざまな結果型で RequestCharges を公開するためのサポートが追加されました。 この機能は、Cosmos DB テーブル エンドポイントでのみサポートされています。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 59c3166bbbd5117e084808aaadfa1b1fafaf2dee
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 74d030d4bf5b8a7d4ba16a8d7cc0421af0110b02
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056881"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340687"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-vecos-releezme-locker-management-system"></a>チュートリアル: Azure AD SSO と VECOS Releezme Locker management system の統合
 
@@ -161,4 +161,4 @@ VECOS Releezme Locker management system に対する Azure AD SSO を構成し�
 
 ## <a name="next-steps"></a>次のステップ
 
-VECOS Releezme Locker management system を構成すると、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+VECOS Releezme Locker management system を構成すると、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

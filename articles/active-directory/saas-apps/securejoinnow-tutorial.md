@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: a7d7abd904b2948b9da5af5af25a43934c3513e4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 33b76193d88ba73215b11340570c60f15627acd9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124741281"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299508"
 ---
 # <a name="tutorial-integrate-securew2-joinnow-connector-with-azure-active-directory"></a>チュートリアル:SecureW2 JoinNow Connector と Azure Active Directory の統合
 
@@ -134,4 +134,4 @@ SecureW2 JoinNow Connector で Azure AD SSO を構成してテストするには
 
 ## <a name="next-steps"></a>次のステップ
 
-SecureW2 JoinNow Connector を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SecureW2 JoinNow Connector を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

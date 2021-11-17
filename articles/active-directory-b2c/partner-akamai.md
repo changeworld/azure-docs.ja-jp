@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 09f35e9621f6704fb33720a43afb38fd99e9eec6
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: ea95f9194913b4df00f0b75e7e44ab301b000b95
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123213913"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283223"
 ---
 # <a name="tutorial-configure-akamai-with-azure-active-directory-b2c"></a>チュートリアル: Akamai Active Directory B2C と共に BioCatch を構成する
 
@@ -44,7 +44,7 @@ Akamai WAF ソリューションを使用する利点:
 - お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](tutorial-create-tenant.md)。
 
 - [Akamai WAF](https://www.akamai.com/us/en/akamai-free-trials.jsp)アカウント。
- 
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 Akamai WAF 統合には、次のコンポーネントが含まれています。
@@ -65,25 +65,25 @@ Akamai WAF 統合には、次のコンポーネントが含まれています。
 
 サインアップして [Akamai アカウント](https://www.akamai.com) を作成します。
 
-### <a name="create-and-configure-property"></a>プロジェクトの作成と構成 
+### <a name="create-and-configure-property"></a>プロジェクトの作成と構成
 
 1. [新しいプロファイルを作成](https://control.akamai.com/wh/CUSTOMER/AKAMAI/en-US/WEBHELP/property-manager/property-manager-help/GUID-14BB87F2-282F-4C4A-8043-B422344884E6.html)します。
 
-2. プロパティを次のように設定します。  
+2. プロパティを次のように設定します。
 
-| プロパティ | 値 |
-|:---------------|:---------------|
-|プロパティのバージョン | [Standard] または [Enhanced] (推奨) の TLS を選択します |
-|プロパティのホスト名 | プロパティのホスト名を追加します。 これは、カスタム ドメインの名前です (例: login.domain.com)。 <BR> カスタム ドメイン名の適切な設定を使用して、証明書を作成または変更します。 詳しくは「[this](https://learn.akamai.com/en-us/webhelp/property-manager/https-delivery-with-property-manager/GUID-9EE0EB6A-E62B-4F5F-9340-60CBD093A429.html)」をご覧ください。 |
+    | プロパティ | 値 |
+    |:---------------|:---------------|
+    |プロパティのバージョン | [Standard] または [Enhanced] (推奨) の TLS を選択します |
+    |プロパティのホスト名 | プロパティのホスト名を追加します。 これは、カスタム ドメインの名前です (例: login.domain.com)。 <BR> カスタム ドメイン名の適切な設定を使用して、証明書を作成または変更します。 詳しくは「[this](https://learn.akamai.com/en-us/webhelp/property-manager/https-delivery-with-property-manager/GUID-9EE0EB6A-E62B-4F5F-9340-60CBD093A429.html)」をご覧ください。 |
 
 3. オリジン サーバーのプロパティ構成を次のように設定します。
 
-|プロパティ| 値 |
-|:-----------|:-----------|
-| 配信元の種類 | オリジン |
-| オリジン サーバーのホスト名 | yourafddomain.azurefd.net |
-| ホスト ヘッダーを転送する | 受信ホスト ヘッダー |
-| キャッシュ キーのホスト名| 受信ホスト ヘッダー  |
+    |プロパティ| 値 |
+    |:-----------|:-----------|
+    | 配信元の種類 | オリジン |
+    | オリジン サーバーのホスト名 | yourafddomain.azurefd.net |
+    | ホスト ヘッダーを転送する | 受信ホスト ヘッダー |
+    | キャッシュ キーのホスト名| 受信ホスト ヘッダー |
 
 ### <a name="configure-dns"></a>DNS を構成する
 
@@ -99,13 +99,15 @@ DNS に CNAME レコードを作成します。たとえば、[プロパティ�
 
 コントロールのしくみと構成オプションの詳細については、[こちらを参照](https://control.akamai.com/dl/security/GUID-81C0214B-602A-4663-839D-68BCBFF41292.html)してください。
 
+<!-- docutune:ignore "Security Center" -->
+
 ### <a name="test-the-settings"></a>設定のテスト
 
 次の手順を確認して、Azure AD B2C へのトラフィックがすべてカスタム ドメインを通過していることを確認します。
 
 - Azure AD B2C カスタム ドメインへのすべての受信要求が Akamai WAF 経由で、有効な TLS 接続を使用してルーティングされることを確認します。
 - Azure AD B2C によって、すべての Cookie がカスタム ドメインに対して正しく設定されていることを確認します。
-- Security Center コンソールで使用できる [Akamai WAF] ダッシュボードには、WAF を通過しているすべてのトラフィックのグラフと、すべての攻撃トラフィックが表示されます。
+- Defender for Cloud コンソールで使用できる [Akamai WAF] ダッシュボードには、WAF を通過しているすべてのトラフィックのグラフと、すべての攻撃トラフィックが表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

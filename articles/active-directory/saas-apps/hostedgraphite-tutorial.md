@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.author: jeedes
-ms.openlocfilehash: b9230da3c27f17c6f8f2c6b5bb7d0e88b4ec0e84
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 185838b45f656e1b28b25749b215ab992d039131
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124772963"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291371"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>チュートリアル: Azure Active Directory と Hosted Graphite の統合
 
@@ -150,7 +150,7 @@ Hosted Graphite を使用した Azure AD SSO を構成してテストするに�
 このセクションでは、Britta Simon というユーザーを Hosted Graphite に作成します。 Hosted Graphite では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Hosted Graphite にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、[Hosted Graphite のサポート チーム](<mailto:help@hostedgraphite.com>)に問い合わせる必要があります。
+> ユーザーを手動で作成する必要がある場合は、[Hosted Graphite のサポート チーム](mailto:help@hostedgraphite.com)に問い合わせる必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト
 
@@ -170,4 +170,4 @@ Hosted Graphite を使用した Azure AD SSO を構成してテストするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Hosted Graphite を構成した後、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Hosted Graphite を構成した後、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

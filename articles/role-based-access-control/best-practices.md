@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f42a384c0ef8605de42243fcbb232d3ff615583
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555565"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301345"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC のベスト プラクティス
 
@@ -34,7 +34,7 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 ## <a name="limit-the-number-of-subscription-owners"></a>サブスクリプションの所有者の数を制限する
 
-侵害された所有者による侵害の可能性を減らすため、サブスクリプション所有者は最大 3 人までにします。 この推奨事項は Azure Security Center で監視できます。 他の ID と Security Center でのアクセスの推奨事項については、「[セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)」を参照してください。
+侵害された所有者による侵害の可能性を減らすため、サブスクリプション所有者は最大 3 人までにします。 この推奨事項は Microsoft Defender for Cloud で監視できます。 Defender for Cloud での他の ID とアクセスの推奨事項については、「[セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)」を参照してください。
 
 ## <a name="use-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を使用する
 

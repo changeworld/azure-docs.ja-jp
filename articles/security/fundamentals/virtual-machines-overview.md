@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 6092476180614fe11f8c1199c079b0599f829779
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: b01049e8b2ceb851680cc73837f5f0609818372b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554428"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336850"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -134,18 +134,18 @@ Azure 仮想ネットワークは、物理的な Azure ネットワーク ファ
 
 ## <a name="security-policy-management-and-reporting"></a>セキュリティ ポリシーの管理とレポート
 
-Azure Security Center は、脅威の防御、検出、対応を可能にする機能です。 Security Center により、Azure リソースのセキュリティの可視化を向上させ、コントロールすることができます。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
+Microsoft Defender for Cloud は、脅威の防御、検出、対応に役立ちます。 Defender for Cloud により、Azure リソースのセキュリティの可視化を向上させ、コントロールすることができます。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
 
-Security Center は、仮想マシンのセキュリティの最適化と監視に役立つ次の機能を備えています。
+Defender for Cloud は、仮想マシンのセキュリティの最適化と監視に役立つ次の機能を備えています。
 
 * 仮想マシンの[セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)の提供。 推奨事項の例としては、システム更新プログラムの適用、ACL エンドポイント、マルウェア対策の有効化、ネットワーク セキュリティ グループの有効化、ディスク暗号化の適用などがあります。
 * 仮想マシンの状態の監視。
 
 詳細情報:
 
-* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
-* [Azure Security Center についてよく寄せられる質問](../../security-center/faq-general.yml)
-* [Azure Security Center 計画および運用](../../security-center/security-center-planning-and-operations-guide.md)
+* [Microsoft Defender for Cloud の概要](../../security-center/security-center-introduction.md)
+* [Microsoft Defender for Cloud についてよく寄せられる質問](../../security-center/faq-general.yml)
+* [Microsoft Defender for Cloud の計画と運用](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>コンプライアンス
 

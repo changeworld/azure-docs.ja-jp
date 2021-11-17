@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.reviewer: miccohen
-ms.openlocfilehash: 3e00bce1090a623efbab0c84722e4dbc46200f5f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f5f1d631ad0fdcd484511987b1f79ce702e51fe9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131039812"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339012"
 ---
-# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure-active-directory"></a>F5 BIG-IP Virtual Edition VM を Azure Active Directory にデプロイする
+# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure"></a>F5 BIG-IP Virtual Edition VM を Azure にデプロイする
 
 このチュートリアルでは、Azure IaaS に BIG-IP Virtual Edition (VE) をデプロイするエンドツーエンドのプロセスについて説明します。 このチュートリアルを終了すると、次のものが準備できたことになります。
 

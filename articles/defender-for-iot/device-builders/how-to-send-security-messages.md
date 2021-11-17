@@ -2,14 +2,14 @@
 title: Defender for IoT デバイスのセキュリティ メッセージを送信する
 description: Defender for IoT を使用してセキュリティ メッセージを送信する方法について説明します。
 ms.topic: how-to
-ms.date: 2/8/2021
+ms.date: 11/09/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 791e49c4e8f0e503c67f24e440fc229998b7b9da
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7be4d8491983ce041b4434c08039629519c7e393
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680503"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283887"
 ---
 # <a name="send-security-messages-sdk"></a>セキュリティ メッセージの送信 SDK
 
@@ -221,7 +221,7 @@ public void SendSecurityMessage(string message)
 - Defender for IoT サービスの[概要](overview.md)を確認する
 - 「[デバイス ビルダー向けのエージェントベースのソリューションとは](architecture-agent-based.md)」を参照して、Defender for IoT の詳細を学習します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします
-- [Azure Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをお読みください
+- [Microsoft Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをお読みください
 - [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します
 - [レコメンデーション](concept-recommendations.md)について理解します
 - [アラート](concept-security-alerts.md)について理解します

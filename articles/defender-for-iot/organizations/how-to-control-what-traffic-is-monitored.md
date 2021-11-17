@@ -1,14 +1,14 @@
 ---
 title: 監視するトラフィックを制御する
 description: センサーは、IT および OT トラフィックのディープ パケット検出を自動的に実行し、デバイス属性やネットワーク動作などネットワーク デバイスに関する情報を解決します。 各センサーが検出するトラフィックの種類を制御するために、いくつかのツールを使用できます。
-ms.date: 12/07/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: b80ef4a4a1fca7383da80fda6fdf42831913f2bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 76923afc40469ba30e4a2ce8ead6696f056a7580
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020805"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305942"
 ---
 # <a name="control-what-traffic-is-monitored"></a>監視するトラフィックを制御する
 
@@ -230,7 +230,7 @@ DNS サーバーを定義するには:
 
 ## <a name="configure-windows-endpoint-monitoring"></a>Windows エンドポイント監視を構成する
 
-Windows エンドポイント監視機能を使用して、Windows システムを選択的にプローブするように Azure Defender for IoT を構成できます。 これにより、Service Pack レベルなど、デバイスに関して焦点を絞った正確な情報が得られます。
+Windows エンドポイント監視機能を使用して、Windows システムを選択的にプローブするように Microsoft Defender for IoT を構成できます。 これにより、Service Pack レベルなど、デバイスに関して焦点を絞った正確な情報が得られます。
 
 特定の範囲とホストのプローブを構成して、必要な頻度でのみ実行されるように構成できます。 選択的プローブを実行するには Windows Management Instrumentation (WMI) を使用します。これは、Windows システムを管理するための Microsoft の標準スクリプト言語です。
 

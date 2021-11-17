@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: a9f5a22c8a76af8f57845d8f0e1ba2ebfb0c28f6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 358dcd9945751a20332063f14d408b12de151fed
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124839108"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318405"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-appaegis-isolation-access-cloud"></a>チュートリアル: Appaegis Isolation Access Cloud と Azure AD の SSO 統合
 
@@ -103,7 +103,7 @@ Appaegis Isolation Access Cloud に対する Azure AD SSO を構成してテス�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -115,7 +115,7 @@ Appaegis Isolation Access Cloud に対する Azure AD SSO を構成してテス�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Appaegis Isolation Access Cloud へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -127,13 +127,13 @@ Appaegis Isolation Access Cloud に対する Azure AD SSO を構成してテス�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-appaegis-isolation-access-cloud-sso&quot;></a>Appaegis Isolation Access Cloud の SSO の構成
+## <a name="configure-appaegis-isolation-access-cloud-sso"></a>Appaegis Isolation Access Cloud の SSO の構成
 
 1. Appaegis Isolation Access Cloud 企業サイトに管理者としてログインします。
 
 1. **[Setting]**  >  **[Customization]** に移動して、テキスト ボックスに **テナント ドメイン URL** を入力し、 **[+IdP]** ボタンをクリックします。
 
-    ![アカウントのカスタマイズを示すスクリーンショット。](./media/appaegis-isolation-access-cloud-tutorial/account.png &quot;アカウントのカスタマイズ")
+    ![アカウントのカスタマイズを示すスクリーンショット。](./media/appaegis-isolation-access-cloud-tutorial/account.png "アカウントのカスタマイズ")
 
 1. **[Identity Provider Details]** ページで、次の手順を実行します。
 
@@ -171,4 +171,4 @@ Appaegis Isolation Access Cloud に対する Azure AD SSO を構成してテス�
 
 ## <a name="next-steps"></a>次のステップ
 
-Appaegis Isolation Access Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Appaegis Isolation Access Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/05/2021
+ms.date: 11/11/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 415f31c0b6627b290c86f3581eee0723ad20bcb9
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8631c5c0852f915596e3b51c76054301eca64c02
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040267"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289199"
 ---
 # <a name="configure-authentication-options-in-an-android-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して Android アプリで認証オプションを構成する 
 
@@ -275,7 +275,26 @@ b2cApp.acquireToken(parameters);
 
 --- 
 
+## <a name="embedded-web-view-experience"></a>埋め込み Web ビュー エクスペリエンス
 
+対話型の認証には Web ブラウザー が必要です。 既定では、MSAL ライブラリはシステム Web ビューを使用します。 サインイン中に、MSAL ライブラリにより、Azure AD B2C ユーザー インターフェイスを使用した Android システム Web ビューがポップアップ表示されます。  
+
+詳細については、「[Android で MSAL を使用してクロスアプリ SSO を有効にする](../active-directory/develop/msal-android-single-sign-on.md#sso-through-system-browser)」という記事を参照してください。
+
+ユーザーの要件によっては、埋め込み Web ビューを使用することもできます。 埋め込み Web ビューと MSAL のシステム Web ビューには、ビジュアルとシングル サインオンの動作に違いがあります。
+
+![システム Web ビュー エクスペリエンスと埋め込み Web ビュー エクスペリエンスの違いを示すスクリーンショット。](./media/enable-authentication-android-app-options/system-web-browser-vs-embedded-view.png)
+
+> [!IMPORTANT]
+> プラットフォームの既定値 (通常はシステム ブラウザー) を使用することをお勧めします。 システム ブラウザーは、以前にログインしたことのあるユーザーを記憶するのに適しています。 Google などの一部の ID プロバイダーでは、埋め込みビュー エクスペリエンスがサポートされていません。
+
+この動作を変更するには、*app/src/main/res/raw/auth_config_b2c.json* ファイルを開きます。 次に、`WEBVIEW` の値を指定して `authorization_user_agent` 属性を追加します。 次の例で、ビューの種類を Web ビューから埋め込みビューに変更する方法を示します。
+
+```json
+{
+  "authorization_user_agent": "WEBVIEW" 
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

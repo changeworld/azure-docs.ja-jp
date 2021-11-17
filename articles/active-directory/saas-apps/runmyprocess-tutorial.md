@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 3bb43b64cc295261f0261011bf0d3caa5a809972
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 840733331deb52f18fbd7df45ac65c5eff8c9893
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642307"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299742"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-runmyprocess"></a>チュートリアル: Azure AD SSO と RunMyProcess の統合
 
@@ -178,4 +178,4 @@ Azure AD ユーザーが RunMyProcess にサインインできるようにする
 
 ## <a name="next-steps"></a>次のステップ
 
-RunMyProcess を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+RunMyProcess を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

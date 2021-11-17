@@ -6,12 +6,12 @@ ms.author: sandeepshah
 ms.service: purview
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: d357a85449a6ae734b3311f2649180b36646d4f4
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: bb5ba8386ab84f9ca4b3da6a34714a27fea38738
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214334"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301420"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure Purview のデプロイのベスト プラクティス
 
@@ -25,12 +25,12 @@ ms.locfileid: "129214334"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 開発または運用サブスクリプションを使用した Microsoft Azure へのアクセス
-* Purview を含む Azure リソースを作成する機能
-* テスト環境、開発環境、または運用環境での Azure Data Lake Storage や Azure SQL などのデータ ソースへのアクセス
-  * Data Lake Storage の場合、スキャンに必要なロールは閲覧者ロールです
-  * SQL の場合、ID は、分類のサンプリングのためにテーブルを照会できる必要があります
-* Azure Security Center へのアクセスまたはデータのラベル付けのために Security Center 管理者と共同作業する機能
+- 開発または運用サブスクリプションを使用した Microsoft Azure へのアクセス
+- Purview を含む Azure リソースを作成する機能
+- テスト環境、開発環境、または運用環境での Azure Data Lake Storage や Azure SQL などのデータ ソースへのアクセス
+  - Data Lake Storage の場合、スキャンに必要なロールは閲覧者ロールです
+  - SQL の場合、ID は、分類のサンプリングのためにテーブルを照会できる必要があります
+- Microsoft Defender for Cloud へのアクセスまたはデータのラベル付けのために Defender for Cloud 管理者と共同作業する機能
 
 ## <a name="identify-objectives-and-goals"></a>目標と目的の特定
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: a7013fb2d69ffafd5d9e2e30b38ede07809ed657
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 888eec23b3bfb81dc656344aef7abf38b585b986
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759123"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348829"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>チュートリアル: Expensify と Azure Active Directory の統合
 
@@ -149,4 +149,4 @@ Expensify で SSO を有効にするには、まず、アプリケーション�
 
 ## <a name="next-steps"></a>次のステップ
 
-Expensify を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Expensify を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

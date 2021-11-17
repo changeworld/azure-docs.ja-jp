@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: a229c3c3ffeba25fc1320ca18b68da838007551f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cb972e9ac5b04f4f27c3717fc7b99a4c2d3eff8e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124822252"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>チュートリアル: Azure Active Directory と Kantega SSO for JIRA の統合
 
@@ -253,4 +253,4 @@ Azure AD ユーザーが JIRA にサインインできるようにするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-Kantega SSO for JIRA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Kantega SSO for JIRA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

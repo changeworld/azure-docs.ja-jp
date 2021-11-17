@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 0d392551b781d925906a4fbfa8f07fff7f4485e5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f46add0ac81340bb8f7937a443c4896e18b554ca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780074"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132328730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>チュートリアル: Azure Active Directory と Teamwork.com の統合
 
@@ -142,4 +142,4 @@ Teamwork.com に対して Azure AD SSO を構成してテストするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Teamwork.com を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Teamwork.com を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

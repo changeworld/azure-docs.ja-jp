@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーの概要
 description: Azure Arc 対応サーバーを使用して、Azure の外部でホストされているサーバーを Azure リソースと同じように管理する方法について説明します。
 ms.date: 09/30/2021
 ms.topic: overview
-ms.openlocfilehash: c064abb4258f36207e8bd4f02f7cb68d8ce1fce1
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c390cbbb6f08f4f9082b0764125ab9a14407de95
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355377"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287269"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
@@ -18,7 +18,7 @@ Azure Arc 対応サーバーを使用すると、Azure の "*外部*"、企業�
 
 * マシン上で実行されている OS とワークロードを予防的に監視する。
 * Automation Runbook、または Update Management などのソリューションを使用して管理する。
-* [Azure Security Center](../../security-center/security-center-introduction.md) などの他の Azure サービスを使用する。
+* [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) などの他の Azure サービスを使用する。
 
 ## <a name="supported-cloud-operations"></a>サポートされているクラウド運用 
 
@@ -29,8 +29,8 @@ Azure Arc 対応サーバーを使用すると、Azure の "*外部*"、企業�
 |**ガバナンス** ||
 | Azure Policy |マシン内の設定を監査するために、[Azure Policy のゲスト構成](../../governance/policy/concepts/guest-configuration.md)を割り当てます。 Arc 対応サーバーで Azure Policy のゲスト構成ポリシーを使用するコストについては、Azure Policy の[価格ガイド](https://azure.microsoft.com/pricing/details/azure-policy/)を参照してください。|
 |**保護** ||
-| Azure Security Center | Azure 以外のサーバーを [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint) で保護します。たとえば、[Azure Defender](../../security-center/defender-for-servers-introduction.md) を利用したり、脅威を検出したり、脆弱性を管理したり、セキュリティ上の潜在的脅威がないか、積極的に監視したりします。 Azure Security Center は、検出された脅威からアラートと修復の提案を提示します。 |
-| Azure Sentinel | Arc 対応サーバーに接続されているマシンを [Azure Sentinel で構成](scenario-onboard-azure-sentinel.md)して、セキュリティ関連のイベントを収集し、それらを他のデータ ソースと関連付けることができます。 |
+| Microsoft Defender for Cloud | Azure 以外のサーバーを [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint) で保護します。たとえば、[Microsoft Defender for Cloud](../../security-center/defender-for-servers-introduction.md) を利用したり、脅威を検出したり、脆弱性を管理したり、セキュリティ上の潜在的脅威がないか、積極的に監視したりします。 Microsoft Defender for Cloud は、検出された脅威からアラートと修復の提案を提示します。 |
+| Microsoft Sentinel | Arc 対応サーバーに接続されているマシンを [Microsoft Sentinel で構成](scenario-onboard-azure-sentinel.md)して、セキュリティ関連のイベントを収集し、それらを他のデータ ソースと関連付けることができます。 |
 |**構成** ||
 | Azure Automation |PowerShell と Python [Runbook](../../automation/automation-runbook-execution.md) を使用して、頻繁で時間のかかる管理タスクを自動化します。<br> [変更履歴とインベントリ](../../automation/change-tracking/overview.md)を使用して、インストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンに関する構成変更を評価します。<br> [Update Management](../../automation/update-management/overview.md) を使用して、Windows と Linux サーバーのオペレーティング システム用の更新プログラムを管理します。 |
 | Azure Automanage (プレビュー) | [Arc 対応サーバーで Automanage マシン](../../automanage/automanage-arc.md)を使用するときに、一連の Azure サービスのオンボードと構成が自動化されます。 |
@@ -64,16 +64,20 @@ Azure Arc 対応サーバーでサポートされているリージョンの確�
 
 たとえば、マシンが米国東部リージョンの Azure Arc に登録されている場合、このデータは米国リージョンに保存されます。
 
-### <a name="supported-environments"></a>サポートされている環境
+## <a name="supported-environments"></a>サポートされている環境
 
 Azure Arc 対応サーバーでは、Azure の "*外部*" でホストされている物理サーバーと仮想マシンの管理がサポートされます。 VM をホストするハイブリッド クラウド環境のうち、サポートされている環境の詳細については、[Connected Machine エージェントの前提条件](agent-overview.md#supported-environments)に関するページを参照してください。
 
 > [!NOTE]
 > Azure Arc 対応サーバーは、Azure で実行される仮想マシンの管理を可能にするようには設計されておらず、サポートされていません。
 
-### <a name="agent-status"></a>エージェントの状態
+## <a name="agent-status"></a>エージェントの状態
 
 Connected Machine エージェントは、5 分間隔でハートビート メッセージをサービスに送信します。 これらのハートビート メッセージをサービスがマシンから受信できなくなると、そのマシンはオフラインと見なされ、15 分から 30 分以内にポータルでの状態が自動的に **[切断]** に変更されます。 その後、Connected Machine エージェントからハートビート メッセージを受信すると、状態は自動的に **[接続]** に変更されます。
+
+## <a name="service-limits"></a>サービスの制限
+
+Azure Arc 対応サーバーには、各リソース グループに作成できるインスタンスの数に制限があります。 サブスクリプションまたはサービス レベルの制限はありません。 どのようなリソースの種類の制限があるかについては、[リソース インスタンスの制限](../../azure-resource-manager/management/resources-without-resource-group-limit.md#microsofthybridcompute)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

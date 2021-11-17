@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: d4bc061557e139fa9cd6db07708501ffdec8dd5a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2ddf5d24557d6db15950a352a3220f2fe47815a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814413"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
 
@@ -181,4 +181,4 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD SSO を構成してテスト
 
 ## <a name="next-steps"></a>次のステップ
 
-SAML SSO for Bamboo by resolution GmbH を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SAML SSO for Bamboo by resolution GmbH を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

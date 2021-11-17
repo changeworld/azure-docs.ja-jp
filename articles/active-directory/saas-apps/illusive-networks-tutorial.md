@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: fed9f346c99b8b4e7384c10725d1d0c3e0a481c9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 239aeadf6d5b83ed84ba8ebc00e382631acf8c31
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768441"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-illusive-networks"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Illusive Networks の統合
 
@@ -146,4 +146,4 @@ Illusive Networks に対して Azure AD SSO を構成してテストするには
 
 ## <a name="next-steps"></a>次のステップ
 
-Illusive Networks を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Illusive Networks を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

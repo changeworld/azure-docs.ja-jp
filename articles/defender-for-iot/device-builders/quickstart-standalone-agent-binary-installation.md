@@ -1,22 +1,22 @@
 ---
 title: 'クイックスタート: Defender for IoT マイクロ エージェントをインストールする (プレビュー)'
-description: このクイックスタートでは、Defender マイクロ エージェントをインストールして認証する方法について説明します。
-ms.date: 08/26/2021
+description: このクイックスタートでは、Defender for Cloud マイクロ エージェントをインストールして認証する方法について説明します。
+ms.date: 11/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: 857c0a6a9682d4b15362d75523d2aa08a1c8461e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5e1ef76bbaf3b4eedae31f08d6cf39efdfaec3df
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965642"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343745"
 ---
 # <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>クイックスタート: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
 
-この記事では、Defender マイクロ エージェントをインストールして認証する方法について説明します。
+この記事では、Defender for Cloud マイクロ エージェントをインストールして認証する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Defender for IoT モジュールをインストールする前に、IoT Hub にモジュール ID を作成する必要があります。 モジュール ID の作成方法の詳細については、[Defender for IoT マイクロ エージェントのモジュール ツインを作成する方法 (プレビュー)](quickstart-create-micro-agent-module-twin.md) に関するページを参照してください。
+Defender for IoT モジュールをインストールする前に、IoT Hub にモジュール ID を作成する必要があります。 モジュール ID の作成方法の詳細については、[Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する方法 (プレビュー)](quickstart-create-micro-agent-module-twin.md) に関するページを参照してください。
 
 ## <a name="install-the-package"></a>パッケージをインストールする
 
@@ -55,7 +55,7 @@ Defender for IoT モジュールをインストールする前に、IoT Hub に�
     sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
     ```
 
-Debian および Ubuntu ベースの Linux ディストリビューションに Defender マイクロ エージェント パッケージをインストールするには、次のコマンドを使用します。
+Debian および Ubuntu ベースの Linux ディストリビューションに Defender for Cloud マイクロ エージェント パッケージをインストールするには、次のコマンドを使用します。
 
 ```bash
 sudo apt-get install defender-iot-micro-agent 
@@ -99,7 +99,7 @@ IoT Hub からモジュール ID の接続文字列を取得するには、次�
 
 モジュール ID の接続文字列を使用して認証するようにエージェントを構成するには、次のようにします。
 
-1. 次のコマンドを入力して、utf-8 でエンコードされた接続文字列を含む `connection_string.txt` という名前のファイルを defender エージェント ディレクトリの `/var/defender_iot_micro_agent` パスに配置します。
+1. 次のコマンドを入力して、utf-8 でエンコードされた接続文字列を含む `connection_string.txt` という名前のファイルを Defender for Cloud エージェント ディレクトリの `/var/defender_iot_micro_agent` パスに配置します。
 
     ```bash
     sudo bash -c 'echo "<connection string>" > /var/defender_iot_micro_agent/connection_string.txt'
@@ -119,13 +119,13 @@ IoT Hub からモジュール ID の接続文字列を取得するには、次�
 
 1. [これらの手順](../../iot-hub/tutorial-x509-scripts.md)に従って、証明書を入手します。
 
-1. PEM でエンコードされた証明書の公開部分と秘密キーを、Defender エージェント ディレクトリの `certificate_public.pem` および `certificate_private.pem` という名前のファイル内に配置します。
+1. PEM でエンコードされた証明書の公開部分と秘密キーを、Defender for Cloud エージェント ディレクトリの `certificate_public.pem` および `certificate_private.pem` という名前のファイル内に配置します。
 
 1. 適切な接続文字列を `connection_string.txt` ファイル内に配置します。 接続文字列は次のようになります。
 
     `HostName=<the host name of the iot hub>;DeviceId=<the id of the device>;ModuleId=<the id of the module>;x509=true`
 
-    この文字列は、認証用に証明書が指定されることを想定するように、defender エージェントに警告します。
+    この文字列は、認証用に証明書が指定されることを想定するように、Defender for Cloud エージェントに警告します。
 
 1. 次のコマンドを使用して、サービスを再起動します。  
 
@@ -165,7 +165,7 @@ sudo touch /tmp/DefenderForIoTOSBaselineTrigger.txt
 
 ## <a name="micro-agent-versioning"></a>マイクロ エージェントのバージョン管理
 
-特定のバージョンの Defender IoT マイクロ エージェントをインストールするには、次のコマンドを実行します。
+特定のバージョンの Defender for Cloud IoT マイクロ エージェントをインストールするには、次のコマンドを実行します。
 
 ```bash
 sudo apt-get install defender-iot-micro-agent=<version>
@@ -174,4 +174,4 @@ sudo apt-get install defender-iot-micro-agent=<version>
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイックスタート: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)](quickstart-create-micro-agent-module-twin.md)
+> [クイックスタート: Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)](quickstart-create-micro-agent-module-twin.md)

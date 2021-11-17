@@ -6,14 +6,14 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 42b33a5b96de7334f8310b040052c633342f5e05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aafa0584c03c2e7152ab13c5d2a89eb504ac9a14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712387"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337152"
 ---
-# <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Azure Security Center でロジック アプリを監視するためのログを設定する
+# <a name="set-up-logging-to-monitor-logic-apps-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud でロジック アプリを監視するためのログを設定する
 
 [Microsoft Azure Security Center](../security-center/security-center-introduction.md) で Logic Apps リソースを監視するときに、[ロジック アプリが既定のポリシーに従っているかどうかを確認する](#view-logic-apps-health-status)ことができます。 Azure には、ログを有効にし、ログの出力先を正しく設定した後に、Logic Apps リソースの正常性状態が表示されます。 この記事では、診断ログを構成し、すべてのロジック アプリが正常なリソースであることを確認する方法について説明します。
 
@@ -35,24 +35,24 @@ ms.locfileid: "101712387"
 
 ### <a name="check-diagnostic-logging-setting"></a>診断ログ設定を確認する
 
-ロジック アプリで診断ログが有効になっているかどうか不明な場合は、以下のように Security Center を確認してください。
+ロジック アプリで診断ログが有効になっているかどうか不明な場合は、Defender for Cloud で確認できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 検索バーに「**Security Center**」と入力して選択します。
-1. Security Center ダッシュボード メニューの **[全般]** で **[推奨事項]** を選択します。
+1. 検索バーに「**Defender for Cloud**」と入力して選択します。
+1. ワークロード保護ダッシュボード メニューの **[全般]** で **[推奨事項]** を選択します。
 1. セキュリティに関する推薦事項の表で、セキュリティ制御の表から **[監査とログを有効にする]** &gt; **[Logic Apps で診断ログを有効にする必要がある]** を探して選択します。
 1. [推奨事項] ページで、 **[修復手順]** セクションを展開し、オプションを確認します。 Logic Apps 診断を有効にするには、 **[クイック修正]** ボタンを選択するか、手動による修復手順に従ってください。
 
 ## <a name="view-logic-apps-health-status"></a>ロジック アプリの正常性状態を表示する
 
-[診断ログを有効](#enable-diagnostic-logging)にした後、Security Center でロジック アプリの正常性状態を確認できます。
+[診断ログを有効](#enable-diagnostic-logging)にした後、Defender for Cloud でロジック アプリの正常性状態を確認できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 検索バーに「**Security Center**」と入力して選択します。
-1. Security Center ダッシュボード メニューの **[全般]** で **[インベントリ]** を選択します。
+1. 検索バーに「**Defender for Cloud**」と入力して選択します。
+1. ワークロード保護ダッシュボード メニューの **[全般]** で **[インベントリ]** を選択します。
 1. [インベントリ] ページで、アセット リストをフィルター処理して Logic Apps リソースのみを表示します。 [ページ] メニューで、 **[リソースの種類]** &gt; **[ロジック アプリ]** を選択します。
 
-   **[異常なリソース]** カウンターには、Security Center によって異常と見なされたロジック アプリの数が示されます。
+   **[異常なリソース]** カウンターには、Defender for Cloud によって異常と見なされたロジック アプリの数が示されます。
 1.  ロジック アプリ リソースの一覧の **[推奨事項]** 列を確認します。 特定のロジック アプリの正常性の詳細を確認するには、リソース名を選択するか、省略記号ボタン ( **...** ) &gt; **[リソースを表示]** の順に選択します。
 1.  潜在的なリソース正常性の問題を修復するには、ロジック アプリ用に一覧表示されている手順に従います。
 
@@ -60,7 +60,7 @@ ms.locfileid: "101712387"
 
 ## <a name="fix-diagnostic-logging-for-logic-apps"></a>ロジック アプリの診断ログを修正する
 
-[ロジック アプリが Security Center で異常と表示されている](#view-logic-apps-health-status)場合は、Azure portal または Azure CLI を使用して、コード ビューでロジック アプリを開きます。 次に、診断ログの出力先の構成を確認します:[Azure Log Analytics](#log-analytics-and-event-hubs-destinations)、[Azure Event Hubs](#log-analytics-and-event-hubs-destinations)、または [Azure Storage アカウント](#storage-account-destination)。
+[ロジック アプリが Defender for Cloud で異常と表示されている](#view-logic-apps-health-status)場合は、Azure portal または Azure CLI を使用して、コード ビューでロジック アプリを開きます。 次に、診断ログの出力先の構成を確認します:[Azure Log Analytics](#log-analytics-and-event-hubs-destinations)、[Azure Event Hubs](#log-analytics-and-event-hubs-destinations)、または [Azure Storage アカウント](#storage-account-destination)。
 
 ### <a name="log-analytics-and-event-hubs-destinations"></a>Log Analytics と Event Hubs の出力先
 

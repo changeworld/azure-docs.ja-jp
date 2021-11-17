@@ -12,12 +12,12 @@ ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: ashishj
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: e9b8f17429c0cfead600361b60e2f752110a23ba
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5edafb82c34c7636b1cf220ea312e1d898d1bf1b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131444309"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335311"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -232,7 +232,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
     | **セキュリティで保護された Cookie を使用します**| 暗号化された HTTPS 要求などのセキュリティ保護されたチャネル経由で Cookie を送信するために、この値を **[はい]** に設定します。
     | **永続 Cookie を使用**| この値は、 **[いいえ]** のままにしておきます。 この設定は、プロセス間で Cookie を共有できないアプリケーションにのみ使用してください。 Cookie の設定の詳細については、「[Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定](./application-proxy-configure-cookie-settings.md)」を参照してください。
     | **ヘッダーの URL を変換する** | 認証要求でアプリケーションの元のホスト ヘッダーが必要でない場合を除き、この値は **[はい]** のままにします。 |
-    | **Translate URLs in Application Body (アプリケーションの本文内の URL を変換する)** | 他のオンプレミス アプリケーションへのハードコーディングされた HTML リンクがあり、カスタム ドメインを使用しない場合を除き、この値は **[いいえ]** のままにします。 詳細については、[Azure AD アプリケーション プロキシを使用したリンクの変換](./application-proxy-configure-hard-coded-link-translation.md)に関する記事を参照してください。<br><br>このアプリケーションを Microsoft Cloud App Security (MCAS) を使用して監視する予定の場合は、この値を **[はい]** に設定します。 詳細については、「[Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する](./application-proxy-integrate-with-microsoft-cloud-application-security.md)」を参照してください。 |
+    | **Translate URLs in Application Body (アプリケーションの本文内の URL を変換する)** | 他のオンプレミス アプリケーションへのハードコーディングされた HTML リンクがあり、カスタム ドメインを使用しない場合を除き、この値は **[いいえ]** のままにします。 詳細については、[Azure AD アプリケーション プロキシを使用したリンクの変換](./application-proxy-configure-hard-coded-link-translation.md)に関する記事を参照してください。<br><br>このアプリケーションを Microsoft Defender for Cloud Apps を使用して監視する場合は、この値を **[はい]** に設定します。 詳細については、「[Microsoft Defender for Cloud Apps と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する](./application-proxy-integrate-with-microsoft-cloud-application-security.md)」を参照してください。 |
 
 7. **[追加]** を選択します。
 

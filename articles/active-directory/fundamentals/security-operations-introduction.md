@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e35c11a94e1c0c6e86964d68c784c5cb3e7741
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2e9921204a60f4364b2365139e2a8b07b4b8e7f0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060195"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300826"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory セキュリティ運用ガイド
 
@@ -96,7 +96,7 @@ Microsoft には、お客様のニーズに合わせて IT 環境をカスタマ
 
    * [Azure Active Directory Identity Protection を使用したリスクの調査](../identity-protection/howto-identity-protection-investigate-risk.md) 
 
-   * [Azure Sentinel に Azure AD Identity Protection データを接続する方法](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
+   * [Microsoft Sentinel に Azure AD Identity Protection データを接続する](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 
 * Active Directory Domain Services (AD DS)
 
@@ -120,13 +120,13 @@ Microsoft には、お客様のニーズに合わせて IT 環境をカスタマ
 
 Azure portal から、Azure AD 監査ログを表示したり、コンマ区切り値 (CSV) または JavaScript Object Notation (JSON) ファイルとしてダウンロードしたりできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* **[Azure Sentinel](../../sentinel/overview.md)** - セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでのインテリジェントなセキュリティ分析を実現します。 
+* **[Microsoft Sentinel](../../sentinel/overview.md)** – セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでインテリジェントにセキュリティを分析します。 
 
 * **[Azure Monitor](../../azure-monitor/overview.md)** - さまざまな条件に基づいて監視とアラートを自動化します。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) と SIEM の統合**- [Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic などの他の SIEM と Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。
+* **[Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security)** – アプリを検出し、アプリを管理し、すべてのアプリとリソースを制御し、クラウド アプリのコンプライアンス状況を確認できます。
 
 監視とアラートの対象の多くは、条件付きアクセス ポリシーの影響です。 [条件付きアクセスに関する分析情報とレポートのブック](../conditional-access/howto-conditional-access-insights-reporting.md)を使用すると、サインイン時の 1 つ以上の条件付きアクセス ポリシーの影響と、デバイスの状態などのポリシーの結果を確認できます。 このブックを使用すると、影響の概要を表示し、特定の期間における影響を特定できます。 ブックを使用して、特定のユーザーのサインインを調査することもできます。 
 
@@ -214,7 +214,7 @@ Azure クラウドベース環境の一部として、次をベースライン�
 
 * **セルフサービス グループ管理** – Azure Active Directory (Azure AD) では、独自のセキュリティ グループまたは Microsoft 365 グループを作成して管理することができます。 グループの所有者は、メンバーシップ要求を承認または拒否できます。また、グループ メンバーシップの制御を委任できます。 セルフサービスによるグループ管理機能は、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。 詳細については、「[Azure Active Directory でのセルフサービス グループ管理の設定](../enterprise-users/groups-self-service-management.md)」をご覧ください。
 
-* **リスク検出** – リスクが検出されたときトリガーされる他のリスクに関する情報や、サインインの場所などの他の関連情報、およびMicrosoft Cloud App Security (MCAS) からの詳細情報が含まれます。
+* **リスク検出** – リスクが検出されたときトリガーされる他のリスクに関する情報や、サインインの場所などの他の関連情報、および Microsoft Defender for Cloud Apps からの詳細情報が含まれます。
 
 ## <a name="next-steps"></a>次のステップ
 

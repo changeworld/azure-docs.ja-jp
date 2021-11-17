@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 445a6a16f19bbbb88c32a5910373cac2df8579ea
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e1f470d6bf98746e21083a3fa8d0fb963ea4cef4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776331"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341808"
 ---
 # <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>チュートリアル: productboard と Azure Active Directory の統合
 
@@ -150,4 +150,4 @@ Microsoft Azure Active Directory SSO を productboard と一緒に構成して�
 
 ## <a name="next-steps"></a>次のステップ
 
-productboard を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+productboard を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

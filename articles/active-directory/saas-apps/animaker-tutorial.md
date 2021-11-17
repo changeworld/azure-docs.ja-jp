@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 61486ec1fa71b7b051aa8c7cddab0d42c83d9dd2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 282a22c0b21fc52b7cd91049b1c4e209308d6d32
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826689"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289036"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-animaker"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Animaker の統合
 
@@ -145,4 +145,4 @@ Animaker に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="next-steps"></a>次のステップ
 
-Animaker を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Animaker を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

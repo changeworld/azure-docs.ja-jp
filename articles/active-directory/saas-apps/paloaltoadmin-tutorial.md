@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 9699f985d0e18153c224977b39900b67aaf205c5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7c7650434e6d55125bb4ebc6e53b62b23f280ecf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124746651"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300203"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-palo-alto-networks---admin-ui"></a>チュートリアル: Azure AD SSO と Palo Alto Networks - Admin UI の統合
 
@@ -246,4 +246,4 @@ Palo Alto Networks - Admin UI では、Just-In-Time ユーザー プロビジョ
 
 ## <a name="next-steps"></a>次のステップ
 
-Palo Alto Networks - Admin UI を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Palo Alto Networks - Admin UI を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

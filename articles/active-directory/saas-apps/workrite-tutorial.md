@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: e088e436778fe90e141c0b216f5932fd51d71043
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: b0d8da1c1135e2831973c4e1d9bc0fe74794ddf2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129418537"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298382"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-workrite"></a>チュートリアル: Azure AD SSO と Workrite の統合
 
@@ -161,4 +161,4 @@ Workrite 用に Azure AD SSO を構成してテストするには、次の手順
 
 ## <a name="next-steps"></a>次のステップ
 
-Workrite を構成したら、自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Workrite を構成したら、自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: dd06107e1ae3262e13cc75a6af266a10a5cdebff
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0d4f9439c99b2e9496a8ae14e441ee471bea77bb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758734"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306645"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raketa"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Raketa の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Raketa では、**SP** によって開始される SSO がサポートされます。
-* Raketa を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Raketa を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-raketa-from-the-gallery"></a>ギャラリーからの Raketa の追加
 
@@ -188,6 +188,6 @@ Raketa で Azure AD SSO を構成してテストするには、次の構成要�
 
 - [Azure AD で Raketa を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Raketa を保護する方法](/cloud-app-security/proxy-intro-aad)

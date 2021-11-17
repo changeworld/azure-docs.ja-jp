@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/13/2020
 ms.author: jeedes
-ms.openlocfilehash: 7ec930256cd8d27ccf1cc4e054761af400ac0c69
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4c8b3d97da8086e57eb75d824047d8ae90f578c0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794996"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300492"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-momenta"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Momenta の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Momenta では、**SP と IDP** によって開始される SSO がサポートされます。
 
-* Momenta を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Momenta を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-momenta-from-the-gallery"></a>ギャラリーからの Momenta の追加
 
@@ -149,6 +149,6 @@ Momenta で Azure AD SSO を構成してテストするには、次の構成要�
 
 - [Azure AD で Momenta を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Momenta を保護する方法](/cloud-app-security/proxy-intro-aad)

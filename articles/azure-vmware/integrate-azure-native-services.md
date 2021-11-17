@@ -3,16 +3,16 @@ title: Azure ネイティブ サービスを使用して VM を監視および�
 description: Microsoft Azure ネイティブ ツールを統合してデプロイし、Azure VMware Solution ワークロードを監視および管理する方法について説明します。
 ms.topic: how-to
 ms.date: 08/15/2021
-ms.openlocfilehash: fa3a30ce3908494e1fdf0470781f4057279fe001
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 8c95a74df7608aafbec09da9af94b0f82eb2ced3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714951"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315826"
 ---
 # <a name="monitor-and-protect-vms-with-azure-native-services"></a>Azure ネイティブ サービスを使用して VM を監視および保護する
 
-Microsoft Azure ネイティブ サービスを使用して、ハイブリッド環境 (Azure、Azure VMware Solution、オンプレミス) で仮想マシン (VM) を監視、管理、保護することができます。 この記事では、Azure VMware Solution のプライベート クラウドに Azure ネイティブ サービスを統合します。 また、これらのツールを使用して、ライフサイクル全体を通して VM を管理する方法も学習します。 
+Microsoft Azure ネイティブ サービスを使用して、ハイブリッド環境 (Azure、Azure VMware Solution、オンプレミス) で仮想マシン (VM) を監視、管理、保護することができます。 この記事では、Azure VMware Solution のプライベート クラウドに Azure ネイティブ サービスを統合します。 また、これらのツールを使用して、ライフサイクル全体を通して VM を管理する方法も学習します。
 
 Azure VMware Solution と統合できる Azure ネイティブ サービスには、次のものがあります。
 
@@ -22,34 +22,31 @@ Azure VMware Solution と統合できる Azure ネイティブ サービスに�
 
    Azure Monitor で、さまざまな[ソースからデータを収集して監視および分析](../azure-monitor/agents/data-sources.md)し、さまざまな種類の[データを分析、視覚化、および警告](../azure-monitor/data-platform.md)することができます。 また、アラート ルールを作成することにより、高いリソースの使用率や不足しているパッチ、ディスク容量の不足、VM のハートビートなどの、環境内の問題を特定することもできます。 IT Service Management (ITSM) ツールにアラートを送信することで、検出されたイベントに対する自動応答を設定できます。 アラート検出の通知は、電子メールでも送信できます。
 
-- **Azure Security Center** がデータ センターのセキュリティを強化し、クラウドやオンプレミスのハイブリッド ワークロード全体にわたって高度な脅威保護を提供します。 Azure VMware Solution VM の脆弱性を評価し、アラートを必要に応じて発生させ、これらを Azure Monitor へ解決のために転送します。 たとえば、オペレーティング システムのパッチの不足、セキュリティの構成の誤り、[エンドポイントの保護](../security-center/security-center-services.md)について評価します。 セキュリティ ポリシーを [Azure Security Center](azure-security-integration.md) で定義することもできます。
+- **Microsoft Defender for Cloud** は、データ センターのセキュリティを強化し、クラウドやオンプレミスのハイブリッド ワークロード全体にわたって高度な脅威保護を提供します。 Azure VMware Solution VM の脆弱性を評価し、アラートを必要に応じて発生させ、これらを Azure Monitor へ解決のために転送します。 たとえば、オペレーティング システムのパッチの不足、セキュリティの構成の誤り、[エンドポイントの保護](../security-center/security-center-services.md)について評価します。 [Microsoft Defender for Cloud](azure-security-integration.md) では、セキュリティ ポリシーも定義できます。
 
 - **Azure Update Management** が Windows マシンと Linux マシンのオペレーティング システムの更新プログラムを Azure Automation のハイブリッド環境で管理します。 パッチ適用のコンプライアンス状況を監視し、パッチ適用の逸脱を修復するためにアラートを Azure Monitor に転送します。 Azure Update Management は、保存されたデータを使用して VM 上の更新の状態を評価するために、Log Analytics ワークスペースに接続される必要があります。
 
-- **Log Analytics ワークスペース** にログ データが格納されます。 各ワークスペースには、データを格納するための独自のデータ リポジトリと構成があります。 Log Analytics エージェントを介して Azure VMware Solution VM を監視できます。 Log Analytics ワークスペースに接続されているマシンでは、[Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)を使用して、監視対象サーバーにインストールされているソフトウェア、Microsoft サービス、Windows のレジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントから Azure Monitor ログに送信されます。 Azure Monitor ログでは、受信したデータにロジックが適用され、記録されて分析可能になります。 Azure Arc 対応サーバー [VM 拡張機能のサポート](../azure-arc/servers/manage-vm-extensions.md)を使用して、Log Analytics エージェントを VM でデプロイします。 
-
-
+- **Log Analytics ワークスペース** にログ データが格納されます。 各ワークスペースには、データを格納するための独自のデータ リポジトリと構成があります。 Log Analytics エージェントを介して Azure VMware Solution VM を監視できます。 Log Analytics ワークスペースに接続されているマシンでは、[Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)を使用して、監視対象サーバーにインストールされているソフトウェア、Microsoft サービス、Windows のレジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントから Azure Monitor ログに送信されます。 Azure Monitor ログでは、受信したデータにロジックが適用され、記録されて分析可能になります。 Azure Arc 対応サーバー [VM 拡張機能のサポート](../azure-arc/servers/manage-vm-extensions.md)を使用して、Log Analytics エージェントを VM でデプロイします。
 
 ## <a name="benefits"></a>メリット
 
 - Azure ネイティブ サービスを使用して、ハイブリッド環境 (Azure、Azure VMware Solution、オンプレミス) の VM を管理できます。
 - Azure、Azure VMware Solution、およびオンプレミスの VM に対する統合された監視と可視性が得られます。
-- Azure Automation の Azure Update Management を使用して、Windows マシンと Linux マシンの両方のオペレーティング システムの更新プログラムを管理できます。 
-- Azure Security Center により、次のような高度な脅威保護が提供されます。
-    - ファイルの整合性の監視
-    - ファイルレスのセキュリティ アラート
-    - オペレーティング システムのパッチ評価
-    - セキュリティの誤った構成の評価
-    - エンドポイント保護の評価 
-- 新しい VM と既存の VM に対して、Azure Arc 対応サーバー VM 拡張機能のサポートを使用して、Log Analytics エージェントを簡単にデプロイできます。 
-- Azure Monitor の Log Analytics ワークスペースにより、Log Analytics エージェントまたは拡張機能を使用して、ログ収集およびパフォーマンス カウンターの収集が可能になります。 データとログを 1 か所に収集し、そのデータを別の Azure ネイティブ サービスに提供します。 
-- Azure Monitor には次のような利点もあります。 
-    - シームレスな監視 
-    - インフラストラクチャの可視性の向上 
-    - インスタント通知 
-    - 自動解決 
-    - コスト効率 
-
+- Azure Automation の Azure Update Management を使用して、Windows マシンと Linux マシンの両方のオペレーティング システムの更新プログラムを管理できます。
+- Microsoft Defender for Cloud は、次のような高度な脅威保護を提供します。
+  - ファイルの整合性の監視
+  - ファイルレスのセキュリティ アラート
+  - オペレーティング システムのパッチ評価
+  - セキュリティの誤った構成の評価
+  - エンドポイント保護の評価
+- 新しい VM と既存の VM に対して、Azure Arc 対応サーバー VM 拡張機能のサポートを使用して、Log Analytics エージェントを簡単にデプロイできます。
+- Azure Monitor の Log Analytics ワークスペースにより、Log Analytics エージェントまたは拡張機能を使用して、ログ収集およびパフォーマンス カウンターの収集が可能になります。 データとログを 1 か所に収集し、そのデータを別の Azure ネイティブ サービスに提供します。
+- Azure Monitor には次のような利点もあります。
+  - シームレスな監視
+  - インフラストラクチャの可視性の向上
+  - インスタント通知
+  - 自動解決
+  - コスト効率
 
 ## <a name="topology"></a>トポロジ
 
@@ -57,12 +54,11 @@ Azure VMware Solution と統合できる Azure ネイティブ サービスに�
 
 :::image type="content" source="media/concepts/integrated-azure-monitoring-architecture.png" alt-text="統合された Azure 監視アーキテクチャを示す図。" border="false":::
 
-Log Analytics エージェントを使用すると、Azure、Azure VMware Solution、オンプレミスの VM からのログ データの収集が可能になります。 ログ データは Azure Monitor ログに送信され、Log Analytics ワークスペースに格納されます。 Arc 対応サーバーの [VM 拡張機能のサポート](../azure-arc/servers/manage-vm-extensions.md)を使用して、新しい VM や既存の VM のために Log Analytics エージェントをデプロイできます。 
+Log Analytics エージェントを使用すると、Azure、Azure VMware Solution、オンプレミスの VM からのログ データの収集が可能になります。 ログ データは Azure Monitor ログに送信され、Log Analytics ワークスペースに格納されます。 Arc 対応サーバーの [VM 拡張機能のサポート](../azure-arc/servers/manage-vm-extensions.md)を使用して、新しい VM や既存の VM のために Log Analytics エージェントをデプロイできます。
 
-Log Analytics ワークスペースでログが収集されたら、Azure VMware Solution VM の脆弱性の状態を評価し、重大な脆弱性があればアラートを生成するように Azure Security Center を使用して Log Analytics ワークスペースを構成できます。  たとえば、オペレーティング システムのパッチの不足、セキュリティの構成の誤り、[エンドポイントの保護](../security-center/security-center-services.md)について評価します。
+Log Analytics ワークスペースでログが収集されたら、Azure VMware Solution VM の脆弱性の状態を評価し、重大な脆弱性があればアラートを生成するように Defender for Cloud を使用して Log Analytics ワークスペースを構成できます。  たとえば、オペレーティング システムのパッチの不足、セキュリティの構成の誤り、[エンドポイントの保護](../security-center/security-center-services.md)について評価します。
 
-Log Analytics ワークスペースで、Azure Sentinel によるアラートの検出、脅威の可視性、ハンティング、脅威対応を構成できます。 前の図では、Azure Security Center コネクタを使用して、Azure Security Center が Azure Sentinel に接続されています。 インシデントを作成し、他の脅威とマップするために、Azure Security Center から Azure Sentinel に環境の脆弱性が転送されます。 スケジュールされたルールのクエリを作成して、望ましくないアクティビティを検出し、それをインシデントに変換することもできます。
-
+Log Analytics ワークスペースで、Microsoft Sentinel によるアラートの検出、脅威の可視化、ハンティング、脅威対応を構成できます。 前の図では、Defender for Cloud は、Defender for Cloud コネクタを使用して Microsoft Sentinel に接続されています。 インシデントを作成し、他の脅威とマップするために、Defender for Cloud から Microsoft Sentinel に環境の脆弱性が転送されます。 スケジュールされたルールのクエリを作成して、望ましくないアクティビティを検出し、それをインシデントに変換することもできます。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -70,7 +66,7 @@ Azure を初めて使用する場合、または前に説明したサービス�
 
 - [Automation アカウントの認証の概要](../automation/automation-security-overview.md)
 - [Azure Monitor ログのデプロイの設計](../azure-monitor/logs/design-logs-deployment.md)と [Azure Monitor](../azure-monitor/overview.md)
-- Azure Security Center の[計画](../security-center/security-center-planning-and-operations-guide.md)と[サポートされているプラットフォーム](../security-center/security-center-os-coverage.md)
+- Microsoft Defender for or Cloud の[プラン](../security-center/security-center-planning-and-operations-guide.md)と[サポートされるプラットフォーム](../security-center/security-center-os-coverage.md)
 - [Azure Monitor for VMs の有効化の概要](../azure-monitor/vm/vminsights-enable-overview.md)
 - 「[Azure Arc 対応サーバーとは](../azure-arc/servers/overview.md)」と「[Azure Arc 対応 Kubernetes とは](../azure-arc/kubernetes/overview.md)」
 - [Update Management の概要](../automation/update-management/overview.md)
@@ -92,30 +88,28 @@ Azure Automation の [Azure Update Management](../automation/update-management/o
  
 1. Update Management を有効にしたら、[VM に更新プログラムをデプロイして結果を確認する](../automation/update-management/deploy-updates.md)ことができます。 
 
-## <a name="enable-azure-security-center"></a>Azure Security Center を有効にする
+## <a name="enable-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud を有効にする
 
 Azure VMware Solution VM の脆弱性を評価し、アラートを必要に応じて発生させます。 このセキュリティ アラートは、解決のために Azure Monitor に転送できます。 詳しくは、[VM でサポートされる機能](../security-center/security-center-services.md)に関するページを参照してください。
 
-Azure Security Center には、次のような多くの機能が用意されています。
+Defender for Cloud には、以下を含む多くの機能が用意されています。
+
 - ファイルの整合性の監視
 - ファイルレス攻撃の検出
-- オペレーティング システムのパッチ評価 
+- オペレーティング システムのパッチ評価
 - セキュリティの誤った構成の評価
 - エンドポイント保護の評価
 
 >[!NOTE]
->Azure Security Center はデプロイを必要としない事前構成済みのツールですが、Azure portal で有効にする必要があります。 
+>Microsoft Defender for Cloud はデプロイを必要としない事前構成済みのツールですが、Azure portal で有効にする必要があります。
 
+1. [Defender for Cloud に Azure VMware Solution VM を追加します](azure-security-integration.md#add-azure-vmware-solution-vms-to-defender-for-cloud)。
 
-1. [Azure VMware Solution VM を Security Center に追加します](azure-security-integration.md#add-azure-vmware-solution-vms-to-security-center)。 
+2. [Microsoft Defender for Cloud を有効にします](../security-center/enable-azure-defender.md)。 Defender for Cloud は、潜在的なセキュリティの問題を見つけるために VM を評価します。 また、[セキュリティに関する推奨事項](../security-center/security-center-recommendations.md) も [概要] タブに表示されます。
 
-2. [Azure Defender を Security Center で有効にします](../security-center/enable-azure-defender.md)。 Security Center が潜在的なセキュリティの問題について VM を評価します。 また、[セキュリティに関する推奨事項](../security-center/security-center-recommendations.md) も [概要] タブに表示されます。 
+3. Defender for Cloud で[セキュリティ ポリシーを定義します](../security-center/tutorial-security-policy.md)。
 
-3. Azure Security Center で[セキュリティ ポリシーを定義](../security-center/tutorial-security-policy.md)します。 
-
-詳細については、「[Azure Security Center 統合を使用して Azure VMware Solution VM を保護する](azure-security-integration.md)」を参照してください。
-
-
+詳しくは、「[Microsoft Defender for Cloud と Azure VMware Solution を統合する](azure-security-integration.md)」を参照してください。
 
 ## <a name="onboard-vms-to-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーへの VM のオンボード
 
@@ -163,4 +157,4 @@ Log Analytics エージェントを介して Azure VMware Solution VM を監視�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure VMware ソリューション ネットワークと相互に関連する概念について説明したので、[Azure Vmware ソリューションと Azure Security Center の統合](azure-security-integration.md)について学習することができます。
+Azure VMware Solution のネットワークと相互接続の概念について学習したので、[Microsoft Defender for Cloud と Azure VMware Solution の統合](azure-security-integration.md)についての学習に進むことができます。

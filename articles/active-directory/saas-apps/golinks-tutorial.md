@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 34e2efb0330b1de2cfdff82cd17569c85b5d6985
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e16299bc291c36ec87d050c922b8a32c39737535
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571826"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132321238"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-golinks"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GoLinks の統合
 
@@ -147,4 +147,4 @@ GoLinks では、自動ユーザー プロビジョニングもサポートさ�
 
 ## <a name="next-steps"></a>次のステップ
 
-GoLinks を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+GoLinks を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

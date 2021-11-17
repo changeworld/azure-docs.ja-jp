@@ -5,31 +5,20 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
-ms.date: 04/26/2021
-ms.openlocfilehash: bcecb9b50c493ba85172fd56ccf3f2d286aa1839
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/11/2021
+ms.openlocfilehash: dc8dd5e25a6b6aeb94d674156af2edd9dbcd008d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431316"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345605"
 ---
 # <a name="azure-web-pubsub-service-faq"></a>Azure Web PubSub サービスの FAQ
 
 これは、Azure Web PubSub サービスの FAQ です。 
 
 ## <a name="is-azure-web-pubsub-service-ready-for-production-use"></a>Azure Web PubSub サービスは運用環境に対応していますか?
-
-Azure Web PubSub サービスはパブリック プレビュー段階であり、確約された SLA はありません。 
-
-## <a name="when-will-azure-web-pubsub-service-be-ready-for-production-use"></a>Azure Web PubSub サービスはいつ運用環境で使用できるようになりますか?
-
-現在、製品チームは Azure Web PubSub サービスの一般提供に積極的に取り組んでいます。 一般提供されると、サービスでは次の機能がサポートされます。
-- Azure Active Directory のサポート
-- API Management 統合
-- バイナリ Pub/Sub WebSocket サブプロトコル
-- Azure Resource ログ統合
-
-一般提供の機能の詳細については、製品チームにお問い合わせください。
+はい。Azure Web PubSub サービスは一般提供されています。
 
 ## <a name="how-do-i-choose-between-azure-signalr-service-and-azure-web-pubsub-service"></a>Azure SignalR Service と Azure Web PubSub サービスのどちらかを選択するにはどうすればよいですか?
 

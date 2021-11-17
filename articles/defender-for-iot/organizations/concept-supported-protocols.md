@@ -1,22 +1,22 @@
 ---
-title: Azure Defender for IoT によってサポートされているプロトコル
-description: Azure Defender for IoT によってサポートされているプロトコルについて説明します。
-ms.date: 09/20/2021
+title: Microsoft Defender for IoT によってサポートされているプロトコル
+description: Microsoft Defender for IoT によってサポートされているプロトコルについて説明します。
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 9320b43cf645e62d68baac39cdf4f06dd1825305
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ebfd983baf2e925fda66c5fc23edc380420db591
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644431"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305962"
 ---
 # <a name="support-for-iot-ot-ics-and-scada-protocols"></a>IoT、OT、ICS、SCADA プロトコルのサポート
 
-Azure Defender for IoT によって、オープンで相互運用可能な運用テクノロジ (OT) サイバーセキュリティ プラットフォームが提供されます。 Defender for IoT は、さまざまな場所にデプロイされ、あらゆる業界や地域で、要求の厳しい複雑な OT 環境へのデプロイにより、IoT、IT、および ICS のリスクが軽減されます。
+Microsoft Defender for IoT によって、オープンで相互運用可能な運用テクノロジ (OT) サイバーセキュリティ プラットフォームが提供されます。 Defender for IoT は、さまざまな場所にデプロイされ、あらゆる業界や地域で、要求の厳しい複雑な OT 環境へのデプロイにより、IoT、IT、および ICS のリスクが軽減されます。
 
 ## <a name="supported-protocols"></a>サポートされるプロトコル
 
-Azure Defender for IoT では、多様なエンタープライズで幅広いプロトコルがサポートされており、すべての産業部門、エンタープライズ ネットワーク、およびビル管理システム (BMS) 環境にわたる工業オートメーション装置が含まれます。 カスタム プロトコルまたは独自プロトコルの場合、Microsoft では、カスタム プロトコル dissector をプラグインとして簡単に開発、テスト、およびデプロイするための SDK を提供しています。 この SDK では、プロトコルの設計方法や、機密情報を含む可能性のある PCAP の共有によってなど、独自の情報を危険にさらすことなく、このすべてが実行されます。 サポートされているプロトコルを次に示します。
+Microsoft Defender for IoT では、多様なエンタープライズで幅広いプロトコルがサポートされており、すべての産業部門、エンタープライズ ネットワーク、およびビル管理システム (BMS) 環境にわたる工業オートメーション装置が含まれます。 カスタム プロトコルまたは独自プロトコルの場合、Microsoft では、カスタム プロトコル dissector をプラグインとして簡単に開発、テスト、およびデプロイするための SDK を提供しています。 この SDK では、プロトコルの設計方法や、機密情報を含む可能性のある PCAP の共有によってなど、独自の情報を危険にさらすことなく、このすべてが実行されます。 サポートされているプロトコルを次に示します。
 
 ### <a name="supported-protocols-passive-monitoring"></a>サポートされているプロトコル (パッシブ監視)
 
@@ -119,4 +119,5 @@ Horizon SDK を使用して、トラフィックのディープ パケット イ
 ## <a name="next-steps"></a>次のステップ
 
 [Horizon の独自プロトコル dissector](references-horizon-sdk.md) に関する詳細を確認する。
+
 [Horizon API](references-horizon-api.md) を確認する。

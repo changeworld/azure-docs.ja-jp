@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 7c9b8d5ef1126d204d4f418bc70100760468bc33
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ea374a6503b2d015ca92d3aee8179b3511c9755f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562373"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289682"
 ---
 # <a name="audit-and-manage-azure-machine-learning"></a>Azure Machine Learning の監査と管理
 
@@ -125,7 +125,7 @@ Azure Machine Learning のコンピューティング クラスターまたは�
 
 * [Azure Policy のドキュメント](../governance/policy/overview.md)
 * [Azure Machine Learning の組み込みポリシー](policy-reference.md)
-* [Azure Security Center でのセキュリティ ポリシーの操作](../security-center/tutorial-security-policy.md)
+* [Microsoft Defender for Cloud でのセキュリティ ポリシーの使用](../security-center/tutorial-security-policy.md)
 * [データ管理と分析のためのクラウド導入フレームワークのシナリオ](/azure/cloud-adoption-framework/scenarios/data-management/)に関するページには、クラウドでデータと分析のワークロードを実行する際の考慮事項の概要が示されています。
 * [クラウド導入フレームワークのデータ ランディング ゾーン](https://github.com/Azure/data-landing-zone)に関するページでは、Azure でデータと分析のワークロードを管理するためのリファレンス実装が提供されています。
 * [ポリシーを使用して Azure Private Link を Azure プライベート DNS ゾーンと統合する方法について学習](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale)し、ワークスペースと依存リソースのためのプライベート リンク構成を管理します。

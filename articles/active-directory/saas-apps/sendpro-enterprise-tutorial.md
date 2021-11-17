@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 14cb4346fd8fee10ed6e204416dc18d81f6bd9d0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 961f9d1c6998bb6fae3d7c6fd17b7e3e620c8604
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801488"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sendpro-enterprise"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と SendPro Enterprise の統合
 
@@ -133,4 +133,4 @@ SendPro Enterprise に対して Azure AD SSO を構成してテストするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-SendPro Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SendPro Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 8f653f8e41d45310cf6d90aebf0484b2a0ea7360
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 2c0c2017ab4750187d4619761154a2adc6002357
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272981"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324747"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -210,10 +210,10 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
 - パフォーマンスの向上:
     - 既定では、データ ディスクは、ホスト キャッシュが "なし" に設定された状態で作成されます。 データ ディスクのキャッシュを確認し、ご自身のワークロードのニーズに合わせて調整します。 [詳細については、こちらを参照してください](../virtual-machines/premium-storage-performance.md#disk-caching)。  
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [Microsoft Defender for Cloud のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用し、インバウンド トラフィック アクセスをロックダウンし、制限します。
     - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
-    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
+    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
 -  [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 

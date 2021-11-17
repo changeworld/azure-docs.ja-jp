@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 83ef818f3b9555fc152f1ca31149a8c5686430ac
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 68ce8e33e6d87d084a646ce0179920545a655686
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131473758"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132323550"
 title: Azure Monitor についてよくあるご質問
 summary: >
   この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -61,7 +61,7 @@ sections:
   - question: >
       Azure Monitor はどこでデータを取得しますか?
     answer: >
-      Azure Monitor では、Azure Platform とリソース、カスタム アプリケーション、仮想マシン上で実行されているエージェントからのログやメトリックなど、さまざまなソースのデータが収集されます。 Azure Security Center や Network Watcher などの他のサービスでは、データが Log Analytics ワークスペースに収集されるので、Azure Monitor のデータで分析できます。 また、ログまたはメトリックの REST API を使用して、Azure Monitor にカスタム データを送信することもできます。 「[Azure Monitor で使用する監視データのソース](agents/data-sources.md)」をご覧ください。
+      Azure Monitor では、Azure Platform とリソース、カスタム アプリケーション、仮想マシン上で実行されているエージェントからのログやメトリックなど、さまざまなソースのデータが収集されます。 Microsoft Defender for Cloud や Network Watcher などの他のサービスでは、データが Log Analytics ワークスペースに収集されるので、Azure Monitor のデータで分析できます。 また、ログまたはメトリックの REST API を使用して、Azure Monitor にカスタム データを送信することもできます。 「[Azure Monitor で使用する監視データのソース](agents/data-sources.md)」をご覧ください。
   - question: >
       Azure Monitor ではどのようなデータが収集されますか?
     answer: >
@@ -230,7 +230,7 @@ sections:
       System Center Operations Manager を監視するにあたり、Log Analytics エージェント (MMA) から Azure Monitor エージェント (AMA) へのアップグレード パスを教えてください。 System Center Operations Manager シナリオに AMA を使用できますか?
     answer: "AMA が 2 つの System Center Operations Manager 関連の監視シナリオに与える影響をこちらに示します。\n- **シナリオ 1**: 監視の対象が System Center Operations Manager の Windows オペレーティング システムである場合、アップグレード パスは、他のマシンと同じです。この場合は、必要な機能パリティが AMA で満たされた時点ですぐに、MMA (バージョン 2016、2019) から AMA に移行することができます。\n- **シナリオ 2**: System Center Operations Manager を Log Analytics ワークスペースにオンボーディングまたは接続する場合、Log Analytics または Azure Monitor の System Center Operations Manager コネクタによって実現されるため、Operations Manager 管理サーバーには MMA も AMA もインストールする必要はありません。 そのため、AMA の観点から見れば、このユース ケースへの影響はありません。  \n\n> [!NOTE] \n> MMA と AMA がサイド バイ サイドで実行されていても、上記の 2 つのシナリオには一切影響しません。\n"
   - question: >
-      新しい Azure Monitor エージェントは各種の Log Analytics ソリューションと Azure サービス (Security Center、Sentinel など) のデータ収集をサポートしますか?
+      新しい Azure Monitor エージェントは、各種の Log Analytics ソリューションと Azure サービス (Microsoft Defender for Cloud、Microsoft Sentinel など) のデータ収集をサポートしますか?
     answer: "[プレビューで現在利用可能な AMA 拡張機能](./agents/azure-monitor-agent-overview.md#supported-services-and-features)の一覧をご確認ください。 こちらは、新しい Azure Monitor エージェントを代わりに使用した場合に現在利用できるのと同じソリューションとサービスです。 追加の拡張機能がソリューション/サービス用にインストールされる場合があります。これは、ソリューション/サービスで必要とされる追加のデータ収集または変換/処理を実行してから、AMA を使用して最終的なデータを Azure Monitor にルーティングするためです。 \n\n以下の図は、**新しい拡張アーキテクチャ** を説明したものです。\n\n![拡張機能アーキテクチャ](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
   - question: >
       新しい Azure Monitor エージェントでは、どの Log Analytics ソリューションがサポートされますか?

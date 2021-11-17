@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
-ms.openlocfilehash: 45e8fbf01727f803aa640c5d55bcb9df76e765ac
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5dcfb70d5c0e078c30b0c2fcfa59495776b1b40e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763182"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307871"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Anyone Home CRM の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Anyone Home CRM で **IDP** Initiated SSO がサポートされています
-* Anyone Home CRM を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Anyone Home CRM を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-anyone-home-crm-from-the-gallery"></a>ギャラリーから Anyone Home CRM を追加する
 
@@ -144,6 +144,6 @@ Anyone Home CRM に対する Azure AD SSO を構成してテストするには�
 
 - [Azure AD で Anyone Home CRM を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Anyone Home CRM を保護する方法](/cloud-app-security/proxy-intro-aad)

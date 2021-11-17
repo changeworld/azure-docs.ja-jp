@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/01/2021
+ms.date: 11/10/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: c978e214e9a3c7e7bef5afc60f11263c1e9efe12
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: b978955c375ff30f677a395ea549276b960a80d9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562487"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293100"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -71,15 +71,15 @@ ms.locfileid: "131562487"
 
 ### <a name="azure-storage-account"></a>Azure Storage アカウント
 
-既定のファイル ストアでは、AutoML 実験を送信するために必要な `azureml-filestore` フォルダーが自動的に作成されないという既知の問題があります。 このエラーは、ワークスペースの作成時に、ユーザーが既存のファイルストアを既定のファイルストアとして設定した場合に発生します。
+既定のファイル ストアでは、AutoML 実験を送信するために必要な `azureml-filestore` フォルダーが自動的に作成されないという既知の問題があります。 この問題は、ワークスペースの作成時に、ユーザーが既存のファイル ストアを既定のファイル ストアとして設定した場合に発生します。
 
-この問題を回避するには、次の 2 とおりの方法があります。1) ワークスペースの作成時に自動的に作成される既定のファイルストアを使用します。 2) 独自のファイルストアを使用するには、ワークスペースの作成時にそのファイルストアが VNet の外部にあることを確認します。 ワークスペースが作成されたら、仮想ネットワークにストレージ アカウントを追加します。
+この問題を回避するには、2つのオプションがあります。 1) ワークスペースの作成時に自動的に作成される既定のファイル ストアを使用します。 2) 独自のファイル ストアを使用するには、ワークスペースの作成時にそのファイル ストアが VNet の外部にあることを確認します。 ワークスペースが作成されたら、仮想ネットワークにストレージ アカウントを追加します。
 
-この問題を解決するには、仮想ネットワークから ファイルストア アカウントを削除してから、仮想ネットワークに追加し直します。
+この問題を解決するには、仮想ネットワークから ファイル ストア アカウントを削除してから、仮想ネットワークに追加し直します。
 
 ### <a name="designer-sample-pipeline"></a>デザイナーのサンプル パイプライン
 
-ユーザーがデザイナー ホームページでサンプル パイプラインを実行できないという既知の問題があります。 このサンプル パイプラインで使用されるサンプル データセットは、Azure Gloabal データセットであり、すべての仮想ネットワーク環境を満たすことはできません。
+ユーザーがデザイナー ホームページでサンプル パイプラインを実行できないという既知の問題があります。 このサンプル パイプラインで使用されるサンプル データセットは、Azure Global データセットであり、すべての仮想ネットワーク環境を満たすことはできません。
 
 この問題を解決するには、パブリック ワークスペースを使用してサンプル パイプラインを実行し、デザイナーの使用方法を理解したうえで、サンプル データセットを、仮想ネットワーク内のワークスペースの実際のデータセットで置き換えます。
 
@@ -94,10 +94,10 @@ ms.locfileid: "131562487"
 
     詳細については、[BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)組み込みロールに関するページを参照してください。
 
-1. **ストレージ プライベート エンドポイントの '閲覧者' ロールをワークスペース マネージド ID に付与します**。 ストレージ サービスに __プライベート エンドポイント__ を使用している場合は、プライベート エンドポイントへの **閲覧者** アクセス権をワークスペース マネージド ID に付与します。 Azure AD のワークスペースマネージド ID は、Azure Machine Learning ワークスペースと同じ名前です。
+1. **ストレージ プライベート エンドポイントの '閲覧者' ロールをワークスペース マネージド ID に付与します**。 ストレージ サービスに __プライベート エンドポイント__ を使用している場合は、プライベート エンドポイントへの **閲覧者** アクセス権をワークスペースのマネージド ID に付与します。 Azure AD のワークスペースのマネージド ID は、Azure Machine Learning ワークスペースと同じ名前です。
 
     > [!TIP]
-    > ストレージ アカウントは、複数のプライベート エンドポイントを持つことができます。 たとえば、1 つのストレージ アカウントが、BLOB ストレージ用とファイル ストレージ用に個別のプライベート エンドポイントを持つことができます。 両方のエンドポイントにこのマネージド ID を追加します。
+    > ストレージ アカウントは、複数のプライベート エンドポイントを持つことができます。 たとえば、1 つのストレージ アカウントが、BLOB、ファイル、dfs (Azure Data Lake Storage Gen2) 用に個別のプライベート エンドポイントを持つことができます。 これらのすべてのエンドポイントにこのマネージド ID を追加します。
 
     詳細については、[閲覧者](../role-based-access-control/built-in-roles.md#reader)組み込みロールに関するページを参照してください。
 
@@ -131,15 +131,15 @@ ms.locfileid: "131562487"
 
 ## <a name="datastore-azure-data-lake-storage-gen1"></a>データストア: Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage Gen1 をデータストアとして使用する場合は、POSIX スタイルのアクセス制御リストのみを使用できます。 他のセキュリティ プリンシパルと同様に、ワークスペース マネージド ID にリソースへのアクセス権を割り当てることができます。 詳細については、「[Azure Data Lake Storage Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。
+Azure Data Lake Storage Gen1 をデータストアとして使用する場合は、POSIX スタイルのアクセス制御リストのみを使用できます。 他のセキュリティ プリンシパルと同様に、ワークスペースのマネージド ID にリソースへのアクセス権を割り当てることができます。 詳細については、「[Azure Data Lake Storage Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。
 
 ## <a name="datastore-azure-data-lake-storage-gen2"></a>データストア: Azure Data Lake Storage Gen2
 
 Azure Data Lake Storage Gen2 をデータストアとして使用する場合、仮想ネットワーク内のデータ アクセスの制御には、Azure RBAC と POSIX スタイルのアクセス制御リスト (ACL) の両方を使用できます。
 
-**Azure RBAC を使用する場合** は、ワークスペース マネージド ID を [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)ロールに追加します。 詳細については、[Azure のロールベースのアクセス制御](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)に関するページを参照してください。
+**Azure RBAC を使用するには**、この記事の「[データストア: Azure Storage アカウント](#datastore-azure-storage-account)」セクションの手順に従います。 Data Lake Storage Gen2 は Azure Storage をベースにしているため、Azure RBAC を使用する手順は同じです。
 
-**ACL を使用する場合** は、他のセキュリティ プリンシパルと同様に、ワークスペース マネージド ID にアクセス権を割り当てることができます。 詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
+**ACL を使用する場合** は、他のセキュリティ プリンシパルと同様に、ワークスペースのマネージド ID にアクセス権を割り当てることができます。 詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 
 ## <a name="datastore-azure-sql-database"></a>データストア: Azure SQL Database
 

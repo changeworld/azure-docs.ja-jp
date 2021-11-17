@@ -5,12 +5,12 @@ author: emaher
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: efd33b95bd1a32c73712c7f094107717b4e5b973
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: db69c781c6b2f78e5ffbd6150d49775eb0c8cfbd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225777"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337190"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Azure Lab Services で共有リソースを使用してラボを作成する方法
 
@@ -42,7 +42,7 @@ ms.locfileid: "130225777"
 
 #### <a name="control-access"></a>アクセスを制御する
 ライセンス サーバーへのアクセスを制御することは重要です。  VM をセットアップした後も、メンテナンス、トラブルシューティング、および更新のためにアクセスが必要になります。  これを行うには、いくつかの方法があります。
-- [Azure Security Center 内で Just-In-Time (JIT) アクセスを設定する。](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [Microsoft Defender for Cloud 内で Just In Time (JIT) アクセスを設定する。](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
 - [アクセスを制限するためのネットワーク セキュリティ グループを設定する。](../virtual-network/network-security-groups-overview.md)
 - [ライセンス サーバーへの安全なアクセスを許可する Bastion をセットアップする。](https://azure.microsoft.com/services/azure-bastion/)
 
@@ -51,7 +51,8 @@ ms.locfileid: "130225777"
 共有リソースを使用するには、[ピアリングされた仮想ネットワーク](how-to-connect-peer-virtual-network.md)を使用するようにラボ アカウントを設定する必要があります。  この場合は、共有リソースが保持されている仮想ネットワークにピアリングします。
 
 >[!WARNING]
->クラス用のラボは、ラボ アカウントを共有リソースの仮想ネットワークにピアリングした **後で**、作成する必要があります。  
-テンプレート マシン
+>クラス用のラボは、ラボ アカウントを共有リソースの仮想ネットワークにピアリングした **後で**、作成する必要があります。
+
+## <a name="template-machine"></a>テンプレート マシン
 
 ラボ アカウントが仮想ネットワークとピアリングされると、テンプレート マシンは共有リソースにアクセスできるようになります。  アクセスされる共有リソースによっては、ファイアウォール規則の更新が必要になる場合があります。

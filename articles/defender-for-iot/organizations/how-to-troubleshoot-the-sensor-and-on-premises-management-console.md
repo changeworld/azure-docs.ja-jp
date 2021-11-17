@@ -1,14 +1,14 @@
 ---
 title: センサーとオンプレミスの管理コンソールのトラブルシューティング
 description: センサーとオンプレミスの管理コンソールをトラブルシューティングして、発生している可能性のある問題を排除します。
-ms.date: 10/17/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 791df9cc7b95ac32dfcc794136bc53df51e3a0a8
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 66e4d9b221176bb8a1413e679656c6df401459dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131313"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278647"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>センサーとオンプレミスの管理コンソールのトラブルシューティング
 
@@ -16,7 +16,7 @@ ms.locfileid: "130131313"
 
 **アラート**:トラフィックを監視するセンサー インターフェイスがダウンしたときにアラートが作成されます。
 
-**SNMP**:センサーの正常性は SNMP によって監視されます。 Azure Defender for IoT は、認可済みの監視サーバーから送信された SNMP クエリに応答します。
+**SNMP**:センサーの正常性は SNMP によって監視されます。 Microsoft Defender for IoT は、認可済みの監視サーバーから送信された SNMP クエリに応答します。
 
 **システム通知**:管理コンソールでセンサーを制御すると、失敗したセンサー バックアップと切断されたセンサーに関するアラートを転送できます。
 

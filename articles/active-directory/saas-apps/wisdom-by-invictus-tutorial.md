@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 99d682cc6d2ae1d7bbdb039953df60aa22dbe00f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eb9e81f48df2661fd07f001bdc3259c13a18c369
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745656"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316339"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wisdom-by-invictus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Wisdom by Invictus の統合
 
@@ -42,7 +42,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Wisdom by Invictus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Wisdom by Invictus を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Wisdom by Invictus を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-wisdom-by-invictus-from-the-gallery"></a>ギャラリーからの Wisdom by Invictus の追加
 
@@ -144,6 +144,6 @@ Wisdom by Invictus に対する Azure AD SSO を構成してテストするに�
 
 - [Azure AD で Wisdom by Invictus を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Wisdom by Invictus を保護する方法](/cloud-app-security/proxy-intro-aad)

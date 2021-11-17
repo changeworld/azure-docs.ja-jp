@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c6094d4ac379a384a7aa2ebbb745629a8fbc7108
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: be854bf12d834a42b192dbd5588c7101d96419ca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783940"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334589"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cybersolutions-mailbasecmss"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CyberSolutions MAILBASEΣ\CMSS の統合
 
@@ -145,4 +145,4 @@ CyberSolutions MAILBASEΣ\CMSS で Azure AD SSO を構成してテストする�
 
 ## <a name="next-steps"></a>次の手順
 
-CyberSolutions MAILBASEΣ\CMSS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+CyberSolutions MAILBASEΣ\CMSS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

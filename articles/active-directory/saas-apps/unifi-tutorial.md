@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: c6a91d392b3a48c925ada9c3b758d458698b2ca3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b754c19d89582538fe9bdd71c34148400d51548e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124808160"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>チュートリアル: Azure Active Directory と UNIFI の統合
 
@@ -160,4 +160,4 @@ UNIFI に対する Azure AD SSO を構成してテストするには、次の手
 
 ## <a name="next-steps"></a>次のステップ
 
-UNIFI を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+UNIFI を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: ebolton-cyber
 ms.author: edewebolton
 ms.date: 03/10/2021
-ms.openlocfilehash: 876f4b42c77caba27ed94b42d784004b0bfd32ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4e3e3b281e90236704ebd50cd8ee1420947c4d56
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598158"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331245"
 ---
 # <a name="test-a-virtual-machine-image"></a>仮想マシン イメージをテストする
 
@@ -20,12 +20,12 @@ ms.locfileid: "128598158"
 
 ## <a name="deploy-an-azure-vm"></a>Azure VM をデプロイする
 
-Shared Image Gallery イメージから VM をデプロイするには、次の手順を実行します。
+Azure Compute Gallery (以前の Shared Image Gallery) のイメージから VM をデプロイするには:
 
-1. Shared Image Gallery イメージのバージョンに移動します。
-1. [VM の作成] をクリックします。
+1. Azure Compute Gallery のイメージ バージョンに移動します。
+1. **[VM の作成]** を選択します。
 1. 仮想マシン名を指定し、VM のサイズを選択します。
-1. [確認および作成] をクリックします。 検証に成功したら、[作成] をクリックします
+1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証に合格したら、 **[作成]** を選択します。
 
 > [!NOTE]
 > vhd ファイルから VM を作成する必要がある場合は、[Azure Resource Manager テンプレートを準備する](#connect-the-certification-tool-to-a-vm-image)か、[PowerShell を使用して Azure VM をデプロイする](#how-to-use-powershell-to-consume-the-self-test-api)手順に従います。

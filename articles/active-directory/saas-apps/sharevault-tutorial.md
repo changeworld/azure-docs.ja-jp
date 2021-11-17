@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 7e96e2c1ff49b1e8488cd486bc0e574f58153bbf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 95e087f87b23a36c28b75839f2ff9d529477f413
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801279"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299131"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharevault"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ShareVault の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * ShareVault では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * ShareVault では、**Just In Time** ユーザー プロビジョニングがサポートされます
-* ShareVault を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* ShareVault を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -162,6 +162,6 @@ ShareVault で Azure AD SSO を構成してテストするには、次の構成�
 
 - [Azure AD で ShareVault を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって ShareVault を保護する方法](/cloud-app-security/proxy-intro-aad)

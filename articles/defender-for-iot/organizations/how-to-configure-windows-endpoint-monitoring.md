@@ -1,18 +1,18 @@
 ---
 title: Windows エンドポイント監視を構成する
 description: Windows エンドポイント監視 (WMI) を使用して、デバイス上の解決されたデータを強化します。
-ms.date: 05/03/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 4d701cfda88a2c257b001a52a19853a937661714
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 7b59c0b5dcb14b57ee5e4e12c2dc3e925e30d37d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020902"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281837"
 ---
 # <a name="configure-windows-endpoint-monitoring-wmi"></a>Windows エンドポイント監視 (WMI) を構成する
 
-Windows エンドポイント監視機能を使用して、Windows システムを選択的にプローブするように Azure Defender for IoT を構成できます。 これにより、Service Pack レベルなど、デバイスに関して焦点を絞った正確な情報が得られます。
+Windows エンドポイント監視機能を使用して、Windows システムを選択的にプローブするように Microsoft Defender for IoT を構成できます。 これにより、Service Pack レベルなど、デバイスに関して焦点を絞った正確な情報が得られます。
 
 特定の範囲とホストのプローブを構成して、必要な頻度でのみ実行されるように構成できます。 選択的プローブを実行するには Windows Management Instrumentation (WMI) を使用します。これは、Windows システムを管理するための Microsoft の標準スクリプト言語です。
 

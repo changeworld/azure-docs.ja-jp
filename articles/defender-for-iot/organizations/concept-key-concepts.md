@@ -1,18 +1,18 @@
 ---
 title: 主な利点
 description: Defender for IoT の基本的な概念について説明します。
-ms.date: 09/09/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 284301f7a797f2a161aafe90ec641fc062738933
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 271af4bbfe56771576dec32799b19f2c7aebf258
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132026465"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293442"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
-この記事では、Azure Defender for IoT の主な利点について説明します。
+この記事では、Microsoft Defender for IoT の主な利点について説明します。
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>迅速な非干渉型デプロイとパッシブ監視
 
@@ -57,7 +57,7 @@ DPI だけでは、プロトコルの異常を特定し、詳細なレベルで�
 
 センサー クラウド管理モードでは、センサーによって検出されるデバイス、アラート、その他の情報の表示場所が決定されます。
 
-**クラウドに接続されたセンサー** の場合、センサーによって検出される情報はセンサー コンソールに表示されます。 アラート情報は IoT ハブを通じて配信され、他の Azure サービス (Azure Sentinel など) と共有することができます。
+**クラウドに接続されたセンサー** の場合、センサーによって検出される情報はセンサー コンソールに表示されます。 アラート情報は IoT ハブ経由で配信され、Microsoft Sentinel など、他の Azure サービスと共有できます。
 
 **ローカルに接続されたセンサー** の場合、センサーによって検出される情報はセンサー コンソールに表示されます。 センサーがオンプレミスの管理コンソールに接続されている場合は、そこにも検出情報が共有されます。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 76550ad5f3a37058d37015e8e2d71ad727b2d5b8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 785bb3b1425e76b3cb7dcf1954f663849b97b345
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128665817"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309038"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-rstudio-connect-saml-authentication"></a>チュートリアル: Azure AD SSO と RStudio Connect SAML Authentication の統合
 
@@ -175,4 +175,4 @@ SSOInitiated = IdPAndSP
 
 ## <a name="next-steps"></a>次のステップ
 
-RStudio Connect SAML Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+RStudio Connect SAML Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

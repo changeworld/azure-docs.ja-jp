@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: ee1814d70395be3c084513d7bf59537ba426471a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 79b78af6e0ff1d23ea47b150dfd6c185e3d9df18
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559099"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323122"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して Any-to-Any の構成を作成する
 
@@ -67,7 +67,7 @@ ms.locfileid: "128559099"
 
 ## <a name="deploy-the-template"></a><a name="deploy"></a>テンプレートのデプロイ
 
-このテンプレートを適切にデプロイするには、[Azure へのデプロイ] ボタンと Azure portal を使用する必要があります。次の理由から、他の方法は使用できません。
+このテンプレートを適切にデプロイするには、Azure portal で **[Azure に配置する]** ボタンを使用する必要があります。次の理由から、他の方法は使用できません。
 
 * P2S 構成を作成するためには、ルート証明書データをアップロードする必要があります。 PowerShell または CLI を使用する場合、データ フィールドが証明書データを受け付けません。
 * このテンプレートは、Cloud Shell を使用すると、証明書データのアップロードが原因で適切に機能しません。

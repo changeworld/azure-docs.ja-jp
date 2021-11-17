@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 6b64b2db7b10b203d5c22903a108a2efa696fd78
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cb4c4f52ad4578cd1d4718d0b709132a846119dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056974"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290991"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-linkedin-learning"></a>チュートリアル: Azure AD SSO と LinkedIn Learning の統合
 
@@ -200,4 +200,4 @@ SSO を有効にすると、 **[Automatically provision licenses]\(ライセン�
 
 ## <a name="next-steps"></a>次のステップ
 
-LinkedIn Learning を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+LinkedIn Learning を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

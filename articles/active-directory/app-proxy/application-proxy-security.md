@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/21/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: 96d2fac930b65ffb9bc05330e37e52bc7af3d4dc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 85fb56b125bf1e220fc71bdbe9c2bbb9eaec5b62
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043531"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301099"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -44,7 +44,7 @@ Azure AD アプリケーション プロキシでは、すべての認証に Azu
 
 [条件付きアクセス](../conditional-access/concept-conditional-access-cloud-apps.md)を使用すると、ユーザーがアプリケーションにアクセスするときの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成できます。
 
-条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 さらに、Azure AD 条件付きアクセスを利用して Microsoft Cloud App Security にお使いのアプリケーションをルーティングし、[アクセス](/cloud-app-security/access-policy-aad) ポリシーおよび[セッション](/cloud-app-security/session-policy-aad) ポリシーによって、リアルタイムの監視と制御を提供することも可能です。
+条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 さらに、Azure AD 条件付きアクセスを利用して Microsoft Defender for Cloud Apps にお使いのアプリケーションをルーティングし、[アクセス](/cloud-app-security/access-policy-aad) ポリシーおよび[セッション](/cloud-app-security/session-policy-aad) ポリシーによって、リアルタイムの監視と制御を提供することも可能です。
 
 ### <a name="traffic-termination"></a>トラフィックの終了
 
@@ -171,7 +171,6 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 #### <a name="5-the-service-streams-data-to-the-user"></a>5.サービスがユーザーにデータをストリーミングする 
 
 アプリケーションの何らかの処理がここで発生する場合があります。 アプリケーションのヘッダーまたは URL を変換するようにアプリケーション プロキシを構成した場合、その処理は、この手順の中で必要に応じて実行されます。
-
 
 ## <a name="next-steps"></a>次のステップ
 

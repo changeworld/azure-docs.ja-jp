@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 7100d42d8fb965d285539d4033d554884a538b1a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: be13ab86ef027e274b41e14928a3948c11a560f1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007676"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329168"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-snackmagic"></a>チュートリアル: Azure AD SSO と Snackmagic の統合
 
@@ -179,4 +179,4 @@ Snackmagic に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-Snackmagic を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Snackmagic を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

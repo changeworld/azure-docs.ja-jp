@@ -1,27 +1,27 @@
 ---
 title: Container Apps と他の Azure コンテナー オプションの比較
-description: Azure Container Apps をどのような場合に使用するかと、Azure Container Instances、Azure App Services、Azure Functions、Azure Kubernetes Service などの d コンテナー オプションとの比較について説明します。
-services: app-service
+description: Azure Container Apps をどのような場合に使用するかについて、および Azure Container Instances、Azure App Service、Azure Functions、Azure Kubernetes Service などのコンテナー オプションとの比較について説明します。
+services: container-apps
 author: jeffhollan
-ms.service: app-service
+ms.service: container-apps
 ms.topic: quickstart
 ms.date: 11/03/2021
 ms.author: jehollan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c4be1ff27bb17f503438dac6b3b097137700c4e0
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 0ac05794b42e91060e604a9d6921547150eb6706
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131846180"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309998"
 ---
 # <a name="comparing-container-apps-with-other-azure-container-options"></a>Container Apps と他の Azure コンテナー オプションの比較
 
 チームには、クラウド ネイティブおよびコンテナー化されたアプリケーションを Azure でビルドしてデプロイするための多くのオプションがあります。 この記事は、Azure Container Apps に最適なシナリオとユース ケース、および次に示す Azure 上の他のコンテナー オプションとの比較を理解するのに役立ちます。  
+- [Azure App Service](#azure-app-service)
 - [Azure Container Instances](#azure-container-instances)
-- [Azure App Services](#azure-app-services)
-- [Azure Functions](#azure-functions)
 - [Azure Kubernetes Service](#azure-kubernetes-service)
+- [Azure Functions](#azure-functions)
 - [Azure Spring Cloud](#azure-spring-cloud)
 
 すべてのユース ケースとすべてのチームに完璧なソリューションはありません。 次の説明では、チームと要件に最適なものを見つけるのに役立つ一般的なガイダンスと推奨事項を示します。
@@ -40,12 +40,11 @@ Azure Container Apps を使用すると、コンテナーに基づいてサー�
 * [サービス検出](connect-apps.md)や[トラフィック分割](revisions.md)などの機能によって Kubernetes スタイルのアプリやマイクロサービスをサポートします。
 * トラフィックに基づくスケーリングをサポートし、[ゼロにスケーリング](scale-app.md)など、[キューのようなイベント ソース](scale-app.md)からプルすることで、イベント駆動型アプリケーション アーキテクチャを有効にします。
 * 実行時間の長いプロセスをサポートし、[バックグラウンド タスク](background-processing.md)を実行できます。
-* すべての Container Apps は Kubernetes と互換性があります。
 
 Azure Container Apps では、基になる Kubernetes API への直接アクセスは提供されません。 Kubernetes API とコントロール プレーンにアクセスする必要がある場合は、[Azure Kubernetes Service](../aks/intro-kubernetes.md) を使用してください。 ただし、Kubernetes スタイルのアプリケーションを構築したいが、すべてのネイティブ Kubernetes API とクラスター管理への直接アクセスは必要ない場合は、Container Apps により、ベスト プラクティスに基づくフル マネージド エクスペリエンスが提供されます。 このような理由から、多くのチームが、Azure Container Apps を使用してコンテナー マイクロサービスの構築を開始することを選択する場合があります。
 
-### <a name="azure-app-services"></a>Azure App Service
-Azure App Services では、Web サイトや Web API を含め、Web アプリケーション用のフル マネージド ホスティングが提供されます。 これらの Web アプリケーションは、コードまたはコンテナーを使用してデプロイできます。 Azure App Services は、Web アプリケーション用に最適化されています。 Azure App Services は、Azure Container Apps や Azure Functions などの他の Azure サービスと統合されます。 Web アプリを構築する場合、Azure App Services は理想的なオプションです。
+### <a name="azure-app-service"></a>Azure App Service
+Azure App Service では、Web サイトや Web API を含む、Web アプリケーション用のフル マネージド ホスティングが提供されます。 これらの Web アプリケーションは、コードまたはコンテナーを使用してデプロイできます。 Azure App Service は、Web アプリケーション用に最適化されています。 Azure App Service は、Azure Container Apps や Azure Functions などの他の Azure サービスと統合されます。 Web アプリを構築する場合、Azure App Service は理想的な選択肢です。
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 Azure Container Instances (ACI) では、オンデマンドで Hyper-V 分離コンテナーの単一ポッドが提供されます。 これは、Container Apps と比較した場合、下位レベルの "ビルディング ブロック" オプションと考えることができます。 スケーリング、負荷分散、証明書のような概念は、ACI コンテナーでは提供されません。 たとえば、5 つのコンテナー インスタンスにスケーリングするには、5 つの個別のコンテナー インスタンスを作成します。 Azure Container Apps によって、証明書、リビジョン、スケーリング、環境など、多くのアプリケーション固有概念がコンテナーの上に提供されます。 多くの場合、ユーザーは他のサービスを介して Azure Container Instances を操作します。 たとえば、Azure Kubernetes Service では、[仮想ノード](../aks/virtual-nodes.md)を介して、ACI の上にオーケストレーションとスケーリングをレイヤー化できます。 Azure Container Apps で最適化されているシナリオに一致しない、あまり "厳格" でない構成ブロックが必要な場合、Azure Container Instances は理想的なオプションです。

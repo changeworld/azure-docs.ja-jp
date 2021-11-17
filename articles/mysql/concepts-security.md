@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f2e089532ce0091c633bab86ee5bed0fcf948e98
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 1aa2367a4bf9f4bebab6358d60b86ac19b6d3bf7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122652254"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297470"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Azure Database for MySQL のセキュリティ
 
@@ -49,7 +49,7 @@ Azure Database for MySQL サーバーを作成するときに、管理者ユー�
 
 ## <a name="threat-protection"></a>脅威の防止
 
-サーバーにアクセスしたり悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出する、[オープンソースのリレーショナル データベース用 Azure Defender](../security-center/defender-for-databases-introduction.md) にオプトインできます。
+サーバーにアクセスしたり悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出する、[オープンソースのリレーショナル データベース用 Microsoft Defender](../security-center/defender-for-databases-introduction.md) にオプトインできます。
 
 [監査ログ](concepts-audit-logs.md)を使うと、データベースのアクティビティを追跡できます。 
 

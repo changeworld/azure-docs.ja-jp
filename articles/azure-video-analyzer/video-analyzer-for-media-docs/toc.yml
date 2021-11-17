@@ -39,8 +39,10 @@
       href: language-identification-model.md
     - name: ライブ ストリーム分析
       href: live-stream-analysis.md
-    - name: 観察された人々
+    - name: ビデオで観察される人々
       href: observed-people-tracing.md
+    - name: 検出された人物の衣服
+      href: detected-clothing.md
     - name: オーディオ効果検出
       href: audio-effects-detection.md
     - name: コンテンツ モデルのカスタマイズ

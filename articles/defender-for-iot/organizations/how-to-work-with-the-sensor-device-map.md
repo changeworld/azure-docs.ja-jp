@@ -1,14 +1,14 @@
 ---
 title: センサー デバイス マップを操作する
 description: デバイス マップには、検出されたネットワーク デバイスがグラフィカルに表示されます。 このマップを使用して、デバイス情報とネットワーク スライスの分析や管理、およびレポートの生成を行います。
-ms.date: 1/7/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 58ccb69606f41a279424d0faa0241befbe9914bf
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: 559c3691ac83fa031c71b563bd43dce4fa77c31e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137790"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315446"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>デバイス マップのセンサー検出を調査する
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: ce15d098f1713a1483f4a5c054f2c348d92eb228
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 84cb6886c802208d414cb3b8f5281971e0b1d8aa
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604930"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317866"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foodee"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Foodee の統合
 
@@ -166,4 +166,4 @@ IDP Initiated:
 
 ## <a name="next-steps"></a>次のステップ
 
-Foodee を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Foodee を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

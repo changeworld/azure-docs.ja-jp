@@ -1,14 +1,14 @@
 ---
 title: セキュリティ エージェントの認証 (プレビュー)
 description: 2 つの方法を使用して、マイクロ エージェント認証を実行します。
-ms.date: 1/20/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8dd8abaedaaababf4d84330c5bf8cb030bac55bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 2323a833d819a45eb3956cb89d155184b34ef058
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018229"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290003"
 ---
 # <a name="micro-agent-authentication-methods-preview"></a>マイクロ エージェントの認証方法 (プレビュー)
 
@@ -20,7 +20,7 @@ Defender for IoT マイクロ エージェントを使用した認証には、�
 
 ## <a name="authentication-using-a-connection-string"></a>接続文字列を使用して認証する 
 
-接続文字列を使用するには、Defender エージェント ディレクトリで utf-8 でエンコードされた接続文字列を使用するファイルを、`connection_string.txt` というファイルに追加する必要があります。 たとえば、オブジェクトに適用された
+接続文字列を使用するには、Defender for Cloud エージェント ディレクトリで utf-8 でエンコードされた接続文字列を使用するファイルを、`connection_string.txt` というファイルに追加する必要があります。 たとえば、オブジェクトに適用された
 
 ```azurecli
 echo “<connection string>” > connection_string.txt 
@@ -37,15 +37,15 @@ sudo systemctl restart defender-iot-micro-agent.service
 
 証明書を使用して認証を実行するには、以下の手順に従います。 
 
-1. PEM でエンコードされた証明書の公開部分を、Defender エージェント ディレクトリである `certificate_public.pem` という名前のファイルに配置します。
-1. PEM でエンコードされた秘密キーを、Defender エージェント ディレクトリである `certificate_private.pem` という名前のファイルに配置します。
+1. PEM でエンコードされた証明書の公開部分を、Defender for Cloud エージェント ディレクトリである `certificate_public.pem` という名前のファイルに配置します。
+1. PEM でエンコードされた秘密キーを、Defender for Cloud エージェント ディレクトリである `certificate_private.pem` という名前のファイルに配置します。
 1. 適切な接続文字列を `connection_string.txt` という名前のファイルに配置します。 たとえば、オブジェクトに適用された
 
     ```azurecli
     HostName=<the host name of the iot hub>;DeviceId=<the id of the device>;ModuleId=<the id of the module>;x509=true 
     ```
 
-    このアクションは、認証用に証明書が指定されることが、Defender エージェントで想定されていることを示します。 
+    このアクションは、認証用に証明書が指定されることが、Defender for Cloud エージェントで想定されていることを示します。 
 
 1. 次のコードを使用して、サービスを再起動します。 
 

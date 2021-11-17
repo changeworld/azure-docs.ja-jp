@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 0aab9d24888efea7937db62e1826d5d1e5c651b8
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: 79ebe80a0171edb020e3dad9f62106ed25ef1618
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114373337"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307054"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks-cloud-identity-engine---cloud-authentication-service"></a>チュートリアル: Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service での Azure Active Directory シングル サインオン (SSO) 統合
 
@@ -107,7 +107,7 @@ Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service で Azur
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -119,7 +119,7 @@ Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service で Azur
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service へのアクセスを許可して、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -131,13 +131,13 @@ Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service で Azur
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-palo-alto-networks-cloud-identity-engine---cloud-authentication-service-sso&quot;></a>Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service SSO を構成する
+## <a name="configure-palo-alto-networks-cloud-identity-engine---cloud-authentication-service-sso"></a>Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service SSO を構成する
 
 1. ご自分の Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service 企業サイトに管理者としてログインします。
 
 1. **[認証]**  >  **[ID プロバイダー]** に移動し、 **[ID プロバイダーの追加]** をクリックします。
 
-    ![アカウント](./media/palo-alto-networks-cloud-identity-engine---cloud-authentication-service-tutorial/add-service.png &quot;Account") 
+    ![アカウント](./media/palo-alto-networks-cloud-identity-engine---cloud-authentication-service-tutorial/add-service.png "Account") 
 
 1. **[Set Up SAML Authentication]\(SAML 認証の設定\)** ページで、次の手順を行います。
 
@@ -168,4 +168,4 @@ Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service で Azur
 
 ## <a name="next-steps"></a>次の手順
 
-**Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service** を構成すると、セッション制御を適用でき、組織の機密データの流出と侵入からリアルタイムで保護します。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+**Palo Alto Networks Cloud Identity Engine - Cloud Authentication Service** を構成すると、セッション制御を適用でき、組織の機密データの流出と侵入からリアルタイムで保護します。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

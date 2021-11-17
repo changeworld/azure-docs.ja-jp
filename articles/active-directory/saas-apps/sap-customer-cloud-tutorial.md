@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad84982ddb20e56741212502a1aa3e1fccc9a9ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 51ddda649a2e57d63d4d5f1a2874c0e39a4bf300
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124746295"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>チュートリアル:SAP Cloud for Customer と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -193,4 +193,4 @@ Azure AD ユーザーが SAP Cloud for Customer にサインインできるよ�
 
 ## <a name="next-steps"></a>次のステップ
 
-SAP Cloud for Customer を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+SAP Cloud for Customer を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

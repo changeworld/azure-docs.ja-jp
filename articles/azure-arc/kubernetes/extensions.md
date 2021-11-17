@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes に拡張機能をデプロイし、そのライフサイクルを管理する
-ms.openlocfilehash: 28f82471b13ec798f7c75f6b17d88321dd4f79a9
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 811bced5b0855ffdc44d851459b69a7b6aad6b19
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378072"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312823"
 ---
 # <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>Azure Arc 対応 Kubernetes クラスター拡張機能をデプロイして管理する
 
@@ -58,7 +58,7 @@ Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラ�
 | 拡張機能 | 説明 |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターにデプロイされているワークロードのパフォーマンスを可視化します。 コントローラー、ノード、コンテナーからメモリと CPU の使用率メトリックを収集します。 |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターから監査ログ データなどのセキュリティに関連する情報を収集します。 収集したデータに基づいて、推奨事項と脅威のアラートを提供します。 |
+| [Microsoft Defender for Cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターから監査ログ データなどのセキュリティに関連する情報を収集します。 収集したデータに基づいて、推奨事項と脅威のアラートを提供します。 |
 | [Azure Arc 対応 Open Service Mesh](tutorial-arc-enabled-open-service-mesh.md) | クラスターに Open Service Mesh をデプロイし、mTLS セキュリティ、きめ細かなアクセス制御、トラフィック移行、Azure Monitor または Prometheus および Grafana のオープンソース アドオンによる監視、Jaeger によるトレース、外部認定管理ソリューションとの統合などの機能を有効にします。 |
 | [Azure Arc 対応 Data Services](../../azure-arc/kubernetes/custom-locations.md#create-custom-location) | Kubernetes と任意のインフラストラクチャを使用して、Azure データ サービスをオンプレミス、エッジ、パブリック クラウドで実行できるようになります。 |
 | [Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md) | Azure Arc 対応 Kubernetes クラスター上に App Service Kubernetes 環境をプロビジョニングできるようになります。 |
@@ -125,7 +125,7 @@ az k8s-extension create --name azuremonitor-containers  --extension-type Microso
 | `--scope` | 拡張機能のインストールのスコープ - `cluster` または `namespace` |
 | `--cluster-name` | 拡張機能インスタンスを作成する必要がある Azure Arc 対応 Kubernetes リソースの名前 |
 | `--resource-group` | Azure Arc 対応 Kubernetes リソースを含むリソース グループ |
-| `--cluster-type` | 拡張機能インスタンスを作成する必要があるクラスターの種類。 現時点で指定できる値は、Azure Arc 対応 Kubernetes に対応する、`connectedClusters` のみです。 |
+| `--cluster-type` | 拡張機能インスタンスを作成する必要があるクラスターの種類。 現時点で指定できる値は、Azure Arc 対応 Kubernetes に対応する、`connectedClusters` のみです |
 
 **省略可能なパラメーター**
 
@@ -266,11 +266,11 @@ Azure Arc 対応 Kubernetes で現在使用できるクラスター拡張機能�
 
 > [!div class="nextstepaction"]
 > [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)
-> [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Microsoft Defender for Cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
 > [Azure Arc 対応 Open Service Mesh](tutorial-arc-enabled-open-service-mesh.md)
 > 
 > [!div class="nextstepaction"]
-> [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Microsoft Defender for Cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
 > 
 > [!div class="nextstepaction"]
 > [Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md)

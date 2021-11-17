@@ -87,6 +87,8 @@
               href: container-registry-oci-artifacts.md
             - name: ヘルム グラフのプッシュとプル
               href: container-registry-helm-repos.md
+            - name: サプライ チェーン成果物のプッシュとプル (プレビュー)
+              href: container-registry-oras-artifacts.md
             - name: リポジトリの表示
               href: container-registry-repositories.md
             - name: コンテナー イメージのインポート

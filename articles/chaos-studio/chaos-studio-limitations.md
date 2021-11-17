@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: johnkem
 ms.service: chaos-studio
-ms.openlocfilehash: d843b91864723fa0195430ac0f293fc7159d2adc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b4df4b7f06c999bfc29154fbbed4133c2664dad8
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478004"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372456"
 ---
 # <a name="azure-chaos-studio-preview-limitations-and-known-issues"></a>Azure Chaos Studio (プレビュー) の制限事項と既知の問題
 
@@ -32,6 +32,7 @@ Azure Chaos Studio のパブリック プレビュー期間中は、チームが
     * **MacOS:** Safari、Google Chrome、Firefox
 
 ## <a name="known-issues"></a>既知の問題
+* Azure portal で **エージェントベースのターゲット エクスペリエンスを有効** にしても、仮想マシンまたは仮想マシン スケール セットにユーザー割り当てマネージド ID は割り当てられません。 これは手動で行う必要があります。そうしないと、実験のエージェントベースのフォールトが [Verify that the target is correctly onboarded and proper read permissions are provided to the experiment msi]\(ターゲットが正しくオンボードされていて、実験の msi に適切な読み取りアクセス許可が提供されていることを確認してください\) というエラーにより失敗します。 この操作は、エージェントベースのターゲットを有効にした後で行うことができますが、再起動が必要になる場合があります。
 * Azure portal でターゲットをオンボードするとき、オンボードが完了する前にターゲット ビューから別の場所に移動すると、そのオンボードが失敗する場合があります。
 * 実験を作成するとき、 **[確認および作成]** をクリックした後、作成された実験が実験リストに表示されるまで時間がかかり、ユーザーはリストに実験を表示するために更新操作を行う必要があります。
 * 実験デザイナーでエージェントベースの障害のターゲット リソースを選ぶとき、選択した障害でサポートされていないオペレーティング システムを備えた仮想マシンまたは仮想マシン スケール セットを選ぶことができます。
@@ -39,5 +40,5 @@ Azure Chaos Studio のパブリック プレビュー期間中は、チームが
 
 ## <a name="next-steps"></a>次のステップ
 以下のリンクを使用して、Chaos Studio で、アプリケーションの回復性を向上させるカオス実験の作成と実行を開始します。
-- [最初の実験を作成して実行する](chaos-studio-tutorial-service-direct.md)
+- [最初の実験を作成して実行する](chaos-studio-tutorial-service-direct-portal.md)
 - [カオス エンジニアリングの詳細を学習する](chaos-studio-chaos-engineering-overview.md)

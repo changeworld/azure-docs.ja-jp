@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: a432f62c3eb01843d20858bc37a5f30fdb437572
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0c3cb5671dfb0a38626e68ba6dd25fb380e70942
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131081108"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294031"
 ---
 # <a name="migrate-availability-group-to-sql-server-on-azure-vm"></a>Azure VM 上の SQL Server に可用性グループを移行する
 
@@ -346,10 +346,10 @@ Always On 可用性グループの準備が整いました。
     - [Azure Backup サービス](../../../backup/quick-backup-vm-portal.md)を使用して、Azure VM をバックアップすることで、データの安全性を保持します。 
     - Azure VM を [Site Recovery](../../../site-recovery/azure-to-azure-tutorial-enable-replication.md) のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](../../../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [Microsoft Defender for Cloud のジャスト イン タイム管理](../../../security-center/security-center-just-in-time.md)を利用し、インバウンド トラフィック アクセスをロックダウンし、制限します。
     - [ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
-    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
+    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
     - [Azure Cost Management](../../../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 

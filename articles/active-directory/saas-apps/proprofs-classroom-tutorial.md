@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2021
 ms.author: jeedes
-ms.openlocfilehash: e6b49a9ca219fd64154782a7462803b1693c3523
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d650765bb3dc2bc8f7ca725ee3179a4ff231552
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775913"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309141"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-proprofs-training-maker"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と ProProfs Training Maker の統合
 
@@ -125,4 +125,4 @@ Microsoft Azure Active Directory SSO を ProProfs Training Maker と一緒に構
 
 ## <a name="next-steps"></a>次のステップ
 
-ProProfs Training Maker を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+ProProfs Training Maker を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

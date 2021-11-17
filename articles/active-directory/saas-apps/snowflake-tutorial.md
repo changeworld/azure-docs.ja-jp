@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 32e150a9a3db521fb097426f1c5ec5fb38fa6064
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b44d6ecbe75d688de0803e0c2bf2e942f0728bfc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128677989"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329165"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-snowflake"></a>チュートリアル: Azure AD SSO と Snowflake の統合
 
@@ -189,4 +189,4 @@ Azure AD ユーザーが Snowflake にログインできるようにするには
 
 ## <a name="next-steps"></a>次のステップ
 
-Snowflake を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Snowflake を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

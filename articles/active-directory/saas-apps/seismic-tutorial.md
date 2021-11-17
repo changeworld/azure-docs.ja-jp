@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: bd541d899c7c396253c47cf7a9c9925fe4c8e097
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e4928ff531c3276a70394200cd883424730fccad
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801564"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>チュートリアル:Azure Active Directory と Seismic の統合
 
@@ -139,4 +139,4 @@ Seismic に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Seismic を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Seismic を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

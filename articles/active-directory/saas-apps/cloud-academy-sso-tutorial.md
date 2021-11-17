@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/27/2021
+ms.date: 11/03/2021
 ms.author: jeedes
-ms.openlocfilehash: f66c2019e85640f1eaaeded5040fb925d070044a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7cbc5a5bc6cdacc6828d8609b409cfa9674fc331
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655792"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370053"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>チュートリアル:Azure Active Directory シングル サインオンと Cloud Academy - SSO の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "128655792"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Cloud Academy - SSO では、**SP** によって開始される SSO がサポートされます
-* Cloud Academy - SSO では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Cloud Academy - SSO では、**SP** によって開始される SSO がサポートされます。
+* Cloud Academy - SSO では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 * Cloud Academy - SSO では、[自動化されたユーザー プロビジョニング](cloud-academy-sso-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>ギャラリーからの Cloud Academy - SSO の追加
@@ -125,30 +125,40 @@ Cloud Academy - SSO で Azure AD SSO を構成してテストするには、次�
 
 1. 別のブラウザー ウィンドウで、Cloud Academy - SSO 企業サイトに管理者としてサインインします。
 
-1. 会社名を選択し、表示されたメニューで **[Settings & Integrations]\(設定と統合\)** を選択します。
+1. ホーム ページの **[Azure Integration Team]\(Azure 統合チーム\)** アイコンをクリックしてから、左側のメニューに表示されている **[Settings]\(設定\)** を選択します。
 
-    ![[Settings & Integrations]\(設定と統合\) オプションを示すスクリーンショット。](./media/cloud-academy-sso-tutorial/config-1.PNG)
+1. **[INTEGRATIONS]\(統合\)** タブで **[SSO]** カードを選択します。
 
-1. **[Settings & Integrations]\(設定と統合\)** ページの **[Integrations]\(統合\)** タブで、 **[SSO]** カードを選択します。
+    ![[Settings & Integrations]\(設定と統合\) オプションを示すスクリーンショット。](./media/cloud-academy-sso-tutorial/integrations.png)
 
-    ![[Integrations]\(統合\) タブの [SSO] カードを示すスクリーンショット。](./media/cloud-academy-sso-tutorial/config-2.PNG)
+1. **[Start Configuring]\(構成を開始する\)** をクリックして SSO を設定します。
 
-1. このページで、次の手順を行います。
+    ![[Integrations]\(統合\) > [SSO] ページを示すスクリーンショット。](./media/cloud-academy-sso-tutorial/start-configuring.png)
 
-    ![[統合] > [SSO] ページを示すスクリーンショット。](./media/cloud-academy-sso-tutorial/config-3.PNG)
+1. [General Settings]\(全般設定\) ページで以下の項目を設定します。
 
-    a. **[Entity ID URL]\(エンティティ ID URL\)** ボックスに、Azure portal からコピーしたエンティティ ID 値を入力します。
+    ![全般設定の統合を示すスクリーンショット。](./media/cloud-academy-sso-tutorial/general-settings.png)
 
-    b. **[SSO URL]** ボックスに、Azure portal からコピーしたログイン URL の値を貼り付けます。
+    a. **[SSO URL (Location)]\(SSO URL (場所)\)** ボックスに、Azure portal からコピーしたログイン URL の値を貼り付けます。
 
     c. Azure portal からダウンロードした Base64 証明書をメモ帳で開きます。 その内容を **[Certificate]\(証明書\)** ボックスに貼り付けます。
 
-    d. **[Name ID Format]\(名前 ID の形式\)** ボックスは、既定値の `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` のままにします。
+    d. **[Email Domains]\(メール ドメイン\)** ボックスに、会社のユーザー メールに使用されているすべてのドメインの値を入力します。
 
-1. **[保存]** を選択します。
+1. 次のページで以下の手順を実行します。
 
-    > [!NOTE]
-    > Cloud Academy-SSO の構成方法の詳細については、「[Setting Up Single Sign-On](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On)」 (シングル サインオンを設定する) を参照してください。
+    ![追加設定の統合を示すスクリーンショット。](./media/cloud-academy-sso-tutorial/additional-settings.png)
+
+    a. **[SAML Attributes Mapping]\(SAML 属性マッピング\)** セクションで、必要なフィールドにソース属性値を入力します。
+
+    b. **[Security Settings]\(セキュリティ設定\)** セクションの **[Authentication Requests Signed?]\(認証要求に署名しましたか?\)** チェック ボックスをオンにして、この値を **True** に設定します。
+
+    c. **[Extra Settings (Optional)]\(追加設定 (省略可能)\)** セクションの **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーしたログアウト URL の値を貼り付けます。
+
+1. **[Save and Test]\(保存してテスト\)** をクリックします。
+
+> [!NOTE]
+> Cloud Academy-SSO の構成方法の詳細については、「[Setting Up Single Sign-On](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On)」 (シングル サインオンを設定する) を参照してください。
 
 ### <a name="create-a-cloud-academy-test-user"></a>Cloud Academy テスト ユーザーを作成する
 

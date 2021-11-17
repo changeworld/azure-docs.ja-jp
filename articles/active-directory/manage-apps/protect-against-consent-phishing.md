@@ -13,12 +13,12 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: dc860dce0f75648488ff692a0024a850bf4c76ad
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 497d508b0e338f410dbed19c4ba931a97c6c03f7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615697"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292378"
 ---
 # <a name="protecting-against-consent-phishing-in-azure-active-directory"></a>Azure Active Directory で同意フィッシングから保護する
 
@@ -65,7 +65,7 @@ Microsoft では、組織内でアプリケーションを許可および使用�
     - スペルや文法に誤りがあるか確認します。 メール メッセージまたはアプリケーションの同意画面にスペルミスや文法エラーがある場合、それは疑わしいアプリケーションである可能性があります。 その場合は、[同意プロンプト](../develop/application-consent-experience.md#building-blocks-of-the-consent-prompt)の [*こちらでご報告ください*] リンクを使用して直接報告できます。Microsoft では、それが悪意のあるアプリケーションかどうかを調べ、確認された場合は、それを無効化します。
     - アプリ名やドメイン URL を信頼性のソースとして利用しないでください。 攻撃者は、正当なサービスまたは企業のアプリケーションに見えるようにアプリ名を偽造し、悪意のあるアプリに同意させようとします。 代わりに、ドメイン URL のソースを検証し、可能であれば[確認済みの発行元](../develop/publisher-verification-overview.md)から入手したアプリケーションを使用します。
     - 攻撃者が組織内の既知のユーザーを偽装しているフィッシング キャンペーンから保護することで、[Microsoft Defender for Office 365 による同意フィッシング メール](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365)をブロックします。
-    -  [アクティビティ ポリシー](/cloud-app-security/user-activity-policies)、 [異常検出](/cloud-app-security/anomaly-detection-policy)、 [OAuth アプリ ポリシー](/cloud-app-security/app-permission-policy) などの Microsoft Cloud App Security ポリシーを構成すると、組織の異常なアプリケーション アクティビティを管理し、対応するアクションを実行するのに役立ちます。
+    -  [アクティビティ ポリシー](/cloud-app-security/user-activity-policies)、 [異常検出](/cloud-app-security/anomaly-detection-policy)、 [OAuth アプリ ポリシー](/cloud-app-security/app-permission-policy) などの Microsoft Defender for Cloud アプリ ポリシーを構成すると、組織の異常なアプリケーション アクティビティを管理し、対応するアクションを実行するのに役立ちます。
     - [Microsoft 365 Defender を使用した高度な検出](/microsoft-365/security/defender/advanced-hunting-overview)に関するガイダンスに従って、同意フィッシング攻撃の調査と検出を行います。
 * 信頼できるアプリへのアクセスを許可し、信頼できないアプリから保護する
     - 発行元が確認されたアプリケーションを使用します。 [発行元の確認](../develop/publisher-verification-overview.md)は、管理者とエンド ユーザーが、Microsoft がサポートする審査プロセスを通じてアプリケーション開発者の信頼性を理解するのに役立ちます。

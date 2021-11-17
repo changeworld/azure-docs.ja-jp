@@ -4,13 +4,13 @@ description: Azure Monitor の SQL insights の概要
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/15/2021
-ms.openlocfilehash: 4dd60b3cf5a0e4ff6398a4f8304d24a1d910ad46
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/10/2021
+ms.openlocfilehash: 2b66fe7d268fbb2ad044d0ecc4a5bf0fff5cd17e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252746"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297793"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>SQL insights を使用して SQL デプロイを監視する (プレビュー)
 SQL Insights は、[Azure SQL ファミリ](../../azure-sql/index.yml)のあらゆる製品を監視するための包括的なソリューションです。 SQL Insights では、[動的管理ビュー](../../azure-sql/database/monitoring-with-dmvs.md)を使用して、正常性の監視、問題の診断、パフォーマンスの調整に必要なデータを公開します。  
@@ -52,7 +52,12 @@ SQL insights では、次のサポートがないか、サポートが制限さ�
 - **セカンダリ レプリカ**: メトリックは、データベースごとに 1 つのセカンダリ レプリカに対してのみ収集できます。 データベースに複数のセカンダリ レプリカがある場合、監視できるのは 1 つだけです。
 - **Azure Active Directory による認証**: 監視に対してサポートされている [認証](../../azure-sql/database/logins-create-manage.md#authentication-and-authorization)方法は SQL 認証のみです。 Azure 仮想マシンの SQL Server の場合、カスタム ドメイン コントローラー上の Active Directory を使用した認証はサポートされていません。  
 
+## <a name="regional-availability"></a>リージョン別の提供状況
+
+SQL Insights は、Azure Government と各国のクラウドを除き、Azure Monitor が[利用可能](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)なすべての Azure リージョンで使用できます。
+
 ## <a name="opening-sql-insights"></a>SQL insights を開く
+
 SQL insights を開くには:
 
 1. Azure portal で、 **[Azure Monitor]** メニューに移動します。

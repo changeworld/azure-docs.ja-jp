@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 3ba9ed510d6934eda1caddc41d05b984099d2061
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7fd83905ca7b6b81e0dc6622a5457e099a383789
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124734544"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289017"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>チュートリアル:Appraisd と Azure Active Directory の統合
 
@@ -204,4 +204,4 @@ Azure AD ユーザーが Appraisd にサインインできるようにするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Appraisd を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Appraisd を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

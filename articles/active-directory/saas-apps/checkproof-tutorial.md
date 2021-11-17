@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 631d65b7119d071961b6fd48bd13e152ac7f2321
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9de6373c186bce7624403d68ca8e7b846470e8b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661547"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324101"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-checkproof"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CheckProof の統合
 
@@ -149,4 +149,4 @@ CheckProof で Azure AD SSO を構成してテストするには、次の手順�
 
 ## <a name="next-steps"></a>次のステップ
 
-CheckProof を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+CheckProof を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

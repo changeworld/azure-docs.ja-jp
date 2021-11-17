@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: a2c33808be505209ff5eca58480b9fd5f03d9d4f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5c628e67b258d3d51b5f7b05b08c0ac0b2accb9a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124785536"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304095"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Splan Visitor を統合する
 
@@ -127,4 +127,4 @@ Splan Visitor で **Britta Simon** というテスト ユーザーを作成し�
 
 ## <a name="next-steps"></a>次のステップ
 
-Splan Visitor を構成したら、[Microsoft Cloud App Security でセッション制御を強制する方法を確認](/cloud-app-security/proxy-deployment-any-app)できます。 セッション制御により、組織の機密データの流出と侵入をリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。
+Splan Visitor を構成したら、[Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご確認いただけます](/cloud-app-security/proxy-deployment-any-app)。 セッション制御により、組織の機密データの流出と侵入をリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。

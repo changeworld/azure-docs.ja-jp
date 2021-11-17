@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) でクラスターのセキュリテ
 services: container-service
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 7560e9aaabf8b21729e1e9d8e008c0b6a0e8cefb
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: f6894ed6795b66cb851a459ac8bfd39a780d3b8e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453324"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306550"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -26,7 +26,7 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際には、ワ�
 
 また、[コンテナー イメージの管理][best-practices-container-image-management]と[ポッドのセキュリティ][best-practices-pod-security]に関するベスト プラクティスも参照できます。
 
-また、[Azure Kubernetes Services と Security Center の統合][security-center-aks]を使用して、脅威を検出したり、AKS クラスターをセキュリティで保護するための推奨事項を確認したりすることもできます。
+また、[Azure Kubernetes Services と Defender for Cloud の統合][security-center-aks]を使用して、脅威を検出したり、AKS クラスターをセキュリティで保護するための推奨事項を確認したりすることもできます。
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>API サーバーとクラスター ノードへのアクセスをセキュリティで保護する
 

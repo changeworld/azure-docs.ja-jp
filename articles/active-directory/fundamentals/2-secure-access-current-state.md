@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30858e9978f7e8857c5f8a2dcdfd7455f6e97b60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f3874b4be6cd9f84a98a8e218f5faa983499ab5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553427"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300929"
 ---
-# <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>組織内での外部コラボレーションの現在の状態を検出する 
+# <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>組織内での外部コラボレーションの現在の状態を検出する
 
-外部コラボレーションの現在の状態を検出する前に、[必要なセキュリティ体制を決定する](1-secure-access-posture.md)必要があります。 一元管理と委任管理、および関連するガバナンス、規制、コンプライアンスの目標について、組織のニーズを検討してください。 
+外部コラボレーションの現在の状態を検出する前に、[必要なセキュリティ体制を決定する](1-secure-access-posture.md)必要があります。 一元管理と委任管理、および関連するガバナンス、規制、コンプライアンスの目標について、組織のニーズを検討してください。
 
-組織内の個人は、既に他の組織のユーザーと共同作業している場合があります。 コラボレーションの手段としては、Microsoft 365 などの生産性アプリケーション、電子メール、またはその他の方法による外部ユーザーとのリソース共有が考えられます。 ガバナンスプランの基本方針は、以下の点を確認しながら決定していきます 
-*   外部コラボレーションを開始しているユーザー。
-*   現在コラボレーションを行っている外部ユーザーと外部組織。
-*   外部ユーザーに付与されているアクセス権。
+組織内の個人は、既に他の組織のユーザーと共同作業している場合があります。 コラボレーションの手段としては、Microsoft 365 などの生産性アプリケーション、電子メール、またはその他の方法による外部ユーザーとのリソース共有が考えられます。 ガバナンスプランの基本方針は、以下の点を確認しながら決定していきます。
 
+* 外部コラボレーションを開始しているユーザー。
+* 現在コラボレーションを行っている外部ユーザーと外部組織。
+* 外部ユーザーに付与されているアクセス権。
 
 ## <a name="users-initiating-external-collaboration"></a>外部コラボレーションを開始しているユーザー
 
@@ -46,17 +46,15 @@ ms.locfileid: "102553427"
 
 ### <a name="use-allow-or-deny-lists"></a>許可リストまたは拒否リストを使用する
 
-自分の組織で、特定の組織のみとのコラボレーションを許可する必要があるかどうかを検討してください。 または、特定の組織とのコラボレーションをブロックする必要があるかどうかも検討しましょう。  テナント レベルには[許可または拒否リスト](../external-identities/allow-deny-list.md)があります。これを使用すると、ソース (Teams、SharePoint、Azure Portal など) に関係なく、B2B の招待と引き換え全体を制御できます。
+自分の組織で、特定の組織のみとのコラボレーションを許可する必要があるかどうかを検討してください。 または、特定の組織とのコラボレーションをブロックする必要があるかどうかも検討しましょう。 テナント レベルには[許可または拒否リスト](../external-identities/allow-deny-list.md)があります。これを使用すると、ソース (Microsoft Teams、Microsoft SharePoint、Azure portal など) に関係なく、B2B の招待と引き換え全体を制御できます。
+
 エンタイトルメント管理を使用している場合は、下に示すように、[Specific connected organizations]\(特定の接続済み組織\) 設定を使用して、アクセス パッケージのスコープをパートナーのサブセットに設定することもできます。
 
-
-![新しいアクセス パッケージを作成する際の許可/拒否リストのスクリーンショット。](media/secure-external-access/2-new-access-package.png)
-
+![新しいアクセス パッケージを作成する際の許可リストまたは拒否リストのスクリーンショット。](media/secure-external-access/2-new-access-package.png)
 
 ## <a name="find-access-being-granted-to-external-users"></a>外部ユーザーに付与されているアクセス権を特定する
 
 外部ユーザーと外部組織のインベントリを取得したら、Microsoft Graph API を使用してそれらのユーザーに付与されたアクセス権を特定し、Azure AD の[グループメンバーシップ](/graph/api/resources/groups-overview)か、Azure AD での[直接アプリケーション割り当て](/graph/api/resources/approleassignment)を確認できます。
-
 
 ### <a name="enumerate-application-specific-permissions"></a>アプリケーション固有のアクセス許可を列挙する
 
@@ -64,8 +62,9 @@ ms.locfileid: "102553427"
 
 ビジネスセンシティブ アプリやビジネスクリティカル アプリへのすべてのアクセスを厳密に調査して、あらゆる外部アクセスを完全に把握しましょう。
 
-### <a name="detect-ad-hoc-sharing"></a>アドホック共有の検出
-利用している電子メールとネットワーク プランが対応していれば、電子メールや未承認の SaaS (サービスとしてのソフトウェア) アプリによって共有されているコンテンツを調査することもできます。 [Microsoft 365 Data Loss Protection](/microsoft-365/compliance/data-loss-prevention-policies) は、Microsoft 365 のインフラストラクチャ内で機密情報が誤って共有されていないかどうかの確認や、そのような事態の回避および監視に役立ちます。 [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) は、お使いの環境で未承認の SaaS アプリが使用されている状況を特定するのに役立ちます。
+### <a name="detect-ad-hoc-sharing"></a>アドホック共有を検出する
+
+利用している電子メールとネットワーク プランが対応していれば、電子メールや未承認の SaaS (サービスとしてのソフトウェア) アプリによって共有されているコンテンツを調査することもできます。 [Microsoft 365 Data Loss Protection](/microsoft-365/compliance/data-loss-prevention-policies) は、Microsoft 365 のインフラストラクチャ内で機密情報が誤って共有されていないかどうかの確認や、そのような事態の回避および監視に役立ちます。 [Microsoft Defender for Cloud Apps](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) は、お使いの環境で未承認の SaaS アプリが使用されている状況を特定するのに役立ちます。
 
 ## <a name="next-steps"></a>次のステップ
 

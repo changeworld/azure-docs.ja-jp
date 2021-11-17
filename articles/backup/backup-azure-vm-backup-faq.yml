@@ -4,13 +4,15 @@ metadata:
   description: この記事では、Azure Backup サービスを使用した Azure VM のバックアップに関する一般的な質問への回答を示します。
   ms.topic: article
   ms.service: backup
-  ms.date: 08/19/2021
-  ms.openlocfilehash: d9ca7573375e3e6bf584d1b79f8f6a8f9ba64f4d
-  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+  ms.date: 11/09/2021
+  author: v-amallick
+  ms.author: v-amallick
+  ms.openlocfilehash: 6affe7d7e9d0fdeb50da09c80203d01647c46a8e
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/09/2021
-  ms.locfileid: "132062892"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132293898"
 title: よく寄せられる質問 - Azure VM のバックアップ
 summary: >
   この記事では、[Azure Backup](./backup-overview.md) サービスによる Azure VM のバックアップについてよくある質問にお答えします。
@@ -82,7 +84,7 @@ sections:
     answer: >
       はい、Azure Backup では、[Standard SSD マネージド ディスク](../virtual-machines/disks-types.md#standard-ssds)がサポートされています。
   - question: 書き込みアクセラレータ (WA) 対応ディスクを使用して VM をバックアップできますか。
-    answer: スナップショットは、WA が有効で OS ディスクではないデータ ディスクに対してのみ作成できます。 そのため、WA が有効になっているデータ ディスクのみ保護できます。
+    answer: スナップショットは、WA が有効かつ OS ディスクではないデータ ディスクに対してのみ作成できます。 そのため、WA が有効になっているデータ ディスクのみを保護できます。
   - question: 書き込みアクセラレータ (WA) ディスク と SAP HANA がインストールされている VM があります。 バックアップするには、どうすればよいですか。
     answer: >
       Azure Backup は、WA 対応のデータ ディスクをバックアップできます。 ただし、バックアップによってデータベースの整合性が確保されるわけではありません。
@@ -249,4 +251,7 @@ sections:
     answer: >
       このトラフィックは Azure リソースによって処理されるため、外部ユーザーが確認することはできません。
   - question: Azure Backup における VM バックアップの最小 RPO と RTO はどのようなものですか?
-    answer: '**RPO**: 最小 RPO は 1 日、すなわち 24 時間です。  <br><br>  **RTO**: スナップショットはストレージ アカウントに格納されます。 そのため、インスタント リストア層からの復元は瞬時に行うことができます。 このデータは、その後、Azure Backup サービスによって管理される Recovery Services コンテナーに転送されます。転送と復元には数時間かかります。'
+    answer: >
+      **RPO**: 最小 RPO は 1 日、すなわち 24 時間です。  <br><br>  **RTO**: スナップショットはストレージ アカウントに格納されます。 そのため、インスタント リストア層からの復元は瞬時に行うことができます。 このデータは、その後、Azure Backup サービスによって管理される Recovery Services コンテナーに転送されます。転送と復元には数時間かかります。
+  - question: エラー VMMarketplaceInvalidInputmessage が表示されるのはなぜですか。
+    answer: このエラーは、Marketplace 以外のイメージから Azure VM を作成した後に VM を起動しようとした場合、または VM の OS ディスクを Marketplace 以外のイメージに入れ替えようとした場合に表示され、その後 VM のデプロイは失敗します。 この問題を解決するには、VM からプラン情報を削除します。

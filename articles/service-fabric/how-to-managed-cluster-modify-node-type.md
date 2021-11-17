@@ -1,18 +1,18 @@
 ---
-title: Service Fabric のマネージド クラスターのノード タイプを変更する
+title: Service Fabric のマネージド クラスターのノード タイプを構成または変更する
 description: この記事では、マネージド クラスターのノード タイプを変更する方法について説明します。
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: bd39c3810b1ecc1c6174e80a6719f2422aa72bb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 02d332774b98e7097bca0bbea6bc7216af0057fd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089822"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277260"
 ---
 # <a name="service-fabric-managed-cluster-node-types"></a>Service Fabric のマネージド クラスターのノード タイプ
 
-Service Fabric 管理対象クラスター内の各ノード タイプは、仮想マシン スケール セットによって提供されます。 マネージド クラスターでは、Service Fabric マネージド クラスター リソースプロバイダーを使用して必要な変更を行います。 クラスターの基礎となるすべてのリソースが、ユーザーの代わりにマネージド クラスター プロバイダーによって作成および抽象化されます。 これにより、クラスター ノード タイプの展開と管理が簡素化され、シードノードの削除などの操作エラーが回避され、VM SKU の検証などのベスト プラクティスの適用が安全に使用できるようになります。
+Service Fabric 管理対象クラスター内の各ノード タイプは、仮想マシン スケール セットによって提供されます。 マネージド クラスターでは、Service Fabric マネージド クラスター リソースプロバイダーを使用して必要な変更を行います。 クラスターの基礎となるすべてのリソースが、ユーザーの代わりにマネージド クラスター プロバイダーによって作成および抽象化されます。 リソース プロバイダーがリソースを管理することにより、クラスター ノード タイプの展開と管理が簡素化され、シード ノードの削除などの操作エラーが回避され、VM SKU の検証などのベスト プラクティスの適用が安全に使用できるようになります。
 
 このドキュメントの残りの部分では、さまざまな設定を調整する方法について説明します。これには、ノード タイプの作成、ノード タイプのインスタンス数の調整、OS イメージの自動アップグレードの有効化、OS イメージの変更、配置プロパティの構成などが含まれます。 このドキュメントでは、Azure portal または Azure Resource Manager テンプレートを使用して変更を行う方法についても説明します。
 
@@ -53,7 +53,7 @@ Service Fabric 管理対象クラスター内の各ノード タイプは、仮�
 
 **ARM テンプレートを使用してノード タイプを追加するには**
 
-必要な値を持つ別のリソースの種類 `Microsoft.ServiceFabric/managedclusters/nodetypes` を追加し、設定を有効にするためにクラスターの展開を実行します。
+必要な値を持使用して別のリソースの種類 `Microsoft.ServiceFabric/managedclusters/nodetypes` を追加し、設定を有効にするためにクラスターの展開を実行します。
 
 * Service Fabric マネージド クラスター リソースの apiVersion は、**2021-05-01** 以降である必要があります。
 
@@ -256,11 +256,62 @@ ARM テンプレートを使用してノード タイプの配置プロパティ
 
 ## <a name="modify-the-vm-sku-for-a-node-type"></a>ノード タイプの VM SKU を変更する
 
-Service Fabric マネージド クラスターでは VM SKU のインプレース変更がサポートされていませんが、非常に単純です。 そのためには、次の操作を実行する必要があります。
+Service Fabric マネージド クラスターでは VM SKU のインプレース変更がサポートされていませんが、従来よりは簡素化されています。 そのためには、次の操作を実行する必要があります。
 * 必要な VM SKU を指定した[新しいノード タイプを作成します](how-to-managed-cluster-modify-node-type.md#add-or-remove-a-node-type-with-portal)。
 * ワークロードを移行します。 1 つの方法は、[配置プロパティを使用して、特定のワークロードがクラスター内の特定の種類のノードだけで実行されるようにすることです](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)。 
 * [古いノード タイプを削除します](how-to-managed-cluster-modify-node-type.md#add-or-remove-a-node-type-with-portal)
 
+
+
+## <a name="configure-multiple-managed-disks-preview"></a>複数のマネージド ディスクを構成する (プレビュー)
+Service Fabric のマネージド クラスターでは、既定では、1 つのマネージド ディスクが構成されます。 次のオプションのプロパティと値を構成することにより、クラスター内のノードの種類にマネージド ディスクを追加できます。 ドライブ文字、ディスクの種類、およびディスクごとのサイズを指定できます。
+
+次に示すように、Resource Manager テンプレートで `additionalDataDisks` プロパティと必要なパラメーターを宣言してマネージド ディスクを構成します。
+
+**機能の要件**
+* LUN はディスクごとに一意である必要があり、予約済みの LUN 0 を使用することはできません
+* ディスク文字では、予約済みの文字 C および D は使用できず、作成後に変更することはできません。 指定されない場合、S が既定値として使用されます。
+* [サポートされているディスクの種類](how-to-managed-cluster-managed-disk.md)を指定する必要があります
+* Service Fabric マネージド クラスター リソースの apiVersion は **2021-11-01-preview** 以降である必要があります。
+
+```json
+     {
+            "apiVersion": "[variables('sfApiVersion')]",
+            "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+            "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
+            "location": "[resourcegroup().location]",
+            "properties": {
+                "additionalDataDisks": {
+                    "lun": "1",
+                    "diskSizeGB": "50",
+                    "diskType": "Standard_LRS",
+                    "diskLetter": "S" 
+            }
+        }
+     }
+```
+
+[使用可能なパラメーターの完全なリスト](/azure/templates/microsoft.servicefabric/2021-11-01/managedclusters)を参照してください。
+
+## <a name="configure-the-service-fabric-data-disk-drive-letter-preview"></a>Service Fabric データ ディスクのドライブ文字を構成する (プレビュー)
+Service Fabric のマネージド クラスターでは、既定で Service Fabric データ ディスクが構成され、ノードの種類のすべてのノードでドライブ文字が自動的に構成されます。 この省略可能なプロパティと値を構成することにより、ドライブ文字のマッピングに特定の要件がある場合に、Service Fabric データ ディスクの文字を指定して取得できます。
+
+**機能の要件**
+* ディスク文字では、予約済みの文字 C および D は使用できず、作成後に変更することはできません。 指定されない場合、S が既定値として使用されます。
+* Service Fabric マネージド クラスター リソースの apiVersion は **2021-11-01-preview** 以降である必要があります。
+
+```json
+     {
+            "apiVersion": "[variables('sfApiVersion')]",
+            "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+            "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
+            "location": "[resourcegroup().location]",
+            "properties": {
+                "dataDiskLetter": "S"      
+            }
+        }
+     }
+```
 
 ## <a name="next-steps"></a>次の手順
 

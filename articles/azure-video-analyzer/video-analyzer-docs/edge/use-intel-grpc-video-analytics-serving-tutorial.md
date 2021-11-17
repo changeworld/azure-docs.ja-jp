@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ebdbc116e106ab03a9b4ca7b2a56eb4ce19444f9
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0a3436dced8129aa984d30a0f2b4d6bcfecb5913
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554300"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484222"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
 
@@ -18,7 +18,7 @@ ms.locfileid: "131554300"
 
 このチュートリアルでは、Intel OpenVINO™ DL Streamer – Edge AI Extension を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。 この推論サーバーで、オブジェクト (人物、車両、バイク) を検出するためのさまざまなモデル、オブジェクトの分類 (車両の属性)、オブジェクト (人物、車両、バイク) 追跡用のモデルを利用する方法を見ていきます。 gRPC モジュールとの統合により、ビデオ フレームを AI 推論サーバーに送信できます。 結果は IoT Edge ハブに送信されます。 この推論サービスを Azure Video Analyzer と同じ計算ノードで実行すると、共有メモリを通じたビデオ データ送信を活用できます。 これにより、ライブ ビデオ フィードのフレーム レート (30 フレーム/秒) で推論を実行できます。 
 
-このチュートリアルでは、シミュレートされた IoT Edge デバイスとして Azure VM を使用し、シミュレートされたライブ ビデオ ストリームも使用します。 これは、C# で記述されたサンプル コードに基づいており、クイックスタート「[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)」を基に構築されています。
+このチュートリアルでは、シミュレートされた IoT Edge デバイスとして Azure VM を使用し、そこではシミュレートされたライブ ビデオ ストリームを使用します。 これは、C# で記述されたサンプル コードに基づいており、クイックスタート「[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)」を基に構築されています。
 
 [!INCLUDE [use-x86-64](./includes/common-includes/use-x86-64.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "131554300"
 
 Azure リソースを設定する際に、駐車場の短いビデオが、IoT Edge デバイスとして使用している、Azure の Linux VM にコピーされます。 このチュートリアルでは、このビデオ ファイルを使用してライブ ストリームをシミュレートします。
 
-[VLC メディア プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを開きます。 Ctrl キーを押しながら N キーを押し、リンクを[ビデオ](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)に貼り付けて、再生を開始します。 駐車場にある車両の映像が表示されます。ほどんどの車両は停車していますが、1 台は動いています。
+[VLC メディア プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを開きます。 Ctrl キーを押しながら N キーを押し、リンクを[ビデオ](https://avamedia.blob.core.windows.net/public/lots_015.mkv)に貼り付けて、再生を開始します。 駐車場にある車両の映像が表示されます。ほどんどの車両は停車していますが、1 台は動いています。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LUbN]
 

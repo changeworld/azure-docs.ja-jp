@@ -9,18 +9,18 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: zhenlwa
-ms.openlocfilehash: 94df4c9fb17f94c317e46b2bef9d2208fa592884
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9631d083353382177afbb284cd92de53e44e94a4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130271325"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301933"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-web-application-net-framework"></a>チュートリアル: ASP.NET Web アプリケーション (.NET Framework) で動的構成を使用する
 
 App Configuration からのデータは、.NET Framework アプリケーションでアプリ設定として読み込むことができます。 詳細については、[クイックスタート](./quickstart-dotnet-app.md)を参照してください。 ただし、.NET Framework の設計により、アプリ設定はアプリケーションの再起動時にのみ更新できます。 App Configuration .NET プロバイダーは、.NET Standard ライブラリです。 アプリケーションの再起動なしで、構成の動的なキャッシュと更新がサポートされます。 このチュートリアルでは、ASP.NET Web Forms アプリケーションに、構成の動的更新を実装する方法について説明します。 .NET Framework MVC アプリケーションにも同じ手法が適用されます。
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、次の作業を行う方法について説明します。
 
 > [!div class="checklist"]
 > * App Configuration ストアへの変更に合わせて構成を更新するように ASP.NET Web アプリケーションを設定する。
@@ -38,7 +38,7 @@ App Configuration からのデータは、.NET Framework アプリケーショ�
 
 7. **[操作]**  >  **[構成エクスプローラー]**  >  **[作成]**  >  **[キー値]** の順に選択して、次のキーと値を追加します。
 
-    | キー                                | [値]                               |
+    | キー                                | 値                               |
     |------------------------------------|-------------------------------------|
     | *TestApp:Settings:BackgroundColor* | *白*                             |
     | *TestApp:Settings:FontColor*       | *Black*                             |
@@ -100,7 +100,7 @@ App Configuration からのデータは、.NET Framework アプリケーショ�
     ```
     `Application_Start` メソッドは、Web アプリケーションへの最初の要求時に呼び出されます。 アプリケーションのライフ サイクル中に 1 回だけ呼び出されます。 そのため、`IConfiguration` オブジェクトを初期化し、App Configuration からデータを読み込むのに適しています。
 
-    `ConfigureRefresh` メソッドでは、変更の監視のために App Configuration ストア内のキーが登録されます。 `Register` メソッドの `refreshAll` パラメーターは、登録されているキーが変更された場合に、すべての構成値を更新する必要があることを示します。 この例では、*TestApp:Settings:Sentinel* キーは、他のすべてのキーの変更を完了した後に更新する "*センチネル*" キーです。 変更が検出されると、アプリケーションによって構成の値がすべて更新されます。 この方法は、すべてのキーの変更を監視する場合と比べると、アプリケーションの構成の一貫性を確保するのに役立ちます。
+    `ConfigureRefresh` メソッドでは、変更の監視のために App Configuration ストア内のキーが登録されます。 `Register` メソッドの `refreshAll` パラメーターは、登録されているキーが変更された場合に、すべての構成値を更新する必要があることを示します。 この例では、*TestApp:Settings:Sentinel* キーは、他のすべてのキーの変更を完了した後に更新する "*センチネル キー*" です。 変更が検出されると、アプリケーションによって構成の値がすべて更新されます。 この方法は、すべてのキーの変更を監視する場合と比べると、アプリケーションの構成の一貫性を確保するのに役立ちます。
     
     `SetCacheExpiration` メソッドでは、構成の変更を確認するために新しい要求が App Configuration に対して行われるまでに経過する必要がある最小時間を指定します。 この例では、代わりに 5 分を指定し、既定の有効期限である 30 秒をオーバーライドしています。 これにより、App Configuration ストアに対して行われる可能性のある要求の数が少なくなります。
 
@@ -166,7 +166,7 @@ App Configuration からのデータは、.NET Framework アプリケーショ�
     }
     ```
 
-## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
+## <a name="build-and-run-the-application"></a>アプリケーションのビルドと実行
 
 1. **ConnectionString** という名前の環境変数を、App Configuration ストアの作成中に取得した読み取り専用のキー接続文字列に設定します。
 
@@ -188,7 +188,7 @@ App Configuration からのデータは、.NET Framework アプリケーショ�
 
 1. Azure portal で、App Configuration ストアの **[構成エクスプローラー]** に移動し、次のキーの値を更新します。 最後に必ずセンチネル キー *TestApp:Settings:Sentinel* を更新してください。
 
-    | キー                                | [値]                                                        |
+    | キー                                | 値                                                        |
     |------------------------------------|--------------------------------------------------------------|
     | *TestApp:Settings:BackgroundColor* | *緑*                                                      |
     | *TestApp:Settings:FontColor*       | *LightGray*                                                  |
@@ -206,7 +206,7 @@ App Configuration からのデータは、.NET Framework アプリケーショ�
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、App Configuration から動的に構成設定を更新できるように ASP.NET Web Forms アプリケーションを設定しました。 .NET Framework アプリで動的構成を有効にする方法については、次のチュートリアルに進んでください。
 

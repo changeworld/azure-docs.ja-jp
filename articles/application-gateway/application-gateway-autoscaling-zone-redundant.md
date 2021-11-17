@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 63cf40d5d7fcea55cd5de27d2b4d65691d9d0311
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 17e50b602bcab7dd3a40e6823bea44eb63603b9d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651999"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313092"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
@@ -107,7 +107,7 @@ Azure Application Gateways は常に可用性が高くなるようにデプロ�
 |FIPS モード|現在はサポートされていません。|
 |ILB のみモード|現在これはサポートされていません。 パブリック モードと ILB モードがまとめてサポートされます。|
 |Net Watcher の統合|サポートされていません。|
-|Azure Security Center の統合|まだ使用できません。
+|Microsoft Defender for Cloud の統合|まだ使用できません。
 
 ## <a name="migrate-from-v1-to-v2"></a>v1 から v2 への移行
 

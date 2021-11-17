@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/14/2021
 ms.author: jeedes
-ms.openlocfilehash: cf6746ba091db6b490a61f3b01f66ec0b19a14bd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a5b386642f16692079f3bfc009dcc98e8097efd6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124808022"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132328680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upwork-enterprise"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Upwork Enterprise の統合
 
@@ -156,4 +156,4 @@ Upwork Enterprise に対する Azure AD SSO を構成してテストするには
 
 ## <a name="next-steps"></a>次のステップ
 
-Upwork Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Upwork Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

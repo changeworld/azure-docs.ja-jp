@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 9a83c33dbb41a3e33d84bc5e637409e4a70c8ce5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d0e9289227857cc84caa03a91f3e9ae797bbec3a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124741307"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341314"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-serraview-space-utilization-software-solutions"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Serraview Space Utilization Software Solutions の統合
 
@@ -144,4 +144,4 @@ Serraview Space Utilization Software Solutions に対する Azure AD SSO を構�
 
 ## <a name="next-steps"></a>次のステップ
 
-Serraview Space Utilization Software Solutions を構成したら、ご自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Serraview Space Utilization Software Solutions を構成したら、ご自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

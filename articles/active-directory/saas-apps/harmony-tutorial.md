@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: dda89364cb05ea3573254f0d2545d0a474556a1c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c52ee264c20a028d7982afccc5434a508ee16a9a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124739582"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291437"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harmony"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Harmony の統合
 
@@ -138,4 +138,4 @@ Harmony 用に Azure AD SSO を構成してテストするには、次の手順�
 
 ## <a name="next-steps"></a>次のステップ
 
-Harmony を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Harmony を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

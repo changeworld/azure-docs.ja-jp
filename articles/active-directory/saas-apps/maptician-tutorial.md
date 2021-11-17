@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 3cc10d22b19d1e412aa6f0ec542ef3f5d4eddc3b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6cebd298d8aa169edfcce4e34433d5f78d9fbd74
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124790246"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310765"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maptician"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Maptician の統合
 
@@ -151,4 +151,4 @@ Maptician に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-Maptician を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Maptician を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

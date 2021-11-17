@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: e42b038b30c9b69001d2ce399551f68bb1a76ba6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 147028f3b83af26e5811883224719eadceaec80d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124822389"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132295705"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-justlogin"></a>チュートリアル: JustLogin の Azure Active Directory シングル サインオン (SSO)統合
 
@@ -147,4 +147,4 @@ Azure AD SSO と JustLogin を構成してテストするには、次の手順�
 
 ## <a name="next-steps"></a>次のステップ
 
-JustLogin を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+JustLogin を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

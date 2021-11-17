@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 9ca0141ddd6f59e8cc93ca52b3e480289e6499fc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d5b338446766d3049002711c9b34bd3325e7bf77
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635301"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311556"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>チュートリアル: Azure Active Directory と Comeet Recruiting Software の統合
 
@@ -179,4 +179,4 @@ IDP Initiated:
 
 ## <a name="next-steps"></a>次のステップ
 
-Comeet Recruiting Software を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Comeet Recruiting Software を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

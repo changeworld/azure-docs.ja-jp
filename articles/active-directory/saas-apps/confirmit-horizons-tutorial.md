@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 9cf0e3d817bbb3a9b1d730814e8e6bc1249aa01b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 991b46ac61ef7f60e812e51aa138b22cd908197c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131466012"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132288055"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-confirmit-horizons"></a>チュートリアル:Azure AD SSO と Confirmit Horizons の統合
 
@@ -166,4 +166,4 @@ Confirmit Horizons に対して Azure AD SSO を構成してテストするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Confirmit Horizons を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Confirmit Horizons を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

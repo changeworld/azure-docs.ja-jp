@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 4c5f2be821e43eda1ae611f3300538c7c41d04f4
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a9253cbb39bc58d74f6c8dd25b2251b9d2a606ef
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707667"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290516"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Database とは
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -168,7 +168,7 @@ SQL Database は、アプリケーションがさまざまなセキュリティ�
 
 ### <a name="advance-threat-protection"></a>高度な脅威保護
 
-Azure Defender for SQL は、高度な SQL セキュリティ機能のための統合パッケージです。 この機能には、データベースの脆弱性の管理、データベースへの脅威を示す可能性がある異常なアクティビティの検出などが含まれます。 これらの機能を 1 つの場所で有効にして管理できます。
+Microsoft Defender for SQL は、高度な SQL セキュリティ機能のための統合パッケージです。 この機能には、データベースの脆弱性の管理、データベースへの脅威を示す可能性がある異常なアクティビティの検出などが含まれます。 これらの機能を 1 つの場所で有効にして管理できます。
 
 - [脆弱性評価](sql-vulnerability-assessment.md):
 

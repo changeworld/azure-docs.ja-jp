@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 104815a21755f604ea1562eafaef43f8a32ca916
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 07d888bbc76446aed2146552eb21a0893a73fede
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816749"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330370"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contrast-security"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Contrast Security の統合
 
@@ -156,4 +156,4 @@ Contrast Security 用に Azure AD SSO を構成してテストするには、次
 
 ## <a name="next-steps"></a>次のステップ
 
-Contrast Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Contrast Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

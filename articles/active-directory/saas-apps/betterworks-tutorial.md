@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 607a3ce9aa55e08e91b09fc55e054a3b978c171f
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 56c0b453c48324fcace5c0f6e12f9fc8dc5cc5fb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811142"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309493"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-betterworks"></a>チュートリアル: Azure AD SSO と BetterWorks の統合
 
@@ -147,4 +147,4 @@ BetterWorks 用に Azure AD SSO を構成してテストするには、次の手
 
 ## <a name="next-steps"></a>次のステップ
 
-BetterWorks を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+BetterWorks を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

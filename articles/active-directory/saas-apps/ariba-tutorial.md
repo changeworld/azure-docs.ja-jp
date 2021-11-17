@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 774a8518422977e00f19d002b8afd66127223f36
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3903fbaa3e72f48d8b00fb45f75f3077119b9e9b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761412"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132288605"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル: Azure Active Directory と Ariba の統合
 
@@ -147,4 +147,4 @@ Ariba に対する Azure AD SSO を構成してテストするには、次の手
 
 ## <a name="next-steps"></a>次のステップ
 
-Ariba を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Ariba を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

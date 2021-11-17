@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 400f9d7a0ac13f7a27b84b4b2e01e13fdf06b269
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ea1f926b46c8019902c938912d950e9f5cb2b307
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478479"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334342"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-fileorbis"></a>チュートリアル: Azure AD SSO と FileOrbis の統合
 
@@ -137,4 +137,4 @@ FileOrbis に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-FileOrbis を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+FileOrbis を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

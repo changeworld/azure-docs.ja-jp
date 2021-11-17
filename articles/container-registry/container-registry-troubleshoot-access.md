@@ -3,12 +3,12 @@ title: レジストリに関するネットワークの問題のトラブルシ�
 description: 仮想ネットワークまたはファイアウォールの内側で Azure Container Registry にアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: f5c51f14eb5ed5a950272e43e701ec7bcc44b901
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4d3962a99fd462cfe3b613a4f0a9409b309b462f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446488"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287136"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
@@ -27,7 +27,7 @@ ms.locfileid: "131446488"
 * Azure portal でレジストリ設定にアクセスまたは表示できないか、Azure CLI を使用してレジストリを管理できない
 * 仮想ネットワークの設定またはパブリック アクセス規則を追加または変更できない
 * ACR タスクによるイメージのプッシュまたはプルができない
-* Azure Security Center によるレジストリ内のイメージのスキャンができない。または、スキャン結果が Azure Security Center に表示されない
+* Microsoft Defender for Cloud でレジストリ内のイメージをスキャンできない、またはスキャン結果が Microsoft Defender for Cloud に表示されない
 * プライベート エンドポイントを使用して構成されたレジストリにアクセスしようとすると、エラー `host is not reachable` が発生します。
 
 ## <a name="causes"></a>原因
@@ -35,7 +35,7 @@ ms.locfileid: "131446488"
 * クライアントのファイアウォールまたはプロキシによってアクセスが妨げられている - [解決策](#configure-client-firewall-access)
 * レジストリのパブリック ネットワーク アクセス規則によってアクセスが妨げられている - [解決策](#configure-public-access-to-registry)
 * 仮想ネットワークまたはプライベート エンドポイントの構成によってアクセスが妨げられている - [解決策](#configure-vnet-access)
-* Azure Security Center または特定の他の Azure サービスをプライベート エンドポイント、サービス エンドポイント、またはパブリック IP アクセス規則を持つレジストリと統合しようとしている - [解決策](#configure-service-access)
+* Microsoft Defender for Cloud または特定の他の Azure サービスをプライベート エンドポイント、サービス エンドポイント、またはパブリック IP アクセス規則を持つレジストリと統合しようとしている - [解決策](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>詳しい診断 
 
@@ -114,7 +114,7 @@ Azure Firewall または同様のソリューションがネットワークに�
 
 現時点では、ネットワークが制限されたコンテナー レジストリへのアクセスは、次のいくつかの Azure サービスでは許可されていません。
 
-* Azure Security Center では、プライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)を実行することはできません。 
+* Microsoft Defender for Cloud では、プライベート エンドポイント、選択したサブネット、または IP アドレスへのアクセスを制限するレジストリで[イメージの脆弱性のスキャン](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)を実行することはできません。 
 * Azure App Service や Azure Container Instances を含む特定の Azure サービスのリソースは、ネットワークが制限されたコンテナー レジストリにアクセスすることはできません。
 
 コンテナー レジストリに対するこれらの Azure サービスのアクセスや統合が必要な場合は、ネットワークの制限を解除します。 たとえば、レジストリのプライベート エンドポイントを削除するか、レジストリのパブリック アクセス規則を削除または変更します。
@@ -123,7 +123,7 @@ Azure Firewall または同様のソリューションがネットワークに�
 
 関連リンク:
 
-* [Security Center による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)
+* [コンテナー レジストリ用 Microsoft Defender による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)
 * [フィードバック](https://feedback.azure.com/d365community/idea/cbe6351a-0525-ec11-b6e6-000d3a4f07b8)の提供
 * [信頼されたサービスがネットワーク制限付きコンテナー レジストリに安全にアクセスできるようにする](allow-access-trusted-services.md)
 

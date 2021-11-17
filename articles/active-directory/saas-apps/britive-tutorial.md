@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 82230b0cb4f78e95dca7331ac9284503aea2fc48
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 69277fa0ea351dbec384db195aa248a1369c3c03
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630591"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338803"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Britive の統合
 
@@ -164,4 +164,4 @@ Britive 用に Azure AD SSO を構成してテストするには、次の手順�
 
 ## <a name="next-steps"></a>次のステップ
 
-Britive を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Britive を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

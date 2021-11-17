@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 7d3caa31ec5f4f1a02f6364b2a42cdb406ec7cb5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 197393f123cb7d694e7d1a1929dd89723e675f16
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124789505"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333069"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>チュートリアル:Azure Active Directory と TigerConnect Secure Messenger の統合
 
@@ -141,4 +141,4 @@ TigerConnect Secure Messenger 側でシングル サインオンを構成する�
 
 ## <a name="next-steps"></a>次のステップ
 
-TigerConnect Secure Messenger を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+TigerConnect Secure Messenger を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

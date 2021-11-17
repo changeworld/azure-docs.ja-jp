@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 36829f44d818356bbe61fe3f37265c2a76ed6f8a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2449a8d289acb02f93f87be28c5561e4feb987d0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128617984"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exium"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Exium の統合
 
@@ -166,4 +166,4 @@ Exium に対して Azure AD SSO を構成してテストするには、次の手
 
 ## <a name="next-steps"></a>次のステップ
 
-Exium を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Exium を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

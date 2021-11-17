@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: b6ea6149a8a66b8c54782153a433160814389379
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5e85f5d6c16756ccf0ef0b6c50d1af3d69be6d09
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124752682"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341177"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>チュートリアル:MVISION Cloud Azure AD SSO Configuration と Azure Active Directory の統合
 
@@ -144,4 +144,4 @@ MVISION Cloud Azure AD SSO Configuration で Azure AD SSO を構成してテス�
 
 ## <a name="next-steps"></a>次のステップ
 
-MVISION Cloud Azure AD SSO Configuration を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+MVISION Cloud Azure AD SSO Configuration を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

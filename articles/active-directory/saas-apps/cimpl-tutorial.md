@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d9a516b16cfc6bbf88a5c8b08c039d285aef60a
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: e1f34999596982b75518e204cb1104088a91dc2b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129402853"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307805"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-cimpl"></a>チュートリアル: Azure AD SSO と Cimpl の統合
 
@@ -134,4 +134,4 @@ Cimpl で Azure AD SSO を構成してテストするには、次の手順を実
 
 ## <a name="next-steps"></a>次のステップ
 
-Cimpl を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Cimpl を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

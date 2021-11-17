@@ -2,19 +2,17 @@
 title: IoT Edge セキュリティ モジュールをデプロイする
 description: IoT Edge に Defender for IoT セキュリティ エージェントをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 09/23/2021
-ms.openlocfilehash: 67c60841d4d1e9080c95cf50a71be6ad4a845ef1
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: deb6a9e458351d512ccda4a1e5ef42fc921e628a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238626"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306151"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
-**Defender for IoT** モジュールにより、IoT Edge デバイスの包括的なセキュリティ ソリューションが提供されます。
-セキュリティ モジュールは、オペレーティング システムおよびコンテナー システムから未加工のセキュリティ データを収集、集約して分析し、実践的なセキュリティ推奨事項とアラートに変換します。
-詳細については、[IoT Edge 用のセキュリティ モジュール](security-edge-architecture.md)に関する記事を参照してください。
+**Defender for IoT** モジュールにより、IoT Edge デバイスの包括的なセキュリティ ソリューションが提供されます。 セキュリティ モジュールは、オペレーティング システムおよびコンテナー システムから未加工のセキュリティ データを収集、集約して分析し、実践的なセキュリティ推奨事項とアラートに変換します。 詳細については、[IoT Edge 用のセキュリティ モジュール](security-edge-architecture.md)に関する記事を参照してください。
 
 この記事では、IoT Edge デバイスにセキュリティ モジュールをデプロイする方法について説明します。
 
@@ -41,7 +39,7 @@ ms.locfileid: "130238626"
 
 1. Azure portal から **Marketplace** を開きます。
 
-1. **[モ ノのインターネット]** を選択し、 **[Azure Security Center for IoT]** を検索して選択します。
+1. **[モノのインターネット]** を選択し、「**Microsoft Defender for IoT**」を検索して選択します。
 
    :::image type="content" source="media/howto/edge-onboarding.png" alt-text="Defender for IoT を選択する":::
 

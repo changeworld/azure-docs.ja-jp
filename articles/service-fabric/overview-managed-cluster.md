@@ -3,12 +3,12 @@ title: Service Fabric の管理対象クラスター
 description: Service Fabric マネージド クラスターは、デプロイとクラスター管理を効率化する Azure Service Fabric クラスター リソース モデルの進化版です。
 ms.topic: overview
 ms.date: 10/22/2021
-ms.openlocfilehash: 2b0b0b79899acaf0b4be3b05f52fceadf8acf54d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5c94254e470e625a844b345c452e252fcd69b626
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055048"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308126"
 ---
 # <a name="service-fabric-managed-clusters"></a>Service Fabric の管理対象クラスター
 
@@ -70,17 +70,8 @@ Service Fabric マネージド クラスターには、Basic SKU と Standard SK
 
 ## <a name="feature-support"></a>機能のサポート
 
-マネージド クラスターの機能は今後も引き続き拡張されます。 現在のサポート対象は次のとおりです。
+マネージド クラスターの機能は今後も引き続き拡張されます。 詳細については、[マネージド クラスターの構成オプションに関するドキュメント](how-to-managed-cluster-configuration.md)、または managedClusters の [Bicep および ARM テンプレート](/azure/templates/microsoft.servicefabric/allversions)に関するページを参照してください。
 
-* [ARM テンプレートを使用するアプリケーションのデプロイ](how-to-managed-cluster-app-deployment-template.md)
-* [アプリケーション シークレット](how-to-managed-cluster-application-secrets.md)
-* [OS イメージの自動アップグレード](how-to-managed-cluster-modify-node-type.md#enable-automatic-os-image-upgrades)
-* [可用性ゾーンのスパニング](how-to-managed-cluster-availability-zones.md)
-* [ディスク暗号化](how-to-enable-managed-cluster-disk-encryption.md)と[マネージド ディスクの種類](how-to-managed-cluster-managed-disk.md)の選択
-* マネージド クラスターの[ノードの種類](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md)と[アプリケーション認証](how-to-managed-cluster-application-managed-identity.md)に対するマネージド ID のサポート
-* [NSG ルールとその他のネットワーク オプション](how-to-managed-cluster-networking.md)
-* [ステートレス専用のノードの種類](how-to-managed-cluster-stateless-node-type.md)
-* ノードの種類用の[仮想マシン スケール セット拡張機能](how-to-managed-cluster-vmss-extension.md)
 
 ## <a name="next-steps"></a>次のステップ
 

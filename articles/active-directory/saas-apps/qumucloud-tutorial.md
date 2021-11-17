@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: e76ac123d5a6277414b496c78dffeffb61903877
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2b653358c56bcab2d7875df8ed4aaf782db608f6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124825739"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132321165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>チュートリアル: Azure Active Directory と Qumu Cloud の統合
 
@@ -178,4 +178,4 @@ Qumu Cloud に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-Qumu Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Qumu Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

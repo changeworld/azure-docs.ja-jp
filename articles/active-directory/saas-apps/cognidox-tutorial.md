@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/21/2021
 ms.author: jeedes
-ms.openlocfilehash: c553b56c4b97254a8278a03bf6fd77af56651efb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b6767715144b8c2d847d75b9953ddcf42c6359eb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619180"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305024"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-cognidox"></a>チュートリアル: Azure AD SSO と Cognidox の統合
 
@@ -169,4 +169,4 @@ Cognidox 用に Azure AD SSO を構成してテストするには、次の手順
 
 ## <a name="next-steps"></a>次のステップ
 
-Cognidox を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Cognidox を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

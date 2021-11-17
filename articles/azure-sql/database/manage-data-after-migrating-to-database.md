@@ -12,12 +12,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: a8b0e2d0183f29ebf9ecdee576abeca6acc1827c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: c8a8eba07d29ae590a55586819a220a95f026507
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229734"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298105"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -95,7 +95,7 @@ SQL Database ではセキュリティとプライバシーが非常に重視さ�
 - 実際のデータの保護 ([Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) および [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine))。
 - 機密データおよび特権データの制御 ([行レベル セキュリティ](/sql/relational-databases/security/row-level-security)および[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking))。
 
-[Azure Security Center](https://azure.microsoft.com/services/security-center/): Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 [監査](../../azure-sql/database/auditing-overview.md)や [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。
+[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) は、Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 [監査](../../azure-sql/database/auditing-overview.md)や [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL Database ではどのようなユーザー認証方法が提供されますか
 
@@ -245,7 +245,7 @@ Query Performance Insight を使うと、データベースのワークロード
 
 SQL Database では、データの保護に役立つ実践的なセキュリティの推奨事項と、データベースに対する潜在的な脅威になる可能性のある不審なデータベース アクティビティを識別して調査する脅威検出が提供されます。 [脆弱性評価](sql-vulnerability-assessment.md): データベース スキャンおよびレポート サービスであり、大規模なデータベースのセキュリティ状態を監視して、セキュリティ上のリスクおよびユーザーが定義したセキュリティ ベースラインからのずれを特定します。 各スキャン後には、ユーザーに合わせた実行可能な手順の一覧と修復スクリプト、およびコンプライアンス要件に準拠するために使用可能な評価レポートが提供されます。
 
-Azure Security Center では、全体的なセキュリティ推奨事項を確認し、シングル クリックでそれらを適用できます。
+Microsoft Defender for Cloud では、全体的なセキュリティ推奨事項を確認し、シングル クリックでそれらを適用できます。
 
 ### <a name="cost-optimization"></a>コストの最適化
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: b87354ca6b7a079f60f8d64e2deae53b65cef167
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 444cbdc14d1d2d7d7237b79398b7d81ea43e8c80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543855"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325583"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Windows イベント ログのデータ ソースを収集する
 Windows イベント ログは、Windows 仮想マシン上の Log Analytics エージェントの最も一般的な[データ ソース](../agents/agent-data-sources.md)の 1 つです。これは、多くのアプリケーションから Windows イベント ログへ書き込みが行われるためです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -30,7 +30,7 @@ Azure Monitor は、設定で指定されている Windows イベント ログ�
 [![Windows イベントの構成](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!IMPORTANT]
-> ワークスペースからセキュリティ イベントの収集を構成することはできません。 セキュリティ イベントを収集するには、[Azure Security Center](../../security-center/security-center-enable-data-collection.md) または [Azure Sentinel](../../sentinel/connect-windows-security-events.md) を使用する必要があります。
+> ワークスペースからセキュリティ イベントの収集を構成することはできません。 セキュリティ イベントを収集するには、[Microsoft Defender for Cloud](../../security-center/security-center-enable-data-collection.md) または [Microsoft Sentinel](../../sentinel/connect-windows-security-events.md) を使用する必要があります。
 
 
 > [!NOTE]

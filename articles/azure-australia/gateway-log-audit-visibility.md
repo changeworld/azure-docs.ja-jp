@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: dae5f20231a6ccf348299a0f04fb6f2ccfda36ff
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 95d744785d95d5040e5d82d56d1905145111b682
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183472"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340275"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Azure Australia でのゲートウェイのログ記録、監査、可視性
 
@@ -65,7 +65,7 @@ Azure 環境に出入りするネットワーク トラフィックを確実に�
 |ログ ソース|<ul><li>Application Gateway</li><li>VPN Gateway</li><li>Azure Firewall</li><li>ネットワーク仮想アプライアンス</li><li>Azure Load Balancer</li><li>Virtual Machines</li><li>ドメイン ネーム システム (DNS) サーバー</li><li>Syslog またはログ収集サーバー</li><li>NSG</li><li>[Azure Activity Log (Azure アクティビティ ログ)]</li><li>Azure 診断ログ</li><li>Azure Policy</li></ul>|
 |ログの収集|<ul><li>Event Hubs</li><li>Network Watcher</li><li>Log Analytics</li></ul>|
 |ログ保持期間|<ul><li>Azure Storage</li></ul>|
-| ログ分析|<ul><li>Azure Security Center (ASC)</li><li>Azure Advisor</li><li>Log Analytics のソリューション<ul><li>Traffic Analytics</li><li>DNS Analytics (プレビュー)</li><li>アクティビティ ログ分析</li></ul></li><li>SIEM</li><li>ACSC</li></ul>|
+| ログ分析|<ul><li>Microsoft Defender for Cloud</li><li>Azure Advisor</li><li>Log Analytics のソリューション<ul><li>Traffic Analytics</li><li>DNS Analytics (プレビュー)</li><li>アクティビティ ログ分析</li></ul></li><li>SIEM</li><li>ACSC</li></ul>|
 |インシデント対応|<ul><li>Azure アラート</li><li>Azure Automation</li></ul>|
 |
 
@@ -129,7 +129,7 @@ Azure 環境に出入りするネットワーク トラフィックを確実に�
 |---|---|
 |制御/管理ログ|Azure Resource Manager の操作に関する情報が提供されます|
 |データ プレーン ログ|仮想マシンのログや、Azure Monitor で使用できる診断ログなど、Azure リソースの使用状況の一部として発生するイベントに関する情報が提供されます|
-|処理済みイベント|Azure によって処理された分析済みのイベント/アラートに関する情報が提供されます。たとえば、Azure Security Center ではサブスクリプションが処理および分析されて、セキュリティ アラートが提供されます|
+|処理済みイベント|Azure によって処理された分析済みのイベント/アラートに関する情報が提供されます。たとえば、Microsoft Defender for Cloud ではサブスクリプションが処理および分析されて、セキュリティ アラートが提供されます|
 |
 
 ### <a name="application-gateway"></a>Application Gateway
@@ -182,9 +182,9 @@ Azure Load Balancer のログは、Azure にデプロイされたシステムに
 |Standard Load Balancer のメトリックと正常性の診断|[https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics](../load-balancer/load-balancer-standard-diagnostics.md)|
 |
 
-### <a name="virtual-machines"></a>Virtual Machines
+### <a name="virtual-machines"></a>仮想マシン
 
-Virtual Machines は、ネットワーク通信を送受信し、データを処理し、サービスを提供するエンドポイントです。 Virtual Machines ではデータまたは重要なシステム サービスをホストできるめ、それらが正常に動作しており、サイバー セキュリティ インシデントを検出していることを確認することが非常に重要になる場合があります。 Virtual Machines では、システムの動作およびそのシステムで実行された操作を追跡できる、さまざまなイベント ログや監査ログが収集されます。 Virtual Machines で収集されたログは、Microsoft Monitoring Agent を使用して Log Analytics ワークスペースに転送でき、そこで Azure Security Center および適用可能な Log Analytics ソリューションによって分析できます。 また、Virtual Machines は、直接的に、またはログ収集サーバーを介して、Azure Event Hubs または SIEM と直接統合することもできます。
+仮想マシンは、ネットワーク通信を送受信し、データを処理し、サービスを提供するエンドポイントです。 仮想マシンではデータまたは重要なシステム サービスをホストできるため、それらが正常に動作しており、サイバー セキュリティ インシデントを検出しているようにすることが非常に重要になる場合があります。 仮想マシンでは、システムの動作およびそのシステムで実行された操作を追跡できる、さまざまなイベント ログや監査ログが収集されます。 仮想マシンで収集されたログは、Log Analytics エージェントを使用して Log Analytics ワークスペースに転送でき、そこで Microsoft Defender for Cloud によって分析できます。 さらに仮想マシンは、直接的に、またはログ収集サーバーを介して、Azure Event Hubs または SIEM ソリューションと直接統合することもできます。
 
 |リソース|リンク|
 |---|---|
@@ -317,15 +317,15 @@ Azure Storage は、Azure での長期的なログ保有のためのリポジト
 
 生成されて一箇所に保存されたログは、セキュリティ インシデントの試行または成功を検出するために分析する必要があります。 セキュリティ インシデントが検出されたとき、機関では、それらのインシデントに対応して、脅威を追跡、格納、および修復できる必要があります。
 
-### <a name="azure-security-center-asc"></a>Azure Security Center (ASC)
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-Azure Security Center では、統合されたセキュリティ管理と高度な脅威保護が提供されます。 Azure Security Center からは、ワークロード全体へのセキュリティ ポリシーの適用、脅威にさらされる状態の軽減、攻撃の検出とその対応を行うことができます。 Azure Security Center では、さまざまな Azure コンポーネントに対するダッシュボードと分析が提供されます。 Azure Security Center の使用は、ACSC コンシューマー ガイダンスの要件として指定されています。
+Microsoft Defender for Cloud では、統合されたセキュリティ管理と高度な脅威に対する保護が提供されます。 Microsoft Defender for Cloud からは、ワークロード全体へのセキュリティ ポリシーの適用、脅威にさらされる状態の軽減、攻撃の検出とその対応を行うことができます。 Microsoft Defender for Cloud では、さまざまな Azure コンポーネントに対するダッシュボードと分析が提供されます。 Microsoft Defender for Cloud の使用は、ACSC コンシューマー ガイダンスの要件として指定されています。
 
 |リソース|リンク|
 |---|---|
-|Azure Security Center のドキュメント|[https://docs.microsoft.com/azure/security-center](../security-center/index.yml)|
-|クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始|[https://docs.microsoft.com/azure/security-center/security-center-get-started](../security-center/security-center-get-started.md)|
-|
+|Microsoft Defender for Cloud のドキュメント|[https://docs.microsoft.com/azure/security-center](../security-center/index.yml)|
+|クイックスタート: Microsoft Defender for Cloud の強化されたセキュリティ機能を有効にする|[https://docs.microsoft.com/azure/security-center/security-center-get-started](../security-center/enable-enhanced-security.md)|
+|||
 
 ### <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -370,7 +370,7 @@ SIEM は、セキュリティ ログの集中的なストレージ、監査、�
 
 |リソース|リンク|
 |---|---|
-|Azure Sentinel (プレビュー)|[https://azure.microsoft.com/services/azure-sentinel](https://azure.microsoft.com/services/azure-sentinel)|
+|Microsoft Sentinel (プレビュー)|[https://azure.microsoft.com/services/azure-Sentinel](https://azure.microsoft.com/services/azure-sentinel)|
 |SIEM のドキュメント|SIEM のアーキテクチャとガイダンスについては、ベンダーのドキュメントを参照してください|
 |Azure Monitor を使用して SIEM ツールと統合する|[https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools)|
 |
@@ -395,7 +395,7 @@ Azure アラートを使用すると、特定のイベントに対応して、�
 |リソース|リンク|
 |---|---|
 |Microsoft Azure のアラートの概要|[https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-alerts](../azure-monitor/alerts/alerts-overview.md)|
-|Azure セキュリティ センターでのセキュリティの警告の管理と対応|[https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts](../security-center/security-center-managing-and-responding-alerts.md)|
+|Microsoft Defender for Cloud でのセキュリティ アラートの管理と対応|[https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts](../security-center/security-center-managing-and-responding-alerts.md)|
 |Azure Monitor のログ アラート|[https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response](../azure-monitor/alerts/alerts-log.md)|
 |
 

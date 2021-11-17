@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 07/30/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 19453e987c276ae2716e06900ea2fc8ecc2a6ba6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7cc82630b2f65bdd94e02e71b3c2521fc5734a9e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729426"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315045"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Azure Application Gateway 上の Azure Web Application Firewall でのボット保護の概要
 
 すべてのインターネット トラフィックの約 20 % は、問題のあるボットからのものです。 それらは、スクレーピング、スキャン、Web アプリケーションでの脆弱性の検索などを行います。 これらのボットは、Web アプリケーション ファイアウォール (WAF) で停止されると攻撃できません。 また、バックエンドやその他の基盤となるインフラストラクチャなどのリソースやサービスを使い尽くすこともできません。
 
-マネージド ボット保護規則セットを WAF に対して有効にし、既知の悪意のある IP アドレスからの要求をブロックしたりログに記録したりすることができます。 この IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 インテリジェント セキュリティ グラフは、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。
+マネージド ボット保護規則セットを WAF に対して有効にし、既知の悪意のある IP アドレスからの要求をブロックしたりログに記録したりすることができます。 この IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 インテリジェント セキュリティ グラフは Microsoft の脅威インテリジェンスの動力となるものであり、Microsoft Defender for Cloud を含む複数のサービスによって使用されます。
 
 ## <a name="use-with-owasp-rulesets"></a>OWASP ルールセットで使用する
 

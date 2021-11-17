@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 36acbf3e2f6d8c06b2f6633d3ff325197866426b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9d41382a8457fb5dd1447c59387199860e10003a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477442"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330052"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-fexa"></a>チュートリアル: Azure AD SSO と Fexa の統合
 
@@ -148,4 +148,4 @@ Fexa に対する Azure AD SSO を構成してテストするには、次の手�
 
 ## <a name="next-steps"></a>次のステップ
 
-Fexa を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Fexa を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 79b583f51349378a40512e9e79763ec3ae3a192f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f31c1829f8d4525f97972d956c3e8c98f7ca661e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124795338"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287953"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>チュートリアル:Mimecast Admin Console と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -80,7 +80,7 @@ Mimecast Admin Console で Azure AD SSO を構成してテストするには、�
     | リージョン  |  値 | 
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/sso/<accountcode>`|
-    | United States   | `https://us-api.mimecast.com/sso/<accountcode>`|
+    | 米国   | `https://us-api.mimecast.com/sso/<accountcode>`|
     | 南アフリカ    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | オーストラリア       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | オフショア        | `https://jer-api.mimecast.com/sso/<accountcode>`|
@@ -93,7 +93,7 @@ Mimecast Admin Console で Azure AD SSO を構成してテストするには、�
     | リージョン  |  値 | 
     | --------------- | --------------- | 
     | ヨーロッパ          | `https://eu-api.mimecast.com/login/saml`|
-    | United States   | `https://us-api.mimecast.com/login/saml`|
+    | 米国   | `https://us-api.mimecast.com/login/saml`|
     | 南アフリカ    | `https://za-api.mimecast.com/login/saml`|
     | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|
@@ -105,7 +105,7 @@ Mimecast Admin Console で Azure AD SSO を構成してテストするには、�
     | リージョン  |  値 | 
     | --------------- | --------------- | 
     | ヨーロッパ          | `https://login-eu.mimecast.com/administration/app/#/administration-dashboard`|
-    | United States   | `https://login-us.mimecast.com/administration/app/#/administration-dashboard`|
+    | 米国   | `https://login-us.mimecast.com/administration/app/#/administration-dashboard`|
     | 南アフリカ    | `https://login-za.mimecast.com/administration/app/#/administration-dashboard`|
     | オーストラリア       | `https://login-au.mimecast.com/administration/app/#/administration-dashboard`|
     | オフショア        | `https://login-jer.mimecast.com/administration/app/#/administration-dashboard`|
@@ -226,4 +226,4 @@ Mimecast Admin Console で Azure AD SSO を構成してテストするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Mimecast Admin Console を構成すると、セッション制御を適用でき、組織の機密データの流出と侵入からリアルタイムで保護されます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Mimecast Admin Console を構成すると、セッション制御を適用でき、組織の機密データの流出と侵入からリアルタイムで保護されます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

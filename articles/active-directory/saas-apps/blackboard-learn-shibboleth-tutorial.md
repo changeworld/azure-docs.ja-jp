@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 936398f324448abfa46b381fc19154117b8d4771
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 42a0123cc7993f8b0412d90dd6c67cf2928ffeb8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232548"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>チュートリアル: Azure Active Directory と Blackboard Learn - Shibboleth との統合
 
@@ -141,4 +141,4 @@ Blackboard Learn - Shibboleth シングル サインオンを構成するには�
 
 ## <a name="next-steps"></a>次のステップ
 
-Blackboard Learn - Shibboleth を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Blackboard Learn - Shibboleth を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

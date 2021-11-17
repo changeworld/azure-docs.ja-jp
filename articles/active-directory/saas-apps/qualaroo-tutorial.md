@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/22/2021
 ms.author: jeedes
-ms.openlocfilehash: cfe4e75b16e9999a1f88ed266373338d1a66b0bf
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 8175864bc3c7555836e1a98248a875109cc920ce
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129095217"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329509"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-qualaroo"></a>チュートリアル: Azure AD SSO と Qualaroo の統合
 
@@ -125,4 +125,4 @@ Qualaroo に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="next-steps"></a>次のステップ
 
-Qualaroo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Qualaroo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

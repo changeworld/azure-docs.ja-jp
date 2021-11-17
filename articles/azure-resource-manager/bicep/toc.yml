@@ -26,6 +26,9 @@
     - name: Author
       expanded: true
       items:
+        - name: ファイル構造と構文
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: file.md
         - name: リソース
           items:
             - name: リソースの宣言
@@ -136,9 +139,6 @@
           displayName: 'conversion issues,export,convert,playground'
 - name: 関連項目
   items:
-    - name: Bicep ファイルの構造
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: file.md
     - name: リソースの参照
       href: /azure/templates/
     - name: データ型

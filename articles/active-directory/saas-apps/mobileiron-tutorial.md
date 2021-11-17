@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: b44e6eae96ac2a0d9a3ce4bb72043b5e24dfe9db
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: aec5032dd05a7ee6c0192dd4798d9acdedff533d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780359"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル: Azure Active Directory と MobileIron の統合
 
@@ -175,4 +175,4 @@ MobileIron の場合、プロビジョニングは手動で行います。
 
 ## <a name="next-steps"></a>次のステップ
 
-MobileIron を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+MobileIron を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

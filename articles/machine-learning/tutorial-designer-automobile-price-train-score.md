@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 10/21/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 15edab4bc16067b866912e1fca899e844ff6e7e0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: e3430ded70d8bba018e2bb28ad48decde82c46c4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554930"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339727"
 ---
 # <a name="tutorial-designer---train-a-no-code-regression-model"></a>チュートリアル: デザイナー - コードなし回帰モデルをトレーニングする
 
@@ -221,7 +221,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 1. **[Linear Regression]\(線形回帰\)** コンポーネントの出力を **[Train Model]\(モデルのトレーニング\)** コンポーネントの左側の入力に接続します。
 
 1. **[Split Data]\(データの分割\)** コンポーネントのトレーニング データ出力 (左側のポート) を **[Train Model]\(モデルのトレーニング\)** コンポーネントの右側の入力に接続します。
-    
+
     > [!IMPORTANT]
     > **[Train Model]\(モデルのトレーニング\)** には必ず、 **[Split Data]\(データの分割\)** の左側の出力ポートを接続してください。 トレーニング セットは、左側のポートに格納されます。 右側のポートには、テスト セットが格納されます。
 

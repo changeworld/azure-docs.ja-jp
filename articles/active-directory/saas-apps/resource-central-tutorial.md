@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 0db8c8d14dbd3e09ebb798c41ea2d7b526acabc9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f77a6d0088d9ee45c1f39a46abbb6f88806b3e57
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124753207"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329497"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central--saml-sso-for-meeting-room-booking-system"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Resource Central – SAML SSO for Meeting Room Booking System の統合
 
@@ -181,4 +181,4 @@ Microsoft Azure Active Directory SSO を Resource Central – SAML SSO for Meeti
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD によるシングル サインオンを Resource Central – SAML SSO for Meeting Room Booking System にセットアップしたら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Azure AD によるシングル サインオンを Resource Central – SAML SSO for Meeting Room Booking System にセットアップしたら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

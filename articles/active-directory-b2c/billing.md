@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/15/2021
+ms.date: 11/11/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: aa03c0ec560102ce44aa0cbf2bede5dd59423296
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 218e0ea1da8d76602989cf123851e5f9f8c14bb5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065067"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289245"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
@@ -52,7 +52,7 @@ MAU の課金は、**2019 年 11 月 1 日** に Azure AD B2C テナントに対
   
 また、Azure AD B2C テナントは、使用する機能に基づいて、適切な Azure 価格レベルにリンクされている必要があります。 Premium 機能には、Azure AD B2C [Premium P1 または P2 価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)が必要です。 新しい機能を使用するときに、価格レベルのアップグレードが必要になることがあります。 たとえば、リスクベースの条件付きアクセス ポリシーでは、テナントに対して Azure AD B2C Premium P2 価格レベルを選択する必要があります。
 > [!NOTE]
->  Premium P1 機能と Premium P2 機能の両方で、1 か月あたり最初の 50,000 人の MAU については無料となります。 MAU の総数を確認するために、Microsoft では同じサブスクリプションにリンクされているすべてのテナント (Azure AD と Azure AD B2C の両方) の MAU を結合します。
+>  月ごとに最初の 50,000 MAU は Premium P1 と Premium P2 の両方の機能で無料ですが、**この無料レベルは無料試用版クレジットを持つサブスクリプションには適用されません**。 MAU の総数を確認するために、Microsoft では同じサブスクリプションにリンクされているすべてのテナント (Azure AD と Azure AD B2C の両方) の MAU を結合します。
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Azure AD B2C テナントをサブスクリプションにリンクする
 
 Azure Active Directory B2C (Azure AD B2C) の使用料金は、Azure サブスクリプションに課金されます。 ターゲットの Azure サブスクリプション内に Azure AD B2C *リソース* を作成して、Azure AD B2C テナントを Azure サブスクリプションに明示的にリンクする必要があります。 1 つの Azure サブスクリプションで、仮想マシン、ストレージ アカウント、Logic Apps などの他の Azure リソースと共に、複数の Azure AD B2C リソースを作成できます。 サブスクリプション内のすべてのリソースを表示するには、サブスクリプションが関連付けられている Azure Active Directory (Azure AD) テナントに移動します。
@@ -72,7 +72,7 @@ Azure AD B2C テナントにリンクされているサブスクリプション�
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 自分の Azure AD サブスクリプションが含まれるディレクトリを使用しており、Azure AD B2C テナントが含まれているディレクトリではないことを確認してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
 1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
-1. **[リソースの作成]** を選択し、**[Marketplace を検索]** フィールドに「`Active Directory B2C`」と入力し、**[Azure Active Directory B2C]** を選択します。
+1. **[リソースの作成]** を選択し、 **[Search services and Marketplace]\(サービスと Marketplace を検索する\)** フィールドで **[Azure Active Directory B2C]** を検索して選択します。
 1. **［作成］** を選択します
 1. **[Link an existing Azure AD B2C Tenant to my Azure subscription]\(既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする\)** を選択します。
 1. ドロップダウンから **[Azure AD B2C テナント]** を選択します。 自分がグローバル管理者であり、サブスクリプションにまだリンクされていないテナントのみが表示されます。 **[Azure AD B2C リソース名]** フィールドには、選択した Azure AD B2C テナントのドメイン名が入力されます。

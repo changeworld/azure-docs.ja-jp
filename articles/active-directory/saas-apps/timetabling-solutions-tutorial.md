@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2020
 ms.author: jeedes
-ms.openlocfilehash: df82c39f228d7c69b4c7cf2c8a4b60e69b86e98a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2cece153ab4e8acf0ae6483a6947c5cd0a51910d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733708"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333088"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timetabling-solutions"></a>チュートリアル:Timetabling Solutions と Azure Active Directory のシングル サインオン (SSO) の統合
 
@@ -43,7 +43,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Timetabling Solutions では、**SP** Initiated SSO がサポートされます
-* Timetabling Solutions を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Timetabling Solutions を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-timetabling-solutions-from-the-gallery"></a>ギャラリーからの Timetabling Solutions の追加
 
@@ -149,6 +149,6 @@ Timetabling Solutions に対する Azure AD SSO を構成してテストする�
 
 - [Azure AD で Timetabling Solutions を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Timetabling Solutions を保護する方法](/cloud-app-security/proxy-intro-aad)

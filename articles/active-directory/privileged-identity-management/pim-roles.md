@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae4f269bbd34a0f8f863799c24f592f4fc20196
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 89cd7e3cfac71e194d8f32ae8b15c26da7f0615d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130253555"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336470"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理できないロール
 

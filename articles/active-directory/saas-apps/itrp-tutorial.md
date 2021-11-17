@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 040c32810aaee9e96939e1937f3d9061ec7d89ba
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b972c3c6779d3ca288685d1a8921bceac7d001dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131474410"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346384"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-itrp"></a>チュートリアル: Azure AD SSO と ITRP の統合
 
@@ -193,4 +193,4 @@ Azure AD ユーザーが ITRP にサインインできるようにするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-ITRP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+ITRP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

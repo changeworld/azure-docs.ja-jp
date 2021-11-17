@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 7be19f9d88dd9967d6dd8735d6cf64af75c03626
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bca32286392e9efff2f1a1cab382e0b3c6d4b208
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783484"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datava Enterprise Service Platform の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Datava Enterprise Service Platform では **SP** によって開始される SSO がサポートされます
 * Datava Enterprise Service Platform では、**Just In Time** ユーザー プロビジョニングがサポートされます
-* Datava Enterprise Service Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Datava Enterprise Service Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -147,4 +147,4 @@ Datava Enterprise Service Platform で Azure AD SSO を構成してテストす�
 
 - [Azure AD で Datava Enterprise Service Platform を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)

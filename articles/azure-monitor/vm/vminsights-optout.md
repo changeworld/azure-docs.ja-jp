@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: fbb169924498b30284ea26d172f605596e6a0379
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 8edb225316dfd12acff5c1f6a036246d68d746c8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446363"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306437"
 ---
 # <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>VM insights での VM の監視を無効にする
 
@@ -51,7 +51,7 @@ VM の監視を無効にする準備をするときは、これらの考慮事�
 >以下の場合は、Log Analytics エージェントを削除しないでください。 
 >
 > * プロセスを調整したり、構成または更新プログラムを管理するために、Azure Automation で VM を管理している。 
-> * セキュリティと脅威検出のために Azure Security Center で VM を管理している。 
+> * Microsoft Defender for Cloud は、セキュリティと脅威検出のために VM を管理します。 
 >
 > Log Analytics エージェントを削除する場合、これらのサービスとソリューションが VM を積極的に管理できないようにすることになります。 
 

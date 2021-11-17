@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2021
 ms.author: jeedes
-ms.openlocfilehash: df176704d778a2fab093a0d49b4c585d64f63fc6
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 2088f4c0d78192448f878fe2a42ee2d5253ae703
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230762"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311075"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iSAMS の統合
 
@@ -175,4 +175,4 @@ iSAMS を使用した Azure AD SSO を構成してテストするには、次の
 
 ## <a name="next-steps"></a>次のステップ
 
-iSAMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+iSAMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

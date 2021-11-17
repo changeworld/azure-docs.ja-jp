@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: b24fcbac37288dd3c49fe64fe517dd31bbab03d2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4fd6360d1d549cd5c184dd5a1f3105d238ab9319
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788403"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335805"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,11 +62,11 @@ ms.locfileid: "124788403"
 
 データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度をお使いの環境に合わせて定義できます。
 
-Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行われます。 この処理は、[Azure Security Center](../../security-center/security-center-introduction.md) で、セキュリティ ポリシーの一環として実施されます。 このタスクは、組織のルート管理グループの管理者権限を持つユーザーのみが実行できます。
+Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行われます。 この場所は、セキュリティ ポリシーの一環として、[Microsoft Defender For Cloud](../../security-center/security-center-introduction.md) にあります。 このタスクは、組織のルート管理グループの管理者権限を持つユーザーのみが実行できます。
 
 ポリシー管理の一環として、カスタム ラベルを定義し、優先度を設定し、そのラベルを、選択した一連の情報の種類に関連付けることができます。 独自のカスタム情報の種類を追加し、文字列パターンで構成することもできます。 パターンは、データベース内のこの種類のデータを識別するための検出ロジックに追加されます。
 
-詳細については、「[Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)](../../security-center/security-center-info-protection-policy.md)」を参照してください。
+詳細については、[Microsoft Defender for Cloud 上での SQL 情報保護ポリシーのカスタマイズ (プレビュー)](../../security-center/security-center-info-protection-policy.md) に関する記事を参照してください。
 
 組織全体のポリシーを定義したら、カスタマイズしたポリシーを使用して個別のデータベースの分類を続行できます。
 
@@ -114,7 +114,7 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 
 分類の重要な点は、機密データへのアクセスを監視できることです。 [Azure SQL Auditing](../../azure-sql/database/auditing-overview.md) は拡張され、`data_sensitivity_information` という新しいフィールドが監査ログに追加されました。 このフィールドには、クエリーによって返されたデータの機密度の分類 (ラベル) が記録されます。 次に例を示します。
 
-[ ![監査ログ](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png#lightbox)
+[![監査ログ](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png#lightbox)
 
 これらは、実際に感度情報を使用して監査できるアクティビティです。
 - ALTER TABLE ... DROP COLUMN

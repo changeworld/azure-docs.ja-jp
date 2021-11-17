@@ -9,12 +9,12 @@ ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
 ms.date: 06/21/2021
-ms.openlocfilehash: 9894769ecd3d7144fa2cf4bb245575d397c60148
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5c7ef5f12cf4ec1f6776abbc405cf5145c27c0f9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824002"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297451"
 ---
 # <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-post-migration-management"></a>オンプレミスの MySQL から Azure Database for MySQL への移行: 移行後の管理
 
@@ -28,7 +28,7 @@ ms.locfileid: "124824002"
 
 移行が正常に完了したら、次のフェーズで、新しいクラウドベースのデータ ワークロード リソースを管理します。 管理操作には、コントロール プレーンとデータ プレーンの両方のアクティビティが含まれます。 コントロール プレーン アクティビティは、Azure リソースに関連しています。それに対し、データ プレーンは Azure リソース (この場合、MySQL) **内** にあります。
 
-Azure Database for MySQL は、[Azure Monitor](../../../azure-monitor/overview.md)、[Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md)、[Azure Sentinel](../../../sentinel/overview.md) などの Azure ベースのツールを使用して、これら両方の種類の操作アクティビティを監視する機能を備えています。 Azure ベースのツールに加え、これらのログを使用するようにセキュリティ情報イベント管理 (SIEM) システムを構成することもできます。
+Azure Database for MySQL は、[Azure Monitor](../../../azure-monitor/overview.md)、[Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md)、[Microsoft Sentinel](../../../sentinel/overview.md) などの Azure ベースのツールを使用して、これら両方の種類の操作アクティビティを監視する機能を備えています。 Azure ベースのツールに加え、これらのログを使用するようにセキュリティ情報イベント管理 (SIEM) システムを構成することもできます。
 
 新しいクラウドベース ワークロードの監視にどちらのツールを使用する場合でも、疑わしいアクティビティについて Azure とデータベース管理者に警告するアラートを作成する必要があります。 特定のアラート イベントに明確に定義された修復パスがある場合、アラートによって自動化された [Azure Runbook](../../../automation/learn/powershell-runbook-managed-identity.md) を起動し、そのイベントに対処できます。
 
@@ -102,7 +102,7 @@ Azure Database for MySQL は PaaS オファリングであるため、管理者�
 
 ## <a name="wwi-scenario"></a>WWI のシナリオ
 
-WWI では、Azure アクティビティ ログを利用し、MySQL ログを [Log Analytics ワークスペース](../../../azure-monitor/logs/design-logs-deployment.md)に流すことができるようにしました。 このワークスペースは [Azure Sentinel](../../../sentinel/index.yml) の一部として構成され、すべての[脅威分析](../../concepts-security.md#threat-protection)イベントを明らかにして、インシデントが作成されるようにします。
+WWI では、Azure アクティビティ ログを利用し、MySQL ログを [Log Analytics ワークスペース](../../../azure-monitor/logs/design-logs-deployment.md)に流すことができるようにしました。 このワークスペースは [Microsoft Sentinel](../../../sentinel/index.yml) の一部として構成され、すべての[脅威分析](../../concepts-security.md#threat-protection)イベントを明らかにして、インシデントが作成されるようにします。
 
 MySQL DBA は、Azure Database for [MySQL の Azure PowerShell コマンドレット](../../quickstart-create-mysql-server-database-using-azure-powershell.md)をインストールし、Azure portal に毎回ログオンしなくて済むように、MySQL サーバーの管理を自動化しました。
 

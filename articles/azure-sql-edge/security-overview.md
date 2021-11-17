@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3824368a7cd1aa7c81827d74db20f0d4a4cb160f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95021016"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315750"
 ---
 # <a name="securing-azure-sql-edge"></a>Azure SQL Edge のセキュリティ保護
 
@@ -111,4 +111,4 @@ Azure SQL Edge には、SQL Server と同じ監査メカニズムが備わって
 
 - [セキュリティ機能の入門](/sql/linux/sql-server-linux-security-get-started)
 - [非ルート ユーザーとしての Azure SQL Edge の実行](configure.md#run-azure-sql-edge-as-non-root-user)
-- [Azure Security Center for IoT](../defender-for-iot/overview.md)
+- [Microsoft Defender for IoT](../defender-for-iot/overview.md)

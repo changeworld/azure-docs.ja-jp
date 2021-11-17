@@ -5,12 +5,12 @@ metadata:
   ms.date: 10/08/2021
   ms.topic: article
   ms.service: backup
-  ms.openlocfilehash: 67ee18a0ae7654ad9ff704e66d4e0a70d00dbb4f
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.openlocfilehash: b85496805337da460a9512dc69813240f1022800
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129714197"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132290193"
 title: Azure Files のバックアップに関する質問
 summary: >
   この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、<bpt id="p1">[</bpt>Microsoft Q&A の質問ページ<ept id="p1">](/answers/topics/azure-backup.html)</ept>に Azure Backup サービスに関する質問を投稿してディスカッションすることもできます。
@@ -75,6 +75,10 @@ sections:
     answer: >
       はい。 詳細なドキュメントを<bpt id="p1">[</bpt>こちら<ept id="p1">](backup-azure-afs-automation.md)</ept>で参照してください
   - question: >
+      バックアップ ジョブで転送されたデータが MB 単位で 0 であるのはなぜですか。
+    answer: >
+      Azure Files の現在のバックアップ ソリューションでは、データはコンテナーに転送されず、スナップショットはバックアップ ファイル共有と同じストレージ アカウント内に保持されます。 そのため、転送されたデータは MB 単位で 0 になります。
+  - question: >
       Azure Files のバックアップが、コンテナーの [ストレージ レプリケーションの種類] 設定に基づいてレプリケーションされないのはなぜですか。
     answer: >
       コンテナーの [ストレージのレプリケーション] 設定は、Azure Files のバックアップには関係ありません。 これは、現在のソリューションがスナップショット ベースであり、コンテナーに転送されるデータがないためです。 スナップショットは、バックアップされたファイル共有と同じストレージ アカウントに格納されるため、ストレージ アカウントのレプリケーション設定に従ってレプリケートされます。
@@ -136,7 +140,7 @@ sections:
       | 年単位         | 1 月第 3 日曜日午後 9 時 | 4 年間   |
 
 
-      <bpt id="p1">**</bpt>影響<ept id="p1">**</ept>
+      **影響**
 
 
       1. 既存の復旧ポイントの有効期限は、新しいポリシーの日単位の保持期間の値 (50 日) に従って調整されます。 したがって、50 日よりも古い復旧ポイントは削除対象としてマークされます。

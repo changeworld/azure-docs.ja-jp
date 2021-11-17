@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 72203c953a3dac07696e3c58728dfdcafad06e53
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 488db0e57b70f61ad832e5953f60e6ab143b6ee4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800956"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316909"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-springer-link"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Springer Link の統合
 
@@ -143,7 +143,7 @@ Springer Link に対して Azure AD SSO を構成してテストするには、�
 
 ## <a name="next-steps"></a>次の手順
 
-Springer Link を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Springer Link を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

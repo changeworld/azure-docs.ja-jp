@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: b10f4c221e0fd45ee942785edfa4b6e157a20077
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 67bbd26e4c565a5c7372be81fdf2398afe53c277
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124760911"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307227"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と New Relic の統合
 
@@ -177,4 +177,4 @@ New Relic に対して Azure AD SSO を構成してテストするには、次�
 
 次に、ユーザーを特定の New Relic アカウントまたはロールに割り当てる必要があります。 詳細については、[ユーザー管理の概念](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#understand-concepts)に関するセクションを参照してください。 
 
-New Relic の認証ドメイン UI では、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御など、[その他の設定](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#session-mgmt)を構成できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+New Relic の認証ドメイン UI では、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御など、[その他の設定](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#session-mgmt)を構成できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

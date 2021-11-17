@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: how-to
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 56cde75f021b262cedc4c446f183b8920e78feed
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8a1379495dacba7d2c0cf21af3a1e5ec2f45ed41
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091602"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283185"
 ---
 # <a name="how-to-troubleshoot-with-service-connector"></a>Service Connector を使用してトラブルシューティングを行う方法
 

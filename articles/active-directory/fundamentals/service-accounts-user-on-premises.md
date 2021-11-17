@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e0dc10aa9cb5fb67812cca31d2cd892afcccbe
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6dc3ec13715fe0c58ffbf23cf377f0ea5d29d6de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208097"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292397"
 ---
 # <a name="secure-user-based-service-accounts-in-active-directory"></a>Active Directory でユーザーベースのサービス アカウントをセキュリティで保護する
 
@@ -81,7 +81,7 @@ Get-ADUser -Filter * -Properties PasswordNeverExpires | where {$_.PasswordNeverE
 
 ```
 
-また、機密性の高いリソースへのアクセスを監査し、監査ログをセキュリティ情報イベント管理 (SIEM) システムにアーカイブすることもできます。 Azure Log Analytics や Azure Sentinel などのシステムを使用して、サービス アカウントを検索し、分析できます。
+また、機密性の高いリソースへのアクセスを監査し、監査ログをセキュリティ情報イベント管理 (SIEM) システムにアーカイブすることもできます。 Azure Log Analytics や Microsoft Sentinel などのシステムを使用して、サービス アカウントを検索し、分析できます。
 
 ## <a name="assess-the-security-of-on-premises-user-accounts"></a>オンプレミス ユーザー アカウントのセキュリティの評価
 
@@ -99,7 +99,7 @@ Get-ADUser -Filter * -Properties PasswordNeverExpires | where {$_.PasswordNeverE
 | - | - |
 | パスワード管理。| <li>パスワードの複雑さとパスワードの変更が堅牢なプロセスによって管理され、強力なパスワード要件に従った定期的な更新が含まれていることを確認します。<li>サービスのダウンタイムを最小限に抑えるように、パスワード変更とパスワード更新を調整します。 |
 | アカウントが特権グループのメンバーの場合。| <li>グループ メンバーシップを確認します。<li>そのアカウントを特権グループから削除します。<li>アカウントに、そのサービスを実行するために必要な権限とアクセス許可のみを付与します (サービス ベンダーに問い合わせてください)。 たとえば、ローカルでのサインインを拒否したり、対話型のサインインを拒否したりできます。 |
-| このアカウントには、機密性の高いリソースに対する読み取りおよび書き込みのアクセス許可があります。| <li>機密性の高いリソースへのアクセスを監査します。<li>監査ログを分析のために SIEM (Azure Log Analytics や Azure Sentinel) にアーカイブします。<li>望ましくないレベルのアクセスが検出された場合は、リソース アクセス許可を修正します。 |
+| このアカウントには、機密性の高いリソースに対する読み取りおよび書き込みのアクセス許可があります。| <li>機密性の高いリソースへのアクセスを監査します。<li>監査ログを分析のために SIEM (Azure Log Analytics や Microsoft Sentinel) にアーカイブします。<li>望ましくないレベルのアクセスが検出された場合は、リソース アクセス許可を修正します。 |
 | | |
 
 

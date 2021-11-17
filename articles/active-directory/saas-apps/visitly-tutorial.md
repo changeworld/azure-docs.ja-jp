@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 0400cab5a1519ca35acc487f76115cceba3efd5b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ac47360c03f82c797945f11f46f23b29e5f5690f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124741122"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132328617"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visitly"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Visitly の統合
 
@@ -141,4 +141,4 @@ Visitly では、自動ユーザー プロビジョニングもサポートさ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Visitly を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Visitly を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

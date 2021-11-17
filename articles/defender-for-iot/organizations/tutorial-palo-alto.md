@@ -1,18 +1,18 @@
 ---
-title: Palo Alto を Azure Defender for IoT と統合する
+title: Palo Alto を Microsoft Defender for IoT と統合する
 description: Defender for IoT は、その継続的な ICS 脅威監視プラットフォームが Palo Alto の次世代ファイアウォールと統合され、重大な脅威をより迅速かつ効率的にブロックできるようになりました。
-ms.date: 09/26/2021
+ms.date: 11/09/2021
 ms.topic: tutorial
-ms.openlocfilehash: 6579c69d5ab789c97972a81f00dc56d19ce1f9f8
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.openlocfilehash: 5beec75d23fb940f35ded84f2a938dae7e3dd9bc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062048"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301459"
 ---
-# <a name="tutorial-integrate-palo-alto-with-azure-defender-for-iot"></a>チュートリアル: Palo Alto を Azure Defender for IoT と統合する
+# <a name="tutorial-integrate-palo-alto-with-microsoft-defender-for-iot"></a>チュートリアル: Palo-Alto を Microsoft Defender for IoT と統合する
 
-このチュートリアルは、Palo Alto と Azure Defender for IoT を統合し、使用する方法を学ぶのに役立ちます。
+このチュートリアルは、Palo Alto と Microsoft Defender for IoT を統合し、使用する方法を学ぶのに役立ちます。
 
 Defender for IoT は、その継続的な ICS 脅威監視プラットフォームが Palo Alto の次世代ファイアウォールと統合され、重大な脅威をより迅速かつ効率的にブロックできるようになりました。
 

@@ -1,18 +1,18 @@
 ---
 title: エージェントベースのソリューション アーキテクチャとは
-description: Azure Defender for IoT のエージェントベースのアーキテクチャと情報フローについて説明します。
+description: Microsoft Defender for IoT のエージェントベースのアーキテクチャと情報フローについて説明します。
 ms.topic: overview
-ms.date: 1/25/2021
-ms.openlocfilehash: e21dc7c7b0c82378d90335e4d4ceb71373a56267
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 4bedabced290c16e9172bee58d0f68a995bb5ebd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011220"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331606"
 ---
 # <a name="what-is-agent-based-solution-for-device-builders"></a>デバイス ビルダー向けのエージェントベースのソリューションとは
 
-この記事では、Defender for IoT エージェントベースのソリューションの機能的なシステム アーキテクチャについて説明します。 Azure Defender for IoT には、ご使用環境のニーズに適合するように、組織向けのエージェントレス ソリューションとデバイス ビルダー向けのエージェントベースのソリューションという 2 つの機能セットが用意されています。
+この記事では、Defender for IoT エージェントベースのソリューションの機能的なシステム アーキテクチャについて説明します。 Microsoft Defender for IoT には、ご使用環境のニーズに適合するように、組織向けのエージェントレス ソリューションとデバイス ビルダー向けのエージェントベースのソリューションという 2 つの機能セットが用意されています。
 
 ## <a name="iot-hub-built-in-security"></a>IoT Hub の組み込みのセキュリティ
 
@@ -36,4 +36,4 @@ Defender for IoT の推奨事項とアラート (分析パイプライン出力)
 
 ## <a name="next-steps"></a>次のステップ
 
-「[Azure Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)」をご覧ください。
+[Microsoft Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをご覧ください。

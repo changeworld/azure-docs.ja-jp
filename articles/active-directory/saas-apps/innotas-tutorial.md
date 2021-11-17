@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 2d6be95f304b69f85eb33aac0fb0db9f3be810ba
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7df08645d2d9f3a1281b07b3110da00112fe521a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004827"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304917"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-innotas"></a>チュートリアル: Azure AD SSO と Innotas の統合
 
@@ -136,4 +136,4 @@ Innotas へのユーザー プロビジョニングの構成にあたって必�
 
 ## <a name="next-steps"></a>次のステップ
 
-Innotas を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Innotas を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

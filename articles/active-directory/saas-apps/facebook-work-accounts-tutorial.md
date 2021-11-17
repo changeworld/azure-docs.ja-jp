@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2021
 ms.author: jeedes
-ms.openlocfilehash: d4cf62c29c5da444a75b074c672ef0f47c1dfdb1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e5abde0a7db07695a63e8a81a37d0ebaa0473068
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701648"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348789"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-facebook-work-accounts"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Facebook Work Accounts の統合
 
@@ -172,4 +172,4 @@ Facebook Work Accounts で Azure AD SSO を構成してテストするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Facebook Work Accounts を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Facebook Work Accounts を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

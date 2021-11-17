@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 7277b1a73514fb1ebd8fa66a6053cedc514c6404
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 237fc993b2b00c0c6c88a674ebff69855a3cd8b9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124760595"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132328852"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teachme-biz"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Teachme Biz の統合
 
@@ -140,4 +140,4 @@ Teachme Biz に対して Azure AD SSO を構成してテストするには、次
 
 ## <a name="next-steps"></a>次のステップ
 
-Teachme Biz を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Teachme Biz を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

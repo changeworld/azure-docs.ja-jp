@@ -200,6 +200,8 @@
               href: work-with-anomaly-rules.md
             - name: 分析ルールのテンプレート バージョンを管理する
               href: manage-analytics-rule-templates.md
+            - name: 分析ルールでインジェスト遅延を処理する
+              href: ingestion-delay.md
             - name: 微調整に関する推奨事項を取得する
               href: detection-tuning.md
         - name: ユーザーとエンティティの行動分析 (UEBA) を有効にする
@@ -344,8 +346,6 @@
           items:
             - name: REST-API を使用したハンティング クエリの管理
               href: hunting-with-rest-api.md
-            - name: REST-API を使用してウォッチリストを管理する
-              href: watchlist-with-rest-api.md
             - name: REST API を使用した地理位置情報データによるエンティティの強化
               href: geolocation-data-api.md
         - name: Microsoft 365 Defender にオンボードされない Defender for Cloud Apps アラート

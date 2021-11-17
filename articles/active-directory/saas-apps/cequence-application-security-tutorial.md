@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 5a7756c1c5e8e1cc0d3edab348c34957f0009c23
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a2b2cb83c4057b5d8df45ea4d3c602965374d557
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124765700"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292150"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cequence-application-security-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cequence Application Security Platform の統合
 
@@ -144,4 +144,4 @@ Cequence Application Security Platform に対して Azure AD SSO を構成して
 
 ## <a name="next-steps"></a>次のステップ
 
-Cequence Application Security Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Cequence Application Security Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

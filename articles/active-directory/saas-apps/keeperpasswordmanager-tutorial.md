@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 3488ecba825d82cd1f3790b977b8b039eb38486f
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 26f56e452b2065fd61180d9e6cc3f757d8392c16
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129402949"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294848"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-keeper-password-manager"></a>チュートリアル: Azure AD SSO と Keeper Password Manager の統合
 
@@ -164,4 +164,4 @@ Azure AD ユーザーが Keeper Password Manager にサインインできるよ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Keeper Password Manager を構成したら、セッション制御を適用できます。 これにより、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)に関するページを参照してください。
+Keeper Password Manager を構成したら、セッション制御を適用できます。 これにより、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Defender for Cloud Apps でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)に関するページをご覧ください。

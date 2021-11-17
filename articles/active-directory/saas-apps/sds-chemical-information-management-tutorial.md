@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: e6913fae2b9b3516eb5bf1f88e1409ad134a724c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9f4db7c9df8414a6853d6c2fae45ea5d85301d2d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780283"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309097"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sds--chemical-information-management"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と SDS & Chemical Information Management の統合
 
@@ -136,4 +136,4 @@ SDS & Chemical Information Management に対して Azure AD SSO を構成して�
 
 ## <a name="next-steps"></a>次のステップ
 
-SDS & Chemical Information Management を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SDS & Chemical Information Management を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

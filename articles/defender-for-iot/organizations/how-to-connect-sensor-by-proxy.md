@@ -1,22 +1,22 @@
 ---
 title: プロキシを使用してセンサーを接続する
-description: インターネットへの直接アクセスがないセンサーと、プロキシを介して通信するように Azure Defender for IoT デバイスを構成する方法について説明します。
+description: インターネットへの直接アクセスがないセンサーと、プロキシを介して通信するように Microsoft Defender for IoT を構成する方法について説明します。
 ms.topic: how-to
-ms.date: 07/04/2021
-ms.openlocfilehash: f16ec5c45d78237e256dcd5936ac0612d175022b
-ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+ms.date: 11/09/2021
+ms.openlocfilehash: 0a6e2ef526985ca5e8bee208989310ed01f18267
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2021
-ms.locfileid: "113297927"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278799"
 ---
-# <a name="connect-azure-defender-for-iot-sensors-without-direct-internet-access-by-using-a-proxy"></a>インターネットへの直接アクセスがない Azure Defender for IoT センサーにプロキシを使用して接続する 
+# <a name="connect-microsoft-defender-for-iot-sensors-without-direct-internet-access-by-using-a-proxy"></a>インターネットへの直接アクセスがない Microsoft Defender for IoT センサーにプロキシを使用して接続する 
 
-この記事では、インターネットへの直接アクセスがないセンサーと、プロキシを介して通信するように Azure Defender for IoT デバイスを構成する方法について説明します。 HTTP トンネリングがある転送プロキシを使用してセンサーに接続します。接続用の HTTP CONNECT コマンドが使用されます。 ここで説明する手順は、オープンソースの Squid プロキシを使用することを前提としていますが、CONNECT を使用できるその他のプロキシも使用できます。 
+この記事では、インターネットへの直接アクセスがないセンサーと、プロキシを介して通信するように Microsoft Defender for IoT を構成する方法について説明します。 HTTP トンネリングがある転送プロキシを使用してセンサーに接続します。接続用の HTTP CONNECT コマンドが使用されます。 ここで説明する手順は、オープンソースの Squid プロキシを使用することを前提としていますが、CONNECT を使用できるその他のプロキシも使用できます。 
 
 このプロキシでは、暗号化された SSL トンネルを使用してセンサーからサービスにデータが転送されます。 プロキシでは、データの検査、分析、キャッシュは行われません。 
 
-次の図は、IT ネットワークと産業用 DMZ に配置されたプロキシを介して、データが OT セグメント内の Azure Defender to IoT センサーからクラウドに送信される様子を示しています。
+次の図は、IT ネットワークに配置されたプロキシと産業用 DMZ を介して、データが OT セグメント内の Microsoft Defender for Cloud IoT センサーからクラウドに送信される様子を示しています。
 
 :::image type="content" source="media/how-to-connect-sensor-by-proxy/cloud-access.png" alt-text="クラウドを通してセンサーをプロキシに接続する。":::
 
@@ -25,7 +25,7 @@ ms.locfileid: "113297927"
 このシナリオでは、最新バージョンの [Squid](http://www.squid-cache.org/) を Ubuntu 18 サーバーにインストールして構成します。
 
 > [!Note]
-> Azure Defender for IoT では、Squid またはその他のプロキシ サービスに対するサポートは提供されていません。
+> Microsoft Defender for IoT では、Squid またはその他のプロキシ サービスに対するサポートは提供されていません。
 
 **Ubuntu 18 サーバーに Squid プロキシをインストールするには**:
 

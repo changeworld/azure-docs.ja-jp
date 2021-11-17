@@ -9,16 +9,16 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b32d5aee270e3380899a81f49b12a55c468f2bc5
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: f6661a794e03bdeb1069b0f04a25d8bf8abdcdc1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122865012"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297679"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Microsoft Graph Security](/graph/security-concept-overview) コネクタを使用して、Microsoft のセキュリティ製品、サービス、およびパートナーを統合する自動化されたワークフローを作成することで、アプリによる脅威の検出、防止、および対応方法を強化できます。 たとえば、アラートなどの Microsoft Graph Security エンティティを監視して管理する [Azure Security Center プレイブック](../security-center/workflow-automation.md)を作成できます。 Microsoft Graph Security コネクタによってサポートされるいくつかのシナリオを以下に示します。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Microsoft Graph Security](/graph/security-concept-overview) コネクタを使用して、Microsoft のセキュリティ製品、サービス、およびパートナーを統合する自動化されたワークフローを作成することで、アプリによる脅威の検出、防止、および対応方法を強化できます。 たとえば、アラートなどの Microsoft Graph Security エンティティを監視して管理する [Microsoft Defender for Cloud プレイブック](../security-center/workflow-automation.md)を作成できます。 Microsoft Graph Security コネクタによってサポートされるいくつかのシナリオを以下に示します。
 
 * クエリまたはアラート ID に基づいてアラートを取得する。 たとえば、重大度が高いアラートを含む一覧を取得できます。
 
@@ -117,8 +117,8 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 | アクション | 説明 |
 |--------|-------------|
-| **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`。 | 
-| **ID によるアラートの取得** | アラート ID に基づいて特定のアラートを取得します。 | 
+| **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`。 |
+| **ID によるアラートの取得** | アラート ID に基づいて特定のアラートを取得します。 |
 | **アラートの更新** | アラート ID に基づいて特定のアラートを更新します。 必須のプロパティと編集可能なプロパティを要求に確実に渡すには、[アラートの編集可能なプロパティ](/graph/api/alert-update)を参照してください。 たとえば、アラートをセキュリティ分析に割り当てて調査できるようにするには、アラートの **Assigned to** プロパティを更新できます。 |
 |||
 

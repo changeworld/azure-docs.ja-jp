@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートでリソース グルー�
 ms.topic: conceptual
 ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8d171bde22bce1aac94e21c412b6773e6a4f39c5
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 0fd0bc94c899cf47e3e0b06f6acd9f9e9bd5d3c8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711483"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310150"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>ARM テンプレートを使用したサブスクリプションのデプロイ
 
@@ -424,6 +424,6 @@ New-AzSubscriptionDeployment `
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
+* Microsoft Defender for Cloud のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
 * サンプル テンプレートは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) に掲載されています。
 * [管理グループ レベル](deploy-to-management-group.md)と[テナント レベル](deploy-to-tenant.md)でテンプレートをデプロイすることもできます。

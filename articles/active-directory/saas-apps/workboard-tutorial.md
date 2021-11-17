@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 6f2061457e2263c13554492f8b6f5c117d94fa96
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d00992ea7cc001d21f2f5286cc56891c3eb4c7a4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745448"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WorkBoard の統合
 
@@ -144,4 +144,4 @@ WorkBoard と Azure AD SSO を構成してテストするには、次の手順�
 
 ## <a name="next-steps"></a>次のステップ
 
-WorkBoard を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+WorkBoard を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

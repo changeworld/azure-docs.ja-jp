@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 392b9d5b753ff75ab64a2f21a87301ba17de24c3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4962849bb08983bb821d5ffed90a8312a52e9172
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058010"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335786"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -23,7 +23,7 @@ ms.locfileid: "131058010"
 ## <a name="verify-active-directory-tenant"></a>Active Directory テナントを確認する
 ワークスペースの移動元と移動先のサブスクリプションは、同じ Azure Active Directory テナント内に存在している必要があります。 Azure PowerShell を使用して、両方のサブスクリプションのテナント ID が同じであることを確認します。
 
-``` PowerShell
+```powershell
 (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
 (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
 ```
@@ -36,11 +36,11 @@ ms.locfileid: "131058010"
   - 更新管理
   - 変更の追跡
   - 勤務時間外に VM を起動/停止する
-  - Azure Security Center
+  - Microsoft Defender for Cloud
 
 >[!IMPORTANT]
-> **Azure Sentinel のお客様**
-> - 現時点では、Azure Sentinel がワークスペースにデプロイされた後は、ワークスペースを別のリソース グループまたはサブスクリプションに移動することはできません。 
+> **Microsoft Sentinel のお客様**
+> - 現時点では、Microsoft Sentinel がワークスペースにデプロイされた後は、ワークスペースを別のリソース グループまたはサブスクリプションに移動することはできません。 
 > - ワークスペースを既に移動している場合は、 **[Analytics]** の下のアクティブなルールをすべて無効にし、5 分後に再び有効にします。 これは、ほとんどの場合に効果的な解決策です。ただし、繰り返しますがこれはサポートされていないため、ご自身の責任で行ってください。
 > - 完了までに数時間 Azure Resource Manager かかることがあり、操作中にソリューションが応答しなくなる可能性があります。
 > 
@@ -69,7 +69,7 @@ Azure portal を使用してソリューションを削除するには、次の�
 
 PowerShell を使用してソリューションを削除するには、次の例に示すように、[Remove-AzResource](/powershell/module/az.resources/remove-azresource) コマンドレットを使用します。
 
-``` PowerShell
+```powershell
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "ChangeTracking(<workspace-name>)" -ResourceGroupName <resource-group-name>
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Updates(<workspace-name>)" -ResourceGroupName <resource-group-name>
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
@@ -113,7 +113,7 @@ Azure portal を使用してワークスペースを移動するには、次の�
 ### <a name="powershell"></a>PowerShell
 PowerShell を使用してワークスペースを移動するには、次の例のように [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) を使用します。
 
-``` PowerShell
+```powershell
 Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup01/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace" -DestinationSubscriptionId "00000000-0000-0000-0000-000000000000" -DestinationResourceGroupName "MyResourceGroup02"
 ```
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2021
 ms.author: jeedes
-ms.openlocfilehash: bec299b71393b8359d580d6fe3e30a1884073205
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1afb2ecfc63ca661ee9beea514583d092eeb0291
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478040"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316809"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-usertesting"></a>チュートリアル: Azure AD SSO と UserTesting の統合
 
@@ -150,4 +150,4 @@ UserTesting に対する Azure AD SSO を構成してテストするには、次
 
 ## <a name="next-steps"></a>次のステップ
 
-UserTesting を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+UserTesting を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

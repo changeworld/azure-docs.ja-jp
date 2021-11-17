@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel でのマルチステージ攻撃の検出 (Fusion) ルールを構成する
-description: Azure Sentinel での Fusion テクノロジに基づく攻撃の検出ルールを作成して構成します。
+title: Microsoft Sentinel でのマルチステージ攻撃の検出 (Fusion) ルールを構成する
+description: Microsoft Sentinel での Fusion テクノロジに基づく攻撃の検出ルールを作成して構成します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -10,34 +10,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bf84d969b8ca60c56ec172dbd9befeaaacd8a5dc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 799bcc2d153b5bd49431cca7e93a68297383b08b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092456"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336805"
 ---
-# <a name="configure-multistage-attack-detection-fusion-rules-in-azure-sentinel"></a>Azure Sentinel でのマルチステージ攻撃の検出 (Fusion) ルールを構成する
+# <a name="configure-multistage-attack-detection-fusion-rules-in-microsoft-sentinel"></a>Microsoft Sentinel でのマルチステージ攻撃の検出 (Fusion) ルールを構成する
 
 > [!IMPORTANT]
 > 新しいバージョンの Fusion 分析ルールは現在 **プレビュー版** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel は、拡張可能な機械学習アルゴリズムに基づく関連付けエンジンである Fusion を使用して、キル チェーンのさまざまな段階で観察される異常な動作と疑わしいアクティビティの組み合わせを特定することによって、マルチステージ攻撃を自動的に検出します。 これらの検出を基に、Azure Sentinel では、Azure Sentinel 以外では検出が困難であろうインシデントが生成されます。 このインシデントは、2 つ以上のアラートまたはアクティビティで構成されています。 設計上、このようなインシデントでは、ボリュームが低、忠実度が高、重大度が高になります。
+Microsoft Sentinel は、拡張可能な機械学習アルゴリズムに基づく関連付けエンジンである Fusion を使用して、キル チェーンのさまざまな段階で観察される異常な動作と疑わしいアクティビティの組み合わせを特定することによって、マルチステージ攻撃を自動的に検出します。 これらの検出を基に、Microsoft Sentinel では、Microsoft Sentinel 以外では検出が困難であろうインシデントが生成されます。 このインシデントは、2 つ以上のアラートまたはアクティビティで構成されています。 設計上、このようなインシデントでは、ボリュームが低、忠実度が高、重大度が高になります。
 
 この検出テクノロジはご利用の環境によってカスタマイズされるため、[誤検知](false-positives.md)率を減らすだけでなく、情報が制限されているか、不足している攻撃も検出できます。
 
 ## <a name="configure-fusion-rules"></a>Fusion ルールの構成
 
-この検出は、Azure Sentinel では既定で有効になっています。 その状態を確認または変更するには、次の手順を実行します。
+この検出は、Microsoft Sentinel では既定で有効になっています。 その状態を確認または変更するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインして **Azure Seninel** に入ります。
+1. [Azure portal](https://portal.azure.com) にサインインして **Microsoft Seninel** に入ります。
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. **[アクティブなルール]** タブを選択し、ルールの種類が **Fusion** であるものだけを表示するようリストをフィルターにかけ、 **[名称]** 列で **[高度なマルチステージ攻撃の検出]** を見つけます。 **[状態]** 列を見て、この検出が有効になっているか、無効になっているか確認します。
 
@@ -47,7 +47,8 @@ Azure Sentinel は、拡張可能な機械学習アルゴリズムに基づく�
 
 1. **[分析ルール ウィザード]** の **[全般]** タブで、状態 (有効/無効) をメモするか、必要に応じて変更します。
 
-    状態を変更したが、それ以上変更する必要がない場合は、 **[確認と更新]** タブを選択し、 **[保存]** を選択します。 
+    状態を変更したが、それ以上変更する必要がない場合は、 **[確認と更新]** タブを選択し、 **[保存]** を選択します。
+
     Fusion 検出ルールをさらに構成するには、 **[次へ: Fusion の構成]** を選択します。
 
     :::image type="content" source="media/configure-fusion-rules/configure-fusion-rule.png" alt-text="Fusion ルールの構成のスクリーンショット。" lightbox="media/configure-fusion-rules/configure-fusion-rule.png":::
@@ -98,7 +99,7 @@ Azure Sentinel は、拡張可能な機械学習アルゴリズムに基づく�
 
 
 > [!NOTE]
-> 現在、Azure Sentinel では 30 日間の履歴データを使用して機械学習システムをトレーニングしています。 このデータは、機械学習パイプラインを通過するときに、Microsoft のキーを使用して常に暗号化されます。 ただし、Azure Sentinel ワークスペースで CMK を有効にした場合、トレーニング データは[カスタマー マネージド キー (CMK)](customer-managed-keys.md) を使用して暗号化されません。 Fusion をオプトアウトするには、 **[Azure Sentinel]** \> **[構成]** \> **[分析]\> [アクティブな規則] の順にクリックし、** **[Advanced Multistage Attack Detection]\(高度なマルチステージ攻撃の検出\)** 規則を右クリックし、 **[無効にする]** を選択します。
+> 現在、Microsoft Sentinel では 30 日間の履歴データを使用して機械学習システムをトレーニングしています。 このデータは、機械学習パイプラインを通過するときに、Microsoft のキーを使用して常に暗号化されます。 ただし、Microsoft Sentinel ワークスペースで CMK を有効にした場合、トレーニング データは[カスタマー マネージド キー (CMK)](customer-managed-keys.md) を使用して暗号化されません。 Fusion をオプトアウトするには、 **[Microsoft Sentinel]** \> **[構成]** \> **[分析]\> [アクティブな規則] の順にクリックし、** **[Advanced Multistage Attack Detection]\(高度なマルチステージ攻撃の検出\)** 規則を右クリックし、 **[無効にする]** を選択します。
 
 ## <a name="configure-scheduled-analytics-rules-for-fusion-detections"></a>Fusion 検出のスケジュールされた分析のルールを構成する
 
@@ -106,11 +107,11 @@ Azure Sentinel は、拡張可能な機械学習アルゴリズムに基づく�
 >
 > - 分析ルール アラートを使用した Fusion による検出は、現在 **プレビュー版** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-**Fusion** では、[スケジュールされた分析のルール](detect-threats-custom.md)により生成されるアラートを使用して、シナリオベースのマルチステージ攻撃や新たな脅威を検出できます。 Azure Sentinel の Fusion の機能を最大限に活用できるよう、次の手順でこれらのルールを構成、有効化することをお勧めします。
+**Fusion** では、[スケジュールされた分析のルール](detect-threats-custom.md)により生成されるアラートを使用して、シナリオベースのマルチステージ攻撃や新たな脅威を検出できます。 Microsoft Sentinel の Fusion の機能を最大限に活用できるよう、次の手順でこれらのルールを構成、有効化することをお勧めします。
 
 1. 新たな脅威の場合、Fusion では、キル チェーン (戦術) とエンティティ マッピング情報を含む、[組み込み](detect-threats-built-in.md#scheduled)とセキュリティ アナリストによって作成された[すべてのスケジュールされた分析ルールによって生成されたアラートを使用できます](detect-threats-custom.md)。 Fusion で分析ルールの出力を使用して、新たな脅威を検出できるようにするには、次のようにします。
 
-    - これらのスケジュール ルールの **エンティティ マッピング** を確認します。 [エンティティ マッピング構成に関するセクション](map-data-fields-to-entities.md)を参考にして、クエリの結果から Azure Sentinel で認識しているエンティティに、パラメーターをマッピングします。 Fusion は、エンティティ (*ユーザー アカウント*、*IP アドレス* など) に基づいてアラートの関連付けを行うので、その ML アルゴリズムでは、エンティティ情報がなければアラートの一致を検出できません。
+    - これらのスケジュール ルールの **エンティティ マッピング** を確認します。 [エンティティ マッピング構成に関するセクション](map-data-fields-to-entities.md)を参考にして、クエリの結果から Microsoft Sentinel で認識しているエンティティに、パラメーターをマッピングします。 Fusion は、エンティティ (*ユーザー アカウント*、*IP アドレス* など) に基づいてアラートの関連付けを行うので、その ML アルゴリズムでは、エンティティ情報がなければアラートの一致を検出できません。
 
     - 分析ルールの詳細で **タクティクス** を確認します。 Fusion ML アルゴリズムでは、[MITRE ATT&CK](https://attack.mitre.org/) タクティクス情報を使用してマルチステージ攻撃を検出します。分析ルールにラベルとして付けたタクティクスは、生成されるインシデントに表示されます。 受け取る警告にタクティクスの情報がない場合、Fusion の計算に影響が出ることがあります。
 
@@ -129,10 +130,10 @@ Azure Sentinel は、拡張可能な機械学習アルゴリズムに基づく�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Sentinel での Fusion による検出](fusion.md)を参照してください。
+[Microsoft Sentinel での Fusion による検出](fusion.md)を参照してください。
 
 数多くの [Fusion のシナリオベースの検出](fusion-scenario-reference.md)を参照してください。
 
-高度なマルチステージ攻撃の検出に関する詳細を学習したので、自分のデータや潜在的な脅威を視覚化する方法を学習することができる以下のクイックスタートにも関心を持たれるかもしれません。[Azure Sentinel の概要](get-visibility.md)
+高度なマルチステージ攻撃の検出に関する詳細を学習したので、自分のデータや潜在的な脅威を視覚化する方法を学習することができる以下のクイックスタートにも関心を持たれるかもしれません。[Microsoft Sentinel の使用を開始する](get-visibility.md)。
 
-自分用として作成したインシデントを調査する準備ができたら、次のチュートリアルをご覧ください。[Azure Sentinel でインシデントを調査する](investigate-cases.md)
+自分用として作成したインシデントを調査する準備ができたら、次のチュートリアルをご覧ください。[Microsoft Sentinel を使用してインシデントを調査する](investigate-cases.md)。

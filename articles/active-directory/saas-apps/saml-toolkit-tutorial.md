@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1f56b73c78d7abbfe3fe1f3dce5218c54fcb6fdf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 04938d787d72e788dd9c59d856f92c6f84939c77
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124830276"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Azure AD SAML Toolkit の統合
 
@@ -160,4 +160,4 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD SAML Toolkit を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Azure AD SAML Toolkit を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

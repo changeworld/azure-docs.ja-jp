@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: da2bd04dceb158d2fbd5b73530ff0e6083c52e9a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eb9388896a4039a070e67d4a66f49d7c2c8e94ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124813207"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341542"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>チュートリアル:SAP Analytics Cloud と Azure Active Directory の統合
 
@@ -211,4 +211,4 @@ Azure AD ユーザーが SAP Analytics Cloud にサインインできるよう�
 
 ## <a name="next-steps"></a>次のステップ
 
-SAP Analytics Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SAP Analytics Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

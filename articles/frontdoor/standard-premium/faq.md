@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: 3a56f01c210fb9b6e29294e00a1cb13715108b42
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 2be4e0b08ca31cabbd0ffbadf37760d289da7eb9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167554"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331264"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) についてよく寄せられる質問
 
@@ -183,73 +183,7 @@ Azure Front Door は、アプリケーションのスケーラビリティのニ
 
 2019 年 9 月以降に作成されたすべての Front Door プロファイルでは、既定の最小値として TLS 1.2 が使用されます。
 
-Front Door では、TLS バージョン 1.0、1.1、1.2 がサポートされます。 TLS 1.3 はまだサポートされていません。
-
-### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure Front Door ではどの証明書がサポートされますか?
-
-Front Door のカスタム ドメインで HTTPS プロトコルを有効にするには、Azure Front Door によって管理される証明書を使用するか、または独自の証明書を使用できます。
-Front Door のマネージド オプションは、Digicert 経由で、かつ Front Door の Key Vault に格納されている標準の TLS/SSL 証明書をプロビジョニングします。 独自の証明書を使用することを選択した場合は、サポートされている CA から証明書をオンボードできます。これは標準の TLS 証明書、Extended Validation 証明書、ワイルドカード証明書のいずれであってもかまいません。 自己署名証明書はサポートされていません。
-
-### <a name="does-front-door-support-autorotation-of-certificates"></a>Front Door は証明書のオートローテーションをサポートしていますか?
-
-Front Door が管理する証明書オプションの場合、証明書は Front Door によってオートローテーションされます。 Front Door によって管理される証明書を使用していて、証明書の有効期限日が 60 日未満である場合は、サポート チケットを送信します。
-
-独自のカスタム TLS/SSL 証明書の場合、オートローテーションはサポートされません。 特定のカスタム ドメインに対して初めて設定が行われる方法と同様に、Front Door に Key Vault 内の適切な証明書のバージョンを参照させる必要があります。 この際、Front Door のサービス プリンシパルが Key Vault にアクセスできていることを確認してください。 証明書のサブジェクト名や SAN が変更されていない限り、Front Door による、この更新された証明書ロールアウト処理によって運用環境のダウンタイムが引き起されることはありません。
-
-### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure Front Door でサポートされている最新の暗号スイートはどれですか?
-
-TLS1.2 では、次の暗号スイートがサポートされています。 
-
-- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
-- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-
-TLS1.0 または TLS1.1 が有効になっているカスタム ドメインを使用している場合は、次の暗号スイートがサポートされます。
-
-- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
-- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
-- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
-- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
-- TLS_RSA_WITH_AES_256_GCM_SHA384
-- TLS_RSA_WITH_AES_128_GCM_SHA256
-- TLS_RSA_WITH_AES_256_CBC_SHA256
-- TLS_RSA_WITH_AES_128_CBC_SHA256
-- TLS_RSA_WITH_AES_256_CBC_SHA
-- TLS_RSA_WITH_AES_128_CBC_SHA
-- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
-
-### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>TLS プロトコルのバージョンを制御するように TLS ポリシーを構成できますか?
-
-Azure portal または [Azure REST API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) を使用して、カスタム ドメインの HTTPS の設定から Azure Front Door に TLS の最小バージョンを構成できます。 現時点では、1.0 と 1.2 のどちらかを選択できます。
-
-### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Front Door は特定の暗号スイートのみをサポートするように構成できますか?
-
-いいえ、Front Door を特定の暗号スイートに対して構成することはサポートされていません。 証明機関 (Verisign、Entrust、Digicert など) から独自のカスタム TLS/SSL 証明書を取得することはできます。 その後、生成する証明書に対して特定の暗号スイートがマークされるようにすることができます。 
-
-### <a name="does-front-door-support-ocsp-stapling"></a>Front Door では OCSP スタップリングはサポートされていますか?
-
-はい。Front Door では OCSP スタップリングが既定でサポートされており、構成は必要ありません。
-
-### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure Front Door ではバックエンドへのトラフィックの再暗号化もサポートされていますか?
-
-はい。Azure Front Door では、バックエンドへのトラフィックを再暗号化する TLS/SSL オフロードやエンド ツー エンド TLS がサポートされています。 バックエンドへの接続はそのパブリック IP を介して行われるので、転送プロトコルとして HTTPS を使用するように Front Door を構成することをお勧めします。
-
-### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Front Door では、HTTPS 接続のバックエンドでの自己署名証明書はサポートされていますか?
-
-いいえ。Front Door では自己署名証明書はサポートされておらず、両方に制限が適用されます。
-
-* **バックエンド**: HTTPS または HTTPS 正常性プローブとしてトラフィックを転送するとき、またはキャッシュが有効になっているルーティング規則で配信元からキャッシュに格納するときは、自己署名証明書を使用できません。
-* **フロントエンド**: カスタム ドメインで HTTPS を有効にするために独自のカスタム TLS/SSL 証明書を使用している場合は、自己署名証明書を使用できません。
+Front Door では、TLS バージョン 1.0、1.1、1.2 がサポートされます。 TLS 1.3 はまだサポートされていません。 詳細については、[Azure Front Door のエンドツーエンド TLS](../concept-end-to-end-tls.md) に関するページを参照してください。
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>バックエンドへの HTTPS トラフィックが失敗するのはなぜですか?
 

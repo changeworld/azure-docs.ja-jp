@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d1cf2db5e7416d7a9cf20f66e7e238632c0c242
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b87494c5d207b6470d86bd3edf94dbdeb98df21f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477839"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340706"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-v-client"></a>チュートリアル: Azure AD SSO と V-Client の統合
 
@@ -149,4 +149,4 @@ Azure AD SSO と V-Client を構成してテストするには、次の手順を
 
 ## <a name="next-steps"></a>次のステップ
 
-V-Client を構成した後、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+V-Client を構成した後、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

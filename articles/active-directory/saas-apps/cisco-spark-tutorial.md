@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 3647f3d8736d59aaeee4f73211dbf75c690f2446
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7dc878c56b52f1a2aea1c6250b3a52d9fba37693
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131474536"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344973"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-cisco-webex"></a>チュートリアル: Azure AD SSO と Cisco Webex の統合
 
@@ -207,4 +207,4 @@ Cisco Webex に対する Azure AD SSO を構成してテストするには、次
 
 ## <a name="next-steps"></a>次のステップ
 
-Cisco Webex を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Cisco Webex を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

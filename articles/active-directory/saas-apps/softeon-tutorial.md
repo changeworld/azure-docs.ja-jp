@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 8db822cd23a2f687cb9b387cbd44eafbcbe6822f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0ed0bd54928e722825080f2b81d81227fa39e45b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128558465"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329097"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-softeon-wms"></a>チュートリアル: Azure AD SSO と Softeon WMS の統合
 
@@ -145,4 +145,4 @@ Softeon WMS 用に Azure AD SSO を構成してテストするには、次の手
 
 ## <a name="next-steps"></a>次のステップ
 
-Softeon WMS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Softeon WMS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

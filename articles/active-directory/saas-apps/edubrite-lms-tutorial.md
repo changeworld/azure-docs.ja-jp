@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/21/2021
 ms.author: jeedes
-ms.openlocfilehash: c614b8852a8be56d1bfe0005e9f2db662d2bb9c1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ca13fc8fb23b8686ed464afc516085ac3b720eb1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607826"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334475"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-edubrite-lms"></a>チュートリアル: Azure AD SSO と EduBrite LMS の統合
 
@@ -146,4 +146,4 @@ EduBrite LMS 用に Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-EduBrite LMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+EduBrite LMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

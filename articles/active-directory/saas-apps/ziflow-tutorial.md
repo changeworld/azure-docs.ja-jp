@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: fd6979056859c9ed0d38413d9bd6713e8cb4fb62
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2d3f8f07e3ee850b8f52c8c3de6d8137e0f88510
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056885"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル: Azure Active Directory と Ziflow の統合
 
@@ -185,4 +185,4 @@ Azure AD ユーザーが Ziflow にサインインできるようにするには
 
 ## <a name="next-steps"></a>次のステップ
 
-Ziflow を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Ziflow を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

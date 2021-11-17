@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 1a39761a021929d8670646dbdf1dcdf435e047f6
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 6a36436353b3398a5ed6186e504acc5d20d31b63
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811176"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132288295"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-axiad-cloud"></a>チュートリアル: Azure AD SSO と Axiad Cloud の統合
 
@@ -136,4 +136,4 @@ Axiad Cloud 用に Azure AD SSO を構成してテストするには、次の手
 
 ## <a name="next-steps"></a>次のステップ
 
-Axiad Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Axiad Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

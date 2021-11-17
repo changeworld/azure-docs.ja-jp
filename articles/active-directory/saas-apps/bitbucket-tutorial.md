@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 25c96d6e69a6b76e41cc84a88b5b470bbeeb4bc0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a3f969aa25e8be7925202647fd0760331e717fee
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814035"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
 
@@ -183,4 +183,4 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD SSO を構成してテス
 
 ## <a name="next-steps"></a>次のステップ
 
-SAML SSO for Bitbucket by resolution GmbH を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SAML SSO for Bitbucket by resolution GmbH を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

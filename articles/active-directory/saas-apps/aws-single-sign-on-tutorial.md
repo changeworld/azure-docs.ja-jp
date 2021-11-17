@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 4e7d0f8edb34f7c6a91eeb8bac6f04b97440f764
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b6154d6542e0f61326c31aeca7abc15d671935ea
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440821"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336375"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-aws-single-sign-on"></a>チュートリアル: Azure AD SSO と AWS Single Sign-on の統合
 
@@ -245,4 +245,4 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-AWS Single Sign-on を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+AWS Single Sign-on を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

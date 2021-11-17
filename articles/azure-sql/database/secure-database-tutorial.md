@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: a5f17382c651d0eb07978ae84531d9511e6737cd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2e6a1889e9b1eea99a81db7b371851240d4c33cb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216278"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347938"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>チュートリアル:Azure SQL Database 内のデータベースをセキュリティで保護する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "130216278"
 > - サーバーレベルとデータベースレベルのファイアウォール規則を作成する
 > - Azure Active Directory (Azure AD) 管理者を構成する
 > - SQL 認証、Azure AD 認証、セキュリティで保護された接続文字列を使用して、ユーザー アクセスを管理する
-> - Azure Defender for SQLy、監査、データ マスキング、暗号化などのセキュリティ機能を有効にする
+> - Microsoft Defender for SQL、監査、データ マスキング、暗号化などのセキュリティ機能を有効にする
 
 Azure SQL Database は、次のようにしてデータをセキュリティで保護します。
 
@@ -233,30 +233,30 @@ Azure AD 認証でユーザーを追加する手順は次のとおりです。
 
 ## <a name="enable-security-features"></a>セキュリティ機能の有効化
 
-Azure SQL Database は、Azure portal を使用してアクセスされるセキュリティ機能を提供します。 これらの機能は、データベースとサーバーの両方で利用可能です。ただし、データ マスクは例外で、データベースのみで利用可能です。 詳細については、[Azure Defender for SQL](azure-defender-for-sql.md)、[監査](../../azure-sql/database/auditing-overview.md)、[動的データ マスクキング](dynamic-data-masking-overview.md)、[透過的なデータ暗号化](transparent-data-encryption-tde-overview.md)に関するページを参照してください。
+Azure SQL Database は、Azure portal を使用してアクセスされるセキュリティ機能を提供します。 これらの機能は、データベースとサーバーの両方で利用可能です。ただし、データ マスクは例外で、データベースのみで利用可能です。 詳細については、[Microsoft Defender for SQL](azure-defender-for-sql.md)、[監査](../../azure-sql/database/auditing-overview.md)、[動的データ マスクキング](dynamic-data-masking-overview.md)、[透過的なデータ暗号化](transparent-data-encryption-tde-overview.md)に関するページを参照してください。
 
-### <a name="azure-defender-for-sql"></a>Azure Defender for SQL
+### <a name="microsoft-defender-for-sql"></a>Microsoft Defender for SQL
 
-Azure Defender for SQL 機能は、潜在的な脅威の発生を検出し、異常なアクティビティがあればセキュリティのアラートを送信します。 ユーザーは、監査機能を使用して、こうした疑わしいイベントを調査し、そのイベントがデータベース内のデータへのアクセス、侵害、悪用かどうかを判断できます。 また、脆弱性評価を含めたセキュリティ概要や、データの検出と分類ツールも提供されます。
+Microsoft Defender for SQL 機能は、潜在的な脅威の発生を検出し、異常なアクティビティがあればセキュリティ アラートを送信します。 ユーザーは、監査機能を使用して、こうした疑わしいイベントを調査し、そのイベントがデータベース内のデータへのアクセス、侵害、悪用かどうかを判断できます。 また、脆弱性評価を含めたセキュリティ概要や、データの検出と分類ツールも提供されます。
 
 > [!NOTE]
 > 脅威の一例として SQL インジェクションがあります。これは、攻撃者がアプリケーションの入力に悪意のある SQL を挿入するプロセスです。 これにより、アプリケーションが知らないうちに悪意のある SQL を実行し、攻撃者がデータベース内のデータにアクセスして侵害や変更を行えるようになります。
 
-Azure Defender for SQL を有効にするには、次の手順に従います。
+Microsoft Defender for SQL を有効にする手順は次のとおりです。
 
 1. Azure portal で、左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで目的のデータベースをクリックします。
 
 1. **[概要]** ページで、 **[サーバー名]** リンクを選択します。 サーバーのページが開きます。
 
-1. **[SQL サーバー]** ページで **[セキュリティ]** セクションを探し、 **[Security Center]** を選択します。
+1. **[SQL サーバー]** ページで **[セキュリティ]** セクションを探し、 **[Defender for Cloud]** を選択します。
 
-   1. この機能を有効にするには、 **[Azure Defender for SQL]** で **[オン]** を選択します。 脆弱性評価の結果を保存するためのストレージ アカウントを選択します。 次に、 **[保存]** を選択します。
+   1. この機能を有効にするには、 **[Microsoft Defender for SQL]** で **[オン]** を選択します。 脆弱性評価の結果を保存するためのストレージ アカウントを選択します。 次に、 **[保存]** を選択します。
 
       ![ナビゲーション ウィンドウ](./media/secure-database-tutorial/threat-settings.png)
 
       電子メールを構成して、セキュリティのアラート、ストレージの詳細、脅威検出の種類を受信することもできます。
 
-1. 目的のデータベースの **[SQL データベース]** ページに戻り、 **[セキュリティ]** セクションの **[Security Center]** を選択します。 ここには、データベースのさまざまなセキュリティ インジケーターがあります。
+1. 目的のデータベースの **[SQL データベース]** ページに戻り、 **[セキュリティ]** セクションの **[Defender for Cloud]** を選択します。 ここには、データベースのさまざまなセキュリティ インジケーターがあります。
 
     ![脅威の状態](./media/secure-database-tutorial/threat-status.png)
 
@@ -347,7 +347,7 @@ Azure Defender for SQL を有効にするには、次の手順に従います。
 > - サーバーレベルとデータベースレベルのファイアウォール規則を作成する
 > - Azure Active Directory (AD) 管理者を構成する
 > - SQL 認証、Azure AD 認証、セキュリティで保護された接続文字列を使用して、ユーザー アクセスを管理する
-> - Azure Defender for SQLy、監査、データ マスキング、暗号化などのセキュリティ機能を有効にする
+> - Microsoft Defender for SQL、監査、データ マスキング、暗号化などのセキュリティ機能を有効にする
 
 次のチュートリアルに進み、地理的分散の実装方法を学習してください。
 

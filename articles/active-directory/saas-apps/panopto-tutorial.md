@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 99b3794aa412c9c08ee30e3de6e59e525b8e147e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 748c5e4788e4c705a8f805d2db1f11b2b4e61467
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768290"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>チュートリアル: Azure Active Directory と Panopto の統合
 
@@ -93,7 +93,7 @@ Panopto に対する Azure AD SSO を構成してテストするには、次の�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -105,7 +105,7 @@ Panopto に対する Azure AD SSO を構成してテストするには、次の�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Panopto へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -117,13 +117,13 @@ Panopto に対する Azure AD SSO を構成してテストするには、次の�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-panopto-sso&quot;></a>Panopto の SSO の構成
+## <a name="configure-panopto-sso"></a>Panopto の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、Panopto 企業サイトに管理者としてログインします。
 
 2. ツールバーの左側の [**System**] をクリックし、[**Identity Providers**] をクリックします。
    
-    ![システム](./media/panopto-tutorial/toolbar.png &quot;システム")
+    ![システム](./media/panopto-tutorial/toolbar.png "システム")
 
 3. [**Add Provider**] をクリックします。
    
@@ -167,4 +167,4 @@ Panopto に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Panopto を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Panopto を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -2,13 +2,16 @@
 title: Azure Stack VM のファイルのバックアップ
 description: Azure Backup を使用して、Azure Stack ファイルとアプリケーションを Azure Stack 環境にバックアップし、復元します。
 ms.topic: conceptual
-ms.date: 06/05/2018
-ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/11/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: a6c92485ec89e06f9bf545181fe7e6341cd7bff4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89180985"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284438"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack 上のファイルとアプリケーションのバックアップ
 
@@ -133,5 +136,10 @@ Azure portal で Azure Backup Server エンティティを表示するには、�
 
 Azure Backup Server を使用して他のワークロードを保護する方法については、次のいずれかの記事を参照してください。
 
+* [Azure Backup サービスの概要](./backup-overview.md)
+* [Azure AD の概要](../active-directory/fundamentals/active-directory-whatis.md)
+* [Azure Recovery Services コンテナー](./backup-azure-recovery-services-vault-overview.md)
+* [Azure Storage について](../storage/common/storage-introduction.md)
+* [Azure Stack Hub について](/azure-stack/operator/azure-stack-overview)
 * [SharePoint ファームのバックアップ](./backup-mabs-sharepoint-azure-stack.md)
 * [SQL Server のバックアップ](./backup-mabs-sql-azure-stack.md)

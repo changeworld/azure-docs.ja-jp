@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/25/2021
 ms.author: jeedes
-ms.openlocfilehash: c72da21933f1f03dd30c6ef8a5dc68368923145e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d70072c66ae3ea7e655e5de4c245aca276e8dec8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131448182"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132296473"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-chargebee"></a>チュートリアル: Azure AD SSO と Chargebee の統合
 
@@ -172,4 +172,4 @@ Azure AD ユーザーが Chargebee にサインインできるようにするに
 
 ## <a name="next-steps"></a>次のステップ
 
-Chargebee を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Chargebee を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

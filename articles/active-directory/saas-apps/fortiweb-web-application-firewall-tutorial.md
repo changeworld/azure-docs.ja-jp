@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 288efa59cfd423baf83d1f15c817381db8033c72
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9331b950a5093f94625938626d4d79d8fc6dd08b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068013"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortiweb-web-application-firewall"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiWeb Web Application Firewall の統合
 
@@ -247,4 +247,4 @@ FortiWeb Web Application Firewall に対して Azure AD SSO を構成してテ�
 
 ## <a name="next-steps"></a>次のステップ
 
-FortiWeb Web Application Firewall を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+FortiWeb Web Application Firewall を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

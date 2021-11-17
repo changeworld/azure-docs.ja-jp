@@ -1,16 +1,16 @@
 ---
-title: デバイス ビルダー向け Azure Defender for IoT についてよく寄せられる質問
-description: Azure Defender for IoT エージェントについて最もよく寄せられる質問に対する回答を確認します。
+title: デバイス ビルダー向け Microsoft Defender for IoT についてよく寄せられる質問
+description: Microsoft Defender for IoT エージェントについて最もよく寄せられる質問に対する回答を確認します。
 ms.topic: conceptual
-ms.date: 07/07/2021
-ms.openlocfilehash: 3c2e099ca0a6c7cde2fa8a33ed766ba1d4b91fd1
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 11/09/2021
+ms.openlocfilehash: 9075424368a6d3e8c2e17306a573f768cb4a0e45
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434320"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293480"
 ---
-# <a name="azure-defender-for-iot-for-device-builders-frequently-asked-questions"></a>デバイス ビルダー向け Azure Defender for IoT についてよく寄せられる質問
+# <a name="microsoft-defender-for-iot-for-device-builders-frequently-asked-questions"></a>デバイス ビルダー向け Microsoft Defender for IoT についてよく寄せられる質問
 
 この記事では、Defender for IoT エージェントについてのよく寄せられる質問と回答の一覧を示します。
 

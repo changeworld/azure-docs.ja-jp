@@ -8,17 +8,17 @@ ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 1d3688e4051f2883c5316a13e59f5629481799e2
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 407d3c8d14cec2a55a9a33d58dfa1af77b8266b7
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864562"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522842"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
 
-- **Azure ファイル共有の直接マウント**: Azure Files からは Server Message Block (SMB) または Network File System (NFS) アクセスが提供されるため、Azure ファイル共有は、お使いの OS で利用できる標準の SMB または NFS (プレビュー) クライアントを利用し、オンプレミスまたはクラウドでマウントできます。 Azure ファイル共有はサーバーレスであるため、運用環境でデプロイするシナリオでは、ファイル サーバーや NAS デバイスを管理する必要ありません。 つまり、ソフトウェアの修正プログラムを適用したり、物理ディスクを交換したりする必要はありません。 
+- **Azure ファイル共有を直接マウントする**:Azure Files からは Server Message Block (SMB) または Network File System (NFS) アクセスが提供されるため、Azure ファイル共有は、お使いの OS で利用できる標準の SMB または NFS を利用し、オンプレミスまたはクラウドでマウントできます。 Azure ファイル共有はサーバーレスであるため、運用環境でデプロイするシナリオでは、ファイル サーバーや NAS デバイスを管理する必要ありません。 つまり、ソフトウェアの修正プログラムを適用したり、物理ディスクを交換したりする必要はありません。 
 
 - **Azure File Sync を使用したオンプレミスでの Azure ファイル共有のキャッシュ**:Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持しながら、Azure Files で組織のファイル共有を一元化できます。 Azure File Sync によって、オンプレミス (またはクラウド) の Windows Server が Azure SMB ファイル共有の高速キャッシュに変換されます。 
 
@@ -29,7 +29,7 @@ Azure Files には、Azure ファイル共有のマウント用に、[サーバ�
 
 SMB と NFS の両方のファイル共有に対し、Azure Files により、ストレージのニーズに合わせたスケールアップが可能で、数千ものクライアントによって同時にアクセスできる、エンタープライズ レベルのファイル共有が提供されます。
 
-| 機能 | SMB | NFS (プレビュー) |
+| 機能 | SMB | NFS |
 |---------|-----|---------------|
 | サポートされるプロトコルのバージョン | SMB 3.1.1、SMB 3.0、SMB 2.1 | NFS 4.1 |
 | 推奨される OS | <ul><li>Windows 10 バージョン 21H1 以降</li><li>Windows Server 2019 以降</li><li>Linux カーネル バージョン 5.3 以降</li></ul> | Linux カーネル バージョン 4.3 以降 |
@@ -126,10 +126,10 @@ Azure portal 上で、Azure Backup を使用して、項目レベルおよび共
 
 バックアップの詳細については、「[Azure ファイル共有のバックアップについて](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
-### <a name="azure-defender-for-azure-files"></a>Azure Defender for Azure Files 
-Azure Defender for Azure Storage (以前の Advanced Threat Protection for Azure Storage) には、ストレージ アカウント上で異常なアクティビティ (通常とは異なるアクセス試行など) が検出されたときにアラートを提示するセキュリティ インテリジェンスの追加レイヤーが用意されています。 また、マルウェアのハッシュ評価分析も実行され、既知のマルウェアに関するアラート通知が行われます。 Azure Security Center を使用して、サブスクリプションまたはストレージ アカウント レベルで Azure Defender を構成できます。 
+### <a name="protect-azure-files-with-microsoft-defender-for-storage"></a>Microsoft Defender for Storage を使用して Azure Files を保護する
+Microsoft Defender for Storage には、ストレージ アカウント上で異常なアクティビティ (通常とは異なるアクセス試行など) が検出されたときにアラートを生成するセキュリティ インテリジェンスの追加レイヤーが用意されています。 また、マルウェアのハッシュ評価分析も実行され、既知のマルウェアに関するアラート通知が行われます。 Microsoft Defender for Storage は、Microsoft Defender for Cloud を使用してサブスクリプションまたはストレージのアカウント レベルで構成できます。
 
-詳細については、[Azure Defender for Storage の概要](../../security-center/defender-for-storage-introduction.md)に関するページを参照してください。
+詳細については、「[Microsoft Defender for Storage の概要](../../security-center/defender-for-storage-introduction.md)」を参照してください。
 
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]

@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 3/02/2021
+ms.date: 11/10/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 69724711421182b2a530a2411b6ecc31b95a1388
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 79164bedf91a62508d7455104bbbcf00e2eacbee
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823594"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289435"
 ---
 # <a name="monitoring-azure-files"></a>Azure Files の監視
 
@@ -115,7 +115,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
    [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
    > [!NOTE]
-   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件をご確認ください。
+   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件を理解してください。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>ログを Azure Event Hubs にストリーミングする
 
@@ -315,6 +315,21 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) コマンドレットを使用します。
+
+```powershell
+   $resourceId = "<resource-ID>"
+   Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
+```
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetFile" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
@@ -334,7 +349,13 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
 
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドを使用します。
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetFile' " --aggregation "Total" 
+```
 ### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)
 
 Azure Monitor には、メトリックの定義と値を読み取るための [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。

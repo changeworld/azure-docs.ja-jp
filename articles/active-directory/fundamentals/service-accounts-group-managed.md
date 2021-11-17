@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b823fbcc124a67980fcd1f0440ae107de01fc20
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: f934e016f23e988cbe8673f80e96c4583b6aaec5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690409"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292511"
 ---
 # <a name="secure-group-managed-service-accounts"></a>グループ管理サービス アカウントをセキュリティで保護する
 
@@ -57,7 +57,7 @@ gMSA を使用する場合の潜在的なセキュリティ問題とその軽減
 | セキュリティ上の問題| 対応策 |
 | - | - |
 | gMSA は特権グループのメンバーです。 | <li>グループ メンバーシップを確認します。 これを行うには、すべてのグループ メンバーシップを列挙する PowerShell スクリプトを作成します。 次に、gMSA ファイルの名前で結果の CSV ファイルをフィルター処理できます。<li>特権グループから gMSA を削除します。<li>gMSA に、そのサービスを実行するために必要な権限とアクセス許可のみを付与します (サービス ベンダーに問い合わせてください)。 
-| gMSA には、機密リソースへの読み取りおよび書き込みアクセス権があります。 | <li>機密リソースへのアクセスを監査します。<li>監査ログを分析のために SIEM (Azure Log Analytics や Azure Sentinel など) にアーカイブします。<li>望ましくないレベルのアクセスを検出する場合は、不要なリソース アクセス許可を削除します。 |
+| gMSA には、機密リソースへの読み取りおよび書き込みアクセス権があります。 | <li>機密リソースへのアクセスを監査します。<li>監査ログを分析のために SIEM (Azure Log Analytics や Microsoft Sentinel など) にアーカイブします。<li>望ましくないレベルのアクセスを検出する場合は、不要なリソース アクセス許可を削除します。 |
 | | |
 
 

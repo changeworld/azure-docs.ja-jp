@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: eriklind
-ms.openlocfilehash: a486f8e2f2505470b54c0b0f646794a7789afc09
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b796989cace5631c876809ee94b47c065bb4be71
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130256876"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335843"
 ---
 # <a name="create-an-ios-app-public-preview"></a>iOS アプリを作成する (パブリック プレビュー)
 

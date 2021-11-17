@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 1efa829e57cdff6d11d9cd69a2c976e5c22748d9
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: d828a8f59ced10a49941505df1dffbbfced2e5e3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859420"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287744"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-promaster-by-inlogik"></a>チュートリアル: Azure AD SSO と ProMaster (by Inlogik) の統合
 
@@ -155,4 +155,4 @@ ProMaster (by Inlogik) に対して Azure AD SSO を構成するには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-ProMaster (by Inlogik) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+ProMaster (by Inlogik) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

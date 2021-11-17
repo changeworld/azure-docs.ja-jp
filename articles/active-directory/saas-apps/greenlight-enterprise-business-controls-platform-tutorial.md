@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 0bd58a46bc67a7ca67cb262c7d7aeaa19d64b5ed
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3b80c7c8c0a3fa0a61270146d7d3ec79a1d88774
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427724"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311532"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-greenlight-enterprise-business-controls-platform"></a>チュートリアル: Azure AD SSO と Greenlight Enterprise Business Controls Platform の統合
 
@@ -144,4 +144,4 @@ Greenlight Enterprise Business Controls Platform で Azure AD SSO を構成し�
 
 ## <a name="next-steps"></a>次のステップ
 
-Greenlight Enterprise Business Controls Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Greenlight Enterprise Business Controls Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

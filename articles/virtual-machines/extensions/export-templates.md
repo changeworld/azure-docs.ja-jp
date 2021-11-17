@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 12/05/2016
-ms.openlocfilehash: d461be7d760e1e4fc99fe23a9fe2d5529237ebb3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b4b21e475856b724fe06e40fc83665443428b30e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949825"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281496"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>VM 拡張機能を含むリソース グループのエクスポート
 
@@ -27,7 +27,7 @@ Azure リソース グループを、再デプロイ可能な新しい Resource 
 
 次の拡張機能は、Automation スクリプト機能を使用してエクスポートできます。
 
-> Acronis Backup、Acronis Backup Linux、Bg Info、BMC CTM Agent Linux、BMC CTM Agent Windows、Chef Client、Custom Script、Custom Script Extension、Custom Script for Linux、Datadog Linux Agent、Datadog Windows Agent、Docker Extension、DSC Extension、Dynatrace Linux、Dynatrace Windows、HPE Security Application Defender、IaaS Antimalware、IaaS Diagnostics、Linux Chef Client、Linux Diagnostic、OS Patching For Linux、Puppet Agent、Site 24x7 Apm Insight、Site 24x7 Linux Server、Site 24x7 Windows Server、Trend Micro DSA、Trend Micro DSA Linux、VM Access For Linux、VM Access For Linux、VM Snapshot、VM Snapshot Linux
+> Acronis Backup、Acronis Backup Linux、Bg Info、BMC CTM Agent Linux、BMC CTM Agent Windows、Chef Client、Custom Script、Custom Script Extension、Custom Script for Linux、Datadog Linux Agent、Datadog Windows Agent、Docker Extension、DSC Extension、Dynatrace Linux、Dynatrace Windows、HPE Security Application Defender for Cloud、IaaS Antimalware、IaaS Diagnostics、Linux Chef Client、Linux Diagnostic、OS Patching For Linux、Puppet Agent、Site 24x7 Apm Insight、Site 24x7 Linux Server、Site 24x7 Windows Server、Trend Micro DSA、Trend Micro DSA Linux、VM Access For Linux、VM Access For Linux、VM Snapshot、VM Snapshot Linux
 
 ## <a name="export-the-resource-group"></a>リソース グループをエクスポートする
 

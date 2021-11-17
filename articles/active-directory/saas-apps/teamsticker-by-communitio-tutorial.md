@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 6a8c3c9442698dba24651e27bcef10fd96c0dbdb
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: e4d6c6b2484837a761980c951c96ba022a86a8c8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129662144"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132328810"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-teamsticker-by-communitio"></a>チュートリアル: Azure AD SSO と TeamSticker by Communitio の統合
 
@@ -143,4 +143,4 @@ TeamSticker by Communitio 用に Azure AD SSO を構成してテストするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-TeamSticker by Communitio を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+TeamSticker by Communitio を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

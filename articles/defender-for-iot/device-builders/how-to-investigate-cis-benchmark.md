@@ -1,14 +1,14 @@
 ---
 title: CIS ベンチマークの推奨事項を調査する
 description: OS ベースラインの推奨事項に基づいて、基本的および高度な調査を行います。
-ms.date: 08/11/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 295345d43c48736f9f4572c8845f96560ce4f184
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8777b4c134dc92cd8e8a94424f57355239ee32c5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738096"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293575"
 ---
 # <a name="investigate-os-baseline-based-on-cis-benchmark-recommendation"></a>OS ベースライン (CIS ベンチマークに基づく) の推奨事項を調査する
 
@@ -16,13 +16,13 @@ OS ベースラインの推奨事項に基づいて、基本的および高度�
 
 ## <a name="basic-os-baseline-security-recommendation-investigation"></a>基本的な OS ベースライン セキュリティに関する推奨事項の調査  
 
-Azure Defender for IoT ポータルの **[IoT Hub]** の下に移動して、OS ベースラインの推奨事項を調査することができます。 詳細については、[セキュリティに関する推奨事項を調査する](quickstart-investigate-security-recommendations.md)方法を参照してください。
+[Azure portal の Defender for IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) に移動して、OS ベースラインの推奨事項を調査することができます。 詳細については、[セキュリティに関する推奨事項を調査する](quickstart-investigate-security-recommendations.md)方法を参照してください。
 
 ## <a name="advanced-os-baseline-security-recommendation-investigation"></a>高度な OS ベースラインのセキュリティに関する推奨事項の調査  
 
 このセクションでは、OS ベースライン テストの結果をよりよく理解し、Azure Log Analytics でイベントのクエリを実行する方法について説明します。  
 
-高度な OS ベースラインのセキュリティに関する推奨事項の調査は、Log Analytics を使用する場合にのみサポートされます。 作業を続行する前に、Defender for IoT を Log Analytics ワークスペースに接続してください。 高度な OS ベースラインのセキュリティに関する推奨事項の詳細については、[Azure Defender for IoT エージェントベースのソリューションを構成する](how-to-configure-agent-based-solution.md)方法を参照してください。
+高度な OS ベースラインのセキュリティに関する推奨事項の調査は、Log Analytics を使用する場合にのみサポートされます。 作業を続行する前に、Defender for IoT を Log Analytics ワークスペースに接続してください。 高度な OS ベースラインのセキュリティに関する推奨事項の詳細については、[Microsoft Defender for IoT エージェントベースのソリューションを構成する](how-to-configure-agent-based-solution.md)方法を参照してください。
 
 アラートについて、Log Analytics で IoT セキュリティ イベントのクエリを実行するには、次のようにします。
 

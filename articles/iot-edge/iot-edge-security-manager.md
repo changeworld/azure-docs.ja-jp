@@ -9,12 +9,12 @@ ms.reviewer: eustacea
 ms.date: 09/17/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: fedb06a23a71dbe30954154daa6d314267268551
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: a7c714a818282ef42905e711c9f016c2e9c3e31e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659680"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286414"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge セキュリティ マネージャー
 
@@ -64,7 +64,7 @@ IoT Edge セキュリティ マネージャーには次のような役割があ�
 * 公証人サービスを使用して、信頼のデバイス ハードウェア ルートへのアクセスを制御します。
 * 実行時の IoT Edge の動作の整合性の監視。
 * デバイス ID をプロビジョニングし、該当する場合は信頼の切り替えを管理します。
-* IoT Hub や Azure Defender for IoT のためのデバイス更新などのサービスでのクライアント エージェントの安全な操作を確保します。
+* Device Update for IoT Hub や Microsoft Defender for IoT などのサービスでのクライアント エージェントの安全な操作を確保します。
 :::moniker-end
 
 IoT Edge セキュリティ マネージャーは、次の 3 つのコンポーネントで構成されています。

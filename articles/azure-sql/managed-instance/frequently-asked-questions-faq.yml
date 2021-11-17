@@ -13,12 +13,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: urmilano, danil, nnikolic
   ms.date: 09/21/2020
-  ms.openlocfilehash: 9a082102f7f71bf987b6a959145f77617014baca
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 81b28084d63a01f6ceeba57d128f389a5e767259
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131423681"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132315845"
 title: Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 summary: >
   [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -253,7 +253,7 @@ sections:
 
       - [SQL 監査](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)を有効にしてアラート メカニズムと統合する。
 
-      - [Azure Defender for SQL](../database/azure-defender-for-sql.md) スイートから[脅威検出](../database/threat-detection-configure.md)を有効にする。
+      - [Microsoft Defender for SQL](../database/azure-defender-for-sql.md) スイートから[脅威検出](../database/threat-detection-configure.md)を有効にする。
   - question: >
       DNS
     answer: >

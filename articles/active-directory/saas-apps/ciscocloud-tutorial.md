@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: jeedes
-ms.openlocfilehash: cbe8211a60c24e74805ee4b59acd57ff233f39c4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 31556c4e737e2b69e41b0e9ac06f7cbbdcd1bcc9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802961"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311775"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>チュートリアル: Azure Active Directory と Cisco Cloud の統合
 
@@ -170,4 +170,4 @@ Cisco Cloud に対する Azure AD SSO を構成してテストするには、次
 
 ## <a name="next-steps"></a>次のステップ
 
-Cisco Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Cisco Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

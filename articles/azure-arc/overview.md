@@ -3,12 +3,12 @@ title: Azure Arc の概要
 description: Azure Arc とは何か、そしてお客様が Azure の他のサービスや機能を使用してハイブリッド リソースの管理とガバナンスを実現するうえでどのように役立つかについて説明します。
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 7a900a7a0454f4dff5cdfe98f611982c33617c1d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 62395b53fea3f86e42726f1bb2d35b12d8a0bdca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832351"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345740"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc の概要
 
@@ -70,11 +70,11 @@ Azure Arc の主な機能は次のとおりです。
 
 * 更新の管理。
 
-Azure Arc 対応サーバーで使用されるすべての Azure サービス (Azure Security Center、Azure Monitor など) は、そのサービスの価格で請求されます。 詳細については、[Azure の価格ページ](https://azure.microsoft.com/pricing/)をご覧ください。
+Azure Arc 対応サーバーで使用されるすべての Azure サービス (Microsoft Defender for Cloud、Azure Monitor など) は、そのサービスの価格で請求されます。 詳細については、[Azure の価格ページ](https://azure.microsoft.com/pricing/)をご覧ください。
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes
 
-Azure Arc 対応 Kubernetes で使用されるすべての Azure サービス (Azure Security Center、Azure Monitor など) は、そのサービスの価格で請求されます。 Azure Arc 対応 Kubernetes 上の構成に対する料金の詳細については、[Azure の価格ページ](https://azure.microsoft.com/pricing/)をご覧ください。
+Azure Arc 対応 Kubernetes で使用されるすべての Azure サービス (Microsoft Defender for Cloud、Azure Monitor など) は、そのサービスの価格で請求されます。 Azure Arc 対応 Kubernetes 上の構成に対する料金の詳細については、[Azure の価格ページ](https://azure.microsoft.com/pricing/)をご覧ください。
 
 ### <a name="azure-arc-enabled-data-services"></a>Azure Arc 対応データ サービス
 

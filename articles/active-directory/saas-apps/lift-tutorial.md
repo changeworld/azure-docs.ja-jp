@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/11/2020
 ms.author: jeedes
-ms.openlocfilehash: a345210e8fc2941e58b0dac6dffdfea6830523fb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4394a4c3a910de4d17172556e023e2894cb5bcd7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778744"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313434"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lift"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と LIFT の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * LIFT では、**SP** Initiated SSO がサポートされます
-* LIFT を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* LIFT を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。
 
 ## <a name="adding-lift-from-the-gallery"></a>ギャラリーからの LIFT の追加
 
@@ -146,4 +146,4 @@ LIFT で Azure AD SSO を構成してテストするには、次の構成要素�
 
 - [Azure AD で LIFT を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)

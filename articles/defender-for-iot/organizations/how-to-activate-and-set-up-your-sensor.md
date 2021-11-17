@@ -1,14 +1,14 @@
 ---
 title: センサーをアクティブ化してセットアップする
 description: この記事では、センサー コンソールにサインインしてアクティブ化する方法について説明します。
-ms.date: 04/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 256e2b941d0eb2f24331abd892b798014cf0eb5d
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 86c5215e91a32fd67a29e157df2c3ab8606f15b8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020965"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278970"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>センサーをアクティブ化してセットアップする
 
@@ -20,7 +20,7 @@ ms.locfileid: "113020965"
 
 ## <a name="sign-in-and-activation-for-administrator-users"></a>管理者ユーザーのサインインとアクティブ化
 
-管理者は初回サインイン時に、センサーのオンボード中にダウンロードされたアクティブ化とパスワード回復のファイルにアクセスできることを確認する必要があります。 できない場合は、Azure Defender for IoT ポータルでこれらのファイルを生成するために、Azure セキュリティ管理者、サブスクリプション共同作成者、またはサブスクリプション所有者のアクセス許可が必要です。
+管理者は初回サインイン時に、センサーのオンボード中にダウンロードされたアクティブ化とパスワード回復のファイルにアクセスできることを確認する必要があります。 できない場合は、Azure portal で Defender for IoT を介してこれらのファイルを生成するために、Azure セキュリティ管理者、サブスクリプション共同作成者、またはサブスクリプション所有者のアクセス許可が必要です。
 
 ### <a name="first-time-sign-in-and-activation-checklist"></a>初回サインインとアクティブ化のチェックリスト
 
@@ -32,22 +32,22 @@ ms.locfileid: "113020965"
 
 - 初期パスワード。 Arrow から構成済みセンサーを購入した場合は、初めてサインインするときにパスワードを生成する必要があります。
 
-- このセンサーに関連付けられているアクティブ化ファイル。 このファイルは、Defender for IoT ポータルへのセンサーのオンボード中に生成されてダウンロードされたものです。
+- このセンサーに関連付けられているアクティブ化ファイル。 このファイルは、Defender for IoT によるセンサーのオンボード中に生成されてダウンロードされたものです。
 
 - 会社に必要な SSL/TLS の CA 署名証明書。
 
 ### <a name="about-activation-files"></a>アクティブ化ファイルについて
 
-センサーは、特定の管理モードで Azure Defender for IoT にオンボードされました。
+センサーは、特定の管理モードで Microsoft Defender for IoT にオンボードされています。
 
 | モードの種類 | [説明] |
 |--|--|
-| **クラウド接続モード** | センサーによって検出された情報はセンサー コンソールに表示されます。 また、アラート情報は IoT ハブを通じて配信され、他の Azure サービス (Azure Sentinel など) と共有できます。 また、脅威インテリジェンスの自動更新を有効にすることもできます。 |
+| **クラウド接続モード** | センサーによって検出された情報はセンサー コンソールに表示されます。 アラート情報は IoT ハブを通じても配信され、他の Azure サービス (Microsoft Sentinel など) と共有できます。 また、脅威インテリジェンスの自動更新を有効にすることもできます。 |
 | **ローカル接続モード** | センサーによって検出された情報はセンサー コンソールに表示されます。 また、センサーがオンプレミスの管理コンソールに接続されている場合は、検出情報が共有されます。 |
 
 ローカル接続またはクラウド接続された、このセンサー用のアクティブ化ファイルはオンボード中に生成されてダウンロードされたものです。 アクティブ化ファイルには、センサーの管理モードに関する説明が含まれています。 "*デプロイする各センサーに、一意のアクティブ化ファイルをアップロードする必要があります。* "  初めてサインインするときは、このセンサー用の関連アクティブ化ファイルをアップロードする必要があります。
 
-:::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-activation-file-download-button.png" alt-text="Azure Defender for IoT ポータル、センサーをオンボードする。":::
+:::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-activation-file-download-button.png" alt-text="Azure portal の Defender for IoT、センサーのオンボード。":::
 
 ### <a name="about-certificates"></a>証明書について
 
@@ -77,7 +77,7 @@ ms.locfileid: "113020965"
 
 1. インストール中に定義された IP を使用して、ブラウザーからセンサー コンソールにアクセスします。 サインインのダイアログ ボックスが開きます。
 
-    :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Azure Defender for IoT センサー。":::
+    :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Microsoft Defender for IoT センサー":::
 
 1. センサーのインストール中に定義された資格情報を入力するか、 **[パスワードの回復]** オプションを選択します。 Arrow から構成済みセンサーを購入した場合は、まずパスワードを生成します。 パスワードの回復の詳細については、[初回サインインでのパスワード エラーの調査](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in)に関する記事を参照してください。
 
@@ -130,7 +130,7 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 
 **ライセンスをアクティブ化するには、次の手順を実行します。**
 
-1. [サポート](https://ms.portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support)でケースを開きます。
+1. [サポート](https://portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support)でケースを開きます。
 
 1. サポートにアクティブ化 ID 番号を提供します。
 
@@ -146,15 +146,15 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 
 ### <a name="subsequent-sign-ins"></a>以降のサインイン
 
-初回のアクティブ化後は、サインイン後にアクティブ化ファイルが要求されずに Azure Defender for IoT センサー コンソールが開きます。 必要なのはサインイン資格情報のみです。
+初回のアクティブ化後は、サインイン後にアクティブ化ファイルが要求されずに Microsoft Defender for IoT センサー コンソールが開きます。 必要なのはサインイン資格情報のみです。
 
-サインインすると、Azure Defender for IoT コンソールが開きます。
+サインインすると、Microsoft Defender for IoT コンソールが開きます。
 
-:::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-log-in-screen-dashboard-v2.png" alt-text="Azure Defender for IoT コンソール。":::
+:::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-log-in-screen-dashboard-v2.png" alt-text="Microsoft Defender for IoT コンソール。":::
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>初期セットアップと学習 (管理者向け)
 
-初めてサインインすると、Azure Defender for IoT センサーによってネットワークの監視が自動的に開始されます。 ネットワーク デバイスがデバイス マップとデバイス インベントリのセクションに表示されます。 Azure Defender for IoT によって、ネットワークで発生するすべてのセキュリティと運用上のインシデントの検出とアラートが開始されます。 その後、検出された情報に基づいてレポートとクエリを作成できます。
+初めてサインインすると、Microsoft Defender for IoT センサーによってネットワークの監視が自動的に開始されます。 ネットワーク デバイスがデバイス マップとデバイス インベントリのセクションに表示されます。 Microsoft Defender for IoT によって、ネットワークで発生するすべてのセキュリティと運用上のインシデントの検出とアラートが開始されます。 その後、検出された情報に基づいてレポートとクエリを作成できます。
 
 最初、このアクティビティは学習モードで実行されます。これは、ネットワークの通常のアクティビティを学習するようセンサーに指示するものです。 たとえば、ネットワークで検出されたデバイス、ネットワークで検出されたプロトコル、特定のデバイス間で発生するファイル転送がセンサーによって学習されます。 このアクティビティがネットワークのベースライン アクティビティになります。
 
@@ -176,7 +176,7 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 
 ### <a name="disable-learning-mode"></a>学習モードを無効にする
 
-システム設定を調整した後は、システム検出でネットワーク アクティビティが正確に反映されるようになるまで、Azure Defender for IoT センサーを学習モードで実行できます。
+システム設定を調整した後は、システム検出でネットワーク アクティビティが正確に反映されるようになるまで、Microsoft Defender for IoT センサーを学習モードで実行できます。
 
 学習モードは、ネットワークのサイズと複雑さに応じて、約 2 週間から 6 週間実行する必要があります。 学習モードを無効にすると、ベースライン アクティビティと異なるアクティビティによってアラートがトリガーされます。
 
@@ -224,7 +224,7 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 | ウィンドウ | アイコン | 説明 |
 |---|---|---|
 | Users | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | さまざまなアクセス レベルでユーザーとロールを定義します。 |
-| 転送 | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Defender for IoT と統合しているパートナーおよび内部ソース (Azure Sentinel など) へのアラート情報を、電子メール アドレスや Webhook サーバーなどに転送します。 <br /> 詳細については、「[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)」を参照してください。 |
+| 転送 | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Defender for IoT と統合しているパートナーおよび内部ソース (Microsoft Sentinel など) へのアラート情報を、電子メール アドレスや Webhook サーバーなどに転送します。 <br /> 詳細については、「[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)」を参照してください。 |
 | システムの設定 | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | システム設定を構成します。 たとえば、DHCP 設定を定義したり、メール サーバーの詳細を指定したり、ポートのエイリアスを作成したりします。 |
 | 設定のインポート | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | **[設定のインポート]** ウィンドウを表示します。 デバイスの情報は手動で変更できます。<br /> 詳細については、「[デバイス情報をインポートする](how-to-import-device-information.md)」を参照してください。 |
 

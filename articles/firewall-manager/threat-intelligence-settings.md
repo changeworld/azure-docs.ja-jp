@@ -7,16 +7,16 @@ ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 819509e08a5604957f01452e5c6ec33c20de2b2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651725"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297489"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Firewall の脅威インテリジェンスの構成
 
-Azure Firewall ポリシー用に脅威インテリジェンスベースのフィルター処理を構成して、既知の悪意のある IP アドレスおよびドメインとの間で送受信されるトラフィックを警告および拒否できます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/operations/intelligence)は、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。<br>
+Azure Firewall ポリシー用に脅威インテリジェンスベースのフィルター処理を構成して、既知の悪意のある IP アドレスおよびドメインとの間で送受信されるトラフィックを警告および拒否できます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/operations/intelligence)は Microsoft の脅威インテリジェンスの動力となるものであり、Microsoft Defender for Cloud を含む複数のサービスによって使用されます。<br>
 
 脅威インテリジェンスベースのフィルター処理が構成されている場合は、すべての NAT ルール、ネットワーク ルール、またはアプリケーション ルールの前に、関連付けられているルールが処理されます。
 

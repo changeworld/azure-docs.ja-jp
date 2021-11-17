@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/04/2021
 ms.author: amgowda
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2c082d901bd2b48b9d220d9b1b373335b295b377
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: f2a0a6452b978b6924574f1499916a0781413a24
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131845355"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290231"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Azure Kubernetes Service 上のコンフィデンシャル コンピューティング ノード
 
@@ -40,7 +40,7 @@ Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コン�
 
 #### <a name="azure-device-plugin-for-intel-sgx"></a>Intel SGX 用 Azure デバイス プラグイン<a id="sgx-plugin"></a>
 
-デバイス プラグインは、暗号化されたページ キャッシュ (EPC) メモリ用の Kubernetes デバイス プラグイン インターフェイスを実装し、ノードからデバイス ドライバーを公開します。 EPC メモリは、実質上、このプラグインによって、Kubernetes におけるもう 1 つのリソース タイプとなります。 ユーザーは、他のリソースと同様、このリソースに対する制限を指定できます。 このデバイス プラグインは、スケジューリング機能以外に、機密ワークロード コンテナーへのアクセス許可を Intel SGX デバイス ドライバーに割り当てるのに役立ちます。 開発者は、このプラグインを使用して、デプロイ ファイル内の Intel SGX ドライバー ボリュームがマウントされないようにすることができます。 EPC メモリベース デプロイの実装サンプル (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) は、[こちら](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)でご覧いただけます。
+デバイス プラグインは、暗号化されたページ キャッシュ (EPC) メモリ用の Kubernetes デバイス プラグイン インターフェイスを実装し、ノードからデバイス ドライバーを公開します。 このプラグインによって EPC メモリは実質的に、Kubernetes におけるもう 1 つのリソース タイプとなります。 ユーザーは、他のリソースと同様、このリソースに対する制限を指定できます。 このデバイス プラグインは、スケジューリング機能以外に、機密ワークロード コンテナーへのアクセス許可を Intel SGX デバイス ドライバーに割り当てるのに役立ちます。 開発者は、このプラグインを使用して、デプロイ ファイル内の Intel SGX ドライバー ボリュームがマウントされないようにすることができます。 EPC メモリベース デプロイの実装サンプル (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) は、[こちら](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)でご覧いただけます。
 
 
 ## <a name="programming-models"></a>プログラミング モデル

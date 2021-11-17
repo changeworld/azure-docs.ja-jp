@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/05/2021
 ms.author: jeedes
-ms.openlocfilehash: a1e58d4a7b46da34ea4c0ae6325baa3d6e5de39d
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 69a03d57a378b917d217fc2b06208a9cf8fc4d66
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856374"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300118"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-pavaso-digital-close"></a>チュートリアル: Azure AD SSO と Pavaso Digital Close の統合
 
@@ -144,4 +144,4 @@ Pavaso Digital Close に対して Azure AD SSO を構成してテストするに
 
 ## <a name="next-steps"></a>次のステップ
 
-Pavaso Digital Close を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Pavaso Digital Close を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

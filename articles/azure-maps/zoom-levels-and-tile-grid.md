@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: b607037d56ab0c9d9bd119b12f4dc3a7200ff981
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bdda831f07d91ad13553814e198cac743314671a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744920"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284818"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
 
@@ -33,7 +33,7 @@ Azure Maps では、球面メルカトル図法の座標系 (EPSG: 3857) が使�
 
 Web および Android 用の Azure Maps 対話型コントロールでは、25 のズーム レベル (0 から 24 までの番号が付けられている) がサポートされます。 ただし、道路データをズーム レベルで使用できるのは、タイルが使用可能な場合のみです。
 
-次の表では、緯度 0 でタイルのサイズが 512 ピクセルの正方形であるズーム レベルに対する値の完全な一覧を示します。
+次の表では、緯度 0 でタイルのサイズが **512** ピクセルの正方形であるズーム レベルに対する値の完全な一覧を示します。
 
 |ズーム レベル|メートル/ピクセル|メートル/タイル一辺|
 |--- |--- |--- |

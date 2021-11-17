@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 2d5089f0b611af5298ed99e681d4bf2485720900
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 03312977c4901593c433113d88766dcc7a6b2a55
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124795091"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>チュートリアル:Azure Active Directory と Mitel MiCloud Connect または CloudLink Platform の統合
 
@@ -309,4 +309,4 @@ CloudLink アカウント ポータルでユーザーを追加する方法の詳
 
 ## <a name="next-steps"></a>次のステップ
 
-Mitel Connect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Mitel Connect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

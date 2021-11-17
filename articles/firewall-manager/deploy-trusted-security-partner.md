@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 11/10/2021
 ms.author: victorh
-ms.openlocfilehash: 7b8dd13c5d2c3c080ca20115dfc41b23dd6e545e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 252a4e71a5fdcc823ab357e8528a50bd737ff1c2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725379"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283563"
 ---
 # <a name="deploy-a-security-partner-provider"></a>セキュリティ パートナー プロバイダーのデプロイ
 
@@ -102,6 +102,10 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 3. ハブを選択し、 **[セキュリティ構成]** に移動します。
 
    ハブにサード パーティ プロバイダーをデプロイすると、ハブが *セキュリティ保護付き仮想ハブ* に変換されます。 これにより、サード パーティ プロバイダーがハブへの 0.0.0.0/0 (既定) ルートをアドバタイズします。 ただし、どの接続がこの既定のルートを取得すべきかを選択しない限り、VNet 接続とハブに接続されているサイトはこのルートを取得しません。
+
+   > [!NOTE]
+   > ブランチのアドバタイズには、BGP 経由で 0.0.0.0/0 (既定) ルートを手動で作成しないでください。 これは、サードパーティのセキュリティ プロバイダーを使用したセキュリティで保護された仮想ハブのデプロイに対して自動的に実行されます。 これにより、デプロイ プロセスが中断される可能性があります。
+
 4. Azure Firewall を介した **インターネット トラフィック** と信頼されたセキュリティ パートナーを介した **プライベート トラフィック** を設定して、仮想 WAN のセキュリティを構成します。 これにより、仮想 WAN 内の個々の接続が自動的に保護されます。
 
    :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="セキュリティ構成":::

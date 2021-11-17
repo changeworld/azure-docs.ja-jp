@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: e11a0aeff4168b850ae95be7ce26f97e4afa9c81
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 6917af20d95e4c9fcaa3b1f1e3528bd64e4d0736
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399605"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287554"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-perforce-helix-core---helix-authentication-service"></a>チュートリアル: Azure AD SSO と Perforce Helix Core - Helix Authentication Service の統合
 
@@ -135,4 +135,4 @@ Perforce Helix Core - Helix Authentication Service で Azure AD の SSO を構�
 
 ## <a name="next-steps"></a>次のステップ
 
-Perforce Helix Core - Helix Authentication Service を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Perforce Helix Core - Helix Authentication Service を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

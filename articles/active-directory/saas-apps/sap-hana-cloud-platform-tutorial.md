@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 939bc772a46a35a1d702bf972d42467be8c86dee
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4d7628b1431cebed1136aa2cb1b09d92e7fbb30b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128547264"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320800"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-sap-cloud-platform"></a>チュートリアル: Azure AD SSO と SAP Cloud Platform の統合
 
@@ -261,4 +261,4 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 
 ## <a name="next-steps"></a>次のステップ
 
-SAP Cloud Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SAP Cloud Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

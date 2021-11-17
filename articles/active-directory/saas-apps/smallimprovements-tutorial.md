@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: d1bf361190e92dd687c4c1f41a0c0a544b86c01a
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 0a9fd3388589370f75179ea95d62b3d646876dd2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129419215"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341200"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-small-improvements"></a>チュートリアル: Azure AD SSO と Small Improvements の統合
 
@@ -184,4 +184,4 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
 ## <a name="next-steps"></a>次のステップ
 
-Small Improvements を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Small Improvements を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

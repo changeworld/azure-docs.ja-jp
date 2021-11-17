@@ -5,14 +5,14 @@ author: srijang
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 6/3/2021
+ms.date: 11/10/2021
 ms.author: srijangupta
-ms.openlocfilehash: 4e9d7eec14e994d88f4212df4d0e848de1ea6476
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e3d68e704ce91cddfabeb8518a60bba469b7adf7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689774"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301200"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備
 
@@ -159,3 +159,7 @@ az vm create \
 >4. tarball を VM にコピーします: `scp ./image_buster_azure_amd64.vhd.tar.gz <vm>:~`。
 >5. VM で VHD を抽出します: `tar -xf ./image_buster_azure_amd64.vhd.tar.gz` (ファイルのサイズによっては、少し時間がかかります)。
 >6. 最後に、VM で、`azcopy` (上記のコマンド) を使用して VHD を Azure ディスクにコピーします。
+
+
+**次のステップ:** これで、Debian Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「[Create a Linux VM from a custom disk (カスタム ディスクから Linux VM を作成する)](/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)」を参照してください。
+

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/04/2020
 ms.author: jeedes
-ms.openlocfilehash: cbdca42aca2de1ff66dc07ffea16b84b48fbfb1a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 63f5412d8782b0e3e0fa58a00314ef4d0bea910d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124808900"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317053"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucid-all-products"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Lucid (All Products) の統合
 
@@ -148,4 +148,4 @@ Lucid (All Products) に対して Azure AD SSO を構成してテストするに
 
 ## <a name="next-steps"></a>次の手順
 
-Lucid (All Products) を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Lucid (All Products) を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

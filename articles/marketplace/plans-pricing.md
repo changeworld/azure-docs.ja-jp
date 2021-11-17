@@ -4,15 +4,15 @@ description: パートナー センターでの Microsoft コマーシャル マ
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: 71efd629463f53519d98458afaa449c7a7f46ffb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: e91e85982bb021193224010e2bd51df301240c69
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062341"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277982"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>コマーシャル マーケットプレース オファーのプランと価格
 
@@ -126,7 +126,7 @@ ms.locfileid: "132062341"
 
 ## <a name="plan-visibility"></a>プランの可視性
 
-オファーの種類によっては、プランを一般公開することも、特定の (プライベート) 対象ユーザーのみが使用できるようにすることもできます。 プライベート プランを含むオファーは Azure portal に発行されます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](private-offers.md)」を参照してください。
+オファーの種類によっては、プランを一般公開することも、特定の (プライベート) 対象ユーザーのみが使用できるようにすることもできます。 プライベート プランを含むオファーは Azure portal に発行されます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート プラン](private-plans.md)」を参照してください。
 
 プライベート対象ユーザーを定義するには、オファーの種類に応じて、Azure テナント ID または Azure サブスクリプション ID を使用します。 最大 10 個の ID を手動で入力するか、最大 10,00 個のサブスクリプション ID または 20,000 個のテナント ID (該当する方) を .csv ファイルでインポートすることができます。 また、プランがないコンサルティング サービスと Dynamics 365 オファーのプライベート対象ユーザーを定義することもできます。
 

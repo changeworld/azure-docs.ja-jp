@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 52b928d34f0239a4ceaf8defa302fcce821ff4a2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 17bd44f54206af69ed2291e05d5df1d5618d2744
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598786"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324353"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-bc-in-the-cloud"></a>チュートリアル: Azure AD SSO と BC in the Cloud の統合
 
@@ -137,4 +137,4 @@ BC in the Cloud 用に Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-BC in the Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+BC in the Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

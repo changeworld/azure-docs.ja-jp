@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 6a56116ef50260c451564e571679a28a741584d8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 90890843c5377f22647634fad158fb7e26df17f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831074"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132288360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services"></a>チュートリアル: Azure Active Directory とアマゾン ウェブ サービスの統合
 
@@ -366,7 +366,7 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 
 ## <a name="next-steps"></a>次のステップ
 
-AWS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)に関するページを参照してください。
+AWS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Defender for Cloud Apps でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)に関するページをご覧ください。
 
 <!--Image references-->
 

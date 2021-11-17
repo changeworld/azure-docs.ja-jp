@@ -1,14 +1,14 @@
 ---
 title: Horizon SDK
-description: Azure Defender for IoT 開発者は Horizon SDK を使用すると、自動化された Defender for IoT ネットワーク分析プログラムで処理できるようにネットワーク トラフィックをデコードする dissector プラグインを設計できます。
-ms.date: 1/13/2021
+description: Microsoft Defender for IoT 開発者は Horizon SDK を使用すると、自動化された Defender for IoT ネットワーク分析プログラムで処理できるようにネットワーク トラフィックをデコードする dissector プラグインを設計できます。
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: a6b9f69daeb39b79ccdabea273efe825f6a9d1ff
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 9affe81bc905e2852732b3892aaac26003c1e8f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114673990"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286756"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Horizon の独自プロトコル dissector
 
@@ -24,7 +24,7 @@ Horizon は、独自のプロトコルを実行する IoT および ICS デバ�
 
 - 機密情報を危険にさらすことなく、独自の開発を可能にするセキュリティ。
 
-Azure Defender for IoT 開発者は Horizon SDK を使用すると、自動化された Defender for IoT ネットワーク分析プログラムで処理できるようにネットワーク トラフィックをデコードする dissector プラグインを設計できます。
+Microsoft Defender for IoT 開発者は Horizon SDK を使用すると、自動化された Defender for IoT ネットワーク分析プログラムで処理できるようにネットワーク トラフィックをデコードする dissector プラグインを設計できます。
 
 プロトコル dissector を外部プラグインとして開発し、広範な種類の Defender for IoT サービスに統合します。 たとえば、監視、アラート、レポートの機能を提供するサービスなどです。
 
@@ -1617,7 +1617,7 @@ Horizon コンソールの **[Overview]\(概要\)** ウィンドウには、ア�
 | フィールド | 説明 |
 |--|--|
 | Application | アップロードしたプラグインの名前。 |
-| :::image type="content" source="media/references-horizon-sdk/switch.png" alt-text="オンとオフのスイッチ。"::: | プラグインの **オン** と **オフ** を切り替えます。 プラグインをオフにすると、プラグインで定義されているプロトコル トラフィックは Defender for IoT によって処理されません。 |
+| :::image type="content" source="media/references-horizon-sdk/switch.png" alt-text="オン/オフスイッチ。"::: | プラグインの **オン** と **オフ** を切り替えます。 プラグインをオフにすると、プラグインで定義されているプロトコル トラフィックは Defender for IoT によって処理されません。 |
 | 時刻 | データが最後に分析された時刻。 5 秒ごとに更新されます。 |
 | PPS | 1 秒間に送信されたパケットの数。 |
 | 帯域幅 | 過去 5 秒以内に検出された平均帯域幅。 |

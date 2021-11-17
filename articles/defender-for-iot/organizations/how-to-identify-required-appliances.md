@@ -1,14 +1,14 @@
 ---
 title: 必要なアプライアンスを特定する
 description: 認定済みの Defender for IoT センサーとオンプレミス管理コンソールのハードウェアおよび仮想アプライアンスについて説明します。
-ms.date: 06/21/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 22a79bc1f78536df1dd1c248b75eb3b4db8b443d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1b0f96ac19c014ff2cc89df10cae3f21b38211ff
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238550"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343593"
 ---
 # <a name="identify-required-appliances"></a>必要なアプライアンスを特定する
 
@@ -271,7 +271,6 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Defender for IoT のインストールについて](how-to-install-software.md)
+[Microsoft Defender for IoT のインストールについて](how-to-install-software.md)
 
-[Azure Defender for IoT のネットワーク設定について](how-to-set-up-your-network.md)
-
+[Microsoft Defender for IoT のネットワーク設定について](how-to-set-up-your-network.md)

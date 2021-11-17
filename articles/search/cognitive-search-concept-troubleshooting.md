@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 054abdaeb184a37a995f14ab6196c378abbb470b
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 63b420d65fcb60c35cba3eca6201255f3efba85d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707667"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331074"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 

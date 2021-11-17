@@ -1,14 +1,14 @@
 ---
 title: グローバル ユーザー アクセス制御の定義
 description: 大規模な組織では、ユーザー アクセス許可が複雑になる可能性があり、標準のサイトとゾーンの構造に加えてグローバル組織構造によって決まることがあります。
-ms.date: 12/08/2020
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 8f5f8df56a5dcb4152fc0ae9fcae3d504d6cf3e2
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 70437ceeadba0b1c8af9559037ccf718d7a251d4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020485"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283830"
 ---
 # <a name="define-global-access-control"></a>グローバル アクセス制御の定義
 
@@ -16,7 +16,7 @@ ms.locfileid: "113020485"
 
 グローバルかつ複雑なユーザー アクセス許可の需要に応えるために、事業単位、リージョン、およびサイトに基づいたグローバル ビジネス トポロジを作成できます。 その後、これらのエンティティに関してユーザー アクセス許可を定義できます。
 
-ビジネス トポロジ用のアクセス ツールを使用すると、Azure Defender for IoT プラットフォームでのユーザーによるデバイスの管理と分析を適切に制御できるようになり、組織がゼロ トラスト戦略を実装するのに役立ちます。
+ビジネス トポロジ用のアクセス ツールを使用すると、Microsoft Defender for IoT プラットフォームでのユーザーによるデバイスの管理と分析を適切に制御できるようになり、組織がゼロ トラスト戦略を実装するのに役立ちます。
 
 ## <a name="about-access-groups"></a>アクセス グループについて
 

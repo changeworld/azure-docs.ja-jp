@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aec870e6027d9a6d2e6c3b66363f93c73fad5e78
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 6d3f6163cc8c5f642835562c631d1712f329a788
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064145"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292531"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Azure AD サービス アカウントの管理
 
@@ -111,7 +111,7 @@ Azure Active Directory (Azure AD) のサービス アカウントには、[マ�
 
 * サービス アカウントのサインイン パターンは変化していますか?
 
-Azure AD サインイン ログをエクスポートし、既存のセキュリティ情報イベント管理 (SIEM) ツール (Azure Sentinel など) にインポートすることをお勧めします。 SIEM を使用して、アラートとダッシュボードを作成します。
+Azure AD サインイン ログをエクスポートし、既存のセキュリティ情報イベント管理 (SIEM) ツール (Microsoft Sentinel など) にインポートすることをお勧めします。 SIEM を使用して、アラートとダッシュボードを作成します。
 
 ### <a name="review-service-account-permissions"></a>サービス アカウントのアクセス許可をレビューする
 
@@ -195,4 +195,3 @@ Azure サービス アカウントのセキュリティ保護の詳細につい�
 
 
  
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: e87a80df2ca97cf50a855af9422308f440a9dd4d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f7dc7215f812938584438d3f212ce31ddcea23df
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800937"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル:Azure Active Directory と Sprinklr の統合
 
@@ -90,7 +90,7 @@ Sprinklr に対して Azure AD SSO を構成してテストするには、次の
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -102,7 +102,7 @@ Sprinklr に対して Azure AD SSO を構成してテストするには、次の
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Sprinklr へのアクセスを許可することで、Azure シングル サインオンを使用できるようにします。
 
@@ -114,13 +114,13 @@ Sprinklr に対して Azure AD SSO を構成してテストするには、次の
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-sprinklr-sso&quot;></a>Sprinklr SSO の構成
+## <a name="configure-sprinklr-sso"></a>Sprinklr SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Sprinklr 企業サイトに管理者としてログインします。
 
 1. **[管理] \> [設定]** の順に選択します。
 
-    ![管理](./media/sprinklr-tutorial/settings.png &quot;管理")
+    ![管理](./media/sprinklr-tutorial/settings.png "管理")
 
 1. 左側のパネルで、 **[Manage Partner] \> [Single Sign on]** の順に選択します。
 
@@ -212,4 +212,4 @@ Sprinklr に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="next-steps"></a>次のステップ
 
-Sprinklr を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Sprinklr を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: f378d70e2f39d787ad6d43980deea4bc83ee91f9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 43e67da4ed97ea188a3cd227ac34f8f5628b8cf4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780587"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317587"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と HRworks Single Sign-On の統合
 
@@ -173,4 +173,4 @@ Azure AD ユーザーが HRworks Single Sign-On にサインインできるよ�
 
 ## <a name="next-steps"></a>次のステップ
 
-HRworks Single Sign-On を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+HRworks Single Sign-On を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 6656d5e041f5533829ee80c4d2bce8d542a2aaba
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9e9790f731d86272e7c0eda078ed61cb20549ca9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592681"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313528"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kpifire"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と kpifire の統合
 
@@ -142,4 +142,4 @@ kpifire では、自動ユーザー プロビジョニングもサポートさ�
 
 ## <a name="next-steps"></a>次のステップ
 
-kpifire を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+kpifire を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

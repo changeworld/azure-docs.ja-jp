@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: danlep
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 950684fdbaa1553447b818c0751b13f4a8e26f34
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e5eda2df72afd7fa82a63dcd31adbf117d58bfe2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031767"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340345"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。

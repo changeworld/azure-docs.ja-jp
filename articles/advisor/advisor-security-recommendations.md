@@ -3,20 +3,20 @@ title: Azure Advisor を使用してリソースのセキュリティを向上�
 description: Azure Advisor を使用して、Azure のデプロイのセキュリティを向上させます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2864460e2486d54140b6345f2e62fb1af1c859e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87057661"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294335"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Advisor を使用してリソースのセキュリティを向上させる
 
-Azure Advisor は、すべての Azure リソースに関する推奨事項を、一貫性がある統合された形で提示します。 Azure Security Center と統合して、セキュリティに関する推奨事項を生成します。 セキュリティに関する推奨事項は、Advisor ダッシュボードの **[セキュリティ]** タブで取得できます。
+Azure Advisor は、すべての Azure リソースに関する推奨事項を、一貫性がある統合された形で提示します。 Microsoft Defender for Cloud と統合し、セキュリティに関する推奨事項を提供します。 セキュリティに関する推奨事項は、Advisor ダッシュボードの **[セキュリティ]** タブで取得できます。
 
-Security Center は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 それは、Azure リソースのセキュリティの状態を定期的に分析します。 セキュリティ センターでは、潜在的なセキュリティの脆弱性が特定されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成するプロセスを説明します。 
+Defender for Cloud は、Azure リソースのセキュリティを可視化して制御することで、脅威の防止、検出、対応を行うのに役立ちます。 それは、Azure リソースのセキュリティの状態を定期的に分析します。 Defender for Cloud では、潜在的なセキュリティの脆弱性が特定されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成するプロセスを説明します。 
 
-セキュリティの推奨事項の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](../security-center/security-center-recommendations.md)」を参照してください。
+セキュリティの推奨事項の詳細については、[Microsoft Defender For Cloud のセキュリティに関する推奨事項の管理](../security-center/security-center-recommendations.md)に関する記事を参照してください。
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Azure Advisor のセキュリティに関する推奨事項にアクセスする方法
 

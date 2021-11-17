@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 62cda5a8fc328d1681a2ccb5a7d196112fd2c157
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a65906e84ac85e8c4e5282eb426d2d700bbf2c66
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816429"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333753"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Replicon の統合
 
@@ -99,7 +99,7 @@ Replicon に Azure AD SSO を構成してテストするには、次の手順を
 
    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -111,7 +111,7 @@ Replicon に Azure AD SSO を構成してテストするには、次の手順を
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Replicon へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -123,13 +123,13 @@ Replicon に Azure AD SSO を構成してテストするには、次の手順を
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-replicon-sso&quot;></a>Replicon の SSO の構成
+## <a name="configure-replicon-sso"></a>Replicon の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Replicon 企業サイトに管理者としてサインインします。
 
 2. SAML 2.0 を構成するには、次の手順に従います。
 
-    ![SAML 認証の有効化](./media/replicon-tutorial/authentication.png &quot;SAML 認証の有効化")
+    ![SAML 認証の有効化](./media/replicon-tutorial/authentication.png "SAML 認証の有効化")
 
     a. **[EnableSAML Authentication2]** ダイアログを表示するには、URL の企業キーの後に次のパスを追加します。`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
@@ -193,4 +193,4 @@ Replicon に Azure AD SSO を構成してテストするには、次の手順を
 
 ## <a name="next-steps"></a>次のステップ
 
-Replicon を構成したら、あなたの組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Replicon を構成したら、あなたの組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

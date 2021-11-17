@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 4573cfc7e2901d57256320c16f5f0074f89b0ddb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7ebc4387dccd7a434602ab6ad8f9713f58300233
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124825796"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307082"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Qualtrics の統合
 
@@ -151,4 +151,4 @@ SAP Qualtrics では、Just-In-Time ユーザー プロビジョニングがサ�
 
 ## <a name="next-steps"></a>次のステップ
 
-SAP Qualtrics を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
+SAP Qualtrics を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Defender for Cloud Apps でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-any-app)に関するページをご覧ください。

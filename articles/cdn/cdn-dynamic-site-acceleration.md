@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: duau
-ms.openlocfilehash: f793d236db1c840e3866c7b8e9856720077e429a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 113232c44be6eb886c61a617d68f63f0a3225a8c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131426603"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327464"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
 
@@ -179,8 +179,6 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
     ![DSA のルール エンジン](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
+2 つの CDN エンドポイントを使用することもできます。DSA を使用して最適化された一方のエンドポイントでは動的資産を配信し、静的な最適化 (一般的な Web 配信など) を使用して最適化されたもう一方のエンドポイントではキャッシュ可能な資産を配信します。 Web ページの URL を変更して、使用する予定の CDN エンドポイントの資産に直接リンクします。
 
-
-2 つの CDN エンドポイントを使用することもできます。DSA を使用して最適化された一方のエンドポイントでは動的資産を配信し、静的な最適化 (一般的な Web 配信など) を使用して最適化されたもう一方のエンドポイントではキャッシュ可能な資産を配信します。 Web ページの URL を変更して、使用する予定の CDN エンドポイントの資産に直接リンクします。 
-
-例: `mydynamic.azureedge.net/index.html` は動的ページであり、DSA エンドポイントから読み込まれます。  この html ページは、静的な CDN エンドポイント (`mystatic.azureedge.net/banner.jpg` や `mystatic.azureedge.net/scripts.js` など) から読み込まれる JavaScript ライブラリや画像などの複数の静的資産を参照しています。
+例: `mydynamic.azureedge.net/index.html` は動的ページであり、DSA エンドポイントから読み込まれます。  この HTML ページは、静的な CDN エンドポイント (`mystatic.azureedge.net/banner.jpg` や `mystatic.azureedge.net/scripts.js` など) から読み込まれる JavaScript ライブラリや画像などの複数の静的資産を参照しています。

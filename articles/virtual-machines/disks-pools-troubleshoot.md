@@ -8,12 +8,12 @@ ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5a898f0c34ed92eaa4a19757e3d017a87c84d491
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 878cec7021ebcd7c3b63ae4af1f29a0793977280
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082704"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277281"
 ---
 # <a name="troubleshoot-azure-disk-pools-preview"></a>Azure ディスク プール (プレビュー) のトラブルシューティング
 
@@ -40,6 +40,7 @@ ms.locfileid: "131082704"
 |DeploymentFailureQuotaExceeded     |ディスク プールのデプロイに使用されたサブスクリプションは、このリージョンの VM コア クォータを超えています。 Dsv3 シリーズの [Azure VM シリーズあたりの vCPU クォータ制限の引き上げを依頼する](../azure-portal/supportability/per-vm-quota-requests.md)ことができます。         |
 |DeploymentFailurePolicyViolation     |サブスクリプションのポリシーにより、ディスク プールをサポートするために必要な Azure リソースをデプロイできませんでした。 詳細については、エラーを参照してください。         |
 |DeploymentTimeout     |ディスク プール インフラストラクチャのデプロイがスタックし、割り当てられた時間内に完了しなかった場合に発生します。 デプロイを再試行してください。 問題が解決しない場合は、Azure サポートに連絡し、エラー メッセージの追跡 ID を伝えてください。         |
+|GoalStateApplicationTimeoutError     |ディスク プール インフラストラクチャがリソース プロバイダーに応答しなくなったときに発生します。 [ネットワークの前提条件](disks-pools-deploy.md#prerequisites)を満たしていることを確認してから、デプロイを再試行してください。 問題が解決しない場合は、Azure サポートに連絡し、エラーの追跡 ID を伝えてください。         |
 |OngoingOperationInProgress     |ディスク プールで操作が進行中です。 その操作が完了するまで待ってから、デプロイを再試行してください。         |
 
 ## <a name="common-failure-codes-when-enabling-iscsi-on-disk-pools"></a>ディスク プールで iSCSI を有効にするときの一般的なエラー コード
@@ -47,9 +48,9 @@ ms.locfileid: "131082704"
 |コード  |説明  |
 |---------|---------|
 |GoalStateApplicationError     |iSCSI ターゲット構成が無効であり、ディスク プールに適用できない場合に発生します。 デプロイを再試行してください。 問題が解決しない場合は、Azure サポートに連絡し、エラーの追跡 ID を伝えてください。         |
-|GoalStateApplicationTimeoutError     |ディスク プール インフラストラクチャがリソース プロバイダーに応答しなくなったときに発生します。 デプロイを再試行してください。 問題が解決しない場合は、Azure サポートに連絡し、エラーの追跡 ID を伝えてください。         |
+|GoalStateApplicationTimeoutError     |ディスク プール インフラストラクチャがリソース プロバイダーに応答しなくなったときに発生します。 [ネットワークの前提条件](disks-pools-deploy.md#prerequisites)を満たしていることを確認してから、デプロイを再試行してください。 問題が解決しない場合は、Azure サポートに連絡し、エラーの追跡 ID を伝えてください。         |
 |OngoingOperationInProgress     |ディスク プールで操作が進行中です。 その操作が完了するまで待ってから、デプロイを再試行してください。         |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ディスク プール (プレビュー) を管理する](disks-pools-manage.md)

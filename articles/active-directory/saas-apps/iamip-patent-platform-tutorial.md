@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 331d870472e328e0e1f5be4e24763327fe054162
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e3264114f9bf8ec4f39225c80862c4b42016ed33
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057039"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311177"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-iamip-platform"></a>チュートリアル: Azure AD SSO と IamIP Platform の統合
 
@@ -156,4 +156,4 @@ IamIP Platform に対して Azure AD SSO を構成してテストするには、
 
 ## <a name="next-steps"></a>次のステップ
 
-IamIP Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+IamIP Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -4,12 +4,12 @@ description: この記事では、企業内の Azure DevTest Labs の参照ア�
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e76219222db1dbe6aa7cdc7d7a2ef5be995109e1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4714d143fd0f31bfd1c0570c37013fc15c2887cc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652360"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283547"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs の企業向け参照アーキテクチャ
 この記事では、企業内の Azure DevTest Labs に基づくソリューションをデプロイするための参照アーキテクチャを提供します。 含まれる内容は次のとおりです。
@@ -57,7 +57,7 @@ DevTest Labs には、単一のラボ内で使用する場合に優れた管理�
 - **ラボ設定への変更の制限**:多くの場合は、特定の設定を制限する必要があります (マーケットプレース画像の使用許可など)。 Azure Policy を使用して、リソースの種類への変更を防ぐことができます。 また、カスタム ロールを作成して、ラボの "*所有者*" ロールではなくそのロールをユーザーに付与することもできます。 これは、ラボのほとんどの設定 (内部サポート、ラボのお知らせ、許可される VM サイズなど) に対して行うことができます。
 - **VM が名前付け規則に従う必要がある**:管理者が、クラウドベースの開発およびテスト環境の一部である VM を簡単に特定したいと考えることは一般的です。 これは [Azure Policy](https://github.com/Azure/azure-policy/tree/master/samples/TextPatterns/allow-multiple-name-patterns) を使用して実行できます。
 
-DevTest Labs には、ネットワーク、ディスク、コンピューティングなど、同じ方法で管理される基の Azure リソースが使用されていることに注意してください。 たとえば、Azure Policy は、ラボ内で作成された仮想マシンに適用されます。 Azure Security Center では、VM のコンプライアンスについてレポートできます。 また、Azure Backup サービスでは、ラボ内の VM の定期的なバックアップを提供できます。
+DevTest Labs には、ネットワーク、ディスク、コンピューティングなど、同じ方法で管理される基の Azure リソースが使用されていることに注意してください。 たとえば、Azure Policy は、ラボ内で作成された仮想マシンに適用されます。 Microsoft Defender for Cloud では、VM のコンプライアンスに関するレポートを作成できます。 また、Azure Backup サービスでは、ラボ内の VM の定期的なバックアップを提供できます。
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 Azure DevTest Labs には、Azure の既存のリソース (コンピューティング、ネットワークなど) が使用されます。 そのため、プラットフォームに組み込まれているセキュリティ機能の恩恵を自動的に利用できます。 たとえば、受信リモート デスクトップ接続の発信元を企業ネットワークのみに制限するには、リモート デスクトップ ゲートウェイ上の仮想ネットワークにネットワーク セキュリティ グループを追加するだけなので簡単です。 その他のセキュリティの考慮事項は、日常的にラボを使用するチーム メンバーに付与するアクセス許可のレベルだけです。 最も一般的なアクセス許可は、[*所有者* と *ユーザー*](devtest-lab-add-devtest-user.md)です。 これらのロールについて詳しくは、「[Azure DevTest Labs での所有者とユーザーの追加](devtest-lab-add-devtest-user.md)」をご覧ください。

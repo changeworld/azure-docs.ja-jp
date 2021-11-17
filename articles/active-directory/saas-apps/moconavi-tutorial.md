@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 2a5ddfeea3f001669e9f4498bb60e38cb34d027b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9254c7117affd66fe2e46aa943b70e701aa11cc9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427560"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294611"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-moconavi"></a>チュートリアル: Azure AD SSO と moconavi の統合
 
@@ -156,6 +156,6 @@ moconavi に対して Azure AD SSO を構成してテストするには、次の
 
     ![moconavi の [電話] アイコンを示すスクリーンショット。](./media/moconavi-tutorial/authentication.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-moconavi を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+moconavi を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

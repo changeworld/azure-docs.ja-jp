@@ -1,21 +1,21 @@
 ---
-title: ClearPass を Azure Defender for IoT と統合する
-description: このチュートリアルでは、Azure Defender for IoT と ClearPass を統合する方法について説明します。
+title: ClearPass を Microsoft Defender for IoT と統合する
+description: このチュートリアルでは、Microsoft Defender for IoT と ClearPass を統合する方法について説明します。
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/04/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 7ff16da99f994ff4b708f0fb6f4a40e72f61df78
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 536e45171d8769980080d81c59c9f07192addab0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129421242"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343631"
 ---
-# <a name="tutorial-integrate-clearpass-with-azure-defender-for-iot"></a>チュートリアル: ClearPass を Azure Defender for IoT と統合する
+# <a name="tutorial-integrate-clearpass-with-microsoft-defender-for-iot"></a>チュートリアル: ClearPass を Microsoft Defender for IoT と統合する
 
-このチュートリアルは、ClearPass Policy Manager (CPPM) を Azure Defender for IoT と統合する方法を学ぶのに役立ちます。
+このチュートリアルは、ClearPass Policy Manager (CPPM) を Microsoft Defender for IoT と統合する方法を学ぶのに役立ちます。
 
 Defender for IoT プラットフォームでは、継続的な ICS 脅威の監視とデバイス検出が提供され、産業用プロトコル、デバイス、アプリケーションに関する深い理解と、ICS 固有の動作異常検出、脅威インテリジェンス、リスク分析、自動化された脅威モデリングが組み合わされています。
 

@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: conceptual
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 35a7ad74c8f20ccf748140841332ee6e9b6cd27b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f463fafb4f11e935d45c42326c23e1a0e4ffb28f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558803"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297699"
 ---
 # <a name="connect-cameras-to-the-cloud"></a>カメラをクラウドに接続する
 

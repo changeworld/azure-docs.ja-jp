@@ -10,18 +10,18 @@ ms.date: 11/02/2021
 author: ruixinxu
 ms.author: ruxu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 01967a4e0b6daa3f79d9300047c83bc2ad493f09
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d3fb6edb446c2a034eb6e7c294b1639aa9eb8d5a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029934"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312125"
 ---
 # <a name="tutorial-computer-vision-with-cognitive-service"></a>チュートリアル: Computer Vision と Cognitive Service
 
 [Computer Vision](../../cognitive-services/computer-vision/index.yml) は、画像を処理し、視覚的特徴に基づく情報を返すことができるようにする、[Azure Cognitive Service](../../cognitive-services/index.yml) です。 このチュートリアルでは、[Computer Vision](../../cognitive-services/computer-vision/index.yml) を使用して Azure Synapse Analytics で画像を分析する方法について説明します。
 
-このチュートリアルでは、[MMLSpark](https://github.com/Azure/mmlspark) でテキスト分析を使用して次の処理を行う方法を示します。
+このチュートリアルでは、[SynapseML](https://github.com/microsoft/SynapseML) でテキスト分析を使用して次の処理を行う方法を示します。
 
 > [!div class="checklist"]
 > - 画像コンテンツから視覚的特徴を抽出する
@@ -187,4 +187,4 @@ Spark インスタンスがシャットダウンされるようにするには�
 ## <a name="next-steps"></a>次のステップ
 
 * [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
-* [MMLSpark GitHub リポジトリ](https://github.com/Azure/mmlspark)
+* [SynapseML GitHub リポジトリ](https://github.com/Azure/mmlspark)

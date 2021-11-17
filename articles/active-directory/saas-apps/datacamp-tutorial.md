@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: cfebd7c10153c49495bfc7634305e58ed77f0ea6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1d42791303270ec5ab980192a081fa2c7154d8f8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783750"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datacamp"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と DataCamp の統合
 
@@ -156,4 +156,4 @@ DataCamp に対する Azure AD SSO を構成してテストするには、次の
 
 ## <a name="next-steps"></a>次のステップ
 
-DataCamp を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+DataCamp を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

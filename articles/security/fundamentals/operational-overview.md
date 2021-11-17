@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 2d0187dcac4de0fc49bbc504d8a3010801d44ecb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6d65666103526768d904501e93b3c974dd436b30
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124781327"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277963"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -52,7 +52,7 @@ Azure Backup には複数のコンポーネントが用意されており、お�
 
 ### <a name="site-recovery"></a>Site Recovery
 
-[Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) を使用すると、オンプレミスの仮想マシンと物理マシンを Azure (またはセカンダリ サイト) にレプリケートする際の調整を行って、ビジネス継続性を実現できます。 プライマリ サイトが使用できなくなった場合には、ユーザーが作業を継続できるよう、セカンダリの場所にフェールオーバーできます。 システムが使用できる状態に戻ったら、プライマリにフェールバックできます。 さらにインテリジェントで効果的な脅威の検出を実行するには、Azure Security Center を使います。
+[Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) を使用すると、オンプレミスの仮想マシンと物理マシンを Azure (またはセカンダリ サイト) にレプリケートする際の調整を行って、ビジネス継続性を実現できます。 プライマリ サイトが使用できなくなった場合には、ユーザーが作業を継続できるよう、セカンダリの場所にフェールオーバーできます。 システムが使用できる状態に戻ったら、プライマリにフェールバックできます。 Microsoft Defender for Cloud を使用して、よりインテリジェントで効果的な脅威検出を実行します。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -75,11 +75,11 @@ Azure AD には、必要な [ID 管理機能](./identity-management-overview.md#
 
 Azure Active Directory を使用すると、パートナーと顧客 (ビジネスまたはコンシューマー) 向けに発行したすべてのアプリケーションに同じ ID およびアクセス管理の機能が備わります。 これにより、運用コストを大幅に減らすことができます。
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-[Azure Security Center](../../security-center/security-center-introduction.md) を使用すると、Azure リソースのセキュリティを高度に視覚化 (および制御) しながら、脅威を回避し、検出し、それらに対応することができます。 Security Center では、各サブスクリプションに対するセキュリティ監視機能とポリシー管理機能が総合的に提供されます。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) は、Azure リソースのセキュリティの可視性 (と制御) を強化することで、脅威を防止、検出、対応できるようにします。 Security Center では、各サブスクリプションに対するセキュリティ監視機能とポリシー管理機能が総合的に提供されます。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
 
-Security Center では、仮想マシン (VM) のセキュリティ設定を可視化し、脅威を監視することによって、Azure 上の[仮想マシンのデータを保護](../../security-center/security-center-introduction.md)できます。 Security Center は、仮想マシンの次の項目を監視できます。
+Security Center では、仮想マシン (VM) のセキュリティ設定を可視化し、脅威を監視することによって、Azure 上の[仮想マシンのデータを保護](../../security-center/security-center-introduction.md)できます。 Defender for Cloud では、仮想マシンの次の項目を監視できます。
 
 - 推奨される構成規則を使用したオペレーティング システムセキュリティ設定。
 - 不足しているシステムのセキュリティ更新プログラムと重要な更新プログラム。
@@ -87,14 +87,14 @@ Security Center では、仮想マシン (VM) のセキュリティ設定を可�
 - ディスク暗号化の検証。
 - ネットワークベースの攻撃。
 
-Security Center では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) が使用されます。 Azure RBAC では、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
+Defender for Cloud では、[Azure のロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) が使用されます。 Azure RBAC では、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
 
-Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
+Defender for Cloud は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Defender for Cloud では、リソースが属するサブスクリプションまたはリソース グループに対する所有者、共同作業者、または閲覧者のロールが割り当てられている場合にのみ、リソースに関連した情報が表示されます。
 
 >[!Note]
->Security Center のロールと許可されているアクションの詳細については、「[Azure Security Center におけるアクセス許可](../../security-center/security-center-permissions.md)」を参照してください。
+>Defender for Cloud でのロールと許可されるアクションの詳細については、「[Microsoft Defender for Cloud のアクセス許可](../../security-center/security-center-permissions.md)」を参照してください。
 
-Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Azure Monitor サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](../../azure-monitor/logs/manage-access.md)または新規のワークスペースのいずれかに格納されます。
+Defender for Cloud では、Microsoft Monitoring Agent が使用されます。 これは、Azure Monitor サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](../../azure-monitor/logs/manage-access.md)または新規のワークスペースのいずれかに格納されます。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -192,5 +192,5 @@ Microsoft Azure などのクラウド プラットフォームでは、従来の
 セキュリティおよび監査ソリューションの詳細については、次の記事をご覧ください。
 
 - [セキュリティとコンプライアンス](https://azure.microsoft.com/overview/trusted-cloud/)
-- [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)
 - [Azure Monitor](../../azure-monitor/overview.md)

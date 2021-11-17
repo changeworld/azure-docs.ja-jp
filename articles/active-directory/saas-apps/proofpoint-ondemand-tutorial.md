@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 09a7544db8717b2d26d495bbecda04df4c88cfd7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 38eb3525245e081d9a3c17ed75104becbffa1e78
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676663"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310730"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-proofpoint-on-demand"></a>チュートリアル: Azure AD SSO と Proofpoint on Demand の統合
 
@@ -139,4 +139,4 @@ Proofpoint on Demand に対して Azure AD SSO を構成してテストするに
 
 ## <a name="next-steps"></a>次のステップ
 
-Proofpoint on Demand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Proofpoint on Demand を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

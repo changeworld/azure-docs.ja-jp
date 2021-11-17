@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d4e4ce25a34e722b86d9bfa9824b81625f1aa69
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: a521736d32b51b5a4b6c22292e7dd6e60c4c0248
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400399"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335216"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-10000ft-plans"></a>チュートリアル: Azure AD SSO と 10,000ft Plans の統合
 
@@ -152,4 +152,4 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 ## <a name="next-steps"></a>次のステップ
 
-10,000ft Plans を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+10,000ft Plans を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

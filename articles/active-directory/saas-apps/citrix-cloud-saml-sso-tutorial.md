@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a29b0479c39391256aa6838619eeaa410ae4f283
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: a11b61348d9f9e76d71ca545caeb019d3e123678
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688700"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344733"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-citrix-cloud-saml-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Citrix Cloud SAML SSO の統合
 
@@ -176,4 +176,4 @@ Citrix Cloud SAML SSO に対して Azure AD SSO を構成してテストする�
 
 ## <a name="next-steps"></a>次のステップ
 
-Citrix Cloud SAML SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Citrix Cloud SAML SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

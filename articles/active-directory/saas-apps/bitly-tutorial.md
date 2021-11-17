@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 3a73610bc91e6acf33f730656237a45dd7f21163
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 1959120531fd5656e65a15cedc20f2620fb2b64c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808349"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349093"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-bitly"></a>チュートリアル: Azure AD SSO と Bitly の統合
 
@@ -141,4 +141,4 @@ Bitly 用に Azure AD SSO を構成してテストするには、次の手順を
 
 ## <a name="next-steps"></a>次のステップ
 
-Bitly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Bitly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

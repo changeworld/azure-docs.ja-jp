@@ -9,12 +9,12 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 08/27/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2c75b1ae5112b758282941efb20be245fed4d22d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5affe181185d726432596bfda6dad6f4f041de80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014241"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277925"
 ---
 # <a name="backup-and-restore-plan-to-protect-against-ransomware"></a>ランサムウェアから保護するためのバックアップと復元の計画
 
@@ -161,7 +161,7 @@ Azure Backup に組み込まれている[セキュリティ機能](../../backup/
 3. 元の侵害を調査して修復します ([Microsoft Detection and Response Team (DART)](https://www.microsoft.com/security/blog/2019/03/25/dart-the-microsoft-cybersecurity-team-we-hope-you-never-meet/) に連絡してサポートを受けます)
 4. 得られた教訓と機会に基づいて、バックアップと復元の戦略を更新します (最初に最も大きな影響と最も迅速な実装手順に基づいて優先順位を付けます)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ランサムウェアから保護するためにバックアップと復元の計画を改善する方法について説明しました。 ランサムウェア対策のデプロイに関するベスト プラクティスについては、「[ランサムウェアや脅迫からの迅速な保護](/security/compass/protect-against-ransomware)」を参照してください。
 
@@ -173,7 +173,7 @@ Microsoft Azure:
 
 - [Microsoft Azure Backup を使用してランサムウェアからの保護を支援](https://www.youtube.com/watch?v=VhLOr2_1MCg) (26 分のビデオ)
 - [システムの ID 侵害からの復旧](./recover-from-identity-compromise.md)
-- [Azure Sentinel の高度なマルチステージ攻撃の検出](../../sentinel/fusion.md#fusion-for-ransomware)
+- [Microsoft Sentinel での高度なマルチステージ攻撃の検出](../../sentinel/fusion.md#fusion-for-ransomware)
 
 Microsoft 365:
 

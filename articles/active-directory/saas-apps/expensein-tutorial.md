@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 3e61a1d206b7e39e3f464556e295cb47779debde
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3ec1fadaff3845de98a1eea3e72b34a67779f893
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596726"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314289"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-expensein"></a>チュートリアル: Azure AD SSO と ExpenseIn の統合
 
@@ -185,4 +185,4 @@ Azure AD ユーザーが ExpenseIn にサインインできるようにするに
 
 ## <a name="next-steps"></a>次のステップ
 
-ExpenseIn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+ExpenseIn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

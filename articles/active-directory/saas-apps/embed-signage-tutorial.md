@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2021
 ms.author: jeedes
-ms.openlocfilehash: e9580126bd77617bebc5a8a8739f1faf73b2c044
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 6f5a8742e831be54073cf23d820706be1df7fb2e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129662152"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330402"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-embed-signage"></a>チュートリアル: Azure AD SSO と embed signage の統合
 
@@ -150,4 +150,4 @@ embed signage 用に Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-embed signage を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+embed signage を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

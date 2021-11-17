@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: aface1bb2b34975426a2fffb3b75d8c6d14b835a
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: a804e7eb9b98eb462e7a32f49c439afefeaca76f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506431"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312497"
 ---
 # <a name="speech-sdk-microphone-array-recommendations"></a>Speech SDK のマイク配列の推奨事項
 

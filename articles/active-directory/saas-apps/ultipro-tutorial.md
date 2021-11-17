@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 6cc5570344033951aacfd1558e7c23091bc74678
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ab20365a728422caca5f734f460d8763b892e25a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124808184"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332784"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>チュートリアル: Azure Active Directory と UltiPro の統合
 
@@ -155,7 +155,6 @@ UltiPro に対する Azure AD SSO を構成してテストするには、次の�
 
 * Microsoft マイ アプリを使用することができます。 マイ アプリで [UltiPro] タイルをクリックすると、UltiPro のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-UltiPro を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+UltiPro を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

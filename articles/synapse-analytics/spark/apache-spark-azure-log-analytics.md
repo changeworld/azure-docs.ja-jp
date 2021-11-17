@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: dcf09885dab6ba41d545e4105a86c99535786c62
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: edb86a4c264b291516b3cc52d3d5dbfa159ace32
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223141"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312174"
 ---
 # <a name="monitor-apache-spark-applications-with-azure-log-analytics"></a>Azure Log Analytics を使用して Apache Spark アプリケーションを監視する
 
@@ -52,7 +52,7 @@ spark.synapse.logAnalytics.secret <LOG_ANALYTICS_WORKSPACE_KEY>
 #### <a name="option-2-configure-with-azure-key-vault"></a>オプション 2: Azure Key Vault を使用して構成する
 
 > [!NOTE]
-> Apache Spark アプリケーションを送信するユーザーにシークレットの読み取りアクセス許可を付与する必要があります。 詳細については、「[Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../../key-vault/general/rbac-guide.md)」を参照してください。
+> Apache Spark アプリケーションを送信するユーザーにシークレットの読み取りアクセス許可を付与する必要があります。 詳細については、「[Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../../key-vault/general/rbac-guide.md)」を参照してください。 Synapse パイプラインでこの機能を有効にする場合は、**オプション 3** を使用する必要があります。 これは、ワークスペースのマネージド ID を使用して Azure Key Vault からシークレットを取得するために必要です。
 
 ワークスペース キーを格納するよう Azure Key Vault を構成するには、次の手順に従います。
 
@@ -82,7 +82,7 @@ spark.synapse.logAnalytics.keyVault.key.secret <AZURE_KEY_VAULT_SECRET_KEY_NAME>
 #### <a name="option-3-configure-with-a-linked-service"></a>方法 3. リンク サービスを使用した構成
 
 > [!NOTE]
-> Apache Spark アプリケーションを送信するユーザーにシークレットの読み取りアクセス許可を付与する必要があります。 詳細については、「[Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../../key-vault/general/rbac-guide.md)」を参照してください。
+> このオプションでは、ワークスペースのマネージド ID にシークレットの読み取りアクセス許可を付与する必要があります。 詳細については、「[Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../../key-vault/general/rbac-guide.md)」を参照してください。
 
 Synapse Studio で Key Vault のリンク サービスを構成してワークスペース キーを格納するには、次の手順に従います。
 

@@ -1,18 +1,18 @@
 ---
 title: 証明書をデプロイする
 description: Defender for IoT 用の証明書を設定してデプロイする方法について説明します。
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: d6a67a84dab6df165346ff2739d0ac56e2b8eff2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: df2b0484d9f9302443dc37870a6a97de31ded3b1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128602823"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343707"
 ---
 # <a name="about-certificates"></a>証明書について
 
-この記事では、Azure Defender for IoT 用の証明書を作成してデプロイするときに必要な情報を提供します。 セキュリティ、PKI、または他の資格のある証明書の責任者が、証明書の作成とデプロイを処理する必要があります。
+この記事では、Microsoft Defender for IoT 用の証明書を作成してデプロイするときに必要な情報を提供します。 セキュリティ、PKI、または他の資格のある証明書の責任者が、証明書の作成とデプロイを処理する必要があります。
 
 Defender for IoT では、SSL/TLS 証明書が使用され、次のシステム コンポーネント間の通信がセキュリティで保護されます。 
 
@@ -110,13 +110,17 @@ Defender for IoT 管理者ユーザーは、[SSL/TLS 証明書] ダイアログ 
 
 Defender for IoT では、各 CA 署名証明書に、.key ファイルと .crt ファイルが含まれている必要があります。 これらのファイルは、ログイン後にセンサーおよびオンプレミスの管理コンソールにアップロードされます。 組織によっては、.pem ファイルが必要になる場合があります。 Defender for IoT では、このファイルの種類は必要ありません。
 
-**.crt - 証明書コンテナー ファイル**  
+**.crt - 証明書コンテナー ファイル**
+
 異なる拡張子を使用した .pem または .der 形式のファイル。 このファイルは、エクスプローラーで証明書として認識されます。 エクスプローラーでは .pem ファイルは認識されません。
 
-**.key - 秘密キー ファイル**  
+**.key - 秘密キー ファイル**
+
 キー ファイルは PEM ファイルと同じ形式ですが、拡張子は異なります。
 
-**.pem - 証明書コンテナー ファイル (省略可能)** PEM は、証明書テキストの Base64 エンコード、証明書の先頭と末尾を示すプレーンテキストのヘッダーおよびフッターを含むテキスト ファイルです。
+**.pem - 証明書コンテナー ファイル (省略可能)**
+
+PEM は、証明書テキストの Base64 エンコード、証明書の先頭と末尾を示すプレーンテキストのヘッダーおよびフッターを含むテキスト ファイルです。
 
 既存のファイルの種類を、サポートされている種類に変換する必要がある場合があります。 詳細については、「[既存のファイルをサポートされているファイルに変換する](#convert-existing-files-to-supported-files)」を参照してください。
 

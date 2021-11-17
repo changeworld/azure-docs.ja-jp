@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 95f443a74129536746eeb877019eb861f40aa575
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f3b50658114c843d0de5ff609b132d67a9cee52d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131436610"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291200"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-kantega-sso-for-bitbucket"></a>チュートリアル: Azure AD SSO と Kantega SSO for Bitbucket の統合
 
@@ -258,4 +258,4 @@ Azure AD ユーザーが Bitbucket にサインインできるようにするに
 
 ## <a name="next-steps"></a>次のステップ
 
-Kantega SSO for Bitbucket を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Kantega SSO for Bitbucket を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: caaea2fa1549f502a2a84f676409fd5ac7635918
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2a7dd5967a6af6fce08f52fe31044c69fa0d4bcc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802816"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338480"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-crossknowledge-learning-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CrossKnowledge Learning Suite の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * CrossKnowledge Learning Suite では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* CrossKnowledge Learning Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* CrossKnowledge Learning Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-crossknowledge-learning-suite-from-the-gallery"></a>ギャラリーからの CrossKnowledge Learning Suite の追加
 
@@ -151,6 +151,6 @@ CrossKnowledge Learning Suite に対する Azure AD SSO を構成してテスト
 
 - [Azure AD で CrossKnowledge Learning Suite を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって CrossKnowledge Learning Suite を保護する方法](/cloud-app-security/proxy-intro-aad)

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 80bb6aac5d6eb80f82372fd90d77fa0c2a082957
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 6bcb751c58b4ba14e84f529ec268beacc93fdcf4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166719"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339563"
 ---
 # <a name="how-to-automatically-apply-sensitivity-labels-to-your-data-in-azure-purview"></a>Azure Purview のデータに秘密度ラベルを自動的に適用する方法
 
@@ -54,7 +54,7 @@ Azure Purview の資産にラベル付けを拡張すると、すべての公開
 
 **新しい秘密度ラベルを作成または既存のラベルを変更するには**:
 
-1. [Microsoft 365 セキュリティ/コンプライアンス センター](https://compliance.microsoft.com/)を開きます。
+1. [Microsoft 365 コンプライアンス センター](https://compliance.microsoft.com/)を開きます。
 
 1. **[ソリューション]** で、 **[Information Protection]** を選択し、 **[ラベルの作成]** を選択します。
 

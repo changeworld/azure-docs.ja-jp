@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 75d8728b9c6fd3964e2e4e59d83eb114a382c440
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4dd6b570598c4199ee29026b738a53a2cbcc7aa8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732047"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132288820"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ARC Facilities の統合
 
@@ -153,4 +153,4 @@ ARC Facilities で Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="next-steps"></a>次のステップ
 
-ARC Facilities を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+ARC Facilities を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

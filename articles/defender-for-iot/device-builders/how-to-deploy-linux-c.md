@@ -2,13 +2,13 @@
 title: Linux C エージェントをインストールおよびデプロイする
 description: Defender for IoT の C ベースのセキュリティ エージェントを Linux にインストールおよびデプロイする方法について説明します
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 46677a971165c65440310e21933f586cc685b771
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 1b1c81b73c6e7b0c32031de256b029a1a1164f4d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584870"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306113"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Defender for IoT の C ベースのセキュリティ エージェントをデプロイする
 
@@ -80,5 +80,5 @@ ms.locfileid: "128584870"
 - Defender for IoT サービスの[概要](overview.md)を確認する
 - 「[デバイス ビルダー向けのエージェントベースのソリューションとは](architecture-agent-based.md)」を参照して、Defender for IoT の詳細を学習します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします
-- [Azure Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをお読みください
+- [Microsoft Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをお読みください
 - [セキュリティ アラート](concept-security-alerts.md)について理解します

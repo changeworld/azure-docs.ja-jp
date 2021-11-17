@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 11/10/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 951e2406a387ed2aaedc4cec875c62a14cf5bb2e
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 99b7d27ef16414df161b7d6e120084f2b8220f46
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291948"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297527"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -156,6 +156,10 @@ VNet にファイアウォールをデプロイします。
 8. ファイアウォールのプライベートおよびパブリック IP アドレスをメモします。 これらのアドレスは後ほど使用します。
 
 ## <a name="create-a-default-route"></a>既定のルートを作成する
+
+ファイアウォール経由で発信および受信接続のルートを作成する場合は、仮想アプライアンスのプライベート IP をネクスト ホップとした 0.0.0.0/0 への既定のルートがあれば十分です。 これにより、ファイアウォールを通過する発信および着信接続が処理されます。 たとえば、ファイアウォールで TCP ハンドシェイクが実行され、受信要求への応答が行われる場合、応答はトラフィックの送信元の IP アドレスに送信されます。 これは仕様です。 
+
+このため、AzureFirewallSubnet の IP 範囲を含めるための追加の UDR を作成する必要はありません。 これにより、接続が切断される可能性があります。 元の既定のルートで十分です。
 
 **Workload-SN** サブネットでは、アウトバウンドの既定ルートがファイアウォールを通過するように構成します。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 22214c6113d182363ccd86d9e79dac971eb0e432
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 34225576d435f9ff275f74372afa2cc9f7d50b9f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465818"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287250"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで動的構成を使用する
 
@@ -75,7 +75,7 @@ public void myConfigurationRefreshCheck() {
 
     | キー | 値 |
     |---|---|
-    | sentinel | 1 |
+    | Sentinel | 1 |
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
@@ -106,7 +106,7 @@ public void myConfigurationRefreshCheck() {
 
     | キー | 値 |
     |---|---|
-    | sentinel | 2 |
+    | Sentinel | 2 |
 
 1. ブラウザー ページを最新の情報に更新し、新しいメッセージが表示されるのを確認します。
 

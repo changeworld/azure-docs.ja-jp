@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a7b507e05cd6c7b830942a7a7886593f4388d69
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8cad317deb4e47413f42ccd4a8c51db84a76f3dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124833747"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132296060"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gr8-people"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と gr8 People の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * gr8 People では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* gr8 People を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* gr8 People を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-gr8-people-from-the-gallery"></a>ギャラリーからの gr8 People の追加
 
@@ -151,6 +151,6 @@ gr8 People に対する Azure AD SSO を構成してテストするには、次�
 
 - [Azure AD で gr8 People を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって gr8 People を保護する方法](/cloud-app-security/proxy-intro-aad)

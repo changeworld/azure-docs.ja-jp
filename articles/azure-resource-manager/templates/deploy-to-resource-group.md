@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートでリソースをデプ�
 ms.topic: conceptual
 ms.date: 10/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 818ace7b20ed1c4a21748c9c734da4bace100523
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: dac7741000465f9678f478555fb55b47c2c44600
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390047"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282122"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM テンプレートを使用したリソース グループへのデプロイ
 
@@ -318,4 +318,4 @@ az deployment group create \
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
+* Microsoft Defender for Cloud のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。

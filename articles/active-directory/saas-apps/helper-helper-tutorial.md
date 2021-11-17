@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/13/2021
 ms.author: jeedes
-ms.openlocfilehash: f5650ad60922636f8430ff2ce132f10b57cda0b8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e84dedc1d1c0ffd1931a03868d9c7edfb8cf4309
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131039831"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311376"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-helper-helper"></a>チュートリアル: Azure AD SSO と Helper Helper の統合
 
@@ -151,4 +151,4 @@ Helper Helper を使用して Azure AD SSO を構成してテストするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-Helper Helper を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Helper Helper を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

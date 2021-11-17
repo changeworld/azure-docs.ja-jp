@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 45add630c21d6c155dacda0552e94d21b3d81a35
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0a51dc041b8e8155121a89640f7ba9201f295521
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131451314"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304933"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-informacast"></a>チュートリアル: Azure AD SSO と InformaCast の統合
 
@@ -138,4 +138,4 @@ InformaCast に対して Azure AD SSO を構成してテストするには、次
 
 ## <a name="next-steps"></a>次の手順
 
-InformaCast を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+InformaCast を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

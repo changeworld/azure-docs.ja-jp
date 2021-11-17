@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 45770f06ce6ab92d39a927c26e5464c1f9871c71
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9abed0b59b29e58b56a774b9079b99bde010a783
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124825644"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298921"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textline"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Textline の統合
 
@@ -43,7 +43,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Textline では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-* Textline を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Textline を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-textline-from-the-gallery"></a>ギャラリーからの Textline の追加
 
@@ -144,6 +144,6 @@ Textline で Azure AD SSO を構成してテストするには、次の構成要
 
 - [Azure AD で Textline を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Textline を保護する方法](/cloud-app-security/proxy-intro-aad)

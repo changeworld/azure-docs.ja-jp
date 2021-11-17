@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/18/2021
 ms.author: jeedes
-ms.openlocfilehash: aa8d0c7c48ba42d920a7a185d90b3e6eeed17446
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1ced5a644902af52c8420057157331260ccc1228
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131448139"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305050"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-coggle"></a>チュートリアル: Azure AD SSO と Coggle の統合
 
@@ -177,4 +177,4 @@ Coggle に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Coggle を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Coggle を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

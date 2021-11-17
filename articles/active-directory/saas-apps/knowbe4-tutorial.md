@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 5b4ffdc24a4a1e41d0db0c5e816b67909b125dc4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0ccc0d20937fb3986ccfb26ec179cc2f310a32ec
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676694"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310859"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-knowbe4-security-awareness-training"></a>チュートリアル: Azure AD SSO と KnowBe4 Security Awareness Training の統合
 
@@ -138,4 +138,4 @@ KnowBe4 で Azure AD シングル サインオンを構成してテストする�
 
 ## <a name="next-steps"></a>次のステップ
 
-KnowBe4 Security Awareness Training を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+KnowBe4 Security Awareness Training を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

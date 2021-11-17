@@ -17,20 +17,20 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1db2a820ab551130fbd9bba832c329b925a0f6a
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 110170868ba477060c5cd8ba1fbf28428160e29e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997117"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305581"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
 Azure Active Directory (Azure AD) のアクティビティ ログを複数のエンドポイントにルーティングして、長期の保持期間とデータの分析情報を得ることができます。 この機能では次のことができます。
 
 * データを長期間保持するには、Azure AD アクティビティ ログを Azure ストレージ アカウントにアーカイブします。
-* Splunk、QRadar、Azure Sentinel などの一般的なセキュリティ情報およびイベント管理 (SIEM) ツールを使用して、分析のために Azure AD アクティビティ ログを Azure イベント ハブにストリーム配信します。
-* Azure AD アクティビティ ログのイベント ハブへのストリーミングによって、Azure AD アクティビティ ログを独自のカスタム ログ ソリューションと統合します。
+* Azure AD アクティビティ ログを Azure イベント ハブにストリーム配信して、Splunk、QRadar、Microsoft Sentinel などの一般的なセキュリティ情報およびイベント管理 (SIEM) ツールを使用して分析することができます。
+* Azure AD アクティビティ ログをイベント ハブにストリーミングすることで、独自のカスタム ログ ソリューションと統合することができます。
 * Azure AD アクティビティ ログを Azure Monitor ログに送信して、接続データに対する高度な視覚化、監視、およびアラートを有効にします。
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 ## <a name="supported-reports"></a>サポートされるレポート
 
-この機能を使用して、Azure AD 監査ログとサインイン ログを Azure ストレージ アカウント、イベント ハブ、Azure Monitor ログ、またはカスタム ソリューションにルーティングできます。 
+この機能を使用して、Azure AD 監査ログとサインイン ログを Azure Storage アカウント、イベント ハブ、Azure Monitor ログ、またはカスタム ソリューションにルーティングすることができます。
 
 * **監査ログ**: ユーザーとグループの管理や、テナントのリソースに適用される更新プログラムなど、テナントに適用される変更に関する情報は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。

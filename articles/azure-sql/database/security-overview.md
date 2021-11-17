@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 08/23/2021
-ms.openlocfilehash: 9326797e16190b3570ed6faca4d724bec432bc86
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: cf4ac33d22b28eb508aef47778885cd1ba6aebfe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122767916"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315864"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database と SQL Managed Instance のセキュリティ機能の概要
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -89,7 +89,7 @@ SQL Database と SQL Managed Instance の監査はデータベース アクテ�
 
 ### <a name="advanced-threat-protection"></a>高度な脅威保護
 
-Advanced Threat Protection では、ログを分析し、通常とは異なる動作と、データベースへのアクセスまたは悪用を試みる有害な可能性がある試行を検出します。 SQL インジェクション、潜在的なデータ侵入、ブルートフォース攻撃などの疑わしいアクティビティや、特権の昇格と不正な資格情報の使用を検出するアクセス パターンの異常に対してアラートが作成されます。 アラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で表示されます。ここでは、疑わしいアクティビティの詳細が提供され、また、脅威を軽減するためのアクションと共に、より詳しい調査のためのレコメンデーションが示されます。 Advanced Threat Protection は追加料金でサーバーごとに有効にすることができます。 詳細については、[SQL Database の Advanced Threat Protection の概要](threat-detection-configure.md)に関する記事を参照してください。
+Advanced Threat Protection では、ログを分析し、通常とは異なる動作と、データベースへのアクセスまたは悪用を試みる有害な可能性がある試行を検出します。 SQL インジェクション、潜在的なデータ侵入、ブルートフォース攻撃などの疑わしいアクティビティや、特権の昇格と不正な資格情報の使用を検出するアクセス パターンの異常に対してアラートが作成されます。 アラートは、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) で表示されます。ここでは、疑わしいアクティビティの詳細が提供され、また、脅威を軽減するためのアクションと共に、より詳しい調査のためのレコメンデーションが示されます。 Advanced Threat Protection は追加料金でサーバーごとに有効にすることができます。 詳細については、[SQL Database の Advanced Threat Protection の概要](threat-detection-configure.md)に関する記事を参照してください。
 
 ![外部の攻撃者や悪意のある内部関係者による Web アプリの SQL データベースへのアクセスを監視する SQL 脅威の検出を示す図。](./media/security-overview/azure-database-td.jpg)
 
@@ -136,7 +136,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ### <a name="vulnerability-assessment"></a>脆弱性評価
 
-[脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである Azure Defender for SQL オファリングの一部です。 脆弱性評価は、Azure Defender for SQL ポータルを使用して、一元的にアクセスおよび管理できます。
+[脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである Microsoft Defender for SQL オファリングの一部です。 脆弱性評価は、中心となる Microsoft Defender for SQL ポータルからアクセスし、管理できます。
 
 ### <a name="data-discovery-and-classification"></a>データの検出と分類
 

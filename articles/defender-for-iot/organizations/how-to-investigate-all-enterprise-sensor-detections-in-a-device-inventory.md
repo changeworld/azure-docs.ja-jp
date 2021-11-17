@@ -1,14 +1,14 @@
 ---
 title: すべてのエンタープライズ センサーによって検出されたデバイスについて
 description: オンプレミスの管理コンソールのデバイス インベントリを使用して、接続されているセンサーからのデバイス情報の包括的なビューを取得します。 この情報を管理するには、インポート、エクスポート、およびフィルター処理のツールを使用します。
-ms.date: 12/02/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 3a92d1950bd1fab5ea6e94a433aad1d74802fb23
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 0025016dd449bf4083c707d4a6db5cd25bf66cfd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027263"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343669"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>デバイス インベントリのすべてのエンタープライズ センサー検出を調査する
 
@@ -25,7 +25,7 @@ ms.locfileid: "132027263"
 | **リージョン** | このデバイスが含まれているリージョン。 |
 | **サイト** | このデバイスが含まれているサイト。 |
 | **ゾーン** | このデバイスが含まれているゾーン。 |
-| **アプライアンス** | このデバイスを保護する Azure Defender for IoT センサー。 |
+| **アプライアンス** | このデバイスを保護する Microsoft Defender for IoT センサー。 |
 | **名前** | Defender for IoT によって検出された、このデバイスの名前。 |
 | **Type** | デバイスの種類 (PLC や HMI など)。 |
 | **ベンダー名** | MAC アドレスで定義されている、デバイスの製造元の名前。 |

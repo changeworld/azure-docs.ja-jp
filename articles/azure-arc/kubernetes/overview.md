@@ -6,12 +6,12 @@ ms.date: 05/25/2021
 ms.topic: overview
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 1ff4a2c74e34dad29287e32dd33be5133d735c67
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 7338664698e40a1e4a1280cc08ee57a922518d79
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056361"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312840"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes とは
 
@@ -42,7 +42,7 @@ Azure Arc 対応 Kubernetes は、次のシナリオをサポートします。
 
 * コンテナーに対して Azure Monitor を使用して、クラスターを表示および監視する。
 
-* Azure Defender for Kubernetes を使用して脅威保護を適用する。
+* Microsoft Defender for Kubernetes を使用して脅威保護を適用する
 
 * Kubernetes 用の Azure Policy を使用してポリシー定義を適用する。
 

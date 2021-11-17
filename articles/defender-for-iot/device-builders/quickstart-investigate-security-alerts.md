@@ -2,13 +2,13 @@
 title: クイック スタート:セキュリティ アラートを調べる
 description: お使いの IoT デバイスに関する Defender for IoT セキュリティ アラートの理解を深め、ドリルダウンと調査を行います。
 ms.topic: quickstart
-ms.date: 06/21/2021
-ms.openlocfilehash: 02005680ca1c5d140ffdb101ede359594b28a840
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: c55392650edf85c753bcde32a03e8ad313ebd148
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011321"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331511"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>クイック スタート:セキュリティ アラートを調べる
 
@@ -48,7 +48,7 @@ IoT ハブのセキュリティ アラートの一覧には、IoT ハブにつ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Defender のアラートの種類と利用可能なカスタマイズの詳細については、次の記事に進んでください。
+セキュリティ アラートの種類と利用可能なカスタマイズの詳細については、次の記事に進んでください。
 
 > [!div class="nextstepaction"]
 > [IoT セキュリティ アラートについて](concept-security-alerts.md)

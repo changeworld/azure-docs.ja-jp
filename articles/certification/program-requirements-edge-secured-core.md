@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Secured-core Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 81e9bc60a7749cdc155fc6997c198e834476dbf0
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 35091e1ccde554ce897dc629c3c372af05650458
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031933"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293860"
 ---
 # <a name="edge-secured-core-certification-requirements-preview"></a>Edge Secured-Core 認定の要件 (プレビュー) #
 
@@ -32,12 +32,12 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |名前|SecuredCore.Built-in.Security|
 |:---|:---|
 |Status|必須|
-|説明|テストの目的は、Azure Defender for IoT にデータを送信して、セキュリティ情報とイベントをデバイスでレポートできることを確認することです。|
+|説明|テストの目的は、Microsoft Defender for IoT にデータを送信して、セキュリティ情報とイベントをデバイスでレポートできることを確認することです。|
 |ターゲットの可用性|2021|
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証 |デバイスでは、セキュリティ ログとアラートを生成する必要があります。 デバイスでは、Azure Security Center にメッセージを記録してアラートを送信します。<ol><li>GitHub からセキュリティ エージェントをダウンロードしてデプロイします。</li><li>Azure Defender for IoT からのアラート メッセージを検証します。</li></ol>|
+|検証 |デバイスでは、セキュリティ ログとアラートを生成する必要があります。 Microsoft Defender for Cloud へのデバイス ログとアラート メッセージ。<ol><li>GitHub からセキュリティ エージェントをダウンロードしてデプロイします。</li><li>Microsoft Defender for IoT からのアラート メッセージを検証します。</li></ol>|
 |リソース|[Azure Docs IoT Defender for IoT](../defender-for-iot/how-to-configure-agent-based-solution.md)|
 
 ---
@@ -97,7 +97,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|リモート管理、特にセキュリティ構成の機能がデバイスでサポートされていることを確認するために、ツールセットでデバイスを検証します。 状態は、IoT Hub/Azure Defender for IoT にレポートされます。|
+|検証|リモート管理、特にセキュリティ構成の機能がデバイスでサポートされていることを確認するために、ツールセットでデバイスを検証します。 状態は、IoT Hub/Microsoft Defender for IoT にレポートされます。|
 |リソース||
 
 ---
@@ -218,7 +218,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|Defender IOT システム構成のベンチマークが実行されていることを確認するために、ツールセットでデバイスを検証します。|
+|検証|Defender for Cloud IOT システム構成のベンチマークが実行されていることを確認するために、ツールセットでデバイスを検証します。|
 |リソース| https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines <br> https://www.cisecurity.org/cis-benchmarks/ |
 
 ---

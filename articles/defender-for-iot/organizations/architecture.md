@@ -1,41 +1,41 @@
 ---
 title: エージェントレス ソリューション アーキテクチャとは
-description: Azure Defender for IoT のエージェントレス アーキテクチャと情報フローについて説明します。
+description: Microsoft Defender for IoT のエージェントレス アーキテクチャと情報フローについて説明します。
 ms.topic: overview
-ms.date: 07/19/2021
-ms.openlocfilehash: cec373f3848e264b7c9f4b9753315189da77bc0b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 11/09/2021
+ms.openlocfilehash: 9a3a125ea91ccb9649a4bfc70555885b87d59e65
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114455230"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318923"
 ---
-# <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT のアーキテクチャ
+# <a name="microsoft-defender-for-iot-architecture"></a>Microsoft Defender for IoT のアーキテクチャ
 
-この記事では、Defender for IoT エージェントレス ソリューションの機能的なシステム アーキテクチャについて説明します。 Azure Defender for IoT には、ご使用環境のニーズに適合するように、組織向けのエージェントレス ソリューションとデバイス ビルダー向けのエージェントベースのソリューションという 2 つの機能セットが用意されています。
+この記事では、Defender for IoT エージェントレス ソリューションの機能的なシステム アーキテクチャについて説明します。 Microsoft Defender for IoT には、ご使用環境のニーズに適合するように、組織向けのエージェントレス ソリューションとデバイス ビルダー向けのエージェントベースのソリューションという 2 つの機能セットが用意されています。
 
 ## <a name="agentless-solution-architecture-for-organizations"></a>組織向けのエージェントレス ソリューション アーキテクチャ
 ### <a name="defender-for-iot-components"></a>Defender for IoT のコンポーネント
 
 Defender for IoT は、Azure クラウドとオンプレミスのコンポーネントの両方に接続します。 このソリューションは、複数のリモートの場所を持つ大規模で地理的に分散した環境でのスケーラビリティを考慮して設計されています。 このソリューションを使用すると、国、地域、事業単位、またはゾーンごとの多層分散アーキテクチャを実現できます。 
 
-Azure Defender for IoT には、次のコンポーネントが含まれています。 
+Microsoft Defender for IoT には、次のコンポーネントが含まれています。 
 
 **クラウドに接続されたデプロイ**
 
-- Azure Defender for IoT センサー VM またはアプライアンス
-- クラウド管理と Azure Sentinel への統合のための Azure portal
+- Microsoft Defender for IoT センサー VM またはアプライアンス
+- クラウド管理と Microsoft Sentinel への統合に使用する Azure portal
 - ローカル サイト管理のためのオンプレミスの管理コンソール
 - 埋め込みセキュリティ エージェント (オプション)
 
 **エアギャップ (オフライン) デプロイ**
 
-- Azure Defender for IoT センサー VM またはアプライアンス
+- Microsoft Defender for IoT センサー VM またはアプライアンス
 - ローカル サイト管理のためのオンプレミスの管理コンソール
 
 :::image type="content" source="./media/architecture/defender-iot-security-architecture-v3.png" alt-text="Defender for IoT のアーキテクチャ。":::
 
-### <a name="azure-defender-for-iot-sensors"></a>Azure Defender for IoT センサー
+### <a name="microsoft-defender-for-iot-sensors"></a>Microsoft Defender for IoT センサー
 
 Defender for IoT センサーによって、ネットワーク デバイスが検出され、継続的に監視されます。 センサーは、IoT および OT デバイスのパッシブ (エージェントレス) 監視を使用して、ICS ネットワーク トラフィックを収集します。 
  
@@ -65,7 +65,7 @@ Defender for IoT センサーを SPAN ポートまたはネットワーク TAP �
 操作上のインシデント検出では、機器障害の初期兆候を示す可能性がある、断続的な接続などの操作上の問題が検出されます。 たとえば、デバイスの切断 (無応答) が疑われ、Siemens S7 stop PLC コマンドがアラートを送信される場合があります。
 
 ### <a name="management-consoles"></a>管理コンソール
-ハイブリッド環境全体での Azure Defender for IoT の管理は、次の 2 つの管理ポータルを使用して行います。 
+ハイブリッド環境全体での Microsoft Defender for IoT の管理は、次の 2 つの管理ポータルを使用して行います。 
 - センサー コンソール
 - オンプレミスの管理コンソール
 - Azure ポータル
@@ -96,7 +96,7 @@ SOC ワークフローと Runbook に緊密に統合されているため、軽�
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure の Defender for IoT ポータルを使用して、次のようなことができます。
+Azure の Azure portal で Defender for IoT を使用すると、次のようなことができます。
 
 - ソリューション アプライアンスの購入
 

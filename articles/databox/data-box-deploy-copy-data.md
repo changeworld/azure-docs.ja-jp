@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/16/2021
+ms.date: 11/10/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d52903efad4b788c3ec4fcafb11053c7826ae4c2
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: d58a136b06093f22cd28e96714a1436277d4ce77
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114402302"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297641"
 ---
 ::: zone target="docs"
 
@@ -120,10 +120,10 @@ Data Box 共有に接続したら、次にデータをコピーします。 デ�
 * データをコピーするときは、データのサイズが、[Azure ストレージ アカウントのサイズ制限](data-box-limits.md#azure-storage-account-size-limits)に関する記事に記載されているサイズ制限に従っていること確認してください。
 * Azure Files にデータを転送するとき、メタデータ (ACL、タイムスタンプ、ファイル属性) を保持する場合、「[Azure Data Box でファイル ACL、属性、タイムスタンプを保持する](data-box-file-acls-preservation.md)」のガイダンスに従ってください。  
 * Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによっても同時にアップロードされている場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
-* 推奨事項は次のとおりです。
-  * SMB と NFS の両方を同時に使用しません。
-  * 同じデータを Azure 上の同じ宛先にコピーします。
-  このようにした場合は、最終的な結果が不確定になります。
+* データ コピーに SMB プロトコルと NFS プロトコルの両方を使用する場合、次をお勧めします。
+  * SMB と NFS には異なるストレージ アカウントを使用します。
+  * SMB と NFS の両方を使用して Azure の同じエンド宛先に同じデータをコピーすることは避けてください。 このようにした場合は、最終的な結果が不確定になります。
+  * SMB と NFS の両方を使用した並列コピーは可能ですが、人的エラーが発生しやすいのでお勧めしません。 SMB でのデータ コピーが完了するまで待ってから、NFS でのデータ コピーを開始してください。
 
 > [!IMPORTANT]
 > Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。

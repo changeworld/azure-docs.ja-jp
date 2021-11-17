@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: reference
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 663f9289d6cc11a162c2325bc46381c1e2369193
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: b0faa61b724420ad04cc489d51539c134569dd05
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563969"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287117"
 ---
 # <a name="visual-studio-code-extension-for-azure-video-analyzer"></a>Azure Video Analyzer の Visual Studio Code 拡張機能を使用する
 

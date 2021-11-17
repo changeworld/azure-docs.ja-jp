@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: bf0972342cf70b542bef01a070f777dec615c13b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0789e9bb28868ce4d75aa48beb956fcb4dd74031
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564368"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345805"
 ---
 # <a name="show-the-configuration-of-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
 
@@ -55,7 +55,7 @@ kubectl get pods -n <namespace>
 
 コマンドによって、ポッドの一覧が返されます。 サーバー グループによって使用されているポッドが、それらのサーバー グループに付けた名前に基づいて表示されます。 次に例を示します。
 
-```console 
+```console
 NAME                 READY   STATUS    RESTARTS   AGE
 bootstrapper-4jrtl   1/1     Running   0          12d
 control-kz8gh        2/2     Running   0          12d
@@ -78,8 +78,8 @@ postgres01w0-3       3/3     Running   0          2d19h
 
 ### <a name="what-pod-is-used-for-what-role-in-the-server-group"></a>サーバー グループ内のどのロールに対してどのようなポッドが使用されますか?
 
-`c` でサフィックスが付けられたポッド名はすべて、コーディネーター ノードを表します。 `w` のサフィックスが付いているノード名はすべてワーカー ノードです。
-たとえば、サーバー グループをホストする 5 つのポッドがある場合、次のようになります。
+`c` でサフィックスが付けられたポッド名はすべて、コーディネーター ノードを表します。 `w` でサフィックスが付けられたノード名はすべてワーカー ノードで、たとえばサーバー グループをホストする 5 つのポッドなどがあります。
+
 - `postgres01c0-0`: コーディネーター ノード
 - `postgres01w0-0`: ワーカー ノード
 - `postgres01w0-1`: ワーカー ノード
@@ -88,14 +88,13 @@ postgres01w0-3       3/3     Running   0          2d19h
 
 ここでは、`c` と `w` の後に表示されている文字 `0` は無視できます (ServerGroupName`c0`-x または ServerGroupName`w0`-x)。 これは、製品が高可用性エクスペリエンスを提供するときに使用される表記です。
 
-
 ### <a name="what-is-the-status-of-the-pods"></a>ポッドの状態は何ですか?
 
 `kubectl get pods -n <namespace>` を実行して、`STATUS` 列を確認します
 
-### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>どのような永続ボリューム要求 (PVC) が使用されていますか? 
+### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>どのような永続ボリューム要求 (PVC) が使用されていますか?
 
-使用される PVC と、どれがデータ、ログ、およびバックアップに使用されるかを理解するには、次を実行します。 
+使用される PVC と、どれがデータ、ログ、およびバックアップに使用されるかを理解するには、次を実行します。
 
 ```console
 kubectl get pvc -n <namespace>
@@ -379,11 +378,11 @@ Status:
 Events:                      <none>
 ```
 
-####  <a name="interpret-the-configuration-information"></a>構成情報を解釈する
+#### <a name="interpret-the-configuration-information"></a>構成情報を解釈する
 
 先述の `servergroup` の説明のいくつかの特定の重要ポイントに注目してみましょう。 それにより、このサーバー グループについて何がわかりますか?
 
-- これは Postgres のバージョン 12 のものであり、Citus 拡張機能を実行します。 
+- これは Postgres のバージョン 12 のものであり、Citus 拡張機能を実行します。
 
    ```output
    Spec:
@@ -410,7 +409,7 @@ Events:                      <none>
           Workers:        4
    ```
 
-- リソース構成: この例では、コーディネーターとワーカーで 256 Mi のメモリが保証されています。 コーディネーターとワーカー ノードで、1Gi を超えるメモリを使用することはできません。 コーディネーターとワーカーは両方とも 1 つの仮想コアが保証されており、3 つ以上の仮想コアを使用することはできません。 
+- リソース構成: この例では、コーディネーターとワーカーで 256 Mi のメモリが保証されています。 コーディネーターとワーカー ノードで、1Gi を超えるメモリを使用することはできません。 コーディネーターとワーカーは両方とも 1 つの仮想コアが保証されており、3 つ以上の仮想コアを使用することはできません。
 
    ```console
         Scheduling:
@@ -437,8 +436,8 @@ Events:                      <none>
                Memory:  256Mi
    ```
 
- - サーバー グループはどのような状態ですか? 自分のアプリケーションで使用できますか? 
- 
+- サーバー グループはどのような状態ですか? 自分のアプリケーションで使用できますか?
+
    はい、すべてのポッド (コーディネーター ノードと 4 つすべてのワーカーノード) の準備ができています
 
    ```console
@@ -450,7 +449,8 @@ Events:                      <none>
 Az CLI コマンドを使用します。
 
 ### <a name="what-are-the-postgres-server-groups-deployed-and-how-many-workers-are-they-using"></a>Postgres サーバー グループはどのようにデプロイされていますか? また、使用しているワーカーの数はどのくらいですか?
-次のコマンドを実行します。 
+
+次のコマンドを実行します。
 
    ```azurecli
    az postgres arc-server list --k8s-namespace <namespace> --use-k8s
@@ -488,6 +488,7 @@ az postgres arc-server show -n postgres01 --k8s-namespace arc --use-k8s
 kubectl によって返されるものとよく似た形式と内容で、以下の情報が返されます。 任意のツールを使用して、システムと対話します。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Azure Arc 対応 PostgreSQL Hyperscale の概念を確認する](concepts-distributed-postgres-hyperscale.md)
 - [サーバー グループをスケールアウト (ワーカーノードを追加) する方法について確認する](scale-out-in-postgresql-hyperscale-server-group.md)
 - [サーバー グループのスケールアップ/スケールダウン (メモリや仮想コアの増減) の方法について確認する](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 4bbda48ff177bba8a4aa14719c28f2d25e776fe1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 34992589d5e7bd70d15c8e2ab992185c69ad21d7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124821185"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333012"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-torii"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Torii の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Torii では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * Torii では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Torii を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Torii を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-torii-from-the-gallery"></a>ギャラリーからの Torii の追加
 
@@ -152,6 +152,6 @@ Torii で Azure AD SSO を構成してテストするには、次の構成要素
 
 - [Azure AD で Torii を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Torii を保護する方法](/cloud-app-security/proxy-intro-aad)

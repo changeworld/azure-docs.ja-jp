@@ -16,12 +16,12 @@ ms.date: 10/07/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8300499b722b88b8c8007d8f7e44ed3d5ccc7833
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 44d896726c189dcb8cae377a857b20c3b72e9a14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131459294"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132296919"
 ---
 # <a name="management-capabilities-for-privileged-access-groups-preview"></a>特権アクセス グループの管理機能 (プレビュー)
 

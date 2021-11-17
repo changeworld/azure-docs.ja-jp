@@ -1,7 +1,7 @@
 ---
-title: Arc 対応 PostgreSQL Hyperscale サーバー グループを使用したデータ分散とスケールアウトの概念
+title: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを使用したデータ分散とスケールアウトの概念
 titleSuffix: Azure Arc-enabled data services
-description: Arc 対応 PostgreSQL Hyperscale サーバー グループを使用したデータ分散の概念
+description: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを使用したデータ分散の概念
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,14 +10,14 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 69405ac6386587e6621c67532a8bd7f41450370e
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: aee8700274d074d94b6f6f8e1e153f256cb6e158
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729940"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294202"
 ---
-# <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループを使用したデータ分散の概念
+# <a name="concepts-for-distributing-data-with-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを使用したデータ分散の概念
 
 この記事では、Azure Arc 対応 PostgreSQL Hyperscale から最大のメリットを得るために重要な主な概念について説明します。
 以下のリンク先の記事では、Azure Database for PostgreSQL Hyperscale (Citus) について説明した概念を参照しています。 これは Azure Arc 対応 PostgreSQL Hyperscale と同じテクノロジであるため、同じ概念と分析観点が適用されます。
@@ -25,9 +25,9 @@ ms.locfileid: "113729940"
 **両者の相違点**
 - _Azure Database for PostgreSQL Hyperscale (Citus)_
 
-これは、Azure でのサービスとしてのデータベース (PaaS) として使用できる Postgres データベース エンジンのハイパースケール フォーム ファクターです。 Hyperscale エクスペリエンスを有効にする Citus 拡張を備えています。 このフォーム ファクターでは、サービスは Microsoft のデータセンターで実行され、Microsoft によって運用されます。
+これは、Azure でのサービスとしてのデータベース (PaaS) として使用できる Postgres データベース エンジンのハイパースケール フォーム ファクターです。 Hyperscale エクスペリエンスを可能にする Citus 拡張機能を備えています。 このフォーム ファクターでは、サービスは Microsoft のデータセンターで実行され、Microsoft によって運用されます。
 
-- _Azure Arc 対応 PostgreSQL Hyperscale_
+- "_Azure Arc 対応 PostgreSQL Hyperscale_"
 
 これは、Azure Arc 対応データ サービスで提供される Postgres データベース エンジンのハイパースケール フォーム ファクターです。 このフォームファクターでは、システムをホストするインフラストラクチャを お客様ご自身で用意し、運用していただきます。
 
@@ -73,4 +73,3 @@ Azure Arc 対応 PostgreSQL Hyperscale から最大のメリットを得るに�
 - [Arc データ コントローラーに作成された Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのスケールアウトについて確認する](scale-out-in-postgresql-hyperscale-server-group.md)
 - [Azure Arc 対応データ サービスについて確認する](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
 - [Azure Arc について確認する](https://aka.ms/azurearc)
-

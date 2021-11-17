@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 5242c8274ea6febb08c5b547d518e9c606a7411d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4898f7d1ee16132018a8e20a1bc2219805465233
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641525"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313700"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-kintone"></a>チュートリアル: Azure AD SSO と Kintone の統合
 
@@ -95,7 +95,7 @@ Kintone 用に Azure AD SSO を構成してテストするには、次の手順�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -107,7 +107,7 @@ Kintone 用に Azure AD SSO を構成してテストするには、次の手順�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Kintone へのアクセスを許可することで、Azure シングル サインオンを使用できるようにします。
 
@@ -119,13 +119,13 @@ Kintone 用に Azure AD SSO を構成してテストするには、次の手順�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-kintone-sso&quot;></a>Kintone SSO を構成する
+## <a name="configure-kintone-sso"></a>Kintone SSO を構成する
 
 1. 別の Web ブラウザーのウィンドウで、 **Kintone** の企業サイトに管理者としてサインインします。
 
 1. **設定** アイコンをクリックします。
 
-    ![[設定]](./media/kintone-tutorial/icon.png &quot;設定")
+    ![[設定]](./media/kintone-tutorial/icon.png "設定")
 
 1. **[ユーザーとシステム管理]** をクリックします。
 
@@ -198,4 +198,4 @@ Azure AD ユーザーが Kintone にサインインできるようにするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Kintone を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Kintone を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: jeedes
-ms.openlocfilehash: a6463298958a76a768daff0cf54f3364ed118414
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: e1ae3c243c129c78757a80ad46453860819eb2bd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998205"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307315"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-onedesk"></a>チュートリアル: Azure AD SSO と OneDesk の統合
 
@@ -161,4 +161,4 @@ OneDesk に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-OneDesk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+OneDesk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

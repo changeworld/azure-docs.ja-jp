@@ -9,19 +9,19 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 387a2aa7026dfce04a4d1be495f2dff090ec0709
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ee08e92f7aedaf46733e21839b999369d4944091
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114123"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324306"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Advanced Threat Protection (プレビュー)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の Advanced Threat Protection は、通常と異なる潜在的に有害なアクセスまたはエクスプロイトが Azure Cosmos DB アカウントに対して試行されたことを検出するセキュリティ インテリジェンスを強化します。 この保護レイヤーにより、セキュリティの専門家でなくても脅威に対処でき、中央のセキュリティ監視システムでそれらを統合管理できます。
 
-セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) に統合され、不審なアクティビティの詳細および脅威を調査して修正する方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
+セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは [Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
 > [!NOTE]
 >
@@ -104,7 +104,7 @@ Azure Policy を使用して、Cosmos DB の Advanced Threat Protection を有�
 
 Azure Cosmos DB のアクティビティで異常が発生すると、セキュリティ アラートがトリガーされて不審なセキュリティ イベントに関する情報が表示されます。 
 
- Azure Security Center で、現在の[セキュリティ アラート](../../security-center/security-center-alerts-overview.md)を確認して管理することができます。  [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) で特定のアラートをクリックすると、考えられる原因および潜在的な脅威を調査して緩和するための推奨アクションが表示されます。 次の図は、Security Center に表示されるアラートの詳細の例を示しています。
+ Microsoft Defender for Cloud から、現在の[セキュリティ アラート](../../security-center/security-center-alerts-overview.md)を確認して管理できます。  [Defender for Cloud](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) で特定のアラートをクリックすると、考えられる原因および潜在的な脅威を調査して緩和するための推奨アクションが表示されます。 次の図は、Defender for Cloud に表示されるアラートの詳細の例を示しています。
 
  :::image type="content" source="./media/advanced-threat-protection/cosmos-db-alert-details.png" alt-text="脅威の詳細":::
 
@@ -114,9 +114,9 @@ Azure Cosmos DB のアクティビティで異常が発生すると、セキュ�
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP のアラート
 
- Azure Cosmos DB アカウントの監視中に生成されるアラートの一覧については、Security Center のドキュメントで [Cosmos DB のアラート](../../security-center/alerts-reference.md#alerts-azurecosmos) に関するセクションをご参照ください。
+ Azure Cosmos DB アカウントの監視中に生成されるアラートの一覧については、Microsoft Defender for Cloud のドキュメントで [Cosmos DB のアラート](../../security-center/alerts-reference.md#alerts-azurecosmos)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB の診断ログ](../cosmosdb-monitor-resource-logs.md)の詳細を確認します
-* [Azure Security Center](../../security-center/security-center-introduction.md) の詳細について参照してください
+* [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) の詳細を確認します

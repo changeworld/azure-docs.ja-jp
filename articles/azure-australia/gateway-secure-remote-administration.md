@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: 98554997056f8d09e4b6dde8751432b72fa6a8be
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 96d4d6273ef365435f7d21721600f145d40daae4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232811"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323537"
 ---
 # <a name="secure-remote-administration-of-your-gateway-in-azure-australia"></a>Azure Australia におけるゲートウェイの安全なリモート管理
 
@@ -167,7 +167,7 @@ Intune は、モバイル デバイスとアプリを管理する Enterprise Mob
 
 ### <a name="just-in-time-jit-access"></a>Just-In-Time (JIT) アクセス
 
-JIT は、ネットワーク セキュリティ グループ (NSG) を使用して、仮想マシン上の管理プロトコル (RDP や SSH など) へのアクセスをブロックする Azure Security Center の機能です。 仮想マシン上でホストされたアプリケーションは、そのまま通常どおり機能しますが、管理アクセス権を取得するためには、それを要求する必要があり、要求したアクセス権は期間限定で付与されます。 すべての要求は、監査用にログに記録されます。
+JIT は、ネットワーク セキュリティ グループ (NSG) を使用して、仮想マシン上の管理プロトコル (RDP や SSH など) へのアクセスをブロックする Microsoft Defender for Cloud の機能です。 仮想マシン上でホストされたアプリケーションは、そのまま通常どおり機能しますが、管理アクセス権を取得するためには、それを要求する必要があり、要求したアクセス権は期間限定で付与されます。 すべての要求は、監査用にログに記録されます。
 
 |リソース |リンク |
 |---|---|

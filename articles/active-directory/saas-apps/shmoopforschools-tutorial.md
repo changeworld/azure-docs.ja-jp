@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: c27d2fbe1c80c13a91ff31d5d3f655c873b63fbf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 83c08d603ab69cb06e3b82a11dd15daaf0410d52
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801146"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304859"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>チュートリアル:Shmoop For Schools と Azure Active Directory の統合
 
@@ -147,4 +147,4 @@ Shmoop For Schools に対して Azure AD SSO を構成してテストするに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Shmoop For Schools を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Shmoop For Schools を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

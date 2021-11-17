@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 5bf3a2c743b2065aea975c96a8328556f773a496
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d5127ff9cc9baab6e30fdf685f3a47415f933fda
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783351"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313397"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-set-up-for-logzio---azure-ad-integration"></a>チュートリアル: Logz.io - Azure AD Integration の Azure Active Directory シングル サインオン (SSO) の設定
 
@@ -248,4 +248,4 @@ Microsoft Azure Active Directory SSO を Logz.io - Azure AD Integration と一�
 
 ### <a name="next-steps"></a>次のステップ
 
-Logz.io Azure AD Integration を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Logz.io Azure AD Integration を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

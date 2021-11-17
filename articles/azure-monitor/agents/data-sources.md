@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 537163b4a78954443eeb7799dc624837ba03e2bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cac077bf962e8d021fb554acb5576d9d5665ebe6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036624"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284742"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](../logs/data-platform-logs.md)と[メトリック](../essentials/data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](../data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -200,8 +200,8 @@ Azure のその他のサービスでは、Azure Monitor データ プラット�
 
 | サービス | 到着地 | 説明 | リファレンス |
 |:---|:---|:---|:---|
-| [Azure Security Center](../../security-center/index.yml) | Azure Monitor ログ | Azure Security Center によって収集されたセキュリティ データは Log Analytics ワークスペースに格納され、Azure Monitor によって収集される他のログ データと一緒に分析することができます。  | [Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md) |
-| [Azure Sentinel](../../sentinel/index.yml) | Azure Monitor ログ | Azure Sentinel によってさまざまなデータ ソースから収集されたデータは Log Analytics ワークスペースに格納され、Azure Monitor によって収集される他のログ データと一緒に分析することができます。  | [データ ソースの接続](../../sentinel/quickstart-onboard.md) |
+| [Microsoft Defender for Cloud](../../security-center/index.yml) | Azure Monitor ログ | Microsoft Defender for Cloud によって収集されたセキュリティ データは Log Analytics ワークスペースに格納され、Azure Monitor によって収集される他のログ データと一緒に分析することができます。  | [Microsoft Defender for Cloud のデータ収集](../../security-center/security-center-enable-data-collection.md) |
+| [Microsoft Sentinel](../../sentinel/index.yml) | Azure Monitor ログ | Microsoft Sentinel によってさまざまなデータ ソースから収集されたデータは Log Analytics ワークスペースに格納され、Azure Monitor によって収集される他のログ データと一緒に分析することができます。  | [データ ソースの接続](../../sentinel/quickstart-onboard.md) |
 
 
 ## <a name="next-steps"></a>次のステップ

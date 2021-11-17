@@ -1,14 +1,14 @@
 ---
 title: ポートと VLAN の名前解決を強化する
 description: デバイスの解像度を強化するために、センサー上のポートと VLAN の名前をカスタマイズします。
-ms.date: 12/13/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 5c4f29f43534a797c5e8ac7142fd9633830f7859
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020445"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331492"
 ---
 # <a name="enhance-port-vlan-and-os-resolution"></a>ポート、VLAN、OS の解決を強化する
 
@@ -16,7 +16,7 @@ ms.locfileid: "113020445"
 
 ## <a name="customize-port-names"></a>ポート名をカスタマイズする
 
-Azure Defender for IoT では、DHCP や HTTP など、最も一般的に予約されているポートに名前が自動的に割り当てられます。 Defender for IoT によって検出された他のポートのポート名をカスタマイズできます。 たとえば、予約されていないポートは異常に負荷の高いアクティビティを示すため、それに名前を割り当てます。
+Microsoft Defender for IoT では、DHCP や HTTP など、最も一般的に予約されているポートに名前が自動的に割り当てられます。 Defender for IoT によって検出された他のポートのポート名をカスタマイズできます。 たとえば、予約されていないポートは異常に負荷の高いアクティビティを示すため、それに名前を割り当てます。
 
 これらの名前は次の場合に表示されます。
 

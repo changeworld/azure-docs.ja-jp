@@ -1,14 +1,14 @@
 ---
 title: Defender for IoT の API を操作する
 description: 外部 REST API を使用してセンサーおよび管理コンソールによって検出されたデータにアクセスし、そのデータに対してアクションを実行します。
-ms.date: 11/08/2021
+ms.date: 11/09/2021
 ms.topic: reference
-ms.openlocfilehash: 0176fe3da6c2105c522f92614295500fb8ce0e81
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 3d7fdf855e33c84ce966bbe89e564434b2a8a748
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997668"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325298"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
 
@@ -20,7 +20,7 @@ Defender for IoT API は、[Microsoft API ライセンスと利用規約](/legal
 
 ## <a name="getting-started"></a>作業の開始
 
-一般に、Azure Defender for IoT センサーまたはオンプレミス管理コンソールで外部 API を使用している場合は、アクセス トークンを生成する必要があります。 トークンは、センサーとオンプレミスの管理コンソールで使用する認証 API には必要ありません。
+一般に、Microsoft Defender for IoT センサーまたはオンプレミス管理コンソールで外部 API を使用している場合は、アクセス トークンを生成する必要があります。 トークンは、センサーとオンプレミスの管理コンソールで使用する認証 API には必要ありません。
 
 トークンを生成するには:
 

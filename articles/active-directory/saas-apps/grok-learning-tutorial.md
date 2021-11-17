@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: cdf58b7f6a5be0e91143da346e5326cef4acd20c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d61f9cfb3918c8b3a775f68f71e0d2edd57076a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124833443"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309304"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grok-learning"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Grok Learning の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Grok Learning では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * Grok Learning では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Grok Learning を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Grok Learning を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-grok-learning-from-the-gallery"></a>ギャラリーからの Grok Learning の追加
 
@@ -165,4 +165,4 @@ Grok Learning で Azure AD SSO を構成してテストするには、次の構�
 
 - [Azure AD で Grok Learning を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)

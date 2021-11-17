@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 14ff8552b2e5244a9820f575a397ecc506f24447
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 0855516610c9712d5f8db597d1de6e53f01ac546
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689456"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301307"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>接続されていない Azure マネージド ディスクとアンマネージド ディスクを見つけて削除する - Azure portal
 
@@ -27,11 +27,9 @@ Azure で仮想マシン (VM) を削除するとき、既定では、その VM �
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[ディスク]** を探して選択します。
 
-    **[ディスク]** ブレードに、すべてのディスクの一覧が表示されます。 **[所有者]** 列が " **-** " になっているディスクは、接続されていないディスクです。
+    **[ディスク]** ブレードに、すべてのディスクの一覧が表示されます。
 
-    [![[所有者] 列が "-" である場合は非接続ディスクであるマネージド ディスク ブレードのスクリーンショット。](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
-
-1. 接続されていない削除するディスクを選択すると、ディスクのブレードが開きます。
+1. 削除するディスクを選択すると、ディスクのブレードが開きます。
 1. ディスクのブレードで、ディスクの状態が非接続になっていることを確認し、 **[削除]** を選択します。
 
     :::image type="content" source="media/disks-find-unattached-portal/delete-managed-disk-unattached.png" alt-text="個々のマネージド ディスク ブレードのスクリーンショット。ディスクが接続されていない場合、このブレードにディスクの状態が非接続と表示されます。データを保持する必要がなくなった場合は、このディスクを削除できます":::

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 075bcffd7cb2beb3e64b54536934953c49df9b76
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 16757fdab3062ec0fd4b0b685f510e31dabd1824
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124813610"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348884"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と EBSCO の統合
 
@@ -175,4 +175,4 @@ Azure AD によって必要なデータが EBSCO アプリケーションに渡�
 
 ## <a name="next-steps"></a>次のステップ
 
-EBSCO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+EBSCO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

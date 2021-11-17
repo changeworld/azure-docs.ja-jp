@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 27e8c3bf2f54541d8c96528472fbcb8d092aeca3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 918a78006b53a47253fa36a3b9a38e6de7993db1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128670616"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307767"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GoToMeeting の統合
 
@@ -157,4 +157,4 @@ GoToMeeting に対する Azure AD SSO を構成してテストするには、次
 
 ## <a name="next-steps"></a>次のステップ
 
-GoToMeeting を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+GoToMeeting を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

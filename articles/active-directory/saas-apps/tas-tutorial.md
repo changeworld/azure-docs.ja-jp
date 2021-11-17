@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 434bf617f675d879545b8b4fadd6a0743cf6b704
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a77c7dc271ec31f04233d9251ce1e8d220c9c7dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131007165"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>チュートリアル:Azure Active Directory と TAS の統合
 
@@ -171,4 +171,4 @@ TAS で Azure AD SSO を構成してテストするには、次の手順に従�
 
 ## <a name="next-steps"></a>次のステップ
 
-TAS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+TAS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

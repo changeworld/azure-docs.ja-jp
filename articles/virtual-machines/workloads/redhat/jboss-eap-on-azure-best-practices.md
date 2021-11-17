@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 195a0bfa-dff1-429b-b030-19ca95ee6abe
 ms.date: 06/08/2021
-ms.openlocfilehash: 909f3dcff9f8ad5af5f1128d1d067f2430a00525
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: aaaa6fb269178954ade464745c6c640845457612
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730125"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289226"
 ---
 # <a name="red-hat-jboss-eap-on-azure-best-practices"></a>Azure での Red Hat JBoss EAP のベスト プラクティス
 
@@ -187,7 +187,7 @@ Microsoft Azure ストレージ アカウント内では、*AZURE_PING* によ�
 
 ## <a name="other-best-practices"></a>その他のベスト プラクティス
 
-- VM 上の JBoss EAP セットアップの管理者として、お使いの VM のセキュリティを確保することが重要です。 これにより、ご自身のゲストおよびホストの OS が、悪意のあるソフトウェアに感染するリスクが大幅に軽減されます。 ご自身の VM をセキュリティで保護すると、JBoss EAP に対する攻撃と、JBoss EAP 上でホストされているアプリケーションの誤動作が少なくなります。 Azure VM へのアクセスは、[Azure Policy](https://azure.microsoft.com/services/azure-policy/) や、[Azure ロールベースのアクセス制御 (RBAC)](../../../role-based-access-control/overview.md) の [Azure 組み込みロール](../../../role-based-access-control/built-in-roles.md)などの機能を使用して制御します。 お使いの VM をマルウェアから保護するには、Microsoft Antimalware または Microsoft パートナーのエンドポイント保護ソリューションをインストールし、お使いのマルウェア対策ソリューションを [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合して、ご自身の保護の状態を監視します。 RHEL VM では、ポート フォワーディングをブロックし、ルート ログインをブロックすることで保護できます。これは、*/ で無効にすることができます
+- VM 上の JBoss EAP セットアップの管理者として、お使いの VM のセキュリティを確保することが重要です。 これにより、ご自身のゲストおよびホストの OS が、悪意のあるソフトウェアに感染するリスクが大幅に軽減されます。 ご自身の VM をセキュリティで保護すると、JBoss EAP に対する攻撃と、JBoss EAP 上でホストされているアプリケーションの誤動作が少なくなります。 Azure VM へのアクセスは、[Azure Policy](https://azure.microsoft.com/services/azure-policy/) や、[Azure ロールベースのアクセス制御 (RBAC)](../../../role-based-access-control/overview.md) の [Azure 組み込みロール](../../../role-based-access-control/built-in-roles.md)などの機能を使用して制御します。 お使いの VM をマルウェアから保護するには、Microsoft Antimalware または Microsoft パートナーのエンドポイント保護ソリューションをインストールし、お使いのマルウェア対策ソリューションを [Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) と統合して、ご自身の保護の状態を監視します。 RHEL VM では、ポート フォワーディングをブロックし、ルート ログインをブロックすることで保護できます。これは、*/ で無効にすることができます
 
 
 - 環境変数を使用して、JBoss EAP on Azure VM を簡単かつスムーズに使用できるようにします。 たとえば、EAP_HOME を使用して、JBoss EAP 環境へのパスを表すことができます。これは数回使用されます。 このような場合は、環境変数が便利です。 環境変数は、一般的なサービス構成および Web アプリケーション シークレット処理手段でもあります。 export コマンドを使用してシェルから環境変数が設定されている場合、ユーザーのセッションが終了すると、変数の存在も終了します。 セッション間で変数を保持する必要がある場合は、これが問題になります。 ユーザーの環境に対して環境を永続化するには、ユーザーのプロファイル スクリプトから変数をエクスポートします。 export コマンドは、bash_profile に保持する環境変数ごとに追加します。 VM にアクセスできるすべてのユーザーに対して、永続的なグローバル環境変数を設定する必要がある場合は、それを既定のプロファイルに追加できます。 グローバル環境変数は、`/etc/profile.d` という名前のディレクトリに格納することをお勧めします。 ディレクトリには、システム全体の環境変数を設定するときに使用されるファイルの一覧が含まれています。 set コマンドを使用して Windows Server コマンド プロンプト内でシステム環境変数を設定しても、環境変数は永続的には設定されません。 *setx* コマンド、またはコントロール パネルのシステム インターフェースのいずれかを使用します。

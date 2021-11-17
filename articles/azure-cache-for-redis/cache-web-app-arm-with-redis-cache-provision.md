@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: cauribeg
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71648781edd8d202add7ce2a7cc6584173f0451b
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: ca60db1da300bd0b9576a2f08f9cf28e5cf01b66
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537459"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298521"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>テンプレートを使用して Web アプリと Azure Cache for Redis を作成する
 
@@ -21,20 +21,21 @@ ms.locfileid: "129537459"
 
 この記事では、Azure Web アプリと Azure Cache for Redis をデプロイする Azure Resource Manager のテンプレートを作成する方法について説明します。 次のデプロイの詳細について説明します。
 
-- デプロイするリソースを定義する方法 
+- デプロイするリソースを定義する方法
 - デプロイの実行時に指定されるパラメーターの定義方法
 
 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../azure-resource-manager/templates/syntax.md)」を参照してください。 キャッシュ リソースの種類の JSON 構文とプロパティについては、「[Microsoft.Cache resource types (Microsoft.Cache リソースの種類)](/azure/templates/microsoft.cache/allversions)」を参照してください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/syntax.md)」を参照してください。 キャッシュ リソースの種類の JSON 構文とプロパティについては、「[Microsoft.Cache resource types (Microsoft.Cache リソースの種類)](/azure/templates/microsoft.cache/allversions)」を参照してください。
 
 完全なテンプレートについては、「[Web アプリと Azure Cache for Redis のテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/web-app-with-redis-cache/azuredeploy.json)」を参照してください。
 
 ## <a name="what-you-will-deploy"></a>デプロイ対象
+
 このテンプレートでは、以下をデプロイします。
 
-* Azure Web アプリ
-* Azure Cache for Redis
+- Azure Web アプリ
+- Azure Cache for Redis
 
 デプロイを自動的に実行するには、次のボタンを選択します。
 

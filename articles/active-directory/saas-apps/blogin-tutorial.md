@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ef77d3001d09364e754a38897c769a41feaa0db3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c53810f2d313cbb2d4ca34f2776aa9123c2caf6c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128679486"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349074"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BlogIn の統合
 
@@ -166,4 +166,4 @@ BlogIn では、自動ユーザー プロビジョニングもサポートされ
 
 ## <a name="next-steps"></a>次のステップ
 
-BlogIn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+BlogIn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

@@ -1,18 +1,18 @@
 ---
-title: Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
+title: Defender for Cloud IoT マイクロ エージェントのトラブルシューティング (プレビュー)
 description: 予期しないまたは原因不明のエラーを処理する方法について説明します。
-ms.date: 4/5/2021
+ms.date: 11/09/2021
 ms.topic: reference
-ms.openlocfilehash: 23722195f4a7f7a19f10962ce648bc1a6e2a4012
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 94fd4c75a24b37bbc50ca582ca7bb64de87a042c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018749"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283963"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
+# <a name="defender-for-cloud-iot-micro-agent-troubleshooting-preview"></a>Defender for Cloud IoT マイクロ エージェントのトラブルシューティング (プレビュー)
 
-予期しないエラーが発生した場合は、これらのトラブルシューティング方法を使用して問題の解決を試みることができます。 必要に応じて、Azure Defender for IoT 製品チームにもお問い合わせいただけます。   
+予期しないエラーが発生した場合は、これらのトラブルシューティング方法を使用して問題の解決を試みることができます。 必要に応じて、Azure Defender for Cloud for IoT 製品チームにもお問い合わせいただけます。   
 
 ## <a name="service-status"></a>サービスの状態 
 
@@ -38,7 +38,7 @@ systemctl start defender-iot-micro-agent.service
 
 ## <a name="validate-micro-agent-root-privileges"></a>マイクロ エージェントの root 権限を検証する
 
-次のコマンドを使用して、Defender IoT マイクロ エージェント サービスが root 権限で実行されていることを確認します。
+次のコマンドを使用して、Defender for Cloud IoT マイクロ エージェント サービスが root 権限で実行されていることを確認します。
 
 ```bash
 ps -aux | grep " defender-iot-micro-agent"

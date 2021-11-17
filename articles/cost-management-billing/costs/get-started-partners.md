@@ -3,18 +3,18 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Cost Management の機能を使用する方法と、パートナーの顧客のためにアクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/13/2021
+ms.date: 11/10/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 747dc5829315091d6a42fbf6c0749af104c5e1ac
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 31d2ceb9d8ae9a93ea15f2bf2f77ed7f05f6021c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984066"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287186"
 ---
 # <a name="get-started-with-cost-management-for-partners"></a>パートナー向け Cost Management の利用を開始する
 
@@ -150,6 +150,18 @@ Azure portal で、"*パートナー テナント*" にサインインし、 **[
 コスト ポリシーが **[はい]** に設定されている場合、顧客テナントに関連付けられているサブスクリプション ユーザーは、従量課金制の料金で使用料金を確認できます。
 
 コスト可視性ポリシーが有効になっている場合、サブスクリプション使用量のあるすべてのサービスが、従量課金制の料金でコストを示します。 予約使用量は、実際のコストも償却済みコストも料金がゼロと表示されます。 購入およびエンタイトルメントは特定のサブスクリプションに関連付けられません。 そのため、サブスクリプション スコープでは購入は表示されません。 直接パートナーまたは間接プロバイダーの全体管理者/管理エージェントは、[顧客更新 API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) を使用して、各顧客のコスト表示ポリシーを大規模に設定することもできます。
+
+## <a name="view-and-enable-all-policies"></a>すべてのポリシーを表示して有効にする
+
+また、Azure の予約や Azure Marketplace のポリシーの表示と変更、Azure の料金の表示、タグ管理を 1 か場所で行うこともできます。 ポリシー設定は、課金プロファイルのもとですべてのお客様に適用されます。
+
+ポリシーを表示または変更するには、次のようにします。
+
+1. Azure portal で、 **[コスト管理]** ([コストの管理と請求] ではなく) に移動します。
+1. 左側のメニューの **[設定]** で **[構成]** を選択します。
+1. 課金プロファイルの構成が表示されます。 ポリシーは [有効済み] または [無効化済み] と表示されます。 ポリシーを変更する場合は、ポリシーの下にある **[編集]** を選択します。  
+    :::image type="content" source="./media/get-started-partners/configuration-policy-settings.png" alt-text="ポリシー設定を表示および編集できる課金プロファイル構成ページを示すスクリーンショット。" lightbox="./media/get-started-partners/configuration-policy-settings.png" :::
+1. 必要に応じてポリシー設定を変更し、 **[保存]** を選択します。
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>顧客テナントのサブスクリプション コストを表示する
 

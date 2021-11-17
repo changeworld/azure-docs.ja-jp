@@ -1,14 +1,14 @@
 ---
 title: SNMP MIB の監視を設定する
 description: SNMP を使用して、センサーの稼働状況の監視を実行できます。 センサーは、承認済みの監視サーバーから送信された SNMP クエリに応答します。
-ms.date: 12/14/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 14803fd2f9c088fb4454f97ff1524e8d651ccd05
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: dc9baa68c39ec049f1ca717f1bb34a364d6bad10
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019525"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278723"
 ---
 # <a name="set-up-snmp-mib-monitoring"></a>SNMP MIB の監視を設定する
 
@@ -33,7 +33,7 @@ SNMP 監視の構成を開始する前に、ファイアウォールでポート
 | ディスク使用量 | 1.3.6.1.4.1.53313.3.4 | GAUGE32 | 0 から 100 で表示 |
 | サービスの状態 | 1.3.6.1.4.1.53313.5  |STRING | オンラインまたはオフライン (4 つの重要コンポーネントのいずれかが停止している場合) |
 | サービスの状態 | 1.3.6.1.4.1.53313.5  |STRING | オンラインまたはオフライン (4 つの重要コンポーネントのいずれかが停止している場合) |
-| ローカル/クラウド接続 | 1.3.6.1.4.1.53313.6   |STRING | センサーが Defender for IoT ポータルに接続されているか、オンプレミスでのみ管理されているかを示します |
+| ローカル/クラウド接続 | 1.3.6.1.4.1.53313.6   |STRING | センサーが Azure の Defender for IoT に接続されているか、オンプレミスでのみ管理されているかを示します |
 | ライセンスの状態 | 1.3.6.1.4.1.53313.5  |STRING | アクティブ化ファイルの有効期限が切れているかどうかを示します |
 
    - 存在しないキーは、[スタック オーバーフロー](https://stackoverflow.com/questions/51419026/querying-for-non-existing-record-returns-null-with-http-200)に基づいて、null の HTTP 200 で応答します。

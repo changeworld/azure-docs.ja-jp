@@ -1,14 +1,14 @@
 ---
 title: オンプレミスの管理コンソールからセンサーを管理する
 description: センサーのバージョンの更新、センサーへのシステム設定のプッシュ、証明書の管理、センサーでのエンジンの有効化と無効化など、管理コンソールからセンサーを管理する方法について説明します。
-ms.date: 07/08/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: dbdee98fc1f7e6bc294bd54d72e64fa8f053eb8e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1015810f8999671665cf48d74058e9ad3fc47558
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431190"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278837"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>管理コンソールからセンサーを管理する
 
@@ -76,7 +76,7 @@ ms.locfileid: "123431190"
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 
-1. Azure Defender for IoT に移動します。
+1. Microsoft Defender for IoT に移動します。
 
 1. **[更新プログラム]** ページに移動します。
 
@@ -129,7 +129,7 @@ ms.locfileid: "123431190"
 
 脅威インテリジェンス用のデータ パッケージは、新しい Defender for IoT バージョンごとに、またはリリース間で必要に応じて提供されます。 パッケージには、シグネチャ (マルウェア シグネチャを含む)、CVE、その他のセキュリティ コンテンツが含まれています。 
 
-このファイルは、Defender for IoT ポータルの **[更新プログラム]** ページから手動でアップロードし、センサーに対して自動更新することができます。 
+Azure portal でこのファイルを手動でアップロードし、センサーに自動更新することができます。 
 
 **脅威インテリジェンスのデータを更新するには:**
 

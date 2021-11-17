@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを計画およびデプロイする方法
 description: 多数のマシンを Azure Arc 対応サーバーに対して有効にして、Azure で、重要なセキュリティ、管理、監視の機能の構成を簡略化する方法について説明します。
 ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a8bd9187d3d8d2394fe340eb1822f45e17a50b7
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b32090caf8167874e61bbca0c5f3782557abd620
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708955"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340289"
 ---
 # <a name="plan-and-deploy-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを計画およびデプロイする
 
@@ -67,7 +67,7 @@ IT インフラストラクチャ サービスまたはビジネス アプリケ
 | [ロールベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を構成する | Azure Arc 対応サーバーを管理するためのアクセスと、他の Azure サービスやソリューションからのデータを表示する機能を、誰が持つかを制御するアクセス計画を作成します。 | 1 日 |
 | Log Analytics エージェントが既にインストールされているマシンを特定する | 既存の Log Analytics エージェントのデプロイから、拡張機能で管理されるエージェントへの変換をサポートするため、[Log Analytics](../../azure-monitor/logs/log-analytics-overview.md) で次のログクエリを実行します。<br> Heartbeat <br> &#124; where TimeGenerated > ago(30d) <br> &#124; where ResourceType == "machines" and (ComputerEnvironment == "Non-Azure") <br> &#124; summarize by Computer, ResourceProvider, ResourceType, ComputerEnvironment | 1 時間 |
 
-<sup>1</sup> Log Analytics ワークスペースの設計評価の一部としての重要な考慮事項は、Update Management、変更履歴とインベントリ機能のほか、Azure Security Center と Azure Sentinel をサポートする Azure Automation との統合です。 組織に既に Automation アカウントがあり、Log Analytics ワークスペースにリンクされる管理機能が有効になっている場合は、重複するアカウントやワークスペースなどを作成する代わりにそれらの既存のリソースを使用することによって、管理操作を一元化して合理化できるかどうかを評価し、コストを最小限に抑えることができます。
+<sup>1</sup> Log Analytics ワークスペースの設計評価の一部としての重要な考慮事項は、Update Management、変更履歴とインベントリ機能のほか、Microsoft Defender for Cloud と Microsoft Sentinel をサポートする Azure Automation との統合です。 組織に既に Automation アカウントがあり、Log Analytics ワークスペースにリンクされる管理機能が有効になっている場合は、重複するアカウントやワークスペースなどを作成する代わりにそれらの既存のリソースを使用することによって、管理操作を一元化して合理化できるかどうかを評価し、コストを最小限に抑えることができます。
 
 ## <a name="phase-2-deploy-azure-arc-enabled-servers"></a>フェーズ 2: Azure Arc 対応サーバーをデプロイする
 

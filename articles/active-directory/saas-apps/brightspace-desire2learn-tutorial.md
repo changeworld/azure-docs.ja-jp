@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 2413d7a8d179e4de054aa9a83fab22998d63a358
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a1d8a149e807c5ee1aa2d6ffb48f9761a4e17421
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124749928"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
@@ -144,4 +144,4 @@ Brightspace by Desire2Learn に対する Azure AD SSO を構成してテスト�
 
 ## <a name="next-steps"></a>次のステップ
 
-Brightspace by Desire2Learn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Brightspace by Desire2Learn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

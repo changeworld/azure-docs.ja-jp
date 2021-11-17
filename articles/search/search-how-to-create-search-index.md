@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
-ms.date: 11/08/2021
-ms.openlocfilehash: d472d5c7e9ccec3ffb59f040a380fc0656c1ef5c
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.date: 11/12/2021
+ms.openlocfilehash: 2e2b10b5fd42a51951d35f7a1e73e1fcac68ba82
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132137740"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371678"
 ---
 # <a name="create-a-search-index-in-azure-cognitive-search"></a>Azure Cognitive Search で検索インデックスを作成する
 
@@ -51,7 +51,7 @@ Azure Cognitive Search のクエリ要求は、検索インデックス内の検
 | [Analyzer](search-analyzers.md) | インデックス内のカスタム アナライザーを追加および変更できます。 文字列フィールドでのアナライザーの割り当てについては、"searchAnalyzer" のみを変更できます。 その他すべての割り当てと変更には、再構築が必要です。 |
 | [スコアリング プロファイル](index-add-scoring-profiles.md) | はい |
 | [Suggesters](index-add-suggesters.md) | いいえ |
-| [クロスオリジン リモート スクリプティング (CORS)](search-what-is-an-index.md#corsoptions) | はい |
+| [クロスオリジン リモート スクリプティング (CORS)](#corsoptions) | はい |
 | [暗号化](search-security-manage-encryption-keys.md) | はい |
 
 > [!NOTE]
@@ -181,6 +181,28 @@ Cognitive Search の場合、一般公開される機能は Azure SDK によっ�
 | Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
 ---
+
+<a name="corsoptions"></a>
+
+## <a name="set-corsoptions-for-cross-origin-queries"></a>クロス オリジン クエリのために `corsOptions` を設定する
+
+インデックス スキーマには、`corsOptions` を設定するためのセクションが含まれます。 ブラウザーではすべてのクロスオリジン要求が禁止されるので、既定ではクライアント側 JavaScript で API を呼び出すことはできません。 インデックスに対するクロスオリジン クエリを許可するには、**corsOptions** 属性を設定することによって、CORS (クロスオリジン リソース共有) を有効にします。 セキュリティ上の理由から、CORS がサポートされているのは[クエリ API](search-query-create.md#choose-query-methods) だけです。
+
+```json
+"corsOptions": {
+  "allowedOrigins": [
+    "*"
+  ],
+  "maxAgeInSeconds": 300
+```
+
+CORS には次のプロパティを設定できます。
+
++ **allowedOrigins** (必須):インデックスへのアクセスが許可されるオリジンのリストです。 つまり、これらのオリジンから提供されるすべての JavaScript コードは、インデックスのクエリを許可されます (正しい api-key を提供する場合)。 各オリジンの標準的な形式は `protocol://<fully-qualified-domain-name>:<port>` ですが、多くの場合 `<port>` は省略されます。 詳しくは、「[Cross-origin resource sharing (クロスオリジン リソース共有)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)」(Wikipedia) をご覧ください。
+
+  すべてのオリジンにアクセスを許可する場合は、**allowedOrigins** 配列の唯一の要素として `*` を指定します。 "*運用環境の検索サービスに対してはこれは推奨されません*" が、開発およびデバッグでは役に立つことがよくあります。
+
++ **maxAgeInSeconds** (省略可能):ブラウザーでは、この値を使用して、CORS プレフライト応答をキャッシュする期間 (秒) が決定されます。 負ではない整数を指定する必要があります。 この値が大きいほどパフォーマンスはよくなりますが、CORS ポリシーの変更が有効になるまでの時間は長くなります。 これを設定しないと、既定の期間として 5 分が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

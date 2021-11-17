@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2021
 ms.author: jeedes
-ms.openlocfilehash: c0e2296fab5ccf6c046fb292fe6de84ba47817c2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e6e42843e583f76624f5c6334ea3ba8a3faf0d9f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477964"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304954"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-infinityqs-proficient-on-demand"></a>チュートリアル: Azure AD SSO と InfinityQS ProFicient on Demand の統合
 
@@ -125,4 +125,4 @@ Azure AD SSO と InfinityQS ProFicient on Demand を構成してテストする�
 
 ## <a name="next-steps"></a>次のステップ
 
-InfinityQS ProFicient on Demand を構成した後、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+InfinityQS ProFicient on Demand を構成した後、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

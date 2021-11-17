@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: c51829c8f046f68d3a7d1e47083f18eb7f4c8416
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 2affaf7b66c1a7872e1db2b92871c5d07e77cdd2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858464"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324633"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -105,7 +105,7 @@ ms.locfileid: "129858464"
 | **LogicApps** | Logic Apps。 | 両方 | いいえ | いいえ |
 | **LogicAppsManagement** | Logic Apps の管理トラフィック。 | 受信 | いいえ | いいえ |
 | **MicrosoftAzureFluidRelay** | このタグは、Azure Microsoft Fluid Relay Server に使用される IP アドレスを表します。 | 送信 | いいえ | いいえ |
-| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 送信 | いいえ | いいえ |
+| **MicrosoftCloudAppSecurity** | Microsoft Defender for Cloud Apps。 | 送信 | いいえ | いいえ |
 | **MicrosoftContainerRegistry** | Microsoft コンテナー イメージ用のコンテナー レジストリ。 <br/><br/>**注**: このタグは **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | はい | はい |
 | **PowerBI** | を公開します。 **注**: 現在、このタグを Azure portal で構成することはできません。 | 両方 | いいえ | いいえ|
 | **PowerPlatformInfra** | このタグは、Power Platform サービスをホストするためにインフラストラクチャによって使用される IP アドレスを表します。 **注**: 現在、このタグを Azure portal で構成することはできません。 | 送信 | いいえ | いいえ |

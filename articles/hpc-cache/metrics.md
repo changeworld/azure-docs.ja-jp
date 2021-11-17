@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: femila
-ms.openlocfilehash: e52ee6e3ae9960418a72f7eaf5c4068e31943d4a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cc6846118607e2d6bc50d63035f1ce209758f55c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005349"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331283"
 ---
 # <a name="cache-metrics-and-monitoring"></a>キャッシュのメトリックと監視
 
@@ -36,7 +36,7 @@ Azure portal には、Azure HPC Cache のパフォーマンスを監視するた
 
 ![サンプル キャッシュについて前述の統計情報を示している、3 つの折れ線グラフのスクリーンショット](media/hpc-cache-overview-stats.png)
 
-これらのグラフは、Azure の組み込みの監視および分析ツールの一部です。 これらの機能の詳細については、[Azure Monitoring のドキュメント](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)を参照してください。
+これらのグラフは、Azure の組み込みの監視および分析ツールの一部です。 これらの機能の詳細については、[Azure Monitor のドキュメント](../azure-monitor/essentials/monitor-azure-resource.md)を参照してください。
 
 ## <a name="metrics-page"></a>メトリック ページ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 95c47807b64e5433aef109c8cf803075cc92b0fd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 56e29911cc027e7cf7c93e8a9fcfe2a08bb10c19
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801678"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>チュートリアル: Azure Active Directory と SECURE DELIVER の統合
 
@@ -138,4 +138,4 @@ SECURE DELIVER では、自動ユーザー プロビジョニングもサポー�
 
 ## <a name="next-steps"></a>次のステップ
 
-SECURE DELIVER を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+SECURE DELIVER を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

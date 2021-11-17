@@ -666,6 +666,8 @@ items:
             href: quickstart-create-apache-spark-pool-portal.md
           - name: Synapse Studio を使用して Spark プールを作成する
             href: quickstart-create-apache-spark-pool-studio.md
+          - name: GPU アクセラレータによる Apache Spark プールを作成する
+            href: quickstart-create-apache-gpu-pool-portal.md
       - name: チュートリアル
         items:
           - name: Synapse Studio ノートブックを使用したデータの視覚化
@@ -688,6 +690,8 @@ items:
             href: ./spark/apache-spark-concepts.md
           - name: Apache Spark プールの構成
             href: ./spark/apache-spark-pool-configurations.md
+          - name: GPU アクセラレータによる Apache Spark プール
+            href: ./spark/apache-spark-gpu-concept.md
           - name: Delta Lake
             href: ./spark/apache-spark-what-is-delta-lake.md
           - name: Apache Spark の自動スケール動作
@@ -746,6 +750,8 @@ items:
                 href: ./spark/apache-spark-performance.md
               - name: Hyperspace のインデックスを使用した Apache Spark のパフォーマンス最適化
                 href: ./spark/apache-spark-performance-hyperspace.md
+              - name: NVIDIA RAPIDS を使用した ETL 操作の高速化
+                href: ./spark/apache-spark-rapids-gpu.md
           - name: 管理および監視
             items:
               - name: Apache Spark プール履歴サーバーへの移動
@@ -1404,19 +1410,19 @@ items:
                   - name: 異常検出ウィザード
                     displayName: 'cognitive services, score model'
                     href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-                  - name: Apache Spark (MMLSpark) での Text Analytics
+                  - name: Apache Spark (SynapseML) を使用した Text Analytics
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-text-analytics-use-mmlspark.md
-                  - name: Apache Spark (MMLSpark) での Computer Vision
+                  - name: Apache Spark (SynapseML) を使用した Computer Vision
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-computer-vision-use-mmlspark.md
-                  - name: Apache Spark (MMLSpark) での Form Recognizer
+                  - name: Apache Spark (MMLSpark) を使用した Form Recognizer
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-form-recognizer-use-mmlspark.md
-                  - name: Apache Spark (MMLSpark) での Translator
+                  - name: Apache Spark (MMLSpark) を使用した Translator
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-translator-use-mmlspark.md
-                  - name: Apache Spark (MMLSpark) を使用
+                  - name: Apache Spark (SynapseML) を使用
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
   - name: Data Catalog とガバナンス

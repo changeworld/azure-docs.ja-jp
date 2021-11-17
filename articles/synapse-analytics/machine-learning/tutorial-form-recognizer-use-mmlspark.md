@@ -10,18 +10,18 @@ ms.date: 11/02/2021
 author: ruixinxu
 ms.author: ruxu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cb7e8cabf49b528b1174db004f3d22636a13fdfe
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9450ef956fc4d849e47fbf742f032359cffeea61
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029871"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312106"
 ---
 # <a name="tutorial-form-recognizer-with-applied-ai-service"></a>チュートリアル: Applied AI Services での Form Recognizer
 
 [Azure Form Recognizer](../../applied-ai-services/index.yml) は、機械学習テクノロジを利用して自動データ処理アプリケーションを構築することができる [Azure Applied AI Services](../../applied-ai-services/form-recognizer/index.yml) です。 このチュートリアルでは、Azure Synapse Analytics でデータを簡単に強化する方法について説明します。 フォームとドキュメントを分析したり、テキストとデータを抽出したり、構造化された JSON 出力を返したりするために、[Form Recognizer](../../applied-ai-services/form-recognizer/index.yml) を使用します。 過剰な手動操作を行うことなく、広範なデータ サイエンスに関する専門知識なしで、特定のコンテンツに合わせた正確な結果をすばやく得られます。 
 
-このチュートリアルでは、[MMLSpark](https://github.com/Azure/mmlspark) で Form Recognizer を使用して次の処理を行う方法について説明します。
+このチュートリアルでは、[SynapseML](https://github.com/microsoft/SynapseML) で Form Recognizer を使用して次の処理を行う方法について説明します。
 
 > [!div class="checklist"]
 > - 指定したドキュメントからテキストとレイアウトを抽出する
@@ -42,11 +42,11 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 
 ## <a name="get-started"></a>開始
-Synapse Studio を開き、新しいノートブックを作成します。 はじめに、[MMLSpark](https://github.com/Azure/mmlspark) をインポートします。 
+Synapse Studio を開き、新しいノートブックを作成します。 はじめに、[SynapseML](https://github.com/microsoft/SynapseML) をインポートします。 
 
 ```python
-import mmlspark
-from mmlspark.cognitive import *
+import synapse.ml
+from synapse.ml.cognitive import *
 ```
 
 ## <a name="configure-form-recognizer"></a>From Recognizer の構成 
@@ -203,4 +203,4 @@ Spark インスタンスがシャットダウンされるようにするには�
 
 * [カスタム Form Recognizer モデルをトレーニングする](../../applied-ai-services/form-recognizer/label-tool.md)
 * [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
-* [MMLSpark GitHub リポジトリ](https://github.com/Azure/mmlspark)
+* [SynapseML GitHub リポジトリ](https://github.com/microsoft/SynapseML)

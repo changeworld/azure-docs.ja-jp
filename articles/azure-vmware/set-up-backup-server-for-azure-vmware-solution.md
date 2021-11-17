@@ -3,12 +3,12 @@ title: Azure VMware Solution 向けに Azure Backup Server を設定する
 description: Azure Backup Server を使用して仮想マシンをバックアップするように Azure VMware Solution 環境を設定します。
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: fc82e10093402ffd4a026b0c9bef0d8e5a221647
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: bc82a7774b61132f89a44433145772fd1815f378
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432142"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332271"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware Solution 向けに Azure Backup Server を設定する
 
@@ -352,14 +352,13 @@ Azure Backup Server v3 では、ストレージ ボリュームのみが受け�
 
 1. 使用可能なボリュームから選択して記憶域プールに追加します。 
 
-1. 使用可能なボリュームを追加した後、それらを管理するのに役立つフレンドリ名を付けます。 
+1. 使用可能なボリュームを追加した後、それらを管理するのに役立つフレンドリ名を付けます。
 
 1. Azure Backup Server で Modern Backup Storage の利点を利用できるように、 **[OK]** を選択してこれらのボリュームを ReFS にフォーマットします。
-
 
 ## <a name="next-steps"></a>次のステップ
 
 ここでは Azure VMware Solution 向けに Azure Backup Server を設定する方法について説明したので、次は以下について学習してください。
 
 - [Azure VMware Solution VM のバックアップを構成する](backup-azure-vmware-solution-virtual-machines.md).
-- [Azure Security Center 統合を使用して Azure VMware Solution VM を保護する](azure-security-integration.md)
+- [Microsoft Defender for Cloud の統合による Azure VMware Solution の保護](azure-security-integration.md).

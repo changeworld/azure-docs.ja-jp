@@ -11,21 +11,21 @@ ms.custom:
 - security-recommendations
 - amqp
 - mqtt
-ms.openlocfilehash: 401188de54050be932fc8d52f5cc4466378e15cd
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: e1582d45ea6108872f9e1ea03d890a5070fc5b98
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772035"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297394"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure のモノのインターネット (IoT) デプロイのセキュリティに関する推奨事項
 
 この記事には、IoT のセキュリティに関する推奨事項が含まれています。 これらの推奨事項を実装することにより、共有責任モデルに記載されたセキュリティに関する義務を果たすのに役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みについて詳しくは、「[クラウド コンピューティングについての共有責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」を参照してください。
 
-この記事に記載されているいくつかの推奨事項は、Azure Defender for IoT によって自動的に監視できます。 Azure Defender for IoT は、Azure のリソースを保護するための防御の最前線です。 これにより Azure リソースのセキュリティの状態が定期的に分析され、潜在的なセキュリティ脆弱性が特定されます。 その後、それらに対処する方法の推奨事項を提供します。
+この記事で取り上げた推奨事項の一部は、Azure でリソースを守る防衛圏で最前線に立つ Microsoft Defender for IoT によって自動監視できます。 これにより Azure リソースのセキュリティの状態が定期的に分析され、潜在的なセキュリティ脆弱性が特定されます。 その後、それらに対処する方法の推奨事項を提供します。
 
-- Azure Defender for IoT の推奨事項の詳細については、[Azure Defender for IoT でのセキュリティの推奨事項](../security-center/security-center-recommendations.md)に関する記事を参照してください。
-- Azure Defender for IoT の詳細については、「[Azure Defender for IoT とは](../security-center/security-center-introduction.md)」を参照してください。
+- Microsoft Defender for IoT 推奨事項の詳細については、[Microsoft Defender for IoT のセキュリティ推奨事項](../security-center/security-center-recommendations.md)に関するページを参照してください。
+- Microsoft Defender for IoT の詳細については、[Microsoft Defender for IoT とは何であるか](../security-center/security-center-introduction.md)に関する記事を参照してください
 
 ## <a name="general"></a>全般
 
@@ -59,7 +59,7 @@ ms.locfileid: "122772035"
 
 ## <a name="monitoring"></a>監視
 
-| 推奨 | 説明 | Azure Defender でのサポート |
+| 推奨 | 説明 | Microsoft Defender for IoT によるサポート |
 |-|----|--|
 | デバイスへの未承認アクセスを監視する |  デバイスまたはそのポートのセキュリティ違反または物理的な改ざんを監視するには、デバイスのオペレーティング システムのログ機能を使用します。 | はい |
 | クラウドから IoT ソリューションを監視する | [Azure Monitor のメトリック](../iot-hub/monitor-iot-hub.md)を使用して、IoT Hub ソリューションの全体的な正常性を監視します。 | はい |

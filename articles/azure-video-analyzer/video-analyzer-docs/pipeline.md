@@ -4,12 +4,12 @@ description: Azure Video Analyzer のエッジとクラウド内でビデオを�
 ms.topic: conceptual
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2e1eefc30140d56b1f4d7970e59f235d04799d67
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 261cbc17f8bd54d16c10b3f97a997cb6ac594fdb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552546"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287155"
 ---
 # <a name="pipeline"></a>パイプライン
 

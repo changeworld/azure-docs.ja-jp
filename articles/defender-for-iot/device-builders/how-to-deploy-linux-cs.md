@@ -2,13 +2,13 @@
 title: Linux C# エージェントをインストールおよびデプロイする
 description: Defender for IoT の C# ベースのセキュリティ エージェントを Linux にインストールしてデプロイする方法について説明します
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 8dd6119d4f1a6e8a738d34521234d2691ba8c883
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 5a403af7f5c0b6f2b8d5d497979be06fee404a19
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018118"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306094"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Defender for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
@@ -74,8 +74,7 @@ ms.locfileid: "113018118"
 
     `systemctl status ASCIoTAgent.service`
 
-1. ログ記録を有効にします。
-   エージェントが起動しない場合は、ログ記録を有効にして、詳細情報を取得します。
+1. ログ記録を有効にします。 エージェントが起動しない場合は、ログ記録を有効にして、詳細情報を取得します。
 
    ログ記録を有効にするには、次の操作を行います。
 
@@ -112,5 +111,5 @@ ms.locfileid: "113018118"
 - Defender for IoT サービスの[概要](overview.md)を確認する
 - 「[デバイス ビルダー向けのエージェントベースのソリューションとは](architecture-agent-based.md)」を参照して、Defender for IoT の詳細を学習します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします
-- [Azure Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをお読みください
+- [Microsoft Defender for IoT エージェントについてよく寄せられる質問](resources-agent-frequently-asked-questions.md)に関するページをお読みください
 - [アラート](concept-security-alerts.md)について理解します

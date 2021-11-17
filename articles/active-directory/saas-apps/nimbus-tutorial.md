@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/17/2021
 ms.author: jeedes
-ms.openlocfilehash: e4375f357fdb1ac1c790cf81eb5c228e04fc4dde
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4ca4d53b50d3d3d0ca6e445e0f8fbcdceee23225
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124738703"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342056"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nimbus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nimbus の統合
 
@@ -141,4 +141,4 @@ Nimbus に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Nimbus を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Nimbus を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

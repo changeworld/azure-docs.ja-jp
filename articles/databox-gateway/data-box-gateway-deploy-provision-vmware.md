@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 11/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 948005942be193c8b15c363282aa06c006eb244e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cf0f2f2f970e9082f56a90efb5a6508b0b00e32
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727619"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331967"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする
 
@@ -97,7 +97,8 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
 4. 右側のウィンドウの **[Datastores]** で VMDK をアップロードするデータストアを選択します。 
 
-    - データストアの種類は、VMFS5 である必要があります。 
+    - データストアの種類は、VMFS5 である必要があります。 Data Box Gateway は、VMWare で VMFS5 データストアを使用してテストされています。 これ以降のデータストア バージョンは VMFS6 を含め、サポートされていません。
+
     - データストアには、OS とデータ ディスク用の十分な空き領域も必要です。
    
 5. 右クリックして **[Browse Datastore]** を選択します。

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でコンテナー イメージを�
 services: container-service
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 998d8602b6aa0e71a04f75aff1c29551ba09c8a3
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: e6c767d1fdf765739f361b91df21e5bc104bc171
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105121"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306531"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 
@@ -29,7 +29,7 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 
 [クラスター セキュリティ][best-practices-cluster-security]および[ポッド セキュリティ][best-practices-pod-security]に関するベスト プラクティスも参照できます。
 
-また、コンテナーをスキャンして脆弱性を検出するのを支援するために、[Security Center のコンテナーのセキュリティ][security-center-containers]も使用できます。 Security Center と [Azure Container Registry の統合][security-center-acr]は、イメージおよびレジストリを脆弱性から保護するのに役立ちます。
+また、コンテナーをスキャンして脆弱性を検出するのを支援するために、[Defender for Cloud のコンテナーのセキュリティ][security-center-containers]も使用できます。 Defender for Cloud と [Azure Container Registry の統合][security-center-acr]は、イメージおよびレジストリを脆弱性から保護するのに役立ちます。
 
 ## <a name="secure-the-images-and-run-time"></a>イメージおよびランタイムをセキュリティで保護する
 

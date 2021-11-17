@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 74988fccdb5f016de178989f894d044b0e1fba80
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: da7d0ebb09b356a025024b2bcbf0f69fc910d18d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124790778"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313927"
 ---
 # <a name="tutorial-integrate-hype-with-azure-active-directory"></a>チュートリアル: Hype と Azure Active Directory の統合
 
@@ -139,4 +139,4 @@ Hype 用に Azure AD SSO を構成してテストするには、次の手順を�
 
 ## <a name="next-steps"></a>次のステップ
 
-Hype を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Hype を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

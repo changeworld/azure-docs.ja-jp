@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: fdcc22b4869f4c16b34885383897f81a832baa5f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c4554d5625b15c3415595677dac878ee72dcf468
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124790949"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348523"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fresh-relevance"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Fresh Relevance の統合
 
@@ -171,4 +171,4 @@ Fresh Relevance で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Fresh Relevance を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Fresh Relevance を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

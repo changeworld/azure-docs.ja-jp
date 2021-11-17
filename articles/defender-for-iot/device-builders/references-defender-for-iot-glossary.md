@@ -3,16 +3,16 @@ title: デバイス ビルダー用の Defender for IoT 用語集
 description: この用語集では、Defender for IoT プラットフォームに関する重要な用語と概念について簡単に説明しています。
 ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 34b1bf4f1c49588326c38915c35132219f34e1b3
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d1f2d77ab73d0ff1c58b9c7cbe3d9e16032cd575
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056494"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343688"
 ---
 # <a name="defender-for-iot-glossary-for-device-builder"></a>デバイス ビルダー用の Defender for IoT 用語集
 
-この用語集では、Azure Defender for IoT プラットフォームに関する重要な用語と概念について簡単に説明しています。 用語集の関連する用語に移動するには、**詳細情報** のリンクをクリックします。 これは、製品ツールをより迅速に学習して使用するために役立ちます。
+この用語集では、Microsoft Defender for IoT プラットフォームに関する重要な用語と概念について簡単に説明しています。 用語集の関連する用語に移動するには、**詳細情報** のリンクをクリックします。 これは、製品ツールをより迅速に学習して使用するために役立ちます。
 
 <a name="glossary-a"></a>
 

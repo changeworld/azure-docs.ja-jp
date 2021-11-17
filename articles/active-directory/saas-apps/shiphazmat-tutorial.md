@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: b96acda6ee882f54ea290d5c610d7a7a2fc7496a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6917b8bfb9c3d62fb2546768c9161a85e4470ece
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801184"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304875"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shiphazmat"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と ShipHazmat の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * ShipHazmat では、**IDP** Initiated SSO がサポートされます
 * ShipHazmat では、**Just In Time** ユーザー プロビジョニングがサポートされます
-* ShipHazmat を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* ShipHazmat を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 
 ## <a name="adding-shiphazmat-from-the-gallery"></a>ギャラリーからの ShipHazmat の追加
@@ -157,4 +157,4 @@ ShipHazmat に対する Azure AD SSO を構成してテストするには、次�
 
 - [Azure AD で ShipHazmat を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)

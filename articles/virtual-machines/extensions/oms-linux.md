@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 11/02/2021
-ms.openlocfilehash: 3c857f01ba5a706c8b20289221badbee3aa3dccf
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5a65c30c9b1499441eae8bea51d90a49d0c4f390
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131471632"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277146"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -58,9 +58,9 @@ Azure Monitor ログは、クラウドとオンプレミスの資産全体にま
 | 1.3.127.7 | [1.3.5-127](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201705-v1.3.5-127)|
 | 1.3.18.7 | [1.3.4-15](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201704-v1.3.4-15)|  
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-Azure Security Center は自動的に Log Analytics エージェントをプロビジョニングし、これを、Azure サブスクリプションで ASC によって作成される既定の Log Analytics ワークスペースに接続します。 Azure Security Center を使用している場合は、このドキュメントの手順を実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Azure Security Center との接続が中断されます。
+Microsoft Defender for Cloud は自動的に Log Analytics エージェントをプロビジョニングし、お使いの Azure サブスクリプションの Defender for Cloud によって作成される既定の Log Analytics ワークスペースに接続します。 Microsoft Defender for Cloud を使用している場合は、このドキュメントの手順は実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Microsoft Defender for Cloud との接続が中断されます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 

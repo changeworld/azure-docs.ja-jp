@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 4d28d57a20f1878e32067faa9e68f6f3ac30640b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bf444b81f24a2ca45d72d9db23fefcc49673eb59
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130245545"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317116"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-skydesk-email"></a>チュートリアル: Azure AD SSO と SkyDesk Email の統合
 
@@ -183,4 +183,4 @@ SkyDesk Email 内の左側のパネルで **[User Access (ユーザー アクセ
 
 ## <a name="next-steps"></a>次のステップ
 
-SkyDesk Email を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+SkyDesk Email を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

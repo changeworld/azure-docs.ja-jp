@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: eeee49a49e4d0c7269056cee9975303c4f22e69b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 563da658ad5ddeb43ad7d8a39bafd15d9627b0b7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124746192"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Cloud Platform Identity Authentication の統合
 
@@ -213,4 +213,4 @@ SAP Cloud Platform Identity Authentication との ID フェデレーションを
 
 ## <a name="next-steps"></a>次のステップ
 
-SAP Cloud Platform Identity Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+SAP Cloud Platform Identity Authentication を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

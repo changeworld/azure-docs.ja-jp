@@ -3,12 +3,12 @@ title: Azure Arc を使用してハイブリッド インフラストラクチ�
 description: Azure Lighthouse は、Azure の外にある顧客のマシンと Kubernetes クラスターを効果的に管理するのに役立ちます。
 ms.date: 09/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 8761c87daeda97b6c67ce8e79e438ed01d8d3a37
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 5acb9cae08795a9c87db0d6353f4870e92849f24
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714732"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293063"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
 
@@ -31,7 +31,7 @@ ms.locfileid: "129714732"
 
 これらの接続されたマシンは、顧客の Azure リソースを管理するのと同じ方法で、Azure Policy やタグ付けなどの Azure の構成概念を使用して管理できます。 また、顧客のテナント全体について作業し、接続されているすべてのハイブリッド マシンをまとめて管理することもできます。
 
-たとえば、[顧客のハイブリッド マシン全体に同じポリシー セットを適用することができます](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md)。 また、Azure Security Center を使用して、すべての顧客のハイブリッド環境全体のコンプライアンスを監視したり、[Azure Monitor を使用してハイブリッド マシンから直接データを収集し](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md)、Log Analytics ワークスペースに取り込んだりすることができます。 [仮想マシン拡張機能](../../azure-arc/servers/manage-vm-extensions.md)は、Azure 以外の Windows および Linux VM にデプロイできるため、顧客のハイブリッド マシンの管理が簡素化されます。
+たとえば、[顧客のハイブリッド マシン全体に同じポリシー セットを適用することができます](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md)。 また、Microsoft Defender for Cloud を使用して、すべての顧客のハイブリッド環境全体のコンプライアンスを監視したり、[Azure Monitor を使用してハイブリッド マシンから直接データを収集し](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md)、Log Analytics ワークスペースに取り込んだりすることができます。 [仮想マシン拡張機能](../../azure-arc/servers/manage-vm-extensions.md)は、Azure 以外の Windows および Linux VM にデプロイできるため、顧客のハイブリッド マシンの管理が簡素化されます。
 
 ## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes を使用してハイブリッド Kubernetes クラスターを大規模に管理する
 

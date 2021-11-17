@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 0b131601dd45c16088dff14cea589db5f1992525
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 024687e693b82ed3f8053fcdceefe876a5cad9e1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129995380"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313795"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-kantega-sso-for-confluence"></a>チュートリアル: Azure AD SSO と Kantega SSO for Confluence の統合
 
@@ -258,4 +258,4 @@ Azure AD ユーザーが Confluence にサインインできるようにする�
 
 ## <a name="next-steps"></a>次のステップ
 
-Kantega SSO for Confluence を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Kantega SSO for Confluence を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

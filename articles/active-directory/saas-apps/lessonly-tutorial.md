@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: b82a569060fc5d9478f823f7613045a6a0168c03
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5fd01e15f69fdb6697c3934c34a4ca9a15ee0116
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060233"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346175"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Lesson.ly の統合
 
@@ -158,4 +158,4 @@ Lesson.ly に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-Lesson.ly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Lesson.ly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

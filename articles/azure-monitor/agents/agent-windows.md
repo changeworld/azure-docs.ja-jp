@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: 8df379fe175db6a70d44ab23acf808379d8720bb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0e2b1711ed8f5a5bcf7059242116ece3e70f1235
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131044287"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332195"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Windows コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Windows コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -32,7 +32,7 @@ ms.locfileid: "131044287"
 Log Analytics エージェントでサポートされている Windows バージョンの一覧については、[Azure Monitor エージェントの概要](agents-overview.md#supported-operating-systems)に関する記事をご覧ください。
 
 ### <a name="sha-2-code-signing-support-requirement"></a>SHA-2 コード署名サポートの要件 
-Windows エージェントでは、2020 年 8 月 17 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Azure Security Center、Azure Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 8 月 17 日より前に次の操作をマシンで行う必要があります。そうしないと、エージェントからの Log Analytics ワークスペースへのデータの送信が停止します。
+Windows エージェントでは、2020 年 8 月 17 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Microsoft Defender for Cloud、Microsoft Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 8 月 17 日より前に次の操作をマシンで行う必要があります。そうしないと、エージェントからの Log Analytics ワークスペースへのデータの送信が停止します。
 
 1. お使いの OS の最新の Service Pack をインストールします。 必要な Service Pack バージョンは次のとおりです。
     - Windows 7 SP1

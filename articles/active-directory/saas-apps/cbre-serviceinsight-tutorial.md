@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 5dba2d369be849cf9299aa758b5412bd2ee3b71f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0e78e5f781d6fa936360efa7339a8ce48187ba1d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130217148"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132296495"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-cbre-serviceinsight"></a>チュートリアル: Azure AD シングル サインオン (SSO) と CBRE ServiceInsight の統合
 
@@ -132,4 +132,4 @@ CBRE ServiceInsight に対して Azure AD SSO を構成しテストするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-CBRE ServiceInsight を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+CBRE ServiceInsight を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

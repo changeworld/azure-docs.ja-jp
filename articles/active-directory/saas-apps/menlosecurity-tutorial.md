@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 473415d157c7fd777c57588db2b55e09e8101309
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d199cfc7ef3f69badd47c149966b44326e7baa8a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124742510"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>チュートリアル: Azure Active Directory と Menlo Security の統合
 
@@ -152,4 +152,4 @@ Menlo Security に対して Azure AD SSO を構成してテストするには、
 
 ## <a name="next-steps"></a>次のステップ
 
-Menlo Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Menlo Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

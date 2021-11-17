@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: fad71a2c98f28e9c3ae770e61acc409bd5f341b3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 23bdf05960af9eb94a2b003af113e7d66c4ea69e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131432550"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338347"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datadog の統合
 
@@ -155,4 +155,4 @@ Datadog に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Datadog を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Datadog を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

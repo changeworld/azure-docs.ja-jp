@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 54396b54539bcd352d2643c964a5ecc9e3b9f1f7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 025425e3565b4e2fbc30a89b4bb768da1b9eaa8d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124752296"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320837"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Smart Global Governance の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Smart Global Governance では、SP Initiated SSO と IDP Initiated SSO がサポートされます
 
-Smart Global Governance を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Smart Global Governance を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-smart-global-governance-from-the-gallery"></a>ギャラリーからの Smart Global Governance の追加
 
@@ -158,6 +158,6 @@ Smart Global Governance 側でシングル サインオンを構成するには�
 
 - [Azure AD で Smart Global Governance を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Smart Global Governance を保護する方法](/cloud-app-security/proxy-intro-aad)

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 11/20/2020
+ms.date: 11/11/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19d15ea184603587eb3477216bb5a93d6d07f905
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 5632c1bcd4acca150b7992b14535951f3d0eba50
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440522"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370644"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Azure Active Directory のロールについて
 
@@ -33,12 +33,14 @@ Microsoft 365 には、Azure AD や Intune といったさまざまなサービ�
 - Azure AD
 - Exchange
 - Intune
-- Security Center
+- Defender for Cloud
 - コンプライアンス センター
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 - コマース
 
 Teams、SharePoint、マネージド デスクトップなど、他のサービスには個別のロールベースのアクセス制御システムがありません。 これらでは、管理アクセスに Azure AD ロールが使用されます。 Azure には、Azure リソース (仮想マシンなど) 用の独自のロールベースのアクセス制御システムがあり、このシステムは Azure AD ロールとは異なります。
+
+![Azure RBAC ロールと Azure AD ロール](./media/concept-understand-roles/azure-roles-azure-ad-roles.png)
 
 個別のロールベースのアクセス制御システムと言った場合、 それはロールの定義とロールの割り当てが格納されている別のデータ ストアが存在することを意味します。 同様に、アクセス確認が行われるポリシー決定ポイントも別にあります。 詳細については、[Azure AD での Microsoft 365 サービスのロール](m365-workload-docs.md)に関するページと「[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
 
@@ -52,7 +54,7 @@ Azure AD 組み込みロールには、使用される場所によってさま�
 
 - **Azure AD 固有のロール**: これらのロールでは、Azure AD 内のリソースだけを管理するアクセス許可が付与されます。 たとえば、ユーザー管理者、アプリケーション管理者、グループ管理者では、そのどれにおいても Azure AD 内にあるリソースを管理するためのアクセス許可が付与されます。
 - **サービス固有のロール**: 主要な Microsoft 365 サービス (Azure AD 以外) では、サービス内のすべての機能を管理するためのアクセス許可を付与するサービス固有のロールが構築してあります。  たとえば、Exchange 管理者、Intune 管理者、SharePoint 管理者、および Teams 管理者の各ロールは、それぞれのサービスを使用して機能を管理できます。 Exchange 管理者はメールボックスを管理でき、Intune 管理者はデバイス ポリシーを管理でき、SharePoint 管理者はサイト コレクションを管理でき、Teams 管理者は通話の品質を管理できます。
-- **サービス間のロール**: 複数のサービスにわたるロールがいくつかあります。 グローバルなロールとしては、グローバル管理者とグローバル閲覧者の 2 つがあります。 これら 2 つのロールはすべての Microsoft 365 サービスに対して有効です。 また、セキュリティ管理者やセキュリティ閲覧者など、Microsoft 365 内の複数のセキュリティ サービスに対するアクセス権を付与するセキュリティ関連のロールもあります。 たとえば、Azure AD でセキュリティ管理者ロールを使用すると、Microsoft 365 Security Center、Microsoft Defender Advanced Threat Protection、Microsoft Cloud App Security を管理できます。 同様に、コンプライアンス管理者ロールでは、コンプライアンス関連の設定を Microsoft 365 コンプライアンス センターや Exchange などで管理できます。
+- **サービス間のロール**: 複数のサービスにわたるロールがいくつかあります。 グローバルなロールとしては、グローバル管理者とグローバル閲覧者の 2 つがあります。 これら 2 つのロールはすべての Microsoft 365 サービスに対して有効です。 また、セキュリティ管理者やセキュリティ閲覧者など、Microsoft 365 内の複数のセキュリティ サービスに対するアクセス権を付与するセキュリティ関連のロールもあります。 たとえば、Azure AD でセキュリティ管理者ロールを使用すると、Microsoft 365 Defender ポータル、Microsoft Defender Advanced Threat Protection、Microsoft Defender for Cloud Apps を管理できます。 同様に、コンプライアンス管理者ロールでは、コンプライアンス関連の設定を Microsoft 365 コンプライアンス センターや Exchange などで管理できます。
 
 ![Azure AD 組み込みロールの 3 つのカテゴリ](./media/concept-understand-roles/role-overlap-diagram.png)
 

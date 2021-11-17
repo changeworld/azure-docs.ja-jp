@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: 775b2e366d335944205197aad97c1752b6ee7d04
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8c67cc2ff2d918b8d44d8a362b3b6c1609f17f13
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "117029120"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312851"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Azure Australia におけるセキュリティのシステム監視
 
@@ -19,18 +19,18 @@ ms.locfileid: "117029120"
 
 クラウド セキュリティには、お客様とクラウド プロバイダーが共同で取り組みます。 Microsoft Azure には、[Australian Cyber Security Centre (ACSC) の Information Security Manual Controls](https://acsc.gov.au/infosec/ism/index.htm) (ISM) に記載されている推奨事項、具体的には一元的なイベント ログ、イベント ログ監査、およびセキュリティの脆弱性の評価と管理の実装を考慮して上記の要件に対応できるようにするための 4 つのサービスがあります。 該当する Microsoft Azure サービスは次のとおりです。
 
-* Azure Security Center
+* Microsoft Defender for Cloud
 * Azure Monitor
 * Azure Advisor
 * Azure Policy
 
 ACSC では、これらのサービスを **保護** データに使用することを推奨しています。 これらのサービスを使用することで、IT 環境のプロアクティブな監視と分析が可能になり、セキュリティを強化するためのリソースの最適な割り当て先を十分な情報に基づいて決定できます。 各サービスは、統合ソリューションの一部として、最適な分析情報、推奨事項、保護を提供します。
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-[Azure Security Center](../security-center/security-center-introduction.md) は、Azure リソースとホストされたデータのセキュリティを監視して強化するための統合セキュリティ管理コンソールです。 Azure Security Center にはセキュリティ スコアが表示されます。これは、Azure Advisor で行われるベスト プラクティス構成の状態の分析と Azure Policy で行われる全体的なコンプライアンス評価に基づくスコアです。
+[Microsoft Defender for Cloud](../security-center/security-center-introduction.md) は、Azure リソースとホストされたデータのセキュリティを監視して強化するための統合セキュリティ管理コンソールです。 Microsoft Defender for Cloud にはセキュリティ スコアが表示されます。これは、Azure Advisor で行われるベスト プラクティス構成の状態の分析と、Azure Policy で行われる全体的なコンプライアンス評価に基づくスコアです。
 
-Azure のお客様が Azure Security Center で利用できる機能は次のとおりです。
+Microsoft Defender for Cloud では、Azure のお客様に次の機能が提供されます。
 
 * セキュリティ ポリシー、評価、および推奨事項
 * セキュリティ イベントの収集と検索
@@ -39,9 +39,9 @@ Azure のお客様が Azure Security Center で利用できる機能は次のと
 * Just-in-Time 仮想マシン アクセス制御
 * ハイブリッド セキュリティ
 
-Azure Security Center で監視されるリソースのスコープを、ハイブリッド クラウド環境でサポートされているオンプレミス リソースへと拡大できます。 これには、サポートされているバージョンの System Center Operations Manager で現在監視されているオンプレミス リソースも含まれます。
+Microsoft Defender for Cloud で監視されるリソースのスコープを、ハイブリッド クラウド環境でサポートされているオンプレミス リソースへと拡大できます。 これには、サポートされているバージョンの System Center Operations Manager で現在監視されているオンプレミス リソースも含まれます。
 
-Security Center "Standard" レベルでは、[ASD Essential Eight](https://acsc.gov.au/publications/protect/essential-eight-explained.htm) で求められているクラウドベースのセキュリティ制御も実現できます。 これには、アプリケーションのフィルター処理や Just-In-Time アクセスによる管理特権の制限などが含まれます。
+Defender for Cloud の強化されたセキュリティ機能により、[ASD Essential 8](https://acsc.gov.au/publications/protect/essential-eight-explained.htm) で必要なクラウドベースのセキュリティ制御が提供されます。 これには、アプリケーションのフィルター処理や Just-In-Time アクセスによる管理特権の制限などが含まれます。
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
@@ -60,7 +60,7 @@ Azure Monitor には "Azure アクティビティ ログ" も含まれていま�
 * パフォーマンス
 * コスト
 
-Azure Advisor で生成されるセキュリティの推奨事項は、Azure Security Center で行われる全体的なセキュリティ分析の一部となります。
+Azure Advisor で生成されるセキュリティの推奨事項は、Microsoft Defender for Cloud で行われる全体的なセキュリティ分析の一部となります。
 
 Azure Advisor で収集された情報から、管理者は次のデータを得ることができます。
 
@@ -72,7 +72,7 @@ Azure Advisor で収集された情報から、管理者は次のデータを得
 
 [Azure Policy](../governance/policy/overview.md) では、Azure リソースの種類とその許可された構成を管理するルールを適用できます。 ポリシーを使用して、リソースの作成と構成を制御したり、環境全体の構成設定を監査したりできます。 この監査結果は、修復アクティビティのベースとして利用できます。 Azure Policy は Azure ロールベースのアクセス制御 (Azure RBAC) とは異なります。Azure Policy はリソースとその構成を制限するために使用し、Azure RBAC は特権アクセスを Azure ユーザーに制限するために使用します。
 
-特定のポリシーが適用されているか、ポリシーの影響が監査されているかにかかわらず、ポリシーのコンプライアンスが継続的に監視され、全体的なコンプライアンス情報とリソース別のコンプライアンス情報が管理者に提供されます。 Azure Policy のコンプライアンス データは、Azure Security Center に提供され、セキュリティ スコアに反映されます。
+特定のポリシーが適用されているか、ポリシーの影響が監査されているかにかかわらず、ポリシーのコンプライアンスが継続的に監視され、全体的なコンプライアンス情報とリソース別のコンプライアンス情報が管理者に提供されます。 Azure Policy のコンプライアンス データは、Microsoft Defender for Cloud に提供され、セキュリティ スコアに反映されます。
 
 ## <a name="key-design-considerations"></a>設計上の主な考慮事項
 
@@ -92,7 +92,7 @@ ISM では、ログの収集と管理に加えて、組織の IT 環境の脆弱
 
 Azure Monitor を使用する Azure のお客様は、この要件を満たしています。 このオファリングでは、すべての Azure リソースを対象に Azure でログ リポジトリを一元化できるだけでなく、Azure イベント ハブにデータをストリーミングできます。 Azure Event Hubs は、フル マネージドのリアルタイム データ インジェスト サービスです。 Azure イベント ハブにストリーミングされた Azure Monitor データは、サポートされる既存のセキュリティ情報イベント管理 (SIEM) リポジトリやその他のサードパーティ製監視ツールにも簡単に接続できます。
 
-Microsoft では、Azure のネイティブな SIEM ソリューションである Azure Sentinel も提供しています。 Azure Sentinel は、さまざまなデータ コネクタをサポートしており、企業全体でセキュリティ イベントを監視するために使用できます。 セキュリティ管理者は、サポートされる[データ コネクタ](../sentinel/connect-data-sources.md)からのデータ、Azure Sentinel に組み込まれた機械学習機能、および Kusto クエリ言語を統合した 1 つのソリューションで、アラートの検出、脅威の可視化、プロアクティブなハンティング、脅威への対応を実現できます。 またセキュリティ管理者は、Azure Sentinel のハンティングとノートブックの機能を利用して、セキュリティ調査で実行されるすべての手順を再利用可能なプレイブックに記録して組織内で共有できます。 組み込みの[ユーザー分析](../sentinel/overview.md)を使用すれば、指定した 1 人のユーザーのアクションを調査することもできます。
+Microsoft では、独自の Azure ネイティブ SIEM ソリューションである Microsoft Sentinel も提供しています。 Microsoft Sentinel は、さまざまなデータ コネクタをサポートしており、企業全体でセキュリティ イベントを監視するために使用できます。 セキュリティ管理者は、サポートされる[データ コネクタ](../sentinel/connect-data-sources.md)、Microsoft Sentinel の組み込み機械学習、Kusto クエリ言語からのデータを結合することで、アラートの検出、脅威の可視化、予防的ハンティング、脅威への対応のための単一ソリューションを用意できます。 Microsoft Sentinel には、ハンティングとノートブックの機能も備わっています。セキュリティ管理者は、これらの機能を使用して、セキュリティ調査の一部として実行されるすべての手順を再利用可能なプレイブックに記録し、組織内で共有できます。 組み込みの[ユーザー分析](../sentinel/overview.md)を使用すれば、指定した 1 人のユーザーのアクションを調査することもできます。
 
 ### <a name="logged-events-and-log-detail"></a>ログに記録されるイベントとログの詳細
 
@@ -104,9 +104,9 @@ Azure で収集されるログは、次の 3 つのカテゴリに分類され�
 
 * **データ プレーン ログ**: Azure リソースが使用されたときに発生するイベントが記録されます。 Windows イベント ログ (システム ログ、セキュリティ ログ、アプリケーション ログ) などのソースが含まれます。
 
-* **処理済みイベント**: Azure がお客様に代わって自動的に処理したイベントとアラートに関する情報が含まれます。 処理済みイベントの一例が、Azure Security Center のアラートです。
+* **処理済みイベント**: Azure がお客様に代わって自動的に処理したイベントとアラートに関する情報が含まれます。 処理済みイベントの例として、Microsoft Defender for Cloud のアラートがあります。
 
-Windows と Linux のどちらの場合も、仮想マシン エージェントのデプロイによって Azure 仮想マシンの監視が強化されます。 これにより、収集されるログ情報の幅が大きく広がります。 このエージェントのデプロイが Azure Security Center から自動的に行われるように構成できます。
+Windows と Linux のどちらの場合も、仮想マシン エージェントのデプロイによって Azure 仮想マシンの監視が強化されます。 これにより、収集されるログ情報の幅が大きく広がります。 このエージェントのデプロイが Microsoft Defender for Cloud から自動的に行われるように構成できます。
 
 Microsoft では、Azure リソース固有のログとその[スキーマ](../security/fundamentals/log-audit.md)に関する詳細情報を提供しています。
 
@@ -130,9 +130,9 @@ Azure Monitor で保存されたログ データは、Log Analytics ワークス
 
 ### <a name="vulnerability-assessment-and-management"></a>脆弱性の評価と管理
 
-ISM には、定期的な脆弱性の評価と管理が不可欠であることが記されています。 IT 環境は絶えず進化し、外部のセキュリティ脅威は際限なく変化しています。 Azure Security Center では、脆弱性の自動評価を行い、修復アクティビティを計画して実施する方法についてガイダンスを得ることができます。
+ISM には、定期的な脆弱性の評価と管理が不可欠であることが記されています。 IT 環境は絶えず進化し、外部のセキュリティ脅威は際限なく変化しています。 Microsoft Defender for Cloud では、脆弱性の自動評価を行い、修復アクティビティを計画して実施する方法についてガイダンスを得ることができます。
 
-Azure Security Center のセキュリティ スコアには、環境のセキュリティを向上させるための推奨事項が一覧表示されます。 この一覧は、全体的なセキュリティ スコアへの影響が高いものから順に並べられます。 一覧を影響度の並べることで、セキュリティを強化するうえで最も価値の高い推奨事項に集中して取り組むことができます。
+Microsoft Defender for Cloud のセキュリティ スコアには、推奨事項が一覧表示されます。これらの推奨事項を適用すると、環境のセキュリティが向上します。 この一覧は、全体的なセキュリティ スコアへの影響が高いものから順に並べられます。 一覧を影響度の並べることで、セキュリティを強化するうえで最も価値の高い推奨事項に集中して取り組むことができます。
 
 Azure Policy も、継続的な脆弱性評価で重要な役割を果たします。 Azure Policy で提供されるポリシーの種類は、リソース タグと値を適用するものから、リソースを作成できる Azure リージョンを制限するもの、さらに特定のリソースの種類の作成を完全にブロックするものに及びます。 Azure のポリシーは、複数のイニシアティブにグループ化することができます。 関連する Azure ポリシーがイニシアティブを使用してグループとしてまとめて適用され、それが特定のセキュリティ目標またはコンプライアンス目標のベースとなります。
 
@@ -142,12 +142,12 @@ Azure Policy にはポリシー定義のライブラリが搭載されており�
 
 ## <a name="getting-started"></a>はじめに
 
-Azure Security Center の使用を開始して、Azure Monitor、Azure Advisor、Azure Policy を最大限に活用するには、次の初期手順をお勧めします。
+Microsoft Defender for Cloud の使用を開始して、Azure Monitor、Advisor、Policy を最大限活用するために、次の初期手順をお勧めします。
 
-* Azure Security Center を有効にする
-* Standard レベルにアップグレードする
-* サポートされる Azure Virtual Machines に対して、Microsoft Monitoring Agent の自動プロビジョニングを有効にする
-* Security Center のダッシュボードで、セキュリティの推奨事項とアラートを確認し、優先順位を付け、軽減策を実施する
+* Microsoft Defender for Cloud を有効にする
+* Microsoft Defender for Cloud の強化されたセキュリティ機能を有効にする
+* サポートされるマシンへの Log Analytics エージェントの自動プロビジョニングを有効にする
+* Defender for Cloud ダッシュボードに表示されるセキュリティに関する推奨事項とアラートを確認し、優先順位を付け、対処する
 
 ## <a name="next-steps"></a>次のステップ
 

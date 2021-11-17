@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 2cae83f698805c7f71d0e6b2f6fe5ab166848054
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4ab5e6e105e6baa0e0e9b77eb671e2f4db3dd2cc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809117"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132295509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>チュートリアル: Azure Active Directory と Ivanti Service Manager (ISM) の統合
 
@@ -154,4 +154,4 @@ Ivanti Service Manager (ISM) に対する Azure AD SSO を構成してテスト�
 
 ## <a name="next-steps"></a>次のステップ
 
-Ivanti Service Manager (ISM) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Ivanti Service Manager (ISM) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

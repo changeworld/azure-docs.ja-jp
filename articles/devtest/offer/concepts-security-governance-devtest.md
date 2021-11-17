@@ -7,16 +7,16 @@ ms.prod: visual-studio-windows
 ms.topic: how-to
 ms.date: 10/20/2021
 ms.custom: devtestoffer
-ms.openlocfilehash: 70f4ea05d0fffe1046ac45246933db9ae34b8a9a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6f3d9bae37e49c23dacc9a44ed4e0006df95ec29
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091475"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305885"
 ---
 # <a name="security-within-azure-devtest-subscription"></a>Azure Dev/Test サブスクリプション内のセキュリティ
 
-リソースを安全に保つことは、クラウド プロバイダー、Azure、およびユーザーの間の共同作業です。 Azure Dev/Test サブスクリプションと [Azure Security Center](../../security-center/security-center-introduction.md) には、ネットワークのセキュリティを強化し、サービスをセキュリティで保護し、セキュリティの態勢を確保するために必要なツールが用意されています。  
+リソースを安全に保つことは、クラウド プロバイダー、Azure、およびユーザーの間の共同作業です。 Azure Dev/Test サブスクリプションと [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) には、ネットワークのセキュリティを強化し、サービスをセキュリティで保護し、セキュリティの態勢を確保するために必要なツールが用意されています。  
 
 Azure Dev/Test サブスクリプション内の重要なツールは、リソースへの安全なアクセスを作成するのに役立ちます。  
 

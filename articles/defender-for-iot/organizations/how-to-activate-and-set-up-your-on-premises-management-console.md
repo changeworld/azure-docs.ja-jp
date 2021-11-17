@@ -1,14 +1,14 @@
 ---
 title: オンプレミス管理コンソールをアクティブにしてセットアップする
 description: 管理コンソールをアクティブにすると、センサーが Azure に登録され、オンプレミス管理コンソールに情報が送信されるようになります。また、オンプレミス管理コンソールでは、接続されたセンサーに対する管理タスクを実行できます。
-ms.date: 05/05/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 84506e9ebd12dab4198d075c6afea8ae23604a42
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 77f2a62cce7da4f9faac62820a85f38c0dd06ce5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445859"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306227"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>オンプレミス管理コンソールをアクティブにしてセットアップする 
 
@@ -78,7 +78,7 @@ ms.locfileid: "122445859"
 
 **ライセンスをアクティブ化するには、次の手順を実行します。**
 
-1. [サポート](https://ms.portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support)でケースを 開きます。
+1. [サポート](https://portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support)でケースを開きます。
 
 1. サポートにアクティブ化 ID 番号を提供します。
 
@@ -135,7 +135,7 @@ CA 署名証明書のアップロード後に、画面を最新の情報に更�
 
 センサーからオンプレミス管理コンソールに情報が送信されること、およびオンプレミス管理コンソールでバックアップの実行、アラートの管理、センサーでの他のアクティビティの実行を行えることを確認します。 これを行うには、次の手順に従って、センサーとオンプレミス管理コンソールの間で最初の接続が確立されることを確認します。
 
-Azure Defender for IoT センサーをオンプレミス管理コンソールに接続するには、次の 2 つのオプションを使用できます。
+Microsoft Defender for IoT センサーをオンプレミス管理コンソールに接続するために、2 つのオプションを使用できます。
 
 - センサー コンソールから接続する
 

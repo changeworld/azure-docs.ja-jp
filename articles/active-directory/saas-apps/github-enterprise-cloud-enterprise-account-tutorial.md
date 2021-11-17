@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d2df035c32071f84608e36237b119c1e2d9b72a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0404c8d137f90f5ead2f2b3bd3c9754ab1a45608
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131459218"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291581"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Cloud - Enterprise Account の統合
 
@@ -150,4 +150,4 @@ Enterprise Account 内の組織の組織所有者は、[GitHub 組織に参加�
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub Enterprise Cloud - Enterprise Account を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+GitHub Enterprise Cloud - Enterprise Account を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

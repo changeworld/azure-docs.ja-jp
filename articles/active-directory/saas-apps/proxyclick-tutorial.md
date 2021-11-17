@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 52197330ae274cf8cb338328d3202d7367fe431d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ec7d8c7f8619fa4b79374eebdba141905a65b714
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124749671"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329711"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>チュートリアル: Azure Active Directory と Proxyclick の統合
 
@@ -199,4 +199,4 @@ Azure AD ユーザーが Proxyclick にサインインできるようにする�
 
 ## <a name="next-steps"></a>次のステップ
 
-Proxyclick を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Proxyclick を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

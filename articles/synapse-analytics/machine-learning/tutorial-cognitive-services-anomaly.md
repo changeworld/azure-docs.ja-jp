@@ -10,12 +10,12 @@ ms.date: 07/01/2021
 author: nelgson
 ms.author: negust
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 901bfba094426a133db9b76054482ba649b4077d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 505bef004acb688a1fdb1ccc87d261b1a12c6009
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022363"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318296"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services"></a>チュートリアル:Cognitive Services を使用した異常検出
 
@@ -85,7 +85,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="run-the-notebook"></a>ノートブックを実行する
 
-先ほど開いたノートブックでは、[MMLSpark ライブラリ](https://github.com/microsoft/SynapseML)を使用して Cognitive Services に接続します。 指定した Azure Cognitive Services のリンク サービスを使用すると、シークレットを開示することなく、このエクスペリエンスからコグニティブ サービスを安全に参照できます。
+先ほど開いたノートブックでは、[SynapseML] ライブラリ](https://github.com/microsoft/SynapseML) を使用して Cognitive Services に接続します。 指定した Azure Cognitive Services のリンク サービスを使用すると、シークレットを開示することなく、このエクスペリエンスからコグニティブ サービスを安全に参照できます。
 
 これで、すべてのセルを実行して異常検出を実行できるようになりました。 **[すべて実行]** を選択します。 [Cognitive Services の Anomaly Detector の詳細をご覧ください](../../cognitive-services/anomaly-detector/index.yml)。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: eab253981464e0c8ad0205f5fab5282c57b6d0b6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d369120d4d7a94f5a593632741339c66d831528d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783295"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291906"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-frontify"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Frontify の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Frontify では、**SP** Initiated SSO がサポートされます
-* Frontify を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Frontify を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-frontify-from-the-gallery"></a>ギャラリーからの Frontify の追加
 
@@ -143,6 +143,6 @@ Frontify に対する Azure AD SSO を構成してテストするには、次の
 
 - [Azure AD で Frontify を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって Frontify を保護する方法](/cloud-app-security/proxy-intro-aad)

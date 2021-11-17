@@ -3,12 +3,12 @@ title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
 ms.date: 11/02/2021
 ms.topic: overview
-ms.openlocfilehash: 8130a88042678d277fd5fe727f0593e8805bb5b4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6279ef69c60c7a6d76fe0dfbea68934394c23c06
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131445787"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343118"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 
@@ -16,7 +16,7 @@ Azure Lighthouse により、マルチテナントの管理が実現し、リソ
 
 Azure Lighthouse を使用すれば、[Azure プラットフォームに組み込まれた包括的かつ信頼性の高いツール](concepts/architecture.md)を使用して、サービス プロバイダーがマネージド サービスを提供できるようになります。 お客様は、自社のテナントにアクセスできるユーザー、そのユーザーがアクセスできるリソース、および実行可能な操作の制御を維持できます。 複数のテナント間でリソースを管理する[エンタープライズ組織](concepts/enterprise.md)では、管理タスクを効率化するために Azure Lighthouse を使用することもできます。
 
-[テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)により、[Azure Policy](how-to/policy-at-scale.md)、[Azure Sentinel](how-to/manage-sentinel-workspaces.md)、[Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) などの Azure サービスで、より効率的に作業を行うことができます。 ユーザーは[アクティビティ ログ](how-to/view-service-provider-activity.md)から他のユーザーが加えた変更と誰が実行したかを参照できます。これらは顧客のテナントに格納され、また、管理テナントのユーザーが表示できます。
+[テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)により、[Azure Policy](how-to/policy-at-scale.md)、[Microsoft Sentinel](how-to/manage-sentinel-workspaces.md)、[Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) などの Azure サービスで、より効率的に作業を行うことができます。 ユーザーは[アクティビティ ログ](how-to/view-service-provider-activity.md)から他のユーザーが加えた変更と誰が実行したかを参照できます。これらは顧客のテナントに格納され、また、管理テナントのユーザーが表示できます。
 
 ![Azure Lighthouse の概要図](media/azure-lighthouse-overview.jpg)
 

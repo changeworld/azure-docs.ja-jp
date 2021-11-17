@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2021
 ms.author: jeedes
-ms.openlocfilehash: d1a7a27242d870e954e3646abb9717ed46a6bafa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7cd271c1c7105e8e3f8ab137ff58efb92b0de4bd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124782914"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル: Azure Active Directory と SmartRecruiters の統合
 
@@ -166,4 +166,4 @@ SmartRecruiters に対して Azure AD SSO を構成してテストするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-SmartRecruiters を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SmartRecruiters を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

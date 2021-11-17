@@ -1,20 +1,20 @@
 ---
 title: セキュリティ エージェントのスタートアップのトラブルシューティング (Linux)
-description: Linux 用の Azure Defender for IoT セキュリティ エージェントの使用に関するトラブルシューティング。
+description: Linux 用の Microsoft Defender for IoT セキュリティ エージェントの使用に関するトラブルシューティング。
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 203a6112f2926bb714022e1fd26b282dedaa8104
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: c0e85e0628599af88d86c567b559ca6c721ab732
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018757"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305999"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>セキュリティ エージェントのトラブルシューティング ガイド (Linux)
 
 この記事では、セキュリティ エージェントの起動プロセスで発生する可能性のある問題の解決方法について説明します。
 
-Azure Defender for IoT エージェントは、インストールの直後に自己起動します。 エージェントの起動プロセスには、ローカル構成の読み取り、Azure IoT Hub への接続、およびリモート ツイン構成の取得が含まれます。 これらの手順のいずれかに失敗すると、セキュリティ エージェントでエラーが発生する可能性があります。
+Microsoft Defender for IoT エージェントは、インストールの直後に自己起動します。 エージェントの起動プロセスには、ローカル構成の読み取り、Azure IoT Hub への接続、およびリモート ツイン構成の取得が含まれます。 これらの手順のいずれかに失敗すると、セキュリティ エージェントでエラーが発生する可能性があります。
 
 このトラブルシューティング ガイドでは、次の方法について説明します。
 

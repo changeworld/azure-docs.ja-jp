@@ -1,14 +1,14 @@
 ---
 title: 特定のセンサーによって検出されたデバイスに関する分析情報を得る
 description: デバイス インベントリには、センサーで検出された広範なデバイス属性が表示されます。
-ms.date: 12/06/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 423ddcb9b50be6aa758e28f20291f8d66e58e3f4
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: a218cbb8413728813bc818b73e8292144c01541a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028194"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312478"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>デバイス インベントリのセンサー検出を調査する
 
@@ -44,6 +44,7 @@ ms.locfileid: "132028194"
 | グループ | このデバイスが参加するグループ。 |
 | 最終アクティビティ | デバイスで最後に実行されたアクティビティ。 |
 | Discovered | このデバイスがネットワークに最初に表示された日時。 |
+| **PLC モード (プレビュー)** | PLC 動作モードには、キーの状態 (物理) と実行状態 (論理) が含まれます。 **キー** の状態には、[実行]、[プログラム]、[リモート]、[停止]、[無効]、[Programming Disabled]\(プログラムの無効化\) があります。 **実行** 状態には、[実行]、[プログラム]、[停止]、[一時停止]、[例外]、[停止]、[Trapped]\(トラップ\)、[アイドル]、[オフライン] があります。 両方の状態が同じ場合は、1 つの状態のみが表示されます。 |
 
 ## <a name="what-is-an-inventory-device"></a>インベントリ デバイスとは
 
@@ -90,7 +91,7 @@ Defender for IoT では、次のインベントリでデバイスを識別し、
 
 保存するフィルターは、デバイス マップ グループとしても保存されます。 この機能により、マップ上のネットワーク デバイスを表示する際の精度がさらに向上します。
 
-フィルターを作成するには、次の操作を行います。
+**フィルターを作成するには、次の操作を行います。**
 
 1. フィルター処理する列で、:::image type="icon" source="media/how-to-work-with-asset-inventory-information/filter-icon.png" border="false"::: を選択します。
 
@@ -184,7 +185,7 @@ OT デバイスについて知るだけでなく、Microsoft Windows ワーク�
 
 - スクリプトを同じ場所で再度実行すると、これらのファイルは上書きされます。
 
-スクリプトを実行するには、次の手順を実行します。  
+**スクリプトを実行するには、次の手順を実行します。** 
 
 1. スクリプトをローカル ドライブにコピーして解凍します。 次のファイルが表示されます。
 
@@ -212,7 +213,7 @@ OT デバイスについて知るだけでなく、Microsoft Windows ワーク�
 
 ファイル名は更新しないでください。
 
-インポートするには、次の操作を行います。
+**インポートするには、次の操作を行います。**
 
 1. **[Windows 構成のインポート]** ダイアログ ボックスで **[設定のインポート]** を選択します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 82baaef036a3541f46b0136ae3d387adacb144b2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e29df86f5f4aa9555a859d5c2e0539e2ac068321
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124782838"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298482"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zengine"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zengine の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Zengine では、**SP** Initiated SSO がサポートされています
 
-* Zengine を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Zengine を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-zengine-from-the-gallery"></a>ギャラリーからの Zengine の追加
 
@@ -149,4 +149,4 @@ Zengine に対する Azure AD SSO を構成してテストするには、次の�
 
 - [Azure AD で Zengine を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)

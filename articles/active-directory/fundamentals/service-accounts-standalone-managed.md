@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea3bd3e6fc971901bf69c053088678e8f0f718d0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8237e746e6f48640ed1aca8d2637eb128172a297
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206675"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292435"
 ---
 # <a name="secure-standalone-managed-service-accounts"></a>スタンドアロン管理サービス アカウントをセキュリティで保護する
 
@@ -61,7 +61,7 @@ sMSA によって生じる可能性のあるセキュリティの問題を軽減
 | セキュリティ上の問題| 対応策 |
 | - | - |
 | sMSA は特権グループのメンバーです。 | <li>昇格された特権グループ (Domain Admins など) から sMSA を削除します。<li>"*最小特権*" モデルを使用し、sMSA にそのサービスを実行するために必要な権限とアクセス許可のみを付与します。<li>必要なアクセス許可がわからない場合は、サービス作成者に問い合わせてください。 |
-| sMSA には、機密リソースへの読み取りおよび書き込みアクセス権があります。 | <li>機密性の高いリソースへのアクセスを監査します。<li>分析のために、監査ログを Azure Log Analytics や Azure Sentinel などのセキュリティ情報イベント管理 (SIEM) プログラムにアーカイブします。<li>望ましくないレベルのアクセスが検出された場合は、リソース アクセス許可を修正します。 |
+| sMSA には、機密リソースへの読み取りおよび書き込みアクセス権があります。 | <li>機密性の高いリソースへのアクセスを監査します。<li>分析のために、監査ログを Azure Log Analytics や Microsoft Sentinel などのセキュリティ情報イベント管理 (SIEM) プログラムにアーカイブします。<li>望ましくないレベルのアクセスが検出された場合は、リソース アクセス許可を修正します。 |
 | 既定では、sMSA パスワード ロールオーバーの頻度は 30 日です。 | グループ ポリシーを使用して、企業のセキュリティ要件に応じて期限を調整することができます。 パスワードの有効期限を設定するには、次のパスを使用します。<br>*コンピューターの構成\ポリシー\Windows の設定\セキュリティ設定\セキュリティ オプション*。 ドメイン メンバーの場合は、 **[マシン アカウントのパスワード変更の最大有効期間]** を使用します。 |
 | | |
 
@@ -95,13 +95,13 @@ Active Directory ドメイン内の sMSA のみを返すには、次のコマン
 
 sMSA を管理するには、次の Active Directory PowerShell コマンドレットを使用できます。
 
-`Get-ADServiceAccount`  
-` Install-ADServiceAccount`  
-` New-ADServiceAccount`  
-` Remove-ADServiceAccount`  
-`Set-ADServiceAccount`  
-`Test-ADServiceAccount`  
-`Ininstall-ADServiceAccount`
+`Get-ADServiceAccount`
+`Install-ADServiceAccount`
+`New-ADServiceAccount`
+`Remove-ADServiceAccount`
+`Set-ADServiceAccount`
+`Test-ADServiceAccount`
+`Uninstall-ADServiceAccount`
 
 ## <a name="move-to-smsas"></a>sMSA への移行
 

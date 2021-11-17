@@ -11,12 +11,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/05/2020
   ms.author: mbullwin
-  ms.openlocfilehash: e34aca5271277100ed0eda347c16dc9227158fbd
-  ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+  ms.openlocfilehash: 8dd4272652c38e42b2e09942ff7c6964d723496b
+  ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130063433"
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132371583"
 title: Metrics Advisor に関してよく寄せられる質問
 summary: ''
 sections:
@@ -95,7 +95,7 @@ sections:
       詳細については、[異常検出の構成](how-tos/configure-metrics.md#anomaly-detection-methods)に関する記事を参照してください。
   - question: >
       電子メールの設定を行って、電子メールによるアラートを有効にする方法
-    answer: "1.  サブスクリプション管理者またはリソース グループ管理者の権限を持つユーザーが、Azure portal に作成された Metrics Advisor リソースに移動し、 **[アクセス制御 (IAM)]** タブを選択する必要があります。 \n2.  **[ロールの割り当ての追加]** を選択します\n3.  **Cognitive Services Metrics Advisor 管理者** のロールを選択し、下の画像のように自分のアカウントを選択します。\n4.  **[保存]** ボタンをクリックすると、Metrics Advisor リソースの管理者として正常に追加されます。 上記のアクションはすべて、サブスクリプション管理者またはリソース グループ管理者によって実行される必要があるので注意してください。 \n\n    :::image type=\"content\" source=\"media/access-control.png\" alt-text=\"アクセス制御 (IAM) のメニュー ページ。[ロールの割り当ての追加] が選択されており、[アクセスの割り当て先] がユーザーに選択され Cognitive Services Metrics Advisor 管理者のアクセス ロールが表示されているボックスがあり、UI の [保存] ボタンが選択されていて、ユーザーを検索して特定のレベルのアクセス許可を追加する手順を示している。\" lightbox=\"media/access-control.png\":::\n\n\n5.  アクセス許可が反映されるまでに最大で 1 分かかる場合があります。 次に、自分の Metrics Advisor ワークスペースを選択し、左側のナビゲーション パネルで **[電子メール設定]** オプションを選択します。 必須の項目 (特に SMTP 関連の情報) を入力します。 \n6.  **[保存]** を選択すると、電子メールの構成がすべて設定されます。 新しいフックを作成してメトリックの異常をサブスクライブし、準リアルタイムのアラートを受け取れます。 \n"
+    answer: "1. サブスクリプション管理者またはリソース グループ管理者の権限を持つユーザーが、Azure portal に作成された Metrics Advisor リソースに移動し、 **[アクセス制御 (IAM)]** タブを選択する必要があります。 \n2. **[ロールの割り当ての追加]** を選択します\n3. **Cognitive Services Metrics Advisor 管理者** のロールを選択し、下の画像のように自分のアカウントを選択します。\n4. **[保存]** ボタンをクリックすると、Metrics Advisor リソースの管理者として正常に追加されます。 上記のアクションはすべて、サブスクリプション管理者またはリソース グループ管理者によって実行される必要があるので注意してください。 \n\n    :::image type=\"content\" source=\"media/access-control.png\" alt-text=\"アクセス制御 (IAM) のメニュー ページ。[ロールの割り当ての追加] が選択されており、[アクセスの割り当て先] がユーザーに選択され Cognitive Services Metrics Advisor 管理者のアクセス ロールが表示されているボックスがあり、UI の [保存] ボタンが選択されていて、ユーザーを検索して特定のレベルのアクセス許可を追加する手順を示している。\" lightbox=\"media/access-control.png\":::\n\n\n5. アクセス許可が反映されるまでに最大で 1 分かかる場合があります。 次に、自分の Metrics Advisor ワークスペースを選択し、左側のナビゲーション パネルで **[電子メール設定]** オプションを選択します。 必須の項目 (特に SMTP 関連の情報) を入力します。 \n6. **[保存]** を選択すると、電子メールの構成がすべて設定されます。 新しいフックを作成してメトリックの異常をサブスクライブし、準リアルタイムのアラートを受け取れます。 \n"
 - name: 高度な概念
   questions:
   - question: >

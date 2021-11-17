@@ -1,22 +1,22 @@
 ---
 title: アラート情報を転送する
 description: 転送ルールを使用して、パートナーのシステムにアラート情報を送信することができます。
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: eb902036a286be50dc1f29ccca894f3d422cc59c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d863ab9de5e030ddd54ba1b4b40efc01e844f419
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612212"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278856"
 ---
 # <a name="forward-alert-information"></a>アラート情報を転送する
 
-Azure Defender for IoT と統合しているパートナー、Syslog サーバー、電子メール アドレスなどにアラート情報を送信することができます。 転送ルールを使用すると、セキュリティ利害関係者にアラート情報をすばやく配信できます。
+Microsoft Defender for IoT と統合しているパートナー、Syslog サーバー、電子メール アドレスなどにアラート情報を送信することができます。 転送ルールを使用すると、セキュリティ利害関係者にアラート情報をすばやく配信できます。
 
 転送ルールをトリガーする条件を定義します。 転送ルールの条件を使用すると、センサーから外部システムに送信される情報の量を特定して管理することができます。
 
-Syslog やその他の既定の転送アクションが、お使いのシステムで配信されます。 Microsoft Azure Sentinel、ServiceNow、Splunk などの取引先ベンダーと統合すると、より多くの転送アクションが利用可能になる可能性があります。
+Syslog やその他の既定の転送アクションが、お使いのシステムで配信されます。 Microsoft Sentinel、ServiceNow、Splunk などの取引先ベンダーと統合すると、より多くの転送アクションが利用可能になる可能性があります。
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alert-information-screen.png" alt-text="アラート情報。":::
 
@@ -54,7 +54,7 @@ Defender for IoT の管理者には、転送ルールを使用するためのア
 
 次の転送規則では、暗号化と証明書の検証が許可されます。
 - Syslog CEF
-- Azure Sentinel
+- Microsoft Sentinel
 - QRadar
 
 ## <a name="create-forwarding-rules"></a>転送ルールの作成
@@ -151,14 +151,14 @@ Defender for IoT の管理者には、転送ルールを使用するためのア
 | 日付と時刻 | Syslog サーバー マシンで情報が受信された日付と時刻。 |
 | Priority | User.Alert |
 | hostname | センサーの IP アドレス |
-| Message | CEF:0 <br />Azure Defender for IoT <br />Sensor name:  センサー アプライアンスの名前。 <br /><センサーのバージョン> <br />Alert title: アラートのタイトル。 <br />msg:  アラートのメッセージ。 <br />protocol: アラートのプロトコル。 <br />severity:  **[Warning]** 、 **[Minor]** 、 **[Major]** 、または **[Critical]** 。 <br />type:  **[Protocol Violation]** 、 **[Policy Violation]** 、 **[Malware]** 、 **[Anomaly]** 、または **[Operational]** 。 <br /> start:  アラートが検出された時刻。 <br />Syslog サーバー マシンの時刻とは異なる場合があり、転送ルールのタイム ゾーン構成によって決まります。 <br />src_ip: 送信元デバイスの IP アドレス。  <br />dst_ip: 送信先デバイスの IP アドレス。<br />cat: アラートに関連付けられているアラート グループ。  |
+| Message | CEF:0 <br />Microsoft Defender for IoT <br />Sensor name:  センサー アプライアンスの名前。 <br /><センサーのバージョン> <br />Alert title: アラートのタイトル。 <br />msg:  アラートのメッセージ。 <br />protocol: アラートのプロトコル。 <br />severity:  **[Warning]** 、 **[Minor]** 、 **[Major]** 、または **[Critical]** 。 <br />type:  **[Protocol Violation]** 、 **[Policy Violation]** 、 **[Malware]** 、 **[Anomaly]** 、または **[Operational]** 。 <br /> start:  アラートが検出された時刻。 <br />Syslog サーバー マシンの時刻とは異なる場合があり、転送ルールのタイム ゾーン構成によって決まります。 <br />src_ip: 送信元デバイスの IP アドレス。  <br />dst_ip: 送信先デバイスの IP アドレス。<br />cat: アラートに関連付けられているアラート グループ。  |
 
 | Syslog LEEF の出力形式 | [説明] |
 |--|--|
 | 日付と時刻 | Syslog サーバー マシンで情報が受信された日付と時刻。 |  
 | Priority | User.Alert |
 | hostname | センサーの IP |
-| Message | Sensor name: Azure Defender for IoT アプライアンスの名前。 <br />LEEF:1.0 <br />Azure Defender for IoT <br />Sensor  <br /><センサーのバージョン> <br />Azure Defender for IoT Alert <br />title: アラートのタイトル。 <br />msg:  アラートのメッセージ。 <br />protocol:  アラートのプロトコル。<br />severity:  **[Warning]** 、 **[Minor]** 、 **[Major]** 、または **[Critical]** 。 <br />type:  アラートの種類: **[Protocol Violation]** 、 **[Policy Violation]** 、 **[Malware]** 、 **[Anomaly]** 、または **[Operational]** 。 <br />start: アラートの時刻。syslog サーバー マシンの時刻とは異なる場合があります。 (これはタイム ゾーンの構成によって決まります)。 <br />src_ip:  送信元デバイスの IP アドレス。<br />dst_ip:  送信先デバイスの IP アドレス。 <br />cat: アラートに関連付けられているアラート グループ。 |
+| Message | センサー名: Microsoft Defender for IoT アプライアンスの名前。 <br />LEEF:1.0 <br />Microsoft Defender for IoT <br />Sensor  <br /><センサーのバージョン> <br />Microsoft Defender for IoT アラート <br />title: アラートのタイトル。 <br />msg:  アラートのメッセージ。 <br />protocol:  アラートのプロトコル。<br />severity:  **[Warning]** 、 **[Minor]** 、 **[Major]** 、または **[Critical]** 。 <br />type:  アラートの種類: **[Protocol Violation]** 、 **[Policy Violation]** 、 **[Malware]** 、 **[Anomaly]** 、または **[Operational]** 。 <br />start: アラートの時刻。syslog サーバー マシンの時刻とは異なる場合があります。 (これはタイム ゾーンの構成によって決まります)。 <br />src_ip:  送信元デバイスの IP アドレス。<br />dst_ip:  送信先デバイスの IP アドレス。 <br />cat: アラートに関連付けられているアラート グループ。 |
 
 すべての情報を入力したら、 **[送信]** を選択します。
 

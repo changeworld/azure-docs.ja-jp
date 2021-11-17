@@ -7,23 +7,16 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-java-uiex
-ms.openlocfilehash: 0f429c6feda62c6572c25e4f8e2513123ff6ef03
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 273b4a0c8396ae2cc9034ea9b634005ba397f08a
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287782"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371906"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に Java 関数を作成する
 
-> [!div class="op_single_selector" title1="関数の言語を選択します。 "]
-> - [Java](create-first-function-vs-code-java.md)
-> - [Python](create-first-function-vs-code-python.md)
-> - [C#](create-first-function-vs-code-csharp.md)
-> - [JavaScript](create-first-function-vs-code-node.md)
-> - [PowerShell](create-first-function-vs-code-powershell.md)
-> - [TypeScript](create-first-function-vs-code-typescript.md)
-> - [その他 (Go/Rust)](create-first-function-vs-code-other.md)
+[!INCLUDE [functions-language-selector-quickstart-vs-code](../../includes/functions-language-selector-quickstart-vs-code.md)]
 
 この記事では、HTTP 要求に応答する Java 関数を、Visual Studio Code を使用して作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。
 
@@ -40,7 +33,7 @@ Visual Studio Code が好みの開発ツールでない場合は、Java 開発�
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8 または 11。
++ [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 11 または 8。
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 
@@ -67,7 +60,7 @@ Visual Studio Code が好みの開発ツールでない場合は、Java 開発�
 
     + **Select a language for your function project (関数プロジェクトの言語を選択してください)** : [`Java`] を選択します。
 
-    + **Select a version of Java (Java のバージョンを選択してください)** : Azure における関数の実行環境 (Java バージョン) として `Java 8` または `Java 11` を選択します。 ローカルで確認済みの Java バージョンを選択してください。
+    + **Select a version of Java (Java のバージョンを選択してください)** : Azure における関数の実行環境 (Java バージョン) として `Java 11` または `Java 8` を選択します。 ローカルで確認済みの Java バージョンを選択してください。
 
     + **Provide a group ID (グループ ID を指定してください)** : [`com.function`] を選択します。
 

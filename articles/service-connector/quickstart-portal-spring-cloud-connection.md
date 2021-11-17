@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: overview
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 320cd5af7a6f64d6f74eb55ac9abfd7f07af18ce
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 001e014e616f3ee199fd59d11c385732b0bed568
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131843143"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301288"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-from-azure-portal"></a>クイックスタート : Azure portal から Spring Cloud にサービス接続を作成する
 

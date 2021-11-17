@@ -1,14 +1,14 @@
 ---
 title: 脅威インテリジェンス データを更新する
 description: 脅威インテリジェンス データ パッケージは、新しい Defender for IoT バージョンごとに、またはリリース間で必要に応じて提供されます。
-ms.date: 04/17/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: f5282002f406c62341f5d104c14aa1cbe9ad32dd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: ac743c9e8c53e40743bda0c50017885f40381971
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019053"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293195"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>脅威インテリジェンスの調査とパッケージ #
 ## <a name="overview"></a>概要 ##
@@ -34,7 +34,7 @@ Microsoft のセキュリティ チームは、独自の ICS 脅威インテリ�
 
 脅威インテリジェンス パッケージは、約 1 か月に 1 回、または必要に応じてより頻繁に提供されます。 新しいパッケージに関するお知らせは、 https://techcommunity.microsoft.com/t5/azure-defender-for-iot/bd-p/AzureDefenderIoT から確認できます。
 
-Defender for IoT ポータルの **[更新]** ページの **[Threat intelligence update]\(脅威インテリジェンス更新\)** セクションから配信される最新パッケージも確認できます。  
+Azure portal で Defender for IoT ポータルの **[更新]** ページの **[Threat intelligence update]\(脅威インテリジェンス更新\)** セクションから配信される最新パッケージも確認できます。
 
 ## <a name="update-threat-intelligence-packages-to-your-sensors"></a>ご自分のセンサーの脅威インテリジェンス パッケージを更新する ##
 
@@ -52,12 +52,11 @@ Defender for IoT セキュリティ閲覧者のアクセス許可が割り当て
 
 ### <a name="manually-push-threat-intelligence-updates-to-sensors"></a>脅威インテリジェンスの更新をセンサーに手動でプッシュする ###
 
-ご自分の "*クラウド接続*" センサーは、脅威インテリジェンス パッケージで自動的に更新できます。 ただし、より保守的なアプローチを使用したい場合は、必要と思われるときにのみ、Azure Defender for IoT ポータルからセンサーにパッケージをプッシュすることができます。
-これにより、パッケージをインストールするタイミングを制御できます。これをダウンロードしてご自分のセンサーにアップロードする必要はありません。
+ご自分の "*クラウド接続*" センサーは、脅威インテリジェンス パッケージで自動的に更新できます。 ただし、より保守的なアプローチを使用したい場合は、必要と思われるときにのみ、Defender for IoT からセンサーにパッケージをプッシュすることができます。 これにより、パッケージをインストールするタイミングを制御できます。これをダウンロードしてご自分のセンサーにアップロードする必要はありません。
 
 **パッケージを手動でプッシュするには:**
 
-1. Azure Defender for IoT の **[Sites and Sensors]\(サイトとセンサー\)** ページに移動します。
+1. Microsoft Defender for IoT の **[Sites and Sensors]\(サイトとセンサー\)** ページに移動します。
 1. センサーの省略記号 ([...]) を選択し、 **[脅威インテリジェンスの更新をプッシュ]** を選択します。 **[脅威インテリジェンスの更新状態]** フィールドに更新の進行状況が表示されます。
 
 #### <a name="change-the-threat-intelligence-update-mode"></a>脅威インテリジェンスの更新モードを変更する ####
@@ -71,15 +70,15 @@ Defender for IoT セキュリティ閲覧者のアクセス許可が割り当て
 
 ### <a name="download-packages-and-upload-to-sensors"></a>パッケージをダウンロードしてセンサーにアップロードする ###
 
-パッケージを Defender for IoT ポータルからダウンロードし、個々のセンサーに手動でアップロードできます。 オンプレミスの管理コンソールでセンサーを管理している場合は、脅威インテリジェンス パッケージを管理コンソールにダウンロードし、複数のセンサーに同時にプッシュすることができます。
+パッケージは Azure portal でダウンロードし、手動で個々のセンサーにアップロードできます。 オンプレミスの管理コンソールでセンサーを管理している場合は、脅威インテリジェンス パッケージを管理コンソールにダウンロードし、複数のセンサーに同時にプッシュすることができます。
 
-:::image type="content" source="media/how-to-work-with-threat-intelligence-packages/download-screen.png" alt-text="Azure Defender for IoT ポータルから更新プログラムをダウンロードします。":::
+:::image type="content" source="media/how-to-work-with-threat-intelligence-packages/download-screen.png" alt-text="Azure portal で更新プログラムをダウンロードする。":::
 
 このオプションは、"*クラウド接続*" センサーと "*ローカル管理*" センサーの両方で使用できます。
 
 **1 つのセンサーにアップロードするには:**
 
-1. Azure Defender for IoT の **[更新プログラム]** ページに移動します。
+1. Microsoft Defender for IoT の **[更新プログラム]** ページに移動します。
 
 2. **脅威インテリジェンス** パッケージをダウンロードして保存します。
 
@@ -93,7 +92,7 @@ Defender for IoT セキュリティ閲覧者のアクセス許可が割り当て
 
 **複数のセンサーに同時にアップロードするには:**
 
-1. Azure Defender for IoT の **[更新プログラム]** ページに移動します。
+1. Microsoft Defender for IoT の **[更新プログラム]** ページに移動します。
 
 2. **脅威インテリジェンス** パッケージをダウンロードして保存します。
 
@@ -121,7 +120,7 @@ Defender for IoT セキュリティ閲覧者のアクセス許可が割り当て
 
 脅威インテリジェンスの情報を確認するには:
 
-1. Azure Defender for IoT の **[Sites and Sensors]\(サイトとセンサー\)** ページに移動します。
+1. Microsoft Defender for IoT の **[Sites and Sensors]\(サイトとセンサー\)** ページに移動します。
 1. 各センサーにインストールされている **脅威インテリジェンスのバージョン** を確認します。 バージョン名は、パッケージが Defender for IoT によって差作成された日付に基づいています。
 1. **脅威インテリジェンス モード** を確認します。 *[自動]* は、使用可能な新しいパッケージが Defender for IoT によってリリースされると、それがセンサーに自動的にインストールされることを示しています。 *[手動]* は、使用可能な新しいパッケージを必要に応じてセンサーに直接プッシュできることを示しています。
 1. **脅威インテリジェンスの更新状態** を確認します。 次の状態が表示される場合があります。

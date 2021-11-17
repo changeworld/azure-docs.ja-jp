@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: fa864229529e0302b8968ed5219e700642b63c3e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 000349d0d1b089cfaf84fdec6a82f7f14c1e6df5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809314"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317361"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipoint-service-provider"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iPoint Service Provider の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * iPoint Service Provider では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* iPoint Service Provider を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* iPoint Service Provider を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-ipoint-service-provider-from-the-gallery"></a>ギャラリーからの iPoint Service Provider の追加
 
@@ -162,6 +162,6 @@ iPoint Service Provider で Azure AD SSO を構成してテストするには、
 
 - [Azure AD で iPoint Service Provider を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって iPoint Service Provider を保護する方法](/cloud-app-security/proxy-intro-aad)

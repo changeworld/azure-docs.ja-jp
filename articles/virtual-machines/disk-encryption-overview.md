@@ -8,12 +8,12 @@ ms.author: mbaldwin
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efc0626c0c5f2c9333e5459d7fb7ce6aa2865cc4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 989a7fcc058284c1c706cbfc30c97a77200de111
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105185"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315314"
 ---
 # <a name="overview-of-managed-disk-encryption-options"></a>マネージド ディスク暗号化オプションの概要
 
@@ -29,7 +29,7 @@ ms.locfileid: "123105185"
 
 SSE、ADE、ホストでの暗号化の比較を次に示します。
 
-| | 保存時の暗号化 (OS およびデータ ディスク) | 一時ディスクの暗号化 | キャッシュの暗号化 | コンピューティングとストレージ間で暗号化されたデータ フロー | お客様によるキーの制御 | Azure Security Center でのディスク暗号化の状態 |
+| | 保存時の暗号化 (OS およびデータ ディスク) | 一時ディスクの暗号化 | キャッシュの暗号化 | コンピューティングとストレージ間で暗号化されたデータ フロー | お客様によるキーの制御 | Microsoft Defender for Cloud でのディスク暗号化の状態 |
 |--|--|--|--|--|--|--|
 | **プラットフォーム マネージド キーを使用した保存時の暗号化 (SSE+PMK)** | &#x2705; | &#10060; | &#10060; | &#10060; | &#10060; | 異常 (除外時は適用不可) |
 | **カスタマー マネージド キーを使用した保存時の暗号化 (SSE+CMK)** | &#x2705; | &#10060; | &#10060; | &#10060; | &#x2705; | 異常 (除外時は適用不可) |
@@ -37,7 +37,7 @@ SSE、ADE、ホストでの暗号化の比較を次に示します。
 | **ホストでの暗号化**  | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | 異常 (除外時は適用不可) |
 
 > [!Important]
-> ホストでの暗号化の場合、Azure Security Center では暗号化の状態は検出されません。
+> ホストでの暗号化では、Microsoft Defender for Cloud は暗号化の状態を検出しません。
 
 ## <a name="next-steps"></a>次のステップ
 

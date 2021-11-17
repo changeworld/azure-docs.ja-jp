@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 9fee310563507f12ccf136c72766b4a4fffb1559
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 68c970d2ec0211b2164e829db0334828fcf12736
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124731897"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334095"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-numlyengage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NumlyEngage™ の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * NumlyEngage™ では、**SP** Initiated SSO がサポートされます
-* NumlyEngage™ を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* NumlyEngage™ を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-numlyengage-from-the-gallery"></a>ギャラリーからの NumlyEngage™ の追加
 
@@ -157,6 +157,6 @@ NumlyEngage™ で Azure AD SSO を構成してテストするには、次の構
 
 - [Azure AD で NumlyEngage™ を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは？](/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって NumlyEngage™ を保護する方法](/cloud-app-security/proxy-intro-aad)

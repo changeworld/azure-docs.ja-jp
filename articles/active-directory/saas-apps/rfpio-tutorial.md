@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 1a4786945c388c1b81b7e36c8d155f92968e04ac
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 9771471342fc74d013f9cbe39e8fd170b9a08dfe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093309"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308923"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-rfpio"></a>チュートリアル: Azure AD SSO と RFPIO の統合
 
@@ -222,4 +222,4 @@ RFPIO 用に Azure AD SSO を構成してテストするには、次の手順を
 
 ## <a name="next-steps"></a>次のステップ
 
-RFPIO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+RFPIO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

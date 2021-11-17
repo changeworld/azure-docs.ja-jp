@@ -2,18 +2,105 @@
 title: Azure Monitor のドキュメントの最新情報
 description: Azure Monitor のドキュメントの最新情報
 ms.topic: conceptual
-ms.date: 09/07/2021
-ms.openlocfilehash: 3c7a433ed3c13e7853cab9a72bdd6b7a447bb3a0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/10/2021
+ms.openlocfilehash: 58e5ff2bbb95e14e0a99750004a6b4ca5f17821f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219891"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290354"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor ドキュメントに対する重要な変更点を示します。
 
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="general"></a>全般
+
+**新しい記事**
+
+- [Azure Monitor のデプロイ - アラートと自動アクション](best-practices-alerts.md)
+- [Azure Monitor のベスト プラクティス - データの分析と視覚化](best-practices-analysis.md)
+- [Azure Monitor のベスト プラクティス - データ収集を構成する](best-practices-data-collection.md)
+- [Azure Monitor のベスト プラクティス - 監視の戦略と構成を計画する](best-practices-plan.md)
+- [Azure Monitor に関するベスト プラクティス](best-practices.md)
+
+**更新された記事**
+
+- [Azure Monitor によって監視される内容](monitor-reference.md)
+- [Azure Monitor からのデータを視覚化する](visualizations.md)
+### <a name="agents"></a>エージェント
+
+**更新された記事**
+
+- [Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法](agents/agent-linux-troubleshoot.md)
+- [Azure Monitor エージェントの概要](agents/agents-overview.md)
+- [Azure Monitor エージェントのインストール](agents/azure-monitor-agent-install.md)
+
+### <a name="alerts"></a>警告
+
+**更新された記事**
+
+- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](alerts/alerts-activity-log.md)
+- [Resource Manager テンプレートでログ アラートを作成する](alerts/alerts-log-create-templates.md)
+- [ログ アラート ルールの webhook アクション](alerts/alerts-log-webhook.md)
+- [Azure Monitor のログ アラート ルール用の Resource Manager テンプレートのサンプル](alerts/resource-manager-alerts-log.md)
+
+### <a name="application-insights"></a>Application Insights
+
+**新しい記事**
+
+- [Azure Application Insights での Statsbeat](app/statsbeat.md)
+- [.NET、Node.js、Python アプリケーション用の Azure Monitor OpenTelemetry エクスポーターを有効にする (プレビュー)](app/opentelemetry-enable.md)
+- [OpenTelemetry の概要](app/opentelemetry-overview.md)
+
+**更新された記事**
+
+- [オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする](app/status-monitor-v2-overview.md)
+- [JVM 引数を更新するためのヒント - Azure Monitor Application Insights for Java](app/java-standalone-arguments.md)
+- [Python アプリケーション用に Azure Monitor をセットアップする](app/opencensus-python.md)
+- [Azure Monitor Application Insights によって監視する Java のコード不要のアプリケーション](app/java-in-process-agent.md)
+- [構成オプション - Azure Monitor Application Insights for Java](app/java-standalone-config.md)
+
+### <a name="containers"></a>コンテナー
+
+**更新された記事**
+
+- [コンテナー分析情報のトラブルシューティング](containers/container-insights-troubleshoot.md)
+- [Container insights からの推奨メトリック アラート (プレビュー)](containers/container-insights-metric-alerts.md)
+
+### <a name="essentials"></a>Essentials
+
+**更新された記事**
+
+- [Azure Monitor のサポートされるメトリック](essentials/metrics-supported.md)
+- [Azure Monitor リソース ログでサポートされているカテゴリ](essentials/resource-logs-categories.md)
+- [Azure Monitor メトリックの概要](essentials/data-platform-metrics.md)
+- [Azure Monitor のカスタム メトリック (プレビュー)](essentials/metrics-custom-overview.md)
+- [Azure リソース ログの共通およびサービス固有のスキーマ](essentials/resource-logs-schema.md)
+- [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](essentials/diagnostic-settings.md)
+
+### <a name="logs"></a>ログ
+
+**更新された記事**
+
+- [Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)](logs/logs-data-export.md)
+- [Azure Monitor のカスタマー マネージド キー](logs/customer-managed-keys.md)
+- [Azure Monitor ログ専用クラスター](logs/logs-dedicated-clusters.md)
+- [Azure Monitor ログで使用量とコストを管理する](logs/manage-cost-storage.md)
+
+### <a name="virtual-machines"></a>Virtual Machines
+
+**更新された記事**
+
+- [Azure Policy を使用して VM insights を有効にする](vm/vminsights-enable-policy.md)
+
+## <a name="visualizations"></a>視覚化
+
+**更新された記事**
+
+- [Grafana での Azure サービスの監視](visualize/grafana-plugin.md)
 ## <a name="september-2021"></a>2021 年 9 月
 ### <a name="general"></a>全般
 

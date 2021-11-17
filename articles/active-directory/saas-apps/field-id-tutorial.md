@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2021
 ms.author: jeedes
-ms.openlocfilehash: ac235f95bfb88b8bab0733b1dbbc6c0f3e09af90
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: ea79e2dfe4a66fe7fe05a29ccf20db7c99a33206
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808816"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337954"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-field-id"></a>チュートリアル: Azure AD SSO と Field iD の統合
 
@@ -128,4 +128,4 @@ Field iD 側でシングル サインオンを構成するには、**アプリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Field iD を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Field iD を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

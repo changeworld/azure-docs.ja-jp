@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 41c8727e2f79b01227cb33ed756132bda0bf163c
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 31e54fa5aa9b2b66944162dec97c0f72e1b3eee0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129402797"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317532"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-contracts-clm"></a>チュートリアル: Azure AD SSO と ContractS CLM の統合
 
@@ -146,4 +146,4 @@ ContractS CLM での Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-ContractS CLM を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+ContractS CLM を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

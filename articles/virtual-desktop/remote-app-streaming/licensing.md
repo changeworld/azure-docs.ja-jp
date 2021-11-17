@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 563d49ff66bdcd81a37a0bf1b12e910f16f2f5ff
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 54f164c60a5602bcfe798c98785fca1aa8513279
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036696"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292855"
 ---
 # <a name="understanding-licensing-and-per-user-access-pricing"></a>ライセンスとユーザーごとのアクセス価格について
 
@@ -70,7 +70,7 @@ Azure Virtual Desktop で選択できる 2 種類のライセンスの概要を�
 
 ## <a name="licensing-other-products-and-services-for-use-with-azure-virtual-desktop"></a>Azure Virtual Desktop で使用する他の製品とサービスのライセンス
 
-Azure Virtual Desktop のユーザーごとのアクセスライセンスは、Windows または Microsoft 365 ライセンスに対して完全に置き換えることはできません。 ユーザーごとのライセンスは、Azure Virtual Desktop へのアクセス権のみを付与し、Microsoft Office、Microsoft Defender、Universal Print は含まれません。 つまり、ユーザーごとのライセンスを選択した場合は、他の製品とサービスに個別にライセンスを付与し、Azure Virtual Desktop 環境でユーザーにアクセス権を付与する必要があります。
+Azure Virtual Desktop のユーザーごとのアクセスライセンスは、Windows または Microsoft 365 ライセンスに対して完全に置き換えることはできません。 ユーザーごとのライセンスは、Azure Virtual Desktop へのアクセス権のみを付与し、Microsoft Office、Microsoft 365 Defender、Universal Print は含まれません。 つまり、ユーザーごとのライセンスを選択した場合は、他の製品とサービスに個別にライセンスを付与し、Azure Virtual Desktop 環境でユーザーにアクセス権を付与する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

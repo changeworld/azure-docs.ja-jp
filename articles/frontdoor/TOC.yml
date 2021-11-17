@@ -118,8 +118,8 @@
       href: front-door-diagnostics.md
     - name: トラブルシューティング
       items:
-        - name: ルーティングの問題のトラブルシューティング
-          href: front-door-troubleshoot-routing.md
+        - name: Front Door の問題のトラブルシューティング
+          href: troubleshoot-issues.md
         - name: 許可された証明機関
           href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: リファレンス
