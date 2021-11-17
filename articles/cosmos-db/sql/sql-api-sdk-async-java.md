@@ -60,7 +60,7 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 | **パフォーマンスに関するヒント**| [GitHub の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
 | **サポートされている最小ランタイム**|[JDK 8](/java/azure/jdk/) | 
 
-[!INCLUDE [Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
+
 ## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
 
