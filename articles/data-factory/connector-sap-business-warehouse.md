@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: 7a1f472858480fff785f28abef9262721bcbc799
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2cbdd3dc237c3f2e7b3cf23bb844a06fdd40d605
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836080"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325849"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して SAP Business Warehouse からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -41,6 +41,9 @@ SAP Business Warehouse のデータを、サポートされる任意のシンク
 - SAP Business Warehouse **バージョン 7.x**。
 - MDX クエリを使用した、**InfoCubes および QueryCubes** (BEx クエリなど) からのデータのコピー。
 - 基本認証を使用したデータのコピー。
+
+>[!NOTE]
+>SAP Business Warehouse コネクタでは現在、MDX パラメーターを利用できません。  MDX パラメーターを使用したフィルター処理が必要な場合、代わりに代替 [SAP Open Hub コネクタ](connector-sap-business-warehouse-open-hub.md)の使用を検討してください。
 
 ## <a name="prerequisites"></a>前提条件
 

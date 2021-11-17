@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 11/03/2021
-ms.openlocfilehash: 372247d1fbb189f9662bf4d40be0c3779bf1d23c
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 07ff08303cc68934d5d7191952536b9101e12cf6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579391"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494712"
 ---
 # <a name="troubleshoot-out-of-memory-errors-with-azure-sql-database"></a>Azure SQL Database でのメモリ不足エラーのトラブルシューティング  
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -170,7 +170,7 @@ Azure SQL Database でメモリ不足エラーが解消されない場合は、 
 
 - [SQL データベースでのインテリジェントなクエリ処理](/sql/relational-databases/performance/intelligent-query-processing)
 - [クエリ処理アーキテクチャ ガイド](/sql/relational-databases/query-processing-architecture-guide)    
-- [SQL Server データベース エンジンと Azure SQL Database のパフォーマンス センター](/sql/relational-databases/performance/performance-center-for-sql-server-database-engine-and-azure-sql-database.md)  
+- [SQL Server データベース エンジンと Azure SQL Database のパフォーマンス センター](/sql/relational-databases/performance/performance-center-for-sql-server-database-engine-and-azure-sql-database)  
 - [Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](troubleshoot-common-errors-issues.md)
 - [SQL Database と SQL Managed Instance での一時的な接続エラーのトラブルシューティング](troubleshoot-common-connectivity-issues.md)
 - [インテリジェントなクエリ処理のデモ](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/intelligent-query-processing)   

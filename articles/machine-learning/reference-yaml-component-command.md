@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 53b64b804b07f60741be1a72e671e8ade4710e15
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: ae71e4423011d5a69945b6bcce8ed73e0f093fc1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132055111"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131565668"
 ---
 # <a name="cli-v2-command-component-yaml-schema"></a>CLI (v2) コマンド コンポーネント YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "132055111"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | Type | 説明 | 使用できる値 | 既定値 |
+| キー | 種類 | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `type` | const | コンポーネントの種類。 | `command` | `command` |
@@ -38,7 +38,7 @@ ms.locfileid: "132055111"
 | `code.local_path` | string | アップロードしてコンポーネントに使用するソース コード ディレクトリへのローカル パス。 | | |
 | `environment` | 文字列またはオブジェクト | **必須。** コンポーネントに使用する環境。 この値は、ワークスペース内の既存のバージョン管理された環境への参照、またはインライン環境仕様のいずれかになります。 <br><br> 既存の環境を参照するには、`azureml:<environment-name>:<environment-version>` 構文を使用します。 <br><br> 環境をインラインで定義するには、[環境スキーマ](reference-yaml-environment.md#yaml-syntax)に従います。 `name` プロパティと `version` プロパティは、インライン環境ではサポートされていないため、除外します。 | | |
 | `distribution` | object | 分散トレーニング シナリオの配布構成。 [MpiConfiguration](#mpiconfiguration)、[PyTorchConfiguration](#pytorchconfiguration)、[TensorFlowConfiguration](#tensorflowconfiguration) のいずれかになります。 | | |
-| `resources.instance_count` | 整数 (integer) | ジョブに使用するノードの数。 | | `1` |
+| `resources.instance_count` | 整数 | ジョブに使用するノードの数。 | | `1` |
 | `inputs` | object | コンポーネント入力の辞書。 キーはコンポーネントのコンテキスト内の入力の名前であり、値はコンポーネントの入力定義です。 <br><br> 入力は、`${{ inputs.<input_name> }}` 式を使用して `command` で参照できます。 | | |
 | `inputs.<input_name>` | object | コンポーネントの入力定義。 構成可能なプロパティのセットについては、[コンポーネントの入力](#component-input)を参照してください。 | | |
 | `outputs` | object | コンポーネント出力の辞書。 キーはコンポーネントのコンテキスト内の出力の名前であり、値はコンポーネントの出力定義です。 <br><br> 出力は、`${{ outputs.<output_name> }}` 式を使用して `command` で参照できます。 | |
@@ -48,29 +48,29 @@ ms.locfileid: "132055111"
 
 #### <a name="mpiconfiguration"></a>MpiConfiguration
 
-| キー | Type | 説明 | 使用できる値 |
+| キー | 種類 | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 配布の種類。  | `mpi` |
-| `process_count_per_instance` | 整数 (integer) | **必須。** ジョブに対して起動するノードあたりのプロセスの数。  | |
+| `process_count_per_instance` | 整数 | **必須。** ジョブに対して起動するノードあたりのプロセスの数。  | |
 
 #### <a name="pytorchconfiguration"></a>PyTorchConfiguration
 
-| キー | Type | 説明 | 使用できる値 | 既定値 |
+| キー | 種類 | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** 配布の種類。  | `pytorch` | |
-| `process_count_per_instance` | 整数 (integer) | ジョブに対して起動するノードあたりのプロセスの数。 | |  `1` |
+| `process_count_per_instance` | 整数 | ジョブに対して起動するノードあたりのプロセスの数。 | |  `1` |
 
 #### <a name="tensorflowconfiguration"></a>TensorFlowConfiguration
 
-| キー | Type | 説明 | 使用できる値 | 既定値 |
+| キー | 種類 | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** 配布の種類。  | `tensorflow` |
-| `worker_count` | 整数 (integer) | ジョブに対して起動するワーカーの数。 | | 既定値は `resources.instance_count` です。 |
-| `parameter_server_count` | 整数 (integer) | ジョブに対して起動するパラメーター サーバーの数。 | | `0` |
+| `worker_count` | 整数 | ジョブに対して起動するワーカーの数。 | | 既定値は `resources.instance_count` です。 |
+| `parameter_server_count` | 整数 | ジョブに対して起動するパラメーター サーバーの数。 | | `0` |
 
 ### <a name="component-input"></a>コンポーネント入力
 
-| キー | Type | 説明 | 使用できる値 | 既定値 |
+| キー | 種類 | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | string | **必須。** コンポーネント入力の種類。 <br><br> コンポーネントの実行時に、ランタイム ジョブ入力の値をデータの URI または Azure ML データセットにする場合は、`type: path` を使用します。 | `number`, `integer`, `boolean`, `string`, `path` | |
 | `description` | string | 入力の説明。 | | |
@@ -82,7 +82,7 @@ ms.locfileid: "132055111"
 
 ### <a name="component-output"></a>コンポーネント出力
 
-| キー | Type | 説明 | 使用できる値 | 既定値 |
+| キー | 種類 | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | string | **必須。** コンポーネント出力の種類。 | `path` | |
 | `description` | string | 出力の説明。 | | |
@@ -99,7 +99,7 @@ ms.locfileid: "132055111"
 
 ## <a name="hello-world-command-component"></a>Hello world コマンド コンポーネント
 
-:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/basics/2a_basic_component/component.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/basics/2a_basic_component/component.yml":::
 
 ## <a name="next-steps"></a>次の手順
 

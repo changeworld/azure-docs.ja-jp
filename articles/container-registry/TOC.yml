@@ -173,7 +173,7 @@
             - name: コンテナー イメージをスキャンする
               expanded: false
               items:
-                - name: Azure Defender を使用してスキャンする
+                - name: Microsoft Defender for Cloud を使用してスキャンする
                   href: scan-images-defender.md
                 - name: GitHub Actions を使用してスキャンする
                   href: github-action-scan.md

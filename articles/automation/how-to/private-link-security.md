@@ -1,18 +1,16 @@
 ---
 title: Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する
 description: Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する
-author: mgoedtel
-ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cc30139e0fade80da1185c009d162c7e5fc9f9ff
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 96d5fd7942d744fcface931991df9d32c3caf15e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771069"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485741"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する
 

@@ -2,14 +2,14 @@
 title: Azure Video Analyzer を使用して動きを検出し、ビデオを録画する
 description: このクイック スタートでは、Azure Video Analyzer エッジ モジュールを使用して、ライブ ビデオ ストリーム内の動きを検出し、Video Analyzer アカウントにビデオを録画する方法を示します。
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a62af8ee0ac3859a6d8f7e7d81d7115877afda35
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 48c41b812a4cdbd416d0dd146aba938cce419864
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030074"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484207"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>クイック スタート: 動きを検出し、Video Analyzer にビデオを録画する
 
@@ -42,7 +42,7 @@ ms.locfileid: "131030074"
 
 上記のデプロイによって作成された仮想マシンには、複数の MKV ファイルがあります。  これらのファイルの 1 つは `lots_015.mkv` と呼ばれます。 次の手順では、このビデオ ファイルを使用して、このチュートリアル向けにライブ ストリームをシミュレートします。
 
-[VLC プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを使用してこれを起動し、`Ctrl+N` を押して[駐車場のビデオ サンプル](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) リンクを貼り付けると再生を開始できます。 だいたい 5 秒の地点で、白の車が駐車場を通って移動します。
+[VLC プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを使用してこれを起動し、`Ctrl+N` を押して[駐車場のビデオ サンプル](https://avamedia.blob.core.windows.net/public/lots_015.mkv) リンクを貼り付けると再生を開始できます。 だいたい 5 秒の地点で、白の車が駐車場を通って移動します。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LUbN]
 

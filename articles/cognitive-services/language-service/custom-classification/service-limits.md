@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, references_regions, ignite-fall-2021
-ms.openlocfilehash: 745c75722fc3a431c3f7cc4b5b47a8ebdd1895e7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 06db585531cb3a73b291f2c8d45de18a3d298fb2
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092365"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484088"
 ---
 # <a name="custom-text-classification-limits"></a>カスタム テキスト分類の制限
 
@@ -45,7 +45,7 @@ ms.locfileid: "131092365"
 * 1 要求あたりのファイルの最大サイズは 125, 000 文字です。 ファイルの合計サイズが 125, 000 文字を超えない限り、最大 25 個のファイルを送信できます。
 
 > [!NOTE]
-> 制限を超えるファイルを送信する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 この処理には、[CLUtils の chunk コマンド](https://github.com/microsoft/CogSLanguageUtilities/tree/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand)を使用することができます。
+> 制限を超えるファイルを送信する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 この処理には、[CLUtils の chunk コマンド](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand/README.md)を使用することができます。
 
 ## <a name="azure-resource-limits"></a>Azure リソースの制限
 

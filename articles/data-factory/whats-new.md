@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: 23c4da30e149f10971c4cdec7b99b63e02c45808
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: fdec259dc93e52a8bc1271de8af90f4b864afd49
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164726"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842057"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Azure Data Factory の新機能
 
@@ -49,7 +49,7 @@ Azure Data Factory サービスには継続的に改善が施されています�
   <tr><td><bpt id="p1"><b></bpt>継続的インテグレーションと継続的デリバリー (CI/CD)<ept id="p1"></b></ept></td><td>Azure Government と Azure China での GitHub サポートによる CICD の向上</td><td>米国政府向け Azure およびAzure China で GitHub のサポートが追加されました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/cicd-improvements-with-github-support-in-azure-government-and/ba-p/2686918">詳細情報</a></td></tr>
 <tr><td rowspan=2><bpt id="p1"><b></bpt>データの移動<ept id="p1"></b></ept></td><td>Azure Data Factory において、Azure Cosmos DB の MongoDB 用 API コネクタでバージョン 3.6 と 4.0 がサポートされます</td><td>Azure Data Factory Cosmos DB の MongoDB 用 API コネクタで、サーバー バージョン 3.6 と 4.0 がサポートされるようになりました。<br><a href="connector-azure-cosmos-db-mongodb-api.md">詳細情報</a></td></tr>
 <tr><td>COPY ステートメントを使用した Azure Synapse Analytics へのデータ読み込みの強化</td><td>Azure Data Factory Azure Synapse Analytics コネクタで、ステージング コピーと、 <bpt id="p1">*</bpt>.<ept id="p1">*</ept> を COPY ステートメントの wildcardFilename として使用するコピー ソースがサポートされるようになりました。<br><a href="connector-azure-sql-data-warehouse.md#use-copy-statement">詳細情報</a></td></tr>
-<tr><td><b>データ フロー</b></td><td>データ フローで REST エンドポイントをソースおよびシンクとして利用できます</td><td>Azure Data Factory と Azure Synapse Analytics のデータ フローで、JSON と XML の両方のペイロードが完全にサポートされるソースおよびシンクとして REST エンドポイントがサポートされるようになりました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/rest-source-and-sink-now-available-for-data-flows/ba-p/2596484">詳細情報</a></td></tr>
+<tr><td><bpt id="p1"><b></bpt>データ フロー<ept id="p1"></b></ept></td><td>データ フローで REST エンドポイントをソースおよびシンクとして利用できます</td><td>Azure Data Factory と Azure Synapse Analytics のデータ フローで、JSON と XML の両方のペイロードが完全にサポートされるソースおよびシンクとして REST エンドポイントがサポートされるようになりました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/rest-source-and-sink-now-available-for-data-flows/ba-p/2596484">詳細情報</a></td></tr>
 <tr><td><bpt id="p1"><b></bpt>Integration Runtime<ept id="p1"></b></ept></td><td>セルフホステッド統合ランタイムの診断ツールが利用可能になりました</td><td>セルフホステッド統合ランタイム用の診断ツールは、ユーザー エクスペリエンスを向上させ、ユーザーによる潜在的な問題の検出を支援するように設計されています。 このツールでは、セルフホステッド統合ランタイム マシンで一連のテスト シナリオが実行されます。すべてのシナリオには、よくある問題に対する典型的な正常性チェック ケースが含まれています。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/diagnostic-tool-for-self-hosted-integration-runtime/ba-p/2634905">詳細情報</a></td></tr>
 <tr><td><bpt id="p1"><b></bpt>オーケストレーション<ept id="p1"></b></ept></td><td>高度なフィルター処理オプションを含むカスタム イベント トリガーが一般提供されました</td><td>Event Grid にポストされたカスタム トピックに応答するトリガーを作成できるようになりました。 さらに、高度なフィルター処理を利用して、応答するイベントを細かく制御できます。<br><a href="how-to-create-custom-event-trigger.md">詳細情報</a></td></tr>
 </table>
@@ -59,9 +59,9 @@ Azure Data Factory サービスには継続的に改善が施されています�
 <table>
 <tr><td><bpt id="p1"><b></bpt>サービス カテゴリ<ept id="p1"></b></ept></td><td><bpt id="p1"><b></bpt>サービスの機能強化<ept id="p1"></b></ept></td><td><b>詳細</b></td></tr>
 <tr><td><bpt id="p1"><b></bpt>データの移動<ept id="p1"></b></ept></td><td>ADF のデータ コピー ツールでメタデータ駆動型のデータ インジェスト パイプラインを 10 分以内に取得します (パブリック プレビュー)</td><td>これにより、10 分以内に、データ コピー ツールでメタデータ駆動型アプローチを使用して大規模なデータ コピー パイプラインを作成できます (パブリック プレビュー)。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/get-metadata-driven-data-ingestion-pipelines-on-adf-within-10/ba-p/2528219">詳細情報</a></td></tr>
-<tr><td><b>データ フロー</b></td><td>データ フロー変換関数に新しいマップ関数が追加されました</td><td>データ エンジニアがマップのデータ型と複雑なマップ構造を簡単に生成、読み取り、および更新できるように、データ フロー変換関数の新しいセットが追加されました。<br><a href="data-flow-expression-functions.md#map-functions">詳細情報</a></td></tr>
+<tr><td><bpt id="p1"><b></bpt>データ フロー<ept id="p1"></b></ept></td><td>データ フロー変換関数に新しいマップ関数が追加されました</td><td>データ エンジニアがマップのデータ型と複雑なマップ構造を簡単に生成、読み取り、および更新できるように、データ フロー変換関数の新しいセットが追加されました。<br><a href="data-flow-expression-functions.md#map-functions">詳細情報</a></td></tr>
 <tr><td><bpt id="p1"><b></bpt>Integration Runtime<ept id="p1"></b></ept></td><td>Azure Data Factory のマネージド VNET で 5 つの新しいリージョンが利用可能になりました (パブリック プレビュー)</td><td>これらの 5 つの新しいリージョン (中国東部 2、中国北部 2、US Gov アリゾナ、US Gov テキサス、US Gov バージニア) は、Azure Data Factory のマネージド仮想ネットワークで利用できます (パブリック プレビュー)。<br><a href="managed-virtual-network-private-endpoint.md#azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions">詳細情報</a></td></tr>
-<tr><td rowspan=2><bpt id="p1"><b></bpt>開発者の生産性<ept id="p1"></b></ept></td><td>ADF ホームページが再設計されて、いくつかのセッションが追加されました</td><td>Data Factory のホームページが再設計されて、コントラストとリフロー機能が改善されました。 さらに、データ統合体験で生産性を向上させるためのいくつかのセクションがホームページに追加されました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">詳細情報</a></td></tr>
+<tr><td rowspan=2><bpt id="p1"><b></bpt>開発者の生産性<ept id="p1"></b></ept></td><td>ADF ホームページの機能強化</td><td>Data Factory のホームページが再設計されて、コントラストとリフロー機能が改善されました。 さらに、データ統合体験で生産性を向上させるためのいくつかのセクションがホームページに追加されました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">詳細情報</a></td></tr>
 <tr><td>Azure Data Factory Studio の新しいランディング ページ</td><td>Azure portal の Data Factory ブレードのランディング ページ。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">詳細情報</a></td></tr>
 </table>
 

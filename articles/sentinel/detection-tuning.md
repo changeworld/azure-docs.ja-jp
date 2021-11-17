@@ -3,16 +3,16 @@ title: Microsoft Sentinel の分析ルールの微調整に関する推奨事項
 description: 自動的に生成された推奨事項を使用して Microsoft Sentinel の脅威検出ルールを微調整することにより、脅威検出の対象範囲を維持しながら擬陽性を削減する方法について説明します。
 author: yelevin
 ms.author: yelevin
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 854e8fa7d129140fca1a16dc02971bd2cd99ceb7
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 1b1d71f2c8a6a5f74d68d9480b918743a707cc83
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132323047"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521512"
 ---
 # <a name="get-fine-tuning-recommendations-for-your-analytics-rules-in-microsoft-sentinel"></a>Microsoft Sentinel の分析ルールの微調整に関する推奨事項を取得する
 

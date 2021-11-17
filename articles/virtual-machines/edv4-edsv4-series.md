@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: f4138c2b2835ede93e0a33693f49ed75ee6bb499
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: eabaae542003c0c8c664cb820831bec40e47db91
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449091"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372096"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 および Edsv4 シリーズ
 
@@ -34,6 +34,7 @@ Edv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): サポートされています<sup>1</sup> <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/MBps<sup>*</sup>  | 最大 NIC 数|最大ネットワーク帯域幅 (Mbps) |
@@ -62,6 +63,7 @@ Edsv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascad
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/MBps<sup>*</sup> | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | バースト キャッシュが無効なディスクの最大スループット: IOPS/MBps<sup>1</sup> | 最大 NIC 数|最大ネットワーク帯域幅 (Mbps) |

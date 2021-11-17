@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 57d211a7a080cc07d30a5810c4e1660c575acff3
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9dabeaa9dd8e22e63b356768e34ebf828ac43632
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123078547"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861554"
 ---
 この記事では、これまでにリリースされた Azure Active Directory Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 
 
@@ -12,6 +12,15 @@ Microsoft では、エージェントの最新バージョンと 1 つ前のバ�
 
 ## <a name="download-link"></a>ダウンロード リンク
 最新バージョンのエージェントは、[このリンク](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller)からダウンロードできます。
+
+## <a name="115870"></a>1.1.587.0
+
+2021 年 11 月 2 日 - ダウンロード用にリリース
+
+新機能と機能強化
+
+- パスワード ライトバックを構成するコマンドレット
+
 
 ## <a name="115840"></a>1.1.584.0 
 

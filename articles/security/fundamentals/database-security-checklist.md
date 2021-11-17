@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c462e4084cc1fd2e46d7eec268501402cee7c887
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595585"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342967"
 ---
 # <a name="azure-database-security-checklist"></a>Azure のデータベース セキュリティのチェックリスト
 
@@ -54,7 +54,7 @@ Azure データベースには、セキュリティ向上を促進するため�
 |<br>アプリケーション アクセス| <ul><li>[行レベル セキュリティ](/sql/relational-databases/security/row-level-security) (セキュリティ ポリシーを使用。同時にユーザーの ID、ロール、または実行コンテキストに基づいて行レベルのアクセスを制限)。</li><li>[動的データ マスク](../../azure-sql/database/dynamic-data-masking-overview.md) (アクセス許可とポリシーを使用。特権のないユーザーに対して機密データをマスクすることでデータの公開を制限)</li></ul>|
 |**プロアクティブな監視**||  
 | <br>追跡および検出| <ul><li>[監査](../../azure-sql/database/auditing-overview.md)では、データベース イベントを追跡し、[Azure ストレージ アカウント](../../storage/common/storage-account-create.md)の監査ログ/アクティビティ ログにイベントを書き込みます。</li><li>[Azure Monitor のアクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)を使用して Azure データベースの正常性を追跡します。</li><li>[脅威の検出](../../azure-sql/database/threat-detection-configure.md)は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。 </li></ul> |
-|<br>Azure Security Center| <ul><li>[データ監視](../../security-center/security-center-remediate-recommendations.md)では、SQL などの Azure サービスの一元的なセキュリティ監視ソリューションとして Azure Security Center を使用します。</li></ul>|        
+|<br>Microsoft Defender for Cloud| <ul><li>[データ監視](../../security-center/security-center-remediate-recommendations.md)では、SQL などの Azure サービスの一元的なセキュリティ監視ソリューションとして Microsoft Defender for Cloud を使用します。</li></ul>|        
 
 ## <a name="conclusion"></a>まとめ
 Azure データベースは、多くの組織や規制のコンプライアンス要件を満たすセキュリティ機能を豊富に備えた堅牢なデータベース プラットフォームです。 データへの物理的アクセスの制御と、Transparent Data Encryption、セルレベルの暗号化、行レベルのセキュリティによるファイル、列、または行レベルのデータ セキュリティの各種オプションの使用によって、データを簡単に保護することができます。 Always Encrypted によって、暗号化されたデータに対する操作も可能になり、アプリケーションの更新プロセスが簡略化されます。 そして、SQL Database のアクティビティの監査ログにアクセスして必要な情報を入手し、データがいつどのようにアクセスされているかを把握することができます。

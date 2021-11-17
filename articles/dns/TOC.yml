@@ -44,6 +44,12 @@
           href: tutorial-alias-pip.md
         - name: ゾーン レコードのエイリアス レコード
           href: tutorial-alias-rr.md
+- name: サンプル
+  items:
+    - name: Azure PowerShell
+      items:
+        - name: 異常 DNS レコードの検索
+          href: ./scripts/find-unhealthy-dns-records.md
 - name: 概念
   items:
     - name: セキュリティ

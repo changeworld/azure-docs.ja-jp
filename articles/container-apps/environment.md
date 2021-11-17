@@ -1,19 +1,19 @@
 ---
 title: Azure Container Apps 環境プレビュー
 description: Azure Container Apps で環境を管理する方法について説明します。
-services: container-apps
+services: app-service
 author: craigshoemaker
-ms.service: container-apps
+ms.service: app-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 122b172fc9fe2a66bae742f907d910cbccbf8fbc
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 07d54583b884c071708910daea45f3dcb94d14f3
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132025800"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578313"
 ---
 # <a name="azure-container-apps-preview-environments"></a>Azure Container Apps プレビュー環境
 

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: overview
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 04f1c00340e8d46d495a28e3f0fd973e93991b77
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fcab4ce8d1f0d4d6f2dd7d29b1de8f9c7519c9f1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017431"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851878"
 ---
 # <a name="quickstart-create-a-service-connection-in-app-service-from-azure-portal"></a>クイックスタート : Azure portal から App Service にサービス接続を作成する
 
@@ -37,12 +37,14 @@ Azure アカウントで Azure portal ([https://portal.azure.com/](https://porta
     | 設定      | 推奨値  | 説明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **サブスクリプション** | ご使用のサブスクリプションのいずれか | ターゲット サービス (接続先となるサービス) が存在するサブスクリプション。 既定値は、このアプリ サービスが存在するサブスクリプションです。 |
-    | **[サービスの種類]** | Storage Blob コンテナー | ターゲット サービスの種類。 Storage Blob コンテナーがない場合は、[作成する](../storage/blobs/storage-quickstart-blobs-portal.md)か、別のサービスの種類を使用できます。 |
+    | **[サービスの種類]** | Blob Storage | ターゲット サービスの種類。 Storage Blob コンテナーがない場合は、[作成する](../storage/blobs/storage-quickstart-blobs-portal.md)か、別のサービスの種類を使用できます。 |
     | **Connection Name** | 生成された一意の名前 | アプリ サービスとターゲット サービスの間の接続を識別する接続名  |
-    | **ストレージ アカウント** | ご使用のストレージ サーバー | 接続先のターゲット データベース サービス。 別のサービスの種類を選択する場合は、対応するターゲット サービス インスタンスを選択します。 |
+    | **ストレージ アカウント** | ストレージ アカウント | 接続先のターゲット ストレージ アカウント。 別のサービスの種類を選択する場合は、対応するターゲット サービス インスタンスを選択します。 |
     | **クライアントの種類** | この App Service の同じアプリ スタック | 選択したターゲット サービスで動作するアプリケーション スタック。 既定値は App Service ランタイム スタックから取得されます。 |
 
-4. **[確認と作成]** を選択して、接続の設定を確認します。 次に **[作成]** を選択して、サービス接続の作成を開始します。
+4. **[次へ: 認証]** を選択して、認証の種類を選びます。 次に、アクセス キーを使用して BLOB ストレージ アカウントに接続するための **接続文字列** を選択します。
+
+5. 次に、 **[Next: Review + Create]\(次へ: レビューと作成\)** を選択して、提供されている情報を確認します。 次に、 **[作成]** を選択して、サービス接続を作成します。 処理が完了するまでに 1 分かかることがあります。
 
 ## <a name="view-service-connections-in-app-service"></a>App Service でサービス接続を表示する
 
