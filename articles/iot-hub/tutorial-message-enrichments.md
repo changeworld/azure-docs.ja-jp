@@ -1,19 +1,19 @@
 ---
 title: チュートリアル - Azure IoT Hub のメッセージ エンリッチメントを使用する
 description: Azure IoT Hub のメッセージに対してメッセージ エンリッチメントを使用する方法を紹介するチュートリアル
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 12/20/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 764f0b8f8e78e41f20558f0a825d37cc8f118f6c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 21d377a0e6e4972dd14d492a09f3636b4a65a00b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446101"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551541"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル: Azure IoT Hub のメッセージ エンリッチメントを使用する
 

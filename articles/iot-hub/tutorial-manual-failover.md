@@ -1,22 +1,22 @@
 ---
 title: チュートリアル - Azure IoT ハブの手動フェールオーバー | Microsoft Docs
 description: チュートリアル - 別のリージョンへの IoT ハブの手動フェールオーバーを実行し、それが動作していることを確認してから、元のリージョンに戻して再確認する方法について説明します。
-author: robinsh
+author: eross-msft
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 08/10/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 7d38566db882bdc2094961cb83c9bd117a328589
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2687316551f7f1a7f11cd035130823c19d10b01a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258900"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550441"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>チュートリアル:IoT ハブの手動フェールオーバーを実行する
 

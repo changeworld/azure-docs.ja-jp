@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergleenl
-ms.openlocfilehash: 66de4e18f8a6c88ae3c1504197eb6f39632c6425
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f3d9cd36b821b1dca5311c266b84e259eab005c0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058165"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546958"
 ---
-# <a name="quickstart-add-an-enterprise-application-in-azure-active-directory"></a>クイックスタート: Azure Active Directory でエンタープライズ アプリケーションを追加する
+# <a name="quickstart-add-an-enterprise-application"></a>クイックスタート: エンタープライズ アプリケーションを追加する
 
-このクイックスタートでは、Azure Active Directory 管理センターを使用し、Azure Active Directory (Azure AD) テナントにエンタープライズ アプリケーションを追加します。 Azure AD にはあらかじめ統合された何千ものエンタープライズ アプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの多くは、おそらく既にギャラリーにあります。 このクイックスタートでは、例として **Azure AD SAML Toolkit** というアプリケーションを使用しますが、この概念は[ギャラリーのエンタープライズ アプリケーション](../saas-apps/tutorial-list.md)のほとんどに適用されます。
+このクイックスタートでは、Azure Active Directory 管理センターを使用し、Azure Active Directory (Azure AD) テナントにエンタープライズ アプリケーションを追加します。 Azure AD にはあらかじめ統合された何千ものエンタープライズ アプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの多くは、おそらく既にギャラリーにあります。 このクイックスタートでは、例として **Azure AD SAML Toolkit** というアプリケーションを使用しますが、この概念は [ギャラリーのエンタープライズ アプリケーション](../saas-apps/tutorial-list.md)のほとんどに適用されます。
 
 このクイックスタートの手順をテストするには、非運用環境を使用することをお勧めします。
 

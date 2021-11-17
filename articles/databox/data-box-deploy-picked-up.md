@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/29/2021
+ms.date: 11/16/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 95cce7e79ea8eaf3a542b52ac5c04b954ed56e0e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c3dd0d64542dd9d25643fb811accde5d882af870
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131469105"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556593"
 ---
 ::: zone target="docs"
 
@@ -75,7 +75,7 @@ ms.locfileid: "131469105"
 
 デバイスへのデータ コピーが完了し、**発送準備** が正常に実行されたことを確認します。 
 
-デバイスを発送する地域によって手順が異なります。 多くの国、地域では、Microsoft が提供している配送方法を利用するか、または、自分で行うそれ以外の方法で配送できます。
+デバイスを発送する地域によって手順が異なります。 多くの国、地域では、[Microsoft が提供している配送方法](#microsoft-managed-shipping)を利用するか、または、[自分で行うそれ以外の方法](#self-managed-shipping)で配送できます。
 
 ### <a name="microsoft-managed-shipping"></a>Microsoft 管理の出荷
 
@@ -89,7 +89,7 @@ Microsoft 管理による出荷を使用している場合は、出荷元のリ�
 
 [!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
 
-**ドイツまたはスイスの Azure データセンターに返送する場合** は、[自己管理の出荷を使用](#self-managed-shipping)することもできます。
+**ドイツまたはスイスの Azure データセンターに返送する場合** は、[自己管理型の発送を使用](#self-managed-shipping)することもできます。
 
 ## <a name="uk"></a>[英国](#tab/in-uk)
 
@@ -123,11 +123,11 @@ Microsoft 管理による出荷を使用している場合は、出荷元のリ�
 
 [!INCLUDE [data-box-shipping-in-uae](../../includes/data-box-shipping-in-uae.md)]
 
+---
+
 ### <a name="self-managed-shipping"></a>自己管理の出荷
 
 [!INCLUDE [data-box-shipping-self-managed](../../includes/data-box-shipping-self-managed.md)]
-
----
 
 ::: zone target="chromeless"
 

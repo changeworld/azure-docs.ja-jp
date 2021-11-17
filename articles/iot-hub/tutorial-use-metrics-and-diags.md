@@ -1,23 +1,23 @@
 ---
 title: チュートリアル - Azure IoT ハブでメトリックとログを設定して使用する
 description: チュートリアル - Azure IoT ハブでメトリックとログを設定して使用する方法について説明します。 これにより、ハブで発生している可能性がある問題の診断に役立つ分析のためのデータが提供されます。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 10/19/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 8b7e15f6f390b6f8218abe9073e255d2383ba360
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 61b4ee2360d3559120399421ec424f30d6e8ea77
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258976"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550194"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブでメトリックとログを設定して使用する
 

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a960bc3064b970fbfd463d0a7f1577354ca7adf1
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 5e4864db07dbf7618e5b8e03a29e08c1344d7ebd
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131850282"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553403"
 ---
 # <a name="quickstart-create-a-service-connection-in-app-service-with-the-azure-cli"></a>クイック スタート: Azure CLI を使用して App Service にサービス接続を作成する
 
@@ -56,7 +56,7 @@ az webapp connection create storage-blob --secret
 #### <a name="using-managed-identity"></a>[マネージド ID の使用](#tab/Using-Managed-Identity)
 
 > [!IMPORTANT]
-> マネージド ID を使用するには、[Azure AD ロールの割り当て](/active-directory/managed-identities-azure-resources/howto-assign-access-portal)へのアクセス許可が必要です。 アクセス許可がない場合、接続の作成は失敗します。 接続を作成するために、サブスクリプション所有者にアクセス許可またはアクセス キーの使用を要求できます。
+> マネージド ID を使用するには、[Azure AD ロールの割り当て](/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal)へのアクセス許可が必要です。 アクセス許可がない場合、接続の作成は失敗します。 接続を作成するために、サブスクリプション所有者にアクセス許可またはアクセス キーの使用を要求できます。
 
 Azure CLI の [az webapp connection](/cli/azure/webapp/connection) コマンドで次の情報を指定すると、システム割り当てマネージド ID を使用した BLOB ストレージへのサービス接続を作成できます。
 

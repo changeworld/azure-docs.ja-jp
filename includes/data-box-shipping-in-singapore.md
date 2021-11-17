@@ -3,14 +3,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 10/21/2021
+ms.date: 11/16/2021
 ms.author: alkohli
-ms.openlocfilehash: 2f4911df5c8d57f7554ff80f1c0c4b382c0f82c3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 8e9cd4a9d9c29422c9652a815020e12f841e2ea2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247263"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556592"
 ---
 シンガポールでデバイスを返送するには、次の手順を実行します。
 
@@ -21,7 +21,7 @@ ms.locfileid: "130247263"
 5. 次の電子メール テンプレートと追跡番号を使用して、SingPost のカスタマー サービスに電子メールを送信します。
 
     ```
-    To: kadcustcare@singpost.com
+    To: g-corpsgcs@singpost.com
     Subject: Microsoft Azure Pickup - OrderName 
     Body: 
         1. Requestor name  

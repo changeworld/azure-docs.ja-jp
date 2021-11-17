@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 28f5cfe158c13928d9443df22551bcfd6e7d8e85
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 38be83db1c585a3660882ebdcca70a239a620f03
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058401"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549149"
 ---
-# <a name="quickstart-create-and-assign-a-user-account-in-azure-active-directory"></a>クイックスタート: Azure Active Directory でユーザー アカウントを作成して割り当てる
+# <a name="quickstart-create-and-assign-a-user-account"></a>クイックスタート: ユーザー アカウントを作成して割り当てる
 
 このクイックスタートでは、Azure Active Directory 管理センターを使用して、Azure Active Directory (Azure AD) テナントにユーザー アカウントを作成します。 作成したアカウントは、テナントに追加したエンタープライズ アプリケーションに割り当てることができます。
 

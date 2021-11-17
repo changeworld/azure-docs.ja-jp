@@ -1,17 +1,17 @@
 ---
 title: 産業用 IoT を使用して Azure Data Explorer にデータをプルする
 description: このチュートリアルでは、IIoT データを ADX に移動し、ダッシュボードを作成して表示する方法について説明します。
-author: v-condav
-ms.author: v-condav
+author: eross-msft
+ms.author: lizross
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 6/16/2021
-ms.openlocfilehash: 4abf1d9236d236f9d19d9336bb3173ca14bb3c61
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4ddd2e14d3be90c211d0e278a11e45bd51154fa1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128665171"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550023"
 ---
 # <a name="tutorial-using-industrial-iot-to-pull-data-into-azure-data-explorer"></a>チュートリアル: 産業用 IoT を使用して Azure Data Explorer にデータをプルする
 

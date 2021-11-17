@@ -1,8 +1,8 @@
 ---
 title: クイックスタート - Azure IoT Hub からのデバイスの制御 | Microsoft Docs
 description: このクイックスタートでは、2 つのサンプル アプリケーションを実行します。 1 つは、Hub に接続されたデバイスをリモートで制御できるサービス アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
@@ -13,12 +13,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 07/26/2021
 zone_pivot_groups: iot-hub-set1
-ms.openlocfilehash: b89e13a6cf1a9dd6b30a9acc489969bb388ab3d1
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: cae4b2c1b23acc56468d3c7ebe30cf8316842003
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860948"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550251"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する
 

@@ -1,22 +1,22 @@
 ---
 title: チュートリアル - Azure IoT Hub に対してデバイスを認証する X.509 証明書の機能をテストする | Microsoft Docs
 description: チュートリアル - Azure IoT Hub に対する X.509 証明書の認証をテストする
-author: v-gpettibone
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 02/26/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 8e5e7efcf5b09c8b8785e32f6fb4b459531d5567
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: f3f59cb5346f6a2526ee4e8b0d433b577c9cfa57
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444942"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553802"
 ---
 # <a name="tutorial-testing-certificate-authentication"></a>チュートリアル: 証明書の認証をテストする
 

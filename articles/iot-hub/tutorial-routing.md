@@ -1,23 +1,23 @@
 ---
 title: チュートリアル - Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: チュートリアル - Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 08/16/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 1805213d64a7d6feb47033940c3c479713acd688
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: fbe2108a50e29b91c8c324201085d9ba1f6969bc
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397242"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550143"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI と Azure portal を使用して IoT Hub のメッセージ ルーティングを構成する
 

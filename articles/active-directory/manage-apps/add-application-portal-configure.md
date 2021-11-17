@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: f6325dfceaa0ee6cedc60e5555b177e1f7a25d6c
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 6179330f62f1966d099cfca93fc3885895af5e40
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058270"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550800"
 ---
-# <a name="quickstart-configure-enterprise-application-properties-in-azure-active-directory"></a>クイック スタート: Azure Active Directory でエンタープライズ アプリケーションのプロパティを構成する
+# <a name="quickstart-configure-enterprise-application-properties"></a>クイックスタート: エンタープライズ アプリケーションのプロパティを構成する
 
 このクイックスタートでは、Azure Active Directory 管理センターを使用して、以前、Azure Active Directory (Azure AD) テナントに追加したエンタープライズ アプリケーションのプロパティを構成します。
 

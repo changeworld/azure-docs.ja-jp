@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3b269e9a8967c3a0134fbac78ac734c98e7c479b
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 13f2cf7abc24c2f84ea95f0d3779c015680ca01d
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842570"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554593"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-with-the-azure-cli"></a>クイックスタート : Azure CLI を使用して Spring Cloud にサービス接続を作成する
 
@@ -58,7 +58,7 @@ az spring-cloud connection create storage-blob --secret
 #### <a name="using-managed-identity"></a>[マネージド ID の使用](#tab/Using-Managed-Identity)
 
 > [!IMPORTANT]
-> マネージド ID を使用するには、[Azure AD ロールの割り当て](/active-directory/managed-identities-azure-resources/howto-assign-access-portal)へのアクセス許可が必要です。 アクセス許可がない場合、接続の作成は失敗します。 接続を作成するために、サブスクリプション所有者にアクセス許可またはアクセス キーの使用を要求できます。
+> マネージド ID を使用するには、[Azure AD ロールの割り当て](/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal)へのアクセス許可が必要です。 アクセス許可がない場合、接続の作成は失敗します。 接続を作成するために、サブスクリプション所有者にアクセス許可またはアクセス キーの使用を要求できます。
 
 Azure CLI の [az spring-cloud connection]() コマンドで次の情報を指定すると、システム割り当てマネージド ID を使用した BLOB ストレージへのサービス接続を作成できます。
 
