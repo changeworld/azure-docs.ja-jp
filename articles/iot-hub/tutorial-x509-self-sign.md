@@ -1,22 +1,22 @@
 ---
 title: チュートリアル - OpenSSL を使用して Azure IoT Hub 向けの自己署名証明書を作成する | Microsoft Docs
 description: チュートリアル - OpenSSL を使用して Azure IoT Hub 向けの自己署名 X.509 証明書を作成する
-author: v-gpettibone
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 02/26/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 552475edc586c015d89fb12db91376852fa88460
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: fe08b1dd87c754254067a9fc2ae4d022b9224d3d
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130165469"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551465"
 ---
 # <a name="tutorial-using-openssl-to-create-self-signed-certificates"></a>チュートリアル: OpenSSL を使用して自己署名証明書を作成する
 

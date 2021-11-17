@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 09/21/2021
 ms.author: davidmu
 ms.reviewer: ergleenl
-ms.openlocfilehash: b13c7ac86ec8d21f143f4069cf1d0c777bde4bda
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 337561853bb34c8ecc67483dc8b94448b0b853a1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058362"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548522"
 ---
-# <a name="quickstart-enable-single-sign-on-for-an-enterprise-application-in-azure-active-directory"></a>クイックスタート: Azure Active Directory でエンタープライズ アプリケーションのシングル サインオンを有効にする
+# <a name="quickstart-enable-single-sign-on-for-an-enterprise-application"></a>クイックスタート: エンタープライズ アプリケーションのシングル サインオンを有効にする
 
 このクイックスタートでは、Azure Active Directory 管理センターを使用して、Azure Active Directory (Azure AD) テナントに追加したエンタープライズ アプリケーションのシングル サインオン (SSO) を有効にします。 SSO を構成すると、ユーザーは自分の Azure AD 資格情報を使用してサインインできるようになります。 
 
-Azure AD には、SSO を使用する、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 このクイックスタートでは、例として **Azure AD SAML Toolkit** というエンタープライズ アプリケーションを使用しますが、この概念はあらかじめ構成されている[ギャラリーのエンタープライズ アプリケーション](../saas-apps/tutorial-list.md)のほとんどに適用されます。
+Azure AD には、SSO を使用する、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 このクイックスタートでは、例として **Azure AD SAML Toolkit** というエンタープライズ アプリケーションを使用しますが、この概念はあらかじめ構成されている [ギャラリーのエンタープライズ アプリケーション](../saas-apps/tutorial-list.md)のほとんどに適用されます。
 
 このクイックスタートの手順をテストするには、非運用環境を使用することをお勧めします。
 

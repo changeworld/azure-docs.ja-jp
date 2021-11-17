@@ -136,14 +136,14 @@
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: ディザスター リカバリー用に VMware SRM をデプロイする
           href: disaster-recovery-using-vmware-site-recovery-manager.md
+        - name: Zerto ディザスター リカバリーをデプロイする
+          href: deploy-zerto-disaster-recovery.md
     - name: 仮想デスクトップをデプロイする
       items:
         - name: Azure VMware Solution 上に Horizon をデプロイする
           href: azure-vmware-solution-horizon.md
         - name: Azure VMware Solution に Citrix をデプロイする
           href: azure-vmware-solution-citrix.md
-        - name: Zerto ディザスター リカバリーをデプロイする
-          href: deploy-zerto-disaster-recovery.md
     - name: リソースの移動
       items:
         - name: Azure VMware Solution のサブスクリプションを移動する

@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.date: 09/07/2021
 ms.author: davidmu
 ms.reviewer: arvinh
-ms.openlocfilehash: 0f744176e3a1472cadd740f94e34839bb7a8a09d
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4da70b29fb7d5a8920db05e0d7c28f5c29a101fd
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613721"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553137"
 ---
-# <a name="quickstart-view-enterprise-applications-in-azure-active-directory"></a>クイックスタート: Azure Active Directory でエンタープライズ アプリケーションを表示する
+# <a name="quickstart-view-enterprise-applications"></a>クイックスタート: エンタープライズ アプリケーションを表示する
 
 このクイックスタートでは、Azure Active Directory 管理センターを使用して、Azure Active Directory (Azure AD) テナントで既に構成されているエンタープライズ アプリケーションを検索して表示する方法について説明します。
 

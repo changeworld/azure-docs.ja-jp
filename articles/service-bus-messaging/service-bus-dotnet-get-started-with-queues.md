@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 10/11/2021
 ms.custom: contperf-fy22q2
-ms.openlocfilehash: 80a9701fb4d7ac3f93d7ba9c35cba2cc34dc7416
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: c7e0ddee8e42f76c034ce79c7200e48fcb8bae04
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258546"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555909"
 ---
 # <a name="get-started-with-azure-service-bus-queues-net"></a>Azure Service Bus キューの使用を開始する (.NET)
 このクイックスタートでは、次の手順を実行します。
@@ -24,6 +24,7 @@ ms.locfileid: "130258546"
 > このクイックスタートでは、メッセージのバッチを Service Bus キューに送信し、それらを受信するという簡単なシナリオでのステップ バイ ステップの手順を説明します。 Azure Service Bus の事前構築済みの .NET サンプルが、[GitHub の Azure SDK for .NET リポジトリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)に用意されています。 
 
 ## <a name="prerequisites"></a>前提条件
+このサービスを初めて使用する場合は、このクイックスタートを実行する前に、<bpt id="p1">[</bpt>Service Bus の概要<ept id="p1">](service-bus-messaging-overview.md)</ept>に関する記事を参照してください。 
 
 - **Azure サブスクリプション**。 Azure Service Bus など、Azure の各種サービスを使用するには、サブスクリプションが必要です。 Azure アカウントを持っていない場合、[無料試用版](https://azure.microsoft.com/free/)でサインアップできます。
 - **Microsoft Visual Studio 2019**。 Azure Service Bus クライアント ライブラリでは、C# 8.0 で導入された新機能を使用します。  以前のバージョンの C# 言語でライブラリを使用することもできますが、新しい構文は使用できません。 完全な構文を使用するには、.NET Core SDK 3.0 以上で、言語バージョンを `latest` に設定してコンパイルすることをお勧めします。 Visual Studio を使用している場合、Visual Studio 2019 より前のバージョンには、C# 8.0 プロジェクトをビルドするために必要なツールとの互換性がありません。
@@ -45,7 +46,7 @@ ms.locfileid: "130258546"
     1. プログラミング言語として <bpt id="p1">**</bpt>[C#]<ept id="p1">**</ept> を選択します。
     1. アプリケーションの種類として <bpt id="p1">**</bpt>[コンソール]<ept id="p1">**</ept> を選択します。 
     1. 結果リストから <bpt id="p1">**</bpt>[コンソール アプリケーション]<ept id="p1">**</ept> を選択します。 
-    1. 次に、 <bpt id="p1">**</bpt>[次へ]<ept id="p1">**</ept> を選択します。 
+    1. 次に、 **[次へ]** を選択します。 
 
         :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/new-send-project.png" alt-text="[C#] と [コンソール] が選択された [新しいプロジェクトの作成] ダイアログ ボックスを示す画像":::
 1. プロジェクト名に「**QueueSender**」、ソリューション名に「**ServiceBusQueueQuickStart**」と入力し、 **[次へ]** を選択します。 

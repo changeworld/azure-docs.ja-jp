@@ -11,12 +11,12 @@ author: justinha
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4, ignite-fall-2021
-ms.openlocfilehash: 1572e029e4ae6b9c89587a32e710162aa53177a6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 17bc0c700aee1a351371f35e7c84e95312214088
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029862"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550308"
 ---
 # <a name="tutorial-enable-cloud-sync-self-service-password-reset-writeback-to-an-on-premises-environment-preview"></a>チュートリアル: クラウド同期セルフサービス パスワード リセットのオンプレミス環境へのライトバックを有効にする (プレビュー)
 
@@ -35,7 +35,7 @@ Azure Active Directory Connect クラウド同期のセルフサービス パス
 - Azure AD Connect クラウド同期でパスワード ライトバックを有効にするには、署名済みの PowerShell スクリプトを実行する必要があります。
   - PowerShell 実行ポリシーでスクリプトの実行が許可されていることを確認します。 
   - インストール中に推奨される実行ポリシーは "RemoteSigned" です。 
-  - PowerShell 実行ポリシーの設定の詳細については、「[Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy.md?view=powershell-7.1)」を参照してください。 
+  - PowerShell 実行ポリシーの設定の詳細については、「[Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy)」を参照してください。 
 
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
