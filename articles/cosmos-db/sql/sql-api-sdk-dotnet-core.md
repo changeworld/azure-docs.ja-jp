@@ -52,7 +52,6 @@ ms.locfileid: "123113906"
 
 .NET SDK の次のサブ バージョンは 2.x.x バージョン以下で利用できます。
 
-[!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
 
 ## <a name="see-also"></a>参照
 
