@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 94e7b6b351d13a85a516b4a4bc6c54c31754bc12
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cea97bab303ce2d009cecc67ed30ec89b0992118
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741480"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554338"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio ダッシュボード
 
@@ -28,52 +28,18 @@ ms.locfileid: "121741480"
 - [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) をダウンロードする
 - Azure Arc 拡張機能がインストールされている
 
-### <a name="determine-the-data-controller-server-api-endpoint-url"></a>データ コントローラー サーバー API エンドポイントの URL を特定する
 
-まず、Azure Data Studio をデータ コントローラー サービス API エンドポイントの URL に接続する必要があります。
-
-このエンドポイントを取得するには、次のコマンドを実行します。
-
-```console
-kubectl get svc/controller-svc-external -n <namespace name>
-
-#Example:
-kubectl get svc/controller-svc-external -n arc
-```
-
-次のような出力が表示されます。
-
-```console
-NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                       AGE
-controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:32192/TCP                               22h
-```
-
-LoadBalancer という種類を使用している場合は、外部 IP アドレスとポート番号をコピーします。 NodePort を使用している場合は、Kubernetes API サーバーの IP アドレスと、[ポート] 列に一覧表示されているポート番号を使用します。
-
-ここでは、この情報を次のように組み合わせて、エンドポイントへの URL を作成します。
-
-```console
-https://<ip address>:<port>
-
-Example:
-https://52.154.152.24:30080
-```
-
-次の手順で使用するため、IP アドレスを書き留めておきます。
 
 ### <a name="connect"></a>接続する
 
 1. Azure Data Studio を開きます
+2. 左側にある **[接続]** タブを選択します。
+3. **[Azure Arc コントローラー]** というパネルを展開します
+4. **[コントローラーの接続]** ボタンをクリックします。 これにより、ブレードが右側に表示されます
+5. 既定では、Azure Data Studio によって既定のディレクトリ内の kube.config ファイルからの読み取りが試行され、使用可能な kubernetes クラスター コンテキストの一覧が表示されて現在のクラスター コンテキストが自動で選択されます。 このクラスターが正しい接続先の場合は、 **[名前空間]** の入力に Azure Arc データ コントローラーが展開されている名前空間を入力します。 Azure Arc データ コントローラーが展開されている名前空間を取得する必要がある場合は、kubernetes クラスターで ```kubectl get datacontrollers -A``` を実行します。 
+6. 必要に応じて、 **[名前]** の入力に Azure Arc データ コントローラーの表示名を追加します
+7. **[接続]** を選択します
 
-1. 左側にある **[接続]** タブを選択します。
-
-下部にある  **[Azure Arc コントローラー]** というパネルを展開します。
-
-[+] アイコンをクリックして、新しいデータ コントローラー接続を追加します。
-
-コマンド パレットの画面上部で、手順 1 で作成した URL を入力し、Enter キーを押します。
-データ コントローラーのユーザー名を入力します。  これは、データ コントローラーのデプロイ時に渡したユーザー名の値です。  Enter をクリックします。
-データ コントローラーのパスワードを入力します。  これは、データ コントローラーのデプロイ時に渡したパスワードの値です。 Enter をクリックします。
 
 データ コントローラーに接続されたら、データ コントローラーのダッシュボードと、使用している任意の SQL Managed Instance または PostgreSQL Hyperscale サーバー グループ リソースを表示できます。
 

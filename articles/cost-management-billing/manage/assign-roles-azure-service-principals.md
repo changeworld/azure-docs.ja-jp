@@ -2,23 +2,24 @@
 title: Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる
 description: この記事は、PowerShell と REST API シリーズを使用してサービス プリンシパル名にロールを割り当てる際に役立ちます。
 author: bandersmsft
-ms.reviewer: ruturajd
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2021
+ms.date: 10/22/2021
 ms.author: banders
-ms.openlocfilehash: 79e32c7514e561cc3c245464038130f5d4bef763
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 65f37b3f071286d143dc83674a7c7108a37cff44
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130001012"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260381"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる
 
-[Azure Enterprise Portal](https://ea.azure.com/) では、Enterprise Agreement (EA) の登録を管理できます。 さまざまなロールを作成して、組織を管理したり、コストを表示したり、サブスクリプションを作成したりすることができます。 この記事は、Azure PowerShell と REST API シリーズ、さらに Azure のサービス プリンシパル名 (SPN) を使用してこれらのタスクの一部を自動化する際に役立ちます。
+[Azure Enterprise Portal](https://ea.azure.com/) では、Enterprise Agreement (EA) の登録を管理できます。 ダイレクト Enterprise のお客様は、[Azure portal](https://portal.azure.com/) で Enterprise Agreement (EA) の登録を管理できるようになりました。
+さまざまなロールを作成して、組織を管理したり、コストを表示したり、サブスクリプションを作成したりすることができます。 この記事は、Azure PowerShell と REST API シリーズ、さらに Azure のサービス プリンシパル名 (SPN) を使用してこれらのタスクの一部を自動化する際に役立ちます。
 
 始める前に、次の記事の内容を理解しておいてください。
 

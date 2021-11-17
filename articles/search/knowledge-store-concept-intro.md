@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 1463c4e879b364f8242d55aa58b424a8cc6f9cf9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 659e625aa98a92c2730e76bd847dfdddc3c955bf
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706803"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577329"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストア
 
@@ -25,7 +25,7 @@ ms.locfileid: "129706803"
 
 物理的には、ナレッジ ストアは [Azure Storage](../storage/common/storage-account-overview.md) です。つまり Azure Table Storage か Azure Blob Storage、またはその両方になります。 Azure Storage に接続できるすべてのツールまたはプロセスは、ナレッジ ストアのコンテンツを使用できます。
 
-Storage Explorer で表示されるナレッジ ストアは、テーブル、オブジェクト、またはファイルの単なるコレクションです。 次の例は、データ ソースから転送されるフィールド、またはエンリッチメントによって作成されたフィールドを含む 3 つのテーブルで構成されるナレッジ ストアを示しています (「センチメント スコア」と「translated_text」を参照)。
+ストレージ ブラウザーを使用して表示されるナレッジ ストアは、テーブル、オブジェクト、またはファイルの他のコレクションと似ています。 次の例は、データ ソースから転送されるフィールド、またはエンリッチメントによって作成されたフィールドを含む 3 つのテーブルで構成されるナレッジ ストアを示しています (「センチメント スコア」と「translated_text」を参照)。
 
 :::image type="content" source="media/knowledge-store-concept-intro/kstore-in-storage-explorer.png" alt-text="エンリッチメント ツリーからのスキルの読み取りおよび書き込み" border="true":::
 
@@ -52,7 +52,7 @@ Cognitive Search のクエリを介してアクセスする必要がある検索
 プロジェクション要素は配列です。 1 つのナレッジ ストア内に、テーブル、オブジェクト、ファイルの組み合わせを複数セット作成することができます。
 
 ```json
-"knowledgeStore":{
+"knowledgeStore": {
    "storageConnectionString":"<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>",
    "projections":[
       {
@@ -66,6 +66,10 @@ Cognitive Search のクエリを介してアクセスする必要がある検索
 この構造で指定するプロジェクションの種類によって、ナレッジ ストアによって使用されるストレージの種類が決まります。
 
 + `tables` は、エンリッチメントされたコンテンツを Table Storage に投影します。 分析ツールへの入力のために表形式のレポート構造が必要な場合や、データ フレームとして他のデータ ストアにエクスポートする場合は、テーブル プロジェクションを定義します。 同じプロジェクション グループ内の複数の `tables` を指定して、エンリッチメントされたドキュメントのサブセットまたは断面を取得することができます。 同じプロジェクション グループ内では、テーブルのリレーションシップが保持されるため、すべてのテーブルを操作できます。
+
+  プロジェクションされたコンテンツは集計または正規化されません。 次のスクリーンショットは、キー フレーズで並べ替えられたテーブルを示しており、隣接する列に親ドキュメントが示されています。 インデックス作成中のデータ インジェストとは対照的に、言語分析やコンテンツの集計はありません。 複数形と大文字と小文字の違いは、一意のインスタンスと見なされます。
+
+  :::image type="content" source="media/kstore-keyphrases-per-document.png" alt-text="テーブル内のキー フレーズとドキュメントのスクリーンショット" border="true":::
 
 + `objects` では、JSON ドキュメントを BLOB ストレージに投影します。 `object` の物理的表現は、エンリッチメントされたドキュメントを表す階層型の JSON 構造体です。
 
@@ -118,7 +122,7 @@ REST API バージョン `2020-06-30` を使用すると、スキルセットに
 
 エンリッチメントがストレージ内に存在した後、Azure Blob または Table Storage に接続する任意のツールまたはテクノロジを使用して、コンテンツを探索、分析、または使用できます。 次の一覧が開始点です。
 
-+ エンリッチメントされたドキュメントの構造とコンテンツを表示する [Storage Explorer](knowledge-store-view-storage-explorer.md)。 これは、ナレッジ ストアのコンテンツを表示するためのベースライン ツールと考えてください。
++ エンリッチメントされたドキュメントの構造とコンテンツを表示する[ストレージ ブラウザー](knowledge-store-view-storage-explorer.md)。 これは、ナレッジ ストアのコンテンツを表示するためのベースライン ツールと考えてください。
 
 + レポートと分析のための [Power BI](knowledge-store-connect-power-bi.md)。 
 

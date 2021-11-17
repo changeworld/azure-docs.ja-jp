@@ -9,12 +9,12 @@ ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 367a0b7f231fcdd88a28237e83916995fd58062b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 485ace0d04375a406c8013d60d45635a596964a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219311"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319517"
 ---
 # <a name="manually-promote-a-resource-manager-template-to-each-environment"></a>Resource Manager テンプレートを各環境に手動でレベル上げする
 
@@ -36,7 +36,7 @@ ms.locfileid: "129219311"
 
    :::image type="content" source="media/continuous-integration-delivery/custom-deployment-edit-template.png" alt-text="テンプレートの編集":::
 
-1. 設定セクションで、リンクされたサービスの資格情報などの構成値を入力します。 完了したら、 **[購入]** を選択して Resource Manager テンプレートをデプロイします。
+1. 設定セクションで、リンクされたサービスの資格情報など、デプロイに必要な構成値を入力します。 完了したら、 **[確認と作成]** を選択して Resource Manager テンプレートをデプロイします。
 
    :::image type="content" source="media/continuous-integration-delivery/continuous-integration-image5.png" alt-text="設定セクション":::
 
@@ -47,4 +47,4 @@ ms.locfileid: "129219311"
 - [Resource Manager テンプレートでカスタム パラメーターを使用する](continuous-integration-delivery-resource-manager-custom-parameters.md)
 - [リンクされた Resource Manager テンプレート](continuous-integration-delivery-linked-templates.md)
 - [修正プログラム運用環境の適用](continuous-integration-delivery-hotfix-environment.md)
-- [サンプルのデプロイ前と後のスクリプト](continuous-integration-delivery-sample-script.md)
+- [サンプルのデプロイ前とデプロイ後のスクリプト](continuous-integration-delivery-sample-script.md)

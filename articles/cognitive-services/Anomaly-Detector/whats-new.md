@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: 07a47b432470b683680c315f2d1d741cc607774f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 9bb87788a12a8ec58e3d9cc0035eeefa0b35656b
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214601"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134702"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>Anomaly Detector の新機能
 
@@ -19,6 +19,9 @@ ms.locfileid: "129214601"
 また、ユーザーが生成したコンテンツへのリンクも追加されています。 そのような項目には、 **[UGC]** というタグが付いています。 その一部は、Microsoft の外部の Web サイトでホストされており、Microsoft はそのコンテンツに責任を負いません。 これらのリソースを参照するときは慎重に行ってください。 コンテンツを削除する場合は、AnomalyDetector@microsoft.com に問い合わせるか、GitHub で問題を報告します。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="november-2021"></a>2021 年 11 月
+* Multivariate Anomaly Detector の提供リージョンとして、アラブ首長国連邦北部、フランス中部、米国中北部、スイス北部、南アフリカ北部、Jio インド西部の 6 つが追加されました。 これで合計 26 リージョンがサポートされたことになります。
 
 ### <a name="september-2021"></a>2021 年 9 月
 * Anomaly Detector (一変量) が、JIO インド西部で利用できるようになりました。

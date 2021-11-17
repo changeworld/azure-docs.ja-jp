@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.topic: overview
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/28/2021
+ms.date: 10/27/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c40295803d9389bfa1534880aa6cbb4bb0426d2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 518c13780cf7de9e31f3a22e7ecb0440aa0128bc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233736"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456045"
 ---
 # <a name="what-are-flagged-sign-ins-in-azure-active-directory"></a>Azure Active Directory におけるフラグが設定されたサインインとは
 
@@ -77,11 +77,11 @@ Azure AD のサインイン イベントは、ユーザーのサインインと�
 
 
  
-## <a name="who-can-create-flagged-sign-ins"></a>フラグが設定されたサインインを作成できる人
+## <a name="who-can-create-it"></a>作成できるユーザー
 
 Web ページ経由で Azure AD にサインインしているすべてのユーザーが、確認用にフラグが設定されたサインインを使用できます。 メンバーとゲスト ユーザーも同様に、確認用にサインイン エラーにフラグを設定できます。 
 
-## <a name="who-can-review-flagged-sign-ins"></a>フラグが設定されたサインインを確認できる人
+## <a name="who-can-review-it"></a>確認できるユーザー
 
 フラグが設定されたサインイン イベントを確認するには、Azure AD ポータルでサインイン レポート イベントを読み取るためのアクセス許可が必要です。 詳細については、「[だれがアクセスできるのか](concept-sign-ins.md#who-can-access-it)」を参照してください。
 

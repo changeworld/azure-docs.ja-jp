@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 9d0f1fbe81c8d221b1dd83b1f15b3ea099769043
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4f73ced1dba5482c3c230c96163464c064523bd4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638495"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218243"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -43,9 +43,9 @@ Azure Database Migration Service を使用して、アプリケーションへ�
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-* [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.4、9.5、9.6、または 10 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンは 9.4、9.5、9.6、10、11、または 12 である必要があります。 詳しくは、「[サポートされている PostgreSQL Database バージョン](../postgresql/concepts-supported-versions.md)」の記事をご覧ください。
+* [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.4、9.5、9.6、または 10 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンは 9.4、9.5、9.6、10、11、12 または 13 である必要があります。 詳細については、[サポートされる PostgreSQL データベース バージョン](../postgresql/concepts-supported-versions.md)に関するページをご覧ください。
 
-    また、ターゲットの Azure Database for PostgreSQL のバージョンは、オンプレミスの PostgreSQL バージョンと同じかそれ以降である必要があることに注意してください。 たとえば、PostgreSQL 9.6 は Azure Database for PostgreSQL 9.6、10、または 11 に移行でき、Azure Database for PostgreSQL 9.5 には移行できません。 現在、PostgreSQL 13 以上への移行はサポートされていません。 
+    また、ターゲットの Azure Database for PostgreSQL のバージョンは、オンプレミスの PostgreSQL バージョンと同じかそれ以降である必要があることに注意してください。 たとえば、PostgreSQL 9.6 は Azure Database for PostgreSQL 9.6、10、または 11 に移行でき、Azure Database for PostgreSQL 9.5 には移行できません。 
 
 * [Azure Database for PostgreSQL サーバーを作成](../postgresql/quickstart-create-server-database-portal.md)するか、[Azure Database for PostgreSQL - Hyperscale (Citus) サーバーを作成](../postgresql/quickstart-create-hyperscale-portal.md)します。
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。

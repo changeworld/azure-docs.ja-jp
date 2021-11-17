@@ -6,20 +6,20 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: 73d3c43e93dce030895291859acb723a94a0cadc
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: d63dd9b3b8f7b81b5955ce431cd5477d9e63ea1a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132301326"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517028"
 ---
 # <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-microsoft-sentinel-public-preview"></a>Microsoft Azure Sentinel を使用した Azure Key Vault ハニートークンのデプロイと監視 (パブリック プレビュー)
 

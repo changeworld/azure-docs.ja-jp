@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 77f8ff8cf7e3e9a83b207f8d98ef570437b27b47
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ee1f3c956f683e3362138a7534c403e2162e64df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111161"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462388"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>アプリごとのスケーリングを使って Azure App Service で高密度ホスティングを実現する
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-App Service を使用するときは、そのアプリを実行する [App Service プラン](overview-hosting-plans.md)をスケーリングすることにより、アプリをスケーリングできます。 同じ App Service プランでアプリを複数実行している場合には、スケールアウトしたインスタンスのそれぞれがプラン内のアプリをすべて実行することになります。
+App Service を使用するときは、そのアプリを実行する [App Service プラン](overview-hosting-plans.md)をスケーリングすることにより、アプリをスケーリングできます。 同じ App Service プランでアプリを複数実行している場合には、スケールアウトしたインスタンスのそれぞれでプラン内のアプリがすべて実行されることになります。
 
 App Service プラン レベルで *アプリごとのスケーリング* を有効にして、アプリをホストする App Service プランとは無関係にそのアプリをスケーリングできます。 これにより、App Service プランを 10 個のインスタンスにスケーリングしながら、5 個のインスタンスだけを使用するようにアプリを設定することが可能になります。
 

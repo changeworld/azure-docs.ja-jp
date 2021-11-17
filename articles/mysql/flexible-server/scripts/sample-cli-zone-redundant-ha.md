@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバー (プレビュー) のゾーン冗長による高可用性を構成する
+title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーのゾーン冗長による高可用性を構成する
 description: この記事では、Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーでゾーン冗長による高可用性を構成する方法について説明します。
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 879cfa3b8c20c466c1aefcc0539109cbdc06cd32
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c24871aff30c34398a07604749551bf53b428d36
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701616"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844096"
 ---
-# <a name="configure-zone-redundant-high-availability-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) のゾーン冗長による高可用性を構成する
+# <a name="configure-zone-redundant-high-availability-in-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーのゾーン冗長による高可用性を構成する
 
 このサンプルは、Azure Database for MySQL - フレキシブル サーバーで[ゾーン冗長による高可用性](../concepts-high-availability.md)を構成および管理する CLI スクリプトです。 ゾーン冗長による高可用性は、フレキシブル サーバーの作成時にのみ有効にでき、いつでも無効にできます。 プライマリとスタンバイのレプリカの可用性ゾーンを選択することもできます。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "128701616"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-スクリプトの中で強調表示されている行を編集し、変数に値を指定します。
+スクリプトの強調表示されている行を編集し、変数にご自分の値を指定します。
 
 [!code-azurecli-interactive[main](../../../../cli_scripts/mysql/flexible-server/high-availability/zone-redundant-ha.sh?highlight=7,10-11,13-14 "Configure Zone-Redundant High Availability.")]
 
@@ -56,5 +56,5 @@ ms.locfileid: "128701616"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

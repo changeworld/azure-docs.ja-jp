@@ -1,6 +1,6 @@
 ---
 title: 技術と機能の概要 - Azure Active Directory B2C
-description: Azure Active Directory B2C の機能とテクノロジについて詳しく説明します。
+description: Azure Active Directory B2C の機能とテクノロジについて詳しく説明します。 Azure Active Directory B2C にはグローバルに高可用性があります。
 services: active-directory-b2c
 author: kengaderdus
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: ca637cec58531de65847d5f1e7d19e81ed45318d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a40801c03721016a47b28ca5fd273b448297e0b1
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036430"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055609"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -136,7 +136,7 @@ UI のカスタマイズについては、以下を参照してください。
 
 ## <a name="custom-domain"></a>カスタム ドメイン
 
-Azure AD B2C のリダイレクト URL で Azure AD B2C ドメインをカスタマイズできます。 カスタム ドメインを使用すると、シームレスなエクスペリエンスを作成し、ページとアプリケーションのドメイン名をシームレスに組み合わせて表示することができます。
+Azure AD B2C のリダイレクト URL で Azure AD B2C ドメインをカスタマイズできます。 カスタム ドメインを使用すると、表示されるページとアプリケーションのドメイン名がシームレスに組み合わさるように、シームレスなエクスペリエンスを作成することができます。
 
 ![Azure AD B2C カスタム ドメインのスクリーンショット](media/technical-overview/custom-domain.png)
 
@@ -161,9 +161,9 @@ Azure AD B2C を使用すると、サインアップおよびパスワード リ
 * [Mailjet を使用するカスタム メール確認](custom-email-mailjet.md)
 * [SendGrid を使用するカスタム メール確認](custom-email-sendgrid.md)
 
-## <a name="add-your-own-business-logic"></a>独自のビジネス ロジックの追加
+## <a name="add-your-own-business-logic-and-call-restful-api"></a>独自のビジネス ロジックを追加して RESTful API を呼び出す
 
-カスタム ポリシーの使用を選択した場合は、ユーザー体験で RESTful API と統合して、独自のビジネス ロジックを体験に追加することができます。 たとえば、Azure AD B2C では、RESTful サービスとデータを交換して次のことができます。
+ユーザー フローとカスタム ポリシーの両方で RESTful API と統合できます。 この違いは、ユーザー フローでは、指定された場所で呼び出しを行うのに対し、カスタム ポリシーでは、独自のビジネス ロジックを体験に追加することです。 この機能を使用すると、外部 ID ソースのデータを取得して使用できます。 Azure AD B2C では、RESTful サービスとデータを交換して次のことを実行できます。
 
 * わかりやすいカスタム エラー メッセージを表示する。
 * ユーザー入力を検証して、不正なデータがユーザー ディレクトリに存在しないようにする。 たとえば、ユーザーが入力したデータを修正できます (すべて小文字で入力された場合に、姓を大文字にするなど)。
@@ -301,9 +301,9 @@ Azure Application Insights を Azure AD B2C カスタム ポリシーに統合�
 詳細については、「[Application Insights を使用して Azure AD B2C でのユーザーの動作を追跡する](analytics-with-application-insights.md)」をご覧ください。
 
 ## <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
-Azure AD B2C サービスは世界中で一般提供されており、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」に示されているリージョンをデータ所在地として選択することができます。 データ所在地は、[テナントの作成](tutorial-create-tenant.md)時に選択した国または地域によって決まります。 
+Azure AD B2C サービスは世界中で一般提供されており、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」に示されているリージョンをデータ所在地として選択できます。 データ所在地は、[テナントの作成](tutorial-create-tenant.md)時に選択した国または地域によって決まります。 
 
-詳細については、[Azure Active Directory B2C サービスで利用可能なリージョンとデータ所在地](data-residency.md)に関する記事を参照してください。
+[Azure Active Directory B2C サービス: 利用可能なリージョンとデータの保存場所](data-residency.md)と [Azure Active Directory B2C のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/active-directory-b2c/v1_1) に関するページで詳細情報を参照してください。
 
 ## <a name="automation-using-microsoft-graph-api"></a>Microsoft Graph API を使用した自動化
 

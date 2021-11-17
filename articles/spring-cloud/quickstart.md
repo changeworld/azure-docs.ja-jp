@@ -8,14 +8,14 @@ ms.date: 10/18/2021
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bdd778f9bad5bbafb48aa52c8059cdeadd3a0fc5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 88230912f04316b175feb4910f0b3e6b2e907238
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130241269"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853740"
 ---
-# <a name="quickstart-deploy-your-first-application-in-azure-spring-cloud"></a>クイックスタート - 初めてのアプリケーションを Azure Spring Cloud にデプロイする
+# <a name="quickstart-deploy-your-first-application-to-azure-spring-cloud"></a>クイックスタート: 初めてのアプリケーションを Azure Spring Cloud にデプロイする
 
 ::: zone pivot="programming-language-csharp"
 このクイックスタートでは、Azure Spring Cloud で実行する小規模なアプリケーションをデプロイする方法について説明します。
@@ -542,7 +542,7 @@ az group delete --name <your resource group name> --yes
 このクイックスタートでは、次の方法について学習しました。
 
 > [!div class="checklist"]
-> * 基本的な Azure Spring Cloud プロジェクトを生成する
+> * 基本的な Spring Cloud プロジェクトを生成する
 > * サービス インスタンスをプロビジョニングする
 > * パブリック エンドポイントがあるアプリをビルドしてデプロイする
 > * リアルタイムでログをストリームする
@@ -550,6 +550,6 @@ az group delete --name <your resource group name> --yes
 Azure Spring のその他の機能を使用する方法について学習するには、Azure Spring Cloud にサンプル アプリケーションをデプロイするクイックスタート シリーズに進んでください。
 
 > [!div class="nextstepaction"]
-> [マイクロサービスをビルドして実行する](./quickstart-sample-app-introduction.md)
+> [アプリをビルドして実行する](./quickstart-sample-app-introduction.md)
 
 その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples))。

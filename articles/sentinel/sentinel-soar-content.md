@@ -7,20 +7,20 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 ms.assetid: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2021
 ms.author: yelevin
-ms.openlocfilehash: ef52fc14bac736221d2dd457705981878c930ef6
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 5f9c68a63c63c3b4cc27b44d697f7577e4dafc3c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132350050"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517978"
 ---
 # <a name="azure-sentinel-soar-content-catalog"></a>Azure Sentinel の SOAR コンテンツのカタログ
 

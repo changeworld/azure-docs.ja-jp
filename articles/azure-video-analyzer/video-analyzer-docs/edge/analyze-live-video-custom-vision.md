@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f6999b30816f0750657d8c5990291892d3148cbd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e87b1f70df4864a82f13b9e30cf93c2c5ca9eb14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092026"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484264"
 ---
 # <a name="tutorial-analyze-live-video-with-azure-video-analyzer-on-iot-edge-and-azure-custom-vision"></a>チュートリアル: Azure Video Analyzer on IoT Edge と Azure Custom Vision を使用してライブ ビデオを分析する
 
@@ -65,7 +65,7 @@ ms.locfileid: "131092026"
 
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
-このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 [Ctrl+N](https://lvamedia.blob.core.windows.net/public/t2.mkv) キーを押し、**おもちゃの車の推論ビデオ** へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒の時点でおもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。
+このチュートリアルでは、[おもちゃの車の推論ビデオ](https://avamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 [Ctrl+N](https://avamedia.blob.core.windows.net/public/t2.mkv) キーを押し、**おもちゃの車の推論ビデオ** へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒の時点でおもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LPwK]
 
@@ -90,7 +90,7 @@ Custom Vision という名前が示唆するように、これを使用して、
 
 その他のメモ:
 
-- このチュートリアルでは、このクイックスタート記事の[「前提条件」セクション](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)にあるサンプル画像を使用しないでください。 ここでは、代わりに特定の画像セットを使用して、おもちゃの検出器の Custom Vision モデルを構築しました。 [これらの画像](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip)は、[クイックスタート](../../../cognitive-services/custom-vision-service/get-started-build-detector.md)で[トレーニング画像を選択する](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images)よう求められたときに使用してください。
+- このチュートリアルでは、このクイックスタート記事の[「前提条件」セクション](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)にあるサンプル画像を使用しないでください。 ここでは、代わりに特定の画像セットを使用して、おもちゃの検出器の Custom Vision モデルを構築しました。 [これらの画像](https://avamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip)は、[クイックスタート](../../../cognitive-services/custom-vision-service/get-started-build-detector.md)で[トレーニング画像を選択する](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images)よう求められたときに使用してください。
 - クイック スタートの画像へのタグ付けに関するセクションでは、図に示されているおもちゃのトラックに "delivery truck" というタグを付けていることを確認してください。
 - Custom Vision プロジェクトの作成時に、ドメインのオプションとして General(compact) を選択するようにしてください。
 

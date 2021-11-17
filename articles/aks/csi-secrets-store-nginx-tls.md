@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 10/19/2021
 ms.custom: template-how-to
-ms.openlocfilehash: dd6945da0b3c4170082d20e5481d06048b7c3dde
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: f7c40dbcf0944ca5c78182d72346f3fc295ef50c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132284799"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848745"
 ---
 # <a name="set-up-secrets-store-csi-driver-to-enable-nginx-ingress-controller-with-tls"></a>TLS を使用して NGINX イングレス コントローラーを有効にするようにシークレット ストア CSI ドライバーを設定する
 
@@ -29,6 +29,7 @@ ms.locfileid: "132284799"
 - 開始する前に、Azure CLI バージョンが `2.30.0` 以上であることを確認するか、[最新バージョンをインストール](/cli/azure/install-azure-cli)してください。
 - シークレット ストア CSI ドライバーが構成されている AKS クラスター。
 - Azure Key Vault インスタンス。
+
 
 ## <a name="generate-a-tls-certificate"></a>TLS 証明書を生成する
 
@@ -65,8 +66,7 @@ kubectl create ns $NAMESPACE
 ```
 
 [アクセス ID を提供する方法][csi-ss-identity-access]を選択し、それに従って SecretProviderClass YAML を構成します。 補足:
-
-- 必ず `objectType=secret` を使用してください。これは、AKV からプライベート キーと証明書を取得する唯一の方法です。
+- `objectType=secret` は、AKV からプライベート キーと証明書を取得する唯一の方法なので、必ずこれを使用してください。
 - `secretObjects` セクションに `type` として `kubernetes.io/tls` を設定します。
 
 SecretProviderClass の例については、次を参照してください。
@@ -167,7 +167,7 @@ NAME                                             TYPE                           
 ingress-tls-csi                                  kubernetes.io/tls                     2      1m34s
 ```
 
-## <a name="deploy-the-application"></a>アプリケーションをデプロイする
+## <a name="deploy-the-application"></a>アプリケーションの配置
 
 ここでも、シナリオに応じて、手順は若干変わります。 これまでに選択したシナリオに対応する指示に従ってください。
 
@@ -352,6 +352,6 @@ curl -v -k --resolve demo.test.com:443:52.xx.xx.xx https://demo.test.com
 ```
 
 <!-- LINKS INTERNAL -->
-[csi-ss-identity-access]: ./csi-secrets-store-identity-access.md
+[csi-ss-identity-access]: ./csi-secrets-store-identity-access.md 
 <!-- LINKS EXTERNAL -->
 [kubernetes-ingress-tls]: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls

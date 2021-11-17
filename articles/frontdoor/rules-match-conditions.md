@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: yuajia
-ms.openlocfilehash: df8f4340a7bdc91ac12567df46411a01210a3a9e
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: bb73ab8d36223a8bbac50fde2bb14d355ce26a10
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132324910"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132159211"
 ---
 # <a name="azure-front-door-rules-match-conditions"></a>Azure Front Door ルールの一致条件
 
@@ -50,7 +50,7 @@ Azure Front Door [ルール エンジン](front-door-rules-engine.md)および A
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/device-type.png" alt-text="デバイスの種類の一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/device-type.png" alt-text="デバイスの種類の一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -108,7 +108,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/post-args.png" alt-text="ポストの引数の一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/post-args.png" alt-text="ポストの引数の一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -174,7 +174,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/query-string.png" alt-text="クエリ文字列の一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/query-string.png" alt-text="クエリ文字列の一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -222,7 +222,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
     * **IPv6 の例**: 2 つの IP アドレス `1:2:3:4:5:6:7:8` と `10:20:30:40:50:60:70:80` を追加した場合、条件はアドレス 1:2:3:4:5:6:7:8 または 10:20:30:40:50:60:70:80 のいずれかから届いた要求に対して照合されます。
 * リモート アドレスは、ネットワーク接続からの元のクライアント IP、またはユーザーがプロキシの背後にある場合は、通常は X 転送された要求ヘッダーを表します。
 
-### <a name="properties"></a>プロパティ
+### <a name="properties"></a>Properties
 
 | プロパティ | サポート状況の値 |
 |-|-|
@@ -235,7 +235,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/remote-address.png" alt-text="リモート アドレスの一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/remote-address.png" alt-text="リモート アドレスの一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -292,7 +292,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/request-body.png" alt-text="要求本文の一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/request-body.png" alt-text="要求本文の一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -352,7 +352,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/request-file-name.png" alt-text="要求ファイル名の一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/request-file-name.png" alt-text="要求ファイル名の一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -415,7 +415,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/request-file-extension.png" alt-text="要求ファイル拡張子の一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/request-file-extension.png" alt-text="要求ファイル拡張子の一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -477,7 +477,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/request-header.png" alt-text="要求ヘッダーの一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/request-header.png" alt-text="要求ヘッダーの一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -526,7 +526,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/request-method.png" alt-text="要求メソッドの一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/request-method.png" alt-text="要求メソッドの一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -583,7 +583,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/request-path.png" alt-text="要求パスの一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/request-path.png" alt-text="要求パスの一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -645,7 +645,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/request-protocol.png" alt-text="要求プロトコルの一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/request-protocol.png" alt-text="要求プロトコルの一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -702,7 +702,7 @@ POST 要求の本文内で指定された引数に基づいて要求を識別す
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-:::image type="content" source="./media/rules-match-conditions/request-url.png" alt-text="要求 URL の一致条件を示すポータルのスクリーンショット。":::
+:::image type="content" source="./media/concept-rule-set-match-conditions/request-url.png" alt-text="要求 URL の一致条件を示すポータルのスクリーンショット。":::
 
 # <a name="json"></a>[JSON](#tab/json)
 

@@ -3,22 +3,22 @@ title: カスタム ポリシーによるマルチテナント Azure AD のサ�
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure AD ID プロバイダーを追加します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 10/21/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f41736ac221ee7d7cdce5ac776e70f96aa16536e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 553608a5574edaf904e9c9ac0986a3d0f8af9278
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575097"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227968"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -37,6 +37,9 @@ ms.locfileid: "128575097"
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+> [!NOTE]
+> この記事では、前提条件で述べる前のステップで **SocialAndLocalAccounts** スターター パックを使用することを想定しています。  
 
 ## <a name="register-an-azure-ad-app"></a>Azure AD アプリの登録
 
@@ -74,7 +77,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[省略可能な要求を追加]** を選択します。
 1. **[トークンの種類]** で、 **[ID]** を選択します。
 1. 追加する省略可能な要求 (`family_name` と `given_name`) を選択します。
-1. **[追加]** をクリックします。
+1. **[追加]** を選択します。 **“Turn on the Microsoft Graph email permission (required for claims to appear in token)”** (Microsoft Graph の電子メール権限を有効にしてください (トークンにクレームを組み込むのに必要です)) というメッセージが表示される場合は、それを有効にしてから、もう一度 **[Add]\(追加\)** をクリックしてください。
 
 ## <a name="optional-verify-your-app-authenticity"></a>[省略可能] アプリの信頼性を確認する
 
@@ -101,7 +104,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 ポリシーの拡張ファイル内で Azure AD を **ClaimsProvider** 要素に追加することで、Azure AD をクレーム プロバイダーとして定義できます。
 
-1. *TrustFrameworkExtensions.xml* ファイルを開きます。
+1. *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml*** ファイルを開きます。
 1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
 1. 新しい **ClaimsProvider** を次のように追加します。
 
@@ -168,7 +171,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 サインインに使用する Azure AD テナントごとに次の手順を実行します。
 
-1. ブラウザーを開き、そのテナントに対応する OpenID Connect のメタデータ URL に移動します。 **発行者** オブジェクトを探し、その値を記録します。 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/` のようになっていると思います。
+1. ブラウザーを開き、そのテナントに対応する OpenID Connect のメタデータ URL に移動します。 **発行者** オブジェクトを探し、その値を記録します。 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/.well-known/openid-configuration` のようになっていると思います。
 1. その値をコピーして **ValidTokenIssuerPrefixes** キーに貼り付けます。 複数の発行者は、コンマで区切ります。 前出の `ClaimsProvider` XML サンプルでは、発行者が 2 つ存在する例を確認できます。
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]

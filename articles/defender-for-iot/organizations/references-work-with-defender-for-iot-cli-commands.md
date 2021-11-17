@@ -1,14 +1,14 @@
 ---
 title: Defender for IoT の CLI コマンドを操作する
 description: この記事では、センサーおよびオンプレミスの管理コンソール用の Defender for IoT CLI コマンドについて説明します。
-ms.date: 05/20/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: bac3e84d77436e9dfc500baa9f729ba847c49bd4
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 4561f0e9697826fff808d03e3bf38f0d546d7c8a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018422"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347182"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Defender for IoT の CLI コマンドを操作する
 
@@ -101,7 +101,7 @@ ntp disable IP
 
 ## <a name="network-configuration"></a>ネットワーク構成
 
-次の表では、Azure Defender for IoT のネットワーク オプションを構成するために使用できるコマンドについて説明します。
+次の表では、Microsoft Defender for IoT のネットワーク オプションを構成するために使用できるコマンドについて説明します。
 
 |名前|コマンド|説明|
 |-----------|-------|-----------|

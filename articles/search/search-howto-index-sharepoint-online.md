@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 840520f83a3c90a6c63c366e0e56a98d5ab71551
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: f0e5afcc4f0869c4fe12a634e34e7b0669da5c75
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892952"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137794"
 ---
 # <a name="index-data-from-sharepoint-online"></a>SharePoint Online からのデータのインデックスを作成する
 
@@ -153,6 +153,9 @@ api-key: [admin key]
 
 ```
 
+> [!IMPORTANT]
+> SharePoint Online インデクサーによって設定されたインデックスのキーフィールドとして [`metadata_spo_site_library_item_id`](#metadata) のみを使用できます。 キー フィールドがデータ ソースに存在しない場合、`metadata_spo_site_library_item_id` は自動的にキー フィールドにマップされます。
+
 詳細については、[インデックスの作成 (REST API)](/rest/api/searchservice/create-index) に関する記事をご覧ください。
 
 ### <a name="step-5-create-an-indexer"></a>手順 5: インデクサーを作成する
@@ -262,6 +265,8 @@ api-key: [admin key]
 1.  ログイン
 
 1.  再度インデクサーの実行を手動で開始し、インデクサーの状態を確認します。 今度はインデクサーの実行が正常に開始されるはずです。
+
+<a name="metadata"></a>
 
 ## <a name="indexing-document-metadata"></a>ドキュメント メタデータのインデックス作成
 ドキュメント メタデータのインデックスを作成するようにインデクサーを設定している場合は、次のメタデータを使用して、インデックスを作成できます。

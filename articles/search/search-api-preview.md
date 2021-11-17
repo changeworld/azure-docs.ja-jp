@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: a7a056a04963a8dd48a791c3851674b9abf54841
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 968e4320efc8e22a6a561b7c75c89e966045d6ac
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131501364"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305828"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 

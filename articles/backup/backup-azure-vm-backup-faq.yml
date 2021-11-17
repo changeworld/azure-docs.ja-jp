@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 08/19/2021
-  ms.openlocfilehash: 7ccfe8d814cc06e7c637b6de3a8df6edb43f52bd
-  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+  ms.openlocfilehash: d9ca7573375e3e6bf584d1b79f8f6a8f9ba64f4d
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130069446"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132062892"
 title: よく寄せられる質問 - Azure VM のバックアップ
 summary: >
   この記事では、[Azure Backup](./backup-overview.md) サービスによる Azure VM のバックアップについてよくある質問にお答えします。
@@ -22,7 +22,7 @@ sections:
       VM を作成するときに、[サポートされているオペレーティング システム](backup-support-matrix-iaas.md#supported-backup-actions)を実行している VM に対してバックアップを有効にできます。
   - question: 初回バックアップの完了に時間がかかるのはなぜですか?
     answer: >
-      初回バックアップは常に完全バックアップとなります。所要時間は、データのサイズと、いつバックアップが処理されるかによって異なります。
+      初回バックアップは常に完全バックアップとなります。その所要時間は、データのサイズと、いつバックアップが処理されるかによって異なります。
 
 
       バックアップのパフォーマンスを向上させる方法については、[バックアップのベストプラクティス](./backup-azure-vms-introduction.md#best-practices)、[バックアップに関する考慮事項](./backup-azure-vms-introduction.md#backup-and-restore-considerations)、および「[バックアップ パフォーマンス](./backup-azure-vms-introduction.md#backup-performance)」を参照してください
@@ -95,7 +95,7 @@ sections:
   - question: 毎日のバックアップ ポイントに許容される最小リテンション期間の範囲はどれぐらいですか。
     answer: Azure Virtual Machine のバックアップ ポリシーでは、最小リテンション期間の範囲として 7 日から 9999 日までがサポートされています。 7 日間未満に設定された既存の VM バックアップ ポリシーを変更するには、7 日間という最小リテンション期間の範囲を満たすように更新する必要があります。
   - question: VM または VM リソース グループの名前の大文字と小文字を変更するとどうなりますか。
-    answer: VM または VM リソース グループの大文字と小文字を変更しても、バックアップ項目の名前の大文字と小文字は変更されません。 ただし、これは Azure Backup の想定される動作です。 大文字と小文字の変更はバックアップ項目には反映されませんが、バックエンドで更新されます。
+    answer: VM または VM リソース グループの大文字と小文字を変更しても、バックアップ項目の名前の大文字と小文字は変更されません。これは Azure Backup の想定されている動作です。 大文字と小文字の変更はバックアップ項目には反映されませんが、バックエンドで更新されます。
   - question: VM に接続されているディスクを選択的にバックアップまたは復元できますか。
     answer: >
       Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。 詳細については、「[選択的ディスク バックアップと Azure VM の復元](selective-disk-backup-restore.md)」を参照してください。
@@ -154,7 +154,7 @@ sections:
     answer: はい。 VM を削除しても、コンテナー内の対応するバックアップ アイテムに移動して、[復元ポイントから復元](backup-azure-arm-restore-vms.md#select-a-restore-point)できます。
   - question: 同じ可用性セットに VM を復元するには、どうすればよいですか。
     answer: マネージド ディスクの Azure VM については、マネージド ディスクとして復元しているときに、可用性セットへの復元オプションがテンプレートに提供されます。 このテンプレートには、**可用性セット** と呼ばれる入力パラメーターがあります。
-  - question: 復元のパフォーマンスを高めるには、どうすればよいですか。
+  - question: 復元のパフォーマンスを向上させるには、どうすればよいですか。
     answer: >
       [インスタント リストア](backup-instant-restore-capability.md)機能は、迅速なバックアップと、スナップショットからの即時のリストアに役立ちます。
   - question: 暗号化された VM のキー コンテナーの設定を変更するとどうなりますか。
@@ -168,8 +168,8 @@ sections:
       はい。VM とドメイン コントローラーとの関係が破損しているために復元された VM にアクセスできます。 詳細については、[こちらの記事](./backup-azure-arm-restore-vms.md#post-restore-steps)を参照してください。
   - question: 進行中の復元ジョブを取り消すことはできますか。
     answer: いいえ。進行中の復元ジョブを取り消すことはできません。
-  - question: 復元操作の完了に長い時間がかかるのはなぜですか?
-    answer: 合計復元時間は、ストレージ アカウントの 1 秒あたりの入出力操作数 (IOPS) とスループットによって変わります。 合計復元時間は、ターゲットのストレージ アカウントに他のアプリケーションの読み取りや書き込み操作が読み込まれる場合、影響を受けることがあります。 復元操作を改善するには、他のアプリケーション データが読み込まれないストレージ アカウントを選択します。
+  - question: 復元操作の完了に長い時間がかかるのはなぜですか。
+    answer: 合計復元時間は、ストレージ アカウントの 1 秒あたりの入出力操作数 (IOPS) の速度とスループットによって変わります。 合計復元時間は、ターゲットのストレージ アカウントに他のアプリケーションの読み取りや書き込み操作が読み込まれる場合、影響を受けることがあります。 復元操作の速度を向上させるには、他のアプリケーション データが読み込まれないストレージ アカウントを選択します。
   - question: '[新しい仮想マシンの作成] の復元の種類がガバナンス ポリシーと矛盾する場合にどのように対処すればよいですか。'
     answer: >
       Azure Backup は、復旧ポイントから "アタッチ" ディスクを使用し、お使いのイメージ参照やギャラリーを参照しません。 そのため、ポリシー内で、"storageProfile.osDisk.createOption を Attach と して" 確認できます。スクリプトの条件は次のようになります。

@@ -10,27 +10,30 @@ ms.subservice: hadr
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/20/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 36b2d461b73b778541b79142633a6aafca9509e0
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: aeaeffec318ccf44e1557d592bd470556275ebe4
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162922"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158770"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure portal を使用し、Azure VM 上で SQL Server の可用性グループ (プレビュー) を構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、[Azure portal](https://portal.azure.com) を使用して、Azure VM 上に SQL Server の可用性グループを構成する方法について説明します。 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して Azure Load Balancer が不要になります。
+
+この記事では、[Azure portal](https://portal.azure.com) を使用して、1 つのサブネット内の Azure VM 上に SQL Server の可用性グループを構成する方法について説明します。 
 
 Azure portal を使用して新しいクラスターを作成するか、既存のクラスターをオンボードしてから、可用性グループ、リスナー、および内部ロード バランサーを作成します。 
 
 現在、この機能はプレビュー段階にあります。 
 
-この記事では Azure portal を使用して可用性グループ環境を構成しますが、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
+この記事では Azure portal を使用して可用性グループ環境を構成しますが、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial-single-subnet.md)で構成することもできます。 
 
 > [!NOTE]
 > これで、Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、「[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)」を参照してください。 

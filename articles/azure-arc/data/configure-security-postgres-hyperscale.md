@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 48732ac1f22d090afd3dd4b5607bd3d64ae51c8b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 92a8e44352d287cd6be1b48ed2c0aa3bc004b75d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555440"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294221"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのセキュリティを構成する
 
@@ -122,7 +122,7 @@ select hmac('Les sanglots longs des violons de l_automne', 'md5', 'sha256');
    select * from mysecrets;
    ```
 
-Output:
+出力:
 
 ```output
 - USERid: 1
@@ -151,7 +151,7 @@ Output:
 
    ```console
    select USERname from mysecrets where (USERpassword = crypt('MySecretPasswrod', USERpassword));
-   ``` 
+   ```
 
    出力:
 
@@ -229,7 +229,7 @@ AZDATA_PASSWORD **セッション** 環境変数が存在していて値がな�
    ```
 
 > [!NOTE]
-> AZDATA_PASSWORD セッションの環境変数が存在するかどうか、およびその値が何かを確認するには、次のように実行します。
+> AZDATA_PASSWORD セッションの環境変数が存在することとその値を確認するには、次を実行します。
 > - Linux クライアントの場合:
 >
 > ```console

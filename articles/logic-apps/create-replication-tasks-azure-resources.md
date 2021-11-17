@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bd4eaa70b456841ae47c6efa9bc3f2b323d0bcf5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 42364c1c1fc0f9d2d220b4b9156a4a7ab4a410fa
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092532"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337401"
 ---
 # <a name="create-replication-tasks-for-azure-resources-using-azure-logic-apps-preview"></a>Azure Logic Apps を使って Azure リソースのレプリケーション タスクを作成する (プレビュー)
 
@@ -32,7 +32,7 @@ ms.locfileid: "131092532"
 
 ## <a name="what-is-a-replication-task"></a>レプリケーション タスクとは
 
-一般に、レプリケーション タスクは、ソースからデータ、イベント、またはメッセージを受け取り、そのコンテンツをターゲットに移動させた後、ソースからそのコンテンツを削除します。ただし、ソースが Event Hubs エンティティの場合を除きます。 レプリケーション タスクは、通常、コンテンツを変更せずに移動しますが、Azure Logic Apps を利用したレプリケーション タスクは[レプリケーション プロパティ](#replication-properties)も追加します。 ソースとターゲットのプロトコルが異なる場合、これらのタスクはメタデータ構造間のマッピングも実行します。 レプリケーションタスクは一般的にステートレスであり、タスクの順次実行または並列実行で状態やその他の副作用を共有することはありません。
+一般に、レプリケーション タスクは、ソースからデータ、イベント、またはメッセージを受け取り、そのコンテンツをターゲットに移動させた後、ソースからそのコンテンツを削除します。ただし、ソースが Event Hubs エンティティの場合を除きます。 レプリケーション タスクは、通常、コンテンツを変更せずに移動しますが、Azure Logic Apps を利用したレプリケーション タスクは[レプリケーション プロパティ](#replication-properties)も追加します。 ソースとターゲットのプロトコルが異なる場合、これらのタスクはメタデータ構造間のマッピングも実行します。 レプリケーションタスクはステートレスであり、タスクの順次実行または並列実行で状態やその他の副作用を共有することはありません。
 
 利用可能なレプリケーション タスク テンプレートを使用すると、作成した各レプリケーション タスクには、基になる [ステートレス ワークフロー](single-tenant-overview-compare.md#stateful-stateless)が **ロジック アプリ (Standard)** リソースに作成され、レプリケーション タスクの複数のワークフローを含めることができます。 このリソースは、シングルテナントの Azure Logic Apps でホストされます。これは、レプリケーションやフェデレーションのタスクを含むサーバーレス アプリケーションを構成して実行するための、スケーラブルで信頼性の高い実行環境です。 また、シングルテナントの Azure Logic Apps ランタイムは [Azure Functions 機能拡張モデル](../azure-functions/functions-bindings-register.md)を使用しており、Azure Functions ランタイムの拡張機能としてホストされます。 この設計により、ロジック アプリ ワークフローの移植性、柔軟性、パフォーマンス向上に加え、Azure Functions プラットフォームと Azure App Service エコシステムから継承されたその他の機能と利点が提供されます。
 
@@ -52,7 +52,7 @@ ms.locfileid: "131092532"
 | リソースの種類 | レプリケーションのソースとターゲット。 |
 |---------------|-------------------------------|
 | Azure Event Hubs 名前空間 | - Event Hubs インスタンスから Event Hubs インスタンスへ <br>- Event Hubs インスタンスから Service Bus キューへ <br>- Event Hubs インスタンスから Service Bus トピックへ |
-| Azure Service Bus 名前空間 | - Service Bus キューから Service Bus キューへ <br>- Service Bus キューから Service Bus トピックへ <br>- Service Bus キューから Event Hubs インスタンスへ <br>- Service Bus トピック サブスクリプションから Service Bus キューへ <br>- Service Bus トピック サブスクリプションから Event Hubs インスタンスへ |
+| Azure Service Bus 名前空間 | - Service Bus キューから Service Bus キューへ <br>- Service Bus キューから Service Bus トピックへ <br>- Service Bus トピックから Service Bus トピックへ <br>- Service Bus キューから Event Hubs インスタンスへ <br>- Service Bus トピックから Service Bus キューへ <br>- Service Bus トピックから Event Hubs インスタンスへ |
 |||
 
 ### <a name="replication-topology-and-workflow"></a>レプリケーション トポロジとワークフロー
@@ -108,7 +108,7 @@ Service Bus の場合、ソース Service Bus キューまたはトピックか�
 
 ## <a name="order-preservation"></a>順序の維持
 
-Event Hubs の場合、同じ数のパーティション間でレプリケーションを行うと、イベントに変更のない 1 対 1 の複製が作成されますが、重複も含まれる可能性があります。 しかし、異なる数のパーティション間でレプリケーションを行うと、パーティション キーに基づいてイベントの相対的な順序のみが維持されますが、重複も含まれる可能性があります。 詳細については、「[ストリームと順序の維持](../event-hubs/event-hubs-federation-patterns.md#streams-and-order-preservation)」を参照してください。
+Event Hubs の場合、同じ数の[パーティション](../event-hubs/event-hubs-features.md#partitions)間でレプリケーションを行うと、イベントに変更のない 1 対 1 の複製が作成されますが、重複も含まれる可能性があります。 しかし、異なる数のパーティション間でレプリケーションを行うと、パーティション キーに基づいてイベントの相対的な順序のみが維持されますが、重複も含まれる可能性があります。 詳細については、「[ストリームと順序の維持](../event-hubs/event-hubs-federation-patterns.md#streams-and-order-preservation)」を参照してください。
 
 Service Bus の場合、セッションを有効にして、ソースから取得されたものと同じセッション ID を持つメッセージ シーケンスが、同じセッション ID で元のシーケンスのバッチとしてターゲット キューまたはトピックに送信されるようにする必要があります。 詳細については、「[シーケンスと順序の維持](../service-bus-messaging/service-bus-federation-patterns.md#sequences-and-order-preservation)」を参照してください。
 
@@ -125,7 +125,68 @@ Service Bus の場合、セッションを有効にして、ソースから取�
 
 内部的には、レプリケーション タスクは、シングルテナントの Azure Logic Apps でホストされている **ロジック アプリ (Standard)** リソースのステートレス ワークフローで動作します。 このレプリケーション タスクを作成すると、すぐに課金が開始されます。 使用量、使用量計測、課金、価格モデルは、 [Standard ホスティング プラン](logic-apps-pricing.md#standard-pricing)と [Standard プランの価格レベル](logic-apps-pricing.md#standard-pricing-tiers)に従います。
 
-Event Hubs が受信するイベントや Service Bus が処理するメッセージの数に基づいて、Standard プランでは、アクティブなレプリケーション中に最小限の CPU 使用率と低遅延を維持するために、スケールアップまたはスケールダウンが行われる場合があります。 この動作では、Azure Logic Apps が CPU 使用率の調整や最大化を開始せず、高速なレプリケーション速度を保証できるように、適切な Standard プランの価格レベルを選ぶ必要があります。
+<a name="scale-up"></a>
+
+Event Hubs が受信するイベントや Service Bus が処理するメッセージの数に基づいて、ホスティング プランでは、アクティブなレプリケーション中に最小限の vCPU 使用率と低遅延を維持するために、スケールアップまたはスケールダウンが行われる場合があります。 この動作では、レプリケーション タスクに使用するロジック アプリ リソースを作成するとき、Azure Logic Apps が CPU 使用率の調整や最大化を開始せず、高速なレプリケーション速度を保証できるように、[適切な Standard プランの価格レベルを選ぶ](#scale-out)必要があります。
+
+> [!NOTE]
+> アプリが WS1 プランの 1 インスタンスから始まり、2 インスタンスにスケールアウトした場合、プランを終日実行したと仮定すると、コストが WS1 の 2 倍になります。 アプリを WS2 プランにスケールアップし、1 インスタンスを使用した場合のコストは、実質上、WS1 プランの 2 インスタンスと同じです。 同様に、アプリを WS3 プランにスケールアップして 1 インスタンスを使用した場合、コストは実質上、WS2 プランの 2 インスタンスまたは WS1 プランの 4 インスタンスと等しくなります。
+
+<a name="scale-out"></a>
+
+以降の例では、シナリオ (Event Hubs または Service Bus) とさまざまな構成の値に基づき、特定のレプリケーション タスクのシナリオに対してスループットとコストが最良となるホスティング プランの価格レベルと構成オプションを示しています。
+
+> [!NOTE]
+> 以降のセクションの例では、イベントまたはメッセージのサイズが 1 KB であると仮定し、プリフェッチ数、Event Hubs の最大イベント バッチ サイズ、Service Bus の最大メッセージ数の既定値に 800 を使用しています。 イベントのサイズによっては、プリフェッチ数、最大イベント バッチ サイズ、最大メッセージ数を調整してもかまいません。 たとえば、イベント サイズまたはメッセージ サイズが 1 KB を超えるような場合は、プリフェッチ数、最大イベント バッチ サイズ、メッセージ数を 800 より小さくした方がいいでしょう。
+
+### <a name="event-hubs-scale-out"></a>Event Hubs スケールアウト
+
+以降の例では、"*同じリージョン内*" の 2 つの Event Hubs 名前空間の間で行われるレプリケーション タスクについて、[パーティション](../event-hubs/event-hubs-features.md#partitions)数、1 秒あたりのイベント数、その他の構成の値に基づき、ホスティング プランの価格レベルと構成オプションを示しています。
+
+このセクションの例では、イベント サイズが 1 KB であると仮定し、プリフェッチ数と最大イベント バッチ サイズの既定値として 800 を使用しています。 イベントのサイズによっては、プリフェッチ数と最大イベント バッチ サイズを調整してもかまいません。 たとえば、イベント サイズが 1 KB を超えるような場合は、プリフェッチ数と最大イベント バッチ サイズを 800 より小さくした方がいいでしょう。
+
+| Pricing tier | [パーティション数] | 1 秒あたりのイベント数 | 最大バースト数* | 常時使用可能なインスタンス* | プリフェッチ数* | 最大イベント バッチ サイズ* |
+|--------------|-----------------|-------------------|----------------|-------------------------|-----------------|-----------------|
+| **WS1** | 1 | 1000 | 1 | 1 | 800 | 800 |
+| **WS1** | 2 | 2000 | 1 | 1 | 800 | 800 |
+| **WS2** | 4 | 4000 | 2 | 1 | 800 | 800 |
+| **WS2** | 8 | 8000 | 2 | 1 | 800 | 800 |
+| **WS3** | 16 | 16000 | 2 | 1 | 800 | 800 |
+| **WS3** | 32 | 32000 | 3 | 1 | 800 | 800 |
+||||||||
+
+\* 各価格レベルの変更可能な値の詳細については、次の表を参照してください。
+
+| 値 | 説明 |
+|-------|-------------|
+| **最大バースト数** | 負荷がかかった状況下でスケールアウトするエラスティック ワーカーの "*最大*" 数。 基になるアプリに、"*常時使用可能なインスタンス数*" (この表の次の行を参照) を超えるインスタンスが必要な場合、インスタンスの数が最大バースト制限に達するまでアプリのスケールアウトを続けることができます。 この値を変更する場合は、後出の「[ホスティング プランのスケールアウト設定を編集する](#edit-plan-scale-out-settings)」を参照してください。 <p>**注**: プラン サイズを超えたインスタンスに対する課金は、それらが実行され、かつ割り当てられているときに "*のみ*"、秒あたりの単位で発生します。 アプリは定義された上限まで、プラットフォームによりベスト エフォートでスケールアウトされます。 <p>**ヒント**: 未使用のインスタンスは課金されないので、プラットフォームが必要に応じてスケールアウトして、処理できる負荷を増やせるよう、必要となりうる水準を超える最大値を選択するようお勧めします。 <p>ワークフロー Standard プランと Azure Functions Premium プランにはいくつか共通点があります。詳細については、次のドキュメントを参照してください。 <p>- [プランと SKU の設定 - Azure Functions Premium プラン](../azure-functions/functions-premium-plan.md#plan-and-sku-settings) <br>- [クラウド バーストついて](https://azure.microsoft.com/overview/what-is-cloud-bursting/) |
+| **常時使用可能なインスタンス** | アプリのホストとして常時準備が整っていてウォーミングされた最小インスタンス数。 最小数は常に 1 です。 この値を変更する場合は、後出の「[ホスティング プランのスケールアウト設定を編集する](#edit-plan-scale-out-settings)」を参照してください。 <p>**注**: プラン サイズを超えたインスタンスに対する課金は、それらが割り当てられているとき、実行されているかどうかに "*かかわらず*" 発生します。 <p>ワークフロー Standard プランと Azure Functions Premium プランにはいくつか共通点があります。詳細については、次のドキュメントを参照してください。[常時使用可能なインスタンス - Azure Functions Premium プラン](../azure-functions/functions-premium-plan.md#always-ready-instances) |
+| **プリフェッチ数** | ロジック アプリ リソースのアプリ設定 `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` の既定値。基になる `EventProcessorHost` クラスによって使用されるプリフェッチ数を決定します。 このアプリ設定に異なる値を追加または指定するには、「[アプリ設定の管理 - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings)」を参照してください。以下はその例です。 <p>- **名前**: `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` <br>- **値**: `800` (上限なし) <p>`prefetchCount` プロパティの詳細については、次のドキュメントを参照してください。 <p>- [host.json 設定 - Azure Functions における Azure Event Hubs のトリガーとバインド](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) <br>- [EventProcessorOptions.PrefetchCount プロパティ](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount) <br>- [アプリケーションの複数のインスタンス間でパーティション負荷のバランスを取る](../event-hubs/event-processor-balance-partition-load.md) <br>- [イベント プロセッサ ホスト](../event-hubs/event-hubs-event-processor-host.md) <br>- [EventProcessorHost クラス](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) |
+| **最大イベント バッチ サイズ** | ロジック アプリ リソースのアプリ設定 `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__maxBatchSize` の既定値。各受信ループで受信する最大イベント数を決定します。 このアプリ設定に異なる値を追加または指定するには、「[アプリ設定の管理 - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings)」を参照してください。以下はその例です。 <p>- **名前**: `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__maxBatchSize` <br>- **値**: `800` (上限なし) <p>`maxBatchSize` プロパティの詳細については、次のドキュメントを参照してください。 <p>- [host.json 設定 - Azure Functions における Azure Event Hubs のトリガーとバインド](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) <br>- [EventProcessorOptions.MaxBatchSize プロパティ](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) <br>- [イベント プロセッサ ホスト](../event-hubs/event-hubs-event-processor-host.md) |
+|||
+
+### <a name="service-bus-scale-out"></a>Service Bus スケールアウト
+
+以降の例では、"*同じリージョン内*" の 2 つの Service Bus 名前空間の間で行われるレプリケーション タスクについて、1 秒あたりのメッセージ数およびその他の構成の値に基づき、ホスティング プランの価格レベルと構成オプションを示しています。
+
+このセクションの例では、メッセージ サイズが 1 KB であると仮定し、プリフェッチ数と最大メッセージ数の既定値として 800 を使用しています。 メッセージのサイズによっては、プリフェッチ数と最大メッセージ数を調整してもかまいません。 たとえば、メッセージ サイズが 1 KB を超えるような場合は、プリフェッチ数と最大メッセージ数を 800 より小さくした方がいいでしょう。
+
+| Pricing tier | 1 秒あたりのメッセージ数 | 最大バースト数* | 常時使用可能なインスタンス* | プリフェッチ数* | 最大メッセージ数* |
+|--------------|---------------------|-----------------|-------------------------|-----------------|------------------------|
+| **WS1** | 2000 | 1 | 1 | 800 | 800 |
+| **WS2** | 2500 | 1 | 1 | 800 | 800 |
+| **WS3** | 3500 | 1 | 1 | 800 | 800 |
+|||||||
+
+\* 各価格レベルの変更可能な値の詳細については、次の表を参照してください。
+
+| 値 | 説明 |
+|-------|-------------|
+| **最大バースト数** | 負荷がかかった状況下でスケールアウトするエラスティック ワーカーの "*最大*" 数。 基になるアプリに、"*常時使用可能なインスタンス数*" (この表の次の行を参照) を超えるインスタンスが必要な場合、インスタンスの数が最大バースト制限に達するまでアプリのスケールアウトを続けることができます。 この値を変更する場合は、後出の「[ホスティング プランのスケールアウト設定を編集する](#edit-plan-scale-out-settings)」を参照してください。 <p>**注**: プラン サイズを超えたインスタンスに対する課金は、それらが実行され、かつ割り当てられているときに "*のみ*"、秒あたりの単位で発生します。 アプリは定義された上限まで、プラットフォームによりベスト エフォートでスケールアウトされます。 <p>**ヒント**: 未使用のインスタンスは課金されないので、プラットフォームが必要に応じてスケールアウトして、処理できる負荷を増やせるよう、必要となりうる水準を超える最大値を選択するようお勧めします。 <p>ワークフロー Standard プランと Azure Functions Premium プランにはいくつか共通点があります。詳細については、次のドキュメントを参照してください。 <p>- [プランと SKU の設定 - Azure Functions Premium プラン](../azure-functions/functions-premium-plan.md#plan-and-sku-settings) <br>- [クラウド バーストついて](https://azure.microsoft.com/overview/what-is-cloud-bursting/) |
+| **常時使用可能なインスタンス** | アプリのホストとして常時準備が整っていてウォーミングされた最小インスタンス数。 最小数は常に 1 です。 この値を変更する場合は、後出の「[ホスティング プランのスケールアウト設定を編集する](#edit-plan-scale-out-settings)」を参照してください。 <p>**注**: プラン サイズを超えたインスタンスに対する課金は、それらが割り当てられているとき、実行されているかどうかに "*かかわらず*" 発生します。 <p>ワークフロー Standard プランと Azure Functions Premium プランにはいくつか共通点があります。詳細については、次のドキュメントを参照してください。[常時使用可能なインスタンス - Azure Functions Premium プラン](../azure-functions/functions-premium-plan.md#always-ready-instances) |
+| **プリフェッチ数** | ロジック アプリ リソースのアプリ設定 `AzureFunctionsJobHost__extensions__serviceBus__prefetchCount` の既定値。基になる `ServiceBusProcessor` クラスによって使用されるプリフェッチ数を決定します。 このアプリ設定に異なる値を追加または指定するには、「[アプリ設定の管理 - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings)」を参照してください。以下はその例です。 <p>- **名前**: `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` <br>- **値**: `800` (上限なし) <p>`prefetchCount` プロパティの詳細については、次のドキュメントを参照してください。 <p>- [host.json 設定 - Azure Functions における Azure Service Bus のバインド](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) <br>- [ServiceBusProcessor.PrefetchCount プロパティ](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount) <br>- [ServiceBusProcessor クラス](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) |
+| **最大メッセージ数** | ロジック アプリ リソースのアプリ設定 `AzureFunctionsJobHost__extensions__serviceBus__batchOptions__maxMessageCount` の既定値。トリガー時に送信する最大メッセージ数を決定します。 このアプリ設定に異なる値を追加または指定するには、「[アプリ設定の管理 - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings)」を参照してください。以下はその例です。 <p>- **名前**: `AzureFunctionsJobHost__extensions__serviceBus__batchOptions__maxMessageCount` <br>- **値**: `800` (上限なし) <p>`maxMessageCount` プロパティの詳細については、「[host.json 設定 - Azure Functions における Azure Event Hubs のバインド](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)」のドキュメントを参照してください。|
+|||
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -163,7 +224,7 @@ Event Hubs が受信するイベントや Service Bus が処理するメッセ�
 
 ## <a name="naming-conventions"></a>名前付け規則
 
-レプリケーション タスクまたはエンティティをまだ作成していない場合は、それらに使用する名前付け戦略を慎重に検討してください。 名前は簡単に識別でき、区別できるようにしてください。 たとえば、Event Hubs 名前空間を使用している場合、レプリケーション タスクは、ソース名前空間のすべてのイベント ハブからレプリケートを行います。 Service Bus キューを使用している場合は、次の表で、エンティティとレプリケーション タスクの名前付けの例を確認できます。
+レプリケーション タスクまたはエンティティをまだ作成していない場合は、それらに使用する名前付け戦略を慎重に検討してください。 名前は簡単に識別でき、区別できるようにしてください。 たとえば、Event Hubs 名前空間を使用している場合、レプリケーション タスクは、ソース名前空間のすべての Event Hubs インスタンスからレプリケートを行います。 Service Bus キューを使用している場合は、次の表で、エンティティとレプリケーション タスクの名前付けの例を確認できます。
 
 | ソース名 | 例 | レプリケーション アプリ | 例 | ターゲット名 | 例 |
 |-------------|---------|-----------------|---------|-------------|---------|
@@ -189,9 +250,9 @@ Event Hubs が受信するイベントや Service Bus が処理するメッセ�
 
 1. **[タスクの追加]** ペインの **[テンプレートの選択]** を使用し、作成するレプリケーション タスクのテンプレートで **[選択]** を選びます。 次のページが表示されない場合は、 **[次へ: 認証]** を選びます。
 
-   この例では、続いて、Service Bus のキュー間でコンテンツをレプリケートする **[Replicate to Service Bus queue]\(Service Bus キューにレプリケート\)** タスク テンプレートを選びます。
+   この例では、続いて、Service Bus のキュー間でコンテンツをレプリケートする **[Replicate from Service Bus queue to queue]\(Service Bus キューからキューにレプリケート\)** タスク テンプレートを選びます。
 
-   ![[Replicate to Service Bus]\(Service Bus にレプリケート\) テンプレートが選択された [タスクの追加] ペインを示すスクリーンショット。](./media/create-replication-tasks-azure-resources/select-replicate-service-bus-template.png)
+   ![[Replicate from Service Bus queue to queue]\(Service Bus キューからキューにレプリケート\) テンプレートが選択された [タスクの追加] ペインを示すスクリーンショット。](./media/create-replication-tasks-azure-resources/select-replicate-service-bus-template.png)
 
 1. **[認証]** タブの **[接続]** セクションで、タスクに表示されるすべての接続について **[作成]** を選んで、すべての接続の認証資格情報を指定できるようにします。 各タスクの接続の種類は、タスクによって異なります。
 
@@ -292,8 +353,8 @@ Event Hubs が受信するイベントや Service Bus が処理するメッセ�
 
    次の表は、実行に対して可能性のある状態を示しています。
 
-   | Status | 説明 |
-   |--------|-------------|
+   | 状態ラベル | 説明 |
+   |--------------|-------------|
    | **取り消し済み** | タスクは実行中に取り消されました。 |
    | **Failed** | タスクには少なくとも 1 つの失敗したアクションがありますが、失敗を処理するための後続のアクションが存在しませんでした。 |
    | **実行中** | タスクは現在実行中です。 |
@@ -408,9 +469,9 @@ Event Hubs が受信するイベントや Service Bus が処理するメッセ�
 
 ## <a name="set-up-failover-for-azure-event-hubs"></a>Azure Event Hubs のフェールオーバーを設定する
 
-同じエンティティ タイプ間で Azure Event Hubs レプリケーションを行う場合、geo ディザスター リカバリーでは、ソース エンティティからターゲット エンティティへのフェールオーバーを実行し、影響を受けるイベント コンシューマーとプロデューサーに対して、新しいソースとなるターゲット エンティティのエンドポイントを使用するように指示する必要があります。 そのため、障害が発生し、ソース エンティティがフェールオーバーした場合、レプリケーション タスクを含むコンシューマーとプロデューサーは新しいソースにリダイレクトされます。 レプリケーション タスクが作成したストレージ アカウントのアカウントには、チェックポイント情報や、ソース リージョンが中断されたり使用できなくなったりした場合にソース エンティティが停止するストリーム内の位置 (オフセット) が含まれています。
+同じエンティティ タイプ間で Azure Event Hubs レプリケーションを行う場合、geo ディザスター リカバリーでは、ソース エンティティからターゲット エンティティへのフェールオーバーを実行し、影響を受けるイベント コンシューマーとプロデューサーに対して、新しいソースとなるターゲット エンティティのエンドポイントを使用するように指示する必要があります。 そのため、障害が発生し、ソース エンティティがフェールオーバーした場合、レプリケーション タスクを含むコンシューマーとプロデューサーは新しいソースにリダイレクトされます。 レプリケーション タスクが作成したストレージ アカウントには、チェックポイント情報や、ソース リージョンが中断されたり使用できなくなったりした場合にソース エンティティが停止するストリーム内の位置 (オフセット) が含まれています。
 
-ストレージ アカウントに元のソースからのレガシ情報が含まれておらず、レプリケーション タスクが新しいソース ストリームの開始時からイベントの読み取りとレプリケーションを開始するようにするには、レプリケーション タスクを手動で再構成する必要があります。
+ストレージ アカウントに元のソースからのレガシ情報が含まれておらず、レプリケーション タスクが新しいソース ストリームの開始時からイベントの読み取りとレプリケーションを開始するようにするには、手動で元のソースからレガシ情報をクリーンアップし、レプリケーション タスクを再構成する必要があります。
 
 1. [Azure portal](https://portal.azure.com) で、レプリケーション タスクの背後にあるロジック アプリ リソースまたは基になるワークフローを開きます。
 
@@ -419,22 +480,52 @@ Event Hubs が受信するイベントや Service Bus が処理するメッセ�
 
 1. リソースまたはワークフローのナビゲーション メニューで、 **[概要]** を選びます。 **[概要]** ツール バーで、ワークフローに対して **[無効]** を選択するか、ロジック アプリ リソースに対して **[停止]** を選択します。
 
-1. レプリケーション タスク リソースが含まれている Azure リソース グループに移動します。
+1. ソース エンティティからのチェックポイントとストリーム オフセット情報の格納先として、レプリケーション タスクの基になるロジック アプリ リソースで使用されているストレージ アカウントを見つけるために、次の手順に従います。
 
-   このリソース グループには、ロジック アプリ リソースと、ソース エンティティからのチェックポイントとストリーム オフセット情報を保存するストレージ アカウントが含まれます。
+   1. ロジック アプリのリソース メニューにある **[設定]** で、 **[構成]** を選択します。
 
-1. ロジック アプリ リソースに関連付けられているストレージ アカウントに移動します。 このストレージ アカウントを見つけるには、ロジック アプリのリソースが含まれているリソース グループを開きます。 これらの手順に従ってストレージ アカウントを削除します。
+   1. **[構成]** ペインの **[アプリケーション設定]** タブで、 **[AzureWebJobsStorage]** アプリ設定を選択します。
 
-   1. ストレージ アカウントのナビゲーション メニューの **[データ ストレージ]** で **[コンテナー]** を選びます。
-
-   1. 開いた **[コンテナー]** ペインで、Event Hubs のソースに **azure-webjobs-eventhub** を選びます。
+      この設定は、ロジック アプリ リソースによって使用される接続文字列とストレージ アカウントを指定します。
 
       > [!NOTE]
-      > **azure-webjobs-eventhub** エントリが存在しない場合は、タスクが少なくとも 1 回は実行されていることを確認します。
+      > アプリ設定がリストに表示されない場合は、 **[値を表示する]** を選択してください。
 
-   1. **azure-webjobs-eventhub** ペインで、`<source-event-hub-name>.servicebus.windows.net` という形式の名前を持つ名前空間フォルダーを選びます。
+   1. ストレージ アカウントの名前を確認できるよう **[AzureWebJobsStorage]** アプリ設定を選択します。
 
-   1. その名前空間フォルダーで、以前のソース エンティティのフォルダーを削除します。 このフォルダーには、以前のソースのチェックポイントとオフセット情報が保持され、通常はそのソースの名前が使用されます。
+   この例は、このストレージ アカウント (ここでは `storagefabrikamreplb0c`) の見つけ方を示しています。
+
+   ![基になるロジック アプリ リソースの [構成] ペインのスクリーンショット。"AzureWebJobsStorage" のアプリ設定と、ストレージ アカウント名を含んだ接続文字列が表示されています。](./media/create-replication-tasks-azure-resources/find-storage-account-name.png)
+
+   1. 該当するストレージ アカウント リソースが存在することを確認するために、Azure portal の検索ボックスに名前を入力し、ストレージ アカウントを選択します。その例を次に示します。
+
+   ![Azure portal の検索ボックスにストレージ アカウントの名前が入力された画面のスクリーンショット。](./media/create-replication-tasks-azure-resources/find-storage-account.png)
+
+1. 次に、ソース エンティティのチェックポイントとオフセット情報が格納されたフォルダーを削除します。次の手順に従ってください。
+
+   1. まだ最新バージョンをお持ちでない場合は、最新の [Azure Storage Explorer デスクトップ クライアント](https://azure.microsoft.com/features/storage-explorer/)をダウンロードし、インストールして開きます。
+
+      > [!NOTE]
+      > 現時点では、削除のクリーンアップ タスクに Azure Storage Explorer クライアントを使用する必要があります。Azure portal の管理エクスペリエンス、ストレージ エクスプローラー、ブラウザー、エディターは "*使用できません*"。
+      >
+      > PowerShell の [`Remove-AzStorageDirectory` コマンド](/powershell/module/az.storage/remove-azstoragedirectory)でコンテナーのフォルダーを削除することはできますが、このコマンドが作用するのは "*空の*" フォルダーのみです。
+
+   1. まだ Azure アカウントにサインインしていない場合はサインインし、ストレージ アカウント リソースの Azure サブスクリプションが選択されていることを確認します。 詳細については、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」を参照してください。
+
+   1. エクスプローラー ウィンドウで、該当する Azure サブスクリプション名から、 **[ストレージ アカウント]**  >  **[{*your-storage-account-name*}]**  >  **[BLOB コンテナー]**  >  **[azure-webjobs-eventhub]** の順に移動します。
+
+      > [!NOTE]
+      > **azure-webjobs-eventhub** フォルダーが存在しない場合、レプリケーション タスクがまだ実行されていません。 このフォルダーは、レプリケーション タスクが少なくとも 1 回実行された後にのみ表示されます。
+
+      ![Azure Storage Explorer のスクリーンショット。ストレージ アカウントと BLOB コンテナーが展開され、"azure-webjobs-eventhub" フォルダーが選択状態で表示されています。](./media/create-replication-tasks-azure-resources/azure-webjobs-eventhub-storage-explorer.png)
+
+   1. 表示された **[azure-webjobs-eventhub]** ペインで、Event Hubs 名前空間のフォルダーを選択します。フォルダー名は、`<source-Event-Hubs-namespace-name>.servicebus.windows.net` という形式になっています。
+
+   1. 名前空間のフォルダーが開いたら、 **[azure-webjobs-eventhub]** ペインで <*former-source-entity-name*> フォルダーを選択します。 次の例のように、ツール バーまたはフォルダーのショートカット メニューから **[削除]** を選択します。
+
+      ![以前のソース Event Hubs エンティティ フォルダーと [削除] ボタンが選択された画面のスクリーンショット。](./media/create-replication-tasks-azure-resources/delete-former-source-entity-folder-storage-explorer.png)
+
+   1. フォルダーを削除することを確認します。
 
 1. レプリケーション タスクの背後にあるロジック アプリのリソースまたはワークフローに戻ります。 ロジック アプリを再起動するか、ワークフローを再度有効にします。
 
@@ -444,6 +535,38 @@ geo ディザスター リカバリーの詳細については、次のドキュ
 
 - [Azure Event Hubs - geo ディザスター リカバリー](../event-hubs/event-hubs-geo-dr.md)
 - [Azure Service Bus - geo ディザスター リカバリー](../service-bus-messaging/service-bus-geo-dr.md)
+
+<a name="edit-plan-scale-out-settings"></a>
+
+## <a name="edit-hosting-plan-scale-out-settings"></a>ホスティング プランのスケールアウト設定を編集する
+
+### <a name="portal"></a>[ポータル](#tab/portal)
+
+1. [Azure portal](https://portal.azure.com) で、レプリケーション タスクの基になるロジック アプリ リソースを開きます。
+
+1. ロジック アプリ リソース メニューの **[設定]** で、 **[Scale Out (App Service のプラン)]** を選択します。
+
+   ![ホスティング プランの最大バースト数、最小インスタンス数、常時使用可能なインスタンス、スケールアウト制限の適用の各設定を示すスクリーンショット。](./media/create-replication-tasks-azure-resources/edit-app-service-plan-settings.png)
+
+1. 実際のシナリオの要件に基づき、 **[プランのスケールアウト]** と **[アプリのスケールアウト]** で、それぞれ最大バーストと常時使用可能なインスタンスの値を変更します。
+
+1. 操作が完了したら、 **[スケールアウト (App Service のプラン)]** ペインのツールバーで、 **[保存]** を選択します。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+アプリの常時使用可能なインスタンスは、Azure CLI を使用して構成することもできます。
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <logic-app-app-name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
+```
+
+---
+
+ワークフロー Standard プランと Azure Functions Premium プランにはいくつか共通点があります。詳細については、次のドキュメントを参照してください。
+
+- [プランと SKU の設定 - Azure Functions Premium プラン](../azure-functions/functions-premium-plan.md#plan-and-sku-settings)
+- [クラウド バーストについて](https://azure.microsoft.com/overview/what-is-cloud-bursting/)
+- [常時使用可能なインスタンス - Azure Functions Premium プラン](../azure-functions/functions-premium-plan.md#always-ready-instances)
 
 <a name="problems-failures"></a>
 
@@ -455,7 +578,7 @@ geo ディザスター リカバリーの詳細については、次のドキュ
 
   レプリケーション タスクによって[レプリケーション プロパティ](#replication-properties)が追加されるため、メッセージは必ず 1 MB 未満で送信してください。 そうしないと、タスクによって[レプリケーション プロパティ](#replication-properties)が追加された後に、メッセージのサイズが Event Hubs エンティティに送信できるイベントのサイズより大きい場合、レプリケーション プロセスは失敗します。
 
-  たとえば、イベントのサイズが 1 MB であるとします。 タスクによってレプリケーション プロパティが追加された後、メッセージのサイズが 1 MB よりも大きくなります。 メッセージを送信しようとする送信呼び出しは失敗します。
+  たとえば、メッセージのサイズが 1 MB であるとします。 タスクによってレプリケーション プロパティが追加された後、メッセージのサイズが 1 MB よりも大きくなります。 メッセージを送信しようとする送信呼び出しは失敗します。
 
 - パーティション キー
 

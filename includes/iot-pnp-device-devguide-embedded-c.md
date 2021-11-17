@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 09/07/2021
-ms.openlocfilehash: e80149a89c38124a6789b5e74e1c73f647465ae6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3f580069fc44f676bc6fcffa40bd74256a818a50
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128580496"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521392"
 ---
 ## <a name="sdks"></a>SDK
 
@@ -66,7 +66,7 @@ status = nx_azure_iot_provisioning_client_registration_payload_set(prov_client_p
 
 ## <a name="use-components"></a>コンポーネントを使う
 
-[IoT プラグ アンド プレイ モデルのコンポーネントの概要](../articles/iot-develop/concepts-modeling-guide.md)に関するページで説明されているように、デバイス ビルダーは、コンポーネントを使用してデバイスを記述するかどうかを決定する必要があります。 コンポーネントを使用する場合、デバイスは次のセクションで説明されている規則に従う必要があります。 コンポーネントに対する IoT プラグ アンド プレイ規則の操作を簡略化するために、サンプルでは [nx_azure_iot_pnp_helpers.h](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/samples/common/nx_azure_iot_pnp_helpers.h) のヘルパー関数を使用しています。
+[IoT プラグ アンド プレイ モデルのコンポーネントの概要](../articles/iot-develop/concepts-modeling-guide.md)に関するページで説明されているように、デバイス ビルダーは、コンポーネントを使用してデバイスを記述するかどうかを決定する必要があります。 コンポーネントを使用する場合、デバイスは次のセクションで説明されている規則に従う必要があります。 コンポーネントに対する IoT プラグ アンド プレイ規則の操作を簡略化するために、サンプルでは [nx_azure_iot_hub_client.h](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/nx_azure_iot_hub_client.h) 内のヘルパー関数を使用しています。
 
 ## <a name="telemetry"></a>テレメトリ
 

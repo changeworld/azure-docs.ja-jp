@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 37192a38376536143472f406b9fd11c490a98e5b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 81dcb85302158adfe8be4df0715fee8cb5633fa6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128578820"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459579"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>オンプレミスの Azure AD パスワード保護環境を監視してログを確認する
 
@@ -100,6 +100,9 @@ PasswordSetErrors               : 1
 ```
 
 コマンドレット レポートのスコープは、-Forest、-Domain、-DomainController のいずれかのパラメーターの使用の影響を受けることがあります。 パラメーターを指定しないと暗黙的に –Forest が指定されます。
+
+> [!NOTE]
+> DC エージェントが 1 つの DC にのみインストールされる場合、Get-AzureADPasswordProtectionSummaryReport ではその DC からのみイベントが読み取られます。 複数の DC からイベントを取得するには、各 DC に DC エージェントをインストールする必要があります。
 
 `Get-AzureADPasswordProtectionSummaryReport` コマンドレットでは、DC エージェント管理イベント ログのクエリが実行され、表示されている各結果カテゴリに対応するイベントの合計数がカウントされます。 次の表では、各結果とそれに対応するイベント ID のマッピングを示します。
 

@@ -2,18 +2,18 @@
 title: Azure の予約の購入
 description: Azure の予約を購入するうえで役立つ重要なポイントについて説明します。
 author: bandersmsft
-ms.reviewer: primattal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/21/2021
 ms.author: banders
-ms.openlocfilehash: bbd57ed54171785ab8f2aedea93fa8c56cc0319c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f7c9551b3edee5c4e491cd4218e7b7973f01f287
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128653375"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244155"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -23,7 +23,9 @@ Azure の予約には、多数の Azure リソースに対する計画を 1 年�
 
 予約を購入するには、Enterprise (MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (MS-AZR-0003P または MS-AZR-0023P) または Microsoft 顧客契約型の Azure サブスクリプションに対する所有者ロールまたは予約購入者ロールを保持している必要があります。 クラウド ソリューション プロバイダーは、Azure portal または [パートナー センター](/partner-center/azure-reservations) を使用して Azure の予約を購入できます。
 
-Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約インスタンスを追加します]** オプションを無効にして、購入を EA 管理者に限定することができます。 EA 管理者は、予約を購入するために、少なくとも 1 つの EA サブスクリプションの所有者または予約購入者のアクセス権を保持している必要があります。 このオプションは、一元化されたチームが予約を購入する必要がある企業に役立ちます。
+Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約インスタンスを追加します]** オプションを無効にして、購入を EA 管理者に限定することができます。 ダイレクト EA のお客様は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) で予約インスタンスの設定を無効にできるようになりました。 [ポリシー] メニューに移動して、設定を変更します。
+
+EA 管理者は、予約を購入するために、少なくとも 1 つの EA サブスクリプションの所有者または予約購入者のアクセス権を保持している必要があります。 このオプションは、一元化されたチームが予約を購入する必要がある企業に役立ちます。
 
 予約割引が適用されるのは、エンタープライズ、クラウド ソリューション プロバイダー (CSP)、Microsoft 顧客契約、および従量課金制の個人プランを通じて購入したサブスクリプションに関連付けられたリソースのみです。
 

@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) で Azure Files 用の Container Storage I
 description: Azure Kubernetes Service (AKS) クラスターで Azure Files 用の Container Storage Interface (CSI) ドライバーを使用する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/09/2021
 author: palma21
-ms.openlocfilehash: c60b2301e6f0ea2767128224c4e76a677df69e0d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1a0abb0a89ba9e2c913b29ccc17b591c7fa0d39
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746006"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137275"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する
 
@@ -258,7 +258,10 @@ kubectl apply -f private-pvc.yaml
 
 [Azure Files では、NFS v4.1 プロトコルがサポートされています](../storage/files/storage-files-how-to-create-nfs-shares.md)。 Azure Files での NFS 4.1 のサポートによって、サービスとしてのフル マネージド NFS ファイル システムがお客様に提供されます。これは、可用性が高く耐久性に優れた、分散型で回復力のあるストレージ プラットフォーム上に構築されています。
 
- このオプションは、インプレース データ更新を使用するランダム アクセス ワークロードに合わせて最適化されており、完全な POSIX ファイル システムのサポートを提供します。 このセクションでは、AKS クラスター上で NFS 共有を Azure File CSI ドライバーと共に使用する方法について説明します。
+このオプションは、インプレース データ更新を使用するランダム アクセス ワークロードに合わせて最適化されており、完全な POSIX ファイル システムのサポートを提供します。 このセクションでは、AKS クラスター上で NFS 共有を Azure File CSI ドライバーと共に使用する方法について説明します。
+
+> [!NOTE]
+> クラスターの `Control plane` ID (名前は `AKS Cluster Name`) が、vnet リソース グループに対する `Contributor` アクセス許可を持っていることを確認します。
 
 ### <a name="create-nfs-file-share-storage-class"></a>NFS ファイル共有のストレージ クラスを作成する
 

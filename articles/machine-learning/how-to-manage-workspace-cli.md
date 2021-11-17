@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 30347ccbea23fc91429a9653857aba9292afbc6a
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 8f98b1d5d020df0b8a2047fa5881c6d978a0ad94
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560950"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281743"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Azure CLI を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -93,7 +93,7 @@ Azure Machine Learning ワークスペースをデプロイするとき、他の
 > * Azure Blob と Azure File の両方の機能が有効になっている
 > * 階層型名前空間 (ADLS Gen 2) が無効です。これらの要件は、ワークスペースによって使用される "_既定_" のストレージ アカウントのみを対象としています。
 >
-> Azure コンテナー レジストリをアタッチするとき、これを Azure Machine Learning ワークスペースで使用するには、事前に[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)が有効にする必要があります。
+> Azure コンテナー レジストリをアタッチするとき、これを Azure Machine Learning ワークスペースで使用するには、事前に[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)が有効になっている必要があります。
 
 # <a name="create-with-new-resources"></a>[新しいリソースを使用して作成する](#tab/createnewresources)
 
@@ -125,7 +125,7 @@ az ml workspace create -w <workspace-name>
 
 CLI を使用して既存の関連リソースを取り込むときに新しいワークスペースを作成するには、まず、構成ファイル内でワークスペースを構成する方法を定義する必要があります。
 
-:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/with-existing-resources.yml":::
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/with-existing-resources.yml":::
 
 その後、この構成ファイルを、ワークスペース作成 CLI コマンドの一部として参照できます。
 
@@ -174,7 +174,7 @@ az ml workspace create -g <resource-group-name> --file workspace.yml
 ## <a name="advanced-configurations"></a>詳細な構成
 ### <a name="configure-workspace-for-private-network-connectivity"></a>プライベート ネットワーク接続用にワークスペースを構成する
 
-ユース ケースと組織の要件に応じて、プライベート ネットワーク接続を使用してAzure Machine Learning を構成できます。 Azure CLI を使用して、ワークスペースと、ワークスペース リソースのプライベート リンク エンドポイントをデプロイできます。 お使いのワークスペースでのプライベート エンドポイントと仮想ネットワークの使用の詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。 複雑なリソース構成については、[Azure Resource Manager](how-to-create-workspace-template.md) などのテンプレート ベースのデプロイ オプションも参照してください。
+ユース ケースと組織の要件に応じて、プライベート ネットワーク接続を使用してAzure Machine Learning を構成できます。 Azure CLI を使用して、ワークスペースと、ワークスペース リソースのプライベート リンク エンドポイントをデプロイできます。 お使いのワークスペースでのプライベート エンドポイントと仮想ネットワーク (VNet) の使用の詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。 複雑なリソース構成については、[Azure Resource Manager](how-to-create-workspace-template.md) などのテンプレート ベースのデプロイ オプションも参照してください。
 
 # <a name="10-cli"></a>[1.0 CLI](#tab/vnetpleconfigurationsv1cli)
 
@@ -202,7 +202,7 @@ az ml workspace create -w <workspace-name>
 
 プライベート リンクを使用しているときは、ワークスペースで、Azure Container Registry タスク コンピューティングを使用してイメージを作成することができません。 そのため、image_build_compute プロパティに CPU コンピューティング クラスター名を設定して、Docker イメージの環境作成に使用できるようにする必要があります。 インターネットでプライベート リンク ワークスペースにアクセスできるようにするかどうかも、public_network_access プロパティによって指定できます。
 
-:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/privatelink.yml":::
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/privatelink.yml":::
 
 ```azurecli-interactive
 az ml workspace create -g <resource-group-name> --file privatelink.yml
@@ -218,6 +218,48 @@ az network private-endpoint create \
     --private-connection-resource-id "/subscriptions/<subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>" \
     --group-id amlworkspace \
     --connection-name workspace -l <location>
+```
+
+ワークスペースのプライベート DNS ゾーン エントリを作成するには、次のコマンドを使用します。
+
+```azurecli-interactive
+# Add privatelink.api.azureml.ms
+az network private-dns zone create \
+    -g <resource-group-name> \
+    --name 'privatelink.api.azureml.ms'
+
+az network private-dns link vnet create \
+    -g <resource-group-name> \
+    --zone-name 'privatelink.api.azureml.ms' \
+    --name <link-name> \
+    --virtual-network <vnet-name> \
+    --registration-enabled false
+
+az network private-endpoint dns-zone-group create \
+    -g <resource-group-name> \
+    --endpoint-name <private-endpoint-name> \
+    --name myzonegroup \
+    --private-dns-zone 'privatelink.api.azureml.ms' \
+    --zone-name 'privatelink.api.azureml.ms'
+
+# Add privatelink.notebooks.azure.net
+az network private-dns zone create \
+    -g <resource-group-name> \
+    --name 'privatelink.notebooks.azure.net'
+
+az network private-dns link vnet create \
+    -g <resource-group-name> \
+    --zone-name 'privatelink.notebooks.azure.net' \
+    --name <link-name> \
+    --virtual-network <vnet-name> \
+    --registration-enabled false
+
+az network private-endpoint dns-zone-group add \
+    -g <resource-group-name> \
+    --endpoint-name <private-endpoint-name> \
+    --name myzonegroup \
+    --private-dns-zone 'privatelink.notebooks.azure.net' \
+    --zone-name 'privatelink.notebooks.azure.net'
 ```
 
 ---
@@ -250,7 +292,7 @@ az ml workspace create -w <workspace-name>
 
 お使いのワークスペース上で [Microsoft が収集するデータを制限](./concept-data-encryption.md#encryption-at-rest)するには、追加で `hbi_workspace` プロパティを指定できます。 
 
-:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/cmk.yml":::
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/cmk.yml":::
 
 その後、この構成ファイルを、ワークスペース作成 CLI コマンドの一部として参照できます。
 

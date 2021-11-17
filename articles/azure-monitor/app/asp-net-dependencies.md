@@ -4,12 +4,12 @@ description: オンプレミスまたは Microsoft Azure Web アプリケーシ�
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e832da335453151ee60a458cb259d4add15d6e1d
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: a2052b4b4d5822d583101d27e873bf19ceeca49c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228177"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486124"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -216,7 +216,7 @@ dependencies
 Log Analytics のクエリ ビュー `timestamp` では、依存関係呼び出しの応答を受信した直後に発生する TrackDependency() 呼び出しが開始された瞬間が表されています。 依存関係の呼び出しが開始された時刻を計算するには、`timestamp` を取得して、依存関係の呼び出しの記録済み `duration` を減算します。
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
-あらゆる Application Insights SDK と同様に、依存関係収集モジュールもオープンソースです。 コードの閲覧、投稿、問題のレポートは[公式の GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet-server)で行ってください。
+あらゆる Application Insights SDK と同様に、依存関係収集モジュールもオープンソースです。 コードの閲覧、投稿、問題のレポートは[公式の GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet)で行ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

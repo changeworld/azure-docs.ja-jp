@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: 5687c4af0321e26d20906932fd9ac3b06b983651
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: 5feb112a9d1c9b7eb229c65f8bcce3845a3f23ad
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132373082"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844983"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
 
-複数サイトのホスティングでは、パブリックを対象にしたリスナーを使用して、アプリケーション ゲートウェイの同じポートに複数の Web アプリケーションを構成することができます。 最大で 100 個以上の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 たとえば、contoso.com、fabrikam.com、adatum.com という 3 つのドメインで、アプリケーション ゲートウェイの IP アドレスが示されています。 マルチサイト リスナーを 3 つ作成し、リスナーごとにポートとプロトコル設定を構成します。
+複数サイトのホスティングでは、パブリックを対象にしたリスナーを使用して、アプリケーション ゲートウェイの同じポートに複数の Web アプリケーションを構成することができます。 最大で 100 個以上の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 たとえば、contoso.com、fabrikam.com、adatum.com という 3 つのドメインで、アプリケーション ゲートウェイの IP アドレスが示されています。 マルチサイト リスナーを 3 つ作成し、リスナーごとにポートとプロトコル設定を構成します。 
 
 マルチサイト リスナーでワイルドカードのホスト名を定義し、リスナー 1 つにつき最大 5 つのホスト名を定義することもできます。 詳細については、[リスナーでのワイルドカードのホスト名](#wildcard-host-names-in-listener-preview)に関する記事を参照してください。
 
@@ -71,8 +71,6 @@ Azure portal のマルチサイト リスナーで、 **[複数/ワイルドカ�
 * `*` - 許可された範囲内の複数の文字と一致することができます
 * `?` - 許可された範囲内の 1 つの文字と一致することができます
 
-<!-- docutune:disable -->
-
 ### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>リスナーでワイルドカード文字と複数のホスト名を使用する場合の条件
 
 * 1 つのリスナーでは最大で 5 つのホスト名のみを指定できます
@@ -80,8 +78,6 @@ Azure portal のマルチサイト リスナーで、 **[複数/ワイルドカ�
 * ホスト名では、アスタリスク `*` を最大で 2 つまで使用できます。 たとえば、`*.contoso.*` は有効ですが、`*.contoso.*.*.com` は無効です。
 * ホスト名で使用できるワイルドカード文字は最大 4 つです。 たとえば、`????.contoso.com`、`w??.contoso*.edu.*` は有効ですが、`????.contoso.*` は無効です。
 * ホスト名の 1 つの構成要素でアスタリスク `*` と疑問符 `?` を一緒に使用すること (`*?` または `?*` または `**`) は無効です。 たとえば、`*?.contoso.com` や `**.contoso.com` は無効です。
-
-<!-- docutune:enable -->
 
 ### <a name="considerations-and-limitations-of-using-wildcard-or-multiple-host-names-in-a-listener"></a>リスナーでワイルドカードまたは複数のホスト名を使用する場合の考慮事項と制限事項
 

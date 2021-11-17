@@ -4,12 +4,12 @@ description: タグを適用して、課金や管理のために Azure リソー
 ms.topic: conceptual
 ms.date: 07/29/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cf8b4ceb70eec2ac6dbb79b8193276997f8e06f1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2ecb43876582e21fbee97e4d51732b16727b6c92
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664525"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248217"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -848,6 +848,7 @@ REST API の操作については、「 [Azure Billing REST API Reference (Azure
 
    > [!NOTE]
    > * Azure DNS ゾーンと Traffic Manager では、タグの中でスペースを使用したり、数字で始まるタグを使用したりすることができません。
+   > * Azure DNS のタグ名では、特殊文字と unicode 文字はサポートされていません。 値には、すべての文字を含めることができます。
    >
    > * Azure Front Door では、タグ名に `#` または `:` を使用できません。
    >

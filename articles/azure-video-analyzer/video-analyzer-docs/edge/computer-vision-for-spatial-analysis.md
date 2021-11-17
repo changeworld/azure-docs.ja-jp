@@ -7,12 +7,12 @@ ms.service: azure-video-analyzer
 ms.topic: tutorial
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b3de27af4dab9dd8968f97487cb120dbcd0d08c8
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 341c3df126d0ff949c3ba40e5d679bb2e3147ff6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554490"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488641"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>チュートリアル: 空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
 
@@ -160,7 +160,7 @@ spatial-analysis モジュールを Azure Video Analyzer モジュールに接�
 1. `avaedge` の `IpcMode` と `spatialanalysis` モジュールの createOptions は同じで、**host** に設定されている必要があります。
 1. RTSP シミュレーターを機能させるには、Azure Stack Edge デバイスを使用するときに、ボリュームの境界が設定されていることを確認します。
 
-   1. [SMB 共有](../../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)に接続し、[サンプルの小売店のビデオ ファイル](https://lvamedia.blob.core.windows.net/public/retailshop-15fps.mkv)をローカル共有にコピーします。
+   1. [SMB 共有](../../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)に接続し、[サンプルの小売店のビデオ ファイル](https://avamedia.blob.core.windows.net/public/retailshop-15fps.mkv)をローカル共有にコピーします。
 
       > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWMIPP]
 

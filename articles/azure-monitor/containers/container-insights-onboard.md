@@ -3,12 +3,12 @@ title: コンテナー分析情報を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンスと特定されたパフォーマンスに関する問題を把握できるように、コンテナー分析情報を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: be2dcaeb088d2996df1d09e3f373e48866db3eb9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2d47ea7f2f2f0dadfd979a42b0b0e9125d4bebde
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233452"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455114"
 ---
 # <a name="enable-container-insights"></a>コンテナー分析情報を有効にする
 
@@ -74,6 +74,9 @@ ms.locfileid: "130233452"
 - 環境:Azure Red Hat OpenShift、オンプレミスの Kubernetes、Azure および Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)に関するページを参照してください。
 - Kubernetes のバージョンとサポート ポリシーは、[Azure Kubernetes Service (AKS) でサポートされている](../../aks/supported-kubernetes-versions.md)ものと同じです。
 - クラスターを [Azure Arc](../../azure-arc/kubernetes/overview.md) に接続し、Azure Arc を介した Container Insights による監視を有効にすることをお勧めします。
+
+> [!IMPORTANT]
+> 監視アドオンは、[HTTP プロキシ (プレビュー)](../../aks/http-proxy.md) で構成された AKS クラスターでは現在サポートされていないので注意してください
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
 

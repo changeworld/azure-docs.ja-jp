@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdca219a352527114123cdf0179a5eb7fc486852
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7ef4ca7858e50c43a2ed17656ecdd11c3affef6d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131435896"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300806"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Privileged Identity Management に対する Azure Active Directory (PIM) セキュリティ操作
 
@@ -62,13 +62,13 @@ Privileged Identity Management (PIM) は Azure AD サービスの 1 つで、こ
 
 Azure portal で、Azure AD 監査ログを表示したり、コンマ区切り値 (CSV) または JavaScript Object Notation (JSON) ファイルとしてダウンロードしたりできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* [**Azure Sentinel**](../../sentinel/overview.md) - セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでのインテリジェントなセキュリティ分析を実現します。 
+* [**Microsoft Sentinel**](../../sentinel/overview.md) – セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでインテリジェントにセキュリティを分析します。 
 
 * [**Azure Monitor**](../../azure-monitor/overview.md) - さまざまな条件に基づいて監視とアラートを自動化します。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md)**と SIEM の統合**- [Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic などの他の SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) と Azure AD ログを統合できます。
 
-* [**Microsoft Cloud App Security (MCAS)**](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* [**Microsoft Defender for Cloud Apps**](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリおよびリソース全体のガバナンス、クラウド アプリのコンプライアンス確認を行うことができます。 
 
 この記事の残りの部分では、階層モデルを使用して編成された、監視およびアラートのベースラインを設定する際の推奨事項について説明します。 事前構築済みのソリューションへのリンクを次の表に示します。 前述のツールを使用してアラートを作成することもできます。 内容は、PIM の次のトピック領域で構成されています。
 

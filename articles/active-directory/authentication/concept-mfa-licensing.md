@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 11/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6596b5a61c4c65bdfd5172c4acd1c50b960097dd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dff3c04ee74d17aeb0b96d8d0e2348a9667f9729
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763160"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456311"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の機能とライセンス
 
@@ -60,7 +60,7 @@ Azure AD Multi-Factor Authentication は、組織のニーズに応じて、い�
 
 ## <a name="compare-multi-factor-authentication-policies"></a>多要素認証ポリシーを比較する
 
-次の表に、さまざまな MFA ポリシーのデプロイに関する考慮事項を示します。
+MFA を適用する方法としては、[条件付きアクセス](../conditional-access/overview.md)の使用が推奨されます。 次の表を見て、ご利用のライセンスに含まれる機能を確認してください。
 
 | のポリシー | セキュリティの既定値群 | 条件付きアクセス | ユーザーごとの MFA |
 | --- |:---:|:---:|:---:|

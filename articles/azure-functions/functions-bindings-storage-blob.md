@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 8f745a3569d8d90ad1ccd7daea6a70a4574e6ddf
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 5d93ebd083ccd887b8267c1bc9b82c6ba7b34c05
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069522"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432379"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Blob Storage のバインドの概要
 
@@ -36,23 +36,22 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 
 #### <a name="storage-extension-5x-and-higher"></a>ストレージ拡張機能 5.x 以降
 
-ストレージのバインド拡張機能の新しいバージョンはプレビュー版をご利用いただけます。 [シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更されます。これにより、`WindowsAzure.Storage` と `Microsoft.Azure.Storage` の型が [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) の新しい型に置き換えられます。 これらの異なる新しい型と、それらを移行する方法については、[Azure.Storage.Blobs の移行ガイド](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/AzureStorageNetMigrationV12.md)に関するページを参照してください。
+ストレージのバインド拡張機能の新しいバージョンが利用可能になりました。 [シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 マネージド ID を使用して関数アプリを構成するチュートリアルについては、[ID ベースの接続を使用した関数アプリの作成](./functions-identity-based-connections-tutorial.md)に関するチュートリアルを参照してください。 .NET アプリケーションの場合は、新しい拡張機能バージョンによって、バインドできる型も変更されます。これにより、`WindowsAzure.Storage` および `Microsoft.Azure.Storage` の型が [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) の新しい型に置き換えられます。 これらの異なる新しい型と、それらを移行する方法については、[Azure.Storage.Blobs の移行ガイド](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/AzureStorageNetMigrationV12.md)に関するページを参照してください。
 
-この拡張機能バージョンは[プレビュー NuGet パッケージ]として利用できます。あるいは、`host.json` ファイルに次を追加することでプレビュー拡張機能バンドル v3 から追加できます。
+この拡張機能のバージョンは、[NuGet パッケージ] バージョン 5.x をインストールすることによって利用できます。または、`host.json` ファイルに次のものを追加して、拡張機能バンドル v3 から追加することもできます。
 
 ```json
 {
   "version": "2.0",
   "extensionBundle": {
-    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
-    "version": "[3.*, 4.0.0)"
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[3.3.0, 4.0.0)"
   }
 }
 ```
 
 詳細については、[ユーザーの更新]に関するページを参照してください。
 
-[プレビュー NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.5
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage

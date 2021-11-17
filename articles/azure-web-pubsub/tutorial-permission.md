@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: tutorial
-ms.date: 08/26/2021
-ms.openlocfilehash: e2f2b7ec00250287b71b3882b7078b249262db70
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/01/2021
+ms.openlocfilehash: 027cd7197167a3667748c2c470e17b83aa3bf03d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124769866"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578727"
 ---
 # <a name="tutorial-add-authentication-and-permissions-to-your-application-when-using-azure-web-pubsub"></a>チュートリアル: Azure Web PubSub を使用するときにアプリケーションに認証とアクセス許可を追加する
 
@@ -101,7 +101,16 @@ ms.locfileid: "124769866"
     1. アプリケーション名とホームページの URL (任意の URL を指定できます) を入力し、 **[認証コールバックの URL]** を `http://localhost:8080/auth/github/callback` に設定します。 この URL は、サーバーに公開したコールバック API と一致します。
     1. アプリケーションが登録されたら、クライアント ID をコピーし、 **[新しいクライアント シークレットを生成する]** を選択します。
 
-    次に `node server <connection-string> <client-id> <client-secret>` を実行し、`http://localhost:8080/auth/github` を開きます。 サインインするために GitHub にリダイレクトされます。 サインインすると、チャット アプリケーションにリダイレクトされます。
+    次のコマンドを実行して設定をテストします。`<connection-string>`、`<client-id>`、`<client-secret>` は必ず実際の値に置き換えます。
+
+    ```bash
+    export WebPubSubConnectionString="<connection-string>"
+    export GitHubClientId="<client-id>"
+    export GitHubClientSecret="<client-secret>"
+    node server
+    ```
+    
+    ここで、`http://localhost:8080/auth/github` を開きます。 サインインするために GitHub にリダイレクトされます。 サインインすると、チャット アプリケーションにリダイレクトされます。
 
 1.  ユーザーにユーザー名の入力を求めるのではなく、GitHub から取得した ID を利用するようにチャット ルームを更新します。
 
@@ -131,7 +140,7 @@ ms.locfileid: "124769866"
       let options = {
         userId: req.user.username
       };
-      let token = await serviceClient.getAuthenticationToken(options);
+      let token = await serviceClient.getClientAccessToken(options);
       res.json({
         url: token.url
       });
@@ -164,7 +173,7 @@ Web PubSub では、クライアントは次の種類の操作をサブプロト
 異なるグループに異なるメッセージを送信するように `server.js` を変更します。
 
 ```javascript
-let handler = new WebPubSubEventHandler(hubName, ['*'], {
+let handler = new WebPubSubEventHandler(hubName, {
   path: '/eventhandler',
   handleConnect: (req, res) => {
     res.success({
@@ -255,12 +264,12 @@ message.addEventListener('keypress', e => {
 ```javascript
 app.get('/negotiate', async (req, res) => {
   ...
-  if (req.user.username === process.argv[5]) options.claims = { role: ['webpubsub.sendToGroup.system'] };
-  let token = await serviceClient.getAuthenticationToken(options);
+  if (req.user.username === process.argv[2]) options.claims = { role: ['webpubsub.sendToGroup.system'] };
+  let token = await serviceClient.getClientAccessToken(options);
 });
 ```
 
-次に `node server <connection-string> <client-id> <client-secret> <admin-id>` を実行します。 `<admin-id>` としてサインインすると、すべてのクライアントにシステム メッセージを送信できるのを確認できます。
+次に `node server <admin-id>` を実行します。 `<admin-id>` としてサインインすると、すべてのクライアントにシステム メッセージを送信できるのを確認できます。
 
 ただし、別のユーザーとしてサインインした場合は、**システム メッセージ** を選択しても何も起こりません。 その操作が許可されていないことを知らせるエラーをサービスによって出すことができます。 このフィードバックを提供するには、メッセージを公開するときに `ackId` を設定します。 `ackId` が指定されている場合は、Web PubSub によって、操作が成功したかどうかを示す、一致する `ackId` を持つメッセージが返されます。
 

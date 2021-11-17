@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: f2ded17ed86a550ca781fbad792e89bfc4d7809d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a79954ba0a96f6db6f12af13c6c74d7386e88231
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130215936"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473416"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -23,18 +23,19 @@ Computer Vision の一部の機能では、複数の言語がサポートされ�
 
 ## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
-Computer Vision の OCR API では、複数の言語がサポートされています。 読み取りでは、言語パラメーターを指定せずに、言語が混在する画像や文書 (同じテキスト行を含む) からテキストを抽出できます。 詳細については、[光学式文字認識 (OCR) の概要](overview-ocr.md)に関するページを参照してください。
+Computer Vision の OCR API では、多くの言語がサポートされています。 Read では、言語パラメーターを指定せずに、言語が混在する画像や文書 (同じテキスト行からのものを含む) からテキストを抽出できます。 詳細については、[光学式文字認識 (OCR) の概要](overview-ocr.md)に関するページを参照してください。
 
 
 > [!NOTE]
 > **言語コード (省略可能)**
 >
-> Read OCR のディープ ラーニング ベースのユニバーサル モデルでは、言語が混在するテキスト行を含め、ドキュメント内のすべての多言語テキストが抽出され、言語コードを指定する必要はありません。 言語について確認し、関連するモデルのみを適用するようにサービスに強制する場合を除き、言語コードをパラメーターとして指定しないでください。 そうでない場合、サービスが不完全で不正確なテキストを返すことがあります。
+> Read OCR のディープ ラーニング ベースのユニバーサル モデルでは、言語が混在するテキスト行を含め、ドキュメント内のすべての多言語テキストが抽出され、言語コードを指定する必要はありません。 言語について確認し、関連するモデルのみサービスを適用するように強制する場合を除き、言語コードをパラメーターとして指定しないでください。 そうでない場合、サービスが不完全で不正確なテキストを返すことがあります。
 
-プレビューの言語と機能を使用するための[モデル バージョンの指定方法](./Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional)に関するページを参照してください。 プレビュー モデルには、現在の GA バージョンに対する拡張機能が含まれています。
+プレビュー モデルには、API の現在の GA バージョンに対する拡張機能が含まれています。 プレビューの言語と機能を使用するための[モデル バージョンの指定方法](./Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional)に関するページを参照してください。 
 
 ### <a name="handwritten-languages"></a>手書きの言語
-Read でサポートされる手書きの言語の一覧を次の表に示します。
+
+手書きのテキストの Read でサポートされる言語の一覧を次の表に示します。
 
 |言語| 言語コード (省略可能) | Read |
 |:-----|:----:|:-----|
@@ -47,7 +48,8 @@ Read でサポートされる手書きの言語の一覧を次の表に示しま
 |スペイン語 |`es`|✅ プレビュー |
 
 ### <a name="print-languages"></a>印刷言語
-次の表に、OCR API でサポートされる印刷言語を示します。
+
+次の表に、印刷されたテキスト用の OCR API でサポートされる言語を示します。
 
 |言語| 言語コード (省略可能) | Read | OCR |
 |:-----|:----:|:-----|:---:|
@@ -179,7 +181,7 @@ Read でサポートされる手書きの言語の一覧を次の表に示しま
 
 ## <a name="image-analysis"></a>画像分析
 
-[Analyze - Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API の一部のアクションは、`language` クエリ パラメーターで指定された他の言語で結果を返すことができます。 他のアクションは、どの言語が指定されていても英語で結果を返し、その他のアクションはサポートされていない言語に対して例外をスローします。 アクションは `visualFeatures` および `details` クエリ パラメーターで指定されます。画像分析で実行できるすべてのアクションの一覧については、[概要](overview-image-analysis.md)に関するページを参照してください。 タグ付け用の言語は、API バージョン 3.2 以降でのみ使用できます。
+[Analyze - Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API の一部の機能では、`language` クエリ パラメーターで指定された他の言語で結果を返すことができます。 他のアクションは、どの言語が指定されていても英語で結果を返し、その他のアクションはサポートされていない言語に対して例外をスローします。 アクションは `visualFeatures` および `details` クエリ パラメーターで指定されます。画像分析で実行できるすべてのアクションの一覧については、[概要](overview-image-analysis.md)に関するページを参照してください。 タグ付け用の言語は、API バージョン 3.2 以降でのみ使用できます。
 
 |Language | 言語コード | Categories | Tags | 説明 | 成人向けコンテンツ | ブランド | Color | 顔 | ImageType | Objects | 有名人 | ランドマーク |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|

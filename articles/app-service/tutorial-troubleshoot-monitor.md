@@ -5,18 +5,14 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 907ae75b17bcb7496c2ad3e76a8e4da1bd44b1fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd68df35eed106edf707a8356e066e736aa913f7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728110"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470929"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>チュートリアル:Azure Monitor を使用した App Service アプリのトラブルシューティング
-
-> [!NOTE]
-> Azure Monitor と App Service の統合は[プレビュー](https://aka.ms/appsvcblog-azmon)段階です。
->
 
 このチュートリアルでは、[Azure Monitor](overview.md) を使用して [App Service](../azure-monitor/overview.md) アプリのトラブルシューティングを行う方法について説明します。 このサンプル アプリには、メモリを使い果たして HTTP 500 エラーを引き起こすことを意図したコードが含まれているため、Azure Monitor を使用して問題を診断して修正できます。 完了すると、[Azure Monitor](../azure-monitor/overview.md) と統合された App Service on Linux でサンプル アプリが動作するようになります。
 
@@ -58,7 +54,7 @@ git remote add azure <url-from-app-webapp-create>
 git push azure main
 ```
 
-## <a name="configure-azure-monitor-preview"></a>Azure Monitor を構成する (プレビュー)
+## <a name="configure-azure-monitor"></a>Azure Monitor を構成する
 
 ### <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースを作成する
 
@@ -132,7 +128,7 @@ Azure Portal で、Log Analytics ワークスペースを選びます。
 
 ### <a name="log-queries"></a>ログ クエリ
 
-ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に活用するのに役立ちます。 ログ クエリを使用して、AppServiceHTTPLogs と AppServiceConsoleLogs の両方でログを特定します。 ログ クエリの詳細については、[ログ クエリの概要](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
+ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に適用するのに役立ちます。 ログ クエリを使用して、AppServiceHTTPLogs と AppServiceConsoleLogs の両方でログを特定します。 ログ クエリの詳細については、[ログ クエリの概要](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>ログ クエリを使用して AppServiceHTTPLogs を確認する
 

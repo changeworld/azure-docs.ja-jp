@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.openlocfilehash: 97cf7977d6e867d0c3bbc106f599bc69db4d987b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 31f42cb2dd8405a08477fd6ee9048f42e80e44be
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465233"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851289"
 ---
 # <a name="known-issues-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance に関する既知の問題
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,6 +28,7 @@ ms.locfileid: "131465233"
 
 |問題  |検出した日  |Status  |解決した日  |
 |---------|---------|---------|---------|
+|[SQL Server 認証を使用している場合、'@' を含むユーザー名はサポートされません](#when-using-sql-server-authentication-usernames-with--are-not-supported)|2021 年 10 月|||
 |[サービス プリンシパルの再作成を提案する、Azure portal の誤解を招くエラー メッセージ](#misleading-error-message-on-azure-portal-suggesting-recreation-of-the-service-principal)|2021 年 9 月|||
 |[接続の種類の変更が、フェールオーバー グループ エンドポイント経由の接続に影響しない](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|2021 年 1 月|回避策あり||
 |[@query パラメーターの使用時、プロシージャ sp_send_dbmail が一時的に失敗する可能性がある](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|回避策あり||
@@ -315,6 +316,10 @@ using (var scope = new TransactionScope())
 
 
 ## <a name="no-resolution"></a>解決策なし
+
+### <a name="when-using-sql-server-authentication-usernames-with--are-not-supported"></a>SQL Server 認証を使用している場合、'@' を含むユーザー名はサポートされません
+
+中央に '@' 記号を含むユーザー名 (例: 'abc@xy') は、SQL Server 認証を使用してログインできません。
 
 ### <a name="misleading-error-message-on-azure-portal-suggesting-recreation-of-the-service-principal"></a>サービス プリンシパルの再作成を提案する、Azure portal の誤解を招くエラー メッセージ
 

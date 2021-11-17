@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 11/01/2021
 tags: connectors
-ms.openlocfilehash: 46e0373b7c95b559dd6037d20f00324cd89209d7
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a400c8e5ac118250afedd27f2f8e79b678546727
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045883"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438647"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -324,7 +324,7 @@ ISE バージョンの SAP コネクタは、SNC X.509 をサポートしてい�
 
    1. **[SNC Partner Name (SNC パートナー名)]** では、バックエンドの SNC の名前を入力します。 たとえば、「 `p:CN=DV3, OU=LA, O=MS, C=US` 」のように入力します。
 
-   1. **[SNC Certificate (SNC 証明書)]** では、SNC クライアントの公開証明書を Base64 エンコード形式で入力します。 PEM ヘッダーまたはフッターは含めないでください。
+   1. **[SNC Certificate (SNC 証明書)]** では、SNC クライアントの公開証明書を Base64 エンコード形式で入力します。 PEM ヘッダーまたはフッターは含めないでください。 PSE には複数のプライベート証明書が含まれている可能性があるため、ここにはプライベート証明書を入力しないでください。ただし、この **SNC 証明書** パラメーターは、この接続に使用する必要がある証明書を特定します。 詳細については、下記の注意を確認してください。
 
    1. 必要に応じて、 **[SNC My Name]** 、 **[SNC Quality of Protection (SNC 保護の品質)]** の SNC 設定を入力します。
 
@@ -350,8 +350,35 @@ ISE バージョンの SAP コネクタは、SNC X.509 をサポートしてい�
 
    コネクタは PSE の変更を検出し、次の接続要求中に独自のコピーを更新します。
 
+   バイナリの PSE ファイルを base64 でエンコードされた形式に変換するには、次の手順を実行します。
+   
+   1. 以下のように、PowerShell スクリプトを使用します。
+
+      ```powershell
+      Param ([Parameter(Mandatory=$true)][string]$psePath, [string]$base64OutputPath)
+      $base64String = [convert]::ToBase64String((Get-Content -path $psePath -Encoding byte))
+      if ($base64OutputPath -eq $null)
+      {
+          Write-Output $base64String
+      }
+      else
+      {
+          Set-Content -Path $base64OutputPath -Value $base64String
+          Write-Output "Output written to $base64OutputPath"
+      } 
+      ```
+
+   1. スクリプトを `pseConvert.ps1` ファイルとして保存してから、スクリプトを呼び出します。次に例を示します。
+
+      ```output
+      .\pseConvert.ps1 -psePath "C:\Temp\SECUDIR\request.pse" -base64OutputPath "connectionInput.txt"
+      Output written to connectionInput.txt 
+      ```
+
+      出力パス パラメーターが指定されていない場合、スクリプトのコンソールへの出力には改行が入ります。 接続入力パラメーターの base64 でエンコードされた文字列の改行を削除します。
+
    > [!NOTE]
-   > ISE に複数の SNC クライアント証明書を使用している場合は、すべての接続に同じ PSE を指定する必要があります。 クライアントの公開証明書パラメーターを設定することで、ISE で使用する各接続の証明書を特定できます。
+   > ISE に複数の SNC クライアント証明書を使用している場合は、すべての接続に同じ PSE を指定する必要があります。 PSE には、すべての接続のクライアント プライベート証明書が含まれている必要があります。 クライアントの公開証明書パラメーターを、ISE で使用する各接続の特定のプライベート証明書と一致するように設定する必要があります。
 
 1. **[作成]** を選択して接続を作成します。 パラメーターが正しい場合は、接続が作成されます。 パラメーターに問題がある場合は、接続の作成ダイアログにエラー メッセージが表示されます。
 
@@ -1800,7 +1827,13 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
 1. **[トランザクション ID]** に、変数の名前をもう一度入力します。 たとえば、「 `IDOCtransferID` 」のように入力します。
 
-1. 必要に応じて、テスト環境で重複除去を検証します。 前の手順で使用したのと同じ **[トランザクション ID]** GUID を使用して **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** アクションを繰り返します。
+1. 必要に応じて、テスト環境で重複除去を検証します。
+
+    1. 前の手順で使用したのと同じ **[トランザクション ID]** GUID を使用して **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** アクションを繰り返します。
+    
+    1. **\[[IDOC] SAP にドキュメントを送信する]** アクションを呼び出すたびに、どの IDoc 番号が割り当てられたかを確認するには、 **\[[IDOC] トランザクションの IDOC リストを取得する]** アクションを、同じ **[トランザクション ID]** と **[受信]** 方向で使用します。
+    
+       両方の呼び出しで同じ 1 つの IDoc 番号が返された場合、その IDoc の重複は除去されています。
 
    同じ IDoc を 2 回送信すると、SAP が tRFC 呼び出しの重複を識別し、1 つの受信 IDoc メッセージに対する 2 つの呼び出しを解決できることを検証できます。
 

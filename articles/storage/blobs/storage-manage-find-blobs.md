@@ -3,18 +3,17 @@ title: BLOB インデックス タグを使用して Azure BLOB データを管�
 description: BLOB インデックス タグを使用して、BLOB オブジェクトの分類、管理、およびクエリを実行する方法について説明します。
 author: normesta
 ms.author: normesta
-ms.date: 08/25/2021
+ms.date: 11/01/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: fa2284e03c8d69bacb40a2fe99d3c3cb10a73828
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: dfa77490b95f67e7c75e658211602fe5a27c1c57
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154643"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441421"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する
 
@@ -263,21 +262,32 @@ BLOB インデックス タグは、BLOB データに対するサブリソース
 
 [Shared Access Signature (SAS)](../common/storage-sas-overview.md) を使用する呼び出し元には、BLOB インデックス タグを操作するためのスコープ付きアクセス許可が付与される場合があります。
 
-#### <a name="blob-sas"></a>BLOB SAS
+#### <a name="service-sas-for-a-blob"></a>BLOB のサービス SAS
 
-BLOB インデックス タグへのアクセスを許可するために、BLOB SAS に次のアクセス許可が付与される場合があります。 BLOB の読み取りと書き込みのアクセス許可だけでは、インデックス タグの読み取りや書き込みを行うことはできません。
+BLOB インデックス タグへのアクセスを許可するために、BLOB のサービス SAS に次のアクセス許可が付与される場合があります。 BLOB の読み取り (`r`) と書き込み (`w`) のアクセス許可だけでは、インデックス タグの読み取りや書き込みを行うことはできません。
 
 | アクセス許可 | URI の略記 | 許可される操作                |
 |------------|------------|-----------------------------------|
 | インデックス タグ |     t      | BLOB のインデックス タグを取得および設定する |
 
-#### <a name="container-sas"></a>コンテナー SAS
+#### <a name="service-sas-for-a-container"></a>コンテナーのサービス SAS
 
-BLOB タグのフィルター処理を可能にするために、コンテナー SAS に次のアクセス許可が付与される場合があります。 `Blob List` のアクセス許可では、インデックス タグによる BLOB のフィルター処理を行うことはできません。
+BLOB タグのフィルター処理を許可するために、コンテナーのサービス SAS に次のアクセス許可が付与される場合があります。 BLOB リスト (`i`) のアクセス許可では、インデックス タグによる BLOB のフィルター処理を行うことはできません。
 
 | アクセス許可 | URI の略記 | 許可される操作         |
 |------------|------------|----------------------------|
 | インデックス タグ |     f      | インデックス タグを使用して BLOB を検索する |
+
+#### <a name="account-sas"></a>アカウント SAS
+
+BLOB インデックス タグへのアクセスと BLOB タグのフィルター処理を許可するために、アカウント SAS に次のアクセス許可が付与される場合があります。 
+
+| アクセス許可 | URI の略記 | 許可される操作                |
+|------------|------------|-----------------------------------|
+| インデックス タグ |     t      | BLOB のインデックス タグを取得および設定する |
+| インデックス タグ |     f      | インデックス タグを使用して BLOB を検索する |
+
+BLOB の読み取り (`r`) と書き込み (`w`) のアクセス許可だけでは、インデックス タグの読み取りや書き込みを行うことはできません。リスト (`i`) のアクセス許可では、インデックス タグによる BLOB のフィルター処理を行うことはできません。
 
 ## <a name="choosing-between-metadata-and-blob-index-tags"></a>メタデータと BLOB インデックス タグのいずれかの選択
 

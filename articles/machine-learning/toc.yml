@@ -205,6 +205,8 @@
           href: concept-data-ingestion.md
         - name: データ処理
           href: concept-optimize-data-processing.md
+        - name: Studio のネットワーク データ アクセス
+          href: concept-network-data-access.md
     - name: Security
       items:
         - name: エンタープライズ セキュリティの概要

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/15/2021
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10d5f1e21f741382ad0d82c06c3f60b19e2c1c4
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 313532b6292cb3a6799b3c14df69c39d92ba3c03
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132519327"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227513"
 ---
 # <a name="security-operations-for-privileged-accounts"></a>特権アカウントのためのセキュリティ運用
 
@@ -46,13 +46,13 @@ Azure Active Directory (Azure AD) は、ID およびアクセス管理 (IAM) を
 
 Azure portal から、Azure AD 監査ログを表示したり、コンマ区切り値 (CSV) または JavaScript Object Notation (JSON) ファイルとしてダウンロードしたりできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* [Microsoft Sentinel](../../sentinel/overview.md) – セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでインテリジェントにセキュリティを分析します。 
+* [Azure Sentinel](../../sentinel/overview.md) – セキュリティ情報イベント管理 (SIEM) 機能が提供され、エンタープライズ レベルでインテリジェントなセキュリティ分析を実現します。 
 
 * [Azure Monitor](../../azure-monitor/overview.md) – さまざまな状況の自動化された監視とアラートを有効にできます。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) を SIEM と統合 - Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic など、[他の SIEM に Azure AD ログをプッシュできます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* [Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) – アプリを検出および管理し、すべてのアプリとリソースを制御し、クラウド アプリのコンプライアンス状況を確認できます。 
+* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
 
 * Microsoft Graph - データとユーザーをエクスポートして、 MS Graph を使用してより詳細な分析を行うことができます。 MS Graph の詳細については、[Microsoft Graph PowerShell SDK と Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-graph-api.md) に関するページを参照してください。 
 
@@ -62,7 +62,7 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
    * 危険なサインイン – 疑わしい状況を示す可能性のあるサインインの状況に関する情報が含まれています。 このレポートの情報を調査するための追加情報については、「[方法: リスクを調査する](../identity-protection/howto-identity-protection-investigate-risk.md)」を参照してください。 
 
-   * リスク検出 – リスクが検出されたときトリガーされるその他のリスクに関する情報や、サインインの場所などの他の関連情報、および Microsoft Defender for Cloud Apps からの詳細情報が含まれます。
+   * リスク検出 – リスクが検出されたときトリガーされる他のリスクに関する情報や、サインインの場所などの他の関連情報、およびMicrosoft Cloud App Security (MCAS) からの詳細情報が含まれます。
 
  
 
@@ -140,7 +140,7 @@ Azure AD サインイン ログをデータ ソースとして使用して、特
 | 名前付けポリシーに従わない特権アカウント。| | Azure サブスクリプション | [Azure portal を使用して Azure でのロールの割り当てを一覧表示する - Azure RBAC](../../role-based-access-control/role-assignments-list-portal.md)| サブスクリプションのロール割り当てを一覧表示し、サインイン名が組織の形式と一致していない場合にアラートを出します。 たとえば、プレフィックスとしての ADM_ です。 |
 | 割り込み |  高/中 | Azure AD サインイン | 状態 = 中断<br>および<br>エラー コード = 50074<br>および<br>失敗の理由 = 強力な認証が必要<br>状態 = 中断<br>および<br>エラー コード = 500121<br>失敗の理由 = 強力な認証の要求時に、認証に失敗しました | これは、攻撃者がアカウントのパスワードを持っていても、MFA チャレンジに合格できないことを示している可能性があります。 | 
 | 名前付けポリシーに従わない特権アカウント。| 高 | Azure AD ディレクトリ | [Azure AD ロールの割り当てを一覧表示する](../roles/view-assignments.md)| UPN が組織の形式と一致しない Azure AD ロール アラートのロール割り当てを一覧表示します。 たとえば、プレフィックスとしての ADM_ です。 |
-| MFA に登録されていない特権アカウントを検出します。 | 高 | Microsoft Graph API| 管理者アカウントの IsMFARegistered eq false のクエリ。 [credentialUserRegistrationDetails の一覧表示 - Microsoft Graph ベータ版](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | 監査と調査を行って、意図的なのか、見落としなのかを判断します。 |
+| MFA に登録されていない特権アカウントを検出します。 | 高 | Azure AD Graph API| 管理者アカウントの IsMFARegistered eq false のクエリ。 [credentialUserRegistrationDetails の一覧表示 - Microsoft Graph ベータ版](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | 監査と調査を行って、意図的なのか、見落としなのかを判断します。 |
 | アカウントのロックアウト | 高 | Azure AD サインイン ログ | 状態 = 失敗<br>および<br>エラー コード = 50053 | ベースラインしきい値を定義してから、組織の行動に合わせて監視および調整し、誤ったアラートが生成されないようにします。 |
 | アカウントがサインインで無効またはブロックされる | 低 | Azure AD サインイン ログ | 状態 = 失敗<br>および<br>ターゲット = ユーザー UPN<br>および<br>エラー コード = 50057 | これは、誰かが組織を退職した後にアカウントにアクセスしようとしていることを示している可能性があります。 このアカウントはブロックされていますが、このアクティビティについて記録し、アラートを出すことが重要です。 |
 | MFA 不正のアラート/ブロック | 高 | Azure AD サインイン ログ/Azure Log Analytics | Sign-ins>Authentication details Result details = MFA denied, Fraud Code Entered (サインイン>認証詳細 結果詳細 = MFA 拒否、不正なコードの入力) | 特権ユーザーは、自分が MFA プロンプトを引き起こしていないと示しており、攻撃者がアカウントのパスワードを持っていることを示している可能性があります。 |

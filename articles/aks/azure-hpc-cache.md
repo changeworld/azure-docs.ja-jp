@@ -6,12 +6,12 @@ author: jbut
 ms.author: jebutl
 ms.topic: article
 ms.date: 09/08/2021
-ms.openlocfilehash: 9cf8e3a6450787a65e21fcca79f8886efe016d8b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 208147894b5fb483bc9ebcc49c01fd93013c3a3d
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699630"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491528"
 ---
 # <a name="integrate-azure-hpc-cache-with-azure-kubernetes-service"></a>Azure HPC Cache と Azure Kubernetes Service を統合する
 
@@ -131,7 +131,7 @@ STORAGE_ACCOUNT_ID=$(az storage account show --name $STORAGE_ACCOUNT_NAME --quer
 AD_USER=$(az ad signed-in-user show --query objectId -o tsv)
 CONTAINER_NAME=mystoragecontainer
 az role assignment create --role "Storage Blob Data Contributor" --assignee $AD_USER --scope $STORAGE_ACCOUNT_ID
-az storage container create --name $CONTAINER_NAME --account-name jebutlaksstorage --auth-mode login
+az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOUNT_NAME --auth-mode login
 ```
 
 ストレージ アカウントと BLOB コンテナーにアクセスするためのアクセス許可を、Azure HPC Cache サービス アカウントに付与します。

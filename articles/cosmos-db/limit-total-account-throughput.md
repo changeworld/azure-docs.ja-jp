@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/04/2021
 ms.author: thweiss
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b8812e0d61485a4fd5c7ceb7a2f57d47b90bfeca
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1423d4444c7ec53e40f77d951acb58a63538cfbf
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089837"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557796"
 ---
 # <a name="limit-the-total-throughput-provisioned-on-your-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントでプロビジョニングされる合計スループットを制限する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -39,6 +39,9 @@ ms.locfileid: "131089837"
 
 > [!NOTE]
 > 自動スケーリング モードで構成されたリソースについては、アカウントの合計スループットに対してカウントされるリソースで構成される最大スループットです。
+
+> [!IMPORTANT]
+> アカウントで合計スループット制限が有効になると、新しいコンテナーを作成するときに明示的にスループット値を渡す必要があります。 明示的なスループット値を指定せずにコンテナーを作成しようとすると、現在エラーが発生します。
 
 ## <a name="set-the-total-throughput-limit-from-the-azure-portal"></a>Azure portal で合計スループット制限を設定する
 
@@ -91,6 +94,12 @@ Azure Resource Manager で Azure Cosmos DB アカウントを作成または更�
 ```
 
 制限を無効にするには、このプロパティを `-1` に設定します。
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+#### <a name="are-there-situations-where-the-total-provisioned-throughput-can-exceed-the-limit"></a>プロビジョニングされたスループットの合計が、制限を超え得るような状況はありますか。
+
+Azure Cosmos DB では、格納データ 1 GB あたり 10 RU/秒の最小スループットが適用されます。 既にその最小値に達しているときにデータを取り込んでいる場合、リソースでプロビジョニングされるスループットは、GB あたり 10 RU/秒を優先するように自動的に増加されます。 この場合に、またこの場合にのみ、プロビジョニングされるスループットの合計が、設定した制限を超える可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

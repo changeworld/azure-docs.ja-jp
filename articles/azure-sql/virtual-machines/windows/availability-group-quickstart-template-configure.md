@@ -11,21 +11,24 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/04/2019
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 612280242c528065c8ba74ccd745cca28e7af1bd
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 28bb5d12d2eb7657a199f902d6ffe6c542c86901
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167048"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158513"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM に SQL Server の可用性グループを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、Azure 上の SQL Server 仮想マシン (VM) で、Azure クイックスタート テンプレートを使用して、Always On 可用性グループのデプロイの構成を一部自動化する方法について説明します。 このプロセスでは、2 つの Azure クイックスタート テンプレートが使用されます。 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して Azure Load Balancer が不要になります。
+
+この記事では、Azure において、1 つのサブネット内の SQL Server 仮想マシン (VM) で、Azure クイックスタート テンプレートを使用して、Always On 可用性グループのデプロイの構成を一部自動化する方法について説明します。 このプロセスでは、2 つの Azure クイックスタート テンプレートが使用されます。 
 
    | Template | 説明 |
    | --- | --- |
@@ -35,7 +38,7 @@ ms.locfileid: "130167048"
 
 可用性グループの作成や、内部ロード バランサーの作成など、可用性グループ構成の他の部分は手動で行う必要があります。 この記事では、一連の自動および手動の手順を示します。
 
-この記事では Azure クイックスタート テンプレートを使用して可用性グループ環境を構成しますが、[Azure portal](availability-group-azure-portal-configure.md) を使用して構成するか、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
+この記事では Azure クイックスタート テンプレートを使用して可用性グループ環境を構成しますが、[Azure portal](availability-group-azure-portal-configure.md) を使用して構成するか、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[手動](availability-group-manually-configure-tutorial-single-subnet.md)で構成することもできます。 
 
 > [!NOTE]
 > これで Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、「[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)」を参照してください。 

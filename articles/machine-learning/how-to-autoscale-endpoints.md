@@ -10,12 +10,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2
 ms.date: 11/03/2021
-ms.openlocfilehash: f979651909a2484f6bcdf7b0953c91874bea7cc5
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: b98730e29dc5cc6e8b2e75781b366b5923adf2ae
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520657"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131565769"
 ---
 # <a name="autoscale-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントを自動スケーリングする (プレビュー)
 
@@ -41,15 +41,15 @@ Azure Monitor 自動スケーリング機能では、豊富なルール セッ�
 
 次のスニペットでは、エンドポイントとデプロイの名前を設定します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="set_endpoint_deployment_name" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="set_endpoint_deployment_name" :::
 
 次に、デプロイとエンドポイントの Azure Resource Manager ID を取得します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="set_other_env_variables" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="set_other_env_variables" :::
 
 次のスニペットでは、自動スケーリング プロファイルを作成します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="create_autoscale_profile" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="create_autoscale_profile" :::
 
 > [!NOTE]
 > 詳細については、[自動スケーリングのリファレンス ページ](/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)を参照してください
@@ -81,7 +81,7 @@ __[リソースをスケーリングする方法を選択します]__ の下で�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_out_on_cpu_util" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_out_on_cpu_util" :::
 
 このルールは `my-scale-settings` プロファイルに含まれます (`autoscale-name` はプロファイルの `name` と一致)。 `condition` 引数の値は、"VM インスタンス間の平均 CPU 消費量が 5 分間で 70% を超えた場合にルールがトリガーされる必要がある" ことを示しています。 その条件が満たされた場合、さらに 2 つの VM インスタンスが割り当てられます。 
 
@@ -109,7 +109,7 @@ __[ルール]__ セクションで、 __[ルールの追加]__ を選択しま�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_in_on_cpu_util" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_in_on_cpu_util" :::
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -136,7 +136,7 @@ __[ルール]__ セクションで、 __[ルールの追加]__ を選択しま�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_up_on_request_latency" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_up_on_request_latency" :::
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -162,7 +162,7 @@ __[メトリックに基づいてスケーリングする]__ を選択してか�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="weekend_profile" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="weekend_profile" :::
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -181,13 +181,13 @@ __[メトリックに基づいてスケーリングする]__ を選択してか�
 
 デプロイを使用しない場合は、次のように削除します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>次の手順
 
 Azure Monitor を使用した自動スケーリングの詳細については、次の記事を参照してください。
 
-- [自動スケール設定について](/azure-monitor/autoscale/autoscale-understand-settings)
-- [自動スケーリングの一般的なパターンの概要](/azure-monitor/autoscale/autoscale-common-scale-patterns)
-- [自動スケーリングのベスト プラクティス](/azure-monitor/autoscale/autoscale-best-practices)
-- [Azure 自動スケーリングのトラブルシューティング](/azure-monitor/autoscale/autoscale-troubleshoot)
+- [自動スケール設定について](/autoscale/autoscale-understand-settings)
+- [自動スケーリングの一般的なパターンの概要](/autoscale/autoscale-common-scale-patterns)
+- [自動スケーリングのベスト プラクティス](/autoscale/autoscale-best-practices)
+- [Azure 自動スケーリングのトラブルシューティング](/autoscale/autoscale-troubleshoot)

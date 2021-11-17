@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 51bc4233393be6d914578581597e8cce9d0373b0
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 610d24576386b311bf5e4ef5a98c1c22a705aff0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113439291"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466411"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure Virtual Network NAT 接続のトラブルシューティング
 
@@ -177,11 +177,9 @@ _**解決方法:**_
 
 ### <a name="ipv6-coexistence"></a>IPv6 の共存
 
-[Virtual Network NAT](nat-overview.md) は IPv4 の UDP および TCP プロトコルをサポートしており、[IPv6 プレフィックスを使用したサブネットへのデプロイはサポートされません](nat-overview.md#limitations)。
+[Virtual Network NAT](nat-overview.md) では、IPv4 UDP および TCP プロトコルがサポートされています。 NAT を、IPv6 パブリック IP アドレスまたは IPv6 パブリック IP プレフィックスに関連付けることはできません。 ただし、デュアル スタック サブネットに NAT をデプロイすることは可能です。
 
-_**解決方法:**_ IPv6 プレフィックスが使用されていないサブネットに NAT ゲートウェイをデプロイしてください。
-
-追加機能のご要望は、[Virtual Network NAT の UserVoice](https://aka.ms/natuservoice) までお寄せください。
+_**解決策:**_ デュアル スタック サブネットに NAT ゲートウェイをデプロイします。
 
 ### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>NAT ゲートウェイ IP から接続が行われない
 
@@ -200,4 +198,3 @@ NAT ゲートウェイ リソースのサブネットを構成する仮想マシ
 * [Virtual Network NAT](nat-overview.md) について学習する。
 * [NAT ゲートウェイ リソース](nat-gateway-resource.md)について学習する
 * [NAT ゲートウェイ リソースのメトリックとアラート](nat-metrics.md)について学習する。
-* [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。

@@ -5,16 +5,16 @@ author: normesta
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/10/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9346c4e060e5cf4dcd3db7ee58f093f61cc2c646
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 12074ad5eb94f422fb60b1d5f0797bd1b6cc8fcd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818821"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335482"
 ---
 # <a name="monitoring-azure-table-storage"></a>Azure Table Storage の監視
 
@@ -110,7 +110,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
    [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
    > [!NOTE]
-   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件をご確認ください。
+   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件を理解してください。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>ログを Azure Event Hubs にストリーミングする
 
@@ -317,6 +317,16 @@ Azure Monitor でサポートされるすべてのメトリックの一覧 (Azur
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) コマンドレットを使用します。
+
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "QueryEntities" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
@@ -335,6 +345,14 @@ Azure Monitor でサポートされるすべてのメトリックの一覧 (Azur
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
+```
+
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドを使用します。
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'QueryEntities' " --aggregation "Total" 
 ```
 
 ### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)

@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: avgupta
-ms.openlocfilehash: 4edbeadd2615fc8d58761bc5b15a93ae626a6613
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 133c788b3bbe787f87cea3e5c72699c8dd0c4f6f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265595"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316187"
 ---
 # <a name="reload-secrets-and-certificates-from-key-vault-automatically"></a>Key Vault からシークレットと証明書を自動的に再読み込みする
 
@@ -26,7 +26,6 @@ App Configuration と Key Vault は、多くのアプリケーションで並列
 - Key Vault から一部またはすべてのシークレットと証明書を定期的に再読み込みする。
 
 1 つ目の方法では、Key Vault 内のシークレットと証明書をローテーションするときには必ず、番兵となるキーと値を App Configuration で更新する必要があります。 このアプローチは、アプリケーションへのシークレットと証明書の即時再読み込みを強制したい場合に効果的です。 ただし、Key Vault でシークレットと証明書が自動的にローテーションされても、番兵となるキーと値が時間内に更新されなければアプリケーションでエラーが発生します。 2 つ目の方法では、このプロセスを完全に自動化できます。 ローテーション後の経過時間として許容できる時間内に、シークレットと証明書を Key Vault から再読み込みするようにアプリケーションを構成することが可能です。 このチュートリアルでは、2 つ目の方法について説明します。
-
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -1,41 +1,41 @@
 ---
 title: 仮想ネットワーク統合にアプリケーションのルーティングを構成します。
-description: このハウツー記事では、リージョン仮想ネットワーク統合でアプリ ルーティングを構成する手順について説明します。
+description: この方法に関する記事では、リージョン VNet 統合でのアプリ ルーティングの構成について説明します。
 author: madsd
 ms.author: madsd
 ms.topic: how-to
 ms.date: 10/20/2021
-ms.openlocfilehash: b62a8c4bcef5e5556820f6f4e816f01566d44f72
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: d286b8c0bb82c1501cdc77e8097ba6b7d5b2008f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892042"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130269721"
 ---
 # <a name="manage-azure-app-service-virtual-network-integration-routing"></a>Azure App Service 仮想ネットワーク統合のルーティングを管理する
 
-アプリケーションのルーティングを構成するときは、Azure 仮想ネットワーク (VNet) にすべてのトラフィックまたはプライベート トラフィック ([RFC1918](https://datatracker.ietf.org/doc/html/rfc1918#section-3) トラフィックとも呼ばれます) のみをルーティングできます。 この記事では、アプリケーションのルーティングを構成する方法について説明します。
+アプリケーションのルーティングを構成する場合は、Azure 仮想ネットワーク (VNet) にすべてのトラフィックまたはプライベート トラフィック ([RFC1918](https://datatracker.ietf.org/doc/html/rfc1918#section-3) トラフィックとも呼ばれます) のみをルーティングできます。 この方法に関する記事では、アプリケーションのルーティングを構成する方法について説明します。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
 アプリは、リージョン VNet 統合機能を使用して既に統合されています。
 
 ## <a name="configure-in-the-azure-portal"></a>Azure portal で構成する
 
-次の手順に従って、ポータルからアプリの **[ルートすべて]** を無効にします。
+次の手順を使用して、ポータルからアプリでの [Route All]\(すべてのルート\) を無効にできます。 
 
-:::image type="content" source="./media/configure-vnet-integration-routing/vnetint-route-all-enabled.png" alt-text="[ルートすべて] の有効化を示すスクリーンショット。":::
+:::image type="content" source="./media/configure-vnet-integration-routing/vnetint-route-all-enabled.png" alt-text="[Route All]\(すべてのルート\) が有効":::
 
-1. アプリ ポータルの **[ネットワーク]**  >  **[VNet 統合]** に移動します。
-1. **[ルートすべて]** を **[無効]** に設定します。
+1. アプリ ポータルの **[ネットワーク]**  >  **[VNet 統合]** UI に移動します。
+1. **[Route All]\(すべてのルート\)** を [無効] にします。
     
-    :::image type="content" source="./media/configure-vnet-integration-routing/vnetint-route-all-disabling.png" alt-text="[ルートすべて] の無効化を示すスクリーンショット。":::
+    :::image type="content" source="./media/configure-vnet-integration-routing/vnetint-route-all-disabling.png" alt-text="[Route All]\(すべてのルート\) を無効にする":::
 
 1. **[はい]** を選択して確定します。
 
-## <a name="configure-with-the-azure-cli"></a>Azure CLI を使用して構成する
+## <a name="configure-with-azure-cli"></a>Azure CLI を使用して構成する
 
-Azure CLI を使用して **[ルートすべて]** を構成することもできます。 必要な az の最小バージョンは 2.27.0 です。
+Azure CLI を使用して [すべてをルーティング] を構成することもできます (`az version` は 2.27.0 以降である必要があります)。
 
 ```azurecli-interactive
 az webapp config set --resource-group <group-name> --name <app-name> --vnet-route-all-enabled [true|false]
@@ -55,5 +55,5 @@ Set-AzResource -ResourceId ($webApp.Id + "/config/web") -Properties @{ vnetRoute
 
 ## <a name="next-steps"></a>次のステップ
 
-- [仮想ネットワーク統合を有効にす](./configure-vnet-integration-enable.md)
+- [VNet 統合を有効にする](./configure-vnet-integration-enable.md)
 - [一般的なネットワークの概要](./networking-features.md)

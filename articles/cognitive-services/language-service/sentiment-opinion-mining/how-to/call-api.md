@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-sentiment-opinion-mining, ignite-fall-2021
-ms.openlocfilehash: 17ac102653433585105e5a5d3dbe2216e9001cb3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 32e67ba4c8462b48158a72273e297924867b73b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092238"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434277"
 ---
 # <a name="how-to-use-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニングを使用する 
 
@@ -57,9 +57,30 @@ REST API を使用してオピニオン マイニングの結果を取得する�
 
 既定では、感情分析には、そのテキストで使用できる最新の AI モデルが使われます。 特定のバージョンのモデルを使うように API 要求を構成することもできます。 指定したモデルが、感情分析操作を実行するために使われます。
 
-| サポートされているバージョン | 最新バージョン |
-|--|--|
-| `2019-10-01`, `2020-04-01`, `2021-10-01` | `2021-10-01`   |
+| サポートされているバージョン | 最新の一般公開バージョン | 最新のプレビュー バージョン |
+|--|--|--|
+| `2019-10-01`, `2020-04-01`, `2021-10-01-preview` | `2020-04-01`   | `2021-10-01-preview`   |
+
+### <a name="using-a-preview-model-version"></a>プレビュー モデル バージョンの使用
+
+API 呼び出しでプレビュー モデル バージョンを使用するには、model version パラメーターを使用してモデル バージョンを指定する必要があります。 たとえば、Python を使用して要求を送信する場合は、次のようになります。
+
+```python
+result = text_analytics_client.analyze_sentiment(documents, show_opinion_mining=True, model_version="2021-10-01-preview")
+```
+
+または、REST API を使用する場合は、次のようになります。
+
+```rest
+https://your-resource-name.cognitiveservices.azure.com/text/analytics/v3.1/sentiment?opinionMining=true&model-version=2021-10-01-preview
+```
+
+詳細については、リファレンス ドキュメントを参照してください。
+* [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Sentiment)
+* [.NET](https://docs.microsoft.com/dotnet/api/azure.ai.textanalytics.analyzesentimentaction?view=azure-dotnet#properties)
+* [Python](https://docs.microsoft.com/python/api/azure-ai-textanalytics/azure.ai.textanalytics.textanalyticsclient?view=azure-python#analyze-sentiment-documents----kwargs-)
+* [Java](https://docs.microsoft.com/java/api/com.azure.ai.textanalytics.models.analyzesentimentoptions.setmodelversion?view=azure-java-stable#com_azure_ai_textanalytics_models_AnalyzeSentimentOptions_setModelVersion_java_lang_String_)
+* [JavaScript](https://docs.microsoft.com/javascript/api/@azure/ai-text-analytics/analyzesentimentoptions?view=azure-node-latest)
 
 ### <a name="input-languages"></a>入力言語
 

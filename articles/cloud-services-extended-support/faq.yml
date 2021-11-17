@@ -9,12 +9,12 @@ metadata:
   ms.reviewer: mimckitt
   ms.date: 10/13/2020
   ms.custom: references_regions
-  ms.openlocfilehash: bb2ee07d3d5c603df11d5b17b6afea496f4b31c8
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: bf35360b41fe136ec0ea3af8c846e398465d1a81
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123424098"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130235774"
 title: Azure Cloud Services (延長サポート) に関してよく寄せられる質問
 summary: この記事では、Azure Cloud Services (延長サポート) に関してよく寄せられる質問について説明します。
 sections:
@@ -51,6 +51,10 @@ sections:
   - question: >
       Web および worker ロールはどのように変更されますか?
     answer: "Web および worker ロールの設計、アーキテクチャ、コンポーネントに変更はありません。 \n"
+  - question: >
+      ロール インスタンスのスケーリングが失敗し続けています。これを軽減する方法はありますか?
+    answer: >
+      同じクラウドサービスで (異なるロールについて) 複数のスケール呼び出しがほぼ同時に発生した場合、競合状態が原因で、Microsoft プラットフォームのコンポーネントが非同期状態になり、エラーにつながることがあります。 Microsoft はこの問題の解決に積極的に取り組んでいます。 一時的な回避策として、すべてのロールを同時に自動スケールしないことをお勧めします。
   - question: >
       ロール インスタンスはどのように変更されますか?
     answer: "ロール インスタンスの設計、アーキテクチャ、コンポーネントに変更はありません。 \n"
@@ -151,4 +155,10 @@ sections:
       クラウド サービスにインストールするシークレット/証明書を指定する場合、KeyVault リソースはクラウドサービス リソースと同じリージョンにある必要がありますか?
     answer: >
       はい。 領域の境界を適用する理由は、ユーザーがリージョン間の依存関係を持つアーキテクチャを作成できないようにするためです。 リージョン分離は、クラウドベースのアプリケーションの主要な設計原則です。 ただし、Key Vault 拡張機能を使用して、証明書のクロス サブスクリプションとリージョン間サポートを取得することができます。 [こちら](./enable-key-vault-virtual-machine.md) のドキュメントをご覧ください
+- name: 既知の問題
+  questions:
+  - question: >
+      ロール インスタンスのスケーリングが失敗し続けています。これを軽減する方法はありますか?
+    answer: >
+      同じクラウドサービスで (異なるロールについて) 複数のスケール呼び出しがほぼ同時に発生した場合、競合状態が原因で、Microsoft プラットフォームのコンポーネントが非同期状態になり、エラーにつながることがあります。 Microsoft はこの問題の解決に積極的に取り組んでいます。 一時的な回避策として、すべてのロールを同時に自動スケールしないことをお勧めします。
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nCloud Services (延長サポート) の使用を開始するには、[PowerShell を使用した Cloud Service (延長サポート) のデプロイ](deploy-powershell.md)に関する記事を参照してください。"

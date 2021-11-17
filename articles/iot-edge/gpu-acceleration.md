@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 2aa4dcc0aa4ecdd3b620aef874a0b5b9ceef4c96
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: c85659a6c9e89145494d4683da37bd2f13cbd379
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963548"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234867"
 ---
 # <a name="gpu-acceleration-for-azure-iot-edge-for-linux-on-windows-preview"></a>Azure IoT Edge for Linux on Windows 用の GPU アクセラレーション (プレビュー)
 
@@ -62,7 +62,7 @@ Windows Enterprise または Professional ユーザーの場合は、[Windows In
 **T4 GPU** の場合は、GPU のベンダーから入手したデバイスのリスク軽減ドライバーをインストールすることをお勧めします。 省略可能ですが、リスク軽減ドライバーをインストールすると、デプロイのセキュリティが向上する場合があります。 詳細については、[デバイスの直接割り当てを使用したグラフィックス デバイスのデプロイ](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda#optional---install-the-partitioning-driver)に関する記事を参照してください。
 
 > [!WARNING]
-> ハードウェア デバイスのパススルーを有効にすると、セキュリティ上のリスクが増える可能性があります。 GPU のベンダーから入手したデバイスのリスク軽減ドライバーをインストールすることをお勧めします。
+> ハードウェア デバイスのパススルーを有効にすると、セキュリティ上のリスクが増える可能性があります。 該当する場合は、GPU ベンダーが提供する、デバイスのリスク軽減ドライバーをお勧めします。 詳細については、「[Discrete Device Assignment を使用したグラフィックス デバイスのデプロイ](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)」を参照してください。
 
 ### <a name="geforcequadro-gpus"></a>GeForce または Quadro GPU
 
@@ -70,7 +70,7 @@ Windows Enterprise または Professional ユーザーの場合は、[Windows In
 
 ## <a name="using-gpu-acceleration-for-your-linux-on-windows-deployment"></a>Linux on Windows デプロイでの GPU アクセラレーションの使用
 
-これで、Azure IoT Edge for Linux on Windows を使用して、GPU アクセラレーションを使用する Linux モジュールを Windows 環境にデプロイして実行できるようになりました。 デプロイ プロセスの詳細については、[Azure IoT Edge for Linux on Windows のインストール](how-to-install-iot-edge-on-windows.md)に関する記事を参照してください。
+これで、Azure IoT Edge for Linux on Windows を使用して、GPU アクセラレーションを使用する Linux モジュールを Windows 環境にデプロイして実行できるようになりました。 デプロイ プロセスについて詳しくは、[対称キーを使用した単一の IoT Edge for Linux on Windows デバイスのプロビジョニングに関するガイド](how-to-provision-single-device-linux-on-windows-symmetric.md)または [X.509 証明書の使用](how-to-provision-single-device-linux-on-windows-x509.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c8b611b9edb3e4c53b2d40231a6df6c3ccd8a1e
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 523f0d1907e42f2db5d17ca4bd3cd81bfd7f6ca1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132346498"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466069"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -213,16 +213,16 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
 * **Suspicious activity** 
 
-    すべての [Azure AD リスク イベント](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation)で、疑わしいアクティビティを監視します。 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) は、Microsoft Defender for Cloud にネイティブに統合されています。
+    すべての [Azure AD リスク イベント](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation)で、疑わしいアクティビティを監視します。 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) は、Azure Security Center とネイティブに統合されています。
 
     場所ベースのシグナルで多くのノイズが検出されないよう、ネットワークの[ネームド ロケーション](../conditional-access/location-condition.md)を定義します。 
 *  **ユーザー/エンティティ行動分析 (UEBA) のアラート** 
 
     UEBA を使用して、異常検出に関する分析情報を取得します。
 
-    * Microsoft Defender for Cloud Apps は、[クラウドでの UEBA](/cloud-app-security/tutorial-ueba) を提供しています。
+    * Microsoft Cloud App Security (MCAS) により、[クラウドでの UEBA](/cloud-app-security/tutorial-ueba) が提供されます。
 
-    * [Azure Advanced Threat Protection (ATP) からオンプレミスの UEBA を統合する](/defender-for-identity/install-step2)ことができます。 Dender for Cloud Apps は Azure AD Identity Protection からシグナルを読み取ります。 
+    * [Azure Advanced Threat Protection (ATP) からオンプレミスの UEBA を統合する](/defender-for-identity/install-step2)ことができます。 MCAS により、Azure AD Identity Protection からのシグナルが読み取られます。 
 
 * **緊急アクセス アカウントのアクティビティ** 
 
@@ -266,7 +266,7 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
 ### <a name="log-management"></a>ログの管理
 
-一貫したツール セットを容易にするために、ログのストレージと保持の戦略、設計、および実装を定義します。 たとえば、Microsoft Sentinel、一般的なクエリ、調査やフォレンジックのプレイブックなどのセキュリティ情報イベント管理 (SIEM) システムを検討できます。
+一貫したツール セットを容易にするために、ログのストレージと保持の戦略、設計、および実装を定義します。 たとえば、Azure Sentinel、一般的なクエリ、調査やフォレンジックのプレイブックなどのセキュリティ情報イベント管理 (SIEM) システムを検討できます。
 
 * **Azure AD ログ**: 診断、ログの保持、SIEM インジェストなどの設定のベスト プラクティスに常に従って、生成されたログとシグナルを取り込みます。 
 

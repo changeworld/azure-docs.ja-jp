@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/1/2021
 ms.author: jol
-ms.openlocfilehash: 6445f26494394e551795390f29d16b59fca877d7
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 2246b54b6831d0e88581c80aedc4e39388c6f377
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511341"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327388"
 ---
 # <a name="smb-over-quic-with-automanage-machine-best-practices"></a>Automanage マシンのベスト プラクティスを使用した SMB over QUIC
 
@@ -24,7 +24,7 @@ SMB over QUIC では、在宅勤務者、モバイル デバイス ユーザー�
 ## <a name="how-to-get-started"></a>ファースト ステップ
 
 > [!NOTE]
-> Automanage マシンのベスト プラクティスを使用するための前提条件については、[Azure portal での VM の有効化](quick-create-virtual-machines-portal.md)に関する記事を参照してください。 
+> Automanage マシンのベスト プラクティスを使用するための前提条件については、[Azure portal での VM の有効化](quick-create-virtual-machines-portal.md)に関する記事を参照してください。
 
 > [!NOTE]
 > プレビュー段階では、[このリンク](https://aka.ms/automanage-ws-portal-preview)を使用して Azure portal で開始できます。
@@ -34,10 +34,12 @@ SMB over QUIC では、在宅勤務者、モバイル デバイス ユーザー�
 VM 上の SMB over QUIC で Automanage マシンのベスト プラクティスを有効にするには、次の手順に従います。
 
 1. 上記のプレビュー リンクを使用して Azure portal にサインインします。
+
 2. _Windows Server 2022 Datacenter: Azure Edition_ イメージを使用して Azure VM を作成し、Windows Server 用の Automanage 機能 (SMB over QUIC を含む) を取得します。
+
 3. **[管理]** タブの [Azure Automanage] セクションで、[Azure Automanage 環境] 設定に **[Dev/Test]** または **[運用]** を選択して、Automanage マシンのベスト プラクティスを有効にします。
 
-:::image type="content" source="media\automanage-smb-over-quic\create-vm-automanage-setting.png" alt-text="VM の作成時に Automanage を有効にします。":::
+    :::image type="content" source="media\automanage-smb-over-quic\create-vm-automanage-setting.png" alt-text="VM の作成時に Automanage を有効にします。":::
 
 4. 必要に応じて追加の設定を構成し、VM を作成します。
 
@@ -48,7 +50,7 @@ VM 上の SMB over QUIC で Automanage マシンのベスト プラクティス�
 1. 以前に作成した VM に移動します。
 2. Automanage メニューを選択し、**Dev/Test** または **運用** 環境を選択し、**有効にする** をクリックします。
 
-:::image type="content" source="media\automanage-smb-over-quic\vm-enable-automanage.png" alt-text="既存の VM で Automanage を有効にします。":::
+    :::image type="content" source="media\automanage-smb-over-quic\vm-enable-automanage.png" alt-text="既存の VM で Automanage を有効にします。":::
 
 ## <a name="viewing-automanage-best-practice-compliance"></a>Automanage のベスト プラクティスのコンプライアンスを表示する
 
@@ -56,7 +58,7 @@ VM 上の SMB over QUIC で Automanage マシンのベスト プラクティス�
 
 :::image type="content" source="media\automanage-smb-over-quic\vm-automanage-configured.png" alt-text="VM の SMB over QUIC ポリシーを表示します。":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [SMB over QUIC の詳細を確認する](https://aka.ms/smboverquic)

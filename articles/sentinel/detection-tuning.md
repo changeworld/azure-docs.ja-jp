@@ -1,32 +1,32 @@
 ---
-title: Azure Sentinel の分析ルールの微調整に関する推奨事項を取得する
-description: 自動的に生成された推奨事項を使用して Azure Sentinel の脅威検出ルールを微調整することにより、脅威検出の対象範囲を維持しながら擬陽性を削減する方法について説明します。
+title: Microsoft Sentinel の分析ルールの微調整に関する推奨事項を取得する
+description: 自動的に生成された推奨事項を使用して Microsoft Sentinel の脅威検出ルールを微調整することにより、脅威検出の対象範囲を維持しながら擬陽性を削減する方法について説明します。
 author: yelevin
 ms.author: yelevin
 ms.service: azure-sentinel
 ms.topic: how-to
-ms.date: 10/13/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a302a325ff3bd510298f0d4b70b62f27af060a4e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 854e8fa7d129140fca1a16dc02971bd2cd99ceb7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092689"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323047"
 ---
-# <a name="get-fine-tuning-recommendations-for-your-analytics-rules-in-azure-sentinel"></a>Azure Sentinel の分析ルールの微調整に関する推奨事項を取得する
+# <a name="get-fine-tuning-recommendations-for-your-analytics-rules-in-microsoft-sentinel"></a>Microsoft Sentinel の分析ルールの微調整に関する推奨事項を取得する
 
 > [!IMPORTANT]
 >
 > 検出のチューニングは現在、"**プレビュー**" 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-SIEM での脅威検出ルールの微調整は、脅威検出の対象範囲の最大化と擬陽性の割合の最小化の間のバランスをとるという、困難で、繊細、かつ継続的なプロセスである場合があります。 Azure Sentinel では、機械学習を使用して、一定期間にわたるデータ ソースからの数十億のシグナルとインシデントへの応答を分析してパターンを推測した後、チューニングのオーバーヘッドを大幅に削減して、ユーザーが実際の脅威の検出と対応に集中できるようにするすぐに使用可能な推奨事項と分析情報を提供することによって、このプロセスを簡略化および効率化します。
+SIEM での脅威検出ルールの微調整は、脅威検出の対象範囲の最大化と擬陽性の割合の最小化の間のバランスをとるという、困難で、繊細、かつ継続的なプロセスである場合があります。 Microsoft Sentinel によってこのプロセスが簡素化および合理化されます。そのために、機械学習を使用してデータ ソースからの数十億のシグナル、インシデントへの対応を経時的に分析して、パターンを推論し、チューニングのオーバーヘッドを大幅に低下させて、実際の脅威の検出と対応に集中できるアクション可能な推奨事項と分析情報を提供します。
 
 チューニングの推奨事項と分析情報は現在、分析ルールに組み込まれています。 この記事では、これらの分析情報によって示されることと、これらの推奨事項を実装する方法について説明します。
 
 ## <a name="view-rule-insights-and-tuning-recommendations"></a>ルールの分析情報とチューニングの推奨事項を表示する
 
-Azure Sentinel に、いずれかの分析ルールに関するチューニングの推奨事項があるかどうかを確認するには、Azure Sentinel ナビゲーション メニューから **[分析]** を選択します。
+Microsoft Sentinel に、いずれかの分析ルールに関するチューニングの推奨事項があるかどうかを確認するには、Microsoft Sentinel ナビゲーション メニューから **[分析]** を選択します。
 
 次の図に示すように、推奨事項があるルールには電球アイコンが表示されます。
 
@@ -61,6 +61,6 @@ Azure Sentinel に、いずれかの分析ルールに関するチューニン�
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、次を参照してください。
-- [Azure Sentinel での偽陽性の処理](false-positives.md)
+- [Microsoft Sentinel での擬陽性の処理](false-positives.md)
 - [UEBA データを使用して擬陽性を分析する](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
 - [脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)

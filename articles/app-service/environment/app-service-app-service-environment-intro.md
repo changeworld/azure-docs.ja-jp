@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: b0ea6176f43a5373eb24437a42972eeced26094b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f64c65dc2f2d6ad46961a3ae00ebc7f1e9471122
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129999779"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518016"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Environment v1 の概要
 
 > [!NOTE]
-> この記事は、App Service Environment v1 に関するものです。  より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](intro.md)」を参照してください。
+> この記事は、App Service Environment v1 に関するものです。 より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](overview.md)」を参照してください。
 
 ## <a name="overview"></a>概要
 

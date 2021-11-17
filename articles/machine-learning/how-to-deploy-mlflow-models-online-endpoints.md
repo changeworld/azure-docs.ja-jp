@@ -11,12 +11,12 @@ ms.date: 11/03/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, mlflow, devplatv2, no-code-deployment
-ms.openlocfilehash: 9e0b4944ee077248b2be2a11fdd4bacbc5af9824
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: a2328490185032e805a95f85b430d6742c76435c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842609"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289890"
 ---
 # <a name="deploy-mlflow-models-to-managed-online-endpoint-preview"></a>MLflow モデルをマネージド オンライン エンドポイントにデプロイする (プレビュー)
 
@@ -24,17 +24,17 @@ ms.locfileid: "131842609"
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
 [!INCLUDE [basic cli prereqs](../../includes/machine-learning-cli-prereqs.md)]
 
-* MLflow モデルが必要です。 この記事の例は、[https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow) のモデルに基づいています。
+* MLflow モデルが必要です。 この記事の例は、[https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow) のモデルに基づいています。
 
 [!INCLUDE [clone repo & set defaults](../../includes/machine-learning-cli-prepare.md)]
 
 この記事で使用するこのコード スニペットでは、作成して使用するエンドポイントの名前が `ENDPOINT_NAME` 環境変数に含まれています。 これを設定するには、CLI で次のコマンドを使用します。 `<YOUR_ENDPOINT_NAME>` は、お使いのエンドポイントの名前に置き換えます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="set_endpoint_name":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="set_endpoint_name":::
 
 ## <a name="deploy-using-cli-v2"></a>CLI (v2) を使用してデプロイする
 
@@ -47,11 +47,11 @@ ms.locfileid: "131842609"
 
     __create-endpoint.yaml__
 
-    :::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/mlflow/create-endpoint.yaml":::
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/mlflow/create-endpoint.yaml":::
 
 1. YAML 構成を使用して新しいエンドポイントを作成するには、次のコマンドを使用します。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="create_endpoint":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="create_endpoint":::
 
 1. デプロイの YAML 構成ファイルを作成します。 次の例では、前の手順で作成したエンドポイントへの `sklearn-diabetes` モデルのデプロイを構成します。
 
@@ -60,17 +60,21 @@ ms.locfileid: "131842609"
 
     __sklearn-deployment.yaml__
 
-    :::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/mlflow/sklearn-deployment.yaml":::
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/mlflow/sklearn-deployment.yaml":::
 
 1. YAML 構成を使用してデプロイを作成するには、次のコマンドを使用します。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="create_sklearn_deployment":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="create_sklearn_deployment":::
 
 ### <a name="invoke-the-endpoint"></a>エンドポイントを呼び出す
 
-デプロイが完了したら、次のコマンドを使用して、デプロイされたエンドポイントにスコアリング要求を行います。 このコマンドで使用する [sample-request-sklearn.json](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/endpoints/online/mlflow/sample-request-sklearn.json) ファイルは、azure-examples リポジトリの `/cli/endpoints/online/mlflow` ディレクトリにあります。
+デプロイが完了したら、次のコマンドを使用して、デプロイされたエンドポイントにスコアリング要求を行います。 このコマンドで使用する [sample-request-sklearn.json](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/mlflow/sample-request-sklearn.json) ファイルは、azure-examples リポジトリの `/cli/endpoints/online/mlflow` ディレクトリにあります。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="test_sklearn_deployment":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="test_sklearn_deployment":::
+
+**sample-request-sklearn.json**
+
+:::code language="json" source="~/azureml-examples-main/cli/endpoints/online/mlflow/sample-request-sklearn.json":::
 
 応答は次のテキストのようになります。
 
@@ -85,13 +89,13 @@ ms.locfileid: "131842609"
 
 エンドポイントを使い終えたら、次のコマンドを使用して削除します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="delete_endpoint":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="delete_endpoint":::
 
 ## <a name="deploy-using-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデプロイする
 
 この例では、[Azure Machine Learning スタジオ](https://ml.azure.com)を使用して MLflow モデルをマネージド オンライン エンドポイントにデプロイする方法を示します。
 
-1. 次の YAML および CLI コマンドを使用して、モデルを MLflow 形式で登録します。 YAML では、[https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow) の scikit-learn MLflow モデルを使用します。
+1. 次の YAML および CLI コマンドを使用して、モデルを MLflow 形式で登録します。 YAML では、[https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow) の scikit-learn MLflow モデルを使用します。
 
     __sample-create-mlflow-model.yaml__
 
@@ -147,7 +151,7 @@ ms.locfileid: "131842609"
     > [!NOTE]
     > トレーニング スクリプトで `mlflow.autolog()` を使用した場合は、ジョブの実行履歴にモデルの成果物が表示されます。 Azure Machine Learning は、MLflow の追跡機能と統合されます。 いくつかの一般的な ML フレームワークに `mlflow.autolog()` を使用して、モデル パラメーター、パフォーマンス メトリック、モデル成果物、さらには特徴の重要度のグラフをログに記録できます。
     >
-    > 詳細については、[CLI を使用したモデルのトレーニング](how-to-train-cli.md#model-tracking-with-mlflow)に関する記事を参照してください。 また、GitHub リポジトリ内の[トレーニング ジョブのサンプル](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/jobs/single-step)も参照してください。
+    > 詳細については、[CLI を使用したモデルのトレーニング](how-to-train-cli.md#model-tracking-with-mlflow)に関する記事を参照してください。 また、GitHub リポジトリ内の[トレーニング ジョブのサンプル](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/single-step)も参照してください。
 
     # <a name="azure-machine-learning-studio"></a>[Azure Machine Learning Studio](#tab/studio)
 

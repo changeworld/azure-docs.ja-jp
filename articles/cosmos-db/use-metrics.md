@@ -7,14 +7,14 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 07/14/2021
+ms.date: 11/08/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e85fa72288ab31fd8e61fcda731debb3517057f
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: ba9fac9fef3e418cc48bc3185ca91af89dd7946f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393391"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057064"
 ---
 # <a name="monitor-and-debug-with-insights-in-azure-cosmos-db"></a>Azure Cosmos DB の分析情報を使用した監視とデバッグ
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -27,13 +27,13 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 1. [Azure portal](https://portal.azure.com/) にサインインし、Azure Cosmos DB アカウントに移動します。
 
-1. アカウントのメトリックは、 **[メトリック]** ペインまたは **[分析情報 (プレビュー)]** ペインのいずれかで表示できます。
+1. アカウントのメトリックは、 **[メトリック]** ペインまたは **[分析情報]** ペインのいずれかで表示できます。
 
    * **メトリック:** このペインには、一定の間隔で収集され、ある時点でのシステムのある側面を表す数値メトリックが表示されます。 たとえば、[サーバー側の待機時間メトリック](monitor-server-side-latency.md)、[正規化された要求ユニット使用率メトリック](monitor-normalized-request-units.md)などを表示し、監視することができます。
 
-   * **分析情報 (プレビュー):** このペインでは、Azure Cosmos DB 用にカスタマイズされた監視エクスペリエンスを利用できます。 Azure Monitor で収集されたものと同じメトリックとログが使用され、アカウントの集計されたビューが表示されます。
+   * **分析情報:** このペインでは、Azure Cosmos DB 用にカスタマイズされた監視エクスペリエンスを利用できます。 Azure Monitor で収集されたものと同じメトリックとログが使用され、アカウントの集計されたビューが表示されます。
 
-1. **[分析情報 (プレビュー)]** ペインを開きます。 [分析情報] ペインには、既定でアカウント内のすべてのコンテナーのスループット、要求、ストレージ、可用性、待機時間、システム、アカウント管理のメトリックが表示されます。 分析情報を表示する **[時間範囲]** 、 **[データベース]** 、 **[コンテナー]** を選択することができます。 **[概要]** タブには、選択したデータベースとコンテナーの RU/s 使用量、データ使用量、インデックス使用量、調整された要求数、正規化された RU/s 消費量が表示されます。
+1. **[分析情報]** ペインを開きます。 [分析情報] ペインには、既定でアカウント内のすべてのコンテナーのスループット、要求、ストレージ、可用性、待機時間、システム、アカウント管理のメトリックが表示されます。 分析情報を表示する **[時間範囲]** 、 **[データベース]** 、 **[コンテナー]** を選択することができます。 **[概要]** タブには、選択したデータベースとコンテナーの RU/s 使用量、データ使用量、インデックス使用量、調整された要求数、正規化された RU/s 消費量が表示されます。
 
    :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Azure portal での Cosmos DB のパフォーマンス メトリック" lightbox="./media/use-metrics/performance-metrics.png" :::
 
@@ -65,7 +65,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="determine-the-throughput-consumption-by-a-partition-key-range"></a>パーティション キーの範囲ごとにスループット消費量を判断する
 
-適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティション キーの範囲の ID ごとに分けられたパーティション コンテナーのスループットの分散を判断するには、 **[分析情報 (プレビュー)]** ペインに移動します。 **[スループット]** タブを開くと、さまざまなパーティション キー範囲にわたる正規化された RU/s 消費量がグラフに表示されます。
+適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティション キーの範囲の ID ごとに分けられたパーティション コンテナーのスループットの分散を判断するには、 **[分析情報]** ペインに移動します。 **[スループット]** タブを開くと、さまざまなパーティション キー範囲にわたる正規化された RU/s 消費量がグラフに表示されます。
 
 :::image type="content" source="media/use-metrics/throughput-consumption-partition-key-range.png" alt-text="パーティション キー範囲 ID ごとの正規化されたスループット消費量" lightbox="media/use-metrics/throughput-consumption-partition-key-range.png":::
 
@@ -73,7 +73,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="determine-the-data-and-index-usage"></a>データとインデックスの使用量を判断する
 
-データ使用量、インデックス使用量、ドキュメント使用量によってパーティション コンテナーのストレージの分散を判断することが重要です。 インデックス使用量を最小限に抑え、データ使用量を最大化し、クエリを最適化することができます。 このデータを取得するには、 **[分析情報 (プレビュー)]** ペインに移動し、 **[ストレージ]** タブを開きます。
+データ使用量、インデックス使用量、ドキュメント使用量によってパーティション コンテナーのストレージの分散を判断することが重要です。 インデックス使用量を最小限に抑え、データ使用量を最大化し、クエリを最適化することができます。 このデータを取得するには、 **[分析情報]** ペインに移動し、 **[ストレージ]** タブを開きます。
 
 :::image type="content" source="media/use-metrics/data-index-consumption.png" alt-text="データ、インデックス、ドキュメントの消費量" lightbox="media/use-metrics/data-index-consumption.png" :::
 

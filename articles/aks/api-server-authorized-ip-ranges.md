@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: c64d2e683ade2413e9c548ea548b2e1a6e0efef6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 96c9e21c210a9aab4bc0b69d8e50b4a015c78993
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542964"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227418"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -27,7 +27,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 API サーバーの許可された IP 範囲の機能には、次の制限があります。
 - API サーバーで許可される IP アドレス範囲が、2019 年 10 月のプレビューの範囲外に移動され後に作成されたクラスターでは、API サーバーで許可される IP アドレス範囲は *Standard* SKU のロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能しますが、*Standard* SKU ロード バランサーに移行することはできません。 これらの既存のクラスターは、Kubernetes のバージョンまたはコントロール プレーンがアップグレードされた場合も引き続き機能します。 API サーバーで許可される IP アドレス範囲は、プライベート クラスターではサポートされません。
-- この機能は、[ノードごとのパブリック IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) を使用するクラスターとは互換性がありません。
+- この機能を、[ノードごとのパブリック IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) を使用するクラスターと共に使用する場合は、これらのノードごとのパブリック IP 付きノード プールでパブリック IP プレフィックスを使用する必要があり、これらのプレフィックスは承認済みの範囲として追加される必要があります。
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API サーバーの許可された IP 範囲の概要
 

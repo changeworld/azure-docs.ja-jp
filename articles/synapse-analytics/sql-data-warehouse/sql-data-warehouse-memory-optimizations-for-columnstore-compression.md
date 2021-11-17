@@ -2,21 +2,21 @@
 title: 専用 SQL プールの列ストア インデックスのパフォーマンスを向上させる
 description: メモリ要件を減らすか、使用可能なメモリを増やして、専用 SQL プールの各行グループ内の行の数を最大化します。
 services: synapse-analytics
-author: julieMSFT
+author: WilliamDAssafMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/22/2019
-ms.author: jrasnick
-ms.reviewer: igorstan
+ms.date: 10/18/2021
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: 1336359bdd0768ba1d1554554d266cacfb483a43
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: c461128daf0c6ca9fcaa09ba9b87ecc884405f0b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566513"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249307"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>専用 SQL プールの列ストア インデックスの行グループの品質を最大限に高める 
 
@@ -83,9 +83,7 @@ trim_reason_desc は、行グループがトリミングされたかどうかを
 
 ## <a name="how-to-estimate-memory-requirements"></a>メモリ要件の見積もり方法
 
-<!--
-To view an estimate of the memory requirements to compress a rowgroup of maximum size into a columnstore index, download and run the view [dbo.vCS_mon_mem_grant](). This view shows the size of the memory grant that a rowgroup requires for compression in to the columnstore.
--->
+最大サイズの行グループを列ストア インデックスに圧縮するためのメモリ要件の見積もりを表示するには、サンプル ビュー [dbo.vCS_mon_mem_grant](..\sql\data-load-columnstore-compression.md) を作成することを検討してください。 このクエリは、列ストアへの圧縮に行グループが必要とするメモリ許可のサイズを示します。
 
 1 つの行グループを圧縮するために必要なメモリは最大で約
 
@@ -98,8 +96,6 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 > 短い文字列の列は 32 バイト以下の文字列データを使用し、長い文字列の列は 32 バイト超の文字列データを使用します。
 
 長い文字列は、テキストの圧縮に指定されている圧縮方法で圧縮されます。 この圧縮方法では、*ディクショナリ* を使用してテキスト パターンを格納します。 ディクショナリの最大サイズは 16 MB です。 ディクショナリは、行グループ内の長い文字列の列ごとに 1 つだけです。
-
-列ストアのメモリ要件の詳細については、[専用 SQL プールのスケーリング: 構成とガイダンス](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)に関するビデオをご覧ください。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>メモリ要件を軽減する方法
 

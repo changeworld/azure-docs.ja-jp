@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 10/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: abe4bb3a53e3177857cb8041fd255ec916985054
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d90817c4e49a61728d2c8a73628fdb33efe7123b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93089867"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446374"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの暗号化 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ PaaS サービスである Azure Cosmos DB は使用方法がとても簡単で�
 A:追加コストはかかりません。
 
 ### <a name="q-who-manages-the-encryption-keys"></a>Q:だれが暗号化キーを管理するのですか?
-A:キーは Microsoft によって管理されます。
+A:Azure Cosmos アカウントに保存しているデータは、サービスマネージド キーを使用して Microsoft が管理しているキーにより、自動でシームレスに暗号化されます。 必要であれば、[カスタマー マネージド キー (CMK)](how-to-setup-cmk.md) を使用して自分で管理しているキーにより、2 層目の暗号化を追加することもできます。
 
 ### <a name="q-how-often-are-encryption-keys-rotated"></a>Q:暗号化キーが交換される頻度はどの程度ですか?
 A:マイクロソフトには、暗号化キーのローテーションに関する一連の内部ガイドラインがあり、Cosmos DB はそれに従っています。 個々のガイドラインは公開されていません。 Microsoft が公開している[セキュリティ開発ライフ サイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) は、内部用ガイダンスのサブセットと見なされ、開発者に便利なベスト プラクティスが収められています。

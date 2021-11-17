@@ -5,12 +5,12 @@ ms.author: palatter
 ms.date: 10/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: bc61f84c8ad131fec503ac81b84d70af881dfb02
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d87849dc85264f9a4066acabc55d613e1b47e127
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130287613"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134035"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,8 +34,7 @@ Xcode で、新しい iOS プロジェクトを作成し、 **[App]\(アプリ\)
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>CocoaPods でパッケージと依存関係をインストールする
 
 1. `pod init` を実行して、プロジェクトのルートディレクトリに Podfile を作成します。
-1. 
-1. Podfile に次を追加します。
+2. Podfile に次を追加します。
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
@@ -64,6 +63,10 @@ end
 <key>NSMicrophoneUsageDescription</key>
 <string></string>
 ```
+
+アクセス許可の要求が正しく追加されていることを確認するには、`Info.plist` を **[Open As]\(形式を指定して開く\)**  >  **[プロパティ リスト]** として表示します。次の情報が表示されるはずです。
+
+![Xcode でのカメラとマイクのプライバシーを示すスクリーンショット。](../../media/xcode-info-plist.png)
 
 ### <a name="turn-off-bitcode"></a>`Bitcode` をオフにする
 プロジェクトの [`Build Settings`]\(ビルド設定\) で [`Enable Bitcode`]\(ビットコードの有効化\) オプションを [`No`]\(いいえ\) に設定します。 この設定を見つけるには、フィルターを [`Basic`]\(基本\) から [`All`]\(すべて\) に変更します。右側の検索バーを使用してもかまいません。
@@ -108,7 +111,7 @@ class ViewController: UIViewController {
 
         let options = GroupCallOptions(communicationTokenCredential: communicationTokenCredential,
                                        displayName: "<DISPLAY_NAME>",
-                                       groupId: "<GROUP_CALL_ID>")
+                                       groupId: UUID(uuidString: "<GROUP_CALL_ID>")!)
         callComposite?.launch(with: options)
     }
 }
@@ -172,8 +175,10 @@ let communicationTokenCredential = try! CommunicationTokenCredential(token: "<US
 `startCallComposite` 関数内の `GroupCallOptions` インスタンスを初期化します。 `<GROUP_CALL_ID>` を通話のグループ ID で、`<DISPLAY_NAME>` を自分の名前でそれぞれ置き換えます。
 
 ```swift
+// let uuid = UUID() to create a new call
+let uuid = UUID(uuidString: "<GROUP_CALL_ID>")!
 let options = GroupCallOptions(communicationTokenCredential: communicationTokenCredential,
-                               displayName: displayName,
+                               displayName: "<DISPLAY_NAME>",
                                groupId: uuid)
 ```
 
@@ -183,8 +188,8 @@ let options = GroupCallOptions(communicationTokenCredential: communicationTokenC
 
 ```swift
 let options = TeamsMeetingOptions(communicationTokenCredential: communicationTokenCredential,
-                                  displayName: displayName,
-                                  meetingLink: link)
+                                  displayName: "<DISPLAY_NAME>",
+                                  meetingLink: "<TEAMS_MEETING_LINK>")
 ```
 
 #### <a name="get-a-microsoft-teams-meeting-link"></a>Microsoft Teams 会議のリンクを取得する

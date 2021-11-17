@@ -1,6 +1,6 @@
 ---
 title: Microsoft と Azure のセキュリティ リソースを使用して、体系的 ID 侵害からの回復を支援する | Microsoft Docs
-description: Microsoft と Azure のセキュリティ リソース (Microsoft 365 Defender、Azure Sentinel、Azure Active Directory、Azure Security Center、Microsoft の推奨事項など) を使用して、2020 年 12 月の Nobelium 攻撃 (Solorigate) と同様の体系的 ID 侵害からシステムを保護する方法について説明します。
+description: Microsoft と Azure のセキュリティ リソース (Microsoft 365 Defender、Microsoft Sentinel、Azure Active Directory、Microsoft Defender for Cloud、Microsoft の推奨事項など) を使用して、2020 年 12 月の Nobelium 攻撃 (Solorigate) と同様の体系的 ID 侵害からシステムを保護する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: batamig
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: bagol
-ms.openlocfilehash: f2f99e7c9a901b6e76b3d4bbe87967527f836d1b
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: b858cb8d2830d305a90dfb8ecbda9fe2154e11f9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864345"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323199"
 ---
 # <a name="recovering-from-systemic-identity-compromise"></a>システムの ID 侵害からの復旧
 
@@ -88,23 +88,23 @@ ms.locfileid: "122864345"
 
 次の Microsoft セキュリティ製品の更新プログラムを確認し、推奨される変更をすべて実装します。
 
-- [Azure Sentinel](../../sentinel/index.yml)
+- [Microsoft Sentinel](../../sentinel/index.yml)
 - [Microsoft 365 のセキュリティ ソリューションおよびサービス](/microsoft-365/security/)
 - [Windows 10 Enterprise のセキュリティ](/windows/security/)
-- [Microsoft Cloud App Security ](/cloud-app-security/)
+- [Microsoft Defender for Cloud Apps](/cloud-app-security/)
 
 新しい更新プログラムを実装すると、以前の攻撃行動を特定したり、システムに対する今後の攻撃行動を防いだりするのに役立ちます。 IOC のリストは完全ではなく、調査の継続に伴って充実する可能性があることに注意してください。
 
 したがって、次の処置も行うことをお勧めします。
 
-- [Azure セキュリティ ベンチマークのドキュメント](/security/benchmark/azure/)を適用済みであることと、[Azure Security Center](../../security-center/index.yml) でコンプライアンスを監視していることを確認します。
+- [Azure セキュリティ ベンチマークのドキュメント](/security/benchmark/azure/)を適用済みであることと、[Microsoft Defender for Cloud](../../security-center/index.yml) でコンプライアンスを監視していることを確認します。
 
-- [Azure Sentinel](../../sentinel/understand-threat-intelligence.md) で Microsoft 365 データ コネクタを構成するなどして、脅威インテリジェンス フィードを SIEM に組み込みます。
+- [Microsoft Sentinel](../../sentinel/understand-threat-intelligence.md) で Microsoft 365 データ コネクタを構成するなどして、脅威インテリジェンス フィードを SIEM に組み込みます。
 
 詳細については、Microsoft のセキュリティに関するドキュメントを参照してください。
 
 - [Microsoft のセキュリティ ドキュメント](/security/)
-- [Azure のセキュリティのドキュメント](../index.yml)
+- [Azure セキュリティに関するドキュメント](../index.yml)
 
 ## <a name="investigate-your-environment"></a>環境を調査する
 
@@ -171,9 +171,9 @@ Microsoft のセキュリティ サービスでは、詳細な調査のために
 > 調査によって、管理権限がシステムの侵害によって盗まれ、そのために組織のグローバル管理者アカウントまたは信頼できる SAML トークン署名証明書 (あるいは両方) へのアクセスが与えられたという証拠が見つかった場合は、[管理制御を修復して保持](#remediate-and-retain-administrative-control)する処置の実行をお勧めします。
 >
 
-### <a name="monitoring-with-azure-sentinel"></a>Azure Sentinel を使用した監視
+### <a name="monitoring-with-microsoft-sentinel"></a>Microsoft Sentinel を使用して監視する
 
-Azure Sentinel には、調査に役立つ多くの組み込みリソース (環境内の関連する領域での攻撃を検出するのに役立つハンティング ブックや分析ルールなど) があります。
+Microsoft Sentinel には、調査に役立つ多くの組み込みリソース (環境内の関連する領域での攻撃を検出するのに役立つハンティング ブックや分析ルールなど) があります。
 
 詳細については、次を参照してください。
 
@@ -184,7 +184,7 @@ Azure Sentinel には、調査に役立つ多くの組み込みリソース (環
 
 攻撃に関する具体的なガイダンスについては、Microsoft 365 Defender for Endpoint および Microsoft Defender ウイルス対策を確認することをお勧めします。
 
-Microsoft 365 Defender、Microsoft 365 Defender for Identity、Microsoft Cloud App Security など、Microsoft セキュリティ センターで、検出、ハンティング クエリ、脅威分析レポートのその他の例を確認します。 確実にカバーするためには、すべてのドメイン コントローラーに加えて ADFS サーバーに [Microsoft Defender for Identity エージェント](/defender-for-identity/install-step4)をインストールしてください。
+Microsoft 365 Defender、Microsoft 365 Defender for Identity、Microsoft Defender for Cloud Apps など、Microsoft セキュリティ センターで、検出、ハンティング クエリ、脅威分析レポートのその他の例を確認します。 確実にカバーするためには、すべてのドメイン コントローラーに加えて ADFS サーバーに [Microsoft Defender for Identity エージェント](/defender-for-identity/install-step4)をインストールしてください。
 
 詳細については、次を参照してください。
 
@@ -193,7 +193,7 @@ Microsoft 365 Defender、Microsoft 365 Defender for Identity、Microsoft Cloud A
 
 ### <a name="monitoring-with-azure-active-directory"></a>Azure Active Directory を使用して監視する
 
-Azure Active Directory サインイン ログによって、多要素認証が正しく使用されているかどうかがわかります。 Azure portal の Azure Active Directory 領域からサインイン ログにアクセスするには、**Get-AzureADAuditSignInLogs** コマンドレットを使用するか、Azure Sentinel の **[ログ]** 領域で表示します。
+Azure Active Directory サインイン ログによって、多要素認証が正しく使用されているかどうかがわかります。 Azure portal の Azure Active Directory 領域からサインイン ログにアクセスするには、**Get-AzureADAuditSignInLogs** コマンドレットを使用するか、Microsoft Sentinel の **[ログ]** 領域で表示します。
 
 たとえば、 **[MFA results]\(MFA 結果\)** フィールドの値が **[MFA requirement satisfied by claim in the token]\(トークンの要求によって MFA 要件が満たされる\)** の場合について、結果を検索またはフィルターします。 組織が ADFS を使用しているとき、ログに記録された要求が ADFS 構成に含まれない場合、それらの要求が攻撃者のアクティビティを示している可能性があります。
 
@@ -227,9 +227,9 @@ Azure Active Directory サインイン ログによって、多要素認証が�
 
 - **利用している Microsoft 製品およびサービスに対してカスタマイズされた、セキュリティの基本的な推奨事項について、「[Microsoft セキュア スコア](/microsoft-365/security/mtp/microsoft-secure-score)** 」を確認します。
 
-- **組織に EDR および SIEM ソリューションが配置されていることを確認します** ([Microsoft 365 Defender for Endpoint](/microsoft-365/security/defender/microsoft-365-defender) や [Azure Sentinel](../../sentinel/overview.md) など)。
+- **組織に EDR および SIEM ソリューションが配置されていることを確認します** ([Microsoft 365 Defender for Endpoint](/microsoft-365/security/defender/microsoft-365-defender) や [Microsoft Sentinel](../../sentinel/overview.md) など)。
 
-- **Microsoft の[エンタープライズ アクセス モデル](/security/compass/privileged-access-access-model)** を確認します。
+- **Microsoft の [エンタープライズ アクセス モデル](/security/compass/privileged-access-access-model)** を確認します。
 
 ### <a name="improve-identity-security-posture"></a>ID セキュリティ体制を改善する
 
@@ -444,15 +444,13 @@ ID 関連のセキュリティ体制を確保するには、次の処置をお�
     - [Azure Active Directory で緊急時にユーザー アクセスを取り消す](../../active-directory/enterprise-users/users-revoke-access.md)
     - [Revoke-AzureADUserAllRefreshToken PowerShell のドキュメント](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)
 
-
-
 ## <a name="next-steps"></a>次のステップ
 
-- 一番上のナビゲーション バーにある **[ヘルプ]** ( **?** ) ボタンを選択して、**Microsoft 製品内部の支援を利用します** (Microsoft 365 セキュリティ センター、Microsoft 365 Security & Compliance センター、Microsoft Defender セキュリティ センターなど)。
+- 一番上のナビゲーション バーにある **[ヘルプ]** ( **?** ) ボタンを選択して、**Microsoft 製品内部の支援を利用します** (Microsoft 365 Defender ポータル、Microsoft 365 コンプライアンス センター、Office 365 セキュリティ/コンプライアンス センターなど)。
 
 - **デプロイの支援については**、[FastTrack](https://fasttrack.microsoft.com) に問い合わせてください
 
-- **製品サポート関連のニーズがある場合は**、 https://support.microsoft.com/contactus で Microsoft サポート ケースを送信します。
+- **製品サポート関連のニーズがある場合は**、[Microsoft サポート ケース](https://support.microsoft.com/contactus)を送信します。
 
     > [!IMPORTANT]
     > 侵害されたと考えられ、インシデント対応による支援が必要な場合には、**Sev A** Microsoft サポート ケースを開きます。

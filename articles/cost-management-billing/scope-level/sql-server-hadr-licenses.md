@@ -1,6 +1,6 @@
 ---
-title: SQL Server HADR とスコープレベルの Azure ハイブリッド特典の共存
-description: この記事では、SQL Server HADR のソフトウェア アシュアランスの特典とスコープレベルの Azure ハイブリッド特典の共存について説明します。
+title: SQL Server HADR と一元管理された Azure ハイブリッド特典の共存
+description: この記事では、SQL Server HADR のソフトウェア アシュアランスの特典と一元管理された Azure ハイブリッド特典の共存について説明します。
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 97c338134430156fefa5d874d44e27c8dc34a496
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f475fa19c06eb2ecc8ed863db06f5a647308ee00
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547295"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229429"
 ---
-# <a name="sql-server-hadr-and-scope-level-azure-hybrid-benefit-coexistence"></a>SQL Server HADR とスコープレベルの Azure ハイブリッド特典の共存
+# <a name="sql-server-hadr-and-centrally-managed-azure-hybrid-benefit-coexistence"></a>SQL Server HADR と一元管理された Azure ハイブリッド特典の共存
 
 ソフトウェア アシュアランス (SA) の利点の 1 つは、Azure のお客様がフェールオーバー イベントを想定して、ディザスター リカバリーのためにパッシブな SQL Server インスタンスをインストールして実行できるという点です。 Azure ハイブリッド特典のスコープレベルの管理は、割り当て済みの SQL Server ライセンスが適格なディザスター リカバリー レプリカによって消費されないようにすることで、SQL Server HADR の特典をサポートします。 そのため、ユーザーがレプリカを個別に管理する必要がなくなります。 
 
@@ -37,6 +37,6 @@ HADR プロパティが選択されている場合、スコープに集中的に
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[スコープ レベルの Azure ハイブリッド特典の管理に関する FAQ](faq-azure-hybrid-benefit-scope.yml)」を確認します。
-- 割引がどのように適用されるかについては、[Azure ハイブリッド特典のスコープレベルの管理](sql-server-hadr-licenses.md)に関するページを参照してください。
+- 「[一元管理された Azure ハイブリッド特典の FAQ](faq-azure-hybrid-benefit-scope.yml)」を確認します。
+- [一元管理された Azure ハイブリッド特典の概要](sql-server-hadr-licenses.md)に関するページで、割引が適用される方法について理解します。
 - [既存の Azure ハイブリッド特典エクスペリエンスから移行する](transition-existing.md)方法について確認します。

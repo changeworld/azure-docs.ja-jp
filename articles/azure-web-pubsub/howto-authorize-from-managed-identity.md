@@ -3,15 +3,15 @@ title: マネージド ID からの Azure AD を使用した Web PubSub リソ�
 description: この記事では、マネージド ID からの Azure AD を使用した Web PubSub リソースへの要求を承認する方法について説明します
 author: terencefan
 ms.author: tefa
-ms.date: 09/06/2021
+ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: 8df789836bd0067868d4f9e6d90e640473a96f33
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7f0b5cff34b74953970672d0d48c4f027f4811b0
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477903"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997744"
 ---
 # <a name="authorize-request-to-web-pubsub-resources-with-azure-ad-from-managed-identities"></a>マネージド ID からの Azure AD を使用した Web PubSub リソースへの要求を承認する
 Azure Web PubSub サービスでは、[Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) からの Azure Active Directory (Azure AD) 承認要求がサポートされています。 
@@ -83,7 +83,7 @@ Azure Web PubSub サービスでは、[Azure リソース用マネージド ID](
 
 2. **[次へ]** をクリックします。
 
-   ![マネージド ID にロールを割り当てる方法のスクリーンショット](./media/aad-authorization/assign-role-to-managed-identities.png)
+   ![マネージド ID にロールを割り当てるスクリーンショット](./media/aad-authorization/assign-role-to-managed-identities.png)
 
 3. **[レビューと割り当て]** をクリックして変更を確定します。
 

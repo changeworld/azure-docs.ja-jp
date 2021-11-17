@@ -3,12 +3,12 @@ title: Helm グラフの保存
 description: Azure Container Registry のリポジトリを使用して Kubernetes アプリケーションの Helm グラフを保存する方法について説明します
 ms.topic: article
 ms.date: 10/20/2021
-ms.openlocfilehash: 9bf771fae26d61a457299244910eff1cc6724b84
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5c96df6458a1f1fc40f4033d367c988c246a0fde
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232982"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135776"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル
 
@@ -84,6 +84,12 @@ helm version
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
+ターゲット レジストリで次の環境変数を設定します。 ACR_NAME はレジストリ リソース名です。 ACR レジストリの URL が myregistry.azurecr.io の場合、ACR_NAME を myregistry に設定します。
+
+```console
+ACR_NAME=<container-registry-name>
+```
+
 ## <a name="create-a-sample-chart"></a>サンプル グラフを作成する
 
 次のコマンドを使用して、テスト グラフを作成します。
@@ -136,32 +142,52 @@ Successfully packaged chart and saved it to: /my/path/hello-world-0.1.0.tgz
 
 ## <a name="authenticate-with-the-registry"></a>レジストリで認証する
 
-`helm registry login` を実行してレジストリで認証します。 サービス プリンシパルの資格情報やリポジトリスコープのトークンなど、シナリオに適した[レジストリ資格情報](container-registry-authentication.md)を渡すことができます。
+`helm registry login` を実行してレジストリで認証します。 サービス プリンシパルの資格情報、ユーザー ID、リポジトリスコープのトークンなど、シナリオに適した[レジストリ資格情報](container-registry-authentication.md)を渡すことができます。
 
-たとえば、レジストリに対する[プルおよびプッシュ権限 (AcrPush ロール) がある Azure Active Directory サービス プリンシパル](container-registry-auth-service-principal.md#create-a-service-principal)を作成します。 次に、サービス プリンシパルの資格情報を `helm registry login` に対して指定します。 次の例では、環境変数を使用してパスワードを指定しています。
-
-```console
-echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
-  --username <service-principal-id> \
-  --password-stdin
-```
-
-> [!TIP]
-> [個々の Azure AD ID](container-registry-authentication.md?tabs=azure-cli#individual-login-with-azure-ad) でレジストリにログインして、Helm グラフをプッシュしたりプルしたりすることもできます。
+- レジストリに対する[プルおよびプッシュ権限 (AcrPush ロール) がある Azure Active Directory サービス プリンシパル](container-registry-auth-service-principal.md#create-a-service-principal)を使用して認証します。
+  ```bash
+  SERVICE_PRINCIPAL_NAME=<acr-helm-sp>
+  ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
+  PASSWORD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME \
+            --scopes $(az acr show --name $ACR_NAME --query id --output tsv) \
+             --role acrpull \
+            --query "password" --output tsv)
+  USER_NAME=$(az ad sp list --display-name $SERVICE_PRINCIPAL_NAME --query "[].appId" --output tsv)
+  ```
+- [個人の Azure AD ID](container-registry-authentication.md?tabs=azure-cli#individual-login-with-azure-ad) を使用して認証し、AD トークンを使用して Helm グラフをプッシュおよびプルします。
+  ```bash
+  USER_NAME="00000000-0000-0000-0000-000000000000"
+  PASSWORD=$(az acr login --name $ACR_NAME --expose-token --output tsv --query accessToken)
+  ```
+- [リポジトリスコープのトークン](container-registry-repository-scoped-permissions.md)を使用して認証します (プレビュー)。
+  ```bash
+  USER_NAME="helm-token"
+  PASSWORD=$(az acr token create -n $USER_NAME \
+                    -r $ACR_NAME \
+                    --scope-map _repositories_admin \
+                    --only-show-errors \
+                    --query "credentials.passwords[0].value" -o tsv)
+  ```
+- その後、`helm registry login` で資格情報を指定します。
+  ```bash
+  helm registry login $ACR_NAME.azurecr.io \
+    --username $USER_NAME \
+    --password $PASSWORD
+  ```
 
 ## <a name="push-chart-to-registry-as-oci-artifact"></a>OCI 成果物としてグラフをレジストリにプッシュする
 
 Helm 3 CLI で `helm push` コマンドを実行して、完全修飾ターゲット リポジトリにグラフ アーカイブをプッシュします。 次の例では、ターゲット リポジトリの名前空間が `helm/hello-world` で、グラフに `0.1.0` というタグが付けられています。
 
 ```console
-helm push hello-world-0.1.0.tgz oci://mycontainerregistry.azurecr.io/helm
+helm push hello-world-0.1.0.tgz oci://$ACR_NAME.azurecr.io/helm
 ```
 
 プッシュが成功すると、出力は次のようになります。
 
 ```output
-Pushed: mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
-digest: sha256:5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
+Pushed: <registry>.azurecr.io/helm/hello-world:0.1.0
+digest: sha256:5899db028dcf96aeaabdadfa5899db02589b2899b025899b059db02
 ```
 
 ## <a name="list-charts-in-the-repository"></a>リポジトリのグラフ一覧
@@ -172,7 +198,7 @@ Azure コンテナー レジストリに格納されているイメージと同�
 
 ```azurecli
 az acr repository show \
-  --name mycontainerregistry \
+  --name $ACR_NAME \
   --repository helm/hello-world
 ```
 
@@ -199,7 +225,7 @@ az acr repository show \
 
 ```azurecli
 az acr repository show-manifests \
-  --name mycontainerregistry \
+  --name $ACR_NAME \
   --repository helm/hello-world --detail
 ```
 
@@ -225,7 +251,7 @@ az acr repository show-manifests \
 レジストリにプッシュした Helm グラフをインストールするには、`helm install` を実行します。 グラフのタグは、`--version` パラメーターを使用して渡します。 *myhelmtest* などのリリース名を指定するか、`--generate-name` パラメーターを渡します。 次に例を示します。
 
 ```console
-helm install myhelmtest oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
+helm install myhelmtest oci://$ACR_NAME.azurecr.io/helm/hello-world --version 0.1.0
 ```
 
 グラフのインストールが成功した後の出力は次のようになります。
@@ -258,7 +284,7 @@ helm uninstall myhelmtest
 必要に応じて、`helm pull` を使用して、コンテナー レジストリからローカル アーカイブにグラフをプルできます。 グラフのタグは、`--version` パラメーターを使用して渡します。 ローカル アーカイブが現在のパスに存在する場合は、このコマンドによって上書きされます。
 
 ```console
-helm pull oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
+helm pull oci://$ACR_NAME.azurecr.io/helm/hello-world --version 0.1.0
 ```
 
 ## <a name="delete-chart-from-the-registry"></a>レジストリからグラフを削除する
@@ -266,7 +292,7 @@ helm pull oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
 コンテナー レジストリからグラフを削除するには、[az acr repository delete][az-acr-repository-delete] コマンドを使用します。 次のコマンドを実行し、プロンプトが表示されたら操作を確認します。
 
 ```azurecli
-az acr repository delete --name mycontainerregistry --image helm/hello-world:0.1.0
+az acr repository delete --name $ACR_NAME --image helm/hello-world:0.1.0
 ```
 
 ## <a name="migrate-your-registry-to-store-helm-oci-artifacts"></a>レジストリを移行して Helm OCI 成果物を格納する
@@ -324,25 +350,25 @@ ls *.tgz
 レジストリにログインします。
 
 ```azurecli
-az acr login --name myregistry
+az acr login --name $ACR_NAME
 ```
 
 各グラフ アーカイブをレジストリにプッシュします。 例:
 
 ```console
-helm push ingress-nginx-3.20.1.tgz oci://myregistry.azurecr.io/helm
+helm push ingress-nginx-3.20.1.tgz oci://$ACR_NAME.azurecr.io/helm
 ```
 
 グラフをプッシュした後、それがレジストリに格納されているのを確認します。
 
 ```azurecli
-az acr repository list --name myregistry
+az acr repository list --name $ACR_NAME
 ```
 
 すべてのグラフをプッシュした後、必要に応じて、Helm 2 スタイルのグラフ リポジトリをレジストリから削除します。 これにより、レジストリ内のストレージが減少します。
 
 ```console
-helm repo remove myregistry
+helm repo remove $ACR_NAME
 ```
 
 ## <a name="next-steps"></a>次のステップ

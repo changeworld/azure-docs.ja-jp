@@ -4,12 +4,12 @@ description: Azure Functions で関数を無効または有効にする方法を
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 24ee2ce703287e62f1271c14f639048bb88da404
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2df38182dd8b199ca13d7e5a9b7484aee004f52
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663689"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265383"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
@@ -177,7 +177,7 @@ or
 
 + この記事で説明されている方法を使用して、HTTP によってトリガーされる機能を無効にしても、ご利用のローカル コンピューター上で実行すると、エンドポイントにアクセスできる可能性があります。  
 
-+ このとき、ハイフン (`-`) を名前に含む関数を Dedicated (App Service) プランにおいて Linux で実行する場合、これらの関数は無効にできません。 Dedicated プランにおいて Linux で実行する関数を無効にする必要がある場合は、関数名にハイフンを使用しないでください。
++ このとき、ハイフン (`-`) を名前に含む関数を Linux プランで実行する場合、これらの関数は無効にできません。 Linux プランで実行する関数を無効にする必要がある場合は、関数名にハイフンを使用しないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

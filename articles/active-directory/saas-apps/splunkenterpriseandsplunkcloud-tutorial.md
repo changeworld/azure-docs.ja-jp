@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 19db011756da7656fda243f9ffc80e555a842ac3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e2eaaf36b75110562f847bf7c3cb795571cb778d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801051"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282844"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud"></a>チュートリアル: Azure AD SSO for Splunk Enterprise and Splunk Cloud との Azure Active Directory 統合
 
@@ -132,4 +132,4 @@ Azure AD SSO for Splunk Enterprise and Splunk Cloud に対して Azure AD SSO �
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure AD SSO for Splunk Enterprise and Splunk Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Azure AD SSO for Splunk Enterprise and Splunk Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -6,22 +6,22 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 04/09/2021
-ms.openlocfilehash: c86cf4ac8bdc5855248d2ec114f7ba2f050d8346
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: cdb10c265ddae4aaf83450c1951ef6cb5c2219df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457451"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443853"
 ---
 # <a name="onboard-a-machine-to-automanage-with-an-azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) テンプレートを使用してマシンを Azure Automanage にオンボードする
 
 
 ## <a name="overview"></a>概要
-次の手順に従って、マシンを Automanage のベスト プラクティスにオンボードします。 次の ARM テンプレートでは、`configurationProfileAssignment` オブジェクトを作成します。これは、Automanage にオンボードされているマシンを表す Azure リソースです。
+次の手順に従い、ARM テンプレートを使ってマシンを Automanage のベスト プラクティスにオンボードします。
 
-## <a name="prerequisites"></a>必須コンポーネント
-* 既存の Automanage アカウントを作成し、適切なアクセス許可を割り当てておく必要があります。 Automanage アカウントとその作成方法およびアクセス許可の割り当て方法の詳細については、[こちらのドキュメント](./automanage-account.md)を参照してください。
-* アクセス許可が割り当てられている既存の Automanage アカウントがある場合は、Automanage にオンボードするマシンを含むリソース グループの **共同作成者** ロールも必要です。
+## <a name="prerequisites"></a>前提条件
+* 必要な [RBAC アクセス許可](./automanage-virtual-machines.md#required-rbac-permissions)を持っている必要があります
+* これらの[前提条件](./automanage-virtual-machines.md#prerequisites)に記載されているサポート対象のリージョンとサポート対象の VM イメージである必要があります
 
 
 ## <a name="arm-template-overview"></a>ARM テンプレートの概要
@@ -34,21 +34,17 @@ ms.locfileid: "129457451"
         "machineName": {
             "type": "String"
         },
-        "automanageAccountName": {
-            "type": "String"
-        },
-        "configurationProfileAssignment": {
+        "configurationProfile": {
             "type": "String"
         }
     },
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines/providers/configurationProfileAssignments",
-            "apiVersion": "2020-06-30-preview",
-            "name": "[concat(parameters('machineName'), '/Microsoft.Automanage/', 'default')]",
+            "apiVersion": "2021-04-30-preview",
+            "name": "[concat(parameters('machineName'), '/Microsoft.Automanage/default')]",
             "properties": {
-                "configurationProfile": "[parameters('configurationProfileAssignment')]",
-                "accountId": "[concat(resourceGroup().id, '/providers/Microsoft.Automanage/accounts/', parameters('automanageAccountName'))]"
+                "configurationProfile": "[parameters('configurationProfile')]",
             }
         }
     ]
@@ -56,11 +52,11 @@ ms.locfileid: "129457451"
 ```
 
 ## <a name="arm-template-deployment"></a>ARM テンプレートのデプロイ
-上記の ARM テンプレートでは、指定された Automanage アカウントを使用して、指定されたマシンの構成プロファイル割り当てを作成します。 Automanage アカウントをまだ作成していない場合は、[こちらのドキュメント](./automanage-account.md)を参照してください。
+上記の ARM テンプレートを使うと、指定したマシンの構成プロファイル割り当てが作成されます。 
 
-`configurationProfileAssignment` 値は次のいずれかの値になります。
-* "Production"
-* "DevTest"
+`configurationProfile` 値は次のいずれかの値になります。
+* "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
+* "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesDevTest"
 
 ARM テンプレートをデプロイするには、次の手順に従います。
 1. `azuredeploy.json` として上記の ARM テンプレートを保存します

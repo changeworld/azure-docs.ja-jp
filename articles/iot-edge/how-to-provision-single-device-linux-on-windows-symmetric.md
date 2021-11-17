@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/27/2021
 ms.author: kgremban
 monikerRange: iotedge-2018-06
-ms.openlocfilehash: 014019cd2615488cb30eb85ef2f751f6d5cac7a8
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 17e40216eae6fee6e013139eb792b5746f0c5b40
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131853398"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131577614"
 ---
 # <a name="create-and-provision-an-iot-edge-for-linux-on-windows-device-using-symmetric-keys"></a>対称キーを使用して IoT Edge for Linux on Windows デバイスを作成してプロビジョニングする
 
@@ -72,7 +72,7 @@ Windows Admin Center または管理者特権の PowerShell セッションを�
 管理者特権の PowerShell セッションで、ターゲット デバイスに対して次のコマンドを実行します。 プレースホルダー テキストは実際の値に置き換えてください。
 
 ```powershell
-Provision-EflowVm -provisioningType ManualConnectionString -devConnString "PASTE_DEVICE_CONNECTION_STRING_HERE"
+Provision-EflowVm -provisioningType ManualConnectionString -devConnString "<CONNECTION_STRING_HERE>"
 ```
 
 `Provision-EflowVM` コマンドの詳細については、「[IoT Edge for Linux on Windows 用の PowerShell 関数](reference-iot-edge-for-linux-on-windows-functions.md#provision-eflowvm)」を参照してください。

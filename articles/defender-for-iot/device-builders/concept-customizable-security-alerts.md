@@ -2,13 +2,13 @@
 title: IoT Hub のカスタム セキュリティ アラート
 description: Defender for IoT Hub の機能とサービスを使用したカスタマイズ可能なセキュリティ アラートと推奨される修復方法について説明します。
 ms.topic: conceptual
-ms.date: 11/09/2021
-ms.openlocfilehash: 3d72ee2d4cd91d0a922a7af61fbafd2cdb9a349a
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.date: 10/18/2021
+ms.openlocfilehash: e91587df3dbfb50700f95eaefea3bf80c2e18e04
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132318999"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249725"
 ---
 # <a name="defender-for-iot-hub-custom-security-alerts"></a>Defender for IoT Hub のカスタム セキュリティ アラート
 

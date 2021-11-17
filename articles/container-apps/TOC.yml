@@ -10,7 +10,11 @@
   expanded: true
   items:
     - name: 初めてのコンテナー アプリをデプロイする
-      href: get-started.md
+      items:
+        - name: Azure portal
+          href: quickstart-portal.md
+        - name: Azure CLI
+          href: get-started.md
 - name: 概念
   items:
     - name: 環境

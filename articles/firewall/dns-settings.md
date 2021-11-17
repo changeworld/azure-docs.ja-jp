@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/28/2021
+ms.date: 11/08/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e3c1da0e21f13357c5c537da2530e012101423dd
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 44a9da990b1f44f151ab6492cbca65d1b445ae65
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215702"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059547"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall の DNS 設定
 
@@ -75,9 +75,9 @@ Azure Firewall が DNS プロキシとして機能するように構成できま
 
 Azure Firewall が DNS プロキシの場合、次の 2 種類のキャッシュ関数を使用できます。
 
-- **正のキャッシュ**: DNS 解決が成功しました。 ファイアウォールでは、パケットまたはオブジェクトの TTL (time to live) が使用されます。 
+- **正のキャッシュ**: DNS 解決が成功しました。 ファイアウォールは、最大 1 時間の応答で TTL (Time to Live) に従ってこれらの応答をキャッシュします。 
 
-- **負のキャッシュ**: DNS 解決が、応答なし、または解決なしという結果になります。 ファイアウォールによって、この情報は 1 時間キャッシュされます。
+- **負のキャッシュ**: DNS 解決が、応答なし、または解決なしという結果になります。 ファイアウォールは、最大 30 分の応答で TTL に従ってこれらの応答をキャッシュします。
 
 DNS プロキシによって、すべての解決済み IP アドレスが FQDN からネットワーク ルールに格納されます。 ベスト プラクティスとして、1 つの IP アドレスに解決される FQDN を使用することをお勧めします。
 

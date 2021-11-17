@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/28/2021
 ms.topic: tutorial
-ms.openlocfilehash: f335df520b8d47a9439575a5d2f337d28a9bebc6
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 31f9e30d938f70852eac5c5185626828e5305897
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357542"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427173"
 ---
 # <a name="tutorial-create-automation-powershell-runbook-using-managed-identity"></a>チュートリアル: マネージド ID を使用して Automation PowerShell Runbook を作成する
 
-このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成し、リソースの操作に実行アカウントではなく、[マネージド ID](../automation-security-overview.md#managed-identities-preview) を使用する方法を説明します。 PowerShell Runbook は、Windows PowerShell に基づきます。 Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。
+このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成し、リソースの操作に実行アカウントではなく、[マネージド ID](../automation-security-overview.md#managed-identities) を使用する方法を説明します。 PowerShell Runbook は、Windows PowerShell に基づきます。 Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -265,13 +265,9 @@ Remove-AzRoleAssignment `
     -RoleDefinitionName $role1
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成し、リソースの操作に実行アカウントではなく、[マネージド ID](../automation-security-overview.md#managed-identities-preview) を使用しました。 PowerShell ワークフロー Runbook については、以下を参照してください。
+このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成し、リソースの操作に実行アカウントではなく、[マネージド ID](../automation-security-overview.md#managed-identities) を使用しました。 PowerShell ワークフロー Runbook については、以下を参照してください。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)
-
-
-
-

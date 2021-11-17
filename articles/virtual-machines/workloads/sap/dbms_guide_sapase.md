@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/15/2021
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aabb53a573ee8a3ccc5d98ab8316fee560dbf625
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f31a210894f6c4581c9deea54e18c5dac4d44b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603906"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462930"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
 
@@ -159,6 +159,13 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | ASE MaxMemory パラメーター | 物理 RAM の 90% | 物理 RAM の 90% | 1 つのインスタンスを想定 |
 | バックアップ デバイスの数 | 16 | 16 | --- |
 | バックアップ ディスクの数と種類 | 4 | 4 | LVM2 または記憶域スペースを使用 |
+
+
+NFS v4.1 ボリュームにホストされている Azure NetApp Files は、SAP ASE データベース ストレージに使用するもう 1 つの代替手段です。 このような構成の基本構造は次のようになります
+
+![ANF を使用する SAP ASE 用のストレージ構成](./media/dbms-guide-sap-ase/anf-layout.png)
+
+上の例では、データベースの SID は A11 でした。 Azure NetApp Files ベースのボリュームのサイズとパフォーマンス レベルは、データベース ボリュームと、必要な IOPS およびスループットによって決まります。 sapdata と saplog の場合は、十分な帯域幅を提供できるように Ultra パフォーマンス レベルから始めることをお勧めします。 多くの非運用環境デプロイでは、Premium パフォーマンス レベルで十分な可能性があります。 データベースに使用する Azure NetApp Files の具体的なサイズ設定と制限事項について詳しくは、[『SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム』の「Azure NetApp Files 上の HANA データベースのサイズ指定」](./hana-vm-operations-netapp.md)の章をご覧ください。
 
 
 ### <a name="backup--restore-considerations-for-sap-ase-on-azure"></a>Azure での SAP ASE のバックアップと復元に関する考慮事項

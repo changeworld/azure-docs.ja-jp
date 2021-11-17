@@ -5,16 +5,16 @@ titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
 ms.service: machine-learning
-ms.subservice: mlops
+ms.subservice: core
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0bea2b0fe1b5d08f343fd31ffc14b9252039a49e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 46ae66658d5f07e1a44322bf64997a80d66db1c0
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092756"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485169"
 ---
 # <a name="create-and-select-kubernetes-instance-types-preview"></a>Kubernetes インスタンスの種類を作成して選択する (プレビュー)
 

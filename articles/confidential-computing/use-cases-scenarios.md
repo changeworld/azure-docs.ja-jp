@@ -2,19 +2,19 @@
 title: Azure のコンフィデンシャル コンピューティングの一般的なシナリオとユース ケース
 description: コンフィデンシャル コンピューティングを自分のシナリオで使用する方法について説明します。
 services: virtual-machines
-author: stempesta
+author: JBCook
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 11/04/2021
-ms.author: stempesta
+ms.author: jencook
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2fd30934f71df8a84bf718445972ab9d0ff2d469
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 408f619f34942839bedcc75c6ab66044b4f90323
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132347824"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852717"
 ---
 # <a name="use-cases-and-scenarios"></a>ユース ケースとシナリオ
 コンフィデンシャル コンピューティングは、政府、金融サービス、医療機関などの規制対象業界のデータを保護するために、さまざまなユース ケースに適用されます。 たとえば、機密データへのアクセスを防止することは、機密データを格納するクラウド プロバイダーなど、関係するすべての関係者から市民のデジタル ID を保護するのに役立ちます。 同じ機密データに、児童労働搾取の既知のイメージの検索と削除、人身売買の防止、デジタル フォレンジック捜査の支援に使用される生体認証データが含まれる場合があります。

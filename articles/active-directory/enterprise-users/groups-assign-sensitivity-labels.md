@@ -4,7 +4,7 @@ description: 秘密度ラベルをグループに割り当てる方法につい�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cda4fe1af43b0bf7f091f34ae03a021c2ac4d20
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 96db7b21433a9bb3c1ed314c2b8ad612a5e335f3
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667537"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136041"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 1. コンピューターで Windows PowerShell ウィンドウを開きます。 これは昇格された特権がなくても開くことができます。
 1. 次のコマンドを実行して、コマンドレットを実行する準備をします。
 
-    ```PowerShell
+    ```powershell
     Install-Module AzureADPreview
     Import-Module AzureADPreview
     Connect-AzureAD
@@ -44,8 +44,8 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
     **[アカウントにサインインする]** ページで、管理者アカウントとパスワードを入力してサービスに接続し、 **[サインイン]** を選択します。
 1. Azure AD 組織の現在のグループ設定を取得します。
 
-    ```PowerShell
-    $setting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
+    ```powershell
+    $grpUnifiedSetting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
     $template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
     $setting = $template.CreateDirectorySetting()
     ```
@@ -55,20 +55,26 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 
 1. 次に、現在のグループ設定を表示します。
 
-    ```PowerShell
+    ```powershell
     $Setting.Values
     ```
 
-1. 次に、この機能を有効にします。
+1. 機能を有効にします。
 
-    ```PowerShell
+    ```powershell
     $Setting["EnableMIPLabels"] = "True"
     ```
+ 
+1. 新しく適用された値を確認します。
 
-1. 次に、変更を保存し、設定を適用します。
+    ```powershell
+    $Setting.Values
+    ```
+    
+1. 変更を保存して設定を適用します。
 
-    ```PowerShell
-    New-AzureADDirectorySetting -DirectorySetting $setting
+    ```powershell
+    Set-AzureADDirectorySetting -Id grpUnifiedSetting.Id -DirectorySetting $setting
     ```
 
 また、秘密度ラベルを Azure AD に同期する必要があります。 手順については、「[コンテナーの秘密度ラベルを有効化してラベルを同期する方法](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels)」を参照してください。

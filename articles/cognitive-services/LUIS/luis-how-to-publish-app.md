@@ -10,13 +10,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 01/12/2021
-ms.openlocfilehash: 53549869098504396d1fa1039ed43b5ff02d2a9b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 10/28/2021
+ms.openlocfilehash: 8c006a47f6967be5387e462a2387d1b59195b685
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083640"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430783"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
@@ -71,9 +71,9 @@ ms.locfileid: "110083640"
 
 <a name="enable-sentiment-analysis"></a>
 
-感情分析を使用すると、LUIS を [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) と統合して、感情分析とキーフレーズ分析を提供できます。
+感情分析を使用すると、LUIS を[言語サービス](https://azure.microsoft.com/services/cognitive-services/text-analytics/)と統合して、感情分析とキーフレーズ分析を提供できます。
 
-Text Analytics キーを指定する必要はなく、Azure アカウントに対するこのサービスの課金はありません。
+言語サービスのキーを指定する必要はなく、Azure アカウントに対するこのサービスの課金はありません。
 
 センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブなセンチメントを示し、0 に近いほどネガティブな感情を示します。 `positive`、`neutral`、`negative` のセンチメント ラベルは、サポートされているカルチャによって異なります。 現時点では、センチメント ラベルがサポートされているのは英語のみです。
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 1009b5a9154205b83b83fb462b733551fabc800c
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: f575f5c45bff85cd0f9ae514e5ba18cc3151524a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/12/2021
-ms.locfileid: "132372001"
+ms.locfileid: "132402449"
 ---
 # <a name="m-series"></a>M シリーズ
 
@@ -31,7 +31,7 @@ M シリーズの VM は、Intel&reg; ハイパー スレッディング テク�
 [書き込みアクセラレータ](./how-to-enable-write-accelerator.md): サポートされています<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
-[仮想化を入れ子にする](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |

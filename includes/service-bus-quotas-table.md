@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 058ce3899e5857c136859426f0972efc9fd0b92f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 7ec263b7e6c5c5f2191f207cf40ddc43b69fa6ad
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715999"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132096966"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
@@ -29,7 +29,7 @@ ms.locfileid: "129715999"
 | メッセージング エンティティ名の最大サイズ: 名前空間、サブスクリプション、またはサブスクリプション規則 |Entity |- |50 文字。 |
 | メッセージ ID の最大サイズ | Entity |- | 128 |
 | メッセージ セッション ID の最大サイズ | Entity |- | 128 |
-| キュー、トピック、またはサブスクリプション エンティティのメッセージ サイズ |Entity |これらのクォータを超える受信メッセージは拒否され、呼び出し元コードが例外を受け取ります。 | 256 KB ([Standard レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md))<br/> 1 MB ([Premium レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)) <br /><br />メッセージ サイズには、プロパティのサイズ (システムとユーザー) とペイロードのサイズが含まれます。 システム プロパティのサイズは、シナリオによって異なります。 |
+| キュー、トピック、またはサブスクリプション エンティティのメッセージ サイズ |Entity |これらのクォータを超える受信メッセージは拒否され、呼び出し元コードが例外を受け取ります。 | 256 KB ([Standard レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md))<br/> 100 MB ([Premium レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md))。 <br /><br />メッセージ サイズには、プロパティのサイズ (システムとユーザー) とペイロードのサイズが含まれます。 システム プロパティのサイズは、シナリオによって異なります。 |
 | キュー、トピック、またはサブスクリプション エンティティのメッセージ プロパティ サイズ |Entity | 例外 `SerializationException` が生成されます。 | <p>各プロパティのメッセージ プロパティの最大サイズは、32 KB です。</p><p>すべてのプロパティの累積サイズが 64 KB を超えることはできません。 この制限は、ブローカー メッセージのヘッダー全体に適用されます。このヘッダーには、ユーザー プロパティとシステム プロパティ (ログ シーケンス番号、ラベル、メッセージ ID など) の両方が含まれます。</p><p>プロパティ バッグ内のヘッダー プロパティの最大数: **バイト/int.MaxValue**。</p> |
 | トピックごとのサブスクリプション数 |Entity |以後、そのトピックに対するサブスクリプションの新規作成要求は拒否されます。 その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |Standard レベルおよび Premium レベルのトピックあたり 2,000。 |
 | トピックごとの SQL フィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |2,000 |

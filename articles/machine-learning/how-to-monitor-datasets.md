@@ -11,12 +11,12 @@ author: buchananwp
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: data4ml, contperf-fy21q2
-ms.openlocfilehash: 05d7136b48f206cc9d091f5f73ee763cc24135fa
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f80489726617b05e4a4c025893fdb24ec1f2d05c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558822"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335711"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 
@@ -274,7 +274,7 @@ monitor = monitor.enable_schedule()
 
 ターゲット データセットも時間の経過に沿ってプロファイリングされます。 各特徴のベースライン分布間の統計的な距離は、ターゲット データセットの時間の経過と比較されます。  概念的には、これはデータ ドリフトの規模と似ています。  ただし、この統計的な距離は、すべての特徴ではなく、個々の特徴に対するものです。 最小値、最大値、平均値も取得できます。
 
-Azure Machine Learning Studio で、グラフ内のバーをクリックすると、その日付の特徴レベルの詳細が表示されます。 既定では、同じ特徴について、ベースライン データセットの分布と最近の実行時の分布が表示されます。
+Azure Machine Learning Studio でグラフ内のバーをクリックすると、その日付の特徴レベルの詳細が表示されます。 既定では、同じ特徴について、ベースライン データセットの分布と最近の実行時の分布が表示されます。
 
 :::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="特徴ごとのドリフトの規模":::
 

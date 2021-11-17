@@ -8,12 +8,12 @@ ms.subservice: database-editor
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9612fabc94e3425c42bb30e3075a56fb3f789626
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 2cff956fa8507ec1dcbf8e3ab3576d19ecebf526
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131510445"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060814"
 ---
 # <a name="how-to-create-an-empty-lake-database"></a>方法: 空の Lake データベースを作成する
 

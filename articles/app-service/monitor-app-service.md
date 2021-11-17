@@ -7,26 +7,22 @@ ms.topic: article
 ms.service: app-service
 ms.custom: subject-monitoring
 ms.date: 04/16/2021
-ms.openlocfilehash: 1c3ff0fb224d5c1f8fe0133f184044b8aa5b30a3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d0bef29fc9e91d847046bc5d8157a70bd2fdfd9a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837140"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470986"
 ---
 # <a name="monitoring-app-service"></a>App Service の監視
 
-Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、App Service によって生成され、[Azure Monitor](../azure-monitor/overview.md) に配布される監視データについて説明します。 [リソースを監視する組み込みの診断機能](troubleshoot-diagnostic-logs.md)を使用して、App Service アプリのデバッグに役立てることもできます。 Azure Monitor を使用するすべての Azure サービスに共通する Azure Monitor の機能に詳しくない場合は、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
-
-> [!NOTE]
-> 診断設定と App Service の統合は[プレビュー](https://aka.ms/appsvcblog-azmon)段階です。
->
+Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、App Service によって生成され、[Azure Monitor](../azure-monitor/overview.md) に配布される監視データについて説明します。 [リソースを監視する組み込みの診断機能](troubleshoot-diagnostic-logs.md)を使用して、App Service アプリのデバッグに役立てることもできます。 すべての Azure サービスに共通する Azure Monitor の機能に詳しくない場合は、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
 
 ## <a name="monitoring-data"></a>データの監視 
 
 App Service では、[Azure リソースの監視データ](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関するページで説明されている他の Azure リソースと同じ種類の監視データが収集されます。 
 
-App Service によって作成されるメトリックとログ メトリックの詳細については、「[*App Service* の監視データのリファレンス](monitor-app-service-reference.md)」を参照してください。
+App Service のメトリックとログの詳細については、「[*App Service* データの監視のリファレンス](monitor-app-service-reference.md)」を参照してください。
 
 App Service では、組み込みの診断機能により、アプリのデバッグに役立てることができます。 組み込みログを有効にする方法の詳細については、[診断ログの有効化](troubleshoot-diagnostic-logs.md)に関するページを参照してください。 App Service インスタンスを監視するには、「[正常性チェックを使用して App Service インスタンスを監視する](monitor-instances-health-check.md)」を参照してください。
 
@@ -52,7 +48,7 @@ App Service について収集されるプラットフォーム メトリック�
 
 Azure Monitor ログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。  
 
-Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)に関する記事をご覧ください。
+Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor)に関する記事をご覧ください。
 
 [アクティビティ ログ](../azure-monitor/essentials/activity-log.md)は、サブスクリプションレベルのイベントの分析情報を提供するプラットフォーム ログの 1 つの種類です。 個別に表示できるほか、Azure Monitor ログにルーティングできます。 Azure Monitor ログへのルーティングにより、Log Analytics を使用して複雑なクエリを実行する利点が得られます。
 
@@ -98,7 +94,7 @@ myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, Resul
 
 Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../azure-monitor/alerts/alerts-metric-overview.md)、[ログ](../azure-monitor/alerts/alerts-unified-log.md)、[アクティビティ ログ](../azure-monitor/alerts/activity-log-alerts.md)に対して設定できます。
 
-App Service でアプリケーションを実行している場合は、[Azure Monitor Application Insights](../azure-monitor/overview.md#application-insights) によって追加の種類のアラートが提供されることがあります。
+App Service でアプリケーションを実行している場合は、[Azure Monitor Application Insights](../azure-monitor/overview.md#application-insights) によってより多くの種類のアラートが提供されます。
 
 次の表に、App Service の一般的および推奨されるアラートのルールを示します。
 

@@ -4,12 +4,12 @@ description: この記事では、Azure Automation 機能をデプロイする�
 services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 8112b7637fc2737a80ab9235b962b2adef6d1b19
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 8e4cdcf91c3978d5849e987aa2992c6b5fc6b834
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607797"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494864"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>機能のデプロイに関する問題のトラブルシューティング
 

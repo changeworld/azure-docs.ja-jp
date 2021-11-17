@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4794813af900df66fd2d7cd6fb8e238f79d18d4b
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 32441732385ebd16c2edaa9b77a75382051b6ee1
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132327597"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502884"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>新しい仮想マシンのホットパッチ (プレビュー)
 

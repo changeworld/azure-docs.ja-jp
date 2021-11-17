@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 61002f3943001dd145cd30593b6972d743f24eec
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 51685da924bc2fab2f936eceeaf13972216ffd77
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472799"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492135"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーでのバックアップと復元
 
@@ -120,7 +120,7 @@ Azure Database for MySQL フレキシブル サーバーでは、ポイントイ
 > ゾーン冗長の高可用性を使用して構成されたフレキシブル サーバーを復元する場合、復元されたサーバーは、プライマリ サーバーと同じリージョンおよびゾーン内に構成され、非 HA モードで単一のフレキシブル サーバーとしてデプロイされます。 フレキシブル サーバーに対する[ゾーン冗長高可用性](concepts-high-availability.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> 削除したサーバーは、復元 **できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 管理者は、デプロイ後の誤削除や予期せぬ変更からサーバーのリソースを保護するために、[管理ロック](../../azure-resource-manager/management/lock-resources.md)を利用できます。
+> 削除された MySQL フレキシブル サーバー リソースは、サーバーを削除した時点から 5 日以内であれば復元できます。 削除されたサーバーを復元する方法の詳細なガイドについては、[文書化されている手順](../flexible-server/how-to-restore-dropped-server.md)を参照してください。 管理者は、デプロイ後の誤削除や予期せぬ変更からサーバーのリソースを保護するために、[管理ロック](../../azure-resource-manager/management/lock-resources.md)を利用できます。
 
 ## <a name="geo-restore"></a>geo リストア
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/17/2021
+ms.date: 11/08/2021
 ms.author: tisande
-ms.openlocfilehash: 74a3bb89b10a48d5485df29797e891f80839047f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2c2681f1d6e9abf66375d8a6a9d0f43683474dcc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614847"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060417"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Azure Cosmos DB 専用ゲートウェイ - 概要 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -98,9 +98,9 @@ Azure Cosmos DB アカウントに接続するには、次の 3 通りのやり�
 専用ゲートウェイのパブリック プレビューでは、次の制限があります。
 
 - 専用ゲートウェイは、SQL API アカウントでのみサポートされています。
-- [IP ファイアウォール](how-to-configure-firewall.md)または[プライベート リンク](how-to-configure-private-endpoints.md)が構成されている Azure Cosmos DB アカウント内の専用ゲートウェイに接続することはできません。
-- [仮想ネットワーク (Vnet)](how-to-configure-vnet-service-endpoint.md) の Azure Cosmos DB アカウント内の専用ゲートウェイに接続することはできません
-- [可用性ゾーン](high-availability.md#availability-zone-support)が有効になっている Azure Cosmos DB アカウント内の専用ゲートウェイに接続することはできません。
+- [IP ファイアウォール](how-to-configure-firewall.md)または[プライベート リンク](how-to-configure-private-endpoints.md)が構成されている Azure Cosmos DB アカウントに専用ゲートウェイをプロビジョニングすることはできません。
+- [仮想ネットワーク (VNet)](how-to-configure-vnet-service-endpoint.md) の Azure Cosmos DB アカウントに専用ゲートウェイをプロビジョニングすることはできません
+- [可用性ゾーン](high-availability.md#availability-zone-support)を使用する Azure Cosmos DB アカウントに専用ゲートウェイをプロビジョニングすることはできません。
 - 専用ゲートウェイ経由でルーティングされるデータ プレーン要求は、[ロールベースのアクセス制御 (RBAC)](how-to-setup-rbac.md) を使用して認証することはできません
 
 ## <a name="supported-regions"></a>サポートされているリージョン
@@ -132,5 +132,5 @@ Azure Cosmos DB アカウントに接続するには、次の 3 通りのやり�
 - [統合キャッシュの構成](how-to-configure-integrated-cache.md)
 - [統合キャッシュのよくあるご質問](integrated-cache-faq.md)
 - Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    - 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
-    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

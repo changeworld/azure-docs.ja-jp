@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 8969ca4b9ca24e3cd864075d2d99492db74762bb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: ff8778dfa69552deaf26dd13438ac73fed260658
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056154"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131565659"
 ---
 # <a name="access-azure-resources-from-a-managed-online-endpoint-preview-with-a-managed-identity"></a>マネージド ID を使用してマネージド オンライン ・んどポイント (プレビュー) から Azure リソースにアクセスする 
 
@@ -67,7 +67,7 @@ CLI を使用してマネージド エンドポイントをデプロイするに
 * エンドポイントを参照する際に使用する名前 (`my-sai-endpoint`) を定義します。
 * エンドポイントへのアクセスに使用する承認の種類 (`auth-mode: key`) を指定します。
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/1-sai-create-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-sai-create-endpoint.yml":::
 
 この YAML の例 (`2-sai-deployment.yml`) によって、以下が行われます。
 
@@ -75,7 +75,7 @@ CLI を使用してマネージド エンドポイントをデプロイするに
 * エンドポイントに、`blue` というデプロイが関連付けられるように指定します
 * デプロイするモデル、使用する環境とスコアリング スクリプトなど、デプロイの詳細を構成します。
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
 # <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](#tab/user-identity)
 
@@ -85,7 +85,7 @@ CLI を使用してマネージド エンドポイントをデプロイするに
 * エンドポイントへのアクセスに使用する承認の種類 (`auth-mode: key`) を指定します。
 * 使用する id の種類 (`type: user_assigned`) を示します。
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/1-uai-create-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-uai-create-endpoint.yml":::
 
 この YAML の例 (`2-sai-deployment.yml`) によって、以下が行われます。
 
@@ -93,7 +93,7 @@ CLI を使用してマネージド エンドポイントをデプロイするに
 * エンドポイントに、`blue` というデプロイが関連付けられるように指定します
 * デプロイするモデル、使用する環境とスコアリング スクリプトなど、デプロイの詳細を構成します。
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-uai-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/2-uai-deployment.yml":::
 
 ---
 
@@ -105,13 +105,13 @@ CLI を使用してマネージド エンドポイントをデプロイするに
 
 次のコードは、これらの値をエンドポイントの環境変数としてエクスポートするものです。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="set_variables" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="set_variables" :::
 
 次に、BLOB ストレージ アカウント、BLOB コンテナー、ファイルに付けたい名前を指定します。 ここでこれらの変数名を定義しておいて、次のセクションの `az storage account create` コマンドや `az storage container create` コマンドから参照することになります。
 
 次のコードは、それらの値を環境変数としてエクスポートするものです。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="configure_storage_names" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="configure_storage_names" :::
 
 これらの変数をエクスポートした後、テキスト ファイルをローカルに作成します。 エンドポイントがデプロイされると、スコアリング スクリプトは、エンドポイントの作成時に生成されるシステム割り当てマネージド ID を使用して、このテキスト ファイルにアクセスします。
 
@@ -119,17 +119,17 @@ CLI を使用してマネージド エンドポイントをデプロイするに
 
 エンドポイント、ワークスペース、ワークスペースの場所の名前を決定し、その値を環境変数としてエクスポートします。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="set_variables" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="set_variables" :::
 
 次に、BLOB ストレージ アカウント、BLOB コンテナー、ファイルに付けたい名前を指定します。 ここでこれらの変数名を定義しておいて、次のセクションの `az storage account create` コマンドや `az storage container create` コマンドから参照することになります。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="configure_storage_names" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="configure_storage_names" :::
 
 これらの変数をエクスポートした後、テキスト ファイルをローカルに作成します。 エンドポイントがデプロイされると、スコアリング スクリプトは、エンドポイントで使用されるシステム割り当てマネージド ID を使用して、このテキスト ファイルにアクセスします。 
 
 ユーザー id 名の名前を決定し、その値を環境変数としてエクスポートします。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="set_user_identity_name" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="set_user_identity_name" :::
 
 ---
 
@@ -144,7 +144,7 @@ Azure リソースにアクセスするには、エンドポイントに対す�
 
 ユーザー割り当てマネージド ID を作成するには、次を使用します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_user_identity" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_user_identity" :::
 
 ---
 
@@ -156,33 +156,33 @@ Azure リソースにアクセスするには、エンドポイントに対す�
 
 まず、ストレージ アカウントを作成します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_account" :::
 
 次に、ストレージ アカウントに BLOB コンテナーを作成します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_container" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_container" :::
 
 その後、テキスト ファイルを BLOB コンテナーにアップロードします。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="upload_file_to_storage" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="upload_file_to_storage" :::
 
 # <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](#tab/user-identity)
 
 まず、ストレージ アカウントを作成します。  
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_storage_account" :::
 
 次のものを使用して、既存のストレージ アカウント ID を取得することもできます。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_storage_account_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_storage_account_id" :::
 
 次に、ストレージ アカウントに BLOB コンテナーを作成します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_storage_container" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_storage_container" :::
 
 次に、ファイルをコンテナーにアップロードします。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="upload_file_to_storage" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="upload_file_to_storage" :::
 
 ---
 
@@ -196,21 +196,21 @@ Azure リソースにアクセスするには、エンドポイントに対す�
 >[!IMPORTANT]
 > システム割り当てマネージド ID は不変であり、作成後は変更できません。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_endpoint" :::
 
 エンドポイントの状態を次のようにして確認します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
 問題が発生した場合は、「[マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md)」を参照してください。
 
 # <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](#tab/user-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_endpoint" :::
 
 エンドポイントの状態を次のようにして確認します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_endpoint_Status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_endpoint_Status" :::
 
 問題が発生した場合は、「[マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md)」を参照してください。
 
@@ -227,41 +227,41 @@ Azure リソースにアクセスするには、エンドポイントに対す�
 
 エンドポイントに対して作成されたシステム割り当てマネージド ID を取得します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="get_system_identity" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="get_system_identity" :::
 
 ここから、システム割り当てマネージド ID に、ご使用のストレージへのアクセス許可を与えることができます。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="give_permission_to_user_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="give_permission_to_user_storage_account" :::
 
 # <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](#tab/user-identity)
 
 ユーザー割り当てマネージド ID のクライアント ID を取得します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_user_identity_client_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_user_identity_client_id" :::
 
 ユーザー割り当てマネージド ID を取得します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_user_identity_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_user_identity_id" :::
 
 ワークスペースに関連付けられているコンテナー レジストリを取得します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_container_registry_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_container_registry_id" :::
 
 ワークスペースの既定のストレージを取得します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_workspace_storage_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_workspace_storage_id" :::
 
 ユーザー割り当てマネージド ID に、ストレージ アカウントのアクセス許可を付与します。  
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_user_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_user_storage_account" :::
 
 ユーザー割り当てマネージド ID に、コンテナー レジストリのアクセス許可を付与します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_container_registry" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_container_registry" :::
 
 ユーザー割り当てマネージド ID に、既定のワークスペース ストレージのアクセス許可を付与します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_workspace_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_workspace_storage_account" :::
 
 ---
 
@@ -269,7 +269,7 @@ Azure リソースにアクセスするには、エンドポイントに対す�
 
 ID トークンを使用して Azure リソースにアクセスする方法を理解するには、次のスクリプトを参照してください。このシナリオでは、前のセクションで作成したストレージ アカウントです。 
 
-:::code language="python" source="~/azureml-examples-main/cli/endpoints/online/model-1/onlinescoring/score_managedidentity.py":::
+:::code language="python" source="~/azureml-examples-cli-preview/cli/endpoints/online/model-1/onlinescoring/score_managedidentity.py":::
 
 ## <a name="create-a-deployment-with-your-configuration"></a>自分の構成を使用してデプロイを作成する
 
@@ -280,14 +280,14 @@ ID トークンを使用して Azure リソースにアクセスする方法を�
 
 # <a name="system-assigned-managed-identity"></a>[システム割り当てマネージド ID](#tab/system-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="deploy" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="deploy" :::
 
 >[!NOTE]
 > `--name` 引数の値によって、YAML ファイル内の `name` キーがオーバーライドされる可能性があります。
 
 デプロイの状態を確認します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deploy_Status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deploy_Status" :::
 
 特定のデータのみが返されるように上記のクエリを調整する方法については、[Azure CLI コマンドの出力の照会](/cli/azure/query-azure-cli)に関するページを参照してください。
 
@@ -296,30 +296,30 @@ ID トークンを使用して Azure リソースにアクセスする方法を�
 
 init メソッドの出力をチェックするには、次のコードでデプロイ ログを確認します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deployment_log" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deployment_log" :::
 
 
 # <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](#tab/user-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_endpoint" :::
 
 >[!Note]
 > `--name` 引数の値によって、YAML ファイル内の `name` キーがオーバーライドされる可能性があります。
 
 コマンドが実行されると、デプロイの状態を確認できます。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_endpoint_Status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_endpoint_Status" :::
 
 特定のデータのみが返されるように上記のクエリを調整する方法については、[Azure CLI コマンドの出力の照会](/cli/azure/query-azure-cli)に関するページを参照してください。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_deployment_log" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_deployment_log" :::
 
 > [!NOTE]
 > スコアリング スクリプトの init メソッドは、システム割り当てマネージド ID トークンを使用して、ストレージ アカウントからファイルを読み取ります。
 
 init メソッドの出力をチェックするには、次のコードでデプロイ ログを確認します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_deployment_log" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_deployment_log" :::
 
 ---
 
@@ -329,17 +329,17 @@ init メソッドの出力をチェックするには、次のコードでデプ
 
 エンドポイントがデプロイされた後、その操作を確認します。 推論の詳細は、モデルによって異なります。 このガイドでは、JSON クエリ パラメーターは次のようになります。 
 
-:::code language="json" source="~/azureml-examples-main/cli/endpoints/online/model-1/sample-request.json" :::
+:::code language="json" source="~/azureml-examples-cli-preview/cli/endpoints/online/model-1/sample-request.json" :::
 
 エンドポイントを呼び出すには、次を実行します。
 
 # <a name="system-assigned-managed-identity"></a>[システム割り当てマネージド ID](#tab/system-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="test_endpoint" :::
 
 # <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](#tab/user-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="test_endpoint" :::
 
 ---
 
@@ -349,14 +349,14 @@ init メソッドの出力をチェックするには、次のコードでデプ
 
 # <a name="system-assigned-managed-identity"></a>[システム割り当てマネージド ID](#tab/system-identity)
  
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_endpoint" :::
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_storage_account" :::
 
 # <a name="user-assigned-managed-identity"></a>[ユーザー割り当てマネージド ID](#tab/user-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_endpoint" :::
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_storage_account" :::
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_user_identity" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_user_identity" :::
 
 ---
 

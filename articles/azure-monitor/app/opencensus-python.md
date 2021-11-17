@@ -2,17 +2,17 @@
 title: Azure Monitor を使用して Python アプリを監視する | Microsoft Docs
 description: OpenCensus Python を Azure Monitor に接続する手順について説明します
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/12/2021
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 14aef56cc84b505afcc58f7f3662ed133bf829c5
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 12c455eb2cd3114b043e19ddd37ca3497143914b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162709"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244983"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -23,6 +23,9 @@ Microsoft でサポートされている、Python アプリケーションのデ
 その他の Python 用テレメトリ SDK はサポートされていないため、テレメトリ ソリューションとして使用することはお勧めしません。
 
 OpenCensus が [OpenTelemetry](https://opentelemetry.io/) に統合されつつあることはご存知かと思います。 しかし、Microsoft では、OpenTelemetry が成熟するまでは、OpenCensus をお勧めしています。
+
+> [!NOTE]
+> プレビューの [OpenTelemetry ベースの Python オファリングを](opentelemetry-enable.md?tabs=python)利用できます。 [詳細については、こちらを参照してください](opentelemetry-overview.md)。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -4,17 +4,14 @@ description: この記事では、構成状態がドリフトになっている�
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
-manager: nirb
-ms.openlocfilehash: e7988f8b72a6621897c656e12595a3fe68665535
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: cf4286634e72d687fe78c53a8f20abe5d5b2b6eb
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429840"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489872"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>非準拠の Azure Automation State Configuration サーバーを修復する
 

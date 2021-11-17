@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 7/7/2021
-ms.openlocfilehash: 9fbcf03159e11aa9d2951f3f951290eb6e51b511
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.date: 11/02/2021
+ms.openlocfilehash: 716c425958a457b45736835029b90567c090d4a9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129670140"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446982"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database と Azure SQL Managed Instance のサービス レベル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,8 @@ ms.locfileid: "129670140"
 Azure SQL Database では、Hyperscale サービス レベルも提供されます。 
 
 - [Hyperscale](service-tier-hyperscale.md) は、ほとんどのビジネス ワークロード向けに設計されており、拡張性の高いストレージ、読み取りスケールアウト、およびデータベースの高速復元機能を備えています。
+
+仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[購入モデルとリソース](purchasing-models.md)に関する記事をご覧ください。
 
 ## <a name="service-tier-comparison"></a>サービス レベルの比較
 
@@ -51,7 +53,8 @@ Azure SQL Database では、Hyperscale サービス レベルも提供されま�
 | | SQL Managed Instance  | [仮想コアあたり 24 GB](../managed-instance/resource-limits.md#service-tier-characteristics) | 該当なし | 最大 4 TB - [ストレージ サイズによる制限](../managed-instance/resource-limits.md#service-tier-characteristics) |
 | **ログ書き込みスループット** | SQL Database | 単一データベース: [仮想コアあたり 4.5 MB/秒 (最大 50 MB/秒)](resource-limits-vcore-single-databases.md) <br> エラスティック プール: [仮想コアあたり 6 MB/秒 (最大 62.5 MB/秒)](resource-limits-vcore-elastic-pools.md)| 100 MB/秒 | 単一データベース: [仮想コアあたり 12 MB/秒 (最大 96 MB/秒)](resource-limits-vcore-single-databases.md) <br> エラスティック プール: [仮想コアあたり 15 MB/秒 (最大 120 MB/秒)](resource-limits-vcore-elastic-pools.md)|
 | | SQL Managed Instance | [仮想コアあたり 3 MB/秒 (最大 22 MB/秒)](../managed-instance/resource-limits.md#service-tier-characteristics) | 該当なし | [仮想コアあたり 4 MB/秒 (最大 48 MB/秒)](../managed-instance/resource-limits.md#service-tier-characteristics) |
-|**可用性**|All| 99.99% |  [セカンダリ レプリカが 1 つで 99.95%、それ以上のレプリカで 99.99%](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99.99% <br/> [ゾーン冗長単一データベースで 99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**可用性**|SQL Database ([SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database/))| 99.99% | [セカンダリ レプリカが 1 つで 99.95%、それ以上のレプリカで 99.99%](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99.99% <br/> [ゾーン冗長単一データベースで 99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+| |SQL マネージド インスタンス ([SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/))| 99.99% |  [セカンダリ レプリカが 1 つで 99.95%、それ以上のレプリカで 99.99%](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99.99% <br/> [ゾーン冗長単一データベースで 99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**バックアップ**|All|RA-GRS、1 ～ 35 日 (既定では 7 日) | RA-GRS、7 日、高速のポイントインタイム リストア (PITR) | RA-GRS、1 ～ 35 日 (既定では 7 日) |
 |**インメモリ OLTP** | | 該当なし | 部分的なサポート。 メモリ最適化テーブル型、テーブル変数、ネイティブ コンパイル モジュールがサポートされています。 | 利用可能 |
 |**読み取り専用レプリカ**| | 0 組み込み <br> 0 - 4 [geo レプリケーション](active-geo-replication-overview.md)を使用 | 0 - 4 組み込み | 1 組み込み、価格に含まれます <br> 0 - 4 [geo レプリケーション](active-geo-replication-overview.md)を使用 |
@@ -59,10 +62,17 @@ Azure SQL Database では、Hyperscale サービス レベルも提供されま�
 || SQL Managed Instance | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。| 該当なし | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。| 
 |**割引モデル**| | [予約インスタンス](reserved-capacity-overview.md)<br/>[Azure ハイブリッド特典](../azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [Azure ハイブリッド特典](../azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [予約インスタンス](reserved-capacity-overview.md)<br/>[Azure ハイブリッド特典](../azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション|
 
-詳細については、[Azure SQL Database (仮想コア)](resource-limits-vcore-single-databases.md)、[単一 Azure SQL Database (DTU)](resource-limits-dtu-single-databases.md)、[プールされた Azure SQL Database (DTU)](resource-limits-dtu-single-databases.md)、[Azure SQL Managed Instance](../managed-instance/resource-limits.md) に関するページでサービス レベル間の細かな違いを確認してください。
-
 > [!NOTE]
-> ハイパースケール サービス レベルについては、「[ハイパースケール サービス レベル](service-tier-hyperscale.md)」を参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[購入モデルとリソース](purchasing-models.md)に関する記事をご覧ください。
+> サービス レベル アグリーメント (SLA) の詳細については、「[Azure SQL Database の SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database/)」と「[Azure SQL Managed Instance の SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/)」を参照してください。
+
+### <a name="resource-limits"></a>リソース制限
+
+リソース制限の詳細については、以下を参照してください。
+
+ - [Azure SQL Database (仮想コア)](resource-limits-vcore-single-databases.md)
+ - [単一の Azure SQL データベース (DTU)](resource-limits-dtu-single-databases.md)
+ - [プールされた Azure SQL データベース (DTU)](resource-limits-dtu-single-databases.md)
+ - [Azure SQL Managed Instance](../managed-instance/resource-limits.md)
 
 ## <a name="data-and-log-storage"></a>データとログのストレージ
 

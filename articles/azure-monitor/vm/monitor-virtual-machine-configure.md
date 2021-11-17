@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: 4e6ef102a4cf0a4528125e336e21ecf709bb37bc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6eb624fd132823afe25a91414c2a316f9dc7bab3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240017"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310340"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-configure-monitoring"></a>Azure Monitor を使用して仮想マシンを監視する: 監視の構成
 この記事は、シナリオ「[Azure Monitor で仮想マシンとそのワークロードを監視する](monitor-virtual-machine.md)」の一部です。 Azure Monitor で Azure 仮想マシンとハイブリッド仮想マシンの監視を構成する方法について説明します。
@@ -41,14 +41,14 @@ Azure Monitor では、Azure 仮想マシンに対する基本的なレベルの
 ## <a name="create-and-prepare-a-log-analytics-workspace"></a>Log Analytics ワークスペースを作成して準備する
 VM 分析情報をサポートし、Log Analytics エージェントからテレメトリを収集するには、少なくとも 1 つの Log Analytics ワークスペースが必要です。 ワークスペースのコストは発生しませんが、データを収集するときに、取り込みと保有のコストが発生します。 詳細については、「[Azure Monitor ログで使用量とコストを管理する](../logs/manage-cost-storage.md)」を参照してください。
 
-多くの環境では、すべての仮想マシンと監視するその他の Azure リソースのために 1 つのワークスペースが使用されます。 [Azure Security Center と Azure Sentinel](monitor-virtual-machine-security.md) で使用されるワークスペースを共有することもできますが、多くのお客様は、可用性とパフォーマンスのテレメトリをセキュリティ データから分離することを選択します。 Azure Monitor を使い始めたばかりの場合は、1 つのワークスペースから始めて、要件の発展に合わせてさらにワークスペースを作成することを検討してください。
+多くの環境では、すべての仮想マシンと監視するその他の Azure リソースのために 1 つのワークスペースが使用されます。 [Microsoft Defender for Cloud と Microsoft Sentinel](monitor-virtual-machine-security.md) で使用されるワークスペースを共有することもできますが、多くのお客様は、可用性とパフォーマンスのテレメトリをセキュリティ データから分離することを選択します。 Azure Monitor を使い始めたばかりの場合は、1 つのワークスペースから始めて、要件の発展に合わせてさらにワークスペースを作成することを検討してください。
 
 ワークスペースの構成を設計するために検討する必要があるロジックの詳細については、「[Azure Monitor ログのデプロイの設計](../logs/design-logs-deployment.md)」を参照してください。
 
 ### <a name="multihoming-agents"></a>エージェントをマルチホームにする
 マルチホームとは、複数のワークスペースに接続する仮想マシンを指します。 通常、Azure Monitor のみでマルチホーム エージェントを使用する理由はほとんどはありません。 エージェントで複数のワークスペースにデータを送信すると、ほとんどの場合、各ワークスペースに重複するデータが作成され、全体的なコストが増加します。 複数のワークスペースのデータを結合するには、[ワークスペース間のクエリ](../logs/cross-workspace-query.md)と[ブック](../visualizations/../visualize/workbooks-overview.md)を使用します。
 
-ただし、マルチホームを検討する理由の 1 つは、Azure Security Center または Azure Sentinel が Azure Monitor とは別のワークスペースに格納されている環境がある場合です。 各サービスによって監視されているマシンでは、各ワークスペースにデータを送信する必要があります。 Windows エージェントでは、最大 4 つのワークスペースに送信することができるため、このシナリオがサポートされます。 現在、Linux エージェントでは、1 つのワークスペースにのみ送信できます。 Azure Monitor と Azure Security Center または Azure Sentinel で Linux マシンの共通セットを監視する場合は、各サービスで同じワークスペースを共有する必要があります。
+ただし、マルチホームを検討する理由の 1 つは、Microsoft Defender for Cloud または Microsoft Sentinel が Azure Monitor とは別のワークスペースに格納されている環境がある場合です。 各サービスによって監視されているマシンでは、各ワークスペースにデータを送信する必要があります。 Windows エージェントでは、最大 4 つのワークスペースに送信することができるため、このシナリオがサポートされます。 現在、Linux エージェントでは、1 つのワークスペースにのみ送信できます。 Azure Monitor と Microsoft Defender for Cloud または Microsoft Sentinel で Linux マシンの共通セットを監視する場合は、各サービスで同じワークスペースを共有する必要があります。
 
 エージェントをマルチホームにするもう 1 つの理由は、[ハイブリッド監視モデル](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring)を使用している場合です。 このモデルでは、Azure Monitor と Operations Manager を使用して同じマシンを監視します。 Log Analytics エージェントと Operations Manager 用の Microsoft Management Agent は同じエージェントです。 これらは異なる名前で呼ばれることがあります。
 
@@ -99,7 +99,7 @@ Azure 仮想マシンと Azure Arc 対応サーバーで同じ方法を使用し
 
 
 ## <a name="send-guest-performance-data-to-metrics"></a>ゲストのパフォーマンス データをメトリックに送信する
-[Azure Monitor エージェント](../agents/azure-monitor-agent-overview.md)で Azure Monitor、Azure Security Center、Azure Sentinel が完全にサポートされている場合、このエージェントによって Log Analytics エージェントが置き換えられます。 それまでは、Log Analytics エージェントと一緒にインストールして、マシンのゲスト オペレーティング システムからのパフォーマンス データを Azure Monitor のメトリックに送信できます。 この構成により、メトリックス エクスプローラーでこのデータを評価し、メトリック アラートを使用できます。
+[Azure Monitor エージェント](../agents/azure-monitor-agent-overview.md)で Azure Monitor、Microsoft Defender for Cloud、および Microsoft Sentinel が完全にサポートされている場合、このエージェントによって Log Analytics エージェントが置き換えられます。 それまでは、Log Analytics エージェントと一緒にインストールして、マシンのゲスト オペレーティング システムからのパフォーマンス データを Azure Monitor のメトリックに送信できます。 この構成により、メトリックス エクスプローラーでこのデータを評価し、メトリック アラートを使用できます。
 
 Azure Monitor エージェントには、収集するデータと、そのデータの送信先を定義する少なくとも 1 つのデータ収集ルール (DCR) が必要です。 同じリソース グループ内のすべてのマシンで 1 つの DCR を使用できます。
 

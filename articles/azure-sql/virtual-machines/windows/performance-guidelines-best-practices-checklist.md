@@ -16,12 +16,12 @@ ms.date: 06/01/2021
 ms.author: pamela
 ms.custom: contperf-fy21q3
 ms.reviewer: mathoma
-ms.openlocfilehash: 1dd05395d921e2a75a56db353e0b0c740b094e49
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: bed0a193a66d9f7ae19a42b61ec4562d11448669
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164520"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157250"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>チェックリスト: Azure VM 上の SQL Server のベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -126,6 +126,7 @@ Azure VM で SQL Server を実行する場合のストレージ構成に関す�
 
 Windows クラスターの場合は、次のベスト プラクティスについて検討します。 
 
+* Azure Load Balancer または分散ネットワーク名 (DNN) に依存しなくても HADR ソリューションにトラフィックをルーティングできるよう、可能な限り SQL Server VM を複数のサブネットにデプロイします。 
 * 一時的なネットワーク障害や Azure プラットフォーム メンテナンスによって予期しない停止が起こらないよう、クラスターを変更してパラメーターを緩和します。 詳細については、[ハートビートとしきい値の設定](hadr-cluster-best-practices.md#heartbeat-and-threshold)に関する記事を参照してください。 Windows Server 2012 以降の場合は、次の推奨値を使用します。 
    - **SameSubnetDelay**: 1 秒
    - **SameSubnetThreshold**: 40 ハートビート
@@ -149,7 +150,7 @@ SQL Server の可用性グループまたはフェールオーバー クラス�
     40 秒から始めます。 先ほど推奨した緩和されている `SameSubnetThreshold` と `SameSubnetDelay` の値を使用している場合は、リース タイムアウト値が 80 秒を超えないようにしてください。 
    - **指定した期間の最大エラー数**: この値は 6 に設定できます。
    - **正常性チェック タイムアウト**: 最初は 60,000 に設定しておき、必要に応じて調整できます。 
-* 仮想ネットワーク名 (VNN) を使用して HADR ソリューションに接続する場合は、お使いのクラスターが 1 つのサブネットにしかまたがっていない場合でも、接続文字列に `MultiSubnetFailover = true` を指定します。 
+* 仮想ネットワーク名 (VNN) と Azure Load Balancer を使用して HADR ソリューションに接続する場合は、お使いのクラスターが 1 つのサブネットにしかまたがっていない場合でも、接続文字列に `MultiSubnetFailover = true` を指定します。 
    - クライアントで `MultiSubnetFailover = True` がサポートされていない場合は、`RegisterAllProvidersIP = 0` および `HostRecordTTL = 300` を設定して、クライアント資格情報をより短期間だけキャッシュすることが必要になる可能性があります。 ただし、そうすることで、DNS サーバーに対して追加のクエリが発生する場合があります。 
 - 分散ネットワーク名 (DNN) を使用して HADR ソリューションに接続する場合は、以下を検討してください。
    - `MultiSubnetFailover = True` をサポートするクライアント ドライバーを使用する必要があります。このパラメーターは接続文字列に含める必要があります。 

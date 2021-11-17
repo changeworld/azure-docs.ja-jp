@@ -3,18 +3,18 @@ title: Azure Site Recovery を使用した Azure VM ディザスター リカバ
 description: Azure 仮想マシンのディザスター リカバリーを行う Azure Site Recovery で高速ネットワークを有効にする方法を説明します
 services: site-recovery
 documentationcenter: ''
-author: Harsha-CS
-manager: rochakm
+author: rishjai-msft
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: harshacs
-ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: rishjai
+ms.openlocfilehash: d3495625da0b039a5e75bf3973600b16f802b263
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96000251"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463494"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>高速ネットワークと Azure 仮想マシンのディザスター リカバリー
 
@@ -72,12 +72,12 @@ VM インスタンスの詳細については、「[Linux 仮想マシンのサ�
 
 Azure 仮想マシンに対して[レプリケーションを有効にする](azure-to-azure-tutorial-enable-replication.md)と、Site Recovery によって、その仮想マシンのネットワーク インターフェイスで高速ネットワークが有効になっているかどうかが自動的に検出されます。 高速ネットワークが既に有効になっている場合、Site Recovery は、レプリケートされた仮想マシンのネットワーク インターフェイスに高速ネットワークを自動的に構成します。
 
-高速ネットワークの状態は、レプリケートされた仮想マシンの **[コンピューティングとネットワーク]** 設定の **[ネットワーク インターフェイス]** セクションで確認できます。
+高速ネットワークの状態は、レプリケートされた仮想マシンの **[ネットワーク]** 設定にある各 NIC のタブで確認できます。
 
 ![高速ネットワーク設定](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
 
 ソース仮想マシンで高速ネットワークを有効にした場合は、レプリケートされた仮想マシンのネットワーク インターフェイスに対する高速ネットワークを次のプロセスで有効にできます。
-1. レプリケートされた仮想マシンの **[コンピューティングとネットワーク]** 設定を開きます。
+1. レプリケートされた仮想マシンの **[ネットワーク]** 設定を開きます。
 2. **[ネットワーク インターフェイス]** セクションでネットワーク インターフェイスの名前をクリックします。
 3. **[ターゲット]** 列の [高速ネットワーク] のドロップダウンから **[有効]** を選択します。
 

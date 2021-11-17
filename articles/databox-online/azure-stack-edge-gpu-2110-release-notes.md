@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 7d8bde85114829ab00256810ff96dbf3840c2884
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 36c7e05e2cce3e93fcd35521582190f2d7cef2b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089833"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469163"
 ---
 # <a name="azure-stack-edge-2110-release-notes"></a>Azure Stack Edge 2110 リリース ノート
 
@@ -25,7 +25,7 @@ ms.locfileid: "131089833"
 
 この記事は、ソフトウェア バージョン番号 **2.2.1758.4034** にマップされる **Azure Stack Edge 2110** リリースに適用されます。 このソフトウェアは、少なくとも Azure Stack Edge 2106 (2.2.1636.3457) ソフトウェアを実行している場合に、お使いのデバイスに適用できます。
 
-## <a name="whats-new"></a>新着情報
+## <a name="whats-new"></a>新機能
 
 Azure Stack Edge 2110 リリースの新機能は以下のとおりです。 
 
@@ -48,6 +48,11 @@ Azure Stack Edge 2110 リリースの新機能は以下のとおりです。
 |**3.**|IoT Edge |IoT Edge によってデプロイされたモジュールは、ホスト ネットワークを使用できません。 | 
 |**4.**|Kubernetes と更新 |2008 リリースなどの以前のソフトウェア バージョンでは、更新が ClusterConnectionException で失敗する競合状態の更新の問題があります。 |
 |**5.**|Kubernetes ダッシュボード | Kubernetes ダッシュボードで SSL 証明書を使用する *Https* エンドポイントはサポートされていません。 | 
+|**6.**|VM |VNF のデプロイ中に、VM 管理 NIC 用に静的 IP の重複チェックが追加されます。 明示的なエラー メッセージが返されます。 | 
+|**7.**|VM |アドレス空間内の最初の 4 つの IP アドレスについて、IP 予約チェックが削除されました。  | 
+|**8.**|マルチアクセス エッジ コンピューティング |VNF デプロイ中の Azure Resource Manager トークンの期限切れの問題を修正しました。 以前のリリースでは、VHD のダウンロードに時間がかかると、Azure Resource Manager トークンが期限切れになるため、VNF のデプロイが失敗しました。  | 
+|**9.**|マルチアクセス エッジ コンピューティング |VNF のデプロイ中に、Azure Resource Manager の呼び出しにタイムアウトが追加されました。 以前のリリースでは、Azure Resource Manager の呼び出しに失敗した場合、VNF のデプロイに時間がかかっていました。   | 
+|**10.**|マルチアクセス エッジ コンピューティング |マルチアクセス エッジ コンピューティングでは、VHD のダウンロードが完了すると、Azure Resource Manager テンプレートのデプロイがクリーンアップされます。 以前のリリースでは、多くの VNF デプロイの後、デプロイ クォータ超過エラーが発生していました。 既定のクォータは、リソース グループあたり 800 のデプロイでした。  | 
 
 
 
