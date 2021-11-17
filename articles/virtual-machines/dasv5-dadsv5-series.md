@@ -8,22 +8,22 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/8/2021
-ms.openlocfilehash: 2a4a48a66def1633aea5b85d9e51bdcf8bc1378e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c9f2c270f8794effccd8439edd57422db15b71b6
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478000"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989928"
 ---
 # <a name="dasv5-and-dadsv5-series"></a>Dasv5 および Dadsv5 シリーズ
 
-**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 Dasv5 シリーズおよび Dadsv5 シリーズは、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを、最大 256 MB の L3 キャッシュを備えたマルチスレッド構成で利用し、汎用ワークロードを実行するための顧客オプションを増やします。 これらの仮想マシンは、小規模から中規模のデータベース、低から中程度のトラフィックの Web サーバー、アプリケーション サーバーなど、ほとんどのエンタープライズ ワークロードに関連する要件を満たすために、vCPU とメモリの組み合わせを提供します。
 
 ## <a name="dasv5-series"></a>Dasv5 シリーズ
 
-Dasv5 シリーズ VM は、3.7 GHz のブーストされた最大周波数を達成できる、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを利用しています。 Dasv5 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU とメモリの組み合わせが提供されます。 ローカル ディスクのない新しい VM は、ローカル一時ディスクを必要としないワークロードに対して、より優れた価値提案を提供します。
+Dasv5 シリーズ VM は、3.5 GHz のブーストされた最大周波数を達成できる、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを利用しています。 Dasv5 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU とメモリの組み合わせが提供されます。 ローカル ディスクのない新しい VM は、ローカル一時ディスクを必要としないワークロードに対して、より優れた価値提案を提供します。
 
 > [!NOTE]
 > よく寄せられる質問については、[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.yml)に関する記事をご覧ください。
@@ -55,7 +55,7 @@ Dasv5 シリーズの仮想マシンでは、Standard SSD、Standard HDD、お�
 
 ## <a name="dadsv5-series"></a>Dadsv5 シリーズ
 
-Dadsv5 シリーズは、3.7 GHz のブーストされた最大周波数を達成できる、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを利用しています。 Dadsv5 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。 これらの新しい VM では、50% 大きいローカル ストレージが使用されるほか、[Gen2](generation-2.md) VM の [Dav4 または Dasv4](dav4-dasv4-series.md) サイズと比べて読み取りと書き込みの両方のローカル ディスク IOPS が向上します。
+Dadsv5 シリーズは、3.5 GHz のブーストされた最大周波数を達成できる、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを利用しています。 Dadsv5 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。 これらの新しい VM では、50% 大きいローカル ストレージが使用されるほか、[Gen2](generation-2.md) VM の [Dav4 または Dasv4](dav4-dasv4-series.md) サイズと比べて読み取りと書き込みの両方のローカル ディスク IOPS が向上します。
 
 Dadsv5 シリーズの仮想マシンでは、Standard SSD、Standard HDD、および Premium SSD のディスクの種類がサポートされています。 また、リージョンでの可用性に基づいて、Ultra Disk ストレージをアタッチすることもできます。 ディスク ストレージは、仮想マシンとは別に課金されます。 [ディスクの価格に関するページを参照してください](https://azure.microsoft.com/pricing/details/managed-disks/)。
 

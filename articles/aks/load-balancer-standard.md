@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 41d98bfa2fddc6575d53c2770e9411609acb68c1
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 1da7c5f189b3ffee7f74a4af94bda7fe2d755c74
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131845839"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025781"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する
 
@@ -193,16 +193,16 @@ az aks create \
 ### <a name="configure-the-allocated-outbound-ports"></a>割り当てられた送信ポートを構成する
 
 > [!IMPORTANT]
-> クラスター上に、少数の宛先への接続が多数確立されると予想されるアプリケーションがある場合 (たとえば、多数のフロントエンド インスタンスが 1 つの SQL DB に接続される場合)、SNAT ポートの枯渇 (接続元のポートが使い果たされること) が生じる可能性が非常に高くなります。 このような状況では、ロード バランサーで割り当てられている送信ポートと送信フロントエンド IP を増やすことを強くお勧めします。 これらの値を正しく計算する方法については、以下を参照してください。
+> 小規模な宛先セットへの多数の接続を確立できるアプリケーションがクラスター上にある場合 (たとえば、データベースに接続するフロントエンド アプリケーションの多くのインスタンスのように)、SNAT ポートの枯渇が起こり得る非常に高いシナリオが発生する可能性があります。 SNAT ポートの枯渇は、アプリケーションが別のアプリケーションまたはホストへの接続を確立するために使用する送信ポートを使い果たした場合に発生します。 SNAT ポートの枯渇が発生する可能性があるシナリオがある場合は、SNAT ポートの枯渇を防ぐために、ロード バランサーで割り当てられた送信ポートと送信フロントエンド IP を増やすことを強くお勧めします。 送信ポートと送信フロントエンド IP 値を適切に計算する方法については、以下を参照してください。
 
-特に指定がない限り、AKS では、構成時に Standard Load Balancer で定義される割り当て送信ポート数の既定値が使用されます。 次のコマンドで示すように、この値は、AKS API の場合は **null** で、SLB API の場合は **0** です。
+既定では、AKS によってロード バランサーの *AllocatedOutboundPorts* は `0` に設定されています。これにより、クラスターの作成時に、[バックエンド プールのサイズに基づく送信ポートの自動割り当て][azure-lb-outbound-preallocatedports]が有効になります。 たとえば、クラスターのノード数が 50 以下の場合、各ノードには 1024 個のポートが割り当てられます。 クラスター内のノードの数が増えるほど、ノードあたりの使用可能なポート数が少なくなります。 AKS クラスター ロード バランサーの *AllocatedOutboundPorts* 値を表示するには、`az network lb outbound-rule list` を使用します。 たとえば、次のように入力します。
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
 ```
 
-上記のコマンドを実行すると、次の例に示すように、ロード バランサーのアウトバウンド規則が一覧表示されます。
+次の出力例は、バックエンド プールのサイズに基づく送信ポートの自動割り当てがクラスターに対して有効になっている場合を示しています。
 
 ```console
 AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
@@ -210,19 +210,31 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-この出力の意味は、クラスターにあるポートが 0 個であるということではなく、[バックエンド プールのサイズに基づく自動送信ポート割り当て][azure-lb-outbound-preallocatedports]を使用しているということです。 たとえば、クラスターのノード数が 50 以下の場合、各ノードには 1024 個のポートが割り当てられます。 クラスター内のノードの数が増えるほど、ノードあたりの使用可能なポート数が少なくなります。
+クラスターの作成時または更新時に *AllocatedOutboundPorts* と送信 IP アドレスに特定の値を構成するには、`load-balancer-outbound-ports` と `load-balancer-managed-outbound-ip-count`、`load-balancer-outbound-ips`、`load-balancer-outbound-ip-prefixes` のいずれかを使用します。 送信ポートと送信 IP アドレスに対して特定の値を設定、または既存の値を増やす前に、適切な数の送信ポートと IP アドレスを計算する必要があります。 この計算を最も近い整数に丸めるには、次の式 `64,000 ports per IP / <outbound ports per node> * <number of outbound IPs> = <maximum number of nodes in the cluster>` を使用します。
 
-割り当てられる送信ポートの数を定義または増やすには、送信ポートの数と IP の数に対して適切な値を計算する必要があります。 送信ポートの数は、インスタンスごとに、ここで指定した値に固定されます。 送信ポートの値は必ず 8 の倍数とします。
+送信ポートと IP アドレスの数を計算し、値を設定するときは、次の点に注意してください。
+* 送信ポートの数は、設定した値に基づいてノードごとに固定されます。
+* 送信ポートの値は必ず 8 の倍数とします。
+* 複数の IP アドレスを追加しても、どのノードにもポートは追加されません。 クラスター内のより多くのノードに容量が提供されます。
+* 必ずアップグレードの一環として追加される可能性があるノード ([maxSurge 値][maxsurge]で指定されたノードの数を含む) を考慮してください。
 
-IP を追加しても、どのノードにもポートは追加されません。代わりに、クラスター内のより多くのノードに容量が提供されます。 この計算を実行する場合は、必ずアップグレードの一環として追加される可能性があるノード ([maxSurge 値](upgrade-cluster.md#customize-node-surge-upgrade)で指定されたノードの数を含む) を考慮してください。 必要な IP の数の計算は `(<maximum number of nodes in the cluster> * <outbound ports per node>) / 64000` です。直近の整数に切り上げます。
+次の例では、送信ポートと IP アドレスの数が、設定した値によってどのように影響を受けているかを示します。
+- 既定値が使用され、クラスターに 48 個のノードがある場合、各ノードでは 1024 個のポートを使用できます。
+- 既定値が使用され、クラスターのノードが 48 個から 52 個にスケーリングされている場合、各ノードで使用できるポートは 1024 個から 512 個に更新されます。
+- 送信ポートが 1,000 に設定され、送信 IP 数が 2 に設定されている場合、クラスターでは最大 128 個のノードをサポートできます (`64,000 ports per IP / 1,000 ports per node * 2 IPs = 128 nodes`)。
+- 送信ポートが 1,000 に設定され、送信 IP 数が 7 に設定されている場合、クラスターでは最大 448 個のノードをサポートできます (`64,000 ports per IP / 1,000 ports per node * 7 IPs = 448 nodes`)。
+- 送信ポートが 4,000 に設定され、送信 IP 数が 2 に設定されている場合、クラスターでは最大 32 個のノードをサポートできます (`64,000 ports per IP / 4,000 ports per node * 2 IPs = 32 nodes`)。
+- 送信ポートが 4,000 に設定され、送信 IP 数が 7 に設定されている場合、クラスターでは最大 112 個のノードをサポートできます (`64,000 ports per IP / 4,000 ports per node * 7 IPs = 112 nodes`)。
 
-例 :
-- 値が指定されず、クラスターに 48 個のノードがある場合、各ノードでは 1024 個のポートを使用できます。
-- 値が指定されず、クラスターのノード数が 52 個に拡大した場合、各ノードで使用できるポート数は 512 個になります。
-- 送信ポートが 1,000 に設定され、送信 IP 数が 2 に設定されている場合、クラスターは最大 128 個のノードをサポートできます (IP あたり 64,000 ポート/ノードあたり 1,000 ポート * 2 つの IP = 128 ノード)。
-- 送信ポートが 4,000 に設定され、送信 IP 数が 7 に設定されている場合、クラスターは最大 112 個のノードをサポートできます (IP あたり 64,000 ポート/ノードあたり 4,000 ポート * 7 つの IP = 112 ノード)。
+> [!IMPORTANT]
+> 送信ポートと IP の数を計算した後、アップグレード中のノードのサージを処理するための追加の送信ポート容量があることを確認します。 アップグレードやその他の操作に必要な追加ノードに、十分な余剰ポートを割り当てることが重要です。 既定では、AKS でアップグレード操作に 1 つのバッファー ノードが使用されます。 [maxSurge 値][maxsurge]を使用する場合、ノードあたりの送信ポート数に maxSurge 値を乗算して、必要なポートの数を求めます。 たとえば、最大 100 ノードがあり、最大サージ値が 2 のクラスターで、ノードあたり 4,000 のポートと 7 個の IP アドレスが必要であったとします。
+> * 2 サージ ノード * ノードあたり 4,000 ポート = 8,000 ポート (アップグレード中のノードのサージに必要な数)。
+> * 100 ノード * ノードあたり 4,000 ポート = 400,000 ポート (クラスターに必要な数)。
+> * 7 個の IP * IP あたり 64,000 ポート = 448,000 ポート (クラスターで使用可能な数)。
+>
+> 上の例では、クラスターの余剰容量が 48,000 ポート存在することを示しています。これは、アップグレード中のノードのサージに必要な 8,000 ポートを処理するのに十分です。
 
-値を計算したら、次のコマンドを使用してそれらをクラスターに適用できます。
+値を計算して検証したら、クラスターの作成時または更新時に、`load-balancer-outbound-ports` と `load-balancer-managed-outbound-ip-count`、`load-balancer-outbound-ips`、`load-balancer-outbound-ip-prefixes` のいずれかを使用してこれらの値を適用できます。 次に例を示します。
 
 ```azurecli-interactive
 az aks update \
@@ -230,25 +242,6 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-managed-outbound-ip-count 7 \
     --load-balancer-outbound-ports 4000
-```
-
-これらの値を確認するには、クラスターの最大サイズが 100 ノードであるものとして、必要なポートの数 (400,000) と使用可能なポートの数 (448,000) を計算します。 この構成では、100 ノードのクラスターに十分なポートを提供し、アップグレード時のノードの急増に対応する余地を設けます。
-
-- 100 ノード * ノードあたり 4,000 ポート = 400,000 ポートが必要
-- 7 つの IP * IP あたり 64,000 ポート = 448,000 ポートが使用可能。
-
-> [!IMPORTANT]
-> 接続またはスケーリングの問題を回避するために *allocatedOutboundPorts* をカスタマイズする前に、[必要なクォータを計算し、要件を確認する] 必要があります。 アップグレードやその他の操作に必要な追加ノードに十分な数のポートを割り当てることが重要です。 既定では、AKS でアップグレード用に 1 つのバッファー ノードが使用されます。 [maxSurge 値](upgrade-cluster.md#customize-node-surge-upgrade)を使用する場合、ノードあたりの送信ポート数に maxSurge 値を乗算して、必要なポートの数を求めます。
-
-また、クラスターの作成時に **`load-balancer-outbound-ports`** パラメーターを使用することもできます。ただし、 **`load-balancer-managed-outbound-ip-count`** 、 **`load-balancer-outbound-ips`** 、または **`load-balancer-outbound-ip-prefixes`** のいずれかも指定する必要があります。  次に例を示します。
-
-```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --load-balancer-sku standard \
-    --load-balancer-managed-outbound-ip-count 2 \
-    --load-balancer-outbound-ports 1024 
 ```
 
 ### <a name="configure-the-load-balancer-idle-timeout"></a>ロード バランサーのアイドル タイムアウトを構成する
@@ -427,3 +420,4 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
 [service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags
+[maxsurge]: upgrade-cluster.md#customize-node-surge-upgrade

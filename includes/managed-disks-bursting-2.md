@@ -5,19 +5,19 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/02/2021
+ms.date: 11/09/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: f7454d26c57795383cc6bc8464e2259b1b29ed38
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 7b1ac1f3b2fcb8c999276fecec495cf496108c12
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506329"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134924"
 ---
 ### <a name="on-demand-bursting"></a>オンデマンド バースト
 
-ディスク バーストのオンデマンド バースト モデルを使用している Premium SSD なら、プロビジョニングされた元のターゲットを超えてバーストできます。最大バースト ターゲットを上限に、ワークロードに応じた必要な回数だけ、バースト可能です。 たとえば、1-TiB P30 ディスクでは、プロビジョニングされる IOPS は 5,000 IOPS です。 このディスクでディスク バーストが有効になっている場合、ワークロードで、最大バースト パフォーマンスである 30,000 IOPS および 1,000 Mbps まで、このディスクに IO を発行できます。
+ディスク バーストのオンデマンド バースト モデルを使用している Premium SSD なら、プロビジョニングされた元のターゲットを超えてバーストできます。最大バースト ターゲットを上限に、ワークロードに応じた必要な回数だけ、バースト可能です。 たとえば、1-TiB P30 ディスクでは、プロビジョニングされる IOPS は 5,000 IOPS です。 このディスクでディスク バーストが有効になっている場合、ワークロードで、最大バースト パフォーマンスである 30,000 IOPS および 1,000 Mbps まで、このディスクに IO を発行できます。 サポートされている各ディスクの最大バースト ターゲットについては、「[VM ディスクのスケーラビリティおよびパフォーマンスの目標](../articles/virtual-machines/disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits)」を参照してください。
 
 ワークロードで、プロビジョニングされたパフォーマンス ターゲットを超えて頻繁にディスク バーストが実行されると予想される場合、ディスク バーストはコスト効果が高くありません。 この場合は、より良いベースライン パフォーマンスのために、ディスクのパフォーマンス レベルを[より高いレベル](../articles/virtual-machines/disks-performance-tiers.md)に変更することをお勧めします。 課金の詳細を確認し、ワークロードのトラフィック パターンに照らして評価してください。
 

@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 8/31/2021
 ms.author: jeffpatt
-ms.openlocfilehash: ac4965bf9de7b579704aa522ff08826f4f969cf2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bf0d14d7eb592db12521bd9f682bc69642de9999
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131463204"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137705"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Azure Files と Azure NetApp Files の比較
 
@@ -33,7 +33,7 @@ ms.locfileid: "131463204"
 | ID ベースの認証と認可 | SMB<br><ul><li>Active Directory Domain Services (AD DS)</li><li>Azure Active Directory Domain Services (Azure AD DS)</li></ul><br> ID ベースの認証は、SMB プロトコルを使用している場合にのみサポートされることに注意してください。 詳細については、「[よくあるご質問](./storage-files-faq.md#security-authentication-and-access-control)」をご覧ください。 | SMB<br><ul><li>Active Directory Domain Services (AD DS)</li><li>Azure Active Directory Domain Services (Azure AD DS)</li></ul><br> NFS/SMB デュアル プロトコル<ul><li>ADDS/LDAP 統合</li></ul><br>NFSv3/NFSv4.1<ul><li>NFS 拡張グループとの ADDS/LDAP 統合 [(プレビュー)](../../azure-netapp-files/configure-ldap-extended-groups.md)</li></ul><br> 詳細については、[Azure NetApp Files の NFS FAQ](../../azure-netapp-files/faq-nfs.md) に関する記事と、[Azure NetApp Files の SMB FAQ](../../azure-netapp-files/faq-smb.md) に関する記事を参照してください。 |
 | 暗号化 | すべてのプロトコル<br><ul><li>カスタマーまたは Microsoft マネージド キーを使用した保存時の暗号化 (AES 256)</li></ul><br>SMB<br><ul><li>AES 256 または RC4-HMAC を使用した Kerberos 暗号化</li><li>転送中の暗号化</li></ul><br>REST<br><ul><li>転送中の暗号化</li></ul><br> 詳細については、[セキュリティとネットワーク](files-nfs-protocol.md#security-and-networking)に関するページを参照してください。 | すべてのプロトコル<br><ul><li>Microsoft マネージド キーを使用した保存時の暗号化 (AES 256) </li></ul><br>SMB<ul><li>AES-CCM (SMB 3.0) と AES-GCM (SMB 3.1.1) を使用した転送中の暗号化</li></ul><br>NFS 4.1<ul><li>AES 256 による Kerberos を使用した転送中の暗号化</li></ul><br> 詳細については、「[セキュリティに関する FAQ](../../azure-netapp-files/faq-security.md)」を参照してください。 |
 | アクセス オプション | <ul><li>インターネット</li><li>セキュリティで保護された VNet アクセス</li><li>VPN Gateway</li><li>ExpressRoute</li><li>Azure File Sync</li></ul><br> 詳細については、[ネットワークの考慮事項](./storage-files-networking-overview.md)に関する記事を参照してください。 | <ul><li>セキュリティで保護された VNet アクセス</li><li>VPN Gateway</li><li>ExpressRoute</li><li>[グローバル ファイル キャッシュ](https://cloud.netapp.com/global-file-cache/azure)</li><li>[HPC Cache](../../hpc-cache/hpc-cache-overview.md)</li></ul><br> 詳細については、[ネットワークの考慮事項](../../azure-netapp-files/azure-netapp-files-network-topologies.md)に関する記事を参照してください。 |
-| データ保護  | <ul><li>増分スナップショット</li><li>ファイルまたはディレクトリ ユーザーの自己復元</li><li>新しい場所に復元</li><li>インプレース復元</li><li>共有レベルの論理的な削除</li><li>Azure Backup 統合</li></ul><br> 詳細については、「[Azure Files でのデータ保護機能の拡張](https://azure.microsoft.com/blog/azure-files-enhances-data-protection-capabilities/)」を参照してください。 | <ul><li>スナップショット (255/ボリューム)</li><li>ファイルまたはディレクトリ ユーザーの自己復元</li><li>新しいボリュームに復元</li><li>インプレース復元</li><li>[リージョン間のレプリケーション](../../azure-netapp-files/cross-region-replication-introduction.md) (パブリックプレビュー)</li></ul><br> 詳細については、「[Azure NetApp Files スナップショットのしくみ](../../azure-netapp-files/snapshots-introduction.md)」を参照してください。 |
+| データ保護  | <ul><li>増分スナップショット</li><li>ファイルまたはディレクトリ ユーザーの自己復元</li><li>新しい場所に復元</li><li>インプレース復元</li><li>共有レベルの論理的な削除</li><li>Azure Backup 統合</li></ul><br> 詳細については、「[Azure Files でのデータ保護機能の拡張](https://azure.microsoft.com/blog/azure-files-enhances-data-protection-capabilities/)」を参照してください。 | <ul><li>スナップショット (255/ボリューム)</li><li>ファイルまたはディレクトリ ユーザーの自己復元</li><li>新しいボリュームに復元</li><li>インプレース復元</li><li>[リージョン間レプリケーション](../../azure-netapp-files/cross-region-replication-introduction.md) </li></ul><br> 詳細については、「[Azure NetApp Files スナップショットのしくみ](../../azure-netapp-files/snapshots-introduction.md)」を参照してください。 |
 | 移行ツール  | <ul><li>Azure Data Box</li><li>Azure File Sync</li><li>記憶域移行サービス</li><li>AzCopy</li><li>Robocopy</li></ul><br> 詳細については、「[Azure ファイル共有への移行](./storage-files-migration-overview.md)」を参照してください。 | <ul><li>[グローバル ファイル キャッシュ](https://cloud.netapp.com/global-file-cache/azure)</li><li>[CloudSync](https://cloud.netapp.com/cloud-sync-service)、[XCP](https://xcp.netapp.com/)</li><li>記憶域移行サービス</li><li>AzCopy</li><li>Robocopy</li><li>アプリケーション ベース (HSR、Data Guard、AOAG など)</li></ul> |
 | 層 | <ul><li>Premium</li><li>トランザクション最適化</li><li>ホット</li><li>クール</li></ul><br> 詳細については、「[ストレージ層](./storage-files-planning.md#storage-tiers)」を参照してください。 | <ul><li>Ultra</li><li>Premium</li><li>Standard</li></ul><br> すべてのレベルで最小待機時間は 1 ミリ秒未満となっています。<br><br> 詳細については、[サービス レベル](../../azure-netapp-files/azure-netapp-files-service-levels.md)と[パフォーマンスの考慮事項](../../azure-netapp-files/azure-netapp-files-performance-considerations.md)に関する記事を参照してください。 |
 | 価格 | [Azure Files の料金](https://azure.microsoft.com/pricing/details/storage/files/) | [Azure NetApp Files の価格](https://azure.microsoft.com/pricing/details/netapp/) |

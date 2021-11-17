@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: cf89b21c3aceee55e121d918f21db4bcf7c51d42
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 93ff4f0d8565f439bc16e887b0dd31e8f14249e9
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440490"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025750"
 ---
 # <a name="deploy-the-open-service-mesh-aks-add-on-using-azure-cli"></a>Azure CLI を使用して Open Service Mesh AKS アドオンをデプロイする
 
@@ -182,6 +182,39 @@ OSM アドオンを無効にするには、次のコマンドを実行します�
 ```azurecli-interactive
 az aks disable-addons -n <AKS-cluster-name> -g <AKS-resource-group-name> -a open-service-mesh
 ```
+OSM アドオンを無効にすると、次のリソースがクラスターに残ります。
+1. OSM MeshConfig カスタム リソース
+2. OSM コントロール プレーン シークレット
+3. Webhook の構成を変更する OSM
+4. Webhook の構成を検証する OSM
+5. OSM CRD
+
+> [!IMPORTANT]
+> OSM アドオンを無効にした後、これらの追加リソースを削除する必要があります。 これらのリソースをクラスターに残すと、今後 OSM アドオンを再度有効にした場合に問題が発生する可能性があります。
+
+これらの残ったリソースを削除するには、次のようにします。
+
+1. MeshConfig 構成リソースを削除します
+```azurecli-interactive
+kubectl delete --ignore-not-found meshconfig -n kube-system osm-mesh-config
+```
+
+2. OSM コントロール プレーン シークレットを削除します
+```azurecli-interactive
+kubectl delete --ignore-not-found secret -n kube-system osm-ca-bundle mutating-webhook-cert-secret validating-webhook-cert-secret crd-converter-cert-secret
+```
+
+3. Webhook の構成を変更する OSM を削除します
+```azurecli-interactive
+kubectl delete mutatingwebhookconfiguration -l app.kubernetes.io/name=openservicemesh.io,app.kubernetes.io/instance=osm,app=osm-injector --ignore-not-found
+```
+
+4. Webhook の構成を検証する OSM を削除します
+```azurecli-interactive
+kubectl delete validatingwebhookconfiguration -l app.kubernetes.io/name=openservicemesh.io,app.kubernetes.io/instance=osm,app=osm-controller --ignore-not-found
+```
+
+5. OSM CRD を削除します。OSM の CRD に関するガイダンスとそれらを削除する方法については、[このドキュメント](https://release-v0-11.docs.openservicemesh.io/docs/getting_started/uninstall/#removal-of-osm-cluster-wide-resources)を参照してください。
 
 <!-- Links -->
 <!-- Internal -->

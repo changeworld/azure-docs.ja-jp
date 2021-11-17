@@ -5,26 +5,25 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 11/04/2021
+ms.date: 11/10/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: addbd908670741cd0ba8662bf73a1a6788487498
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: d00bfe9e9ed43ed1eafc65d61718de6cb4ecf04e
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851460"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179846"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium の機能
 
 :::image type="content" source="media/premium-features/icsa-cert-firewall-small.png" alt-text="ICSA 認定のロゴ" border="false"::::::image type="content" source="media/premium-features/pci-logo.png" alt-text="PCI 認定のロゴ" border="false":::
 
+Azure Firewall Premium では、決済業界や医療業界など、機密性が高く、規制された環境のニーズを満たす高度な脅威保護が提供されます。 
 
- Azure Firewall Premium は、機密性が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。
+組織は、IDPS や TLS 検査などの Premium Stock-Keeping Unit (SKU) フィーチャーを活用して、マルウェアやウイルスがネットワーク全体に横方向と水平方向の両方に広がるのを防ぐことができます。 IDPS および TLS 検査のパフォーマンス要求の増加に対応するために、Azure Firewall Premium ではより強力な仮想マシン SKU が使用されます。 Standard SKU と同様に、Premium SKU はシームレスに最大 30 Gbps まで拡張でき、可用性ゾーンと統合して、99.99 パーセントのサービス レベル アグリーメント (SLA) をサポートできます。 Premium SKU は、Payment Card Industry Data Security Standard (PCI DSS) 環境のニーズに準拠しています。
 
 :::image type="content" source="media/premium-features/premium-overview.png" alt-text="Azure Firewall Premium の概要を示す図":::
-
-Azure Firewall Premium では、ファイアウォール ポリシーが使用されます。これは、Azure Firewall Manager を使用してファイアウォールを一元的に管理するために使用できるグローバル リソースです。 このリリースからは、すべての新機能はファイアウォール ポリシーによってのみ構成できます。 ファイアウォール規則 (クラシック) は引き続きサポートされ、既存の Standard Firewall 機能の構成に使用できます。  ファイアウォール ポリシーは、独立的に、または Azure Firewall Manager を使用して管理できます。 1 つのファイアウォールに関連付けられているファイアウォール ポリシーには課金されません。
 
 Azure Firewall Premium には次の機能が含まれています。
 
@@ -32,7 +31,6 @@ Azure Firewall Premium には次の機能が含まれています。
 - **IDPS** - ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワーク アクティビティを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、任意でそのブロックを試みることができます。
 - **URL フィルタリング** - Azure Firewall の FQDN フィルタリング機能を拡張して URL 全体が考慮対象になるようにします。 たとえば、`www.contoso.com` の代わりに `www.contoso.com/a/c` となります。
 - **Web カテゴリ** - 管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトといった Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。
-
 
 ## <a name="tls-inspection"></a>TLS インスペクション
 

@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: fb84bc87483b7a0451d6fd63d922ad9c6c2dfb3c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bc176567721b3c023afcb82e920b33fca7ca0a53
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131467570"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061232"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの PostgreSQL 拡張機能
 
@@ -98,6 +98,7 @@ Postgres バージョン 12 を搭載した Azure Database for PostgreSQL - フ�
 > |[earthdistance](https://www.postgresql.org/docs/12/earthdistance.html)                | 1.1             | 地表面上の大圏距離を計算する|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/12/fuzzystrmatch.html)                | 1.1             | 文字列間の類似点と相違点を特定する|
 > |[hstore](https://www.postgresql.org/docs/12/hstore.html)                       | 1.6             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[hypopg](https://github.com/HypoPG/hypopg)                                   |  1.2             | 仮定のインデックスのサポートを追加する拡張機能 |
 > |[intagg](https://www.postgresql.org/docs/12/intagg.html)                     | 1.1             | 整数のアグリゲーターと列挙子 (廃止)|
 > |[intarray](https://www.postgresql.org/docs/12/intarray.html)                     | 1.2             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
 > |[isn](https://www.postgresql.org/docs/12/isn.html)                          | 1.2             | 国際対応の製品番号規格のデータ型|
@@ -151,6 +152,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL - フ�
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | 地表面上の大圏距離を計算する|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | 文字列間の類似点と相違点を特定する|
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[hypopg](https://github.com/HypoPG/hypopg)                                   |  1.1.2            | 仮定のインデックスのサポートを追加する拡張機能 |
 > |[intagg](https://www.postgresql.org/docs/11/intagg.html)                     | 1.1             | 整数のアグリゲーターと列挙子 (廃止)|
 > |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | 国際対応の製品番号規格のデータ型|
@@ -214,6 +216,8 @@ pg_cron からの全タスクのスケジュールを解除するには
 ```
 SELECT cron.unschedule(jobid) FROM cron.job;
 ```
+> [!NOTE]
+> pg_cron 拡張機能は、すべての Azure Database for PostgreSQL フレキシブル サーバーの Postgres データベース内に事前に読み込まれており、セキュリティを損なうことなく、PostgreSQL DB インスタンス内の他のデータベースで実行するようにジョブをスケジュールできます。
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 

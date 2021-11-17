@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ab8c0d7d1e547d564ddc3329858ddc49d51185b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 845bb5f4830c53b4fc4f6688851775afa908af73
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131448977"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135294"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -33,18 +33,21 @@ ms.locfileid: "131448977"
  
 永続 OS ディスクとエフェメラル OS ディスクの主な違いは、次のとおりです。
 
-|                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |
-|-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2 TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ** については、[DS](sizes-general.md)、[ES](sizes-memory.md)、[M](sizes-memory.md)、[FS](sizes-compute.md)、および [GS](sizes-previous-gen.md#gs-series) に関するページを参照してください              |
-| **サポート対象の VM サイズ**          | All                                                                                          | Premium ストレージをサポートしている DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M、Mdsv2、Bs、Dav4、Eav4 などの VM サイズ                                               |
-| **サポート対象のディスクの種類**           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
-| **リージョンのサポート**              | すべてのリージョン                                                                                  | すべてのリージョン                              |
-| **データの永続化**            | 書き込まれた OS ディスク データは Azure Storage に格納                                  | OS ディスクに書き込まれたデータは、ローカル VM ストレージに格納され、Azure Storage には保存されません。 |
-| **停止と割り当て解除**      | VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可                                  |
-| **特殊化された OS ディスクのサポート** | はい                                                                                          | いいえ                                                                                 |
-| **OS ディスクのサイズ変更**              | VM 作成中、VM の停止と割り当て解除後に変更可能                                | VM 作成時のみ変更可能                                                  |
-| **VM サイズ変更時の動作**   | OS ディスク データを維持                                                                    | OS ディスクのデータが削除された後、OS が再プロビジョニングされます       
-| **ページ ファイルの配置**   | Windows の場合、ページ ファイルはリソース ディスクに格納されます                                              | Windows の場合、ページ ファイルは OS ディスクに格納されます (OS キャッシュの配置と一時ディスクの配置の両方で)。   |
+|   | 永続 OS ディスク | エフェメラル OS ディスク |
+|---|---|---|
+| **OS ディスクのサイズ制限** | 2 TiB | VM サイズのキャッシュ サイズまたは 2 TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ** については、[DS](sizes-general.md)、[ES](sizes-memory.md)、[M](sizes-memory.md)、[FS](sizes-compute.md)、および [GS](sizes-previous-gen.md#gs-series) に関するページを参照してください |
+| **サポート対象の VM サイズ** | All | Premium ストレージをサポートしている DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M、Mdsv2、Bs、Dav4、Eav4 などの VM サイズ |
+| **サポート対象のディスクの種類**| マネージド OS ディスクとアンマネージド OS ディスク| マネージド OS ディスクのみ|
+| **リージョンのサポート**| すべてのリージョン| すべてのリージョン|
+| **データの永続化**| 書き込まれた OS ディスク データは Azure Storage に格納| OS ディスクに書き込まれたデータは、ローカル VM ストレージに格納され、Azure Storage には保存されません。 |
+| **停止と割り当て解除**| VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可|
+| **特殊化された OS ディスクのサポート** | はい| いいえ|
+| **OS ディスクのサイズ変更**| VM 作成中、VM の停止と割り当て解除後に変更可能| VM 作成時のみ変更可能|
+| **VM サイズ変更時の動作**| OS ディスク データを維持| OS ディスクのデータが削除された後、OS が再プロビジョニングされます |
+| **Redeploy** | OS ディスク データを維持 | OS ディスクのデータが削除された後、OS が再プロビジョニングされます | 
+| **VM の停止/開始** | OS ディスク データを維持 | OS ディスクのデータが削除された後、OS が再プロビジョニングされます | 
+| **ページ ファイルの配置**| Windows の場合、ページ ファイルはリソース ディスクに格納されます| Windows の場合、ページ ファイルは OS ディスクに格納されます (OS キャッシュの配置と一時ディスクの配置の両方で)。|
+
 
 ## <a name="size-requirements"></a>サイズの要件
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/22/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 069529d2f97e18e1b5d99b4f96e5bee98d80f497
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ba5be8cad5c7189d207a8e2915e970589e414175
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131421943"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063158"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -81,8 +81,9 @@ Azure ファイル共有により、属性、アクセス許可、タイムス�
 ### <a name="known-limitations"></a>既知の制限事項
 
 StorSimple Data Manager と Azure ファイル共有には、移行を妨げる可能性があるため移行を始める前に考慮する必要がある、いくつかの制限があります。
-* StorSimple アプライアンスの NTFS ボリュームのみがサポートされています。
-* このサービスは、BitLocker で暗号化されたボリュームでは機能しません。
+* StorSimple アプライアンスの NTFS ボリュームのみがサポートされています。 ReFS ボリュームはサポートされていません。
+* [Windows Server のダイナミック ディスク](/troubleshoot/windows-server/backup-and-storage/best-practices-using-dynamic-disks)に配置されているボリュームはサポートされていません。 (Windows Server 2012 前では非推奨)
+* このサービスは、BitLocker で暗号化されたボリュームや、[データ重複除去](/windows-server/storage/data-deduplication/understand)が有効になっているボリュームでは機能しません。
 * 破損した StorSimple バックアップは移行できません。
 * ファイアウォールやプライベート エンドポイントのみの通信などの特別なネットワーク オプションは、StorSimple のバックアップが格納されているソース ストレージ アカウントでも、Azure ファイル共有が保持されているターゲット ストレージ アカウントでも、有効にすることはできません。
 

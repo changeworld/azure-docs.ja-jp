@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/2/2021
+ms.date: 11/9/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 33433fe8556befaf2e34424ba35e71a66d433533
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 19e1d5f8eab559114f26d10a15c835cf0758b225
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452473"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133230"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -55,6 +55,9 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 次のリリース ノートは、Azure File Sync エージェントのバージョン 14.0.0.0 (2021 年 10 月 29 日にリリース) を対象としています。
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題
+- クラウド変更列挙ジョブの実行時のトランザクションの削減 
+    - Azure File Sync には、24 時間ごとに実行されるクラウド変更列挙ジョブがあり、Azure ファイル共有で直接行われた変更を検出し、それらの変更を同期グループ内のサーバーに同期します。 このジョブの実行時のトランザクション数を減らすために改善が行われました。
+
 - ポータルでのサーバー エンドポイントのプロビジョニング解除を支援するガイダンスの改善
     - ポータルを用いてサーバー エンドポイントを削除するとき、削除の理由に応じたステップ バイ ステップのガイダンスが表示されるようになりました。これによってデータの損失を防ぐと共に、あるべき場所 (サーバーまたは Azure ファイル共有) にデータを保持することができます。 また、この機能には新しい PowerShell コマンドレット (Get-StorageSyncStatus および New-StorageSyncUploadSession) が用意されており、それらをローカル サーバーで使用しながらプロビジョニング解除プロセスを効率よく進めることができます。
 
@@ -63,6 +66,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 
 - その他の機能強化
     - Azure File Sync が米国西部 3 リージョンでサポートされるようになりました。
+    - FileSyncErrorsReport.ps1 スクリプトが項目ごとのエラーの一覧を提供しない原因となったバグが修正されました。
     - 項目単位の同期エラーが原因でファイルのアップロードが常態的に失敗する場合、トランザクション数が減らされます。
     - クラウドを使った階層化と同期に関して信頼性とテレメトリが改善されています。 
 

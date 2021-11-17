@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 0092da979a8f12a0700abe4ef809b3d7a7e53e89
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f6cc85a437e455becb516859fb3bacae0086cb85
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124795300"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325956"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>チュートリアル:Mimecast Personal Portal と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -80,7 +80,7 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
     | リージョン  |  値 | 
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/sso/<accountcode>`|
-    | United States   | `https://us-api.mimecast.com/sso/<accountcode>`|
+    | 米国   | `https://us-api.mimecast.com/sso/<accountcode>`|
     | 南アフリカ    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | オーストラリア       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | オフショア        | `https://jer-api.mimecast.com/sso/<accountcode>`|
@@ -93,7 +93,7 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
     | リージョン  |  値 |
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/login/saml`|
-    | United States   | `https://us-api.mimecast.com/login/saml`|
+    | 米国   | `https://us-api.mimecast.com/login/saml`|
     | 南アフリカ    | `https://za-api.mimecast.com/login/saml`|
     | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|
@@ -105,7 +105,7 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
     | リージョン  |  値 |
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/login/saml`|
-    | United States   | `https://us-api.mimecast.com/login/saml`|
+    | 米国   | `https://us-api.mimecast.com/login/saml`|
     | 南アフリカ    | `https://za-api.mimecast.com/login/saml`|
     | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|
@@ -226,4 +226,4 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-Mimecast Personal Portal を構成すると、セッション制御を適用でき、組織の機密データの流出と侵入からリアルタイムで保護されます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Mimecast Personal Portal を構成すると、セッション制御を適用でき、組織の機密データの流出と侵入からリアルタイムで保護されます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

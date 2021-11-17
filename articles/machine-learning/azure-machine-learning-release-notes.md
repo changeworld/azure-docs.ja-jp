@@ -8,19 +8,44 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 10/21/2021
-ms.openlocfilehash: 5c2594e38db7a57e2861241d37405a8ce03b8494
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/01/2021
+ms.openlocfilehash: 9f23037c5582b0e75107b3637f09a7b80c32a530
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563171"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028536"
 ---
 # <a name="azure-machine-learning-python-sdk-release-notes"></a>Azure Machine Learning Python SDK のリリース ノート
 
 この記事では、Azure Machine Learning Python SDK の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro) のリファレンス ページを参照してください。
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+## <a name="2021-11-08"></a>2021-11-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1360"></a>Azure Machine Learning SDK for Python v1.36.0
+  + **azureml-automl-dnn-vision**
+    + 一部のエラー メッセージに対する小さな入力ミスがクリーンアップされました。
+  + **azureml-contrib-reinforcementlearning**
+    + シミュレーターを使用する強化学習実行の送信はサポートされなくなりました。
+  + **azureml-core**
+    + パーティション分割された Premium BLOB のサポートが追加されました。
+    + マネージド ID 認証に非パブリック クラウドを指定することはサポートされなくなりました。
+    + ユーザーは、AKS Web サービスを、CLI (v2) で管理されているオンライン エンドポイントおよびデプロイに移行できます。
+    + Kubernetes コンピューティング ターゲットでのトレーニング ジョブのインスタンスの種類は、RunConfiguration プロパティ run_config.kubernetescompute.instance_type を介して設定できるようになりました。
+  + **azureml-defaults**
+    + gunicorn や werkzeug などの冗長な依存関係が削除されました
+  + **azureml-interpret**
+    + azureml-interpret パッケージが interpret-community バージョン 0.21.* に依存するように更新されました
+  + **azureml-pipeline-steps**
+    + パイプラインで ML トレーニング (分散トレーニングを含む) を実行するために CommandStep が使用されるように、MpiStep を廃止します。
+  + **azureml-train-automl-rutime**
+    + AutoML モデル テスト予測の出力形式のドキュメントを更新します。
+    + Naive、SeasonalNaive、Average、および SeasonalAverage 予測モデルの docstring の説明を追加しました。
+    + 特徴付けの概要が、実行時に成果物として保存されるようになりました (出力フォルダーの下にある 'featurization_summary.json' という名前のファイルを確認してください)
+    + Tabnet Learner のカテゴリ インジケーターのサポートを有効にします。
+    + ダウンサンプリング パラメーターを automl_setup_model_explanations に追加して、ユーザーがこのパラメーターを false に設定することにより、ダウンサンプリングせずにすべてのデータの説明を取得できるようになります。
+    
 
 ## <a name="2021-10-11"></a>2021-10-11
 

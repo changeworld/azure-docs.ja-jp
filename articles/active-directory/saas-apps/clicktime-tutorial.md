@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 81da4d29ef5cc394ea01279290f87df4bb08c4a0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 210ccf9e84b3c2f28c0a36ff7cdff8de679baa55
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631615"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307652"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-clicktime"></a>チュートリアル: Azure AD SSO と ClickTime の統合
 
@@ -95,7 +95,7 @@ ClickTime 用に Azure AD SSO を構成してテストするには、次の手�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -107,7 +107,7 @@ ClickTime 用に Azure AD SSO を構成してテストするには、次の手�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、ClickTime へのアクセスを許可することで、B.Simon が Azure シングル サインオンを使用できるようにします。
 
@@ -119,7 +119,7 @@ ClickTime 用に Azure AD SSO を構成してテストするには、次の手�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-clicktime-sso&quot;></a>ClickTime SSO を構成する
+## <a name="configure-clicktime-sso"></a>ClickTime SSO を構成する
 
 1. 別の Web ブラウザー ウィンドウで、ClickTime 企業サイトに管理者としてログインします。
 
@@ -127,7 +127,7 @@ ClickTime 用に Azure AD SSO を構成してテストするには、次の手�
 
 1. **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
 
-    ![Security Settings](./media/clicktime-tutorial/toolbar.png &quot;セキュリティ設定")
+    ![Security Settings](./media/clicktime-tutorial/toolbar.png "セキュリティ設定")
 
     a.  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
 
@@ -180,4 +180,4 @@ ClickTime の場合、プロビジョニングは手動で行います。
 
 ## <a name="next-steps"></a>次のステップ
 
-ClickTime を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+ClickTime を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

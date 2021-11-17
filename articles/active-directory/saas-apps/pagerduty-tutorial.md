@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 510af6b6133d16493891db44a16d4f8b5fc09096
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2d5cf3e592e24cbd7b1934727467a33e6b303833
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124746875"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PagerDuty の統合
 
@@ -95,7 +95,7 @@ PagerDuty に対する Azure AD SSO を構成してテストするには、次�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -107,7 +107,7 @@ PagerDuty に対する Azure AD SSO を構成してテストするには、次�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B. Simon に PagerDuty へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -119,13 +119,13 @@ PagerDuty に対する Azure AD SSO を構成してテストするには、次�
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-pagerduty-sso&quot;></a>PagerDuty の SSO の構成
+## <a name="configure-pagerduty-sso"></a>PagerDuty の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、PagerDuty 企業サイトに管理者としてサインインします。
 
 2. 上部のメニューで **[アカウント設定]** をクリックします。
 
-    ![アカウント設定](./media/pagerduty-tutorial/ic778535.png &quot;[Account Settings]")
+    ![アカウント設定](./media/pagerduty-tutorial/ic778535.png "[Account Settings]")
 
 3. **[Single Sign-on]** をクリックします。
 
@@ -189,4 +189,4 @@ Azure AD ユーザーが PagerDuty にサインインできるようにするに
 
 ## <a name="next-steps"></a>次のステップ
 
-PagerDuty を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+PagerDuty を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

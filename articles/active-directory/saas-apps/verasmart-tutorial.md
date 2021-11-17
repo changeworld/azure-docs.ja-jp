@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 028dd837b5cfcb9b8055ea4ea6262f7be24cd820
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 329c91a04207541b148fd6c46e4b028cf1ff79af
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124821000"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verasmart"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と VeraSMART の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * VeraSMART では、**SP と IDP** によって開始される SSO がサポートされています。
 * VeraSMART では、**Just-In-Time** ユーザー プロビジョニングがサポートされています。
-* VeraSMART を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* VeraSMART を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-verasmart-from-the-gallery"></a>ギャラリーからの VeraSMART の追加
 
@@ -170,4 +170,4 @@ VeraSMART で Azure AD SSO を構成してテストするには、次の構成�
 
 - [Azure AD で VeraSMART を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+- [Microsoft Defender for Cloud Apps でのセッション制御とは](/cloud-app-security/proxy-intro-aad)

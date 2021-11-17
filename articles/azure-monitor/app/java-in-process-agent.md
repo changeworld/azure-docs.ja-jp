@@ -6,12 +6,12 @@ ms.date: 06/24/2021
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: c1bf5936e9e01a3d0446b99d9974011679b57b0a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6fbc2c38431cc638873ed4a93ce80f16d789c1de
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131432189"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158954"
 ---
 # <a name="azure-monitor-opentelemetry-based-auto-instrumentation-for-java-applications"></a>Java アプリケーションのための Azure Monitor OpenTelemetry ベースの自動インストルメンテーション
 
@@ -30,7 +30,7 @@ Java 自動インストルメンテーションは、コード変更なしで有
 
 #### <a name="1-download-jar-file"></a>1. jar ファイルをダウンロードする
 
-[applicationinsights-agent-3.2.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.2/applicationinsights-agent-3.2.2.jar) ファイルをダウンロードします。
+[applicationinsights-agent-3.2.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.3/applicationinsights-agent-3.2.3.jar) ファイルをダウンロードします。
 
 > [!WARNING]
 > 
@@ -52,7 +52,7 @@ Java 自動インストルメンテーションは、コード変更なしで有
 
 #### <a name="2-point-the-jvm-to-the-jar-file"></a>2. JVM が jar ファイルを指すようにする
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.2.2.jar` を追加します。 
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.2.3.jar` を追加します。 
 
 > [!TIP]
 > アプリケーションの JVM 引数の構成に関するヘルプについては、[JVM の引数の更新に関するヒント](./java-standalone-arguments.md)のページを参照してください。
@@ -65,7 +65,7 @@ jar ファイルが Application Insights リソースを指すように、次の
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.2.2.jar` と同じディレクトリに配置します。
+または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.2.3.jar` と同じディレクトリに配置します。
 
 ```json
 {

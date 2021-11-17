@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: memildin
-ms.openlocfilehash: 23908a7824e4e489da575fd1563b82c340d42def
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 628958b2b378b6b6d36b98c08f49c2f453f19af7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425181"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056285"
 ---
 # <a name="continuously-export-microsoft-defender-for-cloud-data"></a>Microsoft Defender for Cloud データを継続的にエクスポートする
 
@@ -20,7 +20,7 @@ ms.locfileid: "131425181"
 
 Microsoft Defender for Cloud では、詳細なセキュリティ アラートと推奨事項が生成されます。 これらは、ポータル内またはプログラム ツールで表示できます。 場合によっては、環境内の他の監視ツールでの追跡のために、この情報の一部または全部をエクスポートする必要があります。 
 
-**連続エクスポート** を使用して、エクスポートする "*内容*" とエクスポート先の "*場所*" を完全にカスタマイズできます。 たとえば、次のように構成できます。
+エクスポートする "*内容*" とエクスポート先の "*場所*" を完全にカスタマイズし、**連続エクスポート** に進みます。 たとえば、次のように構成できます。
 
 - 重大度が高いすべてのアラートを Azure イベント ハブに送信する
 - SQL サーバーの脆弱性評価スキャンで検出された重大度が中程度または高いすべての結果を、特定の Log Analytics ワークスペースに送信する
@@ -116,7 +116,7 @@ Azure portal の Microsoft Defender for Cloud ページから、REST API を介�
 
 API には、Azure portal からは使用できない追加の機能が用意されています。以下に例を示します。
 
-* **より大きなボリューム** - API を使用すると、1 つのサブスクリプションに複数のエクスポート構成を作成できます。 Defender for **Cloud の** ポータル UI の [連続エクスポート] ページでは、サブスクリプションごとに 1 つのエクスポート構成しかサポートされません。
+* **より大きなボリューム** - API を使用して 1 つのサブスクリプションに複数のエクスポート構成を作成できます。 Defender for **Cloud の** ポータル UI の [連続エクスポート] ページでは、サブスクリプションごとに 1 つのエクスポート構成しかサポートされません。
 
 * **追加の機能** - API には、UI には表示されない追加のパラメーターが用意されています。 たとえば、Automation リソースにタグを追加し、Defender for Cloud のポータル UI の [連続エクスポート] ページで提供されるプロパティよりも広範なアラートと推奨事項のプロパティセットに基づいてエクスポートを定義できます。
 

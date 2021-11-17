@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 921770c9cef41cedd8bf1ee01371da9a71e06e1a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9dd8978fe61bc8c952e4e06d8569141387caecca
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131437127"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133520"
 ---
 # <a name="store-and-share-images-in-an-azure-compute-gallery"></a>Azure Compute Gallery でイメージを格納、共有する
 
-**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 
-Azure Compute Gallery には、既存の Shared Image Gallery サービスに加え、新しい [VM アプリケーション])(vm-applications.md) の機能が追加されています。  
+Azure Compute Gallery には、既存の Shared Image Gallery サービスに加え、新しい [VM アプリケーション](vm-applications.md)の機能が追加されています。  
 
-Azure Compute Gallery を使用すると、Azure リソース (イメージ、[アプリケーション])(vm-applications.md) など) の構造と体系を構築することができます。 Azure Compute Gallery には次の特長があります。
+Azure Compute Gallery を使用すると、Azure リソース (イメージ、[アプリケーション](vm-applications.md)) の構造と体系を構築することができます。 Azure Compute Gallery には次の特長があります。
 - グローバル レプリケーション。
 - 容易な管理のためのリソースのバージョン管理とグループ化。
 - Availability Zones がサポートされるリージョンでのゾーン冗長ストレージ (ZRS) アカウントによる高可用性リソース。 ZRS では、ゾーンの障害に対する回復性の向上が提供されます。

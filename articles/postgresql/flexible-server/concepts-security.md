@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/01/2021
-ms.openlocfilehash: 26403d2de9fe0a4235dc1460f13adcd78e595e77
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: f31c013bbdf12f34cd73495e3885e17a35b368ef
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131867021"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312288"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーのセキュリティ
 
@@ -81,7 +81,7 @@ oid            | 24827
 また、フレキシブル サーバーでは、お使いのデータベースのアクティビティを追跡する[ログの監査](concepts-audit.md)も使用できます。 
 
 > [!NOTE]
-> 現在、Azure Database for PostgreSQL - フレキシブル サーバーでは、[Azure Defender の保護](../../security-center/azure-defender.md)をサポートしていません。 
+> 現在、Azure Database for PostgreSQL - フレキシブル サーバーでは、[Microsoft Defender for Cloud の保護](../../security-center/azure-defender.md)はまだサポートされていません。 
 
 ## <a name="updating-passwords"></a>パスワードの更新
 

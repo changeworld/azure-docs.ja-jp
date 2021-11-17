@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 31a7ed92f6fbdfc60753b91709738209acc38fc2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9c6fcc3fd0bff46bb3c1665b26502be188a3f83e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465480"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158702"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -39,14 +39,14 @@ ms.locfileid: "131465480"
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-Application Insights Java 3.x は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.2.2.jar` と同じディレクトリに配置されていることが想定されています。
+Application Insights Java 3.x は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.2.3.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
 * `applicationinsights.configuration.file` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.2.2.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.2.3.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 
@@ -194,7 +194,6 @@ Application Insights Java 3.x は、既定では構成ファイルが `applicati
   ]
 }
 ```
-
 
 ## <a name="telemetry-processors-preview"></a>テレメトリ プロセッサ (プレビュー)
 
@@ -437,6 +436,31 @@ Application Insights Java 3.x では、グローバル システム プロパテ
 これにより、Azure Active Directory 認証に必要な[トークン資格情報](/java/api/overview/azure/identity-readme#credentials)を生成するエージェントを設定できます。
 詳細については、[認証](./azure-ad-authentication.md)に関するドキュメントを参照してください。
 
+## <a name="instrumentation-keys-overrides-preview"></a>インストルメンテーション キーのオーバーライド (プレビュー)
+
+3\.2.3 以降、この機能はプレビュー段階にあります。
+
+インストルメンテーション キーのオーバーライドを使用すると、[既定のインストルメンテーション キー](#connection-string)をオーバーライドできます。次に例を示します。
+* 1 つの http パス プレフィックス `/myapp1` に 1 つのインストルメンテーション キーを設定します。
+* もう 1 つの http パス プレフィックス `/myapp2/` にもう 1 つのインストルメンテーション キーを設定します。
+
+```json
+{
+  "preview": {
+    "instrumentationKeyOverrides": [
+      {
+        "httpPathPrefix": "/myapp1",
+        "instrumentationKey": "12345678-0000-0000-0000-0FEEDDADBEEF"
+      },
+      {
+        "httpPathPrefix": "/myapp2",
+        "instrumentationKey": "87654321-0000-0000-0000-0FEEDDADBEEF"
+      }
+    ]
+  }
+}
+```
+
 ## <a name="self-diagnostics"></a>自己診断
 
 "自己診断" では、Application Insights Java 3.x からの内部ログを参照します。
@@ -463,7 +487,7 @@ Application Insights Java 3.x は、既定では `applicationinsights.log` フ�
 
 `level` には、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` のいずれかを指定できます。
 
-`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.2.2.jar` があるディレクトリを基準にして解決されます。
+`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.2.3.jar` があるディレクトリを基準にして解決されます。
 
 `maxSizeMb` は、ロールオーバーされる前のログ ファイルの最大サイズです。
 

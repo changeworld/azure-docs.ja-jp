@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2b27fcb43d815a6a2567ebb11c0ea768914582eb
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a6f91fd8de1f208bcbe57a9e541ad1e73340e995
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440965"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179491"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>API コネクタを使用して外部ソースからの要求でトークンを強化する
 
@@ -250,8 +250,8 @@ REST API をデプロイした後、`REST-GetProfile` 技術プロファイル�
 
 - **ServiceUrl**: REST API エンドポイントの URL を設定します。
 - **SendClaimsIn**: RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。
-- **AuthenticationType**: RESTful 要求プロバイダーにより実行されている認証の種類を設定します。 
-- **AllowInsecureAuthInProduction**: 運用環境では、このメタデータを必ず `true` に設定してください。
+- **AuthenticationType**: `Basic` または `ClientCertificate` などの RESTful クレーム プロバイダーにより実行されている認証の種類を設定します。 
+- **AllowInsecureAuthInProduction**: 運用環境では、このメタデータを必ず `false` に設定してください。
     
 詳細な構成については、[RESTful 技術プロファイルのメタデータ](restful-technical-profile.md#metadata)に関する記事を参照してください。
 
@@ -397,7 +397,7 @@ REST API をデプロイした後、`REST-GetProfile` 技術プロファイル�
 
 ::: zone-end
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ::: zone pivot="b2c-user-flow"
 

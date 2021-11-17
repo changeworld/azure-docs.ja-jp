@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 069a18da7e28a37f50d809c47142ab8a12982a17
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ed86fb88f221a92d829ad4f1ee59bffbd3315597
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129999218"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346593"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-bime"></a>チュートリアル: Azure AD SSO と Bime の統合
 
@@ -94,7 +94,7 @@ Bime に対して Azure AD SSO を構成してテストするには、次の手�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -106,7 +106,7 @@ Bime に対して Azure AD SSO を構成してテストするには、次の手�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Bime へのアクセスを許可して、B.Simon が Azure シングル サインオンを使用できるようにします。
 
@@ -118,13 +118,13 @@ Bime に対して Azure AD SSO を構成してテストするには、次の手�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-bime-sso&quot;></a>Bime SSO を構成する
+## <a name="configure-bime-sso"></a>Bime SSO を構成する
 
 1. 別の Web ブラウザー ウィンドウで、Bime 企業サイトに管理者としてログインします。
 
 2. ツールバーで、 **[管理者]** 、 **[アカウント]** の順にクリックします。
 
-    ![スクリーンショットは、[管理者] および [アカウント] が選択されていることを示しています。](./media/bime-tutorial/account.png &quot;[Admin]")
+    ![スクリーンショットは、[管理者] および [アカウント] が選択されていることを示しています。](./media/bime-tutorial/account.png "[Admin]")
 
 3. アカウント構成ページで、次の手順に従います。
 
@@ -181,4 +181,4 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Bime を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Bime を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

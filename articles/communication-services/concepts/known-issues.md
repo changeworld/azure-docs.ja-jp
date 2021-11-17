@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 02c0d31ec07c210197968e514573e372ef24dd59
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9213d5fa18e2156962deb1e9cd6e49f592192728
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219112"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055457"
 ---
 # <a name="known-issues"></a>既知の問題
 この記事では、Azure Communication Services Calling SDK と Azure Communication Services Call Automation API に関連する制限事項と既知の問題について説明します。
@@ -26,6 +26,27 @@ ms.locfileid: "130219112"
 ### <a name="javascript-sdk"></a>JavaScript SDK
 
 このセクションでは、Azure Communication Services の音声およびビデオ通話の JavaScript SDK に関連した既知の問題について説明します。
+
+#### <a name="ios-151-regression---iossafari-will-crash-and-refresh-the-page-if-acs-user-tries-to-send-video-in-a-call"></a>iOS 15.1 回帰 - ACS ユーザーが通話でビデオを送信しようとすると、iOS/Safari がクラッシュし、ページが更新されます
+
+---
+**重要**
+
+iOS 15.1 では、iOS/Safari に配置されたビデオを使用した ACS 呼び出しの大部分に影響するバグが導入されました。
+
+---
+
+**問題の説明** ビデオがオンになっているブラウザーで iOS15.1 の ACS を使用して ACS 通話に参加したり、Teams 会議に参加したりすると、Safari ブラウザーがクラッシュします。
+
+**詳細** これは、iOS 15.1 のリリースで導入された [iOS 15.1 Safari](https://bugs.webkit.org/show_bug.cgi?id=231505) の既知のバグです。 iOS 15.2 の場合、この問題はリリースで修正される予定です。 現在、唯一の既知の回避方法は、iOS 15.1 Safari で ACS を使用する場合にビデオをオフにしないことです。
+
+**バージョン** iOS 15.1 および ACS Web SDK バージョン
+
+**軽減策** ACS ビデオ通話に iOS 15.1 Safari を使用する場合、および ACS ビデオ通話会議に対して Microsoft Teams を使用する場合、ユーザーがビデオを使用 (オン) しないようにします。
+回避策を評価し、次のステップで Apple と協力しています
+
+次のリリース - iOS 15.2 でこの問題が修正されました
+
 
 #### <a name="refreshing-a-page-doesnt-immediately-remove-the-user-from-their-call"></a>ページを更新してもユーザーが通話からすぐに削除されない
 

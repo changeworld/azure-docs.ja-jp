@@ -3,13 +3,13 @@ title: Azure サポート リクエストを管理する
 description: サポート リクエストの表示、メッセージの送信、ファイルのアップロード、およびオプションの管理方法について説明します。
 tags: billing
 ms.topic: how-to
-ms.date: 11/02/2021
-ms.openlocfilehash: 361ab4b643dac6fb54fae8d236dfac38ee024701
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.date: 11/10/2021
+ms.openlocfilehash: c74a6245da9023889be151415bce72ba0129881c
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508346"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179917"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure サポート リクエストを管理する
 
@@ -54,7 +54,7 @@ ms.locfileid: "131508346"
 
 ## <a name="allow-collection-of-advanced-diagnostic-information"></a>高度な診断情報の収集を許可
 
-サポート リクエストを作成する場合、 **[高度な診断情報]** セクションで **[はい]** または **[いいえ]** を選択できます。 このオプションは、Azure サポートが、[ログ ファイル](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs)など、問題の解決に役立つ可能性のある[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を Azure リソースから収集できるどうかを決定します。
+サポート リクエストを作成する場合、 **[高度な診断情報]** セクションで **[はい]** または **[いいえ]** を選択できます。 このオプションは、Azure サポートが、[ログ ファイル](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs)など、問題の解決に役立つ可能性のある[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を Azure リソースから収集できるどうかを決定します。 Azure サポートでは、Azure portal によってケースが作成され、それを許可するアクセス許可が付与されている場合にのみ、高度な診断情報にアクセスできます。
 
 要求の作成後に **[高度な診断情報]** の選択を変更するには、以下の手順を実行します。
 

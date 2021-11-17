@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 11/04/2021
+ms.date: 11/07/2021
 ms.author: memildin
-ms.openlocfilehash: 0e93c254a28aa62ce84f60daa02f91b247893a5b
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 19c1cad67d170e406e01e8c7c4816ab11722e4e4
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131577158"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990315"
 ---
 # <a name="whats-new-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloudの新機能
 
@@ -38,6 +38,7 @@ Defender for Cloud に間もなく公開される *計画中* の変更につい
 - [Azure Security ベンチマーク v3 を使用した拡張されたセキュリティ制御の評価](#expanded-security-control-assessments-with-azure-security-benchmark-v3)
 - [一般公提供 (GA) のためにリリースされた Microsoft Sentinel コネクタのオプションの双方向のアラート同期](#microsoft-sentinel-connectors-optional-bi-directional-alert-synchronization-released-for-general-availability-ga)
 - [Azure Kubernetes Service (AKS) ログを Sentinel にプッシュするための新しい推奨事項](#new-recommendation-to-push-azure-kubernetes-service-aks-logs-to-sentinel)
+- [一般公開 (GA) のためにリリースされた MITRE ATT&CK® フレームワークにマップされた推奨事項](#recommendations-mapped-to-the-mitre-attck-framework---released-for-general-availability-ga)
 
 11 月のその他の変更点は次のとおりです。
 
@@ -64,9 +65,9 @@ Ignite 2019 では、Microsoft Defender ブランドの下でデジタル資産�
 
 AWS アカウントを追加すると、Defender for Cloud は、次のいずれかまたはすべてのプランを使用して AWS リソースを保護します。
 
-- **Defender for Cloud の CSPM 機能** は、AWS リソースにまで拡張されています。 このエージェントレスプランでは、AWS 固有のセキュリティの推奨事項に従って AWS リソースを評価します。これらは、セキュリティで保護されたスコアに含まれています。 これらのリソースは、AWS (AWS CI、AWS PCI DSS、および AWS の基本的なセキュリティのベスト プラクティス) に固有の組み込み標準に対するコンプライアンスを評価されます。 Defender for Cloud の[資産インベントリ ページ](asset-inventory.md)は、Azure リソースと AWS リソースを共に管理するのに役立つマルチクラウド対応機能です。
-- **Microsoft Defender For Kubernetes** は、そのコンテナーの脅威検出と高度な防御を **Amazon eks Linux クラスター** に拡張します。
-- **Microsoft Defender for servers** を使用すると、お使いの Windows インスタンスと Linux EC2 インスタンスを対象とした脅威検出および高度な防御が追加されます。 このプランには、Microsoft Defender for Endpoint の統合ライセンス、セキュリティ ベースラインと OS レベルの評価、脆弱性評価スキャン、適応型アプリケーション制御 (AAC)、ファイルの整合性の監視 (FIM) などが含まれます。
+- **Defender for Cloud の CSPM 機能** は、AWS リソースにまで拡張されています。 このエージェントレス プランでは、AWS 固有のセキュリティの推奨事項に従って AWS リソースを評価します。これは、セキュリティ スコアに含まれています。 これらのリソースは、AWS (AWS CIS、AWS PCI DSS、および AWS の基本的なセキュリティのベスト プラクティス) に固有の組み込み標準に準拠しているかについても評価されます。 Defender for Cloud の[資産インベントリ ページ](asset-inventory.md)は、Azure リソースと AWS リソースを共に管理するのに役立つマルチクラウド対応機能です。
+- **Microsoft Defender For Kubernetes** のコンテナーの脅威検出と高度な防御が **Amazon EKS Linux クラスター** まで拡張されました。
+- **Microsoft Defender for servers** では、脅威検出および高度な防御が、お使いの Windows と Linux の EC2 インスタンスにもたらされます。 このプランには、Microsoft Defender for Endpoint の統合ライセンス、セキュリティ ベースラインと OS レベルの評価、脆弱性評価スキャン、適応型アプリケーション制御 (AAC)、ファイルの整合性の監視 (FIM) などが含まれます。
 
 詳細については、「[AWS アカウントを Microsoft Defender for Cloud に接続する](quickstart-onboard-aws.md)」を参照してください。
 
@@ -121,6 +122,22 @@ SecOps チームは、[推奨事項の詳細] ページから直接関連する 
 
 また、同じ Sentinel ストリーミング機能を使用して、"SQL Server の監査を有効にする必要があります" という推奨事項を強化しました。 
 
+
+### <a name="recommendations-mapped-to-the-mitre-attck-framework---released-for-general-availability-ga"></a>一般公開 (GA) のためにリリースされた MITRE ATT&CK® フレームワークにマップされた推奨事項
+
+Defender for Cloud のセキュリティに関する推奨事項が拡張され、MITRE ATT&CK® フレームワークでの位置が示されるようになりました。 実際の観察に基づいた脅威アクターの戦術と手法に関するこのグローバルにアクセス可能な知識ベースは、環境に対する推奨事項に関連するリスクを理解するのに役立つ多くのコンテキストを提供します。
+
+これらの戦術は、推奨情報にアクセスするすべての場所で確認できます。
+
+- 関連する推奨事項に関する **Azure Resource Graph クエリ結果** には、MITRE ATT&CK® の戦術と手法が含まれています。
+
+- **推奨事項の詳細ページ** には、関連するすべての推奨事項のマッピングが表示されます。
+
+    :::image type="content" source="media/review-security-recommendations/tactics-window.png" alt-text="推奨事項の MITRE 戦術マッピングのスクリーンショット。":::
+
+- **Defender For Cloud の [推奨事項] ページ** には、関連する戦術に従って推奨事項を選択するための新しい :::image type="icon" source="media/review-security-recommendations/tactics-filter-recommendations-page.png" border="false"::: フィルターがあります。
+
+詳しくは、[セキュリティの推奨事項を確認する](review-security-recommendations.md)を参照してください。
 
 ### <a name="microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution---released-for-general-availability-ga"></a>Microsoft 脅威と脆弱性の管理が脆弱性評価ソリューションとして追加され、一般提供 (GA) のためにリリースされました。
 

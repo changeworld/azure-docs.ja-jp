@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853174bd96f0a88f8513df848aab7a3d34aceb28
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e2ea3a8213fa57aa7c8066b81ea7c790ec0b1db9
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131451846"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988826"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キーのデプロイに関してよく寄せられる質問 (FAQ) 
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キーのデプロイに関してよく寄せられる質問 (FAQ)
 
 この記事では、ハイブリッド Azure AD 参加済みデバイスと、オンプレミスのリソースへのパスワードレス サインインに関してよく寄せられるデプロイの質問 (FAQ) について説明します。 このパスワードレスの機能により、FIDO2 セキュリティ キーを使用して、Windows 10 デバイスをハイブリッド Azure AD 参加済みデバイスとして Azure AD 認証することができます。 ユーザーは、FIDO2 キーのような最新の資格情報を使用してデバイス上の Windows にサインインし、オンプレミスのリソースへのシームレスなシングル サインオン (SSO) エクスペリエンスにより、従来の Active Directory Domain Services (AD DS) ベースのリソースにアクセスできます。
 
@@ -178,14 +178,14 @@ Windows Server 2016 または 2019 ドメイン コントローラーで、次�
 
 ### <a name="how-is-azure-ad-kerberos-linked-to-my-on-premises-active-directory-domain-services-environment"></a>オンプレミスの Active Directory Domain Services 環境に、Azure AD Kerberos はどのようにリンクされますか。
 
-これには、オンプレミスの AD DS 環境と、Azure AD テナントの 2 つの部分があります。
+これには、オンプレミスの AD DS 環境と Azure AD テナントの 2 つの部分があります。
 
 **Active Directory Domain Services (AD DS)**
 
 Azure AD Kerberos サーバーは、オンプレミスの AD DS 環境ではドメイン コントローラー (DC) オブジェクトとして表されます。 この DC オブジェクトは、次の複数のオブジェクトで構成されています。
 
 * *CN=AzureADKerberos,OU=Domain Controllers,\<domain-DN>*
-    
+
     AD DS で読み取り専用ドメイン コントローラー (RODC) を表す *コンピューター* オブジェクト。 このオブジェクトに関連付けられているコンピューターはありません。 むしろ、これは DC の論理的な表現です。
 
 * *CN=krbtgt_AzureAD,CN=Users,\<domain-DN>*

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 7713a1a502697a52ed811b8ed41b13485f454877
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 145d7e0f7b9ba1419b47fde3d8a3526f45315c98
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768175"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300073"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pipedrive の統合
 
@@ -128,6 +128,8 @@ Pipedrive に対して Azure AD SSO を構成してテストするには、次�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
+<!-- docutune:ignore "Security Center" -->
+
 ## <a name="configure-pipedrive-sso"></a>Pipedrive SSO の構成
 
 1. 別のブラウザー ウィンドウで、Pipedrive Web サイトに管理者としてサインインします。
@@ -136,9 +138,9 @@ Pipedrive に対して Azure AD SSO を構成してテストするには、次�
 
     ![スクリーンショットは、[User Profile]\(ユーザー プロファイル\) メニューの [Settings]\(設定\) が選択されていることを示しています。](./media/pipedrive-tutorial/configure-1.png)
 
-1. [SECURITY CENTER] まで下にスクロールし、 **[Single sign-on]\(シングル サインオン\)** を選択します。
+1. [Defender for Cloud] まで下にスクロールし、 **[シングル サインオン]** を選択します。
 
-    ![スクリーンショットは、[Security Center]\(セキュリティ センター\) で [Single sign-on]\(シングル サインオン\) が選択されていることを示しています。](./media/pipedrive-tutorial/configure-2.png)
+    ![スクリーンショットは、[Defender for Cloud] で [シングル サインオン] が選択されていることを示しています。](./media/pipedrive-tutorial/configure-2.png)
 
 1. **[SAML configuration for Pipedrive]\(Pipedrive の SAML 構成\)** セクションで、次の手順に従います。
 
@@ -195,4 +197,4 @@ Pipedrive に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-Pipedrive を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Pipedrive を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。

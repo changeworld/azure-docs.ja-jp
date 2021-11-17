@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8e4bc76203ee84d71f4a9f201dac6e63d4728c34
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a6a9f2c4e480efdbb025fb3edf98dc7e6f599081
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238062"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025952"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -202,6 +202,10 @@ C++ NuGet パッケージ内には、使用するバイナリ フレーバーを
 確認すべきもう 1 つの値は `ServiceStatistics.LatencyPoseToReceiveAvg` です。 この値は、常に 100 ミリ秒未満である必要があります。 値がそれよりも大きい場合は、接続されているデータ センターが離れすぎていることを示しています。
 
 考えられる軽減策の一覧については、[ネットワーク接続のガイドライン](../reference/network-requirements.md#guidelines-for-network-connectivity)をご覧ください。
+
+## <a name="local-content-uis--on-hololens-2-renders-with-significantly-more-distortion-artifacts-than-without-arr"></a>HoloLens 2 のローカル コンテンツ (UI、...) は、ARR を使用しない場合よりもはるかに多くの歪みアーティファクトでレンダリングされます
+
+これは、実行時のパフォーマンスに関してローカル コンテンツ プロジェクションの品質をトレードする既定の設定です。 ローカル コンテンツが ARR なしと同じ再プロジェクション品質レベルでレンダリングされるように、プロジェクション モードを変更する方法については、「[再プロジェクションのポーズモード](../overview/features/late-stage-reprojection.md#reprojection-pose-modes)」についての章を参照してください。
 
 ## <a name="z-fighting"></a>Z ファイティング
 

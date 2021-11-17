@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: ea55c6d1ca0575ed2f8487b332f3341579bd3a88
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 30c96f2d7b679b0032a2b8c406cc6c210c143a11
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131852220"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062172"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion に関する FAQ
 
@@ -71,7 +71,7 @@ Azure Bastion によって、顧客データがデプロイされているリー
 * 仮想マシンに対する閲覧者ロール。
 * 仮想マシンのプライベート IP を使用する NIC に対する閲覧者ロール。
 * Azure Bastion リソースに対する閲覧者ロール。
-* Virtual Network の閲覧者ロール (ピアリングされた仮想ネットワークがない場合は不要)。
+* ターゲット仮想マシンの Virtual Network での閲覧者ロール (Bastion がピアリングされた仮想ネットワーク内にある場合)。
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure Bastion には、Azure でホストされる VM を管理する目的で RDS CAL が必要ですか?
 

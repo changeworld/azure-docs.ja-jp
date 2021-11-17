@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 8ed0291e4dad7aca6fe1c38306067fced292f598
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1f1b2c8f4593205c4312581052e40e17d6ce4581
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124772583"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341504"
 ---
 # <a name="tutorial-integrate-safetynet-with-azure-active-directory"></a>チュートリアル: Azure Active Directory と SafetyNet の統合
 
@@ -140,4 +140,4 @@ SafetyNet 用に Azure AD SSO を構成してテストするには、次の手�
 
 ## <a name="next-steps"></a>次のステップ
 
-SafetyNet を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+SafetyNet を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。

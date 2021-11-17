@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 54155f2bacd9a593a1288c8d1f95a5843dca2602
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: 222c78803e268cef95dc322952874f58346c2919
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/10/2021
-ms.locfileid: "132134790"
+ms.locfileid: "132180167"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>Azure Blob Storage の監視に関するベスト プラクティス
 
@@ -177,7 +177,9 @@ StorageBlobLogs
 
 その後、その文字列を [Get-FileHash](/powershell/module/microsoft.powershell.utility/get-filehash) PowerShell コマンドレットに渡すことができます。 サンプルについては、「[例 4: 文字列のハッシュを計算する](/powershell/module/microsoft.powershell.utility/get-filehash#example-4--compute-the-hash-of-a-string)」を参照してください。
 
-または、デコードされた文字列を kusto クエリの一部として [hash_sha256()](/data-explorer/kusto/query/sha256hashfunction) 関数に渡すこともできます。
+または、デコードされた文字列を Azure Data Explorer を使用するクエリの一部として [hash_sha256()](/azure/data-explorer/kusto/query/sha256hashfunction) 関数に渡すこともできます。
+
+SAS トークンには ID 情報は含まれません。 ユーザーまたは組織のアクティビティを追跡する 1 つの方法は、ユーザーまたは組織のさまざまな SAS トークン ハッシュへのマッ​​ピングを維持することです。
 
 ## <a name="optimize-cost-for-infrequent-queries"></a>頻度の低いクエリのコストを最適化する
 

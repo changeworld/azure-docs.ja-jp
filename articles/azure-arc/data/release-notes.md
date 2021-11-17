@@ -10,12 +10,12 @@ ms.subservice: azure-arc-data
 ms.date: 11/03/2021
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 384232e803469a2ccbe0480c0e4e41c01f96b7ee
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: ac5b33de1a95b413c7eba92d2bdeaa8cc05b3a05
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131852258"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059566"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>リリース ノート - Azure Arc 対応データ サービス
 
@@ -69,25 +69,13 @@ ms.locfileid: "131852258"
 
 ##### <a name="region-availability"></a>利用可能なリージョン
 
-- このリリースでは、直接接続モードは次の Azure リージョンでのみ使用できます。
+このリリースでは、次の Azure リージョンで直接接続モードを使用することができます。
 
-   - 米国中北部 *
-   - 米国中部
-   - 米国東部
-   - 米国東部 2
-   - 米国西部 *
-   - 米国西部 2
-   - 米国西部 3 *
-   - 英国南部
-   - 西ヨーロッパ
-   - 北ヨーロッパ
-   - オーストラリア東部
-   - 東南アジア
-   - 韓国中部
-   - フランス中部
+- 米国中北部
+- 米国西部
+- 米国西部 3
 
-    \* 2011 年 11 月に新しく追加
-
+完全な一覧については、「[サポートされているリージョン](overview.md#supported-regions)」を参照してください。
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
 
@@ -181,7 +169,7 @@ az arcdata sql mi-arc update
 - AKS HCI へのデプロイには、特別なストレージ クラス構成が必要です。 詳細については、「[ストレージの構成 (Azure Stack HCI と AKS-HCI)](create-data-controller-indirect-cli.md#configure-storage-azure-stack-hci-with-aks-hci)」を参照してください。
 - データをエクスポートするときに SSL 以外の接続を許可するための新しい要件があります。 対話型プロンプトを非表示にするように環境変数を設定します。
 
-### <a name="whats-new"></a>新着情報
+### <a name="whats-new"></a>新機能
 
 #### <a name="data-controller"></a>データ コントローラー
 
@@ -348,7 +336,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 自動バックアップ サービスが利用可能になり、既定で有効になっています。 バックアップ ボリュームの空き領域を注意深く監視してください。
 
-### <a name="whats-new"></a>新着情報
+### <a name="whats-new"></a>新機能
 
 このリリースでは、Azure Arc 対応データ サービス用の CLI 拡張機能 `az` が導入されています。 詳細については、上記の「[互換性に影響する変更点](#breaking-change)」を参照してください。
 

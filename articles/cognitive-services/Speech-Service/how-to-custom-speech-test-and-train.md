@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/08/2021
+ms.date: 11/09/2021
 ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 645a45ed2ad16abc92b0dded9f1950a3e1ad47d6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 14cf969fa5aba3f3fddd6fedc63c2ccf19d71e08
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509932"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133500"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -92,9 +92,7 @@ ms.locfileid: "131509932"
 
 [Speech-to-text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) を使用して、カスタム モデルに関連するすべての操作を自動化できます。 特に、これを使用してデータセットをアップロードすることができます。 これはデータセット ファイルが 128 MB を超える場合に特に便利です。その理由は、この大きさのファイルは Speech Studio の *[Local file]\(ローカルファイル\)* オプションを使用してアップロードできないためです。 (前のセクションで説明したのと同じ目的で、Speech Studio の *[Azure Blob or shared location]\(Azure Blob または共有場所\)* オプションを使用することもできます)。
 
-データセットを作成してアップロードするには、次のいずれかの要求を使用します。
-* [データセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)
-* [フォームからのデータセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm)
+データセットを作成してアップロードするには、[データセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)要求を使用します。
 
 **REST API で作成されたデータセットと Speech Studio プロジェクト**
 
@@ -102,7 +100,7 @@ Speech-to-text REST API v3.0 で作成されたデータセットは、要求本
 
 Speech Studio にログオンすると、接続されていないオブジェクト (プロジェクト参照を使用せずに REST API によってアップロードされたデータセットなど) が見つかったときに、そのユーザー インターフェイスによって通知され、そのようなオブジェクトを既存のプロジェクトに接続できます。 
 
-アップロード中に新しいデータセットを Speech Studio の既存のプロジェクトに接続するには、[データセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)または[フォームからのデータセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm)を使用し、次の形式に従って要求本文に入力します。
+アップロード中に新しいデータセットを Speech Studio の既存のプロジェクトに接続するには、[データセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)を使用し、次の形式に従って要求本文に入力します。
 ```json
 {
   "kind": "Acoustic",
@@ -116,7 +114,7 @@ Speech Studio にログオンすると、接続されていないオブジェク
 }
 ```
 
-`project` 要素に必要なプロジェクト URL は、[プロジェクトの取得](https://westeurope.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects)要求で取得できます。
+`project` 要素に必要なプロジェクト URL は、[プロジェクトの取得](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects)要求で取得できます。
 
 ## <a name="audio--human-labeled-transcript-data-for-trainingtesting"></a>トレーニング/テスト用のオーディオ + 人間というラベルが付いた文字起こしデータ
 
@@ -192,7 +190,7 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 
 ## <a name="structured-text-data-for-training-public-preview"></a>トレーニング用の構造化テキスト データ (パブリック プレビュー)
 
-多くの場合、予想される発話では特定のパターンに従います。 一般的なパターンの 1 つとして、発話では、リストの単語や語句だけが異なることが挙げられます。 例として、"私は `product` について質問があります。" では、`product` は、可能な製品のリストです。 または、"その `object` を `color` にします" では、`object` はジオメトリック形状のリストで、`color` は色のリストです。 トレーニング データの作成を簡略化し、カスタム言語モデル内でのモデリングを改善できるようにするには、マークダウン形式の構造化テキストを使用して項目のリストを定義してから、トレーニング発話内でそれらを参照できます。 また、マークダウン形式では、単語の発音の指定もサポートされます。 マークダウン形式では、Language Understanding モデル (特に、リスト エンティティと発話の例) のトレーニングに使用される `.lu` マークダウンとその形式を共有します。 完全な `.lu` マークダウンの詳細については、<a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">`.lu` ファイル形式</a>に関する記事を参照してください。
+多くの場合、予想される発話では特定のパターンに従います。 一般的なパターンの 1 つとして、発話では、リストの単語や語句だけが異なることが挙げられます。 例として、"私は `product` について質問があります。" では、`product` は、可能な製品のリストです。 または、"その `object` を `color` にします" では、`object` はジオメトリック形状のリストで、`color` は色のリストです。 トレーニング データの作成を簡略化し、カスタム言語モデル内でのモデリングを改善できるようにするには、マークダウン形式の構造化テキストを使用して項目のリストを定義してから、トレーニング発話内でそれらを参照できます。 また、マークダウン形式では、単語の発音の指定もサポートされます。 マークダウン ファイルには、`.md` 拡張子が必要です。 マークダウンの構文は、特に、リスト エンティティと発話の例の Language Understanding モデルの構文と同じです。 完全なマークダウン構文の詳細については、「<a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">Language Understanding マークダウン</a>」を参照してください。
 
 マークダウン形式の例を次に示します。
 

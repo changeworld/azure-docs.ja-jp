@@ -1,19 +1,19 @@
 ---
 title: Azure Container Apps でのスケーリング
 description: Azure Container Apps でのアプリケーションのスケールインとスケールアウトの方法について説明します。
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b02d4d06b855229f41a0bae0b04d1729a29e4e49
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 683545b892db4830e01f71faa2f77a097f9e8a9a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579010"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061175"
 ---
 # <a name="set-scaling-rules-in-azure-container-apps"></a>Azure Container Apps でスケーリング ルールを設定する
 
@@ -31,6 +31,7 @@ Azure Container Apps では、宣言型スケーリング ルールのセット�
 - アプリケーションのインスタンスが常に必ず実行されているようにしたい場合は、`minReplicas` を 1 以上に設定します。
 - 処理されていなくてもメモリに残っているレプリカは、"アイドル料金" のカテゴリで課金されます。
 - スケーリング ルールの変更は、[リビジョン スコープ](overview.md)の変更です。
+- HTTP 以外のイベント スケール ルールを使用する場合は、`activeRevisionMode` を `single` に設定することをお勧めします。
 
 > [!IMPORTANT]
 > レプリカの数は目標値であり、保証はされません。 `maxReplicas` を `1` に設定したとしても、スレッド セーフは保証されません。
