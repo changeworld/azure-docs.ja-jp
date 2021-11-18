@@ -97,7 +97,7 @@ AKS ノードに `containerd` を使用することで、ポッドの起動時�
 
 * コンテナー ランタイムとして `containerd` を使用するには、ベース OS イメージとして AKS Ubuntu 18.04 を使用する必要があります。
 * ノードに Docker ツールセットがまだ存在していても、Kubernetes ではコンテナー ランタイムとして `containerd` を使用します。 したがって、ノード上の Kubernetes で作成されたコンテナーは Moby (Docker) によって管理されないため、Docker コマンド (`docker ps` など) や Docker API を使用してコンテナーを表示したり、操作したりすることはできません。
-* `containerd` では、Kubernetes ノード上のポッド、コンテナー、コンテナー イメージの **トラブルシューティング** に、Docker CLI (`crictl ps` など) ではなく、代替 CLI として [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) を使用することをお勧めします。 
+* `containerd` では、Kubernetes ノード上のポッド、コンテナー、コンテナー イメージの **トラブルシューティング** に、Docker CLI ではなく、代替 CLI として [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) (`crictl ps` など) を使用することをお勧めします。 
    * Docker CLI の完全な機能は提供されません。 トラブルシューティングのみを目的としています。
    * `crictl` では、ポッドなどの概念が存在する、Kubernetes により適したコンテナー ビューが提供されます。
 * `Containerd` では、標準化された `cri` ログ形式を使用してログを設定します (これは、Docker の JSON ドライバーから現在取得しているものとは異なります)。 ログ ソリューションでは、([Azure Monitor for Containers](../azure-monitor/containers/container-insights-enable-new-cluster.md) のように) `cri` ログ形式をサポートする必要があります。
