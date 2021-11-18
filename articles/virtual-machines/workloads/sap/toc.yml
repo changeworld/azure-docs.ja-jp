@@ -232,6 +232,8 @@
           href: high-availability-guide-rhel-ibm-db2-luw.md
     - name: SAP アプリケーション レイヤー - SLES
       items:
+        - name: NFS を使用した Azure Files への HA SAP NetWeaver のインストール
+          href: high-availability-guide-suse-nfs-azure-files.md
         - name: Azure NetApp Files を使用した HA SAP NetWeaver のインストール
           href: high-availability-guide-suse-netapp-files.md
         - name: HA SAP NetWeaver のインストール
@@ -244,7 +246,9 @@
           href: high-availability-guide-suse-pacemaker.md
     - name: SAP アプリケーション レイヤー - RHEL
       items:
-        - name: Azure NetApp Files を使用した HA SAP NetWeaver システムのインストール
+        - name: NFS を使用した Azure Files への HA SAP NetWeaver のインストール
+          href: high-availability-guide-rhel-nfs-azure-files.md
+        - name: Azure NetApp Files を使用した HA SAP NetWeaver のインストール
           href: high-availability-guide-rhel-netapp-files.md
         - name: HA SAP NetWeaver のインストール
           href: high-availability-guide-rhel.md

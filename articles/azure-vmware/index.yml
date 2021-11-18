@@ -9,12 +9,12 @@ metadata:
   author: suzizuber
   ms.author: v-szuber
   ms.date: 10/06/2021
-  ms.openlocfilehash: 3349d3cfe37f0720225fcca81a2b789868345753
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: efc7a0083929d6750544c649e18a74cb929d6605
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132347596"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132555472"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -168,7 +168,7 @@ landingContent:
       url: deploy-disaster-recovery-using-vmware-hcx.md
     - text: VMware HCX アプライアンスをアップグレードする
       url: https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html
-- title: VMware のエコシステム
+- title: パートナー ソリューションのエコシステム
   linkLists:
   - linkListType: reference
     links:
@@ -176,6 +176,10 @@ landingContent:
       url: ecosystem-back-up-vms.md
     - text: VM の移行ソリューション
       url: ecosystem-migration-vms.md
+    - text: Azure VMware Solution のセキュリティ ソリューション
+      url: ecosystem-security-solutions.md
+    - text: Bitnami アプライアンスのデプロイ
+      url: bitnami-appliances-deployment.md
 - title: リソース
   linkLists:
   - linkListType: reference

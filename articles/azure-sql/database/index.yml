@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: 
   ms.date: 01/25/2021
-  ms.openlocfilehash: b0e56991bc2f65e724f1a39a676cec3118e7076e
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: 18bdb111b8da60cc17533f9d232645d7b0a38407
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130038520"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132554733"
 landingContent:
 - title: Azure SQL データベース
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: 新機能
       url: doc-changes-updates-release-notes-whats-new.md
+    - text: Azure SQL を改善するためのアンケート
+      url: https://aka.ms/AzureSQLSurveyNov2021
   - linkListType: quickstart
     links:
     - text: SQL Database を作成する

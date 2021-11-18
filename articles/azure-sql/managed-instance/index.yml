@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: 
   ms.date: 05/27/2020
-  ms.openlocfilehash: a27cfbd170e1db6623ede6edc71d154f362e5363
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: b21d8f31de36362c542c668b5b992abfa2b99134
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130045448"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132551902"
 landingContent:
 - title: Azure SQL Managed Instance
   linkLists:
@@ -25,9 +25,11 @@ landingContent:
     links:
     - text: 新機能
       url: doc-changes-updates-release-notes-whats-new.md
+    - text: Azure SQL を改善するためのアンケート
+      url: https://aka.ms/AzureSQLSurveyNov2021
   - linkListType: quickstart
     links:
-    - text: SQL Managed Instance の作成
+    - text: SQL マネージド インスタンスの作成
       url: instance-create-quickstart.md
   - linkListType: video
     links:
