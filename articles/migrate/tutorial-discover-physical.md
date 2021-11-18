@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 11/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 1a12e8ddf419b4e7b26d82e76a59de43fb73ddb4
-ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+ms.openlocfilehash: 9f4f8d4d113d3eac381f1b8504dc9987073319d9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132402411"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724769"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate: Discovery and Assessment を使用して物理サーバーを検出する
 
@@ -301,7 +301,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 検出が開始されたら、追加されたサーバーをアプライアンス構成マネージャーから削除できます。このためには、 **[Add discovery source]\(検出ソースの追加\)** テーブルでサーバー名を検索し、 **[削除]** をクリックします。
 
 >[!NOTE]
-> 検出が開始されているサーバーの削除を選択すると、実行中の検索と評価が停止し、このサーバーを含む評価の信頼度評価に影響する可能性があります。 [詳細情報](/azure/migrate/common-questions-discovery-assessment#why-is-the-confidence-rating-of-my-assessment-low)
+> 検出が開始されているサーバーの削除を選択すると、実行中の検索と評価が停止し、このサーバーを含む評価の信頼度評価に影響する可能性があります。 [詳細情報](./common-questions-discovery-assessment.md#why-is-the-confidence-rating-of-my-assessment-low)
 
 ## <a name="next-steps"></a>次のステップ
 

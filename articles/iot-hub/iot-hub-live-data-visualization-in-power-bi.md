@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub から取得したデータのリアルタイム データの視覚化 – Power BI
 description: Power BI を使用して、センサーから収集されて Azure IoT Hub に送信された気温と湿度のデータを視覚化します。
-author: robinsh
+author: eross-msft
 keywords: リアルタイム データの視覚化, ライブ データの視覚化, センサー データの視覚化
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 7/23/2021
-ms.author: robinsh
-ms.openlocfilehash: 4bfd0f761538516d771fd1bb00eb9dc625f46ce8
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.author: lizross
+ms.openlocfilehash: 15e297f65aad93cd3999ae44953a3410c7281788
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015607"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555052"
 ---
 # <a name="tutorial-visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>チュートリアル: Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 

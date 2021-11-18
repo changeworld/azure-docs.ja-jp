@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 9480370a263c58984277d652965f099ac5951bd3
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: c21b1807468e685f61fe65178d51c549ae7b8dd1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617760"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548427"
 ---
-# <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
+# <a name="end-user-experiences-for-applications"></a>アプリケーションのエンドユーザー エクスペリエンス
 
 Azure Active Directory (Azure AD) には、組織内のエンド ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法が複数用意されています。
 

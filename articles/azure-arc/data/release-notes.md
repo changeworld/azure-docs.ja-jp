@@ -10,12 +10,12 @@ ms.subservice: azure-arc-data
 ms.date: 11/03/2021
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: ac5b33de1a95b413c7eba92d2bdeaa8cc05b3a05
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 7d41d8b0d9150b811bd6111b7e0f95eeb7fce079
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132059566"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707778"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>リリース ノート - Azure Arc 対応データ サービス
 
@@ -40,8 +40,8 @@ ms.locfileid: "132059566"
    ```console
    az arcdata dc create
    az arcdata dc delete
-   az arcdata sql mi-arc create
-   az arcdata sql mi-arc delete
+   az sql mi-arc create
+   az sql mi-arc delete
    ```
  
 #### <a name="data-controller"></a>データ コントローラー
@@ -169,7 +169,7 @@ az arcdata sql mi-arc update
 - AKS HCI へのデプロイには、特別なストレージ クラス構成が必要です。 詳細については、「[ストレージの構成 (Azure Stack HCI と AKS-HCI)](create-data-controller-indirect-cli.md#configure-storage-azure-stack-hci-with-aks-hci)」を参照してください。
 - データをエクスポートするときに SSL 以外の接続を許可するための新しい要件があります。 対話型プロンプトを非表示にするように環境変数を設定します。
 
-### <a name="whats-new"></a>新機能
+### <a name="whats-new"></a>新着情報
 
 #### <a name="data-controller"></a>データ コントローラー
 
@@ -336,7 +336,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 自動バックアップ サービスが利用可能になり、既定で有効になっています。 バックアップ ボリュームの空き領域を注意深く監視してください。
 
-### <a name="whats-new"></a>新機能
+### <a name="whats-new"></a>新着情報
 
 このリリースでは、Azure Arc 対応データ サービス用の CLI 拡張機能 `az` が導入されています。 詳細については、上記の「[互換性に影響する変更点](#breaking-change)」を参照してください。
 

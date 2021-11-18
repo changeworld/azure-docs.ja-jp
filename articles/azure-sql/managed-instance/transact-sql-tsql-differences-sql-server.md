@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: mathoma, bonova, danil
 ms.date: 10/21/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: dad341c2d4323346619c20da105f7f50f21f67bc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0bc0bf771d8a50acfe09ab4b4abdded4dc078c49
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131431030"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707663"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -391,7 +391,7 @@ In-Database R および Python 外部ライブラリは、限られたパブリ�
 
 ### <a name="linked-servers"></a>リンク サーバー
 
-SQL Managed Instance の[リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine)がサポートするターゲットの数は限られています。
+SQL Managed Instance の[リンク サーバー](/sql/relational-databases/linked-servers/linked-servers-database-engine)がサポートするターゲットの数は限られています。
 
 - サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL の<bpt id="p1">[</bpt>サーバーレス<ept id="p1">](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)</ept>と専用プール、および SQL Server インスタンスです。 
 - 分散書き込み可能なトランザクションは、マネージド インスタンス間でのみ可能です。 詳細については、<bpt id="p1">[</bpt>分散トランザクション<ept id="p1">](../database/elastic-transactions-overview.md)</ept>に関する記事を参照してください。 ただし、MS DTC はサポートされていません。
@@ -405,7 +405,7 @@ SQL Managed Instance の[リンク サーバー](https://docs.microsoft.com/sql/
 - SQL Server インスタンスでのみ、<ph id="ph1">`OPENDATASOURCE`</ph> 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、<ph id="ph1">`SQLNCLI`</ph>、<ph id="ph2">`SQLNCLI11`</ph>、<ph id="ph3">`SQLOLEDB`</ph> だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 <bpt id="p1">[</bpt>OPENDATASOURCE<ept id="p1">](/sql/t-sql/functions/opendatasource-transact-sql)</ept> に関する記事をご覧ください。
 - リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 <bpt id="p1">[</bpt>BULK INSERT<ept id="p1">](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)</ept>、<bpt id="p2">[</bpt>OPENROWSET<ept id="p2">](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file)</ept> (Azure Blob Storage から CSV ファイルを読み取る)、または <bpt id="p3">[</bpt>Synapse Analytics 内のサーバーレス SQL プールを参照するリンク サーバー<ept id="p3">](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)</ept>の使用を試行します。 この要求は、<bpt id="p1">[</bpt>SQL Managed Instance フィードバック項目<ept id="p1">](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)</ept><ph id="ph1">|</ph>で追跡します
 
-Azure SQL Managed Instance のリンク サーバーでは、SQL 認証と [AAD 認証](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#linked-servers-with-azure-sql-managed-instance)の両方がサポートされています。
+Azure SQL Managed Instance のリンク サーバーでは、SQL 認証と [AAD 認証](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#linked-servers-with-azure-sql-managed-instance)の両方がサポートされています。
 
 ### <a name="polybase"></a>PolyBase
 
@@ -513,7 +513,7 @@ Service Broker は既定で有効になっており、無効にできません�
 
 ### <a name="subnet"></a>Subnet
 -  SQL Managed Instance をデプロイしたサブネットに他のリソース (たとえば仮想マシン) を配置することはできません。 別のサブネットを使用してこれらのリソースをデプロイしてください。
-- サブネットには、十分な数の利用可能な <bpt id="p1">[</bpt>IP アドレス<ept id="p1">](connectivity-architecture-overview.md#network-requirements)</ept>が含まれている必要があります。 最小で、サブネットに少なくとも 32 個の IP アドレスを設定します。
+- サブネットには、十分な数の利用可能な [IP アドレス](connectivity-architecture-overview.md#network-requirements)が含まれている必要があります。 最小で、サブネットに少なくとも 32 個の IP アドレスを設定します。
 - リージョンでデプロイできるインスタンスの仮想コア数と種類には、いくつかの<bpt id="p1">[</bpt>制約と制限<ept id="p1">](resource-limits.md#regional-resource-limitations)</ept>があります。
 - サブネットに適用する必要がある<bpt id="p1">[</bpt>ネットワーク構成<ept id="p1">](connectivity-architecture-overview.md#network-requirements)</ept>があります。
 

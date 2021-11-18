@@ -13,14 +13,14 @@ ms.date: 06/11/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: ergreenl
-ms.openlocfilehash: 97cdedac91fa80c45ec8b36bad4a1368e48e3e81
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d0e0a9fcb3052132df33d6988468cb218c3d9fc2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615792"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556612"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on-in-azure-active-directory"></a>Azure Active Directory のシングル サインオンの One Click アプリ構成
+# <a name="one-click-app-configuration-of-single-sign-on"></a>アプリの One Click シングル サインオンの構成
 
  このチュートリアルでは、SAML をサポートする Azure Marketplace の Azure Active Directory (Azure AD) アプリケーションの One Click シングル サインオン (SSO) を構成する方法について説明します。
 

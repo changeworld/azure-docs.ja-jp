@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/04/2021
 ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 77cd51a87ba1f7ba7f17ed69c102a4020d7bae2a
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 604a0bbb8af6a6f5663f75438faec321292494be
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132284400"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722261"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure におけるコンフィデンシャル コンピューティング
 
@@ -51,7 +51,7 @@ Azure では、コンフィデンシャル コンピューティング IaaS ワ�
 - Azure Kubernetes Service (AKS) で稼働する[エンクレーブ対応コンテナー](enclave-aware-containers.md)。 AKS 上のコンフィデンシャル コンピューティング ノードでは、Intel SGX を使用して、そのノード内の各コンテナー アプリケーション間に、隔離されたエンクレーブ環境を作成できます。
 - [Azure SQL でセキュア エンクレーブを使用する Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)。 データベース エンジンが実行されるセキュア エンクレーブの使用を必要とする暗号化されたデータに対する操作が SQL ステートメントに含まれている場合、SQL クエリを TEE 内で直接実行することにより、機密データの機密性がマルウェアや高い特権を持つ未承認のユーザーから保護されます。
 - [Microsoft Azure Attestation](../attestation/overview.md) は、複数の高信頼実行環境 (TEE) の信頼性を検証し、TEE 内で実行されているバイナリの整合性を検証するためのリモート構成証明サービスです。
-- [Azure Key Vault Managed HSM](/azure/key-vault/managed-hsm/) は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスであり、FIPS 140-2 レベル 3 適合のハードウェア セキュリティ モジュール (HSM) を使用してクラウド アプリケーションの暗号化キーを保護することができます。
+- [Azure Key Vault Managed HSM](../key-vault/managed-hsm/index.yml) は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスであり、FIPS 140-2 レベル 3 適合のハードウェア セキュリティ モジュール (HSM) を使用してクラウド アプリケーションの暗号化キーを保護することができます。
 - [Azure IoT Edge](../iot-edge/deploy-confidential-applications.md) では、モノのインターネット (IoT) デバイス上のセキュア エンクレーブ内で実行される機密性の高いアプリケーションがサポートされています。 IoT デバイスは、悪意のあるアクターによって物理的にアクセス可能なので、しばしば、改ざんや偽造にさらされます。 コンフィデンシャル IoT Edge デバイスは、クラウドにストリーミングする前に、デバイス自体によってキャプチャおよび格納されたデータへのアクセスを保護することで、エッジでの信頼と整合性を増し加えます。
 
 下記に示すその他のサービスは現在プレビュー中です。

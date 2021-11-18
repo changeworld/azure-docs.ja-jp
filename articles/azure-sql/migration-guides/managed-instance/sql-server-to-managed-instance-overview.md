@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 09/07/2021
-ms.openlocfilehash: 62f895fdea75ff97154910c177cda04413663d68
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3ae0d4da03407716e932febf4d9db2c4f0091521
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352051"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714259"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>移行の概要: SQL Server から Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -89,7 +89,7 @@ Azure SQL Managed Instance でターゲットのサービス レベル (General 
 |[Azure Data Studio 用の Azure SQL Migration 拡張機能](../../../dms/migration-using-azure-data-studio.md)  | Azure Data Studio 用の Azure SQL Migration 拡張機能によって、Azure Data Studio での SQL Server の評価機能と移行機能の両方が提供されます。 これにより、オンライン (最小限のダウンタイムを必要とする移行向け) またはオフライン (移行の期間を通してダウンタイムが持続される移行向け) モードのいずれかでの移行がサポートされます。 |
 | [Azure Migrate](../../../migrate/how-to-create-azure-sql-assessment.md) | この Azure サービスは、VMware 上で大規模に SQL データ資産を検出して評価するのに役立ちます。 Azure SQL デプロイに関する推奨事項、ターゲットのサイズ設定、月単位の見積もりが提供されます。 | 
 |[Azure Database Migration Service](../../../dms/tutorial-sql-server-to-managed-instance.md)  | この Azure サービスでは、移行プロセス時のダウンタイムを許容できるアプリケーションに対してオフライン モードでの移行がサポートされます。 オンライン モードでの継続的な移行とは異なり、オフライン モードの移行では、ソースからターゲットへのデータベースの完全バックアップの 1 回限りの復元が実行されます。 | 
-|[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | SQL Managed Instance では、ネイティブ SQL Server データベースのバックアップ (.bak ファイル) の復元がサポートされています。 これは、Azure Storage にデータベースの完全バックアップを提供できるお客様にとって、最も簡単な移行オプションです。 完全と差分バックアップもサポートされており、この記事の後半の[移行資産に関するセクション](#migration-assets)で説明しています。| 
+|[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | SQL Managed Instance では、ネイティブ SQL Server データベースのバックアップ (.bak ファイル) の復元がサポートされています。 これは、Azure Storage にデータベースの完全バックアップを提供できるお客様にとって、最も簡単な移行オプションです。| 
 |[ログ再生サービス](../../managed-instance/log-replay-service-migrate.md) | このクラウド サービスは、SQL Server のログ配布テクノロジに基づいて SQL Managed Instance で有効になっています。 これは、データベースの完全、差分、およびログ バックアップを Azure Storage に提供できるお客様のための移行オプションです。 ログ再生サービスは、バックアップ ファイルを Azure Blob Storage から SQL Managed Instance に復元するために使用されます。| 
 | | |
 

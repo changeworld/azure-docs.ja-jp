@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell を使用してファイルのアップロードを構成する | Microsoft Docs
 description: Azure PowerShell コマンドレットを使用して IoT Hub を構成し、接続されているデバイスからファイルのアップロードを有効にする方法。 対象の Azure ストレージ アカウントの構成に関する情報が含まれています。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dd108bfd61a84e4c25b1ab59e9f24e23048ada2d
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: f20236edd7a905f05d59ddafd3132569a851816a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015622"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553935"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>PowerShell を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -141,6 +141,6 @@ Set-AzIotHub `
 
 ## <a name="next-steps"></a>次のステップ
 
-* [デバイスからのファイルのアップロードの概要](iot-hub-devguide-file-upload.md)
+* [デバイス概要からファイルをアップロードする](iot-hub-devguide-file-upload.md)
 * [IoT Hub でのマネージド ID のサポート](./iot-hub-managed-identity.md)
-* [ファイル アップロードの攻略ガイド](./iot-hub-csharp-csharp-file-upload.md)
+* [ファイル アップロードのハウツー ガイド](./iot-hub-csharp-csharp-file-upload.md)

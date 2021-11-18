@@ -3,12 +3,12 @@ title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 ms.topic: article
 ms.date: 10/29/2021
-ms.openlocfilehash: 32f5ca4f54eb5267abb9fe68655aa43226408610
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 099a68dc637380696990c19f404b8da1e5abc419
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131443891"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706861"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -109,6 +109,9 @@ Advisor で、テーブル キャッシュ ポリシーを短くすることに�
 
 ## <a name="configure-manual-throughput-instead-of-autoscale-on-your-azure-cosmos-db-database-or-container"></a>Azure Cosmos DB のデータベースまたはコンテナーで自動スケーリングの代わりに手動スループットを構成する
 お客様の過去 7 日間の使用状況を基にすると、自動スケーリングの代わりに手動スループットを使用することでコストを削減できます。 最大スループット (RU/秒) の平均使用率が 66% より高いか、または 10% 以下の場合、手動スループットの方がコスト効率が高くなります。 コスト節約額は、過去 7 日間の使用状況を基にして、推奨される手動スループットを使った場合に節約できる可能性のある金額です。 実際の節約額は、設定する手動スループットと、分析された期間と同程度のスループットの平均使用率が続くかどうかによって異なります。 この推定節約金額は、アカウントに適用される可能性のある割引を考慮していません。
+
+## <a name="enable-autoscale-on-your-azure-cosmos-db-database-or-container"></a>Azure Cosmos DB データベースまたはコンテナーで自動スケーリングを有効にする
+過去 7 日間の使用状況に基づいて、自動スケーリングを有効にすることで節約できます。 Microsoft では、1 時間ごとに、プロビジョニングされた RU/s と実際の RU/s の使用率 (自動スケーリングによってスケーリングされるもの) を比較し、期間全体のコスト削減額を計算しました。 自動スケーリングにより、使用されていないときに RU/s がスケールダウンされ、コストを最適化することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 10/27/2021
-ms.openlocfilehash: ed96dc7fbb00cd836251a38c2383af7e65a25871
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 44b0659e5a8b2f70db0c260dc5becac8f928e56e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470473"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719810"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -102,9 +102,9 @@ Azure と Datadog の統合により、組織はレガシ システムとクラ�
 -   Datadog へのシングル サインオン (SSO) を効率化します。 Datadog ポータルからの個別のサインオンが不要になりました。 
 -   Azure サブスクリプションの請求を通じて、Datadog サービスがまとめて請求されます。
 
-[Azure と Datadog の統合](/azure/partner-solutions/datadog/overview)は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview) で入手できます。 
+[Azure と Datadog の統合](../partner-solutions/datadog/overview.md)は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview) で入手できます。 
 
-統合に関するドキュメントについては、「[Datadog と Azure の統合](/azure/partner-solutions/datadog/)」を参照してください。 以前に手動で構成した統合をまだ使用している場合は、[Datadog Web サイトにあるドキュメント](https://docs.datadoghq.com/integrations/azure/)を参照してください。
+統合に関するドキュメントについては、「[Datadog と Azure の統合](../partner-solutions/datadog/index.yml)」を参照してください。 以前に手動で構成した統合をまだ使用している場合は、[Datadog Web サイトにあるドキュメント](https://docs.datadoghq.com/integrations/azure/)を参照してください。
 
 ## <a name="dynatrace"></a>Dynatrace
 
@@ -385,7 +385,3 @@ Azure Monitor を使用して監視データをイベント ハブにルーテ�
 - [REST API を使用してメトリックにアクセスする](essentials/rest-api-walkthrough.md)
 - [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](essentials/activity-log.md#legacy-collection-methods)
 - [リソース ログを Microsoft 以外のサービスにストリーミングする](essentials/resource-logs.md#send-to-azure-event-hubs)
-
-
-
-

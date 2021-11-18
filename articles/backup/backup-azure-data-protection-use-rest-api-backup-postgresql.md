@@ -7,12 +7,12 @@ author: v-amallick
 ms.service: backup
 ms.author: v-amallick
 ms.assetid: 55fa0a81-018f-4843-bef8-609a44c97dcd
-ms.openlocfilehash: 7e4aa84c8e45ad15a2faa1c02c6ad938e126c0d0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cc5decd55c9724b486e657dcac70f38eb8c875a5
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017559"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719962"
 ---
 # <a name="back-up-azure-postgresql-databases-using-azure-data-protection-via-rest-api"></a>REST API で Azure データ保護を使用して Azure PostgreSQL データベースをバックアップする
 
@@ -52,7 +52,7 @@ Azure Backup サービスでは、PostgreSQL データベースに接続する�
 
 バックアップ コンテナーを PostgreSQL サーバーに接続してから、キー コンテナーに存在するキーを使用してデータベースにアクセスする必要があります。 そのため、PostgreSQL サーバーとキー コンテナーへのアクセスが必要となります。 アクセス許可は、バックアップ コンテナーの MSI に付与されます。
 
-PostgreSQL サーバー上のバックアップ コンテナーの MSI と Azure Key Vault (データベースのキーが格納されている) に付与する必要がある[適切な権限について確認してください](/azure/backup/backup-azure-database-postgresql-overview#set-of-permissions-needed-for-azure-postgresql-database-backup)。
+PostgreSQL サーバー上のバックアップ コンテナーの MSI と Azure Key Vault (データベースのキーが格納されている) に付与する必要がある[適切な権限について確認してください](./backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-backup)。
 
 ### <a name="prepare-the-request-to-configure-backup"></a>バックアップを構成するための要求の準備
 

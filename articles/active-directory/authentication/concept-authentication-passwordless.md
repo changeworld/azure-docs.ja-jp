@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9e12d8d112bd9c3d9ea44b29803bc475baa9e4
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: ccac6928918cb22b8d5e990e3eddeb9983c93153
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500262"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553764"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -127,7 +127,6 @@ FIDO2 セキュリティ キーを使用して、Azure AD またはハイブリ�
 | KONA I                    | ![○]              | ![n]| ![○]| ![○]| ![n]           | https://konai.com/business/security/fido                                                            |
 | NEOWAVE                   | ![n]              | ![○]| ![○]| ![n]| ![n]           | https://neowave.fr/en/products/fido-range/                                                          |
 | Nymi                      | ![○]              | ![n]| ![○]| ![n]| ![n]           | https://www.nymi.com/nymi-band                                                                      | 
-| Octatco                   | ![○]              | ![○]| ![n]| ![n]| ![n]           | https://octatco.com/                                                                                |
 | OneSpan Inc.              | ![n]              | ![○]| ![n]| ![○]| ![n]           | https://www.onespan.com/products/fido                                                               |
 | Thales Group              | ![n]              | ![○]| ![○]| ![n]| ![n]           | https://cpl.thalesgroup.com/access-management/authenticators/fido-devices                           |
 | Thetis                    | ![○]              | ![○]| ![○]| ![○]| ![n]           | https://thetis.io/collections/fido2                                                                 |

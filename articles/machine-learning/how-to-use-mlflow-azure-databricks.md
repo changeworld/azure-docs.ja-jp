@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 27fb89c1c534d9a538fb6e89951adee40350fe8f
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3face1aa4cb16f13275053b6b5320d4aff1ccdfe
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558214"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716374"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡
 
@@ -26,7 +26,7 @@ ms.locfileid: "131558214"
 
 MLflow と Azure Machine Learning のその他の機能統合については、「[MLflow と Azure Machine Learning](concept-mlflow.md)」をご覧ください。
 
-Azure Machine Learning でトレーニングする MLflow プロジェクトがある場合は、「[MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする](how-to-train-mlflow-projects.md)」を参照してください。
+MLflow プロジェクトを Azure Machine Learning でトレーニングする場合は、「[MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする (プレビュー)](how-to-train-mlflow-projects.md)」を参照してください。
 
 > [!TIP]
 > このドキュメントの情報は主に、モデルのトレーニング プロセスを監視したいデータ サイエンティストや開発者を対象としています。 Azure Machine Learning からリソース使用状況やイベント (クォータ、トレーニング実行の完了、モデル デプロイの完了など) を監視することに関心がある管理者の方は、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。

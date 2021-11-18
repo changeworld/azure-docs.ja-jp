@@ -6,12 +6,12 @@ ms.author: wanl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/30/2021
-ms.openlocfilehash: 6fecb2f492a71781706e19a407a87cb1af7dc006
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1f361b8a785f108f985dbae23290150c46170daa
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470264"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705303"
 ---
 # <a name="how-to-use-live-trace-tool-for-azure-signalr-service"></a>Azure SignalR サービスのライブ トレース ツールを使用する方法
 
@@ -57,7 +57,7 @@ ms.locfileid: "131470264"
 | User ID | ユーザーの ID |
 | IP | クライアントの IP アドレス |
 | サーバー スティッキー | クライアントのルーティング モード。 使用できる値は、`Disabled`、`Preferred`、`Required` です。 詳細については、「[ServerStickyMode](https://github.com/Azure/azure-signalr/blob/master/docs/run-asp-net-core.md#serverstickymode)」を参照してください |
-| トランスポート | クライアントが HTTP 要求を送信するために使用できるトランスポート。 使用できる値は、`WebSockets`、`ServerSentEvents`、`LongPolling` です。 詳細については、「[HttpTransportType](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.connections.httptransporttype)」を参照してください |
+| トランスポート | クライアントが HTTP 要求を送信するために使用できるトランスポート。 使用できる値は、`WebSockets`、`ServerSentEvents`、`LongPolling` です。 詳細については、「[HttpTransportType](/dotnet/api/microsoft.aspnetcore.http.connections.httptransporttype)」を参照してください |
 | メッセージ トレース ID | メッセージの一意識別子 |
 | ルート テンプレート | API のルート テンプレート |
 | HTTP メソッド | HTTP メソッド (POST、GET、PUT、DELETE) |

@@ -8,12 +8,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 3c3ee4673f196adc94684fe80ca0237f7b7a32bd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d1a8552c2e102586be5eb96f7dbb3821418440ef
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130260305"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719468"
 ---
 # <a name="migrate-from-enterprise-reporting-to-azure-resource-manager-apis"></a>Enterprise Reporting から Azure Resource Manager API への移行
 
@@ -65,7 +65,7 @@ Azure Resource Manager API をプログラムから呼び出すためのサー�
 | --- | --- | --- |
 | 残高の概要 | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) |[Microsoft.Consumption/balances](/rest/api/consumption/balances/getbybillingaccount) |
 | Price Sheet | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | [Microsoft.Consumption/pricesheets/default](/rest/api/consumption/pricesheet) - 交渉済みの価格用 <p> [Retail Prices API](/rest/api/cost-management/retail-prices/azure-retail-prices) - 小売価格用 |
-| 予約インスタンスの詳細 | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.CostManagement/generateReservationDetailsReport](/azure/cost-management-billing/reservations/reservation-utilization) |
+| 予約インスタンスの詳細 | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.CostManagement/generateReservationDetailsReport](../reservations/reservation-utilization.md) |
 | 予約インスタンスの概要 | [/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries/list#reservationsummariesdailywithbillingaccountid) |
 | 予約インスタンスの推奨情報 | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)<p>[/SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
 | 予約インスタンスの料金 | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | [Microsoft.Consumption/reservationTransactions](/rest/api/consumption/reservationtransactions/list) |

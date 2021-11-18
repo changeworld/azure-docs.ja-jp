@@ -8,12 +8,12 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e96d3219668475760556c209b3d7a4d59da1b275
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: aed27dd50e5880e3f4dd1f06233f47d75f02379f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131423358"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715399"
 ---
 # <a name="certificates-overview-for-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) の証明書の概要
 
@@ -49,7 +49,7 @@ Azure Portal または Azure クラシック デプロイ モデルを使って�
 ### <a name="limitations"></a>制限事項
 各サブスクリプションでは、管理証明書の数は 100 個までに制限されています。 また、特定のサービス管理者のユーザー ID の下にあるすべてのサブスクリプションでも、管理証明書の数は 100 個までに制限されています。 アカウント管理者のユーザー ID が既に 100 の管理証明書の追加に使用されていて、さらに証明書が必要な場合は、証明書を追加する共同管理者を追加できます。 
 
-また、管理証明書を CSP サブスクリプションで使用することはできません。CSP サブスクリプションでサポートされるのは Azure Resource Manager デプロイ モデルのみですが、管理証明書にはクラシック デプロイ モデルが使用されます。 CSP サブスクリプションのオプションの詳細については、[Azure Resource Manager モデルとクラシック デプロイ モデルの比較](/azure/azure-resource-manager/management/deployment-models)に関するページと [Azure SDK for .NET を使用した認証](/dotnet/azure/sdk/authentication)に関するページを参照してください。
+また、管理証明書を CSP サブスクリプションで使用することはできません。CSP サブスクリプションでサポートされるのは Azure Resource Manager デプロイ モデルのみですが、管理証明書にはクラシック デプロイ モデルが使用されます。 CSP サブスクリプションのオプションの詳細については、[Azure Resource Manager モデルとクラシック デプロイ モデルの比較](../azure-resource-manager/management/deployment-models.md)に関するページと [Azure SDK for .NET を使用した認証](/dotnet/azure/sdk/authentication)に関するページを参照してください。
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>新しい自己署名証明書を作成する

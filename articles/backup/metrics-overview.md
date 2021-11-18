@@ -6,12 +6,12 @@ author: v-amallick
 ms.date: 10/20/2021
 ms.author: v-amallick
 ms.service: backup
-ms.openlocfilehash: 31e68c8a25dcf4fee199a7c73869cc5de64793e9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 158235789186748b4acb887a7861299d749a984d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089876"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709880"
 ---
 # <a name="monitor-the-health-of-your-backups-using-azure-backup-metrics-preview"></a>Azure Backup のメトリックを使用してバックアップの正常性を監視する (プレビュー)
 
@@ -23,7 +23,7 @@ Azure Backup では、次の主要機能が提供されています。
 * バックアップ項目の正常性を効率的に監視するために、これらのメトリックに対するカスタム アラート ルールを記述する機能
 * メール、ITSM、Webhook、ロジック アプリなど、Azure Monitor によってサポートされるさまざまな通知チャネルに、発生したメトリック アラートをルーティングする機能。
 
-[Azure Monitor のメトリックについて詳しくは、こちらをご覧ください](/azure/azure-monitor/essentials/data-platform-metrics)。
+[Azure Monitor のメトリックについて詳しくは、こちらをご覧ください](../azure-monitor/essentials/data-platform-metrics.md)。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -114,7 +114,7 @@ Azure portal でメトリックを表示するには、次の手順のように�
 
 1. アクション グループを使ってこれらのアラートの通知を構成するには、アラート ルールの一部としてアクション グループを構成するか、別のアクション ルールを作成します。
 
-   メール、ITSM、Webhook、ロジック アプリ、SMS など、さまざまな通知チャネルがサポートされています。 [アクション グループについて詳しくは、こちらをご覧ください](/azure/azure-monitor/alerts/action-groups)。
+   メール、ITSM、Webhook、ロジック アプリ、SMS など、さまざまな通知チャネルがサポートされています。 [アクション グループについて詳しくは、こちらをご覧ください](../azure-monitor/alerts/action-groups.md)。
 
    :::image type="content" source="./media/metrics-overview/action-group-inline.png" alt-text="アクション グループを使用してこれらのアラートの通知を構成するプロセスを示すスクリーンショット。" lightbox="./media/metrics-overview/action-group-expanded.png":::
 
@@ -123,7 +123,7 @@ Azure portal でメトリックを表示するには、次の手順のように�
    - 障害の根本原因が同じかどうかに関係なく、すべてのジョブ障害についてアラートを生成するには (ステートレス動作)、アラート ルールの **[アラートを自動的に解決する]** オプションをオフにします。
    - または、アラートをステートフルとして構成するには、同じチェック ボックスをオンにします。 したがって、そのスコープでメトリック アラートが生成されると、別の障害で新しいメトリック アラートが作成されることはありません。 連続する 3 回の評価サイクルで、アラート生成条件が false と評価された場合、そのアラートは自動的に解決されます。 条件が再び true と評価された場合は、新しいアラートが生成されます。
 
-[Azure Monitor メトリック アラートのステートフルとステートレスの動作について詳しくは、こちらをご覧ください](/azure/azure-monitor/alerts/alerts-troubleshoot-metric#make-metric-alerts-occur-every-time-my-condition-is-met)。
+[Azure Monitor メトリック アラートのステートフルとステートレスの動作について詳しくは、こちらをご覧ください](../azure-monitor/alerts/alerts-troubleshoot-metric.md#make-metric-alerts-occur-every-time-my-condition-is-met)。
 
 :::image type="content" source="./media/metrics-overview/auto-resolve-alert-inline.png" alt-text="自動解決動作を構成するプロセスを示すスクリーンショット。" lightbox="./media/metrics-overview/auto-resolve-alert-expanded.png":::
 
@@ -154,9 +154,9 @@ Azure portal でメトリックを表示するには、次の手順のように�
 
 ### <a name="accessing-metrics-programmatically"></a>プログラムでのメトリックへのアクセス
 
-PowerShell、CLI、REST API などのさまざまなプログラム クライアントを使用して、メトリック機能にアクセスできます。 詳しくは、[Azure Monitor REST API のドキュメント](/azure/azure-monitor/essentials/rest-api-walkthrough)をご覧ください。
+PowerShell、CLI、REST API などのさまざまなプログラム クライアントを使用して、メトリック機能にアクセスできます。 詳しくは、[Azure Monitor REST API のドキュメント](../azure-monitor/essentials/rest-api-walkthrough.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Backup での監視とレポートについて詳しくは、こちらをご覧ください](monitoring-and-alerts-overview.md)。
-- [Azure Monitor のメトリックについて詳しくは、こちらをご覧ください](/azure/azure-monitor/essentials/data-platform-metrics)。
-- [Azure のアラートについて詳しくは、こちらをご覧ください](/azure/azure-monitor/alerts/alerts-overview)。
+- [Azure Monitor のメトリックについて詳しくは、こちらをご覧ください](../azure-monitor/essentials/data-platform-metrics.md)。
+- [Azure のアラートについて詳しくは、こちらをご覧ください](../azure-monitor/alerts/alerts-overview.md)。

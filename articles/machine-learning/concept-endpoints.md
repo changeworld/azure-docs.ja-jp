@@ -11,12 +11,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2, ignite-fall-2021
 ms.date: 10/21/2021
-ms.openlocfilehash: 7129286a0a91e27e80ebe4a6f3fc99e2b0e6c9b8
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: b832daad3ca667df404617bdb4efc96e54b5c5ea
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132135934"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719943"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Azure Machine Learning エンドポイント (プレビュー) とは 
 
@@ -106,7 +106,7 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 
 ### <a name="autoscaling"></a>自動スケール
 
-自動スケールでは、アプリケーションの負荷を処理するために適切な量のリソースが自動的に実行されます。 マネージド エンドポイントは、[Azure Monitor 自動スケーリング](/azure/azure-monitor/autoscale/autoscale-overview.md)機能との統合によって、自動スケールをサポートします。 メトリックベースのスケーリング (たとえば、CPU 使用率 >70%)、スケジュールに基づくスケーリング (たとえば、営業時間のピーク時のルールのスケーリング)、またはその組み合わせを構成できます。
+自動スケールでは、アプリケーションの負荷を処理するために適切な量のリソースが自動的に実行されます。 マネージド エンドポイントは、[Azure Monitor 自動スケーリング](../azure-monitor/autoscale/autoscale-overview.md)機能との統合によって、自動スケールをサポートします。 メトリックベースのスケーリング (たとえば、CPU 使用率 >70%)、スケジュールに基づくスケーリング (たとえば、営業時間のピーク時のルールのスケーリング)、またはその組み合わせを構成できます。
 
 :::image type="content" source="media/concept-endpoints/concept-autoscale.png" alt-text="ルールに応じて、最小インスタンスと最大インスタンスの間で自動スケールが柔軟に提供することを示すスクリーンショット":::
 
@@ -172,7 +172,7 @@ Visual Studio Code を使用すると、エンドポイントを対話的にデ�
 - スコアリング スクリプト - スコアリングおよび推論を実行するために必要なコード
 - 環境 - Conda 依存関係がある Docker イメージ
 
-[MLflow モデル](how-to-use-mlflow.md)を配置する場合は、両方が自動生成されるため、スコアリング スクリプトと実行環境を提供する必要はありません。
+[MLflow モデル](how-to-train-cli.md#model-tracking-with-mlflow)を配置する場合は、両方が自動生成されるため、スコアリング スクリプトと実行環境を提供する必要はありません。
 
 [Azure CLI を使用してバッチ エンドポイントをデプロイおよび使用する](how-to-use-batch-endpoint.md)方法と[スタジオ Web ポータル](how-to-use-batch-endpoints-studio.md)について学習してください。
 

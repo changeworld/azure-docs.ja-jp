@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1b95ac26be1697e5211c024bc148222823e36d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d0f9f67ab3b09cbf0382b27d88c0be804b4e1e78
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622096"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705495"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -133,7 +133,9 @@ ObjectTypeMismatch エラーの最も一般的な原因は、異なる種類 (�
 #### <a name="description"></a>説明
 Azure Active Directory スキーマでは、次の属性について複数のオブジェクトが同じ値を持つことはできません。 つまり、Azure AD の各オブジェクトはこれらの属性について常に一意の値を持つように強制されます。
 
+* メール
 * ProxyAddresses
+* SignInName
 * UserPrincipalName
 
 Azure AD Connect が新しいオブジェクトの追加または既存のオブジェクトの更新を試行したときに、上記の属性の値が Azure Active Directory 内の別のオブジェクトに既に割り当てられていた場合、その操作は "AttributeValueMustBeUnique" 同期エラーで終了します。

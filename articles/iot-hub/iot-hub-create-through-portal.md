@@ -1,20 +1,20 @@
 ---
 title: Azure Portal を使用して IoT Hub を作成する | Microsoft Docs
 description: Azure Portal で Azure IoT Hub を作成、管理、および削除する方法。 価格レベル、スケーリング、セキュリティ、およびメッセージングの構成に関する情報が含まれています。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: fac663053b964cad2bbfc069fdf2e21efa761c61
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e8a605d5ef8bcb44d03e8464400ba96378cc7f8e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072923"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555321"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 

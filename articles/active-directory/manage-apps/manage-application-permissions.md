@@ -13,14 +13,14 @@ ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 038955a1c7b4a15b2b0ae630c95c2833f32a3eab
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: aeb8f00735e9455fd9d6adbdaf9e0cdec6940377
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131471176"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553175"
 ---
-# <a name="review-permissions-granted-to-applications-in-azure-active-directory"></a>Azure Active Directory でアプリケーションに付与されたアクセス許可を確認する
+# <a name="review-permissions-granted-to-applications"></a>アプリケーションに付与されるアクセス許可の確認
 
 この記事では、Azure Active Directory (Azure AD) テナントのアプリケーションに付与されているアクセス許可を確認する方法について説明します。 悪意のあるアプリケーションが検出された場合、またはアプリケーションに必要以上のアクセス許可が付与されている場合は、アクセス許可の確認が必要になることがあります。
 

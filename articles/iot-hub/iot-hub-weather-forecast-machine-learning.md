@@ -1,19 +1,19 @@
 ---
 title: Machine Learning Studio (クラシック) で IoT Hub データを使用して行う天気予報
 description: ML Studio (クラシック) を使用して、IoT ハブがセンサーから収集した気温と湿度のデータに基づき、降水確率を予測します。
-author: robinsh
+author: eross-msft
 keywords: 機械学習を使用した天気予報
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/26/2021
-ms.author: robinsh
-ms.openlocfilehash: 8e38125b0694ba59330cb27d5a4930f79ce33fd6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.author: lizross
+ms.openlocfilehash: 1656e055316ecde439793fe4afdd25933db476ce
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077598"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554619"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) で IoT ハブからのセンサー データを使用して天気予報を行う
 

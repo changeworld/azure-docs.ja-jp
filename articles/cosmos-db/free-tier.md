@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: sngun
-ms.openlocfilehash: 55b37ce3f96bc187e4420fc16924b02639c9a7df
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ddc09c428a7779f5e059ead02dbd869a592813e5
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749939"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554776"
 ---
 # <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB の Free レベル 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -29,7 +29,7 @@ Azure サブスクリプションにつき所有できる Free レベルの Azur
 
 共有スループット モデルでは、データベースでスループットをプロビジョニングすると、データベースのすべてのコンテナーでスループットが共有されます。 Free レベルを使用する場合は、最大 1,000 RU/秒 の共有データベースを無料でプロビジョニングできます。 データベース内のすべてのコンテナーでスループットが共有されます。 
 
-通常のアカウントと同様に、Free レベルのアカウントでは、共有スループット データベースに最大 25 個のコンテナーを含めることができます。 共有スループットを持つ追加のデータベースや 1000 RU/秒を超える専用スループットを持つコンテナーは、通常の価格で課金されます。 Free レベルアカウントでは、最大 5 つの共有スループット データベースを作成できます。
+通常のアカウントと同様に、Free レベルのアカウントでは、共有スループット データベースに最大 25 個のコンテナーを含めることができます。 共有スループットを持つ追加のデータベースや 1000 RU/秒を超える専用スループットを持つコンテナーは、通常の価格で課金されます。
 
 ## <a name="free-tier-with-azure-discount"></a>Azure 割引付きの Free レベル
 

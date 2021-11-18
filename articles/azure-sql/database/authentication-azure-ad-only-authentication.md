@@ -10,12 +10,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/03/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 050a9690f22ef34b39d89a5cd0cf4d8a6c7d340b
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: bb35d3bd246a4915d30c00bb6afd87e43d661c5a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131503055"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719658"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Azure SQL を使用した Azure AD 専用認証
 
@@ -403,17 +403,17 @@ SQL Database に対して Azure AD 専用認証が有効になっている場合
 - [エラスティック ジョブ](job-automation-overview.md)
 - [SQL データ同期](sql-data-sync-data-sql-server-sql-database.md)
 - [変更データ キャプチャ (CDC)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) - Azure AD ユーザーとして Azure SQL Database でデータベースを作成し、その上で変更データ キャプチャを有効にした場合、SQL ユーザーは CDC 成果物を無効にしたり、変更したりすることはできません。 ただし、別の Azure AD ユーザーは、同じデータベースで CDC を有効または無効にできます。 同様に、SQL ユーザーとして Azure SQL Database を作成する場合、CDC を Azure AD ユーザーとして有効にしたり、無効にしたりできません。
-- [トランザクション レプリケーション](/azure/azure-sql/managed-instance/replication-transactional-overview) - レプリケーションの参加者間の接続には SQL 認証が必要なため、Azure AD 専用認証を有効にすると、以下のシナリオの SQL Database では、トランザクション レプリケーションはサポートされません。Azure SQL Managed Instance、オンプレミスの SQL Server、または Azure VM SQL Server インスタンスに加えられた変更を Azure SQL Database 内のデータベースにプッシュするためにトランザクションレプリケーションが使用される場合。
-- [SQL Insights](/azure/azure-monitor/insights/sql-insights-overview)
+- [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) - レプリケーションの参加者間の接続には SQL 認証が必要なため、Azure AD 専用認証を有効にすると、以下のシナリオの SQL Database では、トランザクション レプリケーションはサポートされません。Azure SQL Managed Instance、オンプレミスの SQL Server、または Azure VM SQL Server インスタンスに加えられた変更を Azure SQL Database 内のデータベースにプッシュするためにトランザクションレプリケーションが使用される場合。
+- [SQL Insights](../../azure-monitor/insights/sql-insights-overview.md)
 - Azure AD グループ メンバー アカウントの EXEC AS ステートメント
 
 ### <a name="limitations-for-azure-ad-only-authentication-in-managed-instance"></a>Managed Instance での Azure AD 専用認証に関する制限事項
 
 Managed Instance に対して Azure AD 専用認証が有効になっている場合、次の機能はサポートされていません。
 
-- [トランザクション レプリケーション](/azure/azure-sql/managed-instance/replication-transactional-overview) 
+- [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) 
 - [Managed Instance の SQL Agent ジョブ](../managed-instance/job-automation-managed-instance.md)は Azure AD 専用認証をサポートしています。 ただし、マネージド インスタンスにアクセスできる Azure AD グループのメンバーである Azure AD ユーザーは、SQL Agent ジョブを所有できません
-- [SQL Insights](/azure/azure-monitor/insights/sql-insights-overview)
+- [SQL Insights](../../azure-monitor/insights/sql-insights-overview.md)
 - Azure AD グループ メンバー アカウントの EXEC AS ステートメント
 
 詳しくは、「[SQL Server と Azure SQL Managed Instance での T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#logins-and-users)」を参照してください。

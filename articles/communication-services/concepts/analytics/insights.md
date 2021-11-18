@@ -9,17 +9,17 @@ ms.date: 10/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: data
-ms.openlocfilehash: 1a11cc68d197d53ab2348c7b6ae625c6659a6884
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: bfe0d0a6fbc47ff1cdce238d6c30c3f50c118bdd
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132138541"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716545"
 ---
 # <a name="communications-services-insights-preview"></a>Communications Services Insights プレビュー
 
 ## <a name="overview"></a>概要
-Communications リソースの内部で提供される **インサイト (プレビュー)** 機能を使用すると、Communications Services で監視している Azure Monitor のログとメトリックから分析情報を抽出し、さまざまなデータ視覚化の形で表示することができます。 インサイト内での視覚化には [Azure Monitor ブック](/azure/azure-monitor/visualize/workbooks-overview)が利用されます。 ブックを利用するには、[診断設定での Azure Monitor の有効化](enable-logging.md)に関するページで説明されている手順に従います。ブックを有効にするには、[Log Analytics ワークスペース](/azure/azure-monitor/logs/log-analytics-overview)の送信先にログを送信する必要があります。 
+Communications リソースの内部で提供される **インサイト (プレビュー)** 機能を使用すると、Communications Services で監視している Azure Monitor のログとメトリックから分析情報を抽出し、さまざまなデータ視覚化の形で表示することができます。 インサイト内での視覚化には [Azure Monitor ブック](../../../azure-monitor/visualize/workbooks-overview.md)が利用されます。 ブックを利用するには、[診断設定での Azure Monitor の有効化](enable-logging.md)に関するページで説明されている手順に従います。ブックを有効にするには、[Log Analytics ワークスペース](../../../azure-monitor/logs/log-analytics-overview.md)の送信先にログを送信する必要があります。 
 
 :::image type="content" source="media\workbooks\insights-overview-2.png" alt-text="Communication Services のインサイト機能":::
 
@@ -130,4 +130,4 @@ Communication Service の [インサイト] ダッシュボードでは、直感
 
 :::image type="content" source="media\workbooks\workbooks-tab.png" alt-text="[ブック] タブ":::
 
-ブックの詳細な説明については、[Azure Monitor ブック](/azure/azure-monitor/visualize/workbooks-overview)のドキュメントを参照してください。
+ブックの詳細な説明については、[Azure Monitor ブック](../../../azure-monitor/visualize/workbooks-overview.md)のドキュメントを参照してください。

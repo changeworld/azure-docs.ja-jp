@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8c266f1fc338ca35b05730d9f737a836bdf8949d
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 03b5cc8b56e7d6825ec7bee5ec61d156e960123b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131893141"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704214"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する
 
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    :::image type="content" source="./media/create-cluster-portal/create-datacenter-page.png" alt-text="概要を確認し、データセンターを作成します。" lightbox="./media/create-cluster-portal/create-datacenter-page.png" border="true":::
 
    > [!WARNING]
-   > 可用性ゾーンは一部のリージョンでサポートされていません。 可用性ゾーンがサポートされていないリージョンを選択すると、デプロイは失敗します。 サポートされているリージョンについては、[こちら](/azure/availability-zones/az-overview#azure-regions-with-availability-zones)を参照してください。 可用性ゾーンの正常なデプロイは、特定のリージョン内のすべてのゾーンでコンピューティング リソースが使用可能であることにも左右されます。 選択した SKU、または容量が一部のゾーンで使用できない場合、デプロイは失敗する可能性があります。 
+   > 可用性ゾーンは一部のリージョンでサポートされていません。 可用性ゾーンがサポートされていないリージョンを選択すると、デプロイは失敗します。 サポートされているリージョンについては、[こちら](../availability-zones/az-overview.md#azure-regions-with-availability-zones)を参照してください。 可用性ゾーンの正常なデプロイは、特定のリージョン内のすべてのゾーンでコンピューティング リソースが使用可能であることにも左右されます。 選択した SKU、または容量が一部のゾーンで使用できない場合、デプロイは失敗する可能性があります。 
 
 1. 次に、 **[確認と作成]** 、 **[作成]** の順にクリックします。
 
@@ -95,7 +95,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    :::image type="content" source="./media/create-cluster-portal/add-datacenter.png" alt-text="Click on add datacenter." lightbox="./media/create-cluster-portal/add-datacenter.png" border="true":::
 
    > [!WARNING]
-   > If you are adding a datacenter in a different region, you will need to select a different virtual network. You will also need to ensure that this virtual network has connectivity to the primary region's virtual network created above (and any other virtual networks that are hosting datacenters within the managed instance cluster). Take a look at [this article](/azure/virtual-network/tutorial-connect-virtual-networks-portal#peer-virtual-networks) to learn how to peer virtual networks using Azure portal. You also need to make sure you have applied the appropriate role to your virtual network before attempting to deploy a managed instance cluster, using the below CLI command.
+   > If you are adding a datacenter in a different region, you will need to select a different virtual network. You will also need to ensure that this virtual network has connectivity to the primary region's virtual network created above (and any other virtual networks that are hosting datacenters within the managed instance cluster). Take a look at [this article](../virtual-network/tutorial-connect-virtual-networks-portal.md#peer-virtual-networks) to learn how to peer virtual networks using Azure portal. You also need to make sure you have applied the appropriate role to your virtual network before attempting to deploy a managed instance cluster, using the below CLI command.
    >
    > ```azurecli-interactive  
    >     az role assignment create \

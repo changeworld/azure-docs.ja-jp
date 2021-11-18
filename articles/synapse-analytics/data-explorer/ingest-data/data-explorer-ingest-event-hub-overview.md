@@ -9,16 +9,16 @@ ms.reviewer: tzgitlin
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
-ms.openlocfilehash: aaada2bd1a778fd6e5bed4ea6a42e847b3e9d983
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a87bb5a7876cc1f6d83919c3faa7dc2f3de3b2f2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477912"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715779"
 ---
 # <a name="event-hub-data-connection-preview"></a>イベント ハブ データ接続 (プレビュー)
 
-[Azure Event Hubs](/azure/event-hubs/event-hubs-about) は、ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービスです。 Azure Synapse Data Explorer は、お客様が管理する Event Hubs からの継続的なインジェストを提供します。
+[Azure Event Hubs](../../../event-hubs/event-hubs-about.md) は、ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービスです。 Azure Synapse Data Explorer は、お客様が管理する Event Hubs からの継続的なインジェストを提供します。
 
 イベント ハブのインジェスト パイプラインは、いくつかのステップで、Azure Synapse Data Explorer にイベントを転送します。 最初に、Azure portal でイベント ハブを作成します。 次に、[特定の形式のデータ](#data-format)が、指定された[インジェスト プロパティ](#ingestion-properties)を使用して取り込まれるターゲット テーブルを Azure Synapse Data Explorer に作成します。 イベント ハブ接続は[イベント ルーティング](#events-routing)を認識している必要があります。 データは、[イベント システム プロパティのマッピング](#event-system-properties-mapping)に従って、選択したプロパティを使用して埋め込まれます。 イベント ハブへの[接続を作成](#event-hub-connection)して、[イベント ハブを作成](#create-an-event-hub)し、[イベントを送信](#send-events)します。 このプロセスは、[Azure portal](data-explorer-ingest-event-hub-portal.md)、[C#](data-explorer-ingest-event-hub-csharp.md) または [Python](data-explorer-ingest-event-hub-python.md) によるプログラム、または [Azure Resource Manager テンプレート](data-explorer-ingest-event-hub-resource-manager.md)を使用して管理できます。
 
@@ -111,7 +111,7 @@ eventHubClient.Close();
 
 ### <a name="create-an-event-hub"></a>イベント ハブを作成する
 
-まだ用意していない場合は、[Event Hub を作成](/azure/event-hubs/event-hubs-create)します。 イベント ハブへの接続は、[Azure portal](data-explorer-ingest-event-hub-portal.md)、[C#](data-explorer-ingest-event-hub-csharp.md) または [Python](data-explorer-ingest-event-hub-python.md) によるプログラム、または [Azure Resource Manager テンプレート](data-explorer-ingest-event-hub-resource-manager.md)を使用して管理できます。
+まだ用意していない場合は、[Event Hub を作成](../../../event-hubs/event-hubs-create.md)します。 イベント ハブへの接続は、[Azure portal](data-explorer-ingest-event-hub-portal.md)、[C#](data-explorer-ingest-event-hub-csharp.md) または [Python](data-explorer-ingest-event-hub-python.md) によるプログラム、または [Azure Resource Manager テンプレート](data-explorer-ingest-event-hub-resource-manager.md)を使用して管理できます。
 
 > [!Note]
 > * パーティション数は変更できないため、パーティション数を設定する際には、長期的な規模を考慮する必要があります。
@@ -125,7 +125,7 @@ eventHubClient.Close();
 
 ## <a name="set-up-geo-disaster-recovery-solution"></a>geo ディザスター リカバリー ソリューションの設定
 
-イベント ハブには、[geo ディザスター リカバリー](/azure/event-hubs/event-hubs-geo-dr) ソリューションが用意されています。 Azure Synapse Data Explorer では `Alias` イベント ハブ名前空間がサポートされていません。 ソリューションに geo ディザスター リカバリーを実装するには、2 つのイベント ハブ データ接続を作成します。1 つはプライマリ名前空間用で、もう 1 つはセカンダリ名前空間用です。 Azure Synapse Data Explorer は、両方のイベント ハブ接続をリッスンします。
+イベント ハブには、[geo ディザスター リカバリー](../../../event-hubs/event-hubs-geo-dr.md) ソリューションが用意されています。 Azure Synapse Data Explorer では `Alias` イベント ハブ名前空間がサポートされていません。 ソリューションに geo ディザスター リカバリーを実装するには、2 つのイベント ハブ データ接続を作成します。1 つはプライマリ名前空間用で、もう 1 つはセカンダリ名前空間用です。 Azure Synapse Data Explorer は、両方のイベント ハブ接続をリッスンします。
 
 > [!NOTE]
 > プライマリ名前空間からセカンダリ名前空間へのフェールオーバーを実装するのは、ユーザーの責任です。

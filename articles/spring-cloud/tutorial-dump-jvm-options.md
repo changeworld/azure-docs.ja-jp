@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/31/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: fd29b9b7356bc16132d46f125d3f3cf2792c1654
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 259d39eb80907a8c27e77db91bc369d97e690169
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132000567"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716013"
 ---
 # <a name="tutorial-diagnostic-settings-of-jvm-options-for-advanced-troubleshooting-in-azure-spring-cloud"></a>チュートリアル: Azure Spring Cloud での高度なトラブルシューティングのための JVM オプションの診断設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "132000567"
 * サービス インスタンスで既に作成してある少なくとも 1 つのアプリケーション。
 * 生成された診断ファイルを保存するために、少なくとも 1 つの[永続ストレージがアプリにバインド](how-to-built-in-persistent-storage.md)されている必要があります。
 
-ユーザーは、[展開ドキュメント](https://docs.microsoft.com/cli/azure/spring-cloud/app/deployment?view=azure-cli-latest)に従って、JVM ベースのアプリケーション スタートアップ パラメーターを構成できます。 次のセクションでは、いくつかの例を示します。 **必要な作業は、JVM オプションでパラメーターを追加することです。**
+ユーザーは、[展開ドキュメント](/cli/azure/spring-cloud/app/deployment?view=azure-cli-latest)に従って、JVM ベースのアプリケーション スタートアップ パラメーターを構成できます。 次のセクションでは、いくつかの例を示します。 **必要な作業は、JVM オプションでパラメーターを追加することです。**
 
 ## <a name="generate-a-heap-dump-when-out-of-memory"></a>メモリが不足したときにヒープ ダンプを生成する
 ```heap dump when OOM
@@ -87,7 +87,3 @@ ms.locfileid: "132000567"
 ```
    
    お客様が上記の独自の Azure ファイルの下にダンプを作成する場合は、<PATH_TO_HEAP_DUMP_FOLDER> を "/test/Path" として指定してください。 マウント パスの下のパスを使用する場合は、サブパスが既に作成されていることを確認してください。
-
-
-
-

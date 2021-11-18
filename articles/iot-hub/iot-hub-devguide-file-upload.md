@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Hub ファイルのアップロードについて | Microsoft Docs
 description: 開発者ガイド - IoT Hub のファイルのアップロード機能を使用して、デバイスから Azure Storage Blob コンテナーへのファイルのアップロードを管理します。
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 991a55da8a4359192e499e464f034a8742055c99
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 36ecdb4fc1442447e1f0e80019db6039556e75e4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005330"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718208"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
@@ -32,7 +32,7 @@ ms.locfileid: "131005330"
 
 IoT hub は、接続されているデバイスからのファイルのアップロードを容易にします。これには、ハブで事前に構成されている blob コンテナーと Azure storage アカウントに対して、アップロードごとに shared access signature (SAS) Uri を指定します。 IoT Hub によるファイルのアップロードの使用には、次の3つの部分があります。 IoT hub での Azure storage アカウントと blob コンテナーの事前構成、デバイスからのファイルのアップロード、および必要に応じて、完了したファイルのアップロードのバックエンドサービスへの通知を行います。
 
-IoT Hub でファイルのアップロード機能を使用するには、最初に [Azure storage アカウント](/azure/storage/common/storage-account-overview) と [BLOB コンテナー](/azure/storage/blobs/storage-blobs-introduction) を IoT ハブに関連付ける必要があります。 また、Azure  storage を使用した認証方法、IoT hub がデバイスに送信する SAS Uri の有効期限 (TTL)、バックエンドサービスへのファイルアップロード通知の IoT Hub を制御する設定を構成することもできます。 詳細については、「[Azure storage アカウントを IoT Hub に関連付ける](#associate-an-azure-storage-account-with-iot-hub)」を参照してください。
+IoT Hub でファイルのアップロード機能を使用するには、最初に [Azure storage アカウント](../storage/common/storage-account-overview.md) と [BLOB コンテナー](../storage/blobs/storage-blobs-introduction.md) を IoT ハブに関連付ける必要があります。 また、Azure  storage を使用した認証方法、IoT hub がデバイスに送信する SAS Uri の有効期限 (TTL)、バックエンドサービスへのファイルアップロード通知の IoT Hub を制御する設定を構成することもできます。 詳細については、「[Azure storage アカウントを IoT Hub に関連付ける](#associate-an-azure-storage-account-with-iot-hub)」を参照してください。
 
 デバイスは、3つの手順からなるプロセスに従って、関連付けられた blob コンテナーにファイルをアップロードします：
 
@@ -54,7 +54,7 @@ IoT Hub では、指定された期間内に開始できるファイルアップ
 
 ファイルアップロード機能を使用するには、Azure storage アカウントと sblob コンテナーを IoT hub に関連付ける必要があります。 IoT hub に登録されているデバイスからのすべてのファイルアップロードは、このコンテナーに送られます。 IoT hub でストレージアカウントと blob コンテナーを構成するには、「[Azure portal を使用したファイルのアップロードの構成](iot-hub-configure-file-upload.md)」、「[Azure CLI を使用したファイルの アップロードの構成](iot-hub-configure-file-upload-cli.md)」、または「[PowerShell を使用したファイルのアップロードの構成](iot-hub-configure-file-upload-powershell.md)」をご覧ください。 また、IoT Hub 管理 APIs を使用して、プログラムでファイルのアップロードを構成することもできます。
 
-ポータルを使用する場合は、構成中にストレージアカウントとコンテナーを作成できます。 それ以外の場合、ストレージアカウントを作成するには、Azure storage のドキュメントの「[ストレージアカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 ストレージアカウントを作成したら、[Azure blob storage のクイックスタート](/azure/storage/blobs/storage-quickstart-blobs-portal)で blob コンテナーを作成する方法を確認できます。
+ポータルを使用する場合は、構成中にストレージアカウントとコンテナーを作成できます。 それ以外の場合、ストレージアカウントを作成するには、Azure storage のドキュメントの「[ストレージアカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 ストレージアカウントを作成したら、[Azure blob storage のクイックスタート](../storage/blobs/storage-quickstart-blobs-portal.md)で blob コンテナーを作成する方法を確認できます。
 
 ファイルのアップロードやファイルのアップロード通知の動作を制御する他の設定がいくつかあります。 次のセクションでは、使用可能なすべての設定を示します。 Azure portal、Azure CLI、PowerShell、または管理 APIs のいずれを使用してファイルのアップロードを構成するかによって、これらの設定の一部が使用できなくなる場合があります。 ファイルのアップロードが完了したときにバックエンドサービスに通知が送信されるようにする場合は、 **ファイルアップロード通知有効** 設定を必ず設定してください。
 
@@ -172,9 +172,9 @@ hello world
 
 Azure storage APIs の操作は、この記事の範囲を超えています。 このセクションで前にリンクした Azure Blob Storage REST API に加えて、次のドキュメントを確認して、使用を開始できます：
 
-* Azure Storage での BLOB の操作の詳細については、[Azure Blob Storage](/azure/storage/blobs/) のドキュメントを参照 してください。
+* Azure Storage での BLOB の操作の詳細については、[Azure Blob Storage](../storage/blobs/index.yml) のドキュメントを参照 してください。
 
-* Azure Storage クライアント SDKs を使用して BLOB をアップロードする方法については、「[Azure Blob Storage API リファレンス](/azure/storage/blobs/reference)」を参照してください。  
+* Azure Storage クライアント SDKs を使用して BLOB をアップロードする方法については、「[Azure Blob Storage API リファレンス](../storage/blobs/reference.md)」を参照してください。  
 
 ## <a name="device-notify-iot-hub-of-a-completed-file-upload"></a>デバイス: 完了したファイルアップロードをIoT Hubに通知します
 
@@ -247,6 +247,6 @@ IoT hub でファイルのアップロード通知が有効になっている場
 
 * [IoT Hub のマネージド ID を構成する方法](iot-hub-managed-identity.md)
 
-* [Azure Blob Storage のドキュメント](/azure/storage/blobs/)
+* [Azure Blob Storage のドキュメント](../storage/blobs/index.yml)
 
 * [Azure IoT device SDK とサービス SDK](iot-hub-devguide-sdks.md): IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。

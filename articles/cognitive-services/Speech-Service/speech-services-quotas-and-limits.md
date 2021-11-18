@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/10/2021
 ms.author: alexeyo
-ms.openlocfilehash: 06d54a7d42efd1cad9088785d24095abc039337b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2a660375e8ffa3fd77e58d963fbc5c7e3fa1849c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124737089"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706518"
 ---
 # <a name="speech-service-quotas-and-limits"></a>Speech サービスのクォータと制限
 
@@ -68,7 +68,7 @@ ms.locfileid: "124737089"
 |--|--|--|
 | **Speech リソースあたりの最大 1 秒あたりトランザクション数 (TPS)** |  |  |
 | リアルタイム API。 標準、ニューラル、カスタム、およびカスタム ニューラル音声 | 200<sup>4</sup> | 200<sup>4</sup> |
-| 調整可能 | いいえ<sup>4</sup> | いいえ<sup>4</sup> |
+| 調整可能 | いいえ<sup>4</sup> | はい<sup>4</sup> |
 | **HTTP 固有のクォータ** |  |  |
 | 要求ごとに生成されるオーディオの最大長 | 10 分 | 10 分 |
 | SSML 内の個別の `<voice>` および `<audio>` タグの最大合計数 | 50 | 50 |

@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 9/20/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: b0452588b8eb9eebbf8ab592ad2d0a8a0e9a6b92
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b0d2e22f0d23f558221b88d7c02539dd29dd8cae
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131066788"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708728"
 ---
 # <a name="deploy-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-using-bicep"></a>Bicep を使用して Open Service Mesh (OSM) の Azure Kubernetes Service (AKS) アドオンをデプロイする
 
 この記事では、[Bicep](../azure-resource-manager/bicep/index.yml) テンプレートを使用して OSM アドオンを AKS にデプロイする方法について説明します。
 
-[Bicep](/azure/azure-resource-manager/bicep/overview) は、宣言型の構文を使用して Azure リソースをデプロイするドメイン固有言語 (DSL) です。 コードとしてのインフラストラクチャ Azure リソースをデプロイするために、Azure [ARM](/azure/azure-resource-manager/templates/overview) テンプレートを作成する代わりに Bicep を使用できます。
+[Bicep](../azure-resource-manager/bicep/overview.md) は、宣言型の構文を使用して Azure リソースをデプロイするドメイン固有言語 (DSL) です。 コードとしてのインフラストラクチャ Azure リソースをデプロイするために、Azure [ARM](../azure-resource-manager/templates/overview.md) テンプレートを作成する代わりに Bicep を使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 

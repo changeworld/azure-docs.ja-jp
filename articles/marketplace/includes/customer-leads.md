@@ -7,12 +7,12 @@ ms.topic: include
 author: emuench
 ms.author: mingshen
 ms.date: 10/09/2020
-ms.openlocfilehash: e42447ff61c256f7be2a7d8b65eb1640ce3e025c
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: b7ea687f5c74a764b728417a29c5e18721f34d71
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551316"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710065"
 ---
 パートナー センターを使用してオファーをコマーシャル マーケットプレースに発行する場合、それを顧客関係管理 (CRM) システムに接続します。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。 体験版を有効にする場合 (前のセクションを参照してください)、CRM への接続は必須です。 そうでない場合は、CRM への接続は任意です。
 

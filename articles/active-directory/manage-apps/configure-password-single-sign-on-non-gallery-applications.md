@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: f8b32e5adda8d09f928b6fc6b447a9363998017f
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 0d54ba24ee13bc0084dbe6f4a14d54e38c94cded
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074059"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546844"
 ---
-# <a name="add-password-based-single-sign-on-to-an-application-in-azure-active-directory"></a>Azure Active Directory で、パスワードベースのシングル サインオンをアプリケーションに追加する
+# <a name="add-password-based-single-sign-on-to-an-application"></a>パスワードベースのシングル サインオンをアプリケーションに追加する
 
 この記事では、Azure Active Directory (Azure AD) でパスワードベースのシングル サインオン (SSO) を設定する方法について説明します。 パスワード ベースの SSO では、ユーザーは、アプリケーションに初めてアクセスするときに、ユーザー名とパスワードを使用してサインインします。 最初のサインイン後は、Azure AD によりユーザー名とパスワードがアプリケーションに送信されます。 
 

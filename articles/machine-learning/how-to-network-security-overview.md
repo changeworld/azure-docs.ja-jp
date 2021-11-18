@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 9d47a19e4890ac6e81a86aeb04e6a139be555599
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 47b3789938035dab9c9094fbc5aba0aa1fc8d8e4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132061194"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723364"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する
@@ -89,7 +89,7 @@ ms.locfileid: "132061194"
     | __Azure Storage アカウント__ | [サービスとプライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[プライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [信頼された Azure サービスにアクセスを許可する](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
     | __Azure Container Registry__ | [プライベート エンドポイント](../container-registry/container-registry-private-link.md) | [信頼されたサービスを許可する](../container-registry/allow-access-trusted-services.md) |
 
-1. ワークスペースの Azure Storage アカウントのプロパティで、ファイアウォール設定の許可一覧にクライアント IP アドレスを追加します。 詳細については、[ファイアウォールと仮想ネットワークの構成](/azure/storage/common/storage-network-security#configuring-access-from-on-premises-networks)に関する記事を参照してください。
+1. ワークスペースの Azure Storage アカウントのプロパティで、ファイアウォール設定の許可一覧にクライアント IP アドレスを追加します。 詳細については、[ファイアウォールと仮想ネットワークの構成](../storage/common/storage-network-security.md#configuring-access-from-on-premises-networks)に関する記事を参照してください。
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>ワークスペースと関連するリソースをセキュリティで保護する
 

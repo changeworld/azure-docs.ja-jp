@@ -9,17 +9,17 @@ ms.date: 10/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: 15921a8666d6c55c90ed6d751f60a555c9c06d81
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: 7cf307fc3490af7f3517606932c1277cd58abcfa
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132138680"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716483"
 ---
 # <a name="call-summary-and-call-diagnostic-logs-preview"></a>通話概要と通話診断のログ (プレビュー)
 
 > [!IMPORTANT]
-> 以下では、[Azure Monitor](/azure/azure-monitor/overview) を使用して有効化するログについて言及しています (「[FAQ](/azure/azure-monitor/faq)」も参照)。 Communications Services 用にこれらのログを有効化する方法については、[診断設定でのログの有効化](./enable-logging.md)に関するページを参照してください。
+> 以下では、[Azure Monitor](../../../azure-monitor/overview.md) を使用して有効化するログについて言及しています (「[FAQ](../../../azure-monitor/faq.yml)」も参照)。 Communications Services 用にこれらのログを有効化する方法については、[診断設定でのログの有効化](./enable-logging.md)に関するページを参照してください。
 
 
 ## <a name="data-concepts"></a>データの概念

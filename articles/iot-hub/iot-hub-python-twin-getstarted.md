@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub デバイス ツインの使用 (Python) | Microsoft Docs
 description: Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Azure IoT SDK for Python を使用して、シミュレートされたデバイス アプリと、タグを追加して IoT Hub クエリを実行するサービス アプリを実装します。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 85a8b539d40aac11d0ce39ba4329b7466f48c009
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 3d014e49e7d3c00ac0d2cda0b27c3102b592d58a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835466"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551688"
 ---
 # <a name="get-started-with-device-twins-python"></a>デバイス ツインの概要 (Python)
 

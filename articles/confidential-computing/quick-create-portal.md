@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/1/2021
 ms.author: stempesta
 ms.custom: mode-portal, ignite-fall-2021
-ms.openlocfilehash: 68eec52333636c54ab9598d4823e4e794e50a3c4
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 541be4642ca6ac0097a0bd1c15f19ec589dba7a1
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132331948"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707369"
 ---
 # <a name="quickstart-create-intel-sgx-vm-in-the-azure-portal"></a>クイック スタート - Azure portal で Intel SGX VM を作成する
 
@@ -159,5 +159,4 @@ Intel® Xeon スケーラブル プロセッサのリリースによって、リ
 > [!div class="nextstepaction"]
 > [Open Enclave SDK サンプルを作成する](https://github.com/openenclave/openenclave/blob/master/samples/README.md)
 
-Microsoft Azure Attestation は無料であり、ECDSA ベースの構成証明フレームワークです。複数の TEE の信頼性とその中で実行されるバイナリの整合性をリモートで検証します。 [詳細情報](/azure/attestation/overview)
-
+Microsoft Azure Attestation は無料であり、ECDSA ベースの構成証明フレームワークです。複数の TEE の信頼性とその中で実行されるバイナリの整合性をリモートで検証します。 [詳細情報](../attestation/overview.md)

@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d6daa398c560bf7112539291f76fe4188abb76a1
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 8f8140362a7b2709aaf1ea635e61a43e84eb503a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231617"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546578"
 ---
-# <a name="plan-a-single-sign-on-deployment-in-azure-active-directory"></a>Azure Active Directory でシングル サインオンのデプロイを計画する
+# <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
 この記事では、Azure Active Directory (Azure AD) での[シングル サインオン (SSO)](what-is-single-sign-on.md) のデプロイを計画するために使用できる情報を提供します。 Azure AD でお使いのアプリケーションを使用した SSO のデプロイを計画する場合は、次の点を考慮する必要があります。
 

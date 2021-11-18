@@ -12,14 +12,14 @@ ms.topic: reference
 ms.date: 03/19/2021
 ms.author: davidmu
 ms.reviewer: sureshja, saumadan
-ms.openlocfilehash: 3f94c7eae439303f2954b8ab62f499b789902e79
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: e52f06d102c98979005c08f51ef394c29389bbce
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619939"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553308"
 ---
-# <a name="azure-active-directory-application-management-certificates-frequently-asked-questions"></a>Azure Active Directory アプリケーションの管理証明書に関してよく寄せられる質問
+# <a name="application-management-certificates-frequently-asked-questions"></a>アプリケーションの管理証明書に関してよく寄せられる質問
 
 このページでは、Azure Active Directory (Azure AD) を ID プロバイダー (IdP) として使用するアプリの証明書管理に関してよく寄せられる質問に回答します。
 

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-sentiment-opinion-mining, ignite-fall-2021
-ms.openlocfilehash: 32e67ba4c8462b48158a72273e297924867b73b2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e94918baac4946194e2382c3a336bdd52c510f50
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131434277"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713575"
 ---
 # <a name="how-to-use-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニングを使用する 
 
@@ -77,10 +77,10 @@ https://your-resource-name.cognitiveservices.azure.com/text/analytics/v3.1/senti
 
 詳細については、リファレンス ドキュメントを参照してください。
 * [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Sentiment)
-* [.NET](https://docs.microsoft.com/dotnet/api/azure.ai.textanalytics.analyzesentimentaction?view=azure-dotnet#properties)
-* [Python](https://docs.microsoft.com/python/api/azure-ai-textanalytics/azure.ai.textanalytics.textanalyticsclient?view=azure-python#analyze-sentiment-documents----kwargs-)
-* [Java](https://docs.microsoft.com/java/api/com.azure.ai.textanalytics.models.analyzesentimentoptions.setmodelversion?view=azure-java-stable#com_azure_ai_textanalytics_models_AnalyzeSentimentOptions_setModelVersion_java_lang_String_)
-* [JavaScript](https://docs.microsoft.com/javascript/api/@azure/ai-text-analytics/analyzesentimentoptions?view=azure-node-latest)
+* [.NET](/dotnet/api/azure.ai.textanalytics.analyzesentimentaction?view=azure-dotnet#properties)
+* [Python](/python/api/azure-ai-textanalytics/azure.ai.textanalytics.textanalyticsclient?view=azure-python#analyze-sentiment-documents----kwargs-)
+* [Java](/java/api/com.azure.ai.textanalytics.models.analyzesentimentoptions.setmodelversion?view=azure-java-stable#com_azure_ai_textanalytics_models_AnalyzeSentimentOptions_setModelVersion_java_lang_String_)
+* [JavaScript](/javascript/api/@azure/ai-text-analytics/analyzesentimentoptions?view=azure-node-latest)
 
 ### <a name="input-languages"></a>入力言語
 

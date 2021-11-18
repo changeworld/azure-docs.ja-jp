@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub クエリ言語について | Microsoft Docs
 description: 開発者ガイド - デバイス/モジュール ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e473e7305f7e2dd9609edf0f2d18a12a950b9d40
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: ddc29ac74117ffe66db195b391e93459ac7b91cc
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656922"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553346"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 

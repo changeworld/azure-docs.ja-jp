@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/18/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: eb8140fa1d4c9328bf69fb84b867255876a235c6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fab51bd25489527c36e37d5f60233fa62256367c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017512"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722584"
 ---
 # <a name="amazon-rds-multi-cloud-scanning-connector-for-azure-purview-public-preview"></a>Azure Purview向けの Amazon RDS マルチクラウド スキャン コネクタ (パブリック プレビュー)
 
@@ -192,7 +192,7 @@ Amazon RDS データ ソースでサポートされている資格情報には�
 
 ### <a name="create-a-secret-for-your-rds-credentials-to-use-in-purview"></a>Purview で使用する RDS 資格情報のシークレットを作成する
 
-1.  パスワードをシークレットとして Azure KeyVault に追加します。 詳細については、「 を使用してシークレットを設定および取得する」を[Key VaultをAzure portal。](/azure/key-vault/secrets/quick-create-portal)
+1.  パスワードをシークレットとして Azure KeyVault に追加します。 詳細については、「 を使用してシークレットを設定および取得する」を[Key VaultをAzure portal。](../key-vault/secrets/quick-create-portal.md)
 
 1.  Get アクセス許可と List アクセス許可を使用して、KeyVault **に** アクセス ポリシー **を** 追加します。 次に例を示します。
 

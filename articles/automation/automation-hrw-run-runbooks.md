@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 11/11/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 368622d7f0ea914541ce1385405a40e28ca2576b
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: e74b4bb2b1df116e33c11b7c7028cf74d1105987
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132282198"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710542"
 ---
 # <a name="run-automation-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker で Automation Runbook を実行する
 
@@ -34,7 +34,7 @@ Azure Automation による Hybrid Runbook Worker でのジョブの処理は、A
 Hybrid Runbook Worker のジョブは、ローカルの **システム** アカウントで実行されます。
 >[!NOTE]
 >  Windows Hybrid Runbook Worker で PowerShell 7.x を実行するには、「[Windows への PowerShell のインストール](/powershell/scripting/install/installing-powershell-on-windows)」をご覧ください。
-> 現時点では、[こちら](/azure/automation/extension-based-hybrid-runbook-worker-install)に記載されているハイブリッド worker 拡張機能ベースのオンボードのみがサポートされています。 
+> 現時点では、[こちら](./extension-based-hybrid-runbook-worker-install.md)に記載されているハイブリッド worker 拡張機能ベースのオンボードのみがサポートされています。 
 
 *pwsh.exe* 実行可能ファイルのあるパスが PATH 環境変数に追加されていることを確認してください。 インストールが完了した後、Hybrid Runbook Worker を再起動してください。
 
@@ -42,7 +42,7 @@ Hybrid Runbook Worker のジョブは、ローカルの **システム** アカ�
 
 >[!NOTE]
 > Linux Hybrid Runbook Worker で PowerShell 7.x を実行するには、「[Linux への PowerShell のインストール](/powershell/scripting/install/installing-powershell-on-linux)」をご覧ください。
-> 現時点では、[こちら](/azure/automation/extension-based-hybrid-runbook-worker-install)に記載されているハイブリッド worker 拡張機能ベースのオンボードのみがサポートされています。
+> 現時点では、[こちら](./extension-based-hybrid-runbook-worker-install.md)に記載されているハイブリッド worker 拡張機能ベースのオンボードのみがサポートされています。
 
 
 サービス アカウント **nxautomation** と **omsagent** が作成されます。 作成およびアクセス許可の割り当てスクリプトは、[https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data) で確認できます。 [Linux Hybrid Runbook Worker のインストール](automation-linux-hrw-install.md)中には、対応する sudo アクセス許可を持つアカウントが存在する必要があります。 ワーカーをインストールしようとしたときに、このアカウントが存在しないか、または適切なアクセス許可を持っていない場合、そのインストールは失敗します。 `sudoers.d` フォルダーまたはその所有権のアクセス許可は変更しないでください。 sudo アクセス許可はアカウントに必要であるため、アクセス許可を削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。 Update Management の一環として有効にされた **nxautomation** ユーザーによって実行されるのは、署名済みの Runbook のみです。

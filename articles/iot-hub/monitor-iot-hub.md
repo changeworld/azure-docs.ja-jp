@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub の監視
 description: Azure IoT Hub を監視する方法については、こちらでご確認ください
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.topic: conceptual
 ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/26/2021
-ms.openlocfilehash: 9782190bb917492770f6870675bff768b80ff61a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5a4c5902a42a2efd0b75bdbcbf5d5d90ddab335b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131061422"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550385"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub の監視
 

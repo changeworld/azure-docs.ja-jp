@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.custom: devx-track-azurepowershell, ignite-fall-2021
-ms.openlocfilehash: 79568dc04d8c5bce95eaa15d207f7caecfff2f5d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8bc87fd6d7c760438ca35b968c767efef6539f0c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080823"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705097"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -244,7 +244,7 @@ Cloud Shell で Git リポジトリを複製するには、[個人用アクセ�
 
 [bashqs]: quickstart.md
 [gallery]: https://www.powershellgallery.com/
-[customex]: /azure/virtual-machines/extensions/custom-script-windows
+[customex]: ../virtual-machines/extensions/custom-script-windows.md
 [profile]: /powershell/module/microsoft.powershell.core/about/about_profiles
 [azmount]: ../storage/files/storage-how-to-use-files-windows.md
 [githubtoken]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/

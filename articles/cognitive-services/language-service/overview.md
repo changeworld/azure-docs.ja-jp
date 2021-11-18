@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b0eb1b3a1248e4bccf8f726724b57cacb352b88e
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: b779fa5963dcc14fce697c6b8ef77cfef1d252e2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132485364"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704944"
 ---
 # <a name="what-is-azure-cognitive-service-for-language"></a>Azure Cognitive Service for Language とは
 
@@ -56,7 +56,7 @@ Azure Cognitive Service for Language には、次の機能が用意されてい�
 
 * [Power BI に保存されているテキストからキー フレーズを抽出する](key-phrase-extraction/tutorials/integrate-power-bi.md)
 * [Power Automate を使用して Microsoft Excel 内の情報を並べ替える](named-entity-recognition/tutorials/extract-excel-information.md) 
-* [Flask によるテキストの翻訳、センチメントの分析、音声の合成](/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context)
+* [Flask によるテキストの翻訳、センチメントの分析、音声の合成](../translator/tutorial-build-flask-app-translation-synthesis.md?context=%2fazure%2fcognitive-services%2flanguage-service%2fcontext%2fcontext)
 * [キャンバス アプリで Cognitive Services を使用する](/powerapps/maker/canvas-apps/cognitive-services-api?context=/azure/cognitive-services/language-service/context/context)
 * [FAQ ボットを作成する](question-answering/tutorials/bot-service.md)
 

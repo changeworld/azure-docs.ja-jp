@@ -11,12 +11,12 @@ author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/05/2021
 ms.custom: devx-track-python, ignite-fall-2021
-ms.openlocfilehash: a2b818aaea5bc737d1b68f9e88dd5c0611c297f1
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: d566f40bfeef4e49e85cacb8183509b512d52715
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132135887"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132725016"
 ---
 # <a name="configure-inbound-and-outbound-network-traffic"></a>ネットワークの着信トラフィックおよび送信トラフィックを構成する
 
@@ -327,7 +327,7 @@ Azure Machine Learning で Azure Kubernetes Service を使用する場合は、�
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes <a id="arc-kubernetes"></a>
 
-Azure Arc 対応 Kubernetes クラスターは、Azure Arc の接続に依存します。 [Azure Arc ネットワークの要件](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)を満たしていることを確認してください。
+Azure Arc 対応 Kubernetes クラスターは、Azure Arc の接続に依存します。 [Azure Arc ネットワークの要件](../azure-arc/kubernetes/quickstart-connect-cluster.md?tabs=azure-cli#meet-network-requirements)を満たしていることを確認してください。
 
 このセクションのホストは、Azure Machine Learning 拡張機能を Kubernetes クラスターにデプロイし、トレーニングと推論のワークロードをクラスターに送信するために使われます。
 

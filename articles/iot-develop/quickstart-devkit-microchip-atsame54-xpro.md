@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: quickstart
 ms.date: 10/18/2021
 zone_pivot_groups: iot-develop-toolset
-ms.openlocfilehash: 2d5d8aafb9eaae7617ee7ecc98cc8896339f23e6
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f5bae84a80ed76b2a000ac2cdda134ce923a9aa9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130218149"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708155"
 ---
 # <a name="quickstart-connect-a-microchip-atsame54-xpro-evaluation-kit-to-iot-central"></a>クイックスタート: Microchip ATSAME54-XPro Evaluation kit を IoT Central に接続する
 
@@ -252,7 +252,7 @@ Termite は、次の手順でデバイスの出力を監視するために開い
 
 * IAR Embedded Workbench for ARM (EW for ARM)。 [IAR EW for ARM の 14 日間の無料試用版](https://www.iar.com/products/architectures/arm/iar-embedded-workbench-for-arm/)をダウンロードしてインストールできます。
 
-* [Azure_RTOS_6.1_ATSAME54-XPRO_IAR_Samples_2020_10_10.zip](https://github.com/azure-rtos/samples/releases/download/v6.1_rel/Azure_RTOS_6.1_ATSAME54-XPRO_IAR_Samples_2020_10_10.zip) ファイルをダウンロードし、作業ディレクトリに抽出します。 ビルド時にコンパイラ エラーが発生しないように、短いパスのディレクトリを選択します。
+* [Azure_RTOS_6.1_ATSAME54-XPRO_IAR_Samples_2020_10_10.zip](https://github.com/azure-rtos/samples/releases/download/rel_6.1_pnp_beta/Azure_RTOS_6.1_PnP_ATSAME54-XPRO_IAR_Sample_2021_03_18.zip) ファイルをダウンロードし、作業ディレクトリに抽出します。 ビルド時にコンパイラ エラーが発生しないように、短いパスのディレクトリを選択します。
 
 [!INCLUDE [iot-develop-embedded-create-central-app-with-device](../../includes/iot-develop-embedded-create-central-app-with-device.md)]
 
@@ -386,7 +386,7 @@ Termite は、次の手順でデバイスの出力を監視するために開い
 
 * [MPLAB XC32/32++ Compiler 2.4.0 以降](https://www.microchip.com/mplab/compilers)。
 
-* [Azure_RTOS_6.1_ATSAME54-XPRO_MPLab_Samples_2020_10_10.zip](https://github.com/azure-rtos/samples/releases/download/v6.1_rel/Azure_RTOS_6.1_ATSAME54-XPRO_MPLab_Samples_2020_10_10.zip) ファイルをダウンロードし、作業ディレクトリに解凍します。 ビルド時にコンパイラ エラーが発生しないように、短いパスのディレクトリを選択します。
+* [Azure_RTOS_6.1_ATSAME54-XPRO_MPLab_Samples_2020_10_10.zip](https://github.com/azure-rtos/samples/releases/download/rel_6.1_pnp_beta/Azure_RTOS_6.1_PnP_ATSAME54-XPRO_MPLab_Sample_2021_03_18.zip) ファイルをダウンロードし、作業ディレクトリに解凍します。 ビルド時にコンパイラ エラーが発生しないように、短いパスのディレクトリを選択します。
 
 [!INCLUDE [iot-develop-embedded-create-central-app-with-device](../../includes/iot-develop-embedded-create-central-app-with-device.md)]
 

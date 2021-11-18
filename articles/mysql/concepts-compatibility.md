@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/4/2021
-ms.openlocfilehash: 44b4c8e48c7e0edf4501915d3f801abc94b2f0ab
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 367591067f8d3d5fa0ed2b8cab45cad0c5fb6015
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131893616"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724750"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 
@@ -26,7 +26,7 @@ ms.locfileid: "131893616"
 Azure Database for MySQL では、MySQL データベースの世界で最も人気のある Community Edition を使用しています。 そのため、さまざまな種類のプログラミング言語とドライバーと互換性があります。 目標は、MySQL ドライバーの 3 つの最新バージョンと、常に MySQL ドライバーの機能と使いやすさを向上させ続けているオープン ソース コミュニティの作成者の努力をサポートすることです。 テストによって Azure Database for MySQL 5.6 および 5.7 と互換性のあることがわかっているドライバーの一覧を次の表に示します。
 
 > [!WARNING]
-> MySQL 8.0.27 クライアントは Azure Database for MySQL - 単一サーバーと互換性がありません。 mysql.exe またはワークベンチ経由で作成された MySQL 8.0.27 クライアントからのすべての接続は失敗します。 回避策として、代わりに以前のバージョンのクライアント (MySQL 8.0.27 より前) を使用するか、[Azure Database for MySQL - フレキシブル サーバー](https://docs.microsoft.com/azure/mysql/flexible-server/overview)のインスタンスを作成することを検討してください。
+> MySQL 8.0.27 クライアントは Azure Database for MySQL - 単一サーバーと互換性がありません。 mysql.exe またはワークベンチ経由で作成された MySQL 8.0.27 クライアントからのすべての接続は失敗します。 回避策として、代わりに以前のバージョンのクライアント (MySQL 8.0.27 より前) を使用するか、[Azure Database for MySQL - フレキシブル サーバー](./flexible-server/overview.md)のインスタンスを作成することを検討してください。
 
 | **プログラミング言語** | **[ドライバー]** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **メモ** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 683545b892db4830e01f71faa2f77a097f9e8a9a
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: f404c8c41879dca2fe3b9223c8d7a60c1f943f0a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132061175"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710215"
 ---
 # <a name="set-scaling-rules-in-azure-container-apps"></a>Azure Container Apps でスケーリング ルールを設定する
 
@@ -66,7 +66,7 @@ HTTP スケーリング ルールを使うと、スケールアウトするタ�
             "name": "http-rule",
             "http": {
               "metadata": {
-                  "concurrentRequests": 100
+                  "concurrentRequests": "100"
               }
             }
           }]

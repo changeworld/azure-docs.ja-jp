@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub デバイス ストリーム | Microsoft Docs
 description: さまざまな cloud-to-device 通信シナリオのセキュリティで保護された双方向 TCP トンネルを支援する、Azure IoT Hub デバイス ストリームの概要について説明します。
-author: robinsh
+author: eross-msft
 services: iot-hub
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 37dfd5adcfa00377980933e67c8881aaef6d8dd8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2bedbb4e14886e1e16d765f91ad86f7b20989a34
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746107"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556004"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 

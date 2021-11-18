@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.author: ssambare
 author: shivanissambare
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: d4c65af505725f3f667dd2ad51902717352e4c42
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 017ddd81ea07f3febc4d708024d448f3b09c5344
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063667"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723584"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
@@ -40,7 +40,7 @@ Triton は、推論用に最適化されたマルチフレームワークのオ�
 * Azure サブスクリプションの NCv3 シリーズ VM へのアクセス。
 
     > [!IMPORTANT]
-    > このシリーズ VM を使用するには、事前にサブスクリプションのクォータの引き上げを要求しなければならない場合があります。 詳細については、「[NCv3 シリーズ](/azure/virtual-machines/ncv3-series)」を参照してください。
+    > このシリーズ VM を使用するには、事前にサブスクリプションのクォータの引き上げを要求しなければならない場合があります。 詳細については、「[NCv3 シリーズ](../virtual-machines/ncv3-series.md)」を参照してください。
 
 [!INCLUDE [clone repo & set defaults](../../includes/machine-learning-cli-prepare.md)]
 
@@ -89,7 +89,7 @@ NVIDIA Triton 推論サーバーには特定のモデル リポジトリ構造�
     > [!IMPORTANT]
     > Triton のコードなしのデプロイ (NCD) が機能するには、 **`model_format`** を **`Triton`** に設定する必要があります。 詳細については、[「CLI (v2) モデル YAML スキーマ」を確認](reference-yaml-model.md)してください。
     >
-    > このデプロイでは、Standard_NC6s_v3 VM を使用します。 この VM を使用するには、事前にサブスクリプションのクォータの引き上げを要求しなければならない場合があります。 詳細については、「[NCv3 シリーズ](/azure/virtual-machines/ncv3-series)」を参照してください。
+    > このデプロイでは、Standard_NC6s_v3 VM を使用します。 この VM を使用するには、事前にサブスクリプションのクォータの引き上げを要求しなければならない場合があります。 詳細については、「[NCv3 シリーズ](../virtual-machines/ncv3-series.md)」を参照してください。
 
     :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/triton/single-model/create-managed-deployment.yaml":::
 

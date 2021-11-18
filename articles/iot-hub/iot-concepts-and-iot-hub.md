@@ -1,18 +1,18 @@
 ---
 title: IoT の概念と Azure IoT Hub | Microsoft Docs
 description: この記事では、Azure IoT Hub の新しいユーザー向けの基本的な概念について説明します
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/07/2021
-ms.openlocfilehash: 0ba840e4382aba96ead1d97f954362539833ba97
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: d04f5b8ace6bfb331e9460745271d15b82a3fb98
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129670388"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553466"
 ---
 # <a name="iot-concepts-and-azure-iot-hub"></a>IoT の概念と Azure IoT Hub
 

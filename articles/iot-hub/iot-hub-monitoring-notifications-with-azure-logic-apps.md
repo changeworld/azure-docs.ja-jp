@@ -1,19 +1,19 @@
 ---
 title: Azure Logic Apps による IoT リモート監視と通知 | Microsoft Docs
 description: IoT Hub の IoT 温度の監視と、検出された異常に関するメール通知の自動送信には、Azure Logic Apps を使用します。
-author: robinsh
+author: eross-msft
 keywords: IoT の監視、IoT の通知、IoT の温度の監視
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: robinsh
-ms.openlocfilehash: a3a4aa719f4a9c2c7ebc527e0da3eb81307cbe1c
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: lizross
+ms.openlocfilehash: 28b0c6720145ce6591f4f62cc89de17907194cf3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "122653709"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552548"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 

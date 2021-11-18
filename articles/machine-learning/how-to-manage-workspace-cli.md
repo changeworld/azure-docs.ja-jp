@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8f98b1d5d020df0b8a2047fa5881c6d978a0ad94
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: a258a84930201a48aa70577d1349104b9cd6a480
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132281743"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723496"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Azure CLI を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -367,7 +367,7 @@ az group delete -g <resource-group-name>
 
 詳細については、[az ml workspace delete](/cli/azure/ml/workspace#az_ml_workspace_delete) のドキュメントをご覧ください。
 
-ワークスペースを誤って削除した場合でも、 ノートブックを取得できます。 [このドキュメント](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion)を 参照してください。
+ワークスペースを誤って削除した場合でも、 ノートブックを取得できます。 [このドキュメント](./how-to-high-availability-machine-learning.md#workspace-deletion)を 参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

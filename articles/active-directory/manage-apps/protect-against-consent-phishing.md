@@ -13,14 +13,14 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: 497d508b0e338f410dbed19c4ba931a97c6c03f7
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: cad0102bf76cd63553049045ea55e0e7fb8f16d0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132292378"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550686"
 ---
-# <a name="protecting-against-consent-phishing-in-azure-active-directory"></a>Azure Active Directory で同意フィッシングから保護する
+# <a name="protecting-against-consent-phishing"></a>同意フィッシングからの保護
 
 生産性がプライベート ネットワークに限定されなくなり、作業がクラウド サービスに大きく移行しました。 クラウド アプリケーションを使用すると、従業員はリモートで生産性を高めることができますが、攻撃者もアプリケーションベースの攻撃を使用して重要な組織データにアクセスできます。 メールのフィッシングや資格情報の侵害など、ユーザーに焦点を当てた攻撃にはなじみがあるかもしれません。 ***同意フィッシング*** は、注意が必要なもう 1 つの脅威ベクトルです。
 この記事では、同意フィッシングの概要、ユーザーを保護するための Microsoft の取り組み、組織の安全を維持するための手順について説明します。

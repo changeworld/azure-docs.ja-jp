@@ -11,12 +11,12 @@ author: inbarckMS
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d3ce6564c0ed4233f34bc43d661b2d9e1c1388
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 6e52deae12ae44fbf0eb52b8377960530459fca7
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505405"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717660"
 ---
 # <a name="find-and-address-gaps-in-strong-authentication-coverage-for-your-administrators"></a>管理者の強力な認証範囲にギャップがないか見つけて対処する
 
@@ -50,7 +50,7 @@ ms.locfileid: "131505405"
 
 - [MFA 有効化ウィザード](https://aka.ms/MFASetupGuide)を実行して MFA ポリシーを選択します。
 
-- [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) でカスタムまたは組み込みの管理者ロールを割り当てると、ロールのアクティブ化時に多要素認証が必要になります。
+- [Privileged Identity Management](../privileged-identity-management/pim-configure.md) でカスタムまたは組み込みの管理者ロールを割り当てると、ロールのアクティブ化時に多要素認証が必要になります。
 
 ## <a name="use-passwordless-and-phishing-resistant-authentication-methods-for-your-administrators"></a>管理者に対してパスワードレスおよびフィッシングに抵抗できる認証方法を使用する
 
@@ -58,8 +58,6 @@ ms.locfileid: "131505405"
 
 - [電話によるサインイン (Microsoft Authenticator を使用)](concept-authentication-authenticator-app.md)
 - [FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
-- [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-overview)
+- [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
 
 これらの認証方法とそのセキュリティに関する考慮事項の詳細については、[Azure AD の認証方法](concept-authentication-methods.md)に関するページ参照してください。
-
-

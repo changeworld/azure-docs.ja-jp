@@ -13,14 +13,14 @@ ms.date: 10/06/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07254d54d535616aa3a6b1c17a2b1b81d8fe16bb
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 705a5aa25428378b8031d395b8241b2ac8890828
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659205"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553270"
 ---
-# <a name="configure-the-admin-consent-workflow-in-azure-active-directory"></a>Azure Active Directory の管理者の同意ワークフローの構成
+# <a name="configure-the-admin-consent-workflow"></a>管理者の同意ワークフローの構成
 
 この記事では、管理者の同意ワークフロー機能を有効にする方法について説明します。これにより、エンド ユーザーは、管理者の同意を必要とするアプリケーションへのアクセスを要求できます。
 

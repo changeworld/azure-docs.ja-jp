@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/02/2021
 ms.reviewer: amjads
 ms.custom: ''
-ms.openlocfilehash: f5978c40acdbcc842400224fb3cdaed7c49255da
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b98d8da852ed280638af33c6e9c52e1ea6963fbb
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478300"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709028"
 ---
 # <a name="create-and-deploy-vm-applications-preview"></a>VM アプリケーションの作成とデプロイ (プレビュー)
 
@@ -51,7 +51,7 @@ if ($remainder -ne 0){
     }
 ```
 
-ファイルが公開されていることを確認する必要があります。または、ストレージ アカウント内のファイルの SAS URI が必要です。 [Azure Storage Explorer](/azure/vs-azure-tools-storage-explorer-blobs) を使用すると、SAS URI をまだ作成していない場合は、迅速に作成できます。
+ファイルが公開されていることを確認する必要があります。または、ストレージ アカウント内のファイルの SAS URI が必要です。 [Azure Storage Explorer](../vs-azure-tools-storage-explorer-blobs.md) を使用すると、SAS URI をまだ作成していない場合は、迅速に作成できます。
 
 ## <a name="create-the-vm-application"></a>VM アプリケーションを作成する
 

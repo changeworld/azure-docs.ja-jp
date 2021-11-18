@@ -8,12 +8,12 @@ ms.date: 03/29/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: d7f12ca1530b40885dea456763bd231d487ba5cb
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 642a3f8c41836c7fddc538be2fb59d1767f93c52
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113004630"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720019"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Analysis Services データベースのバックアップと復元
 

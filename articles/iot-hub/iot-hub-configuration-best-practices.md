@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub のデバイス構成のベスト プラクティス | Microsoft Docs
 description: 自動デバイス管理を使用して、IoT デバイスを大規模に管理する際の反復的で複雑なタスクを最小限に抑えるためのベスト プラクティスについて説明します。
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 2003e4b6f143f9220b9618a57a2894e678014602
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 22417fa8842835ce84377190783567c9727c15a0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130175638"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547669"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT ソリューション内のデバイス構成のベスト プラクティス
 

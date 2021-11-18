@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.date: 10/21/2021
-ms.openlocfilehash: 432b6ad140c194e757ab34822f13fa607019b87d
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 6c09716f266420ae30bccb05c1bd579f848e94d4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131577310"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704616"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning のキュレーションされた環境
 
@@ -34,7 +34,7 @@ ms.locfileid: "131577310"
 個人用ワークフローに合わせて、次の Dockerfile をカスタマイズできます。
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.1-cudnn8-ubuntu18.04:20211029.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.1-cudnn8-ubuntu18.04:20211111.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/pytorch-1.10
 
@@ -61,10 +61,10 @@ RUN pip install 'matplotlib>=3.3,<3.4' \
                 'scipy>=1.5,<1.8' \
                 'numpy>=1.10,<1.22' \
                 'ipykernel~=6.0' \
-                'azureml-core==1.35.0.post1' \
-                'azureml-defaults==1.35.0' \
-                'azureml-mlflow==1.35.0' \
-                'azureml-telemetry==1.35.0' \
+                'azureml-core==1.36.0.post2' \
+                'azureml-defaults==1.36.0' \
+                'azureml-mlflow==1.36.0' \
+                'azureml-telemetry==1.36.0' \
                 'tensorboard==2.6.0' \
                 'tensorflow-gpu==2.6.0' \
                 'onnxruntime-gpu>=1.7,<1.10' \
@@ -90,7 +90,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 個人用ワークフローに合わせて、次の Dockerfile をカスタマイズできます。
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20211029.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20211111.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/lightgbm
 
@@ -117,10 +117,10 @@ RUN HOROVOD_WITH_TENSORFLOW=1 \
                 'dask-ml~=1.9.0' \
                 'adlfs~=0.7.0' \
                 'ipykernel~=6.0' \
-                'azureml-core==1.35.0.post1' \
-                'azureml-defaults==1.35.0' \
-                'azureml-mlflow==1.35.0' \
-                'azureml-telemetry==1.35.0'
+                'azureml-core==1.36.0.post2' \
+                'azureml-defaults==1.36.0' \
+                'azureml-mlflow==1.36.0' \
+                'azureml-telemetry==1.36.0'
 
 # This is needed for mpi to locate libpython
 ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
@@ -133,7 +133,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 個人用ワークフローに合わせて、次の Dockerfile をカスタマイズできます。
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20211029.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20211111.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/sklearn-0.24.1
 
@@ -152,10 +152,10 @@ RUN pip install 'matplotlib>=3.3,<3.4' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
                 'ipykernel~=6.0' \
-                'azureml-core==1.35.0.post1' \
-                'azureml-defaults==1.35.0' \
-                'azureml-mlflow==1.35.0' \
-                'azureml-telemetry==1.35.0' \
+                'azureml-core==1.36.0.post2' \
+                'azureml-defaults==1.36.0' \
+                'azureml-mlflow==1.36.0' \
+                'azureml-telemetry==1.36.0' \
                 'scikit-learn==0.24.1'
 
 # This is needed for mpi to locate libpython
@@ -170,7 +170,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 個人用ワークフローに合わせて、次の Dockerfile をカスタマイズできます。
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20211029.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20211111.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/tensorflow-2.4
 
@@ -190,10 +190,10 @@ RUN HOROVOD_WITH_TENSORFLOW=1 \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
                 'ipykernel~=6.0' \
-                'azureml-core==1.35.0.post1' \
-                'azureml-defaults==1.35.0' \
-                'azureml-mlflow==1.35.0' \
-                'azureml-telemetry==1.35.0' \
+                'azureml-core==1.36.0.post2' \
+                'azureml-defaults==1.36.0' \
+                'azureml-mlflow==1.36.0' \
+                'azureml-telemetry==1.36.0' \
                 'tensorboard==2.4.0' \
                 'tensorflow-gpu==2.4.1' \
                 'tensorflow-datasets==4.3.0' \

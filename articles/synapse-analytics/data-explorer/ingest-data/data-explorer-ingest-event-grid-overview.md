@@ -9,16 +9,16 @@ ms.reviewer: tzgitlin
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
-ms.openlocfilehash: 8eb32d529c8024733ba6d0bbdec72cc370ebb5d6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 14b5129a29e7d09e86ebfd8874654e55be6f1cb6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477842"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715836"
 ---
 # <a name="event-grid-data-connection-preview"></a>Event Grid データ接続 (プレビュー)
 
-Event Grid インジェストは、Azure ストレージをリッスンし、サブスクライブしたイベントが発生したときに情報をプルするように Azure Data Explorer を更新するパイプラインです。 Data Explorer では、BLOB 作成または BLOB 名前変更の通知に対する [Azure Event Grid](/azure/event-grid/overview) サブスクリプションを使用して Azure Storage (Blob Storage と ADLSv2) からの継続的なインジェストが提供され、イベント ハブを介してそれらの通知が Data Explorer にストリーミングされます。
+Event Grid インジェストは、Azure ストレージをリッスンし、サブスクライブしたイベントが発生したときに情報をプルするように Azure Data Explorer を更新するパイプラインです。 Data Explorer では、BLOB 作成または BLOB 名前変更の通知に対する [Azure Event Grid](../../../event-grid/overview.md) サブスクリプションを使用して Azure Storage (Blob Storage と ADLSv2) からの継続的なインジェストが提供され、イベント ハブを介してそれらの通知が Data Explorer にストリーミングされます。
 
 Event Grid のインジェスト パイプラインでは、いくつかの手順が実行されます。 [特定の形式のデータ](#data-format)が取り込まれるターゲット テーブルを Data Explorer に作成します。 次に、Data Explorer で Event Grid データ接続を作成します。 Event Grid データ接続では、データを送信するテーブルやテーブルのマッピングなど、[イベントのルーティング](#events-routing)情報を把握している必要があります。 また、取り込まれるデータ、ターゲット テーブル、およびマッピングを記述する[インジェスト プロパティ](#ingestion-properties)も指定します。 サンプル データを生成し、[BLOB をアップロード](#upload-blobs)するか、[BLOB を名前変更](#rename-blobs)して、接続をテストできます。 インジェスト後、[BLOB を削除](#delete-blobs-using-storage-lifecycle)します。 このプロセスは、[Azure portal](data-explorer-ingest-event-grid-portal.md) を使用して管理することができます。 <!-- , using [one-click ingestion](one-click-ingestion-new-table.md), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md). -->
 
@@ -31,7 +31,7 @@ Event Grid のインジェスト パイプラインでは、いくつかの手�
     - 元の非圧縮データ サイズは、BLOB メタデータの一部である必要があります。それ以外の場合は、Data Explorer によって推定されます。 ファイルごとのインジェストの非圧縮サイズの制限は 4 GB です。
 
 > [!NOTE]
-> Event Grid 通知サブスクリプションは、`BlobStorage`、`StorageV2`、または [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction) に対して Azure Storage アカウントで設定できます。
+> Event Grid 通知サブスクリプションは、`BlobStorage`、`StorageV2`、または [Data Lake Storage Gen2](../../../storage/blobs/data-lake-storage-introduction.md) に対して Azure Storage アカウントで設定できます。
 
 ## <a name="ingestion-properties"></a>インジェストのプロパティ
 
@@ -73,7 +73,7 @@ blob.UploadFromFile(jsonCompressedLocalFileName);
 > - `BlockBlob` を使用してデータを生成します。 `AppendBlob` がサポートされていません。
 > - Azure Data Lake Gen2 ストレージの SDK を使用するには、ファイルのアップロードに `CreateFile` を使用し、最後の `Flush` で close パラメーターを「true」に設定する必要があります。
 <!-- > For a detailed example of Data Lake Gen2 SDK correct usage, see [upload file using Azure Data Lake SDK](data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk). -->
-> - イベント ハブ エンドポイントでイベントの受信が認識されない場合、Azure Event Grid によって再試行メカニズムがアクティブ化されます。 この再試行配信に失敗した場合、配信されなかったイベントは Event Grid の "*配信不能*" プロセスを使用してストレージ アカウントに配信できます。 詳細については、[Event Grid のメッセージの配信と再試行](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration)に関する記事を参照してください。
+> - イベント ハブ エンドポイントでイベントの受信が認識されない場合、Azure Event Grid によって再試行メカニズムがアクティブ化されます。 この再試行配信に失敗した場合、配信されなかったイベントは Event Grid の "*配信不能*" プロセスを使用してストレージ アカウントに配信できます。 詳細については、[Event Grid のメッセージの配信と再試行](../../../event-grid/delivery-and-retry.md)に関する記事を参照してください。
 
 ## <a name="rename-blobs"></a>BLOB を名前変更する
 

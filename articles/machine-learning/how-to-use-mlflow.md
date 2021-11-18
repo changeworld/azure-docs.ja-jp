@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: b407c248d20e60effbc7c64b56f857590671ef70
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 8935412a7858dc8b3c4ab9b87e8990bb228c5977
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556219"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716336"
 ---
 # <a name="track-ml-models-with-mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning を使用して ML モデルを追跡する
 
@@ -26,7 +26,7 @@ ms.locfileid: "131556219"
 
 + [Azure Machine Learning ワークスペース](./concept-azure-machine-learning-architecture.md#workspace)で、実験のメトリックと成果物を追跡してログに記録します。 実験に MLflow Tracking を既に使用している場合、トレーニングのメトリックとモデルを保存するための一元化された安全でスケーラブルな場所がワークスペースに用意されています。
 
-+ [Azure Machine Learning バックエンド サポートを備えた MLflow Projects を使用してトレーニング ジョブを送信します](how-to-train-mlflow-projects.md)。 Azure Machine Learning 追跡を使用してローカルにジョブを送信することも、[Azure Machine Learning コンピューティング](how-to-create-attach-compute-cluster.md)を介するなどして実行をクラウドに移行することもできます。
++ [Azure Machine Learning バックエンド サポートを備えた MLflow Projects を使用してトレーニング ジョブを送信します (プレビュー)](how-to-train-mlflow-projects.md)。 Azure Machine Learning 追跡を使用してローカルにジョブを送信することも、[Azure Machine Learning コンピューティング](how-to-create-attach-compute-cluster.md)を介するなどして実行をクラウドに移行することもできます。
 
 + MLflow および Azure Machine Learning モデル レジストリでモデルを追跡および管理します。
 

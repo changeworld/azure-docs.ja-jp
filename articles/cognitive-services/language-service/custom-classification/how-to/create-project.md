@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, references_regions, ignite-fall-2021
-ms.openlocfilehash: 7a9f0692f45f1d97824d4428e6a777e38b372d8a
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: cc2c0aa4ad0c13a2521981dc7ab8fa5482e19327
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132025933"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713632"
 ---
 # <a name="how-to-create-custom-text-classification-projects"></a>カスタム テキスト分類プロジェクトを作成する方法
 
@@ -55,7 +55,7 @@ ms.locfileid: "132025933"
 
 :::image type="content" source="../../media/create-new-resource-small.png" alt-text="Language Studio のリソース作成画面のスクリーンショット。" lightbox="../../media/create-new-resource.png":::
 
-カスタム分類を使うには、お持ちでない場合は [Azure ストレージ アカウントを作成](/azure/storage/common/storage-account-create)する必要があります。 
+カスタム分類を使うには、お持ちでない場合は [Azure ストレージ アカウントを作成](../../../../storage/common/storage-account-create.md)する必要があります。 
 
 次に、ストレージ アカウントに[適切なロール](#roles-for-your-storage-account)を割り当てて、言語リソースに接続する必要があります。 
 
@@ -86,7 +86,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile <path-to-parameters-file>
 ```
 
-[テンプレートのデプロイ](/azure/azure-resource-manager/templates/deploy-powershell#parameter-files)と[パラメーター ファイル](/azure/azure-resource-manager/templates/parameter-files?tabs=json)について詳しくは、ARM テンプレートのドキュメントを参照してください。
+[テンプレートのデプロイ](../../../../azure-resource-manager/templates/deploy-powershell.md#parameter-files)と[パラメーター ファイル](../../../../azure-resource-manager/templates/parameter-files.md?tabs=json)について詳しくは、ARM テンプレートのドキュメントを参照してください。
 
 --- 
 
@@ -100,7 +100,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 |Pricing tier     | 既存のリソースが Standard (**S**) 価格レベルであることを確認します。 この価格レベルのみサポートされています。 リソースがこの価格レベルではない場合、新しいリソースを作成する必要があります。        |
 |マネージド ID     | リソースのマネージド ID 設定が有効になっていることを確認します。 それ以外の場合は、次のセクションを参照してください。 |
 
-カスタム分類を使うには、お持ちでない場合は [Azure ストレージ アカウントを作成](/azure/storage/common/storage-account-create)する必要があります。 
+カスタム分類を使うには、お持ちでない場合は [Azure ストレージ アカウントを作成](../../../../storage/common/storage-account-create.md)する必要があります。 
 
 次に、ストレージ アカウントに[適切なロール](#roles-for-your-storage-account)を割り当てて、言語リソースに接続する必要があります。 
 
@@ -135,8 +135,8 @@ Azure BLOB ストレージ アカウントには、次のロールが必要で�
 
 * カスタム テキスト分類プロジェクトを作成するための前提条件として、トレーニング データをストレージ アカウントの BLOB コンテナーにアップロードする必要があります。 トレーニング ファイルの作成とアップロードは、Azure から直接行うことも、Azure Storage Explorer ツールを使って行うこともできます。 Azure Storage Explorer ツールを使用すると、より多くのデータを短い時間でアップロードできます。
 
-  * [Azure からのファイルの作成とアップロード](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
-  * [Azure Storage Explorer を使用したファイルの作成とアップロード](/azure/vs-azure-tools-storage-explorer-blobs)
+  * [Azure からのファイルの作成とアップロード](../../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+  * [Azure Storage Explorer を使用したファイルの作成とアップロード](../../../../vs-azure-tools-storage-explorer-blobs.md)
 
 * カスタム テキスト分類に使用できるのは、`.txt` ファイルのみです。 データが別の形式の場合は、[Cognitive Services 言語ユーティリティ ツール](https://aka.ms/CognitiveServicesLanguageUtilities)を使って、ファイルを `.txt` フォーマットに解析できます。
 

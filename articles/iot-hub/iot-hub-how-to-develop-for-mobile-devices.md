@@ -1,18 +1,18 @@
 ---
 title: Azure IoT SDK を利用したモバイル デバイス向け開発 | Microsoft Docs
 description: ディベロッパー ガイド - Azure IoT Hub SDK を利用してモバイル デバイス向け開発を行う方法を学びます｡
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
-ms.author: robinsh
-ms.openlocfilehash: 6b086e92f36873c28f4e1d88c9a73f54fd4b20d3
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: lizross
+ms.openlocfilehash: c0c7d58284528f33edfcf0a8e497bd8a99f73b53
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114287802"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554562"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK を利用したモバイル デバイス向け開発
 

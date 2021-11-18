@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub モジュール ID とモジュール ツイン (Python)
 description: モジュール ID を作成し、IoT SDKs for Python を使用してモジュール ツインを更新する方法を説明します。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-python
-ms.openlocfilehash: 554c3b239e3b6d4323595ece62424b8b63e6312e
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 47570d0e3557cda3c5781edd046e69d04ba4cb9d
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835621"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553422"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub モジュール ID とモジュール ツイン (Python) の概要
 

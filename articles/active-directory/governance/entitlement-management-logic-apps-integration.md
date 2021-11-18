@@ -16,17 +16,17 @@ ms.date: 11/02/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdd706be5107558422971336cdb598c1148d6f83
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 397809ed8717cb323836ee6ca1243bff1e4df6fb
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511329"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709958"
 ---
 # <a name="trigger-custom-logic-apps-with-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理を使用してカスタム Logic Apps をトリガーする
 
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) を使用すると、カスタム ワークフローを自動化し、アプリやサービスを 1 か所で接続できます。 ユーザーは、Logic Apps をエンタイトルメント管理と統合し、コアのエンタイトルメント管理のユース ケースを超えてガバナンス ワークフローを広げることができます。
+[Azure Logic Apps](../../logic-apps/logic-apps-overview.md) を使用すると、カスタム ワークフローを自動化し、アプリやサービスを 1 か所で接続できます。 ユーザーは、Logic Apps をエンタイトルメント管理と統合し、コアのエンタイトルメント管理のユース ケースを超えてガバナンス ワークフローを広げることができます。
 
 これらの Logic Apps は、エンタイトルメント管理のユース ケース (アクセス パッケージが許可または要求されたときなど) に従って実行されるようにトリガーできます。 たとえば、管理者は、ユーザーがアクセス パッケージを要求したときに、サード パーティの SAAS アプリ (Salesforce など) の特定の特性を割り当てるか、カスタム電子メールを送信するロジック アプリがトリガーされるように、カスタム ロジック アプリを作成してエンタイトルメント管理にリンクすることができます。
 
@@ -99,7 +99,7 @@ Logic Apps へのこれらのトリガーは、 **[ルール]** というアク�
 
 1. ここでは、このカタログに追加したすべてのカスタム拡張機能 (Logic Apps) を表示できます。 ロジック アプリのワークフローを編集したり、新しく追加したロジック アプリのワークフローを作成したりするには、 **[エンドポイント]** でロジック アプリのカスタム拡張機能を選択します。 これにより、ロジック アプリ デザイナーが開き、ワークフローを作成できるようになります。  
 
- ロジック アプリのワークフローの作成の詳細については、[Azure portal で Azure Logic Apps を使用して自動化されたワークフローを作成する方法](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)に関するページを参照してください。
+ ロジック アプリのワークフローの作成の詳細については、[Azure portal で Azure Logic Apps を使用して自動化されたワークフローを作成する方法](../../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 ## <a name="add-custom-extension-to-access-package-policy"></a>アクセス パッケージのポリシーにカスタム拡張機能を追加する 
 

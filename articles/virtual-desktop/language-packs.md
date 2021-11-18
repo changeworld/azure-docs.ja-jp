@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 59ab350f9dd6ce4776d15ffd7e0390bf03ea2c6f
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: e4df2c2bbe4806ae39d23373c36890cd92125bea
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132277303"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704194"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 マルチセッション イメージへの言語パックの追加
 
@@ -50,8 +50,6 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
         - Windows 10 バージョン 1903 または 1909 を使用している場合:
           - [Windows 10 バージョン 1903 または 1909 LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_1903_32_64_ARM64_MultiLng_LngPkAll_LXP_ONLY.iso)
         - Windows 10 バージョン 2004、20H2、または 21H1 を使用している場合は、「[Windows 10 での言語の追加: 既知の問題](/windows-hardware/manufacture/desktop/language-packs-known-issue)」の情報を使用して、次の LXP ISO からご自分に適したものを見つけてください。
-          - [Windows 10 バージョン 2004、20H2、または 21H1 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
-          - [Windows 10 バージョン 2004、20H2、または 21H1 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
           - [Windows 10 バージョン 2004、20H2、または 21H1 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
           - [Windows 10 バージョン 2004、20H2、または 21H1 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
           - [Windows 10 バージョン 2004、20H2、または 21H1 **1C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
@@ -60,7 +58,7 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
           - [Windows 10 バージョン 2004、20H2、または 21H1 **5C** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2105C.iso)
           - [Windows 10 バージョン 2004、20H2、または 21H1 **7C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2107C.iso)
           - [Windows 10 バージョン 2004、20H2、または 21H1 **9C** LXP ISO](https://software-download.microsoft.com/download/db/LanguageExperiencePack.2109C.iso)
-          - [Windows 10 バージョン 2004、20H2、または 21H1 **9C** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2110C.iso)
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **10C** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2110C.iso)
 
 - Azure ファイル共有または Windows ファイル サーバー仮想マシン上のファイル共有
 

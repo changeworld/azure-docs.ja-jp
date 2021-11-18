@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: 7458a35b6227ca620f08a02aaadc5b95e8528141
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: 02e7c76d9fea9801fd733aa6380cf063012cb491
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132134360"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709085"
 ---
 # <a name="states-and-billing-status-of-azure-virtual-machines"></a>Azure Virtual Machines の状態と課金状態
 
@@ -93,9 +93,9 @@ OS のプロビジョニング状態は、[生成済みの](./linux/imaging.md#g
 
 ## <a name="troubleshooting-vm-states"></a>VM の状態のトラブルシューティング
 
-VM の状態の特定の問題のトラブルシューティングを行うには、[Windows VM デプロイのトラブルシューティング](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows)と [Linux VM デプロイのトラブルシューティング](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux)に関するページを参照してください。
+VM の状態の特定の問題のトラブルシューティングを行うには、[Windows VM デプロイのトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows)と [Linux VM デプロイのトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux)に関するページを参照してください。
 
-その他のトラブルシューティングのヘルプについては、「[Azure Virtual Machines のトラブルシューティングに関するドキュメント](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines)」を参照してください。
+その他のトラブルシューティングのヘルプについては、「[Azure Virtual Machines のトラブルシューティングに関するドキュメント](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

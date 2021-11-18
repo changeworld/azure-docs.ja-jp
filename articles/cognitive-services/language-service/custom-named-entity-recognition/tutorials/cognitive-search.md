@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: 555269beeb5e8b36597998a8941e2b64120691b4
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 661716e57ee3a4f73082db593f3dfd96a6f7cedc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132484172"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704982"
 ---
 # <a name="tutorial-enrich-a-cognitive-search-index-with-custom-entities-from-your-data"></a>チュートリアル: データからのカスタム エンティティで Cognitive Search のインデックスをエンリッチする
 
-企業に電子ドキュメントが大量にあると、その検索は時間とコストのかかるタスクになる可能性があります。 [Azure Cognitive Search](/azure/search/search-create-service-portal) は、インデックスに基づくファイルの検索に役立ちます。 カスタム NER は、ファイルから関連エンティティを抽出し、これらのファイルのインデックス作成プロセスをエンリッチするのに役立ちます。
+企業に電子ドキュメントが大量にあると、その検索は時間とコストのかかるタスクになる可能性があります。 [Azure Cognitive Search](../../../../search/search-create-service-portal.md) は、インデックスに基づくファイルの検索に役立ちます。 カスタム NER は、ファイルから関連エンティティを抽出し、これらのファイルのインデックス作成プロセスをエンリッチするのに役立ちます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,9 +32,9 @@ ms.locfileid: "132484172"
 
 * [Azure Blob Storage アカウントに接続された Azure 言語リソース](../how-to/create-project.md)。
     * 容易にセットアップするため、Azure portal を使ったリソース作成手順に従うことをお勧めします。 
-* 現在のサブスクリプション内の [Azure Cognitive Search サービス](/azure/search/search-create-service-portal)
+* 現在のサブスクリプション内の [Azure Cognitive Search サービス](../../../../search/search-create-service-portal.md)
     * このサービスには、任意のレベルと任意のリージョンを使うことができます。
-* [Azure 関数アプリ](/azure/azure-functions/functions-create-function-app-portal)
+* [Azure 関数アプリ](../../../../azure-functions/functions-create-function-app-portal.md)
 * この[サンプル データ](https://go.microsoft.com/fwlink/?linkid=2175226)をダウンロードします。
 
 ## <a name="create-a-custom-ner-project-through-language-studio"></a>Language Studio でカスタム NER プロジェクトを作る
@@ -107,7 +107,7 @@ ms.locfileid: "132484172"
 
 2. サンプル関数をダウンロードした後、*program.cs* ファイルを開き、アプリのシークレットを入力します。
 
-3. [関数を Azure に発行します](/azure/azure-functions/functions-develop-vs?tabs=in-process#publish-to-azure)。
+3. [関数を Azure に発行します](../../../../azure-functions/functions-develop-vs.md?tabs=in-process#publish-to-azure)。
 
 ## <a name="use-the-integration-tool"></a>統合ツールを使用する
 
@@ -153,4 +153,4 @@ ms.locfileid: "132484172"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Cognitive Search SDK を使用してアプリを検索する](/azure/search/search-howto-dotnet-sdk#run-queries)
+* [Cognitive Search SDK を使用してアプリを検索する](../../../../search/search-howto-dotnet-sdk.md#run-queries)

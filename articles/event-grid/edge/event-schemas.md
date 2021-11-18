@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: de328fb70f8abc32a89b8d5b54b0cb40a12f9356
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: accf7e5a30b07cbfe6a95bc33eb00a5e3aa23998
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370380"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716393"
 ---
 # <a name="event-schemas"></a>イベント スキーマ
 
@@ -53,7 +53,7 @@ EventGrid スキーマは、発行エンティティが準拠する必要のあ�
 
 すべてのイベントには、次の同じ最上位レベルのデータが含まれています。
 
-| プロパティ | 種類 | 必須 | 説明 |
+| プロパティ | Type | 必須 | 説明 |
 | -------- | ---- | ----------- |-----------
 | topic | string | No | 発行されるトピックと一致している必要があります。 指定しない場合、Event Grid によって、発行されるトピックの名前が設定されます。 |
 | subject | string | はい | 発行元が定義したイベントの対象のパス。 |
@@ -105,11 +105,11 @@ EventGrid スキーマは、発行エンティティが準拠する必要のあ�
 
 ## <a name="cloudevent-schema"></a>CloudEvent スキーマ
 
-Azure Event Grid では、上記のスキーマに加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 CloudEvents は、イベント データを記述するためのオープンな仕様です。 これを使用すると、イベントを発行したり使用したりするための共通のイベント スキーマを提供して、相互運用性を簡略化することができます。 これは [CNCF](https://www.cncf.io/) の一部であり、現在使用可能なバージョンは 1.0-rc1 です。
+Azure Event Grid では、上記のスキーマに加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/main/cloudevents/formats/json-format.md)内のイベントをネイティブ サポートしています。 CloudEvents は、イベント データを記述するためのオープンな仕様です。 これを使用すると、イベントを発行したり使用したりするための共通のイベント スキーマを提供して、相互運用性を簡略化することができます。 これは [CNCF](https://www.cncf.io/) の一部であり、現在使用可能なバージョンは 1.0-rc1 です。
 
 ### <a name="cloudevent-schema-properties"></a>CloudEvents スキーマのプロパティ
 
-必須のエンベロープ プロパティについては、[CloudEvents の仕様](https://github.com/cloudevents/spec/blob/master/json-format.md#3-envelope)を参照してください。
+必須のエンベロープ プロパティについては、[CloudEvents の仕様](https://github.com/cloudevents/spec/blob/main/cloudevents/formats/json-format.md#3-envelope)を参照してください。
 
 ### <a name="example--cloud-event"></a>例 - クラウド イベント
 ```json

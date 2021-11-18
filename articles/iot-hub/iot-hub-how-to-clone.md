@@ -1,18 +1,18 @@
 ---
 title: Azure IoT ハブを複製する方法
 description: Azure IoT ハブを複製する方法
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: robinsh
-ms.openlocfilehash: 4e66c71dd274f6096113992d9584645d5622f1c1
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.author: lizross
+ms.openlocfilehash: 2905e1ad5a5efe4b56b6cd7990fb5d0eaaae34aa
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211076"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553389"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT ハブを別のリージョンに複製する方法
 

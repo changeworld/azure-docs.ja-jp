@@ -7,12 +7,12 @@ ms.topic: how-to
 author: ebolton-cyber
 ms.author: edewebolton
 ms.date: 03/10/2021
-ms.openlocfilehash: 4e3e3b281e90236704ebd50cd8ee1420947c4d56
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 72873f93b80048f2da9cfe28a45f8d3032abfd46
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132331245"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710186"
 ---
 # <a name="test-a-virtual-machine-image"></a>仮想マシン イメージをテストする
 
@@ -34,7 +34,7 @@ Azure Compute Gallery (以前の Shared Image Gallery) のイメージから VM 
 
 VM オファーを送信する前に、次の手順を完了します。
 
-- 一般化されたイメージを使用して Azure VM をデプロイします。[承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-create-using-approved-base.md)に関するページまたは[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページを参照してください。
+- 一般化されたイメージを使用して Azure VM をデプロイします。[承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-use-approved-base.md)に関するページまたは[独自のイメージを使用した仮想マシンの作成](azure-vm-use-own-image.md)に関するページを参照してください。
 - 検証を実行します。
 
 ## <a name="run-validations"></a>検証を実行する

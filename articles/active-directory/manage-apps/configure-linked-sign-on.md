@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: c8404b7ec361c90a6153cadc7ec6a71efb17fd1c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bc50777e503c50ca68955b8324b75c7c6aa66c77
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639624"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548484"
 ---
-# <a name="add-linked-single-sign-on-to-an-application-in-azure-active-directory"></a>Azure Active Directory で、リンクされたシングル サインオンをアプリケーションに追加する
+# <a name="add-linked-single-sign-on-to-an-application"></a>リンクされたシングル サインオンをアプリケーションに追加する
 
 この記事では、Azure Active Directory (Azure AD) でアプリケーションのリンクベースのシングル サインオン (SSO) を構成する方法について説明します。 Azure AD では、リンクベースの SSO を使用して、既に別のサービスの SSO が構成されているアプリケーションに SSO を提供できます。 [リンク] オプションを使用すると、ユーザーが組織のマイ アプリ、または Microsoft 365 ポータルでアプリケーションを選択するときにターゲットとなる場所を構成できます。
 

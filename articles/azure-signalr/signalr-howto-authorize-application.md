@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 09/06/2021
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: 8297a715d66206bbad2721faaca89c3616744ce4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2ad3fd5a6a4aa3d002c75558e798e6deedf043df
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478031"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716927"
 ---
 # <a name="authorize-request-to-signalr-resources-with-azure-ad-from-azure-applications"></a>Azure アプリケーションからの Azure AD を使用した Azure SignalR Service リソースへの要求を承認する
 
@@ -23,8 +23,8 @@ Azure SignalR Service では、[Azure アプリケーション](../active-direct
 
 最初の手順では、Azure アプリケーションを登録します。
 
-1. [Azure portal](https://portal.azure.com/) で、 **[Azure Active Directory]** を検索して選択します
-2. **[管理]** セクションで、 **[アプリの登録]** を選択します。
+1. [Azure portal](https://portal.azure.com/) で、 **[Azure Active Directory]** を検索して選びます
+2. **[管理]** セクションで、 **[アプリの登録]** を選びます。
 3. **[新規登録]** をクリックします。
 
     ![アプリケーションの登録のスクリーンショット](./media/authenticate/register-an-application.png)
@@ -48,10 +48,10 @@ Azure SignalR Service では、[Azure アプリケーション](../active-direct
 
 アプリケーションでは、トークンを要求するときに ID を証明するためにクライアント シークレットが必要です。 クライアント シークレットを作成するには、次の手順を実行します。
 
-1. **[管理]** セクションで、 **[証明書とシークレット]** を選択します。
+1. **[管理]** セクションで、 **[証明書とシークレット]** を選びます
 1. **[クライアント シークレット]** タブで、 **[新しいクライアント シークレット]** をクリックします。
 ![クライアント シークレットの作成のスクリーンショット](./media/authenticate/new-client-secret.png)
-1. クライアント シークレットの **説明** を入力し、**有効期限** を選択します。
+1. クライアント シークレットの **説明** を入力し、**有効期限** を選びます。
 1. **クライアント シークレット** の値をコピーし、安全な場所に貼り付けます。 
     > [!NOTE]
     > シークレットは 1 回だけ表示されます。
@@ -85,17 +85,17 @@ Azure SignalR Service では、[Azure アプリケーション](../active-direct
 
 1. **[追加] > [ロールの割り当ての追加]** をクリックします。
 
-1. **[ロール]** タブで `SignalR App Server` を選択します。
+1. **[ロール]** タブで `SignalR App Server` を選びます。
 
 1. **[次へ]** をクリックします。
     
    ![ロールの割り当ての追加のスクリーンショット](./media/authenticate/add-role-assignment.png)
 
-1. **[アクセス権の割り当て先]** セクションの **[メンバー]** タブで、 **[ユーザー、グループ、またはサービス プリンシパル]** を選択します。
+1. **[アクセス権の割り当て先]** セクションの **[メンバー]** タブで、 **[ユーザー、グループ、またはサービス プリンシパル]** を選びます。
 
 1. **[メンバーの選択]** をクリックします
 
-3. ロールを割り当てるアプリケーションを検索して選択します。
+3. ロールを割り当てるアプリケーションを検索して選びます。
 
 1. **[選択]** をクリックして選択内容を確定します。
 
@@ -181,9 +181,9 @@ services.AddSignalR().AddAzureSignalR(option =>
 > [!WARNING]
 > SignalR トリガー バインドでは、ID ベースの接続はまだサポートされていません。接続文字列はまだ必要です。
 
-Azure Functions SignalR のバインドでは、ポータルまたは[`local.settings.json`](/azure/azure-functions/functions-develop-local#local-settings-file)ローカルの[アプリケーション設定](/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を使用して、Azure SignalR Service リソースにアクセスするように Azure アプリケーション ID を構成します。
+Azure Functions SignalR のバインドでは、ポータルまたは[`local.settings.json`](../azure-functions/functions-develop-local.md#local-settings-file)ローカルの[アプリケーション設定](../azure-functions/functions-how-to-use-azure-function-app-settings.md)を使用して、Azure SignalR Service リソースにアクセスするように Azure アプリケーション ID を構成します。
 
-まず、Azure SignalR Service のサービス URI を指定する必要があります。このサービスのキーは `serviceUri` であり、**接続名のプレフィックス** (既定値は `AzureSignalRConnectionString`) と区切り記号 (Azure portal では `__` であり、local.settings.json ファイル内では `:`) で始まります。 接続名は、binding プロパティ[`ConnectionStringSetting`](/azure/azure-functions/functions-bindings-signalr-service)を使用してカスタマイズできます。 引き続きサンプルを参照してください。
+まず、Azure SignalR Service のサービス URI を指定する必要があります。このサービスのキーは `serviceUri` であり、**接続名のプレフィックス** (既定値は `AzureSignalRConnectionString`) と区切り記号 (Azure portal では `__` であり、local.settings.json ファイル内では `:`) で始まります。 接続名は、binding プロパティ[`ConnectionStringSetting`](../azure-functions/functions-bindings-signalr-service.md)を使用してカスタマイズできます。 引き続きサンプルを参照してください。
 
 次に、[事前定義済みの環境変数](#configure-identity-in-pre-defined-environment-variables)または [Azure SignalR Service によって指定された変数](#configure-identity-in-signalr-specified-variables)で Azure アプリケーションの ID を構成します。
 

@@ -4,12 +4,12 @@ description: この記事では、Azure DevTest Labs と 2 つの一般的な方
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9daf32e5094616a98b6fcd6b1f337eadf2d7ee82
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f717043555321bb00aecd62ea4e41067e75217aa
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130235017"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722204"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Azure DevTest Labs を使用する一般的なシナリオ
 DevTest Labs は企業のニーズに応じてさまざまな要件を満たすように構成できます。  この記事では、一般的なシナリオについて説明します。 各シナリオでは、DevTest Labs を使用するメリットと、これらのシナリオの実装に使用するリソースについて説明します。  

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/29/2021
 ms.custom: tracking-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 80841c800172c4f0f551b6437d18d437aed0536d
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 43684ffe7287aa8cd227f471b878450de39b72d6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634135"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704316"
 ---
 # <a name="tutorial-upload-data-and-train-a-model-part-3-of-3"></a>チュートリアル: データをアップロードしてモデルをトレーニングする (3/3)
 
@@ -231,7 +231,7 @@ if __name__ == "__main__":
     )
 
     # use curated pytorch environment 
-    env = ws.environments['AzureML-PyTorch-1.6-CPU']
+    env = ws.environments['AzureML-PyTorch-1.3-CPU']
     config.run_config.environment = env
 
     run = experiment.submit(config)

@@ -10,12 +10,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 10/22/2021
   ms.author: banders
-  ms.openlocfilehash: c38966a630d61279ab34328bf7a76204fb0079ee
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 0dac08754b6beae7072e4e07a672bac2c3d8fb31
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130229448"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132719487"
 title: Cost Management + Billing についてよくあるご質問 (FAQ)
 summary: ''
 sections:
@@ -161,7 +161,7 @@ sections:
       「[スポット VM の料金を表示する](./costs/cost-analysis-common-uses.md#view-your-spot-vm-charges)」を参照してください。
   - question: 予約の詳細レポートを取得するにはどうすればよいですか?
     answer: >
-      API のドキュメントを参照して、[予約の詳細レポートを生成](/azure/cost-management-billing/reservations/reservation-utilization)します。
+      API のドキュメントを参照して、[予約の詳細レポートを生成](./reservations/reservation-utilization.md)します。
 - name: Azure Enterprise Agreement (EA) と EA Portal に関する質問
   questions:
   - question: 登録に SPN アクセス許可を割り当てるにはどうすればよいですか?

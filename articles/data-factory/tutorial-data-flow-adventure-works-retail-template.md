@@ -7,12 +7,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 10/18/2021
-ms.openlocfilehash: 888a6c78572940dd69ef2161fc1ded979259d63f
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 99f91c76addbacb64290c54435b5b3c760eabc5c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181527"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704790"
 ---
 # <a name="adventureworks-template-documentation"></a>AdventureWorks テンプレート ドキュメント
 
@@ -48,7 +48,7 @@ AdventureWorks データセットを別のデータベースに読み込んだ�
 
 
 ## <a name="dataset-and-sourcetarget-models"></a>データセット、ソース モデル、ターゲット モデル
-Excel 形式の AdventureWorks データセットは、この [GitHub サイト](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/AdventureWorks%20Data.zip)からダウンロードできます。 さらに、[ソース データベースとターゲット データベースの両方のスキーマ定義](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/AdventureWorksSchemas.xlsx)にアクセスできます。 Synapse のデータベース デザイナーを使用して、先ほどダウンロードした Excel のスキーマを使用してソース データベースとターゲット データベースを再作成します。 データベース デザイナーの詳細については、この[ドキュメント](https://aka.ms/SynapseDatabaseDesignerDocumentation)を参照してください。
+Excel 形式の AdventureWorks データセットは、この [GitHub サイト](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/AdventureWorks%20Data.zip)からダウンロードできます。 さらに、[ソース データベースとターゲット データベースの両方のスキーマ定義](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/AdventureWorksSchemas.xlsx)にアクセスできます。 Synapse のデータベース デザイナーを使用して、先ほどダウンロードした Excel のスキーマを使用してソース データベースとターゲット データベースを再作成します。 データベース デザイナーの詳細については、この[ドキュメント](../synapse-analytics/database-designer/concepts-database-templates.md)を参照してください。
 
 データベースを作成したら、ワークスペース DB のソースとシンクの設定のドロップダウンを編集して、データ フローが正しいテーブルを指していることを確認します。 データをソース モデルに読み込むには、サンプル データセットに用意されている CSV ファイルを、テーブルに指定されている正しいフォルダーに配置します。 それが完了したら、後はパイプラインを実行するだけです。
 

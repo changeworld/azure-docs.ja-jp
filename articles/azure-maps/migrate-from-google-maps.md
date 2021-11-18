@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c8fc81595bc28af783938b670db6b09d4241dd18
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d2903925ec475094795a069ea07596f02c638407
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429624"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717400"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>チュートリアル:Google マップから Azure Maps に移行する
 
@@ -112,7 +112,7 @@ Azure Maps に関する役に立つ技術リソースの一覧を次に示しま
 - ビデオ: [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - ブログ: [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - 技術ブログ: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
-- Azure Maps のフィードバック (UserVoice): [https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
+- Azure Maps のフィードバック (UserVoice): [https://aka.ms/AzureMapsFeedback](/answers/topics/25319/azure-maps.html)
 - [Azure Maps Jupyter Notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)
 
 ## <a name="migration-support"></a>移行サポート

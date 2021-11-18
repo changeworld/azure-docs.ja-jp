@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 243139219259c3b4be95010df988cf30256ca204
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 37e55e4f246ffdc172621bc19b81975ff8324e10
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132484103"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719544"
 ---
 # <a name="how-to-prepare-data-and-define-a-schema"></a>データを準備してスキーマを定義する方法
 
@@ -44,8 +44,8 @@ ms.locfileid: "132484103"
 
 カスタム テキスト分類プロジェクトを作成するための前提条件として、トレーニング データをストレージ アカウントの BLOB コンテナーにアップロードする必要があります。 トレーニング ファイルの作成とアップロードは、Azure から直接行うことも、Azure Storage Explorer ツールを使って行うこともできます。 Azure Storage Explorer を使用すると、より多くのデータをすばやくアップロードできます。  
 
-* [Azure からのファイルの作成とアップロード](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
-* [Azure Storage Explorer を使用したファイルの作成とアップロード](/azure/vs-azure-tools-storage-explorer-blobs)
+* [Azure からのファイルの作成とアップロード](../../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+* [Azure Storage Explorer を使用したファイルの作成とアップロード](../../../../vs-azure-tools-storage-explorer-blobs.md)
 
 カスタム テキストに使用できるのは、`.txt` ファイルのみです。 データが他の形式の場合は、[CLUtils 解析コマンド](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md)を使用してファイル形式を変更できます。
 
@@ -67,4 +67,4 @@ ms.locfileid: "132484103"
 
 ## <a name="next-steps"></a>次のステップ
 
-まだカスタム分類プロジェクトを作成していない場合は、試してみてください カスタム分類を初めて使用する場合は、[クイックスタート](../quickstart.md)に従ってサンプル プロジェクトを作成することを検討してください。 また、プロジェクトの作成に必要なことの詳細については、[プロジェクトの要件](../how-to/create-project.md)に関する記事を参照してください。 
+まだカスタム分類プロジェクトを作成していない場合は、試してみてください カスタム分類を初めて使用する場合は、[クイックスタート](../quickstart.md)に従ってサンプル プロジェクトを作成することを検討してください。 また、プロジェクトの作成に必要なことの詳細については、[プロジェクトの要件](../how-to/create-project.md)に関する記事を参照してください。

@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: d9e634597d82b6cac52237f0c800cdfc33bc883a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fd04c533b3791ba0628b09aba13dc4884599f7a8
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635415"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716412"
 ---
 # <a name="rest-api"></a>REST API
 この記事では、Azure Event Grid on IoT Edge の REST API について説明します
@@ -50,7 +50,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
     
 `Content-Type: application/cloudevents-batch+json; charset=utf-8`
 
-バイナリ モードの **CloudEventSchemaV1_0** の場合は、[ドキュメント](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md)で詳細を確認してください。
+バイナリ モードの **CloudEventSchemaV1_0** の場合は、[ドキュメント](https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md)で詳細を確認してください。
 
 ### <a name="error-response"></a>エラー応答
 すべての API は、以下のペイロードでエラーを返します。

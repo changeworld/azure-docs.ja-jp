@@ -13,14 +13,14 @@ ms.date: 09/23/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c76498e27d7cba32e7129b1fcca57e20ab11cfb
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f80469924b9a4bbc53ac076751026071be2955ad
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061487"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550743"
 ---
-# <a name="hide-an-enterprise-application-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリケーションを非表示にする
+# <a name="hide-an-enterprise-application"></a>エンタープライズ アプリケーションを非表示にする
 
 Azure Active Directory でエンタープライズ アプリケーションを非表示にする方法について説明します。 アプリケーションを非表示にしても、アプリケーションに対するユーザーのアクセス許可は維持されます。
 

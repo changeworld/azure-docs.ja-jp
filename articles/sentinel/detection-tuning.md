@@ -3,16 +3,15 @@ title: Microsoft Sentinel の分析ルールの微調整に関する推奨事項
 description: 自動的に生成された推奨事項を使用して Microsoft Sentinel の脅威検出ルールを微調整することにより、脅威検出の対象範囲を維持しながら擬陽性を削減する方法について説明します。
 author: yelevin
 ms.author: yelevin
-ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1b1d71f2c8a6a5f74d68d9480b918743a707cc83
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 4e9e94d091869d8b9e6d19c0300b3c563ce9d958
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521512"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724332"
 ---
 # <a name="get-fine-tuning-recommendations-for-your-analytics-rules-in-microsoft-sentinel"></a>Microsoft Sentinel の分析ルールの微調整に関する推奨事項を取得する
 
@@ -46,7 +45,7 @@ Microsoft Sentinel に、いずれかの分析ルールに関するチューニ�
 
     この分析情報は、Log Analytics クエリの結果です。 **[インシデントあたりの平均アラート数]** を選択すると、その分析情報を生成した Log Analytics のクエリが表示されます。 **[開かれたインシデント]** を選択すると、 **[インシデント]** ブレードが表示されます。
 
-1. 2 番目の分析情報ペインでは、除外すべき[エンティティ](entities-in-azure-sentinel.md)の一覧が推奨されます。 これらのエンティティは、閉じたインシデントと密接に関連付けられており、**擬陽性** として分類されます。 一覧表示されている各エンティティの横にあるプラス記号を選択すると、それは、このルールの今後の実行のクエリから除外されます。 
+1. 2 番目の分析情報ペインでは、除外すべき[エンティティ](entities.md)の一覧が推奨されます。 これらのエンティティは、閉じたインシデントと密接に関連付けられており、**擬陽性** として分類されます。 一覧表示されている各エンティティの横にあるプラス記号を選択すると、それは、このルールの今後の実行のクエリから除外されます。 
 
     :::image type="content" source="media/detection-tuning/entity-exclusion.png" alt-text="エンティティの除外の推奨事項のスクリーンショット。":::
 

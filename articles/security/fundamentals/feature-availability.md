@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 9d2b984d78abd09e1fe4baf7e0c443e83ad8dc13
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 651ec7ec4e0fe661330807a856f29eb025087609
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132523108"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718152"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
@@ -422,18 +422,18 @@ Microsoft Azure Attestation は、プラットフォームの信頼性とその�
 
 Azure Attestation は、現在、Azure Public および Government クラウドの複数のリージョンで利用できます。 Azure Government では、US Gov Virginia と US Gov Arizona の中でこのサービスをプレビュー状態で利用できます。 
 
-詳細については、Azure Attestation の[パブリック ドキュメント](/azure/attestation/overview)を参照してください。 
+詳細については、Azure Attestation の[パブリック ドキュメント](../../attestation/overview.md)を参照してください。 
 
 | 機能 | Azure | Azure Government |
 |--|--|--|
-| コントロールプレーンおよびデータプレーンの操作を実行するための[ポータル エクスペリエンス](/azure/attestation/quickstart-portal) | GA | - |
-| コントロールプレーンおよびデータプレーンの操作を実行するための[PowerShell エクスペリエンス](/azure/attestation/quickstart-powershell)  | GA | GA |
+| コントロールプレーンおよびデータプレーンの操作を実行するための[ポータル エクスペリエンス](../../attestation/quickstart-portal.md) | GA | - |
+| コントロールプレーンおよびデータプレーンの操作を実行するための[PowerShell エクスペリエンス](../../attestation/quickstart-powershell.md)  | GA | GA |
 | TLS 1.2 の適用   | GA | GA |
 | BCDR のサポート   | GA | - |
-| [サービス タグの統合](/azure/virtual-network/service-tags-overview) | GA | GA |
-| [不変のログ ストレージ](/azure/attestation/audit-logs) | GA | GA |
+| [サービス タグの統合](../../virtual-network/service-tags-overview.md) | GA | GA |
+| [不変のログ ストレージ](../../attestation/audit-logs.md) | GA | GA |
 | プライベート リンクを使用したネットワーク分離 | パブリック プレビュー | - |
-| [FedRAMP High 認定](/azure/azure-government/compliance/azure-services-in-fedramp-auditscope) | GA | - |
+| [FedRAMP High 認定](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md) | GA | - |
 | カスタマー ロックボックス | GA | - |
 
 ## <a name="next-steps"></a>次のステップ

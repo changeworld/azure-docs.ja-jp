@@ -11,12 +11,12 @@ ms.reviewer: laobri
 ms.date: 11/03/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: 02f65a5c07536afb1fb20c3f85c444f2376c9b34
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: f24e09dfbc2486b131efd754c742a984ab7c0dfc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132137582"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719867"
 ---
 # <a name="troubleshooting-online-endpoints-deployment-and-scoring-preview"></a>オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)
 
@@ -249,9 +249,7 @@ REST 要求でオンライン エンドポイントにアクセスしたとき�
 | 401 | 権限がありません | スコアリングなどの要求されたアクションを実行するためのアクセス許可がないか、トークンの有効期限が切れています。 |
 | 404 | 見つかりません | URL が正しくありません。 |
 | 408 | 要求タイムアウト | モデルの実行にかかる時間が、モデル デプロイ構成の `request_settings` の `request_timeout_ms` で指定したタイムアウトよりも長くなっています。|
-| 413 | ペイロードが大きすぎます | 要求ペイロードが 1.5 メガバイトを超えています。 |
 | 424 | モデル エラー | モデル コンテナーから 200 以外の応答が返された場合、Azure は 424 を返します。 詳細については、`ms-azureml-model-error-statuscode` と `ms-azureml-model-error-reason` の応答ヘッダーをご確認ください。 |
-| 424 | 応答ペイロードが大きすぎます | コンテナーが 1.5 メガバイトを超えるペイロードを返した場合、Azure は 424 を返します。 |
 | 429 | レート制限 | 1 秒あたり 100 を超える要求をエンドポイントに送信しようとしました。 |
 | 429 | 保留中の要求が多すぎます | モデルで処理できる数よりも多くの要求が送られてきています。 常に 2 つの * `max_concurrent_requests_per_instance` * `instance_count` 要求が許可されます。 追加の要求は拒否されます。 これらの設定は、モデル デプロイ構成の `request_settings` および `scale_settings` で確認できます。 自動スケーリングを使用している場合、モデルはシステムでスケールアップできるよりも高速に要求を取得します。 自動スケーリングでは、[エクスポネンシャル バックオフ](https://aka.ms/exponential-backoff)を使用して要求の再送信を試行できます。 これにより、システムに調整時間が与えられます。 |
 | 500 | 内部サーバー エラー | Azure ML でプロビジョニングされたインフラストラクチャが失敗しています。 |

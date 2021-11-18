@@ -5,12 +5,12 @@ services: automation
 keywords: Azure Automation, DSC, PowerShell, State Configuration, Update Management, Change Tracking, DSC, インベントリ, Runbook, Python, グラフィカル
 ms.date: 10/25/2021
 ms.topic: overview
-ms.openlocfilehash: d6a703a04aeec9b764f74a7574cde4baea875604
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: c3b08c17845bec53d55c45bdd405aac9081a4a76
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132491490"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714297"
 ---
 # <a name="what-is-azure-automation"></a>Azure Automation とは
 
@@ -116,7 +116,7 @@ Azure Automation は、インフラストラクチャとアプリケーション
 
 これらの Azure サービスは、HTTP Webhook または API メソッドを使用して、Automation ジョブおよび Runbook リソースを処理できます。
 
-* [Azure Logic Apps](/azure/connectors/built-in)
+* [Azure Logic Apps](../connectors/built-in.md)
 * [Azure Power Apps](/connectors/azureautomation)
 * [Azure Event Grid](../event-grid/handler-webhooks.md)
 * [Azure Power Automate](/connectors/azureautomation)

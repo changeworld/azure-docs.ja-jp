@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: conceptual
 ms.date: 10/29/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: a5a34f539c8f2820c46736783f6d23d5b265164c
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 96b03347adcabdd5bd25d4f57c5ea80946832610
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858447"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723325"
 ---
 # <a name="security-in-azure-managed-instance-for-apache-cassandra---overview"></a>Azure Managed Instance for Apache Cassandra のセキュリティ - 概要
 
@@ -34,7 +34,7 @@ ms.locfileid: "131858447"
 |攻撃の監視|Azure Managed Instance for Apache Cassandra は [Azure Monitor](../azure-monitor/overview.md) と統合されています。 監査ログとアクティビティ ログを使用することで、アカウントの通常のアクティビティと異常なアクティビティを監視できます。 リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態、その他の多くのタスクを確認できます。|
 |攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。|
 |サーバーへの修正プログラムの適用|管理されたデータベースとして Azure Managed Instance for Apache Cassandra を使用すると、サーバーの管理と修正プログラムの適用を行う必要がなくなり、それらの作業が自動的に行われます。|
-|認定資格| 認定の最新の一覧については、全般的な [Azure コンプライアンスのサイト](https://www.microsoft.com/trustcenter/compliance/complianceoffering)をご覧ください。
+|認定資格| 認定の最新の一覧については、全般的な [Azure コンプライアンスのサイト](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/25/2021
+ms.date: 11/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb, sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21bf4b8abfac8df9fe5791ccbbf37a619be65c7f
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: 9636841a53621d7b840123e72846b31bf3c6334e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132369685"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705438"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -69,6 +69,8 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
    - サード パーティの MDM システムに登録されているデバイスについては 、[「Intune でサード パーティのデバイスコンプライアンス パートナーをサポートする」](/mem/intune/protect/device-compliance-partners)を参照してください。
    - 条件付きアクセスでは、Microsoft Edgeとして InPrivate モードでのアクセスを考慮することはできません。
 
+> [!NOTE]
+> Windows 7、iOS、Android、macOS、および一部のサードパーティ製 Web ブラウザーでは、Azure AD によって、デバイスが Azure AD に登録されるときにプロビジョニングされたクライアント証明書を使用してデバイスが識別されます。 ユーザーは、ブラウザーで最初にサインインするときに、証明書の選択を求められます。 エンド ユーザーは、ブラウザーを引き続き使用する前に、この証明書を選択する必要があります。
 
 ### <a name="require-hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みのデバイスを必要とする
 

@@ -3,12 +3,12 @@ title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 78d6b8cee1ad2442278497c5ca3e282b19d1beb6
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: d63182c46f47353801ca30c086aa341ebd3b9e92
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997250"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716697"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -56,11 +56,11 @@ RPO (回復ポイントの目標) が低いことは、頻繁に更新される�
 
 1 日に複数のスナップショットを作成するために、Azure Backup を使用して、バックアップ ポリシーを作成したり、既存のバックアップ ポリシーを変更したりできるようになりました。 この機能を使用して、バックアップ ジョブがトリガーされる期間を定義することもできます。 この機能によって、Azure Files の内容が頻繁に更新される業務時間にバックアップのスケジュールを合わせることができます。
 
-詳細については、[バックアップ ポリシーを使用して 1 日に複数回のバックアップを構成する方法](/azure/backup/manage-afs-backup#create-a-new-policy)に関するページを参照してください。
+詳細については、[バックアップ ポリシーを使用して 1 日に複数回のバックアップを構成する方法](./manage-afs-backup.md#create-a-new-policy)に関するページを参照してください。
 
 ## <a name="azure-backup-metrics-and-metrics-alerts-in-preview"></a>Azure Backup のメトリックとメトリック アラート (プレビュー)
 
-Azure Backup では、[Azure Monitor](/azure/azure-monitor/essentials/data-platform-metrics) を介して、組み込みメトリックのセットが提供されるようになりました。これにより、バックアップの正常性を監視することができます。 また、定義されたしきい値をメトリックが超える場合は、アラートをトリガーするアラート ルールを構成することもできます。
+Azure Backup では、[Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md) を介して、組み込みメトリックのセットが提供されるようになりました。これにより、バックアップの正常性を監視することができます。 また、定義されたしきい値をメトリックが超える場合は、アラートをトリガーするアラート ルールを構成することもできます。
 
 Azure Backup では、次の主な機能が提供されています。
  

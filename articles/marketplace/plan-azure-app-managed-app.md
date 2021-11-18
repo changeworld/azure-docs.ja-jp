@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2021
-ms.openlocfilehash: 76036b42693b17480f4e5ede8d93d981bf40d739
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b20910e7692d5cea979997f32263c8e74385b564
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429662"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724978"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure アプリケーション オファーの Azure マネージド アプリケーションを計画する
 
@@ -32,7 +32,7 @@ Azure アプリケーションのマネージド アプリケーション プラ
 | ------------ | ------------- |
 | Azure サブスクリプション | マネージド アプリケーションを顧客のサブスクリプションにデプロイする必要があるが、アプリケーションはサード パーティが管理できます。 |
 | 請求/メータリング | リソースは、顧客の Azure サブスクリプションで提供されます。 従量課金制の支払モデルを使用する VM は Microsoft 経由で顧客が処理し、顧客の Azure サブスクリプション経由で請求されます。 <br><br> ライセンス持ち込み VM の場合、顧客サブスクリプションで発生するインフラストラクチャ コストを Microsoft が請求しますが、ユーザーが顧客に対して直接ソフトウェア ライセンス料金を処理します。 |
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<br> * [Azure VM の技術資産を作成する](./azure-vm-create-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)。<br> *  [Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。 |
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<br> * [Azure VM の技術資産を作成する](./azure-vm-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)。<br> *  [Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。 |
 | 顧客の利用状況属性 | すべての新しい Azure アプリケーション オファーには、[Azure パートナーの顧客の使用状況の属性 GUID](azure-partner-customer-usage-attribution.md) も含まれている必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の使用状況の属性](azure-partner-customer-usage-attribution.md)」をご覧ください。 |
 | 展開パッケージ | お客様がプランをデプロイできるようにするデプロイ パッケージが必要になります。 同じ技術的構成が必要なプランを複数作成する場合は、同じパッケージを使用できます。 詳細については、次のセクションの「デプロイ パッケージ」を参照してください。 |
 |||
@@ -124,7 +124,7 @@ JIT アクセスによって、発行元は、トラブルシューティング�
 
 Webhook URI を呼び出す前に、Azure によって末尾に `/resource` が追加されます。 そのため、Webhook URL は `/resource` で終わる必要があります。ただしこれは、パートナー センターの **[通知エンドポイント URL]** ボックスに入力された URI には含めません。 たとえば、通知エンドポイント URI として `https://contoso.com` を入力すると、`https://contoso.com/resource` が呼び出されます。
 
-マネージド アプリの通知からイベントをリッスンする場合は、`https://<url>/resource` をリッスンし、設定された URL だけではないことを確認します。 通知の例については、「[通知スキーマ](/azure/azure-resource-manager/managed-applications/publish-notifications#notification-schema)」を参照してください。
+マネージド アプリの通知からイベントをリッスンする場合は、`https://<url>/resource` をリッスンし、設定された URL だけではないことを確認します。 通知の例については、「[通知スキーマ](../azure-resource-manager/managed-applications/publish-notifications.md#notification-schema)」を参照してください。
 
 ## <a name="customize-allowed-customer-actions-optional"></a>許可される顧客アクションをカスタマイズする (省略可能)
 

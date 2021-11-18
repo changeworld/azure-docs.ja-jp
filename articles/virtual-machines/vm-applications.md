@@ -10,12 +10,12 @@ ms.date: 11/02/2021
 ms.author: cynthn
 ms.reviewer: amjads
 ms.custom: ''
-ms.openlocfilehash: b43d2c5f20afa67c40115430903b97d49fef4e08
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b2d5c3c1d204771b8380a06ac9c103d4473e0d8f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477875"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708990"
 ---
 # <a name="vm-applications-overview-preview"></a>VM アプリケーションの概要 (プレビュー)
 
@@ -39,7 +39,7 @@ VM アプリケーションは、仮想マシンのアプリケーションの�
 - 仮想マシンのサポート、および柔軟で均一なスケール セット
 
 - VM またはスケール セットにネットワーク セキュリティ グループ (NSG) ルールが適用されている場合、インターネット リポジトリからパッケージをダウンロードできないことがあります。 また、ストレージ アカウントでは、ロックダウンされた VM にパッケージをダウンロードするには、プライベート リンクを設定する必要があります。
-- VM アプリケーションは、[DeployIfNotExists](/azure/governance/policy/concepts/effects) ポリシーで使用できます。
+- VM アプリケーションは、[DeployIfNotExists](../governance/policy/concepts/effects.md) ポリシーで使用できます。
 
 
 ## <a name="what-are-vm-app-packages"></a>VM アプリ パッケージとは
@@ -306,5 +306,3 @@ Get-AzVmss -name <VMSS name> -ResourceGroupName <resource group name> -InstanceV
 ## <a name="next-steps"></a>次の手順
 
 - [VM アプリケーション パッケージを作成してデプロイする](vm-applications-how-to.md)方法について学習します。
-
-

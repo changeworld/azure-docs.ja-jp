@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: ef710559cb8d51b21e859bb08c50c5a2ed07b74c
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 7d07518d29626448957525ee36e1170e4b912835
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131894205"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707907"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL 単一サーバーの新機能
 
@@ -26,7 +26,7 @@ Azure Database for MySQL は、Microsoft クラウドのリレーショナル �
 
 - **既知の問題**
 
-MySQL 8.0.27 クライアントは Azure Database for MySQL - 単一サーバーと互換性がありません。 mysql.exe またはワークベンチ経由で作成された MySQL 8.0.27 クライアントからのすべての接続は失敗します。 回避策として、代わりに以前のバージョンのクライアント (MySQL 8.0.27 より前) を使用するか、[Azure Database for MySQL - フレキシブル サーバー](https://docs.microsoft.com/azure/mysql/flexible-server/overview)のインスタンスを作成することを検討してください。
+MySQL 8.0.27 クライアントは Azure Database for MySQL - 単一サーバーと互換性がありません。 mysql.exe またはワークベンチ経由で作成された MySQL 8.0.27 クライアントからのすべての接続は失敗します。 回避策として、代わりに以前のバージョンのクライアント (MySQL 8.0.27 より前) を使用するか、[Azure Database for MySQL - フレキシブル サーバー](./flexible-server/overview.md)のインスタンスを作成することを検討してください。
 
 ## <a name="june-2021"></a>2021 年 6 月
   

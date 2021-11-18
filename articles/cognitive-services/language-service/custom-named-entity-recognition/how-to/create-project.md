@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, references_regions, ignite-fall-2021
-ms.openlocfilehash: c7dfe80162ab406c6dde32ad54ff251e001f5416
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 97b4a527fe049f4a36839ed38b1498307ea30d36
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027681"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705077"
 ---
 # <a name="how-to-create-custom-ner-projects"></a>カスタム NER プロジェクトを作成する方法
 
@@ -54,7 +54,7 @@ Azure サブスクリプション。[無料で作成できます](https://azure.
 
 :::image type="content" source="../../media/create-new-resource-small.png" alt-text="Language Studio のリソース作成画面のスクリーンショット。" lightbox="../../media/create-new-resource.png":::
 
-カスタム NER を使用するには、[Azure ストレージ アカウントを作成](/azure/storage/common/storage-account-create)する必要があります (このアカウントをまだ持っていない場合)。 
+カスタム NER を使用するには、[Azure ストレージ アカウントを作成](../../../../storage/common/storage-account-create.md)する必要があります (このアカウントをまだ持っていない場合)。 
 
 次に、ストレージ アカウントに[適切なロール](#roles-for-your-storage-account)を割り当てて、言語リソースに接続する必要があります。 
 
@@ -85,7 +85,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile <path-to-parameters-file>
 ```
 
-[テンプレートのデプロイ](/azure/azure-resource-manager/templates/deploy-powershell#parameter-files)と[パラメーター ファイル](/azure/azure-resource-manager/templates/parameter-files?tabs=json)について詳しくは、ARM テンプレートのドキュメントを参照してください。
+[テンプレートのデプロイ](../../../../azure-resource-manager/templates/deploy-powershell.md#parameter-files)と[パラメーター ファイル](../../../../azure-resource-manager/templates/parameter-files.md?tabs=json)について詳しくは、ARM テンプレートのドキュメントを参照してください。
 
 --- 
 
@@ -99,7 +99,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 |Pricing tier     | 既存のリソースが Standard (**S**) 価格レベルであることを確認します。 この価格レベルのみサポートされています。 リソースがこの価格レベルではない場合、新しいリソースを作成する必要があります。        |
 |マネージド ID     | リソースのマネージド ID 設定が有効になっていることを確認します。 これが行われていない場合、次のセクションを参照してください。 |
 
-カスタム NER を使用するには、[Azure ストレージ アカウントを作成](/azure/storage/common/storage-account-create)する必要があります (このアカウントをまだ持っていない場合)。 
+カスタム NER を使用するには、[Azure ストレージ アカウントを作成](../../../../storage/common/storage-account-create.md)する必要があります (このアカウントをまだ持っていない場合)。 
 
 次に、ストレージ アカウントに[適切なロール](#roles-for-your-storage-account)を割り当てて、言語リソースに接続する必要があります。 
 
@@ -134,8 +134,8 @@ Azure BLOB ストレージ アカウントには、次のロールが必要で�
 
 * カスタム NER プロジェクトを作成するための前提条件として、トレーニング データをストレージ アカウントの BLOB コンテナーにアップロードする必要があります。 トレーニング ファイルの作成とアップロードは、Azure から直接行うことも、Azure Storage Explorer ツールを使用して行うこともできます。 Azure Storage Explorer ツールを使用すると、より多くのデータを短い時間でアップロードできます。
 
-  * [Azure からのファイルの作成とアップロード](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
-  * [Azure Storage Explorer を使用したファイルの作成とアップロード](/azure/vs-azure-tools-storage-explorer-blobs)
+  * [Azure からのファイルの作成とアップロード](../../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+  * [Azure Storage Explorer を使用したファイルの作成とアップロード](../../../../vs-azure-tools-storage-explorer-blobs.md)
 
 * カスタム NER に使用できるのは、`.txt` ファイルのみです 。 データが別の形式の場合は、[Cognitive Services 言語ユーティリティ ツール](https://aka.ms/CognitiveServicesLanguageUtilities)を使用して、ファイルを `.txt` フォーマットに解析できます。
 

@@ -8,12 +8,12 @@ ms.date: 11/01/2021
 ms.author: johnkem
 ms.service: chaos-studio
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: edbaeece6a486c170603304dfe328974e6b70879
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f06c89e61f9ed1889502417ca5708493dd9d2e33
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091876"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718471"
 ---
 # <a name="use-the-chaos-studio-rest-apis-to-run-and-manage-chaos-experiments"></a>Chaos Studio REST API を使用してカオス実験を実行および管理する
 
@@ -132,7 +132,7 @@ az rest --method get --url "https://management.azure.com/{experimentId}/executio
 
 | パラメーター名 | 定義 | 参照 |
 | --- | --- | --- |
-| {apiVersion} | 指定されたコマンドを実行するときに使用する API のバージョン | 詳しくは、[API ドキュメント](https://aka.ms/chaosrestapi)を参照してください。 |
+| {apiVersion} | 指定されたコマンドを実行するときに使用する API のバージョン | 詳しくは、[API ドキュメント](/rest/api/chaosstudio/)を参照してください。 |
 | {experimentId} | 実験の Azure リソース ID | [Chaos Studio 実験ポータル ブレード](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.chaos%2Fchaosexperiments)で確認できます。 |
 | {chaosProviderType} | Chaos Studio プロバイダーの種類または名前 | 使用可能なプロバイダーについては、[現在のプロバイダー構成の種類の一覧](chaos-studio-fault-providers.md)を参照してください。 |
 | {experimentName.json} | カオス実験の構成を含む JSON | ユーザーによって生成される |

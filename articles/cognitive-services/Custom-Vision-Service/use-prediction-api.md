@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/27/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99e2fbce479b575759a442f9dc278723adb2b25f
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 56c2e5849381becfcd561828300cf4780a1e168b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062377"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708819"
 ---
 # <a name="call-the-prediction-api"></a>Prediction API の呼び出し
 
@@ -50,7 +50,7 @@ Prediction API にイメージを送信するには、まず予測のイテレ�
 
 ## <a name="submit-data-to-the-service"></a>サービスにデータを送信する
 
-このガイドでは、Custom Vision 予測キーとエンドポイント URL を使用して、`predictionClient` という名前の **[CustomVisionPredictionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)** オブジェクトを既に作成していることを前提としています。 この機能を設定する方法については、[クイックスタート](quickstarts/image-classification.md)のいずれかに従ってください。
+このガイドでは、Custom Vision 予測キーとエンドポイント URL を使用して、`predictionClient` という名前の **[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)** オブジェクトを既に作成していることを前提としています。 この機能を設定する方法については、[クイックスタート](quickstarts/image-classification.md)のいずれかに従ってください。
 
 このガイドでは、ローカル イメージを使用するため、トレーニング済みのモデルに送信するイメージをダウンロードします。 次のコードは、ローカル パスを指定し、そのパスにあるファイルのバイトストリームを取得するようにユーザーに要求します。
 
@@ -71,7 +71,7 @@ private static byte[] GetImageAsByteArray(string imageFilePath)
 }
 ```
 
-**[ClassifyImageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclientextensions.classifyimageasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Prediction_CustomVisionPredictionClientExtensions_ClassifyImageAsync_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Prediction_ICustomVisionPredictionClient_System_Guid_System_String_System_IO_Stream_System_String_System_Threading_CancellationToken_)** メソッドは、プロジェクト ID とローカルに格納されているイメージを受け取り、指定されたモデルに対してイメージをスコア付けします。
+**[ClassifyImageAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclientextensions.classifyimageasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Prediction_CustomVisionPredictionClientExtensions_ClassifyImageAsync_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Prediction_ICustomVisionPredictionClient_System_Guid_System_String_System_IO_Stream_System_String_System_Threading_CancellationToken_)** メソッドは、プロジェクト ID とローカルに格納されているイメージを受け取り、指定されたモデルに対してイメージをスコア付けします。
 
 ```csharp
 // Make a prediction against the new project
@@ -81,7 +81,7 @@ var result = predictionApi.ClassifyImageAsync(project.Id, publishedModelName, by
 
 ## <a name="determine-how-to-process-the-data"></a>データの処理方法を決定する
 
-必要に応じて、別の方法を選択して、サービスがスコアリング操作を実行する方法を構成できます ( **[CustomVisionPredictionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet)** クラスのメソッドを参照してください)。 
+必要に応じて、別の方法を選択して、サービスがスコアリング操作を実行する方法を構成できます ( **[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet)** クラスのメソッドを参照してください)。 
 
 わかりやすくするために、上記の非同期バージョンのメソッドを使用できますが、プログラムがかなりの時間ロックされる可能性があります。
 
@@ -91,7 +91,7 @@ var result = predictionApi.ClassifyImageAsync(project.Id, publishedModelName, by
 
 ## <a name="get-results-from-the-service"></a>サービスから結果を取得する
 
-サービスでは、 **[ImagePrediction](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-dotnet)** オブジェクトの形式で結果が返されます。 **Predictions** プロパティには、 **[PredictionModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel?view=azure-dotnet)** オブジェクトの一覧が含まれています。これらはそれぞれ、単一のオブジェクト予測を表します。 これには、ラベルの名前と、イメージ内でオブジェクトが検出された境界ボックスの座標が含まれます。 その後、アプリはこのデータを解析して、たとえば、ラベルが付けられたオブジェクト フィールドを含むイメージをスクリーンに表示できます。 
+サービスでは、 **[ImagePrediction](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-dotnet)** オブジェクトの形式で結果が返されます。 **Predictions** プロパティには、 **[PredictionModel](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel?view=azure-dotnet)** オブジェクトの一覧が含まれています。これらはそれぞれ、単一のオブジェクト予測を表します。 これには、ラベルの名前と、イメージ内でオブジェクトが検出された境界ボックスの座標が含まれます。 その後、アプリはこのデータを解析して、たとえば、ラベルが付けられたオブジェクト フィールドを含むイメージをスクリーンに表示できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

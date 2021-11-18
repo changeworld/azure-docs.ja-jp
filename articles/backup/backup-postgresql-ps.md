@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: v-amallick
 ms.date: 10/14/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47beb64c518bbd55090c9cf6cd50068635310d25
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d11bebf36de7c5ffd7fae8b774ee428ae3a652b2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092779"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714734"
 ---
 # <a name="back-up-azure-postgresql-databases-using-azure-powershell"></a>Azure PowerShell を使用して Azure PostgreSQL データベースをバックアップする
 
@@ -62,7 +62,7 @@ Type                : Microsoft.DataProtection/backupVaults
 
 ### <a name="understand-postgresql-backup-policy"></a>PostgreSQL のバックアップ ポリシーについて
 
-ディスク バックアップは 1 日に複数回のバックアップを行い、BLOB バックアップはトリガーのない "*継続的*" バックアップを行いますが、PostgreSQL のバックアップではアーカイブを保護することができます。 最初にコンテナーに送信されるバックアップ データは、定義された規則や "*ライフサイクル*" に従って、*Archive* レベルに移すことができます。 この文脈で、PostgreSQL のバックアップ ポリシー オブジェクトについて説明を行います。
+ディスク バックアップは 1 日に複数回のバックアップを行い、BLOB バックアップはトリガーのない "*継続的*" バックアップを行いますが、PostgreSQL のバックアップではアーカイブを保護することができます。 最初にコンテナーに送信されるバックアップ データは、定義された規則や "*ライフサイクル*" に従って、*Archive* レベルに移動することができます。 このコンテキストで、PostgreSQL のバックアップ ポリシー オブジェクトについて理解しましょう。
 
 -  PolicyRule
    -  BackupRule
@@ -71,8 +71,8 @@ Type                : Microsoft.DataProtection/backupVaults
          -  初期データストア (バックアップを最初に保存する場所)
          -  トリガー (バックアップのトリガー方法)
             -  スケジュール ベース
-            -  既定のタグ付け条件 (スケジュールされたすべてのバックアップの既定の "タグ")。 このタグにより、バックアップが保持規則にリンクされます)
-   -  既定の保持規則 (既定では、初期データストアにおいて、すべてのバックアップに適用される規則)
+            -  既定のタグ付け条件 (スケジュールされたすべてのバックアップの既定の 'タグ'。 このタグにより、バックアップが保有規則にリンクされます)
+   -  既定の保有規則 (初期データストアにおいて、既定ですべてのバックアップに適用される規則)
 
 そのため、このオブジェクトは、トリガーされるバックアップの種類、トリガー方法 (スケジュールを使用)、タグを付ける対象、その保存先 (データストア)、およびデータストア内のバックアップ データのライフサイクルを定義します。 PostgreSQL の既定の PowerShell オブジェクトでは、"*完全*" バックアップを毎週トリガーし、コンテナーに保存され、3 か月間格納されるようになっています。
 
@@ -88,13 +88,13 @@ Type                : Microsoft.DataProtection/backupVaults
          -  初期データストア (バックアップを最初に保存する場所)
          -  トリガー (バックアップのトリガー方法)
             -  スケジュール ベース
-            -  既定のタグ付け条件 (スケジュールされたすべてのバックアップの既定の "タグ")。 このタグにより、バックアップが保持規則にリンクされます)
-            -  新しい保持規則の新しいタグ付け条件 ('X' と同じ名前)
-   -  既定の保持規則 (既定では、初期データストアにおいて、すべてのバックアップに適用される規則)
-   -  'X' という名前の新しい保持規則
+            -  既定のタグ付け条件 (スケジュールされたすべてのバックアップの既定の 'タグ'。 このタグにより、バックアップが保有規則にリンクされます)
+            -  新しい保有規則の新しいタグ付け条件 ('X' と同じ名前)
+   -  既定の保有規則 (初期データストアにおいて、既定ですべてのバックアップに適用される規則)
+   -  'X' という名前の新しい保有規則
       -  ライフサイクル
          -  ソース データストア
-         -  ソース データストアで一定期間が経過後に削除
+         -  ソース データストアで一定期間が経過した後削除する
          -  ターゲット データストアにコピー
 
 ### <a name="retrieving-the-policy-template"></a>ポリシー テンプレートの取得
@@ -180,7 +180,7 @@ Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $polic
 
 そのため、"_アーカイブ_" 保護を追加したい場合は、ポリシー テンプレートを以下のように変更する必要があります。
 
-既定のテンプレートには、既定の保持規則のもと、初期データストアのライフサイクルが設定されています。 このシナリオの規則には、3 か月後にバックアップ データを削除するよう記載されています。 バックアップ データを最初にアーカイブ データストアにコピーした後にコンテナー データストアで削除するなど、データを "*アーカイブ*" データストアに "*移動*" するタイミングを定義する、新しい保持規則を追加する必要があります。 また、この規則では、データを "*アーカイブ*" データストアに保持する期間も定義します。 [New-AzDataProtectionRetentionLifeCycleClientObject](/powershell/module/az.dataprotection/new-azdataprotectionretentionlifecycleclientobject?view=azps-6.5.0&preserve-view=true) コマンドを使用して新しいライフサイクルを作成した後、[Edit-AzDataProtectionPolicyRetentionRuleClientObject](/powershell/module/az.dataprotection/edit-azdataprotectionpolicyretentionruleclientobject?view=azps-6.5.0&preserve-view=true) コマンドを使用して、それらを新しい規則または既存の規則に関連付けます。
+既定のテンプレートには、既定の保持規則のもと、初期データストアのライフサイクルが設定されています。 このシナリオでは、3 か月後にバックアップ データを削除する規則となっています。 データを "*アーカイブ*" データストアに "*移動*" する (つまり、バックアップ データを最初にアーカイブ データストアにコピーした後にコンテナー データストアで削除する) タイミングを定義する新しい保有規則を追加する必要があります。 また、この規則では、データを "*アーカイブ*" データストアに保持する期間も定義します。 [New-AzDataProtectionRetentionLifeCycleClientObject](/powershell/module/az.dataprotection/new-azdataprotectionretentionlifecycleclientobject?view=azps-6.5.0&preserve-view=true) コマンドを使用して新しいライフサイクルを作成した後、[Edit-AzDataProtectionPolicyRetentionRuleClientObject](/powershell/module/az.dataprotection/edit-azdataprotectionpolicyretentionruleclientobject?view=azps-6.5.0&preserve-view=true) コマンドを使用して、それらを新しい規則または既存の規則に関連付けます。
 
 次の例では、毎月最初に成功したバックアップを 6 か月間コンテナーに保持し、その後 Archive レベルに移動して 24 か月間 Archive レベルに保持する、*Monthly* という名前の新しい保持規則を作成します。
 
@@ -228,7 +228,7 @@ $polOss = New-AzDataProtectionBackupPolicy -ResourceGroupName testBkpVaultRG -Va
 
 #### <a name="postgresql-database-to-be-protected"></a>保護する PostgreSQL データベース
 
-保護する PostgreSQL の Azure Resource Manager ID (ARM ID) を取得します。 これは、データベースの識別子となります。 ここでは、別のサブスクリプションのリソース グループ **ossrg** に存在する PostgreSQL サーバー **testposgresql** の下に、**empdb11** という名前のデータベースがある場合を例を使用します。
+保護する PostgreSQL の Azure Resource Manager ID (ARM ID) を取得します。 これは、データベースの識別子として機能します。 ここでは、別のサブスクリプションのリソース グループ **ossrg** に存在する PostgreSQL サーバー **testposgresql** の下に、**empdb11** という名前のデータベースがある場合を例を使用します。
 
 ```azurepowershell-interactive
 $ossId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx/resourcegroups/ossrg/providers/Microsoft.DBforPostgreSQL/servers/archive-postgresql-ccy/databases/empdb11"
@@ -246,7 +246,7 @@ $keyURI = "https://testkeyvaulteus.vault.azure.net/secrets/ossdbkey"
 
 ユーザーは、バックアップ コンテナーを PostgreSQL サーバーに接続してから、キー コンテナーに存在するキーを使用してデータベースにアクセスする必要があります。 そのため、PostgGreSQL サーバーとキー コンテナーへのアクセスが必要となります。 アクセス許可は、バックアップ コンテナーの MSI に付与されます。
 
-データベースのキーが保存されている PostgreSQL サーバー上のバックアップ コンテナーの MSI と、Azure キー コンテナーに付与すべき[適切な権限について確認します](/azure/backup/backup-azure-database-postgresql-overview#set-of-permissions-needed-for-azure-postgresql-database-backup)。
+データベースのキーが保存されている PostgreSQL サーバー上のバックアップ コンテナーの MSI と、Azure キー コンテナーに付与すべき[適切な権限について確認します](./backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-backup)。
 
 ### <a name="prepare-the-request"></a>要求を準備する
 

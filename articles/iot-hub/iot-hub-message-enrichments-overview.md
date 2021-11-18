@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub メッセージ エンリッチメントの概要
 description: この記事では、指定されたエンドポイントにメッセージが送信される前に、追加の情報をメッセージにスタンプする機能を IoT Hub に付与する、メッセージ エンリッチメントについて説明します。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.author: robinsh
-ms.openlocfilehash: 4edbdca9089cc04d7ba1f9a62216fb3370b787d5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: lizross
+ms.openlocfilehash: 4b204b8055cbf6cd2f00d3048bb64568cc16a1fb
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751969"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554505"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント
 

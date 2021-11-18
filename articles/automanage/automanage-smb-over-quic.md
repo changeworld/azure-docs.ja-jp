@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/1/2021
 ms.author: jol
-ms.openlocfilehash: 2246b54b6831d0e88581c80aedc4e39388c6f377
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 49c8e47fd695c2a65807ace4c33f07937544f149
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132327388"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719734"
 ---
 # <a name="smb-over-quic-with-automanage-machine-best-practices"></a>Automanage マシンのベスト プラクティスを使用した SMB over QUIC
 
-SMB over QUIC では、在宅勤務者、モバイル デバイス ユーザー、ブランチ オフィス向けに "SMB VPN" を提供することで、インターネットなどの信頼されていないネットワーク経由で、エッジ ファイル サーバーへの安全で信頼性の高い接続を実現します。 SMB over QUIC の詳細と、SMB over QUIC の構成方法については、「[SMB over QUIC](https://aka.ms/smboverquic)」を参照してください。
+SMB over QUIC では、在宅勤務者、モバイル デバイス ユーザー、ブランチ オフィス向けに "SMB VPN" を提供することで、インターネットなどの信頼されていないネットワーク経由で、エッジ ファイル サーバーへの安全で信頼性の高い接続を実現します。 SMB over QUIC の詳細と、SMB over QUIC の構成方法については、「[SMB over QUIC](/windows-server/storage/file-server/smb-over-quic)」を参照してください。
 
 また、SMB over QUIC は、Automanage マシンのベスト プラクティスと統合されているため、SMB over QUIC の管理がより簡単になります。 QUIC では証明書を使用して暗号化を実現するため、多くの組織では複雑な公開キー基盤の維持に苦労しています。 Automanage マシンのベスト プラクティスでは、証明書が警告なしに期限切れにならないようにして SMB over QUIC の有効性を維持し、サービスが最大限継続されるようにします。
 
@@ -61,4 +61,4 @@ VM 上の SMB over QUIC で Automanage マシンのベスト プラクティス�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [SMB over QUIC の詳細を確認する](https://aka.ms/smboverquic)
+> [SMB over QUIC の詳細を確認する](/windows-server/storage/file-server/smb-over-quic)

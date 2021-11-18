@@ -8,12 +8,12 @@ author: joshuha-msft
 ms.author: joowen
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e19e3eba40d843ae27a3d0817525f7ed65394d10
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 3205d5c3be7fe13cbaa4b881a3de6bffc15e9fd8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131844603"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550914"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 
@@ -114,5 +114,5 @@ Set-AzDataFactoryV2 -InputObject $dataFactory -Force
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure Data Factory における[継続的インテグレーションとデプロイ プロセス](continuous-integration-delivery.md)について確認する
+* Azure Data Factory における[継続的インテグレーションとデプロイ プロセス](continuous-integration-delivery-improvements.md)について確認する
 * [制御フローの式言語](control-flow-expression-language-functions.md)の使用方法を確認します

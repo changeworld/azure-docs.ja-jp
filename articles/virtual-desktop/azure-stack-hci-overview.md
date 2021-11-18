@@ -7,12 +7,12 @@ ms.date: 11/02/2021
 ms.author: helohr
 manager: femila
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5faea9929fb62af8736e62ca6e629cb2bde01f3a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5ba286a6023927d2c4d4821fb631a0df0b326b6c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452169"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704043"
 ---
 # <a name="azure-virtual-desktop-for-azure-stack-hci-preview"></a>Azure Stack HCI 用 Azure Virtual Desktop (プレビュー)
 
@@ -52,8 +52,6 @@ Azure Stack HCI 用 Azure Virtual Desktop を実行するためにかかる費�
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
 Azure Stack HCI 用 Azure Virtual Desktop のパブリック プレビュー バージョンに影響する次の問題が認識されています。
-
-- [RDP Shortpath](shortpath.md) を使用している Azure Virtual Desktop デプロイでは現在、Azure Stack HCI 上で実行されているセッション ホストに接続できません。
 
 - Azure Stack HCI ホスト プールでは現在、Azure Virtual Desktop の次の機能がサポートされていません。
     

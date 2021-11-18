@@ -2,16 +2,16 @@
 title: Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ
 description: Azure Monitor を使用して、Azure Data Explorer、Log Analytics ワークスペース、および Azure Monitor の従来の Application Insights アプリケーションの間で製品にまたがるクエリを実行します。
 author: osalzberg
-ms.author: bwren
+ms.author: orens
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 498fc101f257b05d24826cead8906b513ec34ccd
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: be0ee4853bc47e2f52d960f28e7d2f151c73861b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324531"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715361"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ
 Azure Monitor では、Azure Data Explorer、[Application Insights](../app/app-insights-overview.md)、および [Log Analytics](../logs/data-platform-logs.md) 間のクロスサービス クエリがサポートされています。 それにより、Log Analytics または Application Insights ツールを使用して Azure Data Explorer クラスターに対してクエリを実行し、それをクロスサービス クエリで参照することができます。 この記事では、クロスサービス クエリを作成する方法について説明します。
@@ -19,9 +19,6 @@ Azure Monitor では、Azure Data Explorer、[Application Insights](../app/app-i
 次の図は、Azure Monitor のクロスサービス フローを示しています。
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="ユーザー、Azure Monitor、プロキシ、および Azure Data Explorer 間のクエリのフローを示す図。":::
-
->[!NOTE]
-> Azure Monitor のクロスサービス クエリは、パブリック プレビュー段階にあります。 不明な点がある場合は、[サービス チーム](mailto:ADXProxy@microsoft.com)にお問い合わせください。
 
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Log Analytics または Application Insights リソースと Azure Data Explorer のクロスクエリを実行する
 

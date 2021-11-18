@@ -1,18 +1,18 @@
 ---
 title: Azure CLI を使用して IoT Hub へのファイルのアップロードを構成する | Microsoft Docs
 description: クロスプラットフォームの Azure CLI を使用して、Azure IoT Hub へのファイルのアップロードを構成する方法です。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.author: robinsh
-ms.openlocfilehash: ecaae482a0a577efd480610f25d0186502dbeb15
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: lizross
+ms.openlocfilehash: c3aa2d496151d8c9d9f6ef5acfea6dee55548b2b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735156"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555605"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Azure CLI を使用して IoT Hub ファイルのアップロードを構成する
 

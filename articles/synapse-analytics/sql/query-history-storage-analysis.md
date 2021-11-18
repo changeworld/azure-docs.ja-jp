@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/28/2021
 ms.custom: template-concept
-ms.openlocfilehash: 9f6493b2011a06a56f64e47711756b1172300885
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 2e018b87caee86616a12d817d8c628eff93c7a3d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132490271"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720152"
 ---
 # <a name="historical-query-storage-and-analysis-in-azure-synapse-analytics"></a>Azure Synapse Analytics での履歴クエリのストレージと分析
 
@@ -95,7 +95,7 @@ Azure Data Explorer と同様に、Log Analytics では Kusto クエリ言語 (K
 
 ## <a name="azure-data-explorer-adx"></a>Azure Data Explorer (ADX)
 
-Azure Data Explorer (ADX) は、最先端のデータ探索サービスです。 このサービスは、Azure Synapse Analytics からの履歴クエリを分析するために使用できます。 ログをコピーして Azure Data Factory (ADX) に保存するように ADF パイプラインを設定するには、「[Azure Data Explorer との間でデータをコピーする](/azure/data-factory/connector-azure-data-explorer)」を参照してください。 ADX では、パフォーマンスに優れた Kusto クエリを実行してログを分析できます。 たとえば ADF を使用して DMV 出力のクエリを実行して ADX に読み込むために、ここで他の戦略を組み合わせることができます。
+Azure Data Explorer (ADX) は、最先端のデータ探索サービスです。 このサービスは、Azure Synapse Analytics からの履歴クエリを分析するために使用できます。 ログをコピーして Azure Data Factory (ADX) に保存するように ADF パイプラインを設定するには、「[Azure Data Explorer との間でデータをコピーする](../../data-factory/connector-azure-data-explorer.md)」を参照してください。 ADX では、パフォーマンスに優れた Kusto クエリを実行してログを分析できます。 たとえば ADF を使用して DMV 出力のクエリを実行して ADX に読み込むために、ここで他の戦略を組み合わせることができます。
   
 長所:
 * ADX には、カスタマイズ可能なログ保持ポリシーが用意されています。
@@ -107,7 +107,7 @@ Azure Data Explorer (ADX) は、最先端のデータ探索サービスです。
 ## <a name="next-steps"></a>次の手順
 
  - [Azure Data Explorer](/azure/data-explorer/)
- - [Azure Data Factory](/azure/data-factory/)
- - [Azure Monitor の Log Analytics](/azure/azure-monitor/logs/log-analytics-overview)
+ - [Azure Data Factory](../../data-factory/index.yml)
+ - [Azure Monitor の Log Analytics](../../azure-monitor/logs/log-analytics-overview.md)
  - [Azure Synapse SQL アーキテクチャ](overview-architecture.md)
  - [Azure Synapse Analytics の使用を開始する](../get-started.md)

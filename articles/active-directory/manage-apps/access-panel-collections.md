@@ -13,14 +13,14 @@ ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610679e7a720f6736b575d2e58bc424de9e96d8d
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 62c4659d4784fb539a536131553dac73d8dcc278
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617893"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552054"
 ---
-# <a name="create-collections-on-the-my-apps-portal-in-azure-active-directory"></a>Azure Active Directory でマイ アプリ ポータルのコレクションを作成する
+# <a name="create-collections-on-the-my-apps-portal"></a>マイ アプリ ポータルでコレクションを作成する
 
 ユーザーは、マイ アプリポータルを使用して、自分がアクセス権を持つクラウドベースのアプリケーションを表示および起動できます。 既定では、ユーザーがアクセスできるすべてのアプリケーションが 1 つのページにまとめて表示されます。 Azure AD Premium P1 または P2 ライセンスをお持ちの場合は、このページをご自分のユーザー向けに整理するために、コレクションを設定できます。 コレクションを使用すると、関連するアプリケーションを (たとえば、ジョブのロール、タスク、またはプロジェクトごとに) グループ化して、別のタブに表示できます。コレクションでは基本的に、ユーザーが既にアクセスできるアプリケーションがフィルター選択されます。そのため、コレクションには、ユーザーに割り当てられているアプリケーションのみが表示されます。
 

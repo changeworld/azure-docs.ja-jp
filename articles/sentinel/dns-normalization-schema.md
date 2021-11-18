@@ -7,8 +7,6 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 ms.assetid: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +14,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3289f52d0f6925374aee5656afc797ed0713f962
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: a47f3503af5d59fdabe4a2f814076c0af87ec82a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521474"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721387"
 ---
 # <a name="microsoft-sentinel-dns-normalization-schema-reference-public-preview"></a>Microsoft Sentinel の DNS 正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -325,7 +323,7 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 - 切り詰め (TC)
 - Z
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次を参照してください。
 

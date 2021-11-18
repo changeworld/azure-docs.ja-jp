@@ -13,14 +13,14 @@ ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f9fb2c01a3e6cffd4091049579e570d77cdb35e2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0f15d42bb40adeebb65a73ec8c662006cd7b01b6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131459389"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553061"
 ---
-# <a name="manage-app-consent-policies-in-azure-active-directory"></a>Azure Active Directory でアプリ同意ポリシーを管理する
+# <a name="manage-app-consent-policies"></a>アプリ同意ポリシーを管理する
 
 Azure AD PowerShell を使用すると、アプリ同意ポリシーを表示および管理できます。
 

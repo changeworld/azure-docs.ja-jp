@@ -10,12 +10,12 @@ ms.subservice: ci-cd
 ms.custom: synapse
 ms.topic: troubleshooting
 ms.date: 11/09/2021
-ms.openlocfilehash: d3d792f6b51dc24b17d86d6a6fecc83697445a5a
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: 283285045de43f147eefe68b380b1f6819c9b80a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132157715"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720096"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での CI-CD、Azure DevOps、GitHub に関する問題のトラブルシューティング 
 
@@ -330,7 +330,7 @@ ARM テンプレートのデプロイが DataFactoryPropertyUpdateNotSupported (
 ARM テンプレートのデプロイで、既存の統合ランタイムの種類を変更しようとしています。 データ ファクトリでは CI/CD のすべてのステージで同じ名前と種類の統合ランタイムが必要になるため、これは許可されず、デプロイ エラーが発生します。
 
 ##### <a name="resolution"></a>解決策
-すべてのステージで統合ランタイムを共有する場合は、共有の統合ランタイムを含めるためだけに三項ファクトリを使用することを検討してください。 この共有ファクトリは、すべての環境で、リンクされた統合ランタイムの種類として使用できます。 詳細については、[継続的インテグレーションとデリバリー - Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-delivery#best-practices-for-cicd) に関する記事を参照してください
+すべてのステージで統合ランタイムを共有する場合は、共有の統合ランタイムを含めるためだけに三項ファクトリを使用することを検討してください。 この共有ファクトリは、すべての環境で、リンクされた統合ランタイムの種類として使用できます。 詳細については、[継続的インテグレーションとデリバリー - Azure Data Factory](./continuous-integration-delivery.md#best-practices-for-cicd) に関する記事を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

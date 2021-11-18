@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: eriklind
 ms.custom: ''
-ms.openlocfilehash: 37b03d96e67016bb9a250cd889da93fb30578d54
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 211721d66b1a69020860f5ba24aaf2bae525afdf
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240188"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717242"
 ---
 # <a name="add-a-heat-map-layer-to-the-azure-maps-visual-for-power-bi"></a>Power BI 用 Azure Maps ビジュアルにヒート マップ レイヤーを追加する
 
@@ -32,8 +32,8 @@ ms.locfileid: "130240188"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Power BI 用 Azure Maps ビジュアルの概要](/azure/azure-maps/power-bi-visual-getting-started)。
-- [Azure Maps Power BI ビジュアルのレイヤーの概要](/azure/azure-maps/power-bi-visual-understanding-layers)。
+- [Power BI 用 Azure Maps ビジュアルの概要](./power-bi-visual-getting-started.md)。
+- [Azure Maps Power BI ビジュアルのレイヤーの概要](./power-bi-visual-understanding-layers.md)。
 
 ## <a name="add-the-heat-map-layer"></a>ヒート マップ レイヤーを追加する
 

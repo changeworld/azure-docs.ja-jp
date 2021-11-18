@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 03/08/2021
-ms.openlocfilehash: c3e509a67eaf4bcc921032e762f54402f650ae3e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 13689ab5880a37569224cbd041ab9ab1ac6bda70
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971217"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713594"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの利用可能な地域と通貨のサポート
 
@@ -198,7 +198,7 @@ Microsoft は、顧客からはその現地通貨で支払いを受け取り、�
 
 - [Azure アプリケーション オファーを作成する](azure-app-offer-setup.md)
 - [Azure コンテナー オファーを作成する](azure-container-offer-setup.md)
-- [Azure 仮想マシン オファーを作成する](azure-vm-create.md)
+- [Azure 仮想マシン オファーを作成する](azure-vm-offer-setup.md)
 - [コンサルティング サービス オファーの作成](./create-consulting-service-offer.md)
 - [Dynamics 365 for Customer Engagement & Power Apps プランの作成](dynamics-365-customer-engage-offer-setup.md)
 - [Dynamics 365 for Operations オファーの作成](dynamics-365-operations-offer-setup.md)

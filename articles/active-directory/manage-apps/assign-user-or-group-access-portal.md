@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 4076b4ab582289e6b8de55a827ef834191099f47
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d06dc25abf6ae83fd975a0d8d7fe38d905290e92
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427629"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550781"
 ---
-# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションにユーザーとグループを割り当てる
+# <a name="assign-users-and-groups-to-an-application"></a>アプリケーションにユーザーとグループを割り当てる
 
 この記事では、PowerShell を使用して Azure Active Directory (Azure AD) でエンタープライズ アプリケーションにユーザーとグループを割り当てる方法について説明します。 アプリケーションにユーザーを割り当てると、そのアプリケーションが、簡単にアクセスできるようにユーザーの [マイ アプリ] ポータルに表示されます。 アプリケーションでロールが公開されている場合は、ユーザーに特定のロールを割り当てることもできます。
 

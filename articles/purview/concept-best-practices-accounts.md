@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: c061fcd27cbafae20732f7ab1436b3a55a5a8dc0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5e6faa2eb9556207aae7583044755bc9d01b0502
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130214816"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721843"
 ---
 # <a name="azure-purview-accounts-architectures-and-best-practices"></a>Azure Purview アカウントのアーキテクチャとベスト プラクティス  
 
@@ -64,7 +64,7 @@ Azure Purview でデータ ソースをスキャンすると、そのメタデ�
 
 現在、Purview ではマルチテナントをサポートしていません。 Azure データ ソースが、異なる Azure Active Directory テナントにある複数の Azure サブスクリプションにまたがって分散されている場合は、各テナントで個別の Azure Purview アカウントをデプロイすることをお勧めします。 
 
-VM ベースのデータ ソースと Power BI テナントには例外が適用されます。テナント間の Power BI を 1 つの Purview アカウントでスキャンして登録する方法の詳細については、[テナント間の Power BI の登録とスキャン](/azure/purview/register-scan-power-bi-tenant#register-and-scan-a-cross-tenant-power-bi)に関するページを参照してください。 
+VM ベースのデータ ソースと Power BI テナントには例外が適用されます。テナント間の Power BI を 1 つの Purview アカウントでスキャンして登録する方法の詳細については、[テナント間の Power BI の登録とスキャン](./register-scan-power-bi-tenant.md)に関するページを参照してください。 
 
 :::image type="content" source="media/concept-best-practices/accounts-multiple-tenants.png" alt-text="マルチテナントの要件に基づいた複数の Azure Purview アカウントを示すスクリーンショット。"lightbox="media/concept-best-practices/accounts-multiple-tenants.png"::: 
 

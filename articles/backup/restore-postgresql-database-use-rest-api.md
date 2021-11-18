@@ -6,16 +6,16 @@ ms.date: 10/23/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: eef655cb482bbfe61bcd645f6038616b4321229c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0d30731af6366a859b86341b318b1f8d9b5663a2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017391"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714202"
 ---
 # <a name="restore-azure-postgresql-databases-using-azure-data-protection-rest-api"></a>Azure Data Protection REST APIを介してAzure PostgreSQLデータベースを復元する
 
-この記事では、Azure Backup によってバックアップされた Azure PostgreSQL サーバーに[Azure PostgreSQL データベース](/azure/postgresql/overview#azure-database-for-postgresql---single-server)を復元する方法について説明します。
+この記事では、Azure Backup によってバックアップされた Azure PostgreSQL サーバーに[Azure PostgreSQL データベース](../postgresql/overview.md#azure-database-for-postgresql---single-server)を復元する方法について説明します。
 
 PaaS データベースの場合、既存のデータベースを (バックアップが作成された場所から) 置き換えることによって復元する、元の場所への復旧 (OLR) オプションはサポートされていません。 復旧ポイントから復元して、同じ Azure PostgreSQL サーバーまたは他の PostgreSQL サーバーに新しいデータベースを作成できます。 これは、Alternate-Location Recovery (ALR) と呼ばれ、ソース データベースと復元された (新しい) データベースの両方を保持するのに役立ちます。
 
@@ -41,9 +41,9 @@ PaaS データベースの場合、既存のデータベースを (バックア�
 
 バックアップボールトは、マネージド IDを使用して他のAzureリソースにアクセスします。 バックアップから復元するには、バックアップボールトのマネージド ID に、データベースを復元する Azure PostgreSQL サーバーに対する一連のアクセス許可が必要です。
 
-ターゲット PostgreSQL サーバーでボールトのシステム割り当てマネージド ID に関連するアクセス許可を割り当てるには、[Azure PostgreSQL データベースをバックアップするために必要な一連のアクセス許可](/azure/backup/backup-azure-database-postgresql-overview#set-of-permissions-needed-for-azure-postgresql-database-restore)を参照してください。
+ターゲット PostgreSQL サーバーでボールトのシステム割り当てマネージド ID に関連するアクセス許可を割り当てるには、[Azure PostgreSQL データベースをバックアップするために必要な一連のアクセス許可](./backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-restore)を参照してください。
 
-回復ポイントをファイルとしてストレージ アカウントに復元するには、[以下](/azure/backup/restore-azure-database-postgresql#restore-permissions-on-the-target-storage-account)に言及されたバックアップボールトのシステム割り当てマネージド ID がターゲット ストレージ アカウントにアクセスできる必要があります。
+回復ポイントをファイルとしてストレージ アカウントに復元するには、[以下](./restore-azure-database-postgresql.md#restore-permissions-on-the-target-storage-account)に言及されたバックアップボールトのシステム割り当てマネージド ID がターゲット ストレージ アカウントにアクセスできる必要があります。
 
 ### <a name="fetching-the-relevant-recovery-point"></a>適切な復元ポイントのフェッチ
 

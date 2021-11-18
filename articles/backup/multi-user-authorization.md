@@ -6,12 +6,12 @@ ms.date: 10/20/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: b02758f35c12355e401bc94028364df60004bb3e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 02380588d4c238fe293027423969460aa0c62738
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089855"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707644"
 ---
 # <a name="multi-user-authorization-using-resource-guard-preview"></a>Resource Guard を使用したマルチユーザー承認 (プレビュー)
 
@@ -77,7 +77,7 @@ Resource Guard を使用して MUA が構成されているコンテナーで重
 1. これで、バックアップ管理者が重要な操作を開始します。
 1. Azure Resource Manager は、バックアップ管理者に十分なアクセス許可があるかどうかを確認します。 これで、バックアップ管理者が Resource Guard の共同作成者ロールを持つたび、要求は完了します。
    - バックアップ管理者に必要なアクセス許可/ロールが与えなかった場合、要求は失敗します。
-1. セキュリティ管理者は、承認されたアクションが実行された後、または定義された期間後に、重要な操作を実行するための特権が取り消されます。 JIT ツール [Azure Active Directory Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-configure) の使用が、これを確実に行うのに役立つ場合があります。
+1. セキュリティ管理者は、承認されたアクションが実行された後、または定義された期間後に、重要な操作を実行するための特権が取り消されます。 JIT ツール [Azure Active Directory Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) の使用が、これを確実に行うのに役立つ場合があります。
 
 >[!NOTE]
 >- MUA は、Recovery Services コンテナーに対して実行された上記の操作に対する保護を提供します。 データ ソースに対して直接実行された操作 (つまり、保護されている Azure リソース/ワークロード) は、Resource Guard の範囲を超えます。 
@@ -103,7 +103,7 @@ RS コンテナーと Resource Guard は **異なるサブスクリプション�
 RS コンテナーと Resource Guard は、**異なるテナント内** にあります。 </br> バックアップ管理者は、Resource Guard、対応するサブスクリプション、または対応するテナントへのアクセス権を持ちません。| バックアップ管理者とセキュリティ管理者の間の最大分離が設けられます。そのため、セキュリティは最大です。 | テストには 2 つのテナントまたはディレクトリが必要です。 | リソース、サブスクリプション、またはディレクトリに対してアクセス許可またはロールが正しく割り当てられている必要があります。
 
  >[!NOTE]
- > この記事では、最大限の保護を提供する別のテナントでの Resource Guard の作成について説明します。 重要な操作を実行するための要求の要求と承認に関して、この記事では、Resource Guard を収容するテナントで [Azure Active Directory Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-configure) を使用して同じことを示します。 必要に応じて、他のメカニズムを使用して、設定に従って Resource Guard に対する JIT アクセス許可を管理できます。
+ > この記事では、最大限の保護を提供する別のテナントでの Resource Guard の作成について説明します。 重要な操作を実行するための要求の要求と承認に関して、この記事では、Resource Guard を収容するテナントで [Azure Active Directory Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) を使用して同じことを示します。 必要に応じて、他のメカニズムを使用して、設定に従って Resource Guard に対する JIT アクセス許可を管理できます。
 
 ## <a name="creating-a-resource-guard"></a>リソース グループを作成する
 
@@ -199,7 +199,7 @@ MUA を有効にすると、バックアップ管理者が Resource Guard に必
 
 ## <a name="authorize-critical-protected-operations-using-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を使用して重要な (保護された) 操作を承認する
 
-次のサブセクションでは、PIM を使用したこれらの要求の承認について説明します。 バックアップに対して重要な操作を実行する必要がある場合があります。MUA は、適切な承認またはアクセス許可が存在する場合にのみ実行されるのに役立ちます。 前に説明したように、バックアップ管理者は、Resource Guard スコープ内の重要な操作を実行するために、Resource Guard に対する共同作成者ロールを持っている必要があります。 このような操作に Just-In-Time を許可する方法の 1 つは、[Azure Active Directory (Azure AD) Privileged IDentity Management](/azure/active-directory/privileged-identity-management/pim-configure) を使用することです。
+次のサブセクションでは、PIM を使用したこれらの要求の承認について説明します。 バックアップに対して重要な操作を実行する必要がある場合があります。MUA は、適切な承認またはアクセス許可が存在する場合にのみ実行されるのに役立ちます。 前に説明したように、バックアップ管理者は、Resource Guard スコープ内の重要な操作を実行するために、Resource Guard に対する共同作成者ロールを持っている必要があります。 このような操作に Just-In-Time を許可する方法の 1 つは、[Azure Active Directory (Azure AD) Privileged IDentity Management](../active-directory/privileged-identity-management/pim-configure.md) を使用することです。
 
 >[!NOTE]
 > PIM をAzure AD推奨される方法ですが、手動またはカスタムの方法を使用して、Resource Guard のバックアップ管理者のアクセスを管理できます。 Resource Guard へのアクセスを手動で管理するには、Resource Guard の左側のナビゲーション バーにある [アクセス制御 (IAM)] 設定を使用し、バックアップ管理者に **共同作成者** ロールを付与します。
@@ -254,7 +254,7 @@ PIM を使用すると、セキュリティ管理者は、Resource Guard の共�
 
 セキュリティ管理者が適格な割り当てを作成した後、バックアップ管理者は、保護されたアクションを実行するために共同作成者ロールの割り当てをアクティブにする必要があります。 次のアクションは、ロールの割り当てをアクティブ化するために **バックアップ管理者** によって実行されます。
 
-1. [Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-configure) に移動します。 Resource Guard が別のディレクトリにある場合は、そのディレクトリに切り替えてから、[Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-configure) に移動します。
+1. [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) に移動します。 Resource Guard が別のディレクトリにある場合は、そのディレクトリに切り替えてから、[Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) に移動します。
 1. 左側のメニューの [自分のロール] > [Azure リソース] に移動します。
 1. バックアップ管理者は、共同作成者ロールの対象となる割り当てを確認できます。 **[アクティブにする]** をクリックして、有効にします。
 1. バックアップ管理者は、承認のために要求が送信されたというポータル通知を介して通知されます。
@@ -264,7 +264,7 @@ PIM を使用すると、セキュリティ管理者は、Resource Guard の共�
 ### <a name="approve-activation-of-requests-to-perform-critical-operations"></a>重要な操作を実行する要求のアクティブ化を承認する
 
 バックアップ管理者が共同作成者ロールをアクティブ化する要求を送信すると、その要求は **セキュリティ管理者** によって確認および承認されます。
-1. セキュリティ テナントで、[Azure AD Privileged Identity Management.](/azure/active-directory/privileged-identity-management/pim-configure) に移動します。
+1. セキュリティ テナントで、[Azure AD Privileged Identity Management.](../active-directory/privileged-identity-management/pim-configure.md) に移動します。
 1. **[要求の承認]** に移動します。
 1. **[Azure リソース]** の下に、**共同作成者** としてアクティブ化を要求するバックアップ管理者によって発生した要求が表示されます。
 1. 要求をレビューします。 そうであれば、要求を選択して **[承認]** をクリックして承認します。
@@ -281,11 +281,10 @@ Resource Guard の共同作成者ロールに対するバックアップ管理�
 ## <a name="disable-mua-on-a-recovery-services-vault"></a>Recovery Services コンテナーで MUA を無効にする
 
 MUA の無効化は保護された操作であるため、MUA を使用して保護されます。 つまり、バックアップ管理者は Resource Guard で必要な共同作成者ロールを持っている必要があります。 このロールの取得の詳細については、こちらを参照してください。 コンテナーで MUA を無効にする手順の概要を次に示します。
-1. バックアップ管理者は、Resource Guard の **共同作成者** ロールにセキュリティ管理者を要求します。 これは、組織によって承認されたメソッド (JIT プロシージャなど) や、[Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-configure)、またはその他の内部ツールやプロシージャを使用して要求できます。 
+1. バックアップ管理者は、Resource Guard の **共同作成者** ロールにセキュリティ管理者を要求します。 これは、組織によって承認されたメソッド (JIT プロシージャなど) や、[Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)、またはその他の内部ツールやプロシージャを使用して要求できます。 
 1. セキュリティ管理者は要求を承認し (承認される価値がある場合)、バックアップ管理者に通知します。これで、バックアップ管理者が Resource Guard に対する "共同作成者" ロールを持つ。
 1. バックアップ管理者は、コンテナー >[プロパティ] > [マルチユーザー認可] に移動します
 1. **[Update]\(更新\)** をクリックします。
    1. [Resource Guard で保護する] チェック ボックスをオフにします
    1. Resource Guard を含むディレクトリを選択し、[認証] ボタン (該当する場合) を使用してアクセスを確認します。
    1. **認証** 後、 **[保存]** をクリックします。 適切なアクセス権を持つ場合、要求は正常に完了する必要があります。
-

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 10/24/2021
 ms.custom: devx-track-azurecli
 ms.author: v-amallick
-ms.openlocfilehash: ad6602c5a7b9307643703aef87f29738cd6d99fa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2f032091eb6a0e7807046bb59dfc37709fb4c272
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092778"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717774"
 ---
 # <a name="back-up-azure-postgresql-databases-using-azure-cli"></a>Azure CLI を使用して Azure PostgreSQL データベースをバックアップする
 
@@ -302,7 +302,7 @@ keyURI="https://testkeyvaulteus.vault.azure.net/secrets/ossdbkey"
 
 バックアップ コンテナーを PostgreSQL サーバーに接続してから、キー コンテナーに存在するキーを使用してデータベースにアクセスする必要があります。 そのため、PostgreSQL サーバーとキー コンテナーへのアクセスが必要となります。 アクセス許可は、バックアップ コンテナーの MSI に付与されます。
 
-PostgreSQL サーバー上のバックアップ コンテナーの MSI と Azure Key Vault (データベースのキーが格納されている) に付与する必要がある[適切な権限について確認してください](/azure/backup/backup-azure-database-postgresql-overview#set-of-permissions-needed-for-azure-postgresql-database-backup)。
+PostgreSQL サーバー上のバックアップ コンテナーの MSI と Azure Key Vault (データベースのキーが格納されている) に付与する必要がある[適切な権限について確認してください](./backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-backup)。
 
 ### <a name="prepare-the-request"></a>要求を準備する
 

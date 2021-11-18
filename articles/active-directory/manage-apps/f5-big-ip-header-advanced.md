@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/10/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e66556e7233779d9fa7f9e2746839147cea42d54
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 15d55f82483f496da314fe7b81c3369cc03d1a2f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132349825"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717489"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-with-f5-big-ip-for-header-based-authentication"></a>チュートリアル: Azure Active Directory シングル サインオンと F5 BIG-IP の統合によるヘッダーベースの認証
 
@@ -30,7 +30,7 @@ BIG-IP 公開アプリケーションと Azure AD の統合には、次のよう
 
 - [Azure portal](https://azure.microsoft.com/features/azure-portal) という 1 つのコントロール プレーンからの ID とアクセスの管理
 
-すべての利点については、[F5 BIG-IP と Azure AD の統合](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)に関する記事と [Azure AD を使用したアプリケーション アクセスとシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)に関する記事を参照してください。
+すべての利点については、[F5 BIG-IP と Azure AD の統合](./f5-aad-integration.md)に関する記事と [Azure AD を使用したアプリケーション アクセスとシングル サインオン](/azure/active-directory/active-directory-appssoaccess-whatis)に関する記事を参照してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -68,7 +68,7 @@ BIG-IP 公開アプリケーションと Azure AD の統合には、次のよう
 
 - Azure AD 無料サブスクリプション (またはそれ以上)
 
-- 既存の BIG-IP。または [Azure に BIG-IP Virtual Edition (VE)](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide) をデプロイします。
+- 既存の BIG-IP。または [Azure に BIG-IP Virtual Edition (VE)](./f5-bigip-deployment-guide.md) をデプロイします。
 
 - 次のいずれかの F5 BIG-IP ライセンス SKU
 
@@ -80,13 +80,13 @@ BIG-IP 公開アプリケーションと Azure AD の統合には、次のよう
 
   - 90 日間の BIG-IP 全機能[試用版ライセンス](https://www.f5.com/trial/big-ip-trial.php)。
 
-- オンプレミスのディレクトリから Azure AD に[同期済み](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)のユーザー ID
+- オンプレミスのディレクトリから Azure AD に[同期済み](../hybrid/how-to-connect-sync-whatis.md)のユーザー ID
 
-- Azure AD アプリケーション管理者の[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator)を持つアカウント
+- Azure AD アプリケーション管理者の[アクセス許可](/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator)を持つアカウント
 
-- HTTPS でサービスを公開するための [SSL 証明書](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide#ssl-profile)。またはテスト時に既定の証明書を使用します
+- HTTPS でサービスを公開するための [SSL 証明書](./f5-bigip-deployment-guide.md#ssl-profile)。またはテスト時に既定の証明書を使用します
 
-- ヘッダーベースの既存のアプリケーション。またはテスト用に[簡単な IIS ヘッダー アプリをセットアップ](https://docs.microsoft.com/previous-versions/iis/6.0-sdk/ms525396(v=vs.90))します
+- ヘッダーベースの既存のアプリケーション。またはテスト用に[簡単な IIS ヘッダー アプリをセットアップ](/previous-versions/iis/6.0-sdk/ms525396(v=vs.90))します
 
 ## <a name="deployment-modes"></a>デプロイ モード
 
@@ -99,7 +99,7 @@ BIG-IP 公開アプリケーションと Azure AD の統合には、次のよう
 
 ## <a name="adding-f5-big-ip-from-the-azure-ad-gallery"></a>Azure AD ギャラリーから F5 BIG-IP の追加
 
-ビッグ IP APM と Azure AD 間に SAML フェデレーション信頼を設定することは、セキュリティで保護されたハイブリッド アクセスを実装するための最初の手順の1つです。 これにより、公開サービスへのアクセスを許可する BIG-IP が、あらかじめ事前認証と[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を Azure AD に引き継ぐうえで必要な統合が確立されます。
+ビッグ IP APM と Azure AD 間に SAML フェデレーション信頼を設定することは、セキュリティで保護されたハイブリッド アクセスを実装するための最初の手順の1つです。 これにより、公開サービスへのアクセスを許可する BIG-IP が、あらかじめ事前認証と[条件付きアクセス](../conditional-access/overview.md)を Azure AD に引き継ぐうえで必要な統合が確立されます。
 
 1. アプリケーションの管理者権限を持つアカウントを使用して、Azure AD ポータルにサインインします
 
@@ -156,13 +156,13 @@ BIG-IP 公開アプリケーションと Azure AD の統合には、次のよう
 
    ![[ユーザー属性とクレーム] の構成画面のスクリーンショット](./media/f5-big-ip-header-advanced/user-attributes-claims.png)
 
-   BIG-IP 公開アプリケーションがヘッダーとして想定する可能性のあるクレームが他にもあれば、自由に追加してください。 既定のクレームに加えて定義されたクレームは、Azure AD に存在する場合にのみ発行されます。 同様に、ディレクトリの[ロールまたはグループ](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims)のメンバーシップも、クレームとして発行する前に Azure AD 内のユーザー オブジェクトに対して定義する必要があります。
+   BIG-IP 公開アプリケーションがヘッダーとして想定する可能性のあるクレームが他にもあれば、自由に追加してください。 既定のクレームに加えて定義されたクレームは、Azure AD に存在する場合にのみ発行されます。 同様に、ディレクトリの[ロールまたはグループ](../hybrid/how-to-connect-fed-group-claims.md)のメンバーシップも、クレームとして発行する前に Azure AD 内のユーザー オブジェクトに対して定義する必要があります。
 
 9. **[SAML 署名証明書]** セクションで、 **[ダウンロード]** ボタンを選択して、 **[フェデレーション メタデータ XML]** ファイルをコンピューターに保存します。
 
    ![SAML 署名証明書を示すスクリーンショット](./media/f5-big-ip-header-advanced/saml-signing-certificate.png)
 
-Azure AD によって作成された SAML 署名証明書には 3 年間の有効期間があり、発行された[ガイダンス](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on)を使用して管理する必要があります。
+Azure AD によって作成された SAML 署名証明書には 3 年間の有効期間があり、発行された[ガイダンス](./manage-certificates-for-federated-single-sign-on.md)を使用して管理する必要があります。
 
 ### <a name="azure-ad-authorization"></a>Azure AD 認可
 
@@ -406,6 +406,6 @@ BIG-IP Web ポータルが使用されていない場合、ユーザーはサイ
 
 - [パスワードは忘れて、これからはパスワードレス](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [条件付きアクセスとは](../conditional-access/overview.md)
 
 - [リモート作業を可能にする Microsoft ゼロ トラスト フレームワーク](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)

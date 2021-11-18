@@ -13,14 +13,14 @@ ms.date: 07/29/2021
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: bokacevi, dacurwin
-ms.openlocfilehash: 9a0e9988bfdc76dd27473d243f671d13b4115cd4
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: e1cc07606664d39b6cc6e1c030935323d868b2a9
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132326531"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549092"
 ---
-# <a name="cloud-app-visibility-and-control-in-azure-active-directory"></a>Azure Active Directory のクラウド アプリの可視性と制御
+# <a name="cloud-app-visibility-and-control"></a>クラウド アプリの可視性と制御
 
 クラウド アプリとサービスの利点を最大限に活用するには、IT チームは、重要なデータを保護するためのコントロールを維持しながら、アクセスをサポートするための適切なバランスを見つける必要があります。 Microsoft Defender for Cloud Apps では、あらゆる Microsoft サービスとサードパーティ製クラウド サービスに対するネット上の脅威を特定し、対処するために、豊富な検出機能、データ送受信の制御、高度な分析を備えています。
 

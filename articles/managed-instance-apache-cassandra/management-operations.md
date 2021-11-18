@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d5a3dfe84c18d85d83148dc30a6092b85245e7b5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 53e454ba84747c0e5fdeb009bc9f53e51480be9d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092797"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715266"
 ---
 # <a name="management-operations-in-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra での管理操作
 
@@ -30,7 +30,7 @@ Azure Managed Instance for Apache Cassandra では、マネージド オープ�
 
 ## <a name="maintenance"></a>メンテナンス
 
-* [Nodetool の修復](https://docs.datastax.com/cassandra-oss/3.0/cassandra/tools/toolsRepair.html)は、[reaper](http://cassandra-reaper.io/) を使用してサービスによって自動的に実行されます。 このツールは毎週 1 回実行されます。 [ハイブリッド デプロイ](configure-hybrid-cluster.md)に独自のサービスを使用する場合は、これを無効にすることもできます。
+* [Nodetool の修復](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/tools/toolsRepair.html)は、[reaper](http://cassandra-reaper.io/) を使用してサービスによって自動的に実行されます。 このツールは毎週 1 回実行されます。 [ハイブリッド デプロイ](configure-hybrid-cluster.md)に独自のサービスを使用する場合は、これを無効にすることもできます。
 
 * ノードの稼働状況の監視は以下で構成されます。
 

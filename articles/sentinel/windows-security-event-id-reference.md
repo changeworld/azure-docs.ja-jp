@@ -7,20 +7,18 @@ author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: d51d2e09-a073-41c8-b396-91d60b057e6a
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 82be0e0e42690c23157511a16e404b4cd0048a36
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: c20d94c34e83a6720888358b470a718e6c406d2b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520277"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710915"
 ---
 # <a name="windows-security-event-sets-that-can-be-sent-to-microsoft-sentinel"></a>Microsoft Sentinel に送信できる Windows セキュリティ イベント セット
 

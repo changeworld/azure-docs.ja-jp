@@ -4,8 +4,6 @@ description: Fusion によって検出されたシナリオについて説明し
 services: sentinel
 documentationcenter: na
 author: yelevin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
@@ -13,12 +11,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b5c03e94dfd1bea5453a449d7c6ae045371150b7
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: a82b5f3507d67a2cdbcf065fa8a5452108afa54a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132523545"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721121"
 ---
 # <a name="scenarios-detected-by-the-microsoft-sentinel-fusion-engine"></a>Microsoft Sentinel Fusion エンジンによって検出されるシナリオ
 

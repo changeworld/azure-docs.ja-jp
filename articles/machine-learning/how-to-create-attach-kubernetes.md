@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/05/2021
-ms.openlocfilehash: 4f72252bf375f9341b08f99b57e540784b47429a
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 40652feccd86c5c88ab4624d2eeaad012851ed0a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132486312"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719321"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -48,7 +48,7 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
 - (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
 
-- [パブリックの完全修飾ドメイン名 (FQDN) とプライベート AKS クラスター](/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-fqdn)を使用することは Azure Machine Learning では __サポートされていません__。 
+- [パブリックの完全修飾ドメイン名 (FQDN) とプライベート AKS クラスター](../aks/private-clusters.md#create-a-private-aks-cluster-with-a-public-fqdn)を使用することは Azure Machine Learning では __サポートされていません__。 
 
 - AKS クラスターのコンピューティング名は、Azure ML ワークスペース内で一意である必要があります。 アルファベット文字、数字、ダッシュを含めることができます。 先頭にはアルファベット文字、末尾にはアルファベット文字または数字を使用する必要があり、長さは 3 ～ 24 文字にする必要があります。
  

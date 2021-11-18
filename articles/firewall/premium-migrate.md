@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1aeb31ff49389235d54950b76c68deb882e13797
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 574c1f7f84ae34b1a1158b61206135de79ee73af
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438495"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548066"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Azure Firewall Premium への移行
 
@@ -140,7 +140,7 @@ function TransformPolicyToPremium {
                         ResourceGroupName = $Policy.ResourceGroupName 
                         Location = $Policy.Location 
                         ThreatIntelMode = $Policy.ThreatIntelMode 
-                        BasePolicy = $Policy.BasePolicy.Id
+                        BasePolicy = $Policy.BasePolicy.Id 
                         DnsSetting = $Policy.DnsSettings 
                         Tag = $Policy.Tag 
                         SkuTier = "Premium" 
@@ -169,12 +169,18 @@ function TransformPolicyToPremium {
 
 function ValidateAzNetworkModuleExists {
     Write-Host "Validating needed module exists"
-    $networkModule = Get-InstalledModule -Name "Az.Network" -ErrorAction SilentlyContinue
-    if (($null -eq $networkModule) -or ($networkModule.Version -lt 4.5.0)){
+    $networkModule = Get-InstalledModule -Name "Az.Network" -MinimumVersion 4.5 -ErrorAction SilentlyContinue
+    if ($null -eq $networkModule) {
         Write-Host "Please install Az.Network module version 4.5.0 or higher, see instructions: https://github.com/Azure/azure-powershell#installation"
         exit(1)
     }
+    $resourceModule = Get-InstalledModule -Name "Az.Resources" -MinimumVersion 4.2 -ErrorAction SilentlyContinue
+    if ($null -eq $resourceModule) {
+        Write-Host "Please install Az.Resources module version 4.2.0 or higher, see instructions: https://github.com/Azure/azure-powershell#installation"
+        exit(1)
+    }
     Import-Module Az.Network -MinimumVersion 4.5.0
+    Import-Module Az.Resources -MinimumVersion 4.2.0
 }
 
 ValidateAzNetworkModuleExists

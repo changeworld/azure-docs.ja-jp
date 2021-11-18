@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: 35f57b29f20e4b9ca0105c2395a34376e25a8c8a
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 04a01833498154a1446e7f00aafb505b37e9e335
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132489116"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705020"
 ---
 # <a name="how-to-prepare-data-and-define-a-schema-for-custom-ner"></a>データを準備し、カスタム NER のスキーマを定義する方法
 
@@ -63,8 +63,8 @@ ms.locfileid: "132489116"
 
 プロジェクトを作成するための前提条件として、トレーニング データをストレージ アカウントの BLOB コンテナーにアップロードする必要があります。 トレーニング ファイルの作成とアップロードは、Azure から直接行うことも、 Azure Storage Explorer を使用して行うこともできます。 Azure Storage Explorer を使用すると、より多くのデータをすばやくアップロードできます。  
 
-* [Azure からのファイルの作成とアップロード](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
-* [Azure Storage Explorer を使用したファイルの作成とアップロード](/azure/vs-azure-tools-storage-explorer-blobs)
+* [Azure からのファイルの作成とアップロード](../../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+* [Azure Storage Explorer を使用したファイルの作成とアップロード](../../../../vs-azure-tools-storage-explorer-blobs.md)
 
 使用できるのは、`.txt` ファイルのみです。 データが他の形式の場合は、[CLUtils 解析コマンド](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md)を使用してファイル形式を変更できます。
 
@@ -72,4 +72,4 @@ ms.locfileid: "132489116"
  
 ## <a name="next-steps"></a>次のステップ
 
-まだ作成していない場合は、カスタム NER プロジェクトを作成します。 カスタム NER を初めて使用する場合は、[クイック スタート](../quickstart.md)に従ってサンプル プロジェクトを作成することを検討してください。 また、プロジェクトを作成するために必要な内容について詳しくは、[ハウツー記事](../how-to/create-project.md)を参照してください。 
+まだ作成していない場合は、カスタム NER プロジェクトを作成します。 カスタム NER を初めて使用する場合は、[クイック スタート](../quickstart.md)に従ってサンプル プロジェクトを作成することを検討してください。 また、プロジェクトを作成するために必要な内容について詳しくは、[ハウツー記事](../how-to/create-project.md)を参照してください。

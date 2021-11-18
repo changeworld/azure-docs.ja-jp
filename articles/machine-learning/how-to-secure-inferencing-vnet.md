@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 11/05/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: bd98c333043f3908a7a7ee50c01196304e5b693f
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: df790ee9480333b806ff1903d5e81d81a83177cd
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131891909"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723006"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -63,7 +63,7 @@ ms.locfileid: "131891909"
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
 * ワークスペースに __プライベート エンドポイント__ がある場合、Azure Kubernetes Service クラスターは、ワークスペースと同じ Azure リージョンに存在する必要があります。
-* [パブリックの完全修飾ドメイン名 (FQDN) とプライベート AKS クラスター](/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-fqdn)を使用することは Azure Machine Learning では __サポートされていません__。
+* [パブリックの完全修飾ドメイン名 (FQDN) とプライベート AKS クラスター](../aks/private-clusters.md#create-a-private-aks-cluster-with-a-public-fqdn)を使用することは Azure Machine Learning では __サポートされていません__。
 
 <a id="aksvnet"></a>
 

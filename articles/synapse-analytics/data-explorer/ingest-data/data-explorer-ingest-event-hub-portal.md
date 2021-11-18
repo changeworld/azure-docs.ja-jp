@@ -9,12 +9,12 @@ ms.reviewer: tzgitlin
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
-ms.openlocfilehash: 624658dda4f78270e6e3da75920c2fe76e112fb6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 54599b7d57b09b0815086231b5cc76cfbffc18b8
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477980"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720267"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-synapse-data-explorer"></a>イベント ハブから Azure Synapse Data Explorer にデータを取り込む
 
@@ -27,16 +27,16 @@ ms.locfileid: "131477980"
 
 [!INCLUDE [data-connector-intro](../includes/data-explorer-ingest-data-intro.md)]
 
-Azure Synapse Data Explorer は、ビッグ データ ストリーミング プラットフォームおよびイベント取り込みサービスである Event Hubs からのインジェスト (データの読み込み) を提供します。 [Event Hubs](/azure/event-hubs/event-hubs-about) は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 この記事では、イベント ハブを作成し、Azure Synapse Data Explorer からこれに接続し、システム経由でデータ フローを確認します。
+Azure Synapse Data Explorer は、ビッグ データ ストリーミング プラットフォームおよびイベント取り込みサービスである Event Hubs からのインジェスト (データの読み込み) を提供します。 [Event Hubs](../../../event-hubs/event-hubs-about.md) は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 この記事では、イベント ハブを作成し、Azure Synapse Data Explorer からこれに接続し、システム経由でデータ フローを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [data-explorer-ingest-prerequisites](../includes/data-explorer-ingest-prerequisites.md)]
 
 - Event Hubs からデータが送信されるターゲット テーブルを作成します
-    1. Synapse Studio の左側のペインで、 **[開発]** を選択します。
-    1. **[KQL スクリプト]** で、 **&plus;** (新しいリソースの追加) > **[KQL スクリプト]** を選択します。 右側のペインで、スクリプトに名前を指定できます。
-    1. **[接続先]** メニューで、 *[contosodataexplorer]* を選択します。
+    1. Synapse Studio の左側のウィンドウで、 **[開発]** を選択します。
+    1. **[KQL スクリプト]** で、 **&plus;** (新しいリソースの追加) > **[KQL スクリプト]** を選択します。 右側のウィンドウで、スクリプト名を指定できます。
+    1. **[接続先]** メニューで、[*contosodataexplorer*] を選択します。
     1. **[データベースの使用]** メニューで、 *[TestDatabase]* を選択します。
     1. 次のコマンドを貼り付け、 **[実行]** を選択してテーブルを作成します。
 
@@ -53,7 +53,7 @@ Azure Synapse Data Explorer は、ビッグ データ ストリーミング プ�
         .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
         ```
 
-- データ接続 (省略可能) には、[ユーザー割り当てマネージド ID](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity) または[システム割り当てマネージド ID ](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) を使用することをお勧めします。
+- データ接続 (省略可能) には、[ユーザー割り当てマネージド ID](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity) または[システム割り当てマネージド ID ](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity) を使用することをお勧めします。
 - データを生成してイベント ハブに送信する[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)。 ご使用のシステムにサンプル アプリをダウンロードしてください。
 - サンプル アプリを実行するための [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
@@ -140,7 +140,7 @@ Azure portal で Azure Resource Manager テンプレートを使用して、イ�
 | Event Hub 名前空間 | 一意の名前空間名 | 以前に選択した、名前空間を識別する名前。 |
 | イベント ハブ | *test-hub* | 作成したイベント ハブ。 |
 | コンシューマー グループ | *test-group* | 作成したイベント ハブに定義されているコンシューマー グループ。 |
-| イベント システム プロパティ | 関連するプロパティを選択する | [イベント ハブのシステム プロパティ](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 1 つのイベント メッセージに複数のレコードがある場合、システム プロパティは最初のレコードに追加されます。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/data-explorer/kusto/management/mappings?context=/azure/synapse-analytics/context/context)を[作成](/azure/data-explorer/kusto/management/create-table-command?context=/azure/synapse-analytics/context/context)または[更新](/azure/data-explorer/kusto/management/alter-table-command?context=/azure/synapse-analytics/context/context)して、選択したプロパティを含めます。 |
+| イベント システム プロパティ | 関連するプロパティを選択する | [イベント ハブのシステム プロパティ](../../../service-bus-messaging/service-bus-amqp-protocol-guide.md#message-annotations)。 1 つのイベント メッセージに複数のレコードがある場合、システム プロパティは最初のレコードに追加されます。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/data-explorer/kusto/management/mappings?context=/azure/synapse-analytics/context/context)を[作成](/azure/data-explorer/kusto/management/create-table-command?context=/azure/synapse-analytics/context/context)または[更新](/azure/data-explorer/kusto/management/alter-table-command?context=/azure/synapse-analytics/context/context)して、選択したプロパティを含めます。 |
 | 圧縮 | *なし* | イベント ハブ メッセージ ペイロードの圧縮の種類。 サポートされている圧縮の種類は、"*なし、Gzip*" です。|
 | マネージド ID | システム割り当て | イベント ハブに対する読み取りアクセスのために Data Explorer クラスターによって使用されるマネージド ID。<br /><br />**注**:<br />データ接続が作成されると、次のようになります。<br/>\- "*システム割り当て*" ID が存在しない場合は自動的に作成されます<br />\- マネージド ID は、"*Azure Event Hubs データ受信者*" ロールが自動的に割り当てられ、Data Explorer クラスターに追加されます。 ロールが割り当てられ、ID がクラスターに追加されたことを確認することをお勧めします。 |
 

@@ -4,12 +4,12 @@ description: この記事では、ハイブリッド環境でホストされて�
 ms.date: 11/03/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47191595fc5ff74598507b91b8189aa3bb368073
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 30c9a32cabf24e54dd41d45d40a8ff07920fd919
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131867108"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546920"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -249,8 +249,8 @@ Windows 用 Connected Machine エージェントをインストールした後�
 
     |名前 |既定値 |説明 |
     |-----|--------------|------------|
-    |IDENTITY_ENDPOINT |<http://localhost:40342/metadata/identity/oauth2/token> ||
-    |IMDS_ENDPOINT |<http://localhost:40342> ||
+    |IDENTITY_ENDPOINT |<`http://localhost:40342/metadata/identity/oauth2/token`> ||
+    |IMDS_ENDPOINT |<`http://localhost:40342`> ||
 
 * トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
 
@@ -308,8 +308,8 @@ Linux 用 Connected Machine エージェントをインストールした後、�
 
     |名前 |既定値 |説明 |
     |-----|--------------|------------|
-    |IDENTITY_ENDPOINT |<http://localhost:40342/metadata/identity/oauth2/token> ||
-    |IMDS_ENDPOINT |<http://localhost:40342> ||
+    |IDENTITY_ENDPOINT |<`http://localhost:40342/metadata/identity/oauth2/token`> ||
+    |IMDS_ENDPOINT |<`http://localhost:40342`> ||
 
 * エージェントのアンインストール中に、次の成果物は削除されません。
 

@@ -5,17 +5,15 @@ services: sentinel
 author: batamig
 ms.author: bagol
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.date: 11/09/2021
-ms.openlocfilehash: 10914037b239bf2301881a18c6095ba9364af4ae
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 0d298bfc2414c21efa8db869fae7bd9ab5f66632
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132517332"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712626"
 ---
 # <a name="large-scale-security-analytics-using-microsoft-sentinel-notebooks-and-azure-synapse-integration-public-preview"></a>Microsoft Sentinel ノートブックと Azure Synapse の統合を使用した大規模なセキュリティ分析 (パブリック プレビュー)
 
@@ -54,9 +52,9 @@ Microsoft Sentinel ノートブックで Azure Synapse を使用するには、�
 |Type  |詳細  |
 |---------|---------|
 |**Microsoft Sentinel**     |- Microsoft Sentinel からノートブックを保存して起動するための **Microsoft Sentinel 共同作成者** ロール         |
-|**Azure Machine Learning**     |- 必要に応じて、新しい Azure Machine Learning ワークスペースを作成するための、リソース グループ レベルの **所有者** または **共同作成者** ロール。 <br>- Microsoft Sentinel ノートブックを実行する Azure Machine Learning ワークスペースへの **共同作成者** ロール。    <br><br>詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](/azure/machine-learning/how-to-assign-roles)」を参照してください。     |
-|**Azure Synapse Analytics**     | - 新しい Azure Synapse ワークスペースを作成するための、リソース グループレベルの **所有者** ロール。<br>- クエリを実行するための Azure Synapse ワークスペースへの **共同作成者** ロール。 <br>- Synapse Studio への Azure Synapse Analytics **共同作成者** ロール   <br><br>詳細については、「[Synapse で一般的なタスクを実行するために必要なロールについて理解する](/azure/synapse-analytics/security/synapse-workspace-understand-what-role-you-need)」を参照してください。     |
-|**Azure Data Lake Storage Gen2**     | - Log Analytics ワークスペースからデータをエクスポートするための、Azure Log Analytics **共同作成者** ロール<br>- データ レイクからのデータのクエリを実行すための、Azure Blob Storage 共同作成者ロール  <br><br>詳細については、[Azure ロールの割り当て](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)に関するページを参照してください。|
+|**Azure Machine Learning**     |- 必要に応じて、新しい Azure Machine Learning ワークスペースを作成するための、リソース グループ レベルの **所有者** または **共同作成者** ロール。 <br>- Microsoft Sentinel ノートブックを実行する Azure Machine Learning ワークスペースへの **共同作成者** ロール。    <br><br>詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](../machine-learning/how-to-assign-roles.md)」を参照してください。     |
+|**Azure Synapse Analytics**     | - 新しい Azure Synapse ワークスペースを作成するための、リソース グループレベルの **所有者** ロール。<br>- クエリを実行するための Azure Synapse ワークスペースへの **共同作成者** ロール。 <br>- Synapse Studio への Azure Synapse Analytics **共同作成者** ロール   <br><br>詳細については、「[Synapse で一般的なタスクを実行するために必要なロールについて理解する](../synapse-analytics/security/synapse-workspace-understand-what-role-you-need.md)」を参照してください。     |
+|**Azure Data Lake Storage Gen2**     | - Log Analytics ワークスペースからデータをエクスポートするための、Azure Log Analytics **共同作成者** ロール<br>- データ レイクからのデータのクエリを実行すための、Azure Blob Storage 共同作成者ロール  <br><br>詳細については、[Azure ロールの割り当て](../storage/blobs/assign-azure-role-data-access.md?tabs=portal)に関するページを参照してください。|
 |     |         |
 
 ### <a name="connect-to-azure-ml-and-synapse-workspaces"></a>Azure ML および Synapse ワークスペースに接続する
@@ -77,7 +75,7 @@ Microsoft Sentinel の **[ノートブック]** ページの上部で、 **[Azur
 > Azure Data Lake Storage Gen2 は、すべての Azure Synapse ワークスペースが付属する組み込みのデータ レイクです。 Microsoft Sentinel ワークスペースと同じリージョンにある新しいデータ レイクを選択するか、作成してください。 これは、この記事で後述するように、データをエクスポートするときに必要です。
 >
 
-詳細については、[Azure Synapse のドキュメント](/azure/synapse-analytics/quickstart-create-workspace)を参照してください。
+詳細については、[Azure Synapse のドキュメント](../synapse-analytics/quickstart-create-workspace.md)を参照してください。
 
 
 ## <a name="configure-your-azure-synapse-analytics-integration"></a>Azure Synapse Analytics 統合を構成する
@@ -102,13 +100,13 @@ Microsoft Sentinel には、組み込みの「**Azure Synapse - Azure ML と Azu
 
 1. ノートブックの最初の手順のセルを実行して、必要な Python ライブラリと関数を読み込み、Azure リソースに対して認証します。
 
-1. 手順 4「**Azure Synapse Spark プールを構成する**」のセルを実行して、ビッグ データ クエリの実行時に使用する新しい [Azure Synapse Apache Spark プール](/azure/synapse-analytics/spark/apache-spark-pool-configurations)を作成します。
+1. 手順 4「**Azure Synapse Spark プールを構成する**」のセルを実行して、ビッグ データ クエリの実行時に使用する新しい [Azure Synapse Apache Spark プール](../synapse-analytics/spark/apache-spark-pool-configurations.md)を作成します。
 
-1. 手順 5「**Azure ML ワークスペースとリンクされたサービスを構成する**」のセルを実行して、Azure ML ワークスペースが Azure Synapse ワークスペースと通信できるようします。 詳細については、「[Azure Synapse Analytics と Azure Machine Learning ワークスペースをリンクして Apache Spark プールをアタッチする](/azure/machine-learning/how-to-link-synapse-ml-workspaces)」を参照してください。
+1. 手順 5「**Azure ML ワークスペースとリンクされたサービスを構成する**」のセルを実行して、Azure ML ワークスペースが Azure Synapse ワークスペースと通信できるようします。 詳細については、「[Azure Synapse Analytics と Azure Machine Learning ワークスペースをリンクして Apache Spark プールをアタッチする](../machine-learning/how-to-link-synapse-ml-workspaces.md)」を参照してください。
 
 1. 手順 6「**Azure Log Analytics から Azure Data Lake Storage Gen2 にデータをエクスポートする**」のセルを実行して、Azure Log Analytics から Azure Data Lake Storage へ、クエリに使用するデータをエクスポートします。
 
-データが Azure Data Lake Storage に格納されたら、Azure Synapse を使用してビッグ データ クエリの実行を開始する準備が整います。 詳細については、[Azure Monitor での Log Analytics データ エクスポート](/azure/azure-monitor/logs/logs-data-export?tabs=portal)に関するページを参照してください。
+データが Azure Data Lake Storage に格納されたら、Azure Synapse を使用してビッグ データ クエリの実行を開始する準備が整います。 詳細については、[Azure Monitor での Log Analytics データ エクスポート](../azure-monitor/logs/logs-data-export.md?tabs=portal)に関するページを参照してください。
 
 ## <a name="hunt-on-historical-data-at-scale"></a>大規模な履歴データの検索
 
@@ -259,4 +257,4 @@ lookback_days = "21" # fill in lookback days if you want to run it on historical
 
 - [Jupyter のノートブックを使用してセキュリティの脅威を検出する](notebooks.md)
 - [チュートリアル: Microsoft Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)
-- [Azure Synapse Analytics と Azure Machine Learning ワークスペースをリンクして Apache Spark プールをアタッチする (プレビュー)](/azure/machine-learning/how-to-link-synapse-ml-workspaces)
+- [Azure Synapse Analytics と Azure Machine Learning ワークスペースをリンクして Apache Spark プールをアタッチする (プレビュー)](../machine-learning/how-to-link-synapse-ml-workspaces.md)

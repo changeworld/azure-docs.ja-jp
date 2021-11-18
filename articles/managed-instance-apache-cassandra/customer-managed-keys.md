@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: conceptual
 ms.date: 10/29/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 4cf92148accf1d07aaafc0a1640de36e2884a9c5
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 8dc09c009f4254aa7f4149f95fe73bb4d7a406f9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131893445"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704105"
 ---
 # <a name="customer-managed-keys---overview"></a>カスタマー マネージド キー - 概要
 
@@ -20,7 +20,7 @@ Azure Managed Instance for Apache Cassandra には、独自のキーを使用し
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Key Vault を使用してシークレットを設定していること。 Azure Key Vault の詳細については、[こちら](/azure/key-vault/secrets/about-secrets)を参照してください。
+- Azure Key Vault を使用してシークレットを設定していること。 Azure Key Vault の詳細については、[こちら](../key-vault/secrets/about-secrets.md)を参照してください。
 - リソース グループに仮想ネットワークをデプロイし、Azure Cosmos DB サービス プリンシパルをメンバーとして、ネットワーク共同作成者ロールを適用していること。 詳細については、「[Azure CLI を使用して Azure Managed Instance for Apache Cassandra クラスターを作成する](create-cluster-cli.md)」を参照してください。 
 
 > [!IMPORTANT]

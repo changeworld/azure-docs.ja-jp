@@ -9,12 +9,12 @@ ms.reviewer: tzgitlin
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
-ms.openlocfilehash: dbdf77da2434c71de29f45885d3e08ad304e54ea
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6bfb614f3f0263b6ceff3fbf1e00a6c90215c6a2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478392"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720209"
 ---
 # <a name="use-one-click-ingestion-to-create-an-event-hub-data-connection-for-azure-synapse-data-explorer-preview"></a>ワンクリック インジェストを使用して Azure Synapse Data Explorer 用にイベント ハブ データ接続を作成する (プレビュー)
 
@@ -25,7 +25,7 @@ ms.locfileid: "131478392"
 > * [Python](data-explorer-ingest-event-hub-python.md)
 > * [Azure Resource Manager テンプレート](data-explorer-ingest-event-hub-resource-manager.md)
 
-Azure Synapse Data Explorer には、ビッグ データ ストリーミング プラットフォームおよびイベント取り込みサービスである Event Hubs からの取り込み (データの読み込み) 機能があります。 [Event Hubs](/azure/event-hubs/event-hubs-about) は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 この記事では、[ワンクリック インジェスト](data-explorer-ingest-data-one-click.md) エクスペリエンスを使用して、Azure Synapse Data Explorer のテーブルにイベント ハブを接続します。
+Azure Synapse Data Explorer には、ビッグ データ ストリーミング プラットフォームおよびイベント取り込みサービスである Event Hubs からの取り込み (データの読み込み) 機能があります。 [Event Hubs](../../../event-hubs/event-hubs-about.md) は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 この記事では、[ワンクリック インジェスト](data-explorer-ingest-data-one-click.md) エクスペリエンスを使用して、Azure Synapse Data Explorer のテーブルにイベント ハブを接続します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -80,7 +80,7 @@ Azure Synapse Data Explorer には、ビッグ データ ストリーミング �
     | Event Hub 名前空間 |  | 名前空間を識別する名前。 |
     | イベント ハブ |  | 使用するイベント ハブ。 |
     | コンシューマー グループ |  | イベント ハブに定義されているコンシューマー グループ。 |
-    | イベント システム プロパティ | 関連するプロパティを選択する | [イベント ハブのシステム プロパティ](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 1 つのイベント メッセージに複数のレコードがある場合、システム プロパティは最初のものに追加されます。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/data-explorer/kusto/management/mappings?context=/azure/synapse-analytics/context/context)を[作成](/azure/data-explorer/kusto/management/create-table-command?context=/azure/synapse-analytics/context/context)または[更新](/azure/data-explorer/kusto/management/alter-table-command?context=/azure/synapse-analytics/context/context)して、選択したプロパティを含めます。 |
+    | イベント システム プロパティ | 関連するプロパティを選択する | [イベント ハブのシステム プロパティ](../../../service-bus-messaging/service-bus-amqp-protocol-guide.md#message-annotations)。 1 つのイベント メッセージに複数のレコードがある場合、システム プロパティは最初のものに追加されます。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/data-explorer/kusto/management/mappings?context=/azure/synapse-analytics/context/context)を[作成](/azure/data-explorer/kusto/management/create-table-command?context=/azure/synapse-analytics/context/context)または[更新](/azure/data-explorer/kusto/management/alter-table-command?context=/azure/synapse-analytics/context/context)して、選択したプロパティを含めます。 |
 
 1. **[Next: Schema]\(次へ: スキーマ\)** を選択します。
 

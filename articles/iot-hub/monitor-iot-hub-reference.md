@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub の監視データのリファレンス
 description: Azure IoT Hub を監視する際に必要となる重要なリファレンス資料
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.topic: reference
 ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/22/2020
-ms.openlocfilehash: 6c7fd0a310663b664d33027951ade885b83d458a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 569d8aecd4b90fe7ad4cbe1513829c536682f8b4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570958"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554486"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub の監視データのリファレンス
 

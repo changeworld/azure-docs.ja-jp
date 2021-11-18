@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 07/09/2021
 ms.author: niwashbu
-ms.openlocfilehash: efd5b643608b8d3de5cacbc1f810a9b1e9efb612
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: febbd30bc342569f0a1e6dfb7b0de938cc461e65
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131501592"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717381"
 ---
 # <a name="azure-automanage-for-windows-server"></a>Windows Server 用 Azure Automanage
 
@@ -55,7 +55,7 @@ SMB over QUIC は、在宅勤務者、モバイル デバイス ユーザー、�
 
 また、SMB over QUIC は、[Windows Server 向け Automanage マシンのベスト プラクティス](automanage-windows-server.md)と統合されているため、SMB over QUIC の管理がより簡単になります。 QUIC では証明書を使用して暗号化を実現するため、多くの組織では複雑な公開キー基盤の維持に苦労しています。 Automanage マシンのベスト プラクティスでは、証明書が警告なしに期限切れにならないようにして SMB over QUIC の有効性を維持し、サービスが最大限継続されるようにします。
 
-詳細については、「[SMB over QUIC](https://aka.ms/smboverquic)」および[Automanage マシンのベスト プラクティスによる SMB over QUIC の管理](automanage-smb-over-quic.md)に関するページを参照してください。
+詳細については、「[SMB over QUIC](/windows-server/storage/file-server/smb-over-quic)」および[Automanage マシンのベスト プラクティスによる SMB over QUIC の管理](automanage-smb-over-quic.md)に関するページを参照してください。
  
 
 ### <a name="extended-network-for-azure"></a>Azure の拡張ネットワーク

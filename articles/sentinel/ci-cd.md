@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: how-to
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9a316ce12c9352b86e45426130925d4ca3e23c2f
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 0b321f268f74c020b35e79d44e39a66e53337642
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132518890"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724503"
 ---
 # <a name="deploy-custom-content-from-your-repository-public-preview"></a>リポジトリからカスタム コンテンツをデプロイする (パブリック プレビュー)
 
@@ -42,7 +40,7 @@ Microsoft Sentinel コンテンツ ハブで提供されている、すぐに利
 
 Microsoft Sentinel ワークスペースを外部ソース管理リポジトリに接続する前に、次があることを確認してください。
 
-- 関連する [Azure Resource Manager (ARM) テンプレート](/azure/azure-resource-manager/templates/)で、ワークスペースにデプロイするカスタム コンテンツ ファイルを含む GitHub または Azure DevOps リポジトリへのアクセス。
+- 関連する [Azure Resource Manager (ARM) テンプレート](../azure-resource-manager/templates/index.yml)で、ワークスペースにデプロイするカスタム コンテンツ ファイルを含む GitHub または Azure DevOps リポジトリへのアクセス。
 
     Microsoft Sentinel では、現在、GitHub および Azure DevOps のリポジトリとの接続のみがサポートされています。
 
@@ -105,7 +103,7 @@ Microsoft Sentinel ワークスペースを外部ソース管理リポジトリ�
     # <a name="azure-devops"></a>[Azure DevOps](#tab/azure-devops)
 
     > [!NOTE]
-    > Azure DevOps 接続を作成するとき、[ゲストユーザー](/azure/active-directory/external-identities/what-is-b2b)は、自分の Azure Active Directory テナントにないワークスペースに現在接続できません。 このようなクロステナント シナリオは、Azure DevOps 接続ではまだサポートされていません。
+    > Azure DevOps 接続を作成するとき、[ゲストユーザー](../active-directory/external-identities/what-is-b2b.md)は、自分の Azure Active Directory テナントにないワークスペースに現在接続できません。 このようなクロステナント シナリオは、Azure DevOps 接続ではまだサポートされていません。
     >
 
     現在の Azure 資格情報を使用して、Azure DevOps に自動的に承認されます。 有効な接続を確保するには、Microsoft Sentinel から接続しているのと[同じ Azure DevOps アカウントが承認されていることを確認する](https://aex.dev.azure.com/)か、InPrivate ブラウザーウィンドウを使用して接続を作成します。

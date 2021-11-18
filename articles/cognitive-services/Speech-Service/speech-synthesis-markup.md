@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: eur
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dbb9f42f7f0b58b14ae9a5c8824475c0fc15fd05
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: ea9f939c286d11d3d00eabcb3823884c8c8ea078
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505083"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719525"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -756,7 +756,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 **構文**
 
 ```xml
-<say-as interpret-as="string" format="digit string" detail="string"> <say-as>
+<say-as interpret-as="string" format="digit string" detail="string"> </say-as>
 ```
 
 **属性**

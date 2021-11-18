@@ -7,12 +7,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 11/10/2021
 ms.author: srijangupta
-ms.openlocfilehash: 702b57ed728323cfc9ca11dfbac1be785a580c03
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: c447f84e4e35997106341ceafb41e7c2244f7d05
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132289321"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724000"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -220,7 +220,7 @@ CentOS ベースの Linux オペレーティング システムを格納した A
     logout
     ```
 
-17. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を [Azure にアップロード](/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)する準備が整いました。
+17. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を [Azure にアップロード](./upload-vhd.md#option-1-upload-a-vhd)する準備が整いました。
 
 
 ## <a name="centos-70"></a>CentOS 7.0+
@@ -454,7 +454,7 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
     # logout
     ```
 
-15. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を [Azure にアップロード](/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)する準備が整いました。
+15. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を [Azure にアップロード](./upload-vhd.md#option-1-upload-a-vhd)する準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ
 

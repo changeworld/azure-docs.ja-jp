@@ -9,36 +9,36 @@ ms.date: 10/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: data
-ms.openlocfilehash: 05ae40fc974228bf93641be3786294aab59c243a
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: 42e7a6d972131125130e3dc1976b1061a32e07a9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132138518"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716678"
 ---
 # <a name="log-analytics-for-communications-services-preview"></a>Communications Services の Log Analytics (プレビュー)
 
 ## <a name="overview-and-access"></a>概要とアクセス
 
-Communications Services のログに対して [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) を利用する前に、まず、[診断設定でのログの有効化](enable-logging.md)に関するページで説明されている手順に従う必要があります。 ログと [Log Analytics ワークスペース](/azure/azure-monitor/logs/design-logs-deployment)を有効にすると、さまざまな[既定のクエリ パック](/azure/azure-monitor/logs/query-packs#default-query-pack)にアクセスできるようになります。これらのパックは、ログから取得できるデータ (以下で説明) をすばやく視覚化して理解するために役立ちます。 さらに、Log Analytics を利用して、より多くの Communications Services インサイトに Azure Monitor ブックを介してアクセスし ([Communications Services のインサイト](https://dev.loganalytics.io/)に関するページを参照)、独自のクエリやブックを作成したり、あらゆるクエリに [REST API でアクセス](insights.md)したりできます。
+Communications Services のログに対して [Log Analytics](../../../azure-monitor/logs/log-analytics-overview.md) を利用する前に、まず、[診断設定でのログの有効化](enable-logging.md)に関するページで説明されている手順に従う必要があります。 ログと [Log Analytics ワークスペース](../../../azure-monitor/logs/design-logs-deployment.md)を有効にすると、さまざまな[既定のクエリ パック](../../../azure-monitor/logs/query-packs.md#default-query-pack)にアクセスできるようになります。これらのパックは、ログから取得できるデータ (以下で説明) をすばやく視覚化して理解するために役立ちます。 さらに、Log Analytics を利用して、より多くの Communications Services インサイトに Azure Monitor ブックを介してアクセスし ([Communications Services のインサイト](https://dev.loganalytics.io/)に関するページを参照)、独自のクエリやブックを作成したり、あらゆるクエリに [REST API でアクセス](insights.md)したりできます。
 
 ### <a name="access"></a>Access
 クエリにアクセスするには、まず、Communications Services のリソース ページで、左側のナビゲーションにある [監視] セクション内の [ログ] をクリックします。
 
 :::image type="content" source="media\log-analytics\access-log-analytics.png" alt-text="Log Analytics のナビゲーション":::
 
-Communications Services で使用できる[既定のクエリ パック](/azure/azure-monitor/logs/query-packs#default-query-pack)のすべてがモーダル画面に表示されます。左側の一覧から、使用できるクエリ パックを選択できます。
+Communications Services で使用できる[既定のクエリ パック](../../../azure-monitor/logs/query-packs.md#default-query-pack)のすべてがモーダル画面に表示されます。左側の一覧から、使用できるクエリ パックを選択できます。
 
 :::image type="content" source="media\log-analytics\log-analytics-modal-resource.png" alt-text="Log Analytics クエリのモーダル" lightbox="media\log-analytics\log-analytics-modal-resource.png":::
 
-モーダル画面を閉じた後でも、診断設定で有効にしたログとメトリックのスキーマに応じて、さまざまなクエリ パックにアクセスしたり、テーブル形式のデータに直接アクセスしたりできます。 ここでは、[KQL (Kusto)](/azure/data-explorer/kusto/query/) を使用してデータから独自のクエリを作成できます。 クエリの使用、編集、作成の詳細については、[Log Analytics クエリ](/azure/azure-monitor/logs/queries)に関するページを参照してください。
+モーダル画面を閉じた後でも、診断設定で有効にしたログとメトリックのスキーマに応じて、さまざまなクエリ パックにアクセスしたり、テーブル形式のデータに直接アクセスしたりできます。 ここでは、[KQL (Kusto)](/azure/data-explorer/kusto/query/) を使用してデータから独自のクエリを作成できます。 クエリの使用、編集、作成の詳細については、[Log Analytics クエリ](../../../azure-monitor/logs/queries.md)に関するページを参照してください。
 
 :::image type="content" source="media\log-analytics\log-analytics-queries-resource.png" alt-text="リソース内の Log Analytics クエリ" lightbox="media\log-analytics\log-analytics-queries-resource.png":::
 
 :::image type="content" source="media\log-analytics\log-analytics-tables-resource.png" alt-text="リソース内の Log Analytics テーブル" lightbox="media\log-analytics\log-analytics-tables-resource.png":::
 
 ## <a name="default-query-packs-for-call-summary-and-call-diagnostic-logs"></a>通話概要ログと通話診断ログ用の既定のクエリ パック
-[通話概要ログと通話診断ログ](call-logs-azure-monitor.md)用の[既定のクエリ パック](/azure/azure-monitor/logs/query-packs#default-query-pack)に含まれる個々のクエリについて、コード サンプルと、使用可能な各クエリの出力例を含めて、以下で説明します。
+[通話概要ログと通話診断ログ](call-logs-azure-monitor.md)用の[既定のクエリ パック](../../../azure-monitor/logs/query-packs.md#default-query-pack)に含まれる個々のクエリについて、コード サンプルと、使用可能な各クエリの出力例を含めて、以下で説明します。
 ### <a name="call-overview-queries"></a>通話概要クエリ
 #### <a name="number-of-participants-per-call"></a>通話あたりの参加者数
 

@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/09/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d13b76e406398dcad37abb170b1f43439ab8bad4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: eb0c7430733da9956acb12eadd6dd348e2fa5c0d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662903"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724940"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで既存のオファーを更新する
 
@@ -87,7 +87,7 @@ ms.locfileid: "128662903"
 
 1. パートナー センターで、 **[プランの概要]** に戻ります。
 2. **[新しいプランの作成]** を選択します。 **[プラン ID]** と **[プラン名]** を入力してから、 **[作成]** を選択します。
-1. 非表示にしたプランの技術的構成を再利用するには、 **[Reuse technical configuration]\(技術的構成を再利用する\)** チェックボックスを選択します。 詳細については、[VM オファーのプランの作成](azure-vm-create-plans.md)に関するページを参照してください。
+1. 非表示にしたプランの技術的構成を再利用するには、 **[Reuse technical configuration]\(技術的構成を再利用する\)** チェックボックスを選択します。 詳細については、[VM オファーのプランの作成](azure-vm-plan-overview.md)に関するページを参照してください。
     > [!IMPORTANT]
     > **[This plan reuses technical configuration from another plan (このプランで別のプランの技術的構成を再利用する)]** を選択すると、後で親プランの配布を停止できなくなります。 親プランの配布を停止したい場合は、このオプションを使用しないでください。
 3. 新しい価格を含め、新しいプランのすべての必須セクションを入力します。

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.author: yitoh
 ms.date: 10/21/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 79e4507cb573dfe6893081df737a0e604810fbc5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 49e4bc5dbe2214cafe039ceb0d6163a42f388629
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091479"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715323"
 ---
 # <a name="inline-l7-ddos-protection-with-gateway-load-balancer-and-partner-nvas"></a>Gateway Load Balancer およびパートナー NVA を使用したインライン L7 DDoS 保護
 
@@ -31,7 +31,7 @@ Gateway Load Balancer は、サードパーティのネットワーク仮想ア�
 
 Gateway LB の機能を使用すると、NVA のデプロイ、スケーリング、管理を簡単に行えます。Gateway LB をパブリック エンドポイントにチェーンするために複雑な操作は必要ありません。  Gateway LB を使用して、ファイアウォール、高度なパケット分析、侵入検出や防止システム、またはニーズに合ったカスタム シナリオなど、さまざまなシナリオにアプライアンスを挿入できます。 NVA を使用するシナリオでは、フローが "対称" である必要があります。これにより、セッションが確実に維持され、対称的になります。 Gateway LB は、バックエンド プール内の特定のインスタンスに対してフローの対称性を維持します。
 
-Gateway Load Balancer の詳細については、[Gateway LB](https://aka.ms/gatewaylb) の製品とドキュメントを参照してください。 
+Gateway Load Balancer の詳細については、[Gateway LB](../load-balancer/gateway-overview.md) の製品とドキュメントを参照してください。 
 
 ## <a name="inline-ddos-protection-with-gateway-lb-and-partner-nvas"></a>Gateway LB とパートナー NVA を使用したインライン DDoS 保護
 
@@ -52,5 +52,5 @@ Standard Public Load Balancer フロントエンドの VNet または仮想マ�
 
 ## <a name="next-steps"></a>次のステップ
 - [インライン L7 DDoS 保護パートナー](https://aka.ms/inlineddospartners)の詳細情報
-- [Azure DDoS Protection Standard](https://aka.ms/ddosprotectiondocs) の詳細情報
-- [Gateway Load Balancer](https://aka.ms/gatewaylb) の詳細情報
+- [Azure DDoS Protection Standard](./ddos-protection-overview.md) の詳細情報
+- [Gateway Load Balancer](../load-balancer/gateway-overview.md) の詳細情報

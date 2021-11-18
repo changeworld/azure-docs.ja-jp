@@ -11,18 +11,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/16/2020
   ms.author: eur
-  ms.openlocfilehash: 2642a15a950ff2f293d951548efd1d14dd15b446
-  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+  ms.openlocfilehash: eb3dc09228b375ae6774ae400bdb5ea1f5fd6ee0
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131510134"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132550648"
 landingContent:
 - title: 会話の文字起こしについて (会議のシナリオ)
   linkLists:
   - linkListType: overview
     links:
-    - text: 会議での会話の文字起こしとは
+    - text: 会話の文字起こしとは
       url: conversation-transcription.md
   - linkListType: quickstart
     links:

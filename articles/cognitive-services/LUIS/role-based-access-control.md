@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c1f9d8783ca293898ff77f851ac928c1b94413e
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: 5d7469e8eb31acb1a9fdeece78affc1d12e33727
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132137887"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718452"
 ---
 # <a name="luis-role-based-access-control"></a>LUIS ロールベースのアクセス制御
 
-LUIS では、Azure リソースへの個々のアクセスを管理するための承認システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Azure RBAC を使用すると、LUIS 作成リソースに対してさまざまなアクセス許可レベルをさまざまなチーム メンバーに割り当てることができます。 詳細については、「[Azure RBAC のドキュメント](/azure/role-based-access-control/)」を参照してください。
+LUIS では、Azure リソースへの個々のアクセスを管理するための承認システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Azure RBAC を使用すると、LUIS 作成リソースに対してさまざまなアクセス許可レベルをさまざまなチーム メンバーに割り当てることができます。 詳細については、「[Azure RBAC のドキュメント](../../role-based-access-control/index.yml)」を参照してください。
 
 ## <a name="add-role-assignment-to-language-understanding-authoring-resource"></a>Language Understanding 作成リソースにロールの割り当てを追加する
 
@@ -34,11 +34,11 @@ Language Understanding 作成リソースに Azure RBAC を割り当てること
 1. **[メンバー]** タブで、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。
 1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
 
-数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。 これらの手順については、「[Azure portal を使用して Azure ロールを割り当てる](/azure/role-based-access-control/role-assignments-portal)」を参照してください。
+数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。 これらの手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="security"></a>セキュリティ 
 
-LUIS では Azure Active Directory (AAD) 認証をサポートします。 詳細については、「[Azure Active Directory を使用して認証する](/azure/cognitive-services/authentication#authenticate-with-azure-active-directory)」を参照してください。
+LUIS では Azure Active Directory (AAD) 認証をサポートします。 詳細については、「[Azure Active Directory を使用して認証する](../authentication.md#authenticate-with-azure-active-directory)」を参照してください。
 
 ## <a name="luis-role-types"></a>LUIS ロールの種類
 
@@ -144,4 +144,4 @@ LUIS アプリケーションの検証と確認のみを行う必要があるユ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure リソースの管理](/azure/cognitive-services/luis/luis-how-to-azure-subscription?branch=pr-en-us-171715&tabs=portal#authoring-resource)
+* [Azure リソースの管理](./luis-how-to-azure-subscription.md?branch=pr-en-us-171715&tabs=portal#authoring-resource)

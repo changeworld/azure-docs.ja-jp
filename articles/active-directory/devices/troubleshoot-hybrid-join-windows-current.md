@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f5320812be623437099ed0ab587dbbe3d4abe6ef
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: d2abaed55177a0e7acae22e3045ba68f56a5494e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132158758"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718187"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイスのトラブルシューティング
 
@@ -35,7 +35,7 @@ ms.locfileid: "132158758"
 
 
 > [!NOTE] 
-> デバイス登録に関するよくある問題のトラブルシューティングを行うには、[デバイス登録のトラブルシューティング ツール](https://aka.ms/DSRegTool)を使用してください。
+> デバイス登録に関するよくある問題のトラブルシューティングを行うには、[デバイス登録のトラブルシューティング ツール](/samples/azure-samples/dsregtool/dsregtool/)を使用してください。
 
 
 ## <a name="troubleshoot-join-failures"></a>参加エラーのトラブルシューティング

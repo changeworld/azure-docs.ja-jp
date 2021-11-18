@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/08/2021
-ms.openlocfilehash: c93a788686cd4ae7c0f20535b2ca0b4746fbdff2
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: c30b88361b4b617b092995cb8ddc0138ffcc8240
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132349798"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706594"
 ---
 # <a name="network-data-access-with-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでのネットワーク データ アクセス
 
@@ -41,9 +41,9 @@ ms.locfileid: "132349798"
     - ユーザー ID を使用して認証を行う場合、ストレージにアクセスしようとしているのが "*どの*" ユーザーであるかを知ることが大切です。
 2. アクセス許可はあるか
     - 資格情報は正しいでしょうか。 だとすれば、ストレージに対する必要なアクセス許可が、サービス プリンシパルやマネージド ID などに割り当てられているでしょうか。 アクセス許可の付与には、Azure ロールベースのアクセス制御 (Azure RBAC) が使用されます。
-    - ストレージ アカウントの[閲覧者](/azure/role-based-access-control/built-in-roles#reader)は、ストレージのメタデータを読み取ることができます。
-    - [ストレージ BLOB データ閲覧者](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)は、BLOB コンテナー内のデータを読み取ることができます。
-    - [共同作成者](/azure/role-based-access-control/built-in-roles#contributor)には、ストレージ アカウントへの書き込みアクセスが許可されます。
+    - ストレージ アカウントの[閲覧者](../role-based-access-control/built-in-roles.md#reader)は、ストレージのメタデータを読み取ることができます。
+    - [ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)は、BLOB コンテナー内のデータを読み取ることができます。
+    - [共同作成者](../role-based-access-control/built-in-roles.md#contributor)には、ストレージ アカウントへの書き込みアクセスが許可されます。
     - ストレージの種類によっては、さらに他のロールも必要になる場合があります。
 3. どこからアクセスしているか
     - ユーザー: クライアントの IP アドレスは、VNet またはサブネットの範囲内であるか。
@@ -74,7 +74,7 @@ Azure Machine Learning スタジオから Azure ストレージ アカウント�
 
 ワークスペースの作成時に、既存のストレージ アカウントを __既定のストレージ__ として使用した場合、ファイル ストアの `azureml-filestore` フォルダーが自動的には作成されません。 [AutoML](concept-automated-ml.md) の実験を送信する際には、このフォルダーが必要となります。
 
-この問題を回避するには、ワークスペースの作成時に、自分の代わりに既定のストレージを作成することを Azure Machine Learning に許可するか、または、既存のストレージ アカウントの場所が VNet 内 __ではない__ ことを確認してください。 Azure ストレージ アカウントでのネットワークの詳細については、[仮想ネットワークに対する Azure ストレージ アカウントの構成](/azure/storage/common/storage-network-security)に関するページを参照してください。
+この問題を回避するには、ワークスペースの作成時に、自分の代わりに既定のストレージを作成することを Azure Machine Learning に許可するか、または、既存のストレージ アカウントの場所が VNet 内 __ではない__ ことを確認してください。 Azure ストレージ アカウントでのネットワークの詳細については、[仮想ネットワークに対する Azure ストレージ アカウントの構成](../storage/common/storage-network-security.md)に関するページを参照してください。
 
 ### <a name="azure-storage-firewall"></a>Azure Storage ファイアウォール
 
@@ -105,4 +105,3 @@ Azure SQL Database では、__パブリック ネットワーク アクセスの
 ## <a name="next-steps"></a>次のステップ
 
 ネットワーク内でのスタジオの使用については、「[Azure 仮想ネットワークで Azure Machine Learning スタジオを使用する](how-to-enable-studio-virtual-network.md)」を参照してください。
-

@@ -13,14 +13,14 @@ ms.date: 06/01/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2, contperf-fy22q2
-ms.openlocfilehash: cbdf0ed80397d5cd63cd7c38f12f6432e420ec7c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 65cae86cd6183932df20a1642661bc277254fed3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998031"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552035"
 ---
-# <a name="configure-how-end-users-consent-to-applications-using-azure-active-directory"></a>Azure Active Directory を使用してエンド ユーザーがアプリケーションに同意する方法を構成する
+# <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
 アプリケーションを Microsoft ID プラットフォームと統合することにより、ユーザーは職場または学校のアカウントを使用してサインインすることや、組織のデータにアクセスして豊富なデータドリブン エクスペリエンスを実現することができます。
 

@@ -3,12 +3,12 @@ title: ラボと仮想マシンの自動シャットダウン ポリシーを構
 description: Azure DevTest Labs または個々の仮想マシン (VM) の自動シャットダウン スケジュールとポリシーを設定して、毎日特定の時点で VM をシャットダウンする方法について説明します。
 ms.topic: how-to
 ms.date: 11/01/2021
-ms.openlocfilehash: b795ab8baaec5ea84823d4741f1bfcc48c990204
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 028e52ccd4068524bcd9b4c8c5adb707d4400d70
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131503312"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722280"
 ---
 # <a name="configure-auto-shutdown-for-labs-and-vms-in-devtest-labs"></a>DevTest Labs でのラボと VM の自動シャットダウンを構成する
 
@@ -38,7 +38,7 @@ Azure DevTest Labs ラボ所有者は、ラボ内のすべての仮想マシン 
 
 ## <a name="configure-lab-auto-shutdown-policy"></a>ラボの自動シャットダウン ポリシーを構成する
 
-ラボ所有者は、ラボの自動シャットダウン ポリシー設定を管理することで、ラボのコストを制御し、無駄を最小限に抑えることができます。 すべてのラボ ポリシーの設定方法については、「[Azure DevTest Labs でのラボのポリシーの定義](devtest-lab-set-lab-policy.md)」をご覧ください。 
+ラボ所有者は、ラボの自動シャットダウン ポリシー設定を管理することで、ラボのコストを制御し、無駄を最小限に抑えることができます。 すべてのラボ ポリシーの設定方法については、「[Azure DevTest Labs でのラボのポリシーの定義](devtest-lab-set-lab-policy.md)」をご覧ください。
 
 > [!IMPORTANT]
 > シャットダウン ポリシーでの変更は、ラボで新しく作成される VM に対してのみ適用され、既存の VM には適用されません。
@@ -217,9 +217,9 @@ Azure Logic Apps によって、Office 365 や Twitter などの他のクライ�
 
    ![[メールの送信 (V2)] オプションを示すスクリーンショット。](media/devtest-lab-auto-shutdown/select-send-email.png)
 
-1. **[メールの送信 (V2)]** フォームで、 **[宛先]** 、 **[件名]** 、 **[本文]** のフィールドに入力します。 
+1. **[メールの送信 (V2)]** フォームで、 **[宛先]** 、 **[件名]** 、 **[本文]** のフィールドに入力します。
 
-   **[動的なコンテンツの追加]** を選択すると、アプリとコネクタで使用される値が通知に自動的に設定されます。 たとえば、 **[宛先]** で、 **[所有者]** を選択します。 **[件名]** に **vmName** と **labName** を入力します。 **skipUrl** や **delayUrl** などのコンテンツをメッセージ本文に追加します。
+   **[動的なコンテンツの追加]** を選択すると、アプリとコネクタで使用される値が通知に自動的に設定されます。 たとえば、 **[宛先]** で、 **[所有者]** を選択します。 **[件名]** に **vmName** と **labName** を入力します。 **skipUrl** や **delayUrl** 値などのコンテンツをメッセージ本文に追加します。
 
    ![通知メールの例を示すスクリーンショット。](media/devtest-lab-auto-shutdown/email-options.png)
 
@@ -229,8 +229,8 @@ Azure Logic Apps によって、Office 365 や Twitter などの他のクライ�
 
 ![Webhook URL のコピーを示すスクリーンショット。](media/devtest-lab-auto-shutdown/webhook-url.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ラボの仮想マシンの自動スタートアップ](devtest-lab-auto-startup-vm.md)
 - [Azure DevTest Labs でラボのポリシーを定義する](devtest-lab-set-lab-policy.md)
-- [Azure Logic Apps で受信 HTTPS 要求を受信して応答する](/azure/connectors/connectors-native-reqres)
+- [Azure Logic Apps で受信 HTTPS 要求を受信して応答する](../connectors/connectors-native-reqres.md)

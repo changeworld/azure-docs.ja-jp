@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/9/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 19e1d5f8eab559114f26d10a15c835cf0758b225
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: 27a5e1e1341b93a8172a179db1dc8596c103a184
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132133230"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716032"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -62,7 +62,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
     - ポータルを用いてサーバー エンドポイントを削除するとき、削除の理由に応じたステップ バイ ステップのガイダンスが表示されるようになりました。これによってデータの損失を防ぐと共に、あるべき場所 (サーバーまたは Azure ファイル共有) にデータを保持することができます。 また、この機能には新しい PowerShell コマンドレット (Get-StorageSyncStatus および New-StorageSyncUploadSession) が用意されており、それらをローカル サーバーで使用しながらプロビジョニング解除プロセスを効率よく進めることができます。
 
 - Invoke-AzStorageSyncChangeDetection コマンドレットの改善
-    - v14 未満のリリースでは、Azure ファイル共有に直接変更を加えた場合、Invoke-AzStorageSyncChangeDetection コマンドレットを使用して変更を検出し、同期グループ内のサーバーと同期させることができました。 ただしこのコマンドレットは、指定されたパスに含まれる項目の数が 10,000 を超えると実行に失敗します。 この Invoke-AzStorageSyncChangeDetection コマンドレットが改良されています。共有全体をスキャンする際に 10,000 項目の制限は適用されません。 詳細については、[Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) のドキュメントを参照してください。
+    - v14 未満のリリースでは、Azure ファイル共有に直接変更を加えた場合、Invoke-AzStorageSyncChangeDetection コマンドレットを使用して変更を検出し、同期グループ内のサーバーと同期させることができました。 ただしこのコマンドレットは、指定されたパスに含まれる項目の数が 10,000 を超えると実行に失敗します。 この Invoke-AzStorageSyncChangeDetection コマンドレットが改良されています。共有全体をスキャンする際に 10,000 項目の制限は適用されません。 詳細については、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) のドキュメントを参照してください。
 
 - その他の機能強化
     - Azure File Sync が米国西部 3 リージョンでサポートされるようになりました。

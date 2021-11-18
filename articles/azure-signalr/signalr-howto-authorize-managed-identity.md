@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 09/06/2021
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: 1d332fd5d69b088717501771ccc03d8d24126478
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b65dc12c3854a1730f74bf679a724e651985883b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478420"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716908"
 ---
 # <a name="authorize-request-to-signalr-resources-with-azure-ad-from-managed-identities"></a>マネージド ID からの Azure AD を使用した Azure SignalR Service リソースへの要求を承認する
 Azure SignalR Service では、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) からの Azure Active Directory (Azure AD) 承認要求がサポートされています。
@@ -67,17 +67,17 @@ Azure SignalR Service では、[Azure リソースのマネージド ID](../acti
 
 1. **[追加] > [ロールの割り当ての追加]** をクリックします。
 
-1. **[ロール]** タブで `SignalR App Server` を選択します。
+1. **[ロール]** タブで `SignalR App Server` を選びます。
 
 1. **[次へ]** をクリックします。
 
    ![ロールの割り当ての追加のスクリーンショット](./media/authenticate/add-role-assignment.png)
 
-1. **[アクセス権の割り当て先]** セクションの **[メンバー]** タブで、 **[マネージド ID]** を選択します。
+1. **[メンバー]** タブの **[アクセス権の割り当て先]** セクションで、 **[マネージド ID]** を選択します。
 
 1. **[メンバーの選択]** をクリックします。
 
-1. **[マネージド ID の選択]** ウィンドウで、 **[システム割り当てマネージド ID] > [仮想マシン]** を選択します
+1. **[マネージド ID の選択]** ペインで、 **[システム割り当てマネージド ID] > [仮想マシン]** を選択します
 
 1. ロールを割り当てる仮想マシンを検索して選択します。
 
@@ -144,9 +144,9 @@ services.AddSignalR().AddAzureSignalR(option =>
 > [!WARNING]
 > SignalR トリガー バインドでは、ID ベースの接続はまだサポートされていません。接続文字列はまだ必要です。
 
-Azure Functions SignalR のバインドでは、ポータルまたは[`local.settings.json`](/azure/azure-functions/functions-develop-local#local-settings-file)ローカルの[アプリケーション設定](/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を使用して、Azure SignalR Service リソースにアクセスするようにマネージド ID を構成します。
+Azure Functions SignalR のバインドでは、ポータルまたは[`local.settings.json`](../azure-functions/functions-develop-local.md#local-settings-file)ローカルの[アプリケーション設定](../azure-functions/functions-how-to-use-azure-function-app-settings.md)を使用して、Azure SignalR Service リソースにアクセスするようにマネージド ID を構成します。
 
-ID を構成するには、キーと値のペアのグループが必要な場合があります。 すべてのキーと値のペアのキーは、**接続名プレフィックス** (既定値は `AzureSignalRConnectionString`) と区切り記号 (ポータルで `__`、ローカルで `:`) で始まる必要があります。 プレフィックスは、バインド プロパティ [`ConnectionStringSetting`](/azure/azure-functions/functions-bindings-signalr-service) を使用してカスタマイズできます。
+ID を構成するには、キーと値のペアのグループが必要な場合があります。 すべてのキーと値のペアのキーは、**接続名プレフィックス** (既定値は `AzureSignalRConnectionString`) と区切り記号 (ポータルで `__`、ローカルで `:`) で始まる必要があります。 プレフィックスは、バインド プロパティ [`ConnectionStringSetting`](../azure-functions/functions-bindings-signalr-service.md) を使用してカスタマイズできます。
 
 #### <a name="using-system-assigned-identity"></a>システム割り当て ID を使用する
 

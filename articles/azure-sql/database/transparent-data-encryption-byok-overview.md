@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 06/23/2021
-ms.openlocfilehash: 8f056fd416b6bbb36296a57fca26906852eb3af8
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: 81d87e48b7c57eed172dbbc4b5bf7d427dae764c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132156569"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717001"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -90,7 +90,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 > カスタマー マネージド TDE で構成されているサーバーのキー コンテナーと、カスタマー マネージド TDE を使用する既存のサーバーでは、ソフト削除と消去保護の両方を有効にする必要があります。
 
 - サーバーまたはマネージド インスタンスに、そのキー コンテナー ID を使用してキー コンテナー (*get*、*wrapKey*、*unwrapKey*) へのアクセス権を付与Azure Active Directoryします。 サーバーを使用Azure portal、Azure ADが自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-configure.md)および [SQL Managed Instance 用 BYOK 対応 TDE の構成](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)に関する記事を参照してください。
-    - Key vault のアクセス許可モデル (アクセスポリシーまたは Azure RBAC) に応じて、key vault にアクセスポリシーを作成するか、ロール {1}Key Vault Crypto Service 暗号化ユーザー{2}を使用して新しい Azure RBAC ロールの割り当てを作成することによって、[key vault のアクセス権を付与できます](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations)。
+    - Key vault のアクセス許可モデル (アクセスポリシーまたは Azure RBAC) に応じて、key vault にアクセスポリシーを作成するか、ロール {1}Key Vault Crypto Service 暗号化ユーザー{2}を使用して新しい Azure RBAC ロールの割り当てを作成することによって、[key vault のアクセス権を付与できます](../../key-vault/general/rbac-guide.md#azure-built-in-roles-for-key-vault-data-plane-operations)。
 
 - AKV を使用してファイアウォールを使用する場合は、 *[Allow trusted Microsoft services to bypass the firewall]\(信頼された Microsoft サービスがファイアウォールをバイパスすることを許可する\)* オプションを有効にする必要があります。
 

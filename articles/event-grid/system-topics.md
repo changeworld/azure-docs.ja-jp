@@ -3,12 +3,12 @@ title: Azure Event Grid でのシステム トピック
 description: Azure Event Grid でのシステム トピックについて説明します。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 2c0bf2879ce2b137faf33f1ec00d456ab884ccf8
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 7e0354ec2b9aa5c8644998d618db9db693979b62
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035108"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550004"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピック
 Event Grid でのシステム トピックは、Azure Storage や Azure Event Hubs などの Azure サービスによって発行された 1 つ以上のイベントを表します。 たとえば、システム トピックは **すべての BLOB イベント**、または **特定のストレージ アカウント** に対して発行された **BLOB 作成** および **BLOB 削除** イベントのみを表す可能性があります。 この例では、BLOB がストレージ アカウントにアップロードされると、Azure Storage サービスは Event Grid でのシステム トピックに **BLOB 作成** イベントを発行します。その後、そのイベントはそこから、イベントを受信して処理するトピックの [サブスクライバー](event-handlers.md)に転送されます。 
@@ -44,7 +44,7 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 
 - [Azure portal でシステム トピックを表示する](create-view-manage-system-topics.md#view-all-system-topics)
 - Azure portal でシステム トピックやイベント サブスクリプションのための Resource Manager テンプレートをエクスポートする
-- [システム トピックの診断ログを設定する](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-system-topic)
+- [システム トピックの診断ログを設定する](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-system-topics)
 - 発行および配信エラーに関するアラートを設定する 
 
 ## <a name="lifecycle-of-system-topics"></a>システム トピックのライフサイクル

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c783ec82455e1460e3508357c29167c40ca4e9db
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 01d2e07e10c22a8a01c32391c43367d3e548a758
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132307974"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714430"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -40,7 +40,7 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 
 ### <a name="user-linked-detections"></a>ユーザー関連の検出
 
-ユーザー関連の危険なアクティビティでは、特定の悪意のあるサインインではなく、ユーザーそのものに関連するものを検出します。 これらのリスク検出は、Microsoft の内部および外部の脅威インテリジェンス ソース (セキュリティ研究者、法執行者、Microsoft のセキュリティ チーム、その他の信頼できるソースなど) を使用してオフラインで計算されます。
+ユーザー関連の危険なアクティビティでは、特定の悪意のあるサインインではなく、ユーザーそのものに関連するものを検出します。 
 
 これらのリスクは、Microsoft の内部および外部の脅威インテリジェンスソース (セキュリティ研究者、法執行者、Microsoft のセキュリティ チーム、その他の信頼できるソースなど) を使用してオフラインで計算されます。
 

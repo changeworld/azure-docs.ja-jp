@@ -13,14 +13,14 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 345d5e014631ef4f4a5dc0897face90a6267d032
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d2cf35dccf824f2d1f36f79f1ea833464fef5316
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619087"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548503"
 ---
-# <a name="problems-signing-in-to-a-microsoft-application-in-azure-active-directory"></a>Azure Active Directory で Microsoft アプリケーションにサインインできない問題
+# <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft アプリケーションへのサインインに関する問題
 
 Microsoft アプリケーション (Exchange、SharePoint、Yammer など) の割り当てと管理は、サード パーティの SaaS アプリケーションや、シングル サインオンで Azure AD と統合する他のアプリケーションとは少し異なる方法で行います。
 

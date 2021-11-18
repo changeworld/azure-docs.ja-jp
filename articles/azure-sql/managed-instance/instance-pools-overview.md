@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: mathoma
 ms.date: 10/25/2021
-ms.openlocfilehash: 3812be11d53b8a9c70e871b88ee61c474312c872
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9d052b7107a8ee85a7794f370849db0e6193f3a8
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031387"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716849"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL Managed Instance プール (プレビュー) とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ ms.locfileid: "131031387"
     - 8 個の仮想コアのプールでは、最大 200 個のデータベースがサポートされます。
     - 16 個の仮想コアのプールでは、最大 400 個のデータベースがサポートされます。
     - 24 個以上の仮想コアのプールでは、最大 500 個のデータベースがサポートされます。
-- Azure AD 認証は、フラグを使用してマネージインスタンスを作成または設定した後に使用でき `-AssignIdentity` ます。 詳細については、「 [AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) and [AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)」を参照してください。 その後、ユーザーは、 [Azure AD 管理者のプロビジョニング (SQL Managed Instance)](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-managed-instance)に従って、インスタンスの Azure AD 管理者を設定できます。
+- Azure AD 認証は、フラグを使用してマネージインスタンスを作成または設定した後に使用でき `-AssignIdentity` ます。 詳細については、「 [AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) and [AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)」を参照してください。 その後、ユーザーは、 [Azure AD 管理者のプロビジョニング (SQL Managed Instance)](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)に従って、インスタンスの Azure AD 管理者を設定できます。
 
 すべてのインスタンスのストレージの割り当てとデータベースの数の合計は、インスタンス プールによってさらされる制限以下にする必要があります。
 

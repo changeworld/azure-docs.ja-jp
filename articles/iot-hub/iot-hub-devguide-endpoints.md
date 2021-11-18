@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Hub のエンドポイントについて | Microsoft Docs
 description: 開発者ガイド - IoT Hub デバイス向けおよびサービス向けエンドポイントに関する参照情報。
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 47694418fab999646361dc8999ac250a6b58ab32
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e320fd286d9bde8cbc02a45815c662f6a2fd26fe
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727825"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548944"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 

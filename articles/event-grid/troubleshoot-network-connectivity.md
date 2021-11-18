@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 09/28/2021
 ms.author: batrived
-ms.openlocfilehash: c565a465dbab683295cf42248640bbbf8242412c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 38b3834b6c7c20e15f466b7af2fb7aa2b1780547
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229945"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548027"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>接続に関する問題のトラブルシューティング - Azure Event Grid
 
@@ -71,7 +71,7 @@ IP ファイアウォール規則は Event Grid のトピックまたはドメ�
 
 #### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>IP ファイアウォールによってブロックされている IP アドレスを見つける
 
-Event Grid のトピックまたはドメインの[診断ログを有効にします](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-custom-topic)。 拒否された接続の IP アドレスが表示されます。
+Event Grid のトピックまたはドメインの[診断ログを有効にします](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-topics-and-event-grid-domains)。 拒否された接続の IP アドレスが表示されます。
 
 ```json
 {

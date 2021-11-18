@@ -3,7 +3,7 @@ title: 顧客の音声リソースをバックアップおよび復旧する方�
 titleSuffix: Azure Cognitive Services
 description: Custom Speech と Custom Voice を使用してサービスの停止に備える方法について説明します。
 services: cognitive-services
-author: masakiitagaki
+author: masaki-itagaki
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/28/2021
 ms.author: mitagaki
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 860e70f567742a418e8de75c68793b29fb691df2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fbcea71a200ec65e2c179f98230e7a87775ebd80
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058371"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706537"
 ---
 # <a name="back-up-and-recover-speech-customer-resources"></a>顧客の音声リソースをバックアップおよび復旧する
 
@@ -122,6 +122,6 @@ Custom Voice では自動フェールオーバーはサポートされていま�
 
 ### <a name="speaker-recognition"></a>Speaker Recognition
 
-Speaker Recognition では、[Azure のペアになっているリージョン](/azure/best-practices-availability-paired-regions)を使用して、自動的にフェールオーバー操作を行います。 話者の登録と声紋は定期的にバックアップされ、データの損失を防ぎ、障害が発生した場合に使用することができます。
+Speaker Recognition では、[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)を使用して、自動的にフェールオーバー操作を行います。 話者の登録と声紋は定期的にバックアップされ、データの損失を防ぎ、障害が発生した場合に使用することができます。
 
 障害が発生すると、Speaker Recognition サービスはペアになっているリージョンに自動的にフェールオーバーし、メイン リージョンがオンラインに戻るまで、バックアップされたデータを使用して要求の処理を続行します。

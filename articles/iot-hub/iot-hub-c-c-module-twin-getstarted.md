@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub モジュール ID とモジュール ツイン (C) の概要
 description: モジュール ID を作成し、IoT SDK を使用して C のモジュール ツインを更新する方法を説明します。
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3df461a298e3f4b750ee0e29a6fe7aee8283e953
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: c71b7f4180df2037a606584fccfb0e0ddcbd3027
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729850"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547839"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT Hub モジュール ID とモジュール ツイン (C) の概要
 

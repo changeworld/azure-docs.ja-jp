@@ -3,12 +3,12 @@ title: Bicep CLI コマンドと概要
 description: Bicep CLI で使用できるコマンドについて説明します。 これらのコマンドには、Bicep からの Azure Resource Manager テンプレートの作成が含まれます。
 ms.topic: conceptual
 ms.date: 10/18/2021
-ms.openlocfilehash: ff5eea15c5e8e3b4f92cdde73d1dfd25865488f0
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: bbb9bbb0f960cac27cba794da410842b80356fb6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137618"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551940"
 ---
 # <a name="bicep-cli-commands"></a>Bicep CLI コマンド
 
@@ -138,7 +138,7 @@ az bicep publish <bicep-file> --target br:<registry-name>.azurecr.io/<module-pat
 az bicep publish storage.bicep --target br:exampleregistry.azurecr.io/bicep/modules/storage:v1
 ```
 
-`publish` コマンドは、[bicepconfig.json](bicep-config.md) ファイルに定義されたエイリアスを認識しません。 モジュールの完全なパスを指定してください。
+`publish` コマンドは、[bicepconfig.json](bicep-config-modules.md) ファイルに定義されたエイリアスを認識しません。 モジュールの完全なパスを指定してください。
 
 > [!WARNING]
 > 同じターゲットに発行すると、古いモジュールが上書きされます。 更新するときは、バージョンを増やすことをお勧めします。

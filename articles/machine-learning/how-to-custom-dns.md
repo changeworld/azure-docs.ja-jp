@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: f683d7192d73cc04b23b58243ba27ccc62afb010
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a5d7e7c0ca696e0e0a38519879dbad94301f5f0c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131468634"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706651"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "131468634"
 > この記事では、DNS ソリューションで DNS レコードを手動登録する必要がある場合に、これらのエントリの完全修飾ドメイン名 (FQDN) と IP アドレスを検索する方法について説明します。 また、この記事では、FQDN が正しい IP アドレスに自動的に解決されるようにカスタム DNS ソリューションを構成する方法についての、アーキテクチャに関する推奨事項も提供します。 これらの項目に対する DNS レコードの構成に関する情報については、この記事では説明しません。 レコードを追加する方法については、DNS ソフトウェアのドキュメントを参照してください。
 
 > [!WARNING]
-> 機械学習ワークスペースが依存する他の Azure サービス (Azure Storage、Azure Key Vault、Azure Container Registry など) にプライベート エンドポイントを使用する場合。 DNS エントリを作成するか、これらのサービスに条件付きフォワーダーを使用する必要もあります。 詳細については、「[Azure プライベート エンドポイントの DNS 構成](/azure/private-link/private-endpoint-dns)」をご覧ください。
+> 機械学習ワークスペースが依存する他の Azure サービス (Azure Storage、Azure Key Vault、Azure Container Registry など) にプライベート エンドポイントを使用する場合。 DNS エントリを作成するか、これらのサービスに条件付きフォワーダーを使用する必要もあります。 詳細については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md)」をご覧ください。
 
 > [!TIP]
 > この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
