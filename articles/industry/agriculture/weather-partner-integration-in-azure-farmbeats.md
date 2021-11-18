@@ -140,7 +140,7 @@ Docker プログラムには、ブートストラップとジョブという 2 �
 
 ### <a name="object-details"></a>オブジェクトの詳細
 
-WeatherDataModel | [説明] |
+WeatherDataModel | 説明 |
 --- | ---
 名前  | 気象データ モデルの名前。 |
 説明  | モデルについてのわかりやすい説明。 |
