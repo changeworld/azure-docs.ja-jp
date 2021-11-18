@@ -135,7 +135,7 @@ Defender for IoT と Forescout を構成した後、Defender for IoT でセン�
 
 1. **[CyberX Platform]\(CyberX プラットフォーム\)** に移動します。 Defender for IoT によって検出された OT デバイスの、以下のデバイス属性が表示されます。
 
-   | Item | [説明] |
+   | Item | 説明 |
    |--|--|
    | Authorized by Azure Defender for IoT (Azure Defender for IoT によって承認済み) | ネットワークの学習期間中に、Defender for IoT によってネットワーク上で検出されたデバイス。 |
    | ファームウェア | デバイスのファームウェアの詳細。 たとえば、モデルやバージョンの詳細などです。 |
