@@ -210,9 +210,9 @@ Azure Machine Learning では、以下の早期終了ポリシーがサポート
 
 次の構成パラメーターを指定します。
 
-* `slack_factor` または `slack_amount`: パフォーマンスが最高のトレーニング実行に関して許可される Slack。 `slack_factor` は、許可される Slack を比率として指定します。 `slack_amount` は、許可される Slack を比率ではなく絶対量として指定します。
+* `slack_factor` または `slack_amount`: パフォーマンスが最良のトレーニング実行に関して許可される Slack。 `slack_factor` は、許可される Slack を比率として指定します。 `slack_amount` は、許可される Slack を比率ではなく絶対量として指定します。
 
-    たとえば、間隔 10 で適用されるバンディット ポリシーについて考えてみます。 主要メトリックを最大化するという目標があり、間隔 10 で最高のパフォーマンスになる実行で主要メトリックが 0.8 であると報告されたとします。 ポリシーで 0.2 の `slack_factor` が指定された場合、間隔 10 で最高のメトリックを持つトレーニング実行のうち、0.66 (0.8/(1+`slack_factor`)) 未満のものが終了されます。
+    たとえば、間隔 10 で適用されるバンディット ポリシーについて考えてみます。 主要メトリックを最大化するという目標があり、間隔 10 で最良のパフォーマンスになる実行で主要メトリックが 0.8 であると報告されたとします。 ポリシーで 0.2 の `slack_factor` が指定された場合、間隔 10 で最良のメトリックを持つトレーニング実行のうち、0.66 (0.8/(1+`slack_factor`)) 未満のものが終了されます。
 * `evaluation_interval`: (省略可能) ポリシーを適用する頻度
 * `delay_evaluation`: (省略可能) 指定した間隔数の期間、最初のポリシー評価を遅延します
 
@@ -222,7 +222,7 @@ from azureml.train.hyperdrive import BanditPolicy
 early_termination_policy = BanditPolicy(slack_factor = 0.1, evaluation_interval=1, delay_evaluation=5)
 ```
 
-この例では、評価間隔 5 から始めて、メトリックが報告される間隔ごとに早期終了ポリシーが適用されます。 最高のメトリックが (1/(1 + 0.1) 未満、または最高のパフォーマンスの実行のうち 91% 未満の実行はすべて終了されます。
+この例では、評価間隔 5 から始めて、メトリックが報告される間隔ごとに早期終了ポリシーが適用されます。 最良のメトリックが (1/(1 + 0.1) 未満、または最良のパフォーマンスの実行のうち 91% 未満の実行はすべて終了されます。
 
 ### <a name="median-stopping-policy"></a>中央値の停止ポリシー
 
@@ -238,7 +238,7 @@ from azureml.train.hyperdrive import MedianStoppingPolicy
 early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_evaluation=5)
 ```
 
-この例では、評価間隔 5 から始めて、間隔ごとに早期終了ポリシーが適用されます。 トレーニング実行全体で、最高の主要メトリックが間隔 1:5 に対して移動平均の中央値未満の場合、実行は間隔 5 で終了されます。
+この例では、評価間隔 5 から始めて、間隔ごとに早期終了ポリシーが適用されます。 トレーニング実行全体で、最良の主要メトリックが間隔 1:5 に対して移動平均の中央値未満の場合、実行は間隔 5 で終了されます。
 
 ### <a name="truncation-selection-policy"></a>切り捨て選択ポリシー
 
@@ -457,9 +457,9 @@ RunDetails(hyperdrive_run).show()
 
 トレーニングの進行に合わせて、各実行のパフォーマンスを視覚化することもできます。
 
-## <a name="find-the-best-model"></a>最高のモデルを見つける
+## <a name="find-the-best-model"></a>最良のモデルを見つける
 
-すべてのハイパーパラメーター調整実行が完了したら、最高のパフォーマンスの構成とハイパーパラメーター値を特定します。
+すべてのハイパーパラメーター調整実行が完了したら、最良のパフォーマンスの構成とハイパーパラメーター値を特定します。
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
