@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: msjasteppe
   ms.author: jasteppe
-  ms.date: 10/28/2021
-  ms.openlocfilehash: 6e2030b234c75423fd95d14a59c6b77d14319a18
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.date: 11/16/2021
+  ms.openlocfilehash: e4bd74d0ccd38cc9878154b148e65e8b414c1a29
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: MT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131472998"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132709178"
 landingContent:
 - title: IoT コネクタのデプロイ
   linkLists:
@@ -32,9 +32,9 @@ landingContent:
     - text: IoT コネクタのデータ フロー
       url: iot-data-flow.md
     - text: デバイス マッピング
-      url: how-to-use-device-mapping-iot.md
-    - text: FHIR 変換先マッピング
-      url: how-to-use-fhir-mapping-iot.md
+      url: how-to-use-device-mappings.md
+    - text: FHIR 宛先マッピング
+      url: how-to-use-fhir-mappings.md
     - text: IoMT コネクタ データ マッパー ツール
       url: https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper
 - title: Azure IoT Hub
