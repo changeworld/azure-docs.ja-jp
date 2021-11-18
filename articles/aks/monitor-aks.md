@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2021
-ms.openlocfilehash: 28bf92ffeb97c65aadae3f61cf471efba943b5b7
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 7c0da13660f3fc987766554f40bc36020845dd85
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132491964"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287402"
 ---
 # <a name="monitoring-azure-kubernetes-service-aks-with-azure-monitor"></a>Azure Monitor のコンテナー正常性機能を使用して Azure Kubernetes Service (AKS) を監視する
 このシナリオでは、Azure Monitor を使用して、Azure Kubernetes Service (AKS) の正常性とパフォーマンスを監視する方法について説明します。 これには、傾向を識別するために収集されたデータの監視、分析、視覚化に不可欠なテレメトリのコレクションと、重大な問題が予防的に通知されるアラートを構成する方法が含まれます。
@@ -25,9 +25,9 @@ ms.locfileid: "132491964"
 - Azure Monitor とコンテナーの分析情報のギャップを埋める目的以外の Azure Monitor ではないツールを使用した AKS の監視。
 
 > [!NOTE]
-> Azure Monitor は、クラウド リソースの可用性とパフォーマンスを監視するために設計されました。 Azure Monitor に格納されている運用データはセキュリティ インシデントの調査に役立つ場合がある一方で、Azure の他のサービスは、セキュリティを監視するために設計されました。 AKS のセキュリティは [Microsoft Sentinel](../sentinel/overview.md) と [Microsoft Defender for Cloud](../defender-for-cloud/defender-for-cloud-introduction.md) によって監視されます。 Azure のセキュリティ監視ツールとその Azure Monitor との関連付けの説明については、「[Azure Monitor を使用して Azure 仮想マシンを監視する](../azure-monitor/vm/monitor-virtual-machine-security.md)」を参照してください。
+> Azure Monitor は、クラウド リソースの可用性とパフォーマンスを監視するために設計されました。 Azure Monitor に格納されている運用データはセキュリティ インシデントの調査に役立つ場合がある一方で、Azure の他のサービスは、セキュリティを監視するために設計されました。 AKS のセキュリティは [Microsoft Sentinel](../sentinel/overview.md) と [Microsoft Defender for Cloud](../security-center/security-center-introduction.md) によって監視されます。 Azure のセキュリティ監視ツールとその Azure Monitor との関連付けの説明については、「[Azure Monitor を使用して Azure 仮想マシンを監視する](../azure-monitor/vm/monitor-virtual-machine-security.md)」を参照してください。
 >
-> セキュリティ サービスを使用して AKS を監視する方法の詳細については、[Microsoft Defender for Kubernetes - 利点と機能](../defender-for-cloud/defender-for-kubernetes-introduction.md)および [Azure Kubernetes Service (AKS) 診断ログの Microsoft Sentinel への接続](../sentinel/data-connectors-reference.md#azure-kubernetes-service-aks)に関する記事を参照してください。
+> セキュリティ サービスを使用して AKS を監視する方法の詳細については、[Microsoft Defender for Kubernetes - 利点と機能](../security-center/defender-for-kubernetes-introduction.md)および [Azure Kubernetes Service (AKS) 診断ログの Microsoft Sentinel への接続](../sentinel/data-connectors-reference.md#azure-kubernetes-service-aks)に関する記事を参照してください。
 ## <a name="container-insights"></a>コンテナーの分析情報
 AKS は、他の Azure リソースと同様に、[プラットフォーム メトリックとリソース ログ](monitor-aks-reference.md)を生成します。これは、その基本的な正常性とパフォーマンスを監視するために使用できます。 [コンテナーの分析情報](../azure-monitor/containers/container-insights-overview.md)を有効にして、この監視を広げます。 コンテナーの分析情報は Azure Monitor の機能であり、他のクラスター構成に加えて、AKS でホストされているマネージド Kubernetes クラスターの正常性とパフォーマンスを監視します。 コンテナーの分析情報では、さまざまな監視シナリオで収集されたデータを分析する対話型のビューとブックが提供されます。 
 

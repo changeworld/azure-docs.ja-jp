@@ -1,31 +1,31 @@
 ---
-title: Azure IoT Hub を使用したデバイスデータの受信-Azure の医療 api
-description: このチュートリアルでは、IoT コネクタを使用して IoT Hub から FHIR サービスへのデバイスデータのルーティングを有効にする方法について説明します。
+title: Azure IoT Hub 経由でデバイス データを受信する - Azure Healthcare API
+description: このチュートリアルでは、IoT コネクタを使用して、デバイスから FHIR サービスへのデバイス IoT Hubルーティングを有効にする方法について説明します。
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: f12c5efe25f48ae16e4f59159936627a27b47212
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 9c4dd42d81374f75beb66f0564a2fb2b0fc38c01
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132283469"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709217"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>チュートリアル:Azure IoT Hub を通じてデバイス データを受信する
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-IoT コネクタでは、さまざまな IoT health 関連または医療機器から、高速医療相互運用性リソース (FHIR®) サービスに正常性データを収集して取り込む機能が提供されます。 IoT コネクタは、Azure IoT hub を介して作成および管理されるデバイスとの相互運用性と応答性が向上し、ワークフローの強化と使いやすさを実現します。 このチュートリアルでは、Azure IoT Hub から IoT コネクタに接続し、デバイス データをルーティングする手順について説明します。
+IoT コネクタは、さまざまな IoT 正常性関連または医療デバイスから正常性データを収集し、高速ヘルスケア相互運用性リソース (FHIR®) サービスに取り込む機能を提供します。 IoT コネクタは、高度なワークフローと使いやすさを実現するために、Azure IoT Hub を使用して作成および管理されたデバイスと相互運用可能で応答性に優れたデバイスです。 このチュートリアルでは、Azure IoT Hub から IoT コネクタに接続し、デバイス データをルーティングする手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブな Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- 少なくとも1つの IoT コネクタがある FHIR サービスリソース- [Azure portal を使用して iot コネクタをデプロイする](deploy-iot-connector-in-azure.md)
+- 少なくとも 1 つの IoT コネクタを使用した FHIR サービス リソース - [IoT](deploy-iot-connector-in-azure.md)コネクタをデプロイするには、次のAzure portal
 - 実際のデバイスまたはシミュレートされたデバイスに接続されている Azure IoT Hub リソース - [Azure portal を使用して IoT ハブを作成する](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)
 
 > [!TIP]
@@ -33,16 +33,16 @@ IoT コネクタでは、さまざまな IoT health 関連または医療機器�
 
 ## <a name="get-connection-string-for-iot-connector"></a>IoT コネクタの接続文字列を取得する
 
-Azure IoTハブには、IoT コネクタと安全に接続するための接続文字列が必要です。 「 [接続文字列を生成する](../azure-api-for-fhir/iot-fhir-portal-quickstart.md#generate-a-connection-string)」で説明されているように、IoT コネクタの新しい接続文字列を作成します。 この接続文字列をセーフ、次の手順で使用します。
+Azure IoT Hub には、IoT コネクタに安全に接続するための接続文字列が必要です。 「接続文字列を生成する」の説明に従って、IoT コネクタ用の新 [しい接続文字列を作成します](../azure-api-for-fhir/iot-fhir-portal-quickstart.md#generate-a-connection-string)。 セーフこの接続文字列を次の手順で使用する必要があります。
 
 IoT コネクタは、内部で Azure Event Hub インスタンスを使用してデバイス メッセージを受信します。 上記で作成した接続文字列は、実際には、この基盤となるイベント ハブへの接続文字列です。
 
-## <a name="connect-azure-iot-hub-with-iot-connector"></a>IoT コネクタを使用した Azure IoT ハブの Connect
+## <a name="connect-azure-iot-hub-with-iot-connector"></a>Connect Azure IoT Hub と IoT コネクタ
 
-Azure IoT Hub は、[メッセージ ルーティング](../../iot-hub/iot-hub-devguide-messages-d2c.md)と呼ばれる機能をサポートしています。これは、イベント ハブ、ストレージ アカウント、Service Bus などのさまざまな Azure サービスにデバイス データを送信する機能です。 IoT コネクタは、この機能を使用して、Azure IoT hub のデバイスデータを接続し、そのイベントハブエンドポイントに送信します。
+Azure IoT Hub は、[メッセージ ルーティング](../../iot-hub/iot-hub-devguide-messages-d2c.md)と呼ばれる機能をサポートしています。これは、イベント ハブ、ストレージ アカウント、Service Bus などのさまざまな Azure サービスにデバイス データを送信する機能です。 IoT コネクタでは、この機能を使用して、Azure IoT Hub からその Event Hub エンドポイントにデバイス データを接続して送信します。
 
 > [!NOTE] 
-> 現時点では、PowerShell または CLI コマンドのみを使用して [メッセージルーティングを作成](../../iot-hub/tutorial-routing.md) できます。これは、IoT コネクタのイベントハブが顧客サブスクリプションでホストされていないため、Azure portal を通じて表示されないためです。 ただし、PowerShell または CLI を使用してメッセージ ルート オブジェクトを追加すると、それらのオブジェクトが Azure portal に表示され、そこから管理できるようになります。
+> 現時点では、PowerShell または CLI コマンドのみを使用[](../../iot-hub/tutorial-routing.md)してメッセージ ルーティングを作成できます。IoT コネクタのイベント ハブは顧客のサブスクリプションでホストされていないので、Azure portal を通じて表示されません。 ただし、PowerShell または CLI を使用してメッセージ ルート オブジェクトを追加すると、それらのオブジェクトが Azure portal に表示され、そこから管理できるようになります。
 
 メッセージ ルーティングの設定は、2 つの手順から成ります。
 
@@ -58,8 +58,8 @@ Azure IoT Hub は、[メッセージ ルーティング](../../iot-hub/iot-hub-d
 |名前|hub-name|IoT Hub リソースの名前。|
 |EndpointName|endpoint-name|作成するエンドポイントに割り当てる名前を使用します。|
 |EndpointType|endpoint-type|IoT Hub が接続する必要があるエンドポイントの種類。 "EventHub" (PowerShell の場合) および "eventhub" (CLI の場合) というリテラル値を使用します。|
-|EndpointResourceGroup|endpoint-resource-group|IoT コネクタの FHIR サービスリソースのリソースグループ名。 この値は、FHIR サービスの [概要] ページから取得できます。|
-|EndpointSubscriptionID|endpoint-subscription-id|IoT コネクタの FHIR サービスリソースのサブスクリプション ID。 この値は、FHIR サービスの [概要] ページから取得できます。|
+|EndpointResourceGroup|endpoint-resource-group|IoT コネクタの FHIR サービス リソースのリソース グループ名。 この値は、FHIR サービスの [概要] ページから取得できます。|
+|EndpointSubscriptionID|endpoint-subscription-id|IoT コネクタの FHIR サービス リソースのサブスクリプション ID。 この値は、FHIR サービスの [概要] ページから取得できます。|
 |ConnectionString|connection-string|IoT コネクタへの接続文字列。 前の手順で取得した値を使用します。|
 
 ### <a name="add-a-message-route"></a>メッセージ ルートを追加する
@@ -75,9 +75,9 @@ Azure IoT Hub は、[メッセージ ルーティング](../../iot-hub/iot-hub-d
 |RouteName|route-name|作成するメッセージ ルートに割り当てる名前。|
 |source|source-type|エンドポイントに送信するデータの種類。 "DeviceMessages" (PowerShell の場合) および "devicemessages" (CLI の場合) というリテラル値を使用します。|
 
-## <a name="send-device-message-to-azure-iot-hub"></a>Azure IoT Hub にデバイスメッセージを送信する
+## <a name="send-device-message-to-azure-iot-hub"></a>デバイス メッセージを Azure IoT Hub に送信する
 
-実際のデバイスまたはシミュレートされたデバイスを使用して、以下に示す心拍メッセージのサンプルを Azure IoT Hub に送信します。 このメッセージは IoT コネクタにルーティングされ、メッセージは FHIR 監視リソースに変換され、FHIR サービスに格納されます。
+実際のデバイスまたはシミュレートされたデバイスを使用して、以下に示す心拍メッセージのサンプルを Azure IoT Hub に送信します。 このメッセージは IoT コネクタにルーティングされ、メッセージは FHIR Observation リソースに変換され、FHIR サービスに格納されます。
 
 ```json
 {
@@ -93,22 +93,22 @@ Azure IoT Hub は、[メッセージ ルーティング](../../iot-hub/iot-hub-d
 }
 ```
 > [!IMPORTANT]
-> IoT コネクタで構成された [マッピングテンプレート](how-to-use-fhir-mapping-iot.md) に準拠したデバイスメッセージを送信するようにしてください。
+> IoT コネクタで構成されたマッピング テンプレートに準拠するデバイス [メッセージを](how-to-use-fhir-mappings.md) 必ず送信してください。
 
-## <a name="view-device-data-in-fhir-service"></a>FHIR サービスでデバイスデータを表示する
+## <a name="view-device-data-in-fhir-service"></a>FHIR サービスでデバイス データを表示する
 
-Postman を使用して、FHIR サービス上の IoT コネクタによって作成された FHIR 監視リソースを表示できます。 詳細については、「 [Postman を使用した fhir サービスへのアクセス](./../use-postman.md)」と、 `GET` 上記の `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` サンプルメッセージで送信されたハートレートの値を使用して監視 fhir リソースを表示するように要求します。
+Postman を使用して、IoT コネクタによって作成された FHIR Observation リソースを FHIR サービスで表示できます。 詳細については [、「Postman](./../use-postman.md)を使用して FHIR サービスにアクセスする」を参照し、上記のサンプル メッセージで送信された心速度の値を持つ Observation FHIR リソースを表示する要求を `GET` `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` 行います。
 
 > [!TIP]
-> ユーザーが FHIR サービスデータプレーンへの適切なアクセス権を持っていることを確認します。 [Azure のロールベースのアクセス制御 (Azure RBAC)](../azure-api-for-fhir/configure-azure-rbac.md) を使用して、必要なデータ プレーン ロールを割り当てます。
+> ユーザーが FHIR サービス データ プレーンに適切なアクセス権を持っている必要があります。 [Azure のロールベースのアクセス制御 (Azure RBAC)](../azure-api-for-fhir/configure-azure-rbac.md) を使用して、必要なデータ プレーン ロールを割り当てます。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、IoT コネクタにデバイスデータをルーティングするように Azure IoT ハブを設定します。 次の手順の中から選択して、IoT コネクタの詳細を確認してください。
+このチュートリアルでは、デバイス データを IoT コネクタAzure IoTハブを設定します。 IoT コネクタの詳細については、次の手順から選択してください。
 
-IoT コネクタ内のデータフローのさまざまな段階を理解します。
+IoT コネクタ内のデータ フローの異なるステージについて説明します。
 
 >[!div class="nextstepaction"]
 >[IoT コネクタのデータ フロー](iot-data-flow.md)
 
-(FHIR&#174;) HL7 の登録商標であり、HL7 のアクセス許可と共に使用されます。
+(FHIR&#174;) は HL7 の商標であり、HL7 の許可を得て使用されます。

@@ -6,24 +6,24 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: 3b0d9a946408091f32b950e0daa349ee0f887380
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 6a3af00eaca90c2ecdbbdcc4f6cce5231ffefcc0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132281799"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719449"
 ---
 # <a name="iot-connector-troubleshooting-guide"></a>IoT コネクタのトラブルシューティングガイド
 
 > [!IMPORTANT]
-> Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
-
-この記事では、IoT コネクタの一般的なエラーメッセージと条件をトラブルシューティングする手順について説明します。 また、IoT コネクタのデバイスと高速医療相互運用性リソース (FHIR&#174;) の宛先マッピングのコピーを作成する方法についても説明します。 また、デバイスおよび FHIR の宛先マッピングのコピーを使用して、Azure portal の外部で編集およびアーカイブを行うこともできます。  
+> Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。 
 
 > [!TIP]
 > IoT コネクタの [Azure テクニカルサポート](https://azure.microsoft.com/support/create-ticket/) チケットを開くときに、デバイスのコピーと FHIR の移行先のマッピングを追加して、トラブルシューティングプロセスを支援します。
+
+この記事では、IoT コネクタの一般的なエラーメッセージと条件をトラブルシューティングする手順について説明します。 また、IoT コネクタのデバイスと高速医療相互運用性リソース (FHIR&#174;) の宛先マッピングのコピーを作成する方法についても説明します。 また、デバイスおよび FHIR の宛先マッピングのコピーを使用して、Azure portal の外部で編集およびアーカイブを行うこともできます。 
 
 ## <a name="device-and-fhir-destination-mappings-validations"></a>デバイスおよび FHIR の宛先マッピングの検証
 
@@ -85,28 +85,28 @@ ms.locfileid: "132281799"
 |潜在的な問題|修正|
 |----------------|-----|
 |データがまだ処理中です。|データはバッチで (最大 15 分ごとに) FHIR サービスに送信されます。  データがまだ処理中である可能性があります。また、データを FHIR サービスで永続化するにはさらに時間がかかります。|
-|デバイス マッピングが構成されていません。|準拠するデバイス マッピングを構成して保存します。|
-|FHIR 変換先マッピングが構成されていません。|準拠する FHIR 変換先マッピングを構成して保存します。|
-|デバイス メッセージには、デバイス マッピングで定義されている予期される式が含されていません。|[ `JsonPath` デバイス マッピング] で定義されている式が、デバイス メッセージで定義されているトークンと一致するを確認します。|
+|デバイスマッピングが構成されていません。|準拠しているデバイスのマッピングを構成して保存します。|
+|FHIR の宛先マッピングが構成されていません。|準拠する FHIR 変換先マッピングを構成して保存します。|
+|デバイスメッセージに、デバイスマッピングで定義された式が含まれていません。|デバイス `JsonPath` メッセージに定義されているデバイスマッピング一致トークンで定義されている式を確認します。|
 |FHIR サービスにデバイス リソースが作成されていません (解決の種類: 検索のみ)*。|FHIR サービスに有効なデバイス リソースを作成します。 受信メッセージで指定されたデバイス ID と一致する識別子が、デバイス リソースに含まれていることを確認してください。|
 |FHIR サービスに親リソースが作成されていません (解決の種類: 検索のみ)*。|FHIR サービスに有効な親リソースを作成します。|
 |`Device.patient` 参照が設定されていないか、参照が無効です (解決の種類: 検索のみ)*。|患者リソースに対して有効な[参照](https://www.hl7.org/fhir/device-definitions.html#Device.patient)が、デバイス リソースに含まれていることを確認します。| 
 
-*リファレンス [クイック スタート:](deploy-iot-connector-in-azure.md) Azure portal を使用して IoT コネクタをデプロイし、IoT コネクタの解決の種類の機能の説明を確認します (例: 参照または作成)。
+* リファレンスクイックスタート: IoT コネクタの解決の種類に関する機能的な説明 (例: Lookup または Create) については、 [Azure portal を使用して iot コネクタをデプロイ](deploy-iot-connector-in-azure.md) します。
 
 ### <a name="the-operation-performed-by-iot-connector"></a>IoT コネクタによって実行される操作
 
-このプロパティは、エラーが発生した場合に IoT コネクタによって実行される操作を表します。 通常、操作はデバイス メッセージ処理中のデータ フロー ステージを表します。 このプロパティの可能な値の一覧を次に示します。
+このプロパティは、エラーが発生したときに IoT コネクタによって実行される操作を表します。 通常、操作はデバイス メッセージ処理中のデータ フロー ステージを表します。 このプロパティの可能な値の一覧を次に示します。
 
 > [!NOTE]
-> IoT コネクタのデータ フローのさまざまなステージについては、「IoT コネクタのデータ フロー」 [を参照してください](iot-data-flow.md)。
+> IoT コネクタのデータフローのさまざまな段階については、「 [iot コネクタのデータフロー](iot-data-flow.md)」を参照してください。
 
 |データ フロー ステージ|Description|
 |---------------|-----------|
-|セットアップ|セットアップ データ フロー ステージは、IoT コネクタのインスタンスの設定に固有の操作です。|
+|セットアップ|セットアップデータフローステージは、IoT コネクタのインスタンスの設定に固有の操作です。|
 |正規化|正規化は、デバイス データが正規化されるデータ フロー ステージです。|
 |グループ化|正規化されたデータがグループ化されるグループ化データ フロー ステージ。|
-|FHIRConversion|FHIRConversion は、グループ化された正規化されたデータが FHIR リソースに変換されるデータ フロー ステージです。|
+|FHIRConversion|FHIRConversion は、グループ化された正規化されたデータを FHIR リソースに変換するデータフローステージです。|
 |Unknown|Unknown は、エラーが発生したときの不明な操作の種類です。|
 
 ### <a name="the-severity-of-the-error"></a>エラーの重大度
@@ -117,7 +117,7 @@ ms.locfileid: "132281799"
 |---------------|-----------|
 |警告|データ フロー プロセスにはいくつかの軽微な問題が存在しますが、デバイス メッセージの処理は停止しません。|
 |エラー|このメッセージは、特定のデバイス メッセージの処理でエラーが発生し、他のメッセージは想定どおりに実行が継続される可能性があるときに発生します。|
-|重大|このエラーは、IoT コネクタに一部のシステム レベルの問題が存在し、メッセージが処理される予定がない場合です。|
+|重大|このエラーは、IoT コネクタにシステムレベルの問題が存在し、処理する必要があるメッセージがない場合に発生します。|
 
 ### <a name="the-type-of-error"></a>エラーの種類
 
@@ -125,11 +125,11 @@ ms.locfileid: "132281799"
 
 |エラーの種類|Description|
 |----------|-----------|
-|`DeviceTemplateError`|このエラーの種類は、デバイス マッピングに関連しています。|
+|`DeviceTemplateError`|このエラーの種類は、デバイスマッピングに関連しています。|
 |`DeviceMessageError`|このエラーの種類は、特定のデバイス メッセージを処理するときに発生します。|
-|`FHIRTemplateError`|このエラーの種類は、FHIR 変換先マッピングに関連しています|
+|`FHIRTemplateError`|このエラーの種類は、FHIR の宛先マッピングに関連しています|
 |`FHIRConversionError`|このエラーの種類は、メッセージを FHIR リソースに変換するときに発生します。|
-|`FHIRResourceError`|このエラーの種類は、IoT コネクタによって参照される FHIR サービス内の既存のリソースに関連しています。|
+|`FHIRResourceError`|このエラーの種類は、IoT コネクタによって参照される FHIR サービスの既存のリソースに関連しています。|
 |`FHIRServerError`|このエラーの種類は、FHIR サービスと通信するときに発生します。|
 |`GeneralError`|このエラーの種類は、他のすべての種類のエラーに関するものです。|
 
@@ -139,38 +139,38 @@ ms.locfileid: "132281799"
 
 |エラー名|Description|エラーの種類|エラーの重大度|データ フロー ステージ|
 |----------|-----------|-------------|--------------|------------------|
-|`MultipleResourceFoundException`|このエラーは、デバイス メッセージに存在するそれぞれの識別子について、FHIR サービスで複数の患者またはデバイス リソースが見つかった場合に発生します。|`FHIRResourceError`|エラー|`FHIRConversion`|
-|`TemplateNotFoundException`|IoT コネクタのインスタンスで構成されていないデバイスまたは FHIR 変換先マッピング。|`DeviceTemplateError`, `FHIRTemplateError`|`Critical|Normalization`, `FHIRConversion`|
-|`CorrelationIdNotDefinedException`|関連付け ID は、デバイス マッピングでは指定されていません。 `CorrelationIdNotDefinedException` は、FHIR 観測が、相関 ID を使用してデバイスの測定値をグループ化する必要がある場合に、正しく構成されていないときにのみ発生する条件付きエラーです。|`DeviceMessageError`|エラー|正規化|
-|`PatientDeviceMismatchException`|このエラーは、FHIR サービスのデバイス リソースに患者リソースへの参照がある場合に発生します。 このエラーの種類は、メッセージ内に存在する患者 ID と一致しないことを意味します。|`FHIRResourceError`|エラー|`FHIRConversionError`|
-|`PatientNotFoundException`|デバイス メッセージ内に存在するデバイス ID に関連付けられた Device FHIR リソースによって参照されている Patient FHIR リソースはありません。 このエラーは、IoT コネクタ インスタンスが Lookup 解決の種類で構成されている場合 *にのみ* 発生します。|`FHIRConversionError`|エラー|`FHIRConversion`|
-|`DeviceNotFoundException`|デバイス メッセージに存在するデバイス識別子に関連付けられている FHIR サービスにデバイス リソースが存在しません。|`DeviceMessageError`|エラー|正規化|
-|`PatientIdentityNotDefinedException`|このエラーは、デバイス メッセージから患者識別子を解析する式がデバイス マッピングで構成されていない場合、または患者 ID がデバイス メッセージに存在しない場合に発生します。 このエラーは、IoT コネクタの解決の種類が [作成] に設定されている場合にのみ発生 *します*。|`DeviceTemplateError`|Critical|正規化|
-|`DeviceIdentityNotDefinedException`|このエラーは、デバイス メッセージからデバイス識別子を解析する式がデバイス マッピングで構成されていないか、デバイス ID がデバイス メッセージに存在しない場合に発生します。|`DeviceTemplateError`|Critical|正規化|
+|`MultipleResourceFoundException`|このエラーは、デバイスメッセージに存在する各識別子について、FHIR サービスに複数の患者またはデバイスのリソースが見つかった場合に発生します。|`FHIRResourceError`|エラー|`FHIRConversion`|
+|`TemplateNotFoundException`|IoT コネクタのインスタンスで構成されていないデバイスまたは FHIR の宛先マッピング。|`DeviceTemplateError`, `FHIRTemplateError`|`Critical|Normalization`, `FHIRConversion`|
+|`CorrelationIdNotDefinedException`|デバイスマッピングに相関 ID が指定されていません。 `CorrelationIdNotDefinedException` は、FHIR 観測が、相関 ID を使用してデバイスの測定値をグループ化する必要がある場合に、正しく構成されていないときにのみ発生する条件付きエラーです。|`DeviceMessageError`|エラー|正規化|
+|`PatientDeviceMismatchException`|このエラーは、FHIR サービスのデバイスリソースに患者リソースへの参照が含まれている場合に発生します。 このエラーの種類は、メッセージ内に存在する患者 ID と一致しないことを意味します。|`FHIRResourceError`|エラー|`FHIRConversionError`|
+|`PatientNotFoundException`|デバイス メッセージ内に存在するデバイス ID に関連付けられた Device FHIR リソースによって参照されている Patient FHIR リソースはありません。 注このエラーは、IoT コネクタインスタンスが *参照* 解像度の種類で構成されている場合にのみ発生します。|`FHIRConversionError`|エラー|`FHIRConversion`|
+|`DeviceNotFoundException`|デバイスメッセージに存在するデバイス id に関連付けられたデバイスリソースが FHIR サービスに存在しません。|`DeviceMessageError`|エラー|正規化|
+|`PatientIdentityNotDefinedException`|このエラーは、デバイスメッセージの患者 id を解析する式がデバイスのマッピングで構成されていない場合、またはデバイスメッセージに患者の識別子が存在しない場合に発生します。 注このエラーは、IoT コネクタの解決の種類が *作成* に設定されている場合にのみ発生します。|`DeviceTemplateError`|Critical|正規化|
+|`DeviceIdentityNotDefinedException`|このエラーは、デバイスメッセージからデバイス id を解析する式がデバイスマッピングで構成されていない場合、またはデバイスの識別子がデバイスメッセージに存在しない場合に発生します。|`DeviceTemplateError`|Critical|正規化|
 |`NotSupportedException`|サポートされていない形式のデバイス メッセージを受信したときにエラーが発生しました。|`DeviceMessageError`|エラー|正規化|
 
-## <a name="creating-copies-of-iot-connector-device-and-fhir-destination-mappings"></a>IoT コネクタデバイスと FHIR 変換先マッピングのコピーを作成する
+## <a name="creating-copies-of-iot-connector-device-and-fhir-destination-mappings"></a>IoT コネクタデバイスと FHIR の宛先マッピングのコピーを作成する
 
-IoT コネクタマッピングのコピーは、Web サイトの外部で編集およびアーカイブAzure portalできます。
+IoT コネクタマッピングをコピーすると、Azure portal web サイトの外部での編集とアーカイブに役立ちます。
 
-トラブルシューティング プロセスに役立つサポート チケットを開く際は、マッピング コピーを Azure テクニカル サポートに提供する必要があります。
+トラブルシューティングプロセスに役立つサポートチケットを開いている場合は、Azure テクニカルサポートにマッピングコピーを提供する必要があります。
 
 > [!NOTE]
-> 現時点では、デバイスマッピングと FHIR 変換先マッピングでサポートされている形式は JSON のみです。
+> 現時点では、デバイスおよび FHIR の宛先マッピングでサポートされている形式は JSON だけです。
 
 > [!TIP]
-> IoT コネクタの詳細については、 [デバイス マッピングと](how-to-use-device-mapping-iot.md) [FHIR 変換先マッピングに関するページを参照してください。](how-to-use-fhir-mapping-iot.md)
+> IoT コネクタの[デバイスマッピング](how-to-use-device-mappings.md)と[fhir の宛先マッピング](how-to-use-fhir-mappings.md)に関する詳細情報
 
-1. **[Healthcare API] ワークスペースの左側にある [IoT** コネクタ] を選択します。
+1. [医療 Api] ワークスペースの左側にある [ **IoT コネクタ]** を選択します。
 
    :::image type="content" source="media/iot-troubleshoot/iot-connector-blade.png" alt-text="[IoT コネクタ] を選択します。" lightbox="media/iot-troubleshoot/iot-connector-blade.png":::
 
-2. Device と FHIR の宛先マッピングのコピー先になる **IoT** コネクタの名前を選択します。
+2. デバイスと FHIR の移行先のマッピングをコピーする **IoT コネクタ** の名前を選択します。
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT コネクタ2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
    > [!NOTE]
-   > このプロセスは、"Destination" FHIR 変換先マッピングの内容をコピーして保存するためにも使用できます。
+   > このプロセスは、 **"destination"** fhir 変換先マッピングの内容のコピーと保存にも使用できます。
 
 3. JSON の内容を選択し、コピー操作を行います (例: **Ctrl + C** キーを押す)。 
 
@@ -181,7 +181,7 @@ IoT コネクタマッピングのコピーは、Web サイトの外部で編集
 > [!TIP]
 > IoT コネクタ用の [Azure テクニカル](https://azure.microsoft.com/support/create-ticket/) サポート チケットを開く場合は、トラブルシューティング プロセスに役立つ Device と FHIR の宛先マッピングのコピーを必ず含める必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 >[!div class="nextstepaction"]
 >[IoT コネクタの概要](iot-connector-overview.md)

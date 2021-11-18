@@ -7,8 +7,8 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 ms.assetid: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e7ed45236c79220963ca1d81f6f3d0865b99d32c
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: 3289f52d0f6925374aee5656afc797ed0713f962
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132369723"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521474"
 ---
 # <a name="microsoft-sentinel-dns-normalization-schema-reference-public-preview"></a>Microsoft Sentinel の DNS 正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -78,7 +78,7 @@ imDNS | where SrcIpAddr != "127.0.0.1" and EventSubType == "response"
 
 すぐに使えるすべてのパーサーを 1 つにまとめる、ソースに依存しないパーサーを使用して、構成済みのソース全体にわたって分析が実行されるようにするには、クエリでテーブル名として次の KQL 関数を使用します。
 
-| Name | 説明 | 使用手順 |
+| 名前 | 説明 | 使用手順 |
 | --- | --- | --- |
 | **imDNS** | "*和集合*" を使用して、すべての DNS ソースからの正規化されたイベントを含める集約パーサー。 |- ソースに依存しない分析でソースを追加または削除する場合は、このパーサーを更新します。 <br><br>- ソースに依存しないクエリでこの関数を使用します。|
 | **ASimDNS** | `imDns` 関数に似ていますが、パラメーターがサポートされていないため、 **[ログ]** ページの時刻の選択で `custom` 値を必ずしも使用する必要はありません。 |- ソースに依存しない分析でソースを追加または削除する場合は、このパーサーを更新します。<br><br>- パラメーターを使用する予定がない場合は、ソースに依存しないクエリでこの関数を使用します。|
@@ -119,7 +119,7 @@ DNS 情報モデルにカスタム パーサーを実装するときは、次の
 
 次のフィルター処理パラメーターを使用できます。
 
-| 名前     | Type      | 説明 |
+| 名前     | 型      | 説明 |
 |----------|-----------|-------------|
 | **starttime** | DATETIME | この時間以降に実行された DNS クエリのみをフィルター処理します。 |
 | **endtime** | DATETIME | この時間以前に実行が完了した DNS クエリのみをフィルター処理します。 |
@@ -202,10 +202,10 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 | <a name="eventoriginalusertype"></a>**SrcOriginalUserType** | オプション | String | ソースによって提供されている場合、元のソース ユーザーの種類。 |
 | **SrcUserDomain** | オプション | String | このフィールドは、下位互換性のためだけに残されています。 ドメイン情報が使用可能な場合、ASIM では [SrcUsername](#srcusername) フィールドの一部としてそれが必要です。 |
 | <a name="srcprocessname"></a>**SrcProcessName**              | オプション     | String     |   DNS 要求を開始するプロセスのファイル名。 この名前は通常、プロセス名と見なされます。  <br><br>例: `C:\Windows\explorer.exe`  |
-| <a name="process"></a>**Process**        | エイリアス        |            | [SrcProcessName](#srcprocessname) の別名 <br><br>例 : `C:\Windows\System32\rundll32.exe`|
+| <a name="process"></a>**Process**        | エイリアス        |            | [SrcProcessName](#srcprocessname) の別名 <br><br>例: `C:\Windows\System32\rundll32.exe`|
 | **SrcProcessId**| Mandatory    | String        | DNS 要求を開始するプロセスのプロセス ID (PID)。<br><br>例: `48610176`           <br><br>**注**: さまざまなシステムに対応するために、型は "*文字列*" として定義されますが、Windows と Linux ではこの値は数値である必要があります。 <br><br>Windows または Linux のマシンを使用しており、かつ別の型を使用した場合は、必ず値を変換してください。 たとえば、16 進数の値を使用した場合は、10 進数の値に変換します。    |
-| **SrcProcessGuid**              | オプション     | String     |  DNS 要求を開始するプロセスの生成された一意識別子 (GUID)。   <br><br> 例 : `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
-| <a name="dst"></a>**Dst** | 推奨       | String     |    DNS 要求を受信するサーバーの一意識別子。 <br><br>このフィールドは、[DstDvcId](#dstdvcid)、[DstHostname](#dsthostname)、または [DstIpAddr](#dstipaddr) フィールドの別名になる可能性があります。 <br><br>例 : `192.168.12.1`       |
+| **SrcProcessGuid**              | オプション     | String     |  DNS 要求を開始するプロセスの生成された一意識別子 (GUID)。   <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
+| <a name="dst"></a>**Dst** | 推奨       | String     |    DNS 要求を受信するサーバーの一意識別子。 <br><br>このフィールドは、[DstDvcId](#dstdvcid)、[DstHostname](#dsthostname)、または [DstIpAddr](#dstipaddr) フィールドの別名になる可能性があります。 <br><br>例: `192.168.12.1`       |
 | <a name="dstipaddr"></a>**DstIpAddr** | オプション | IP アドレス | DNS 要求を受信しているサーバーの IP アドレス。 通常の DNS 要求の場合、この値は通常はレポート デバイスであり、ほとんどの場合、`127.0.0.1` に設定されます。<br><br>例: `127.0.0.1` |
 | **DstGeoCountry** | オプション | 国 | ターゲット IP アドレスに関連付けられている国。 詳細については、「[論理型](normalization-about-schemas.md#logical-types)」を参照してください。<br><br>例: `USA` |
 | **DstGeoRegion** | 省略可能 | リージョン | ターゲット IP アドレスに関連付けられた国の地域または州。 詳細については、「[論理型](normalization-about-schemas.md#logical-types)」を参照してください。<br><br>例: `Vermont` |

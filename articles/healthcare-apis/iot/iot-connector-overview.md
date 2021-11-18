@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: 0e4d6c23be9911fe4d3d073540467fd101e7671e
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: b74b3c1aefe2c7dd05421385e672385196aab15e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132337264"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719431"
 ---
 # <a name="what-is-iot-connector"></a>IoT コネクタとは
 
@@ -65,14 +65,14 @@ Normalize は、デバイス データが上記の Azure Event Hub から取得�
 
 Observation FHIR リソースが変換ステージで生成されると、そのリソースは FHIR サービスに保存されます。 FHIR リソースが新しい場合は、サービスに作成されます。 FHIR リソースが既に存在する場合は、更新されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT コネクタのマッピングの詳細については、次のガイドを参照してください。
 
 >[!div class="nextstepaction"]
->[デバイス マッピングを使用する方法](how-to-use-device-mapping-iot.md)
+>[デバイス マッピングを使用する方法](how-to-use-device-mappings.md)
 
 >[!div class="nextstepaction"]
->[FHIR 変換先マッピングを使用する方法](how-to-use-fhir-mapping-iot.md)
+>[FHIR 変換先マッピングを使用する方法](how-to-use-fhir-mappings.md)
 
 (FHIR&#174;) は HL7 の商標であり [、HL7](https://hl7.org/fhir/) の許可を得て使用されます。

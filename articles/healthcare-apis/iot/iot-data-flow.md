@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: 80de5c094175a4c2372befeaedddbe1ac56bba8a
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 14a1668996682179ef0c0beb95383be892a4e693
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132308332"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719406"
 ---
 # <a name="iot-connector-data-flow"></a>IoT コネクタのデータ フロー
 
@@ -22,7 +22,11 @@ ms.locfileid: "132308332"
 
 この記事では、IoT コネクタのデータフローの概要について説明します。 デバイスデータを高速医療相互運用性リソース (FHIR&#174;) ベースの [監視](https://www.hl7.org/fhir/observation.html) リソースに変換する IoT コネクタ内のさまざまなデータ処理ステージについて説明します。
 
-次に、IoT コネクタによって受信されたデータのさまざまな段階を示します。
+正常性に関連するデバイスまたは医療デバイスからのデータは、IoT コネクタがデータを FHIR に変換した後、FHIR サーバーとの間でデータが保存され、アクセスされるパスを通過します。 正常性データのパスは、インジェスト、正規化、グループ化、変換、および永続化という順序で実行されます。 このデータフローでは、インジェストの最初のステップで正常性データがデバイスから取得されます。 データが受信されると、ユーザーが選択したスキーマテンプレートまたはユーザーが作成したスキーマテンプレートごとに処理または正規化されます。そのため、正常性データを処理しやすく、グループ化することができます。 正常性データは、3つの sperate パラメーターにグループ化されます。 正常性データは、正規化され、グループ化された後、FHIR マッピングを使用して処理または変換した後、FHIR サーバーで保存または保存することができます。
+
+この記事では、データフローの各手順について詳しく説明します。 次の手順では、デバイスマッパーを使用して [IoT コネクタをデプロイする方法](deploy-iot-connector-in-azure.md) (正規化手順) と、FHIR デバイスマッパーの使用方法 (変換手順) について説明します。
+
+次のセクションでは、IoT コネクタがデータを受信した後にデータが通過するステージについて説明します。
 
 ## <a name="ingest"></a>取り込み
 取り込みは、デバイスデータを IoT コネクタに受信する最初の段階です。 デバイス データのインジェスト エンドポイントは、[Azure Event Hubs](../../event-hubs/index.yml) でホストされます。 Azure Event Hubs プラットフォームは、1 秒あたり数百万件のメッセージを受信して処理する機能により、高いスケールおよびスループットを実現します。 また、IoT コネクタはメッセージを非同期に使用できるため、デバイスデータの処理中にデバイスの待機が不要になります。
@@ -65,9 +69,9 @@ ms.locfileid: "132308332"
 デバイスおよび FHIR の変換先マッピングを作成する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [デバイス マッピング](how-to-use-device-mapping-iot.md)
+> [デバイス マッピング](how-to-use-device-mappings.md)
 
 > [!div class="nextstepaction"]
-> [FHIR 宛先マッピング](how-to-use-fhir-mapping-iot.md)
+> [FHIR 宛先マッピング](how-to-use-fhir-mappings.md)
 
 (FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。

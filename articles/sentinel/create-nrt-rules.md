@@ -6,8 +6,8 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9e807363a1a1cc058d6b54c009f9ff90d6a5aa93
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 69e639ad74388756217f06922d8cfcae62d28197
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132277887"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521696"
 ---
 # <a name="work-with-near-real-time-nrt-detection-analytics-rules-in-microsoft-sentinel"></a>Microsoft Sentinel でほぼリアルタイム (NRT) の検出分析ルールを使用する
 
@@ -28,7 +28,7 @@ ms.locfileid: "132277887"
 >
 > - ほぼリアルタイム (NRT) の規則は、現在 **プレビュー** 中です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Microsoft Sentinel の[ほぼリアルタイム分析ルール](near-real-time-rules.md)では、面倒な設定なし、かつ最新の方法で脅威を検出できます。 この種類のルールは、クエリを 1 分間隔で実行することで応答性が高く設計されています。
+Microsoft Sentinel の[ほぼリアルタイム分析ルール](near-real-time-rules.md)では、面倒な設定なし、かつ最新の方法で脅威を検出できます。 この型のルールは、わずか1分サイクル間隔でクエリを実行することにより、応答性が高くなるように設計されています。
 
 当分の間、これらのテンプレートの適用は制限されますが、テクノロジは急速に進化し、成長しています。
 
