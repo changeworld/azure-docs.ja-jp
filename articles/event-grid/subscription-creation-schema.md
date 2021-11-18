@@ -28,7 +28,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
  
 ## <a name="event-subscription-properties"></a>イベント サブスクリプションのプロパティ
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | destination | object | エンドポイントを定義するオブジェクト。 |
 | filter | object | イベントの種類をフィルター処理するための省略可能なフィールド。 |
