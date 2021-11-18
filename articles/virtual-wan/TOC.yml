@@ -200,7 +200,11 @@
         - name: Azure Monitor Insights
           href: azure-monitor-insights.md
         - name: サイト間 VPN パケット キャプチャを構成する
-          href: packet-capture-site-to-site-powershell.md
+          items:
+            - name: Azure portal
+              href: packet-capture-site-to-site-portal.md
+            - name: PowerShell
+              href: packet-capture-site-to-site-powershell.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
