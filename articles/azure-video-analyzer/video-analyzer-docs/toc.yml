@@ -182,7 +182,7 @@
     - name: Developer SDK
       href: sdk.md
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/videoanalyzer/'
+      href: /rest/api/videoanalyzer/
     - name: 空間分析操作
       href: spatial-analysis-operations.md
     - name: Visual Studio Code 拡張機能

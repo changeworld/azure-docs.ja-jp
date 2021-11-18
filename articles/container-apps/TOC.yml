@@ -10,6 +10,7 @@
   expanded: true
   items:
     - name: 初めてのコンテナー アプリをデプロイする
+      expanded: true
       items:
         - name: Azure portal
           href: quickstart-portal.md

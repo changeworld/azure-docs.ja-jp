@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 9aa8dadbc9ea3514e9595d047470c7d433db00bd
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 22715344100d2fdbad19bd92c358db9886ec3405
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130245798"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132722451"
 landingContent:
 - title: 仮想マシン スケール セットについて
   linkLists:
@@ -104,4 +104,4 @@ landingContent:
     - text: 拡張機能に関する問題のトラブルシューティング
       url: /troubleshoot/azure/virtual-machine-scale-sets/vm-extension-provisioning-errors
     - text: Microsoft Q&A
-      url: /answers/topics/azure-virtual-machine-scale-sets.html
+      url: /answers/topics/123/azure-virtual-machines-scale-set.html

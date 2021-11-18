@@ -11,12 +11,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 11/04/2021
-  ms.openlocfilehash: 96e23616d867d5e45a5063b06e29bbe9b96eb198
-  ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+  ms.openlocfilehash: bcea52bd5cabdf6322c784c6014f708d59be475d
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/04/2021
-  ms.locfileid: "131554262"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132714164"
 landingContent:
 - title: Azure Video Analyzer の概要
   linkLists:
@@ -107,7 +107,7 @@ landingContent:
     - text: Python リポジトリ
       url: https://go.microsoft.com/fwlink/?linkid=2163454
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/videoanalyzer/
+      url: /rest/api/videoanalyzer/
     - text: SDK
       url: sdk.md
     - text: ダイレクト メソッドの VS Code

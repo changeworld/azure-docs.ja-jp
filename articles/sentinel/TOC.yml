@@ -42,7 +42,7 @@
         - name: ロールとアクセス許可
           href: roles.md
         - name: コストと課金
-          href: azure-sentinel-billing.md
+          href: billing.md
         - name: ワークスペースおよびテナント全体での Microsoft Sentinel の拡張
           href: extend-sentinel-across-workspaces-tenants.md
         - name: セキュリティ ベースライン
@@ -68,7 +68,7 @@
             - name: ASIM コンテンツ
               href: normalization-content.md
         - name: エンティティを使用したデータの分類
-          href: entities-in-azure-sentinel.md
+          href: entities.md
     - name: 脅威インテリジェンス
       items:
         - name: Microsoft Sentinel の脅威インテリジェンスについて
@@ -92,7 +92,7 @@
     - name: SOAR
       items:
         - name: オーケストレーション、オートメーション、および対応
-          href: automation-in-azure-sentinel.md
+          href: automation.md
         - name: オートメーション ルール
           href: automate-incident-handling-with-automation-rules.md
         - name: プレイブック
@@ -110,7 +110,7 @@
         - name: サンプル ワークスペースの設計
           href: sample-workspace-designs.md
         - name: コストの計画と管理
-          href: azure-sentinel-billing.md
+          href: billing.md
         - name: ワークスペース アクセスの管理
           href: resource-context-rbac.md
     - name: Microsoft Sentinel に移行する
@@ -133,7 +133,7 @@
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
             - name: Microsoft Defender for Cloud
-              href: connect-azure-security-center.md
+              href: connect-defender-for-cloud.md
             - name: Microsoft 365 Defender
               href: connect-microsoft-365-defender.md
             - name: Windows セキュリティ イベント

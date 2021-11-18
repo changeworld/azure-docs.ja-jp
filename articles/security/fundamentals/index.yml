@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/03/2021
-  ms.openlocfilehash: 5b3985223e5b2a45f48fe339cdaf562d7b695a4c
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: c4ca7c2c295d3239a5becc255cb951ab7ad92882
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132347030"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132718053"
 landingContent:
 - title: Azure のセキュリティについて
   linkLists:
@@ -100,4 +100,4 @@ landingContent:
     - text: リソース管理のセキュリティを実装する
       url: /learn/paths/implement-resource-mgmt-security
     - text: 仮想マシン ホストのセキュリティを実装する
-      url: https://docs.microsoft.com/learn/paths/implement-host-security
+      url: /learn/paths/implement-host-security

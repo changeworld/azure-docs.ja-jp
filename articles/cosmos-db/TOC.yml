@@ -624,7 +624,7 @@
               href: sql/change-feed-design-patterns.md
             - name: 変更フィードの読み取り
               href: sql/read-change-feed.md
-            - name: sql/変更フィード プロセッサ
+            - name: 変更フィード プロセッサ
               href: sql/change-feed-processor.md
             - name: Azure Functions をトリガーする
               displayName: change feed

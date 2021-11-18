@@ -457,25 +457,20 @@
               href: how-to-migrate-from-estimators-to-scriptrunconfig.md
             - name: 強化学習
               href: how-to-use-reinforcement-learning.md
-            - name: MLflow を操作する
+            - name: MLflow プロジェクトを使用した実験のトレーニング
+              displayName: 'log, monitor, metrics, model registry, register'
+              href: how-to-train-mlflow-projects.md
+            - name: トレーニングの追跡と監視
               items:
+                - name: 実行の追跡、監視、分析
+                  displayName: 'cancel, fail, status, child run'
+                  href: how-to-track-monitor-analyze-runs.md
                 - name: MLflow を使用して実験を追跡する
                   displayName: 'log, monitor, metrics, model registry, register'
                   href: how-to-use-mlflow.md
                 - name: MLflow を使用して Azure Databricks 実行を追跡する
                   displayName: 'log, monitor, deploy, metrics, databricks'
                   href: how-to-use-mlflow-azure-databricks.md
-                - name: MLflow プロジェクトを使用した実験のトレーニング
-                  displayName: 'log, monitor, metrics, model registry, register'
-                  href: how-to-train-mlflow-projects.md
-                - name: MLflow モデルのデプロイ
-                  displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
-                  href: how-to-deploy-mlflow-models.md
-            - name: トレーニングの追跡と監視
-              items:
-                - name: 実行の追跡、監視、分析
-                  displayName: 'cancel, fail, status, child run'
-                  href: how-to-track-monitor-analyze-runs.md
                 - name: メトリックおよびログ ファイルの記録および表示
                   displayName: 'troubleshoot, log, files, tracing, metrics'
                   href: how-to-log-view-metrics.md
@@ -545,6 +540,9 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: MLflow モデルのデプロイ
+          displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
+          href: how-to-deploy-mlflow-models.md
         - name: エンドポイントを使用してデプロイする
           items:
             - name: リアルタイム

@@ -10,12 +10,12 @@ metadata:
   author: stempesta
   ms.author: stempesta
   ms.date: 09/22/2020
-  ms.openlocfilehash: b2f1083dc5f34717f0b7eb69b50f374f8217f582
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: e7b9bff597383f8cbca1a0f86d30547c133bec39
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132279141"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132709653"
 landingContent:
 - title: Azure のコンフィデンシャル コンピューティングについて
   linkLists:
@@ -112,7 +112,7 @@ landingContent:
     - text: Azure IoT Edge
       url: ../iot-edge/deploy-confidential-applications.md
     - text: Azure Key Vault マネージド HSM
-      url: https://docs.microsoft.com/azure/key-vault/managed-hsm/
+      url: ../key-vault/managed-hsm/index.yml
 - title: コンフィデンシャル コンピューティングによる開発
   linkLists:
   - linkListType: tutorial
