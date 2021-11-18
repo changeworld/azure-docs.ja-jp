@@ -33,7 +33,7 @@ Azure Sentinel は、一部分が Azure Monitor Log Analytics 上に構築され
 
 すべてのウォッチリスト API コマンドの共通 URI パラメーターを次に示します。
 
-| 名前 | / | 必須 | Type | [説明] |
+| 名前 | / | 必須 | Type | 説明 |
 |-|-|-|-|-|
 | **{subscriptionId}** | path | yes | GUID | Azure サブスクリプション ID |
 | **{resourceGroupName}** | path | yes | string | サブスクリプション内のリソース グループの名前 |
