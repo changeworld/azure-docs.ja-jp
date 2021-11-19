@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 11/15/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 16eb16d14890ae581bf71ff3998d22055965c336
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f9e296ec4c1b99f6f2a8d23103c8b04fcd16a814
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082590"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552662"
 ---
 ::: zone target="docs"
 
@@ -140,7 +140,7 @@ Microsoft 管理による出荷を使用している場合は、出荷元のリ�
 2. 集荷を要求するには、次のテンプレートに追跡番号を記入して SingPost のカスタマー サービスにメールを送信してください (追跡番号は、納品パッケージに同梱されている返送用ラベルに記載されています)。
 
     ```
-    To: kadcustcare@singpost.com
+    To: g-corpsgcs@singpost.com
     Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
@@ -231,9 +231,11 @@ Microsoft 管理による出荷を使用している場合は、出荷元のリ�
 
 5. 問題が発生した場合は、問題の詳細を記載した電子メールを [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に送ります。件名には貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
 
+---
+
 ### <a name="self-managed-shipping"></a>自己管理の出荷
 
-米国政府、日本、シンガポール、韓国、イギリス、西ヨーロッパ、オーストラリア、南アフリカ、インド、またはブラジルで Data Box Disk をお使いの方で、ご自分の注文の作成時に自己管理による配送オプションを選択した場合は、次の手順に従います。
+米国政府、日本、シンガポール、韓国、イギリス、西ヨーロッパ、オーストラリア、南アフリカ、インド、またはブラジルで Data Box Disk をお使いの方で、ご自分の注文の作成時に自己管理による配送オプションを選択した場合は、次の手順に従います。 詳細な手順については、[自己管理の出荷の使用](data-box-disk-portal-customer-managed-shipping.md)に関するページを参照してください。
 
 1. Azure portal 上で対象の注文の **[概要]** ブレードにアクセスします。 **[集配のスケジュール]** を選択したときに表示される手順に目を通します。 注文の配送時に使用される認証コードが表示されていると思います。
 

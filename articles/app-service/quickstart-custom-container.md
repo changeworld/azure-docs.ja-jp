@@ -7,29 +7,27 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 02d9f115a5fbeb364719a2fc6cafb22e6ea03cf7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 077e090a95de15256f531c216a3051fdbcc35bc1
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465860"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134169"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure でカスタム コンテナーを実行する
 
 ::: zone pivot="container-windows"
 [Azure App Service](overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 ただし、構成済みのアプリケーション スタックでは、[オペレーティング システムがロック ダウンされ、低レベルのアクセスが阻止されます](operating-system-functionality.md)。 カスタムの Windows コンテナーにはこれらの制限はないため、開発者はコンテナーを完全にカスタマイズし、コンテナー化されたアプリケーションに Windows 機能へのフルアクセスを与えることができます。 
 
-このクイックスタートでは、Visual Studio から [Docker Hub](https://hub.docker.com/) に、Windows イメージで ASP.NET アプリをデプロイする方法について説明します。 アプリは、Azure App Service のカスタム コンテナーで実行します。
+このクイックスタートでは、Visual Studio から [Azure Container Registry](../container-registry/container-registry-intro.md) に、Windows イメージで ASP.NET アプリをデプロイする方法について説明します。 アプリは、Azure App Service のカスタム コンテナーで実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには、次のものが必要です。
 
-- <a href="https://hub.docker.com/" target="_blank">Docker Hub アカウントにサインアップする</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows をインストールする</a>。
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
-- **ASP.NET と Web 開発** ワークロードと **Azure の開発** ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 をインストールする</a>。 Visual Studio 2019 を既にインストールしている場合:
-
+- **ASP.NET と Web 開発** ワークロードと **Azure の開発** ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2022 をインストールする</a>。 *Visual Studio 2022 Community* で、**ASP.NET と Web 開発ワークロード** とともに **[.NET Framework project and item templates]\(.NET Framework プロジェクトと項目テンプレート\)** コンポーネントが選択されていることを確認してください。 Visual Studio 2022 を既にインストールしている場合:
     - **[ヘルプ]**  >  **[更新プログラムの確認]** の順に選択して、Visual Studio に最新の更新プログラムをインストールします。
     - **[ツール]**  >  **[ツールと機能を取得]** の順に選択し、Visual Studio にワークロードを追加します。
 
@@ -41,49 +39,61 @@ ms.locfileid: "131465860"
 
 1. **[新しいプロジェクトの作成]** で、C# の **[ASP.NET Web アプリケーション (.NET Framework)]** を選択し、 **[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** で、アプリケーションに _myfirstazurewebapp_ という名前を付け、 **[作成]** を選択します。
+   :::image type="content" source="./media/quickstart-custom-container/create-new-project.png?text=VS create a new project" alt-text="新しいプロジェクトを作成する":::
 
-   ![Web アプリ プロジェクトを構成する](./media/quickstart-custom-container/configure-web-app-project-container.png)
+1. **[新しいプロジェクトの構成]** の **[プロジェクト名]** で、アプリケーションに _myfirstazurewebapp_ という名前を付けます。 **[フレームワーク]** で、 **.NET Framework 4.8** を選択してから、 **[作成]** を選択します。
+
+    :::image type="content" source="./media/quickstart-custom-container/configure-web-app-project-container.png?text=Configure your web app project" alt-text="Web アプリ プロジェクトを構成する":::
 
 1. 任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、 **[MVC]** テンプレートを選択します。
 
-1. **[Docker サポート]** を選択し、認証が **[認証なし]** に設定されていることを確認します。 **［作成］** を選択します
+1. **[認証]** で、 **[なし]** を選択します **[詳細設定]** で **[Docker support]\(Docker サポート\)** を選択し、 **[Configure for HTTPS]\(HTTPS 用に構成する\)** チェック ボックスをオフにします。 **［作成］** を選択します
 
-   ![ASP.NET Web アプリケーションを作成する](./media/quickstart-custom-container/select-mvc-template-for-container.png)
+     :::image type="content" source="./media/quickstart-custom-container/select-mvc-template-for-container.png?text=Create ASP.NET Web Application" alt-text="ASP.NET Web アプリケーションを作成する":::
 
 1. _Dockerfile_ ファイルが自動的に開かない場合は、**ソリューション エクスプローラー** から開きます。
 
 1. [サポートされている親イメージ](configure-custom-container.md#supported-parent-images)が必要です。 `FROM` 行を次のコードに置き換えることで親イメージを変更し、ファイルを保存します。
 
    ```dockerfile
-   FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
+   FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2019
    ```
 
 1. Visual Studio のメニューから **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、Web アプリをローカルで実行します。
 
-   ![アプリをローカルで実行する](./media/quickstart-custom-container/local-web-app.png)
+    :::image type="content" source="./media/quickstart-custom-container/local-web-app.png?text=Run app locally" alt-text="アプリをローカルで実行する":::
 
-## <a name="publish-to-docker-hub"></a>Docker Hub に発行する
+## <a name="publish-to-azure-container-registry"></a>Azure Container Registry に発行する
 
 1. **ソリューション エクスプローラー** で **myfirstazurewebapp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
-1. **App Service** を選択し、 **[発行]** を選択します。
+1. **[ターゲット]** で **[Docker Container Registry]** を選択し、 **[次へ]** をクリックします。
 
-1. **[発行先を選択]** で **[コンテナー レジストリ]** と **[Docker Hub]** を選択し、 **[発行]** をクリックします。
+    :::image type="content" source="./media/quickstart-custom-container/select-docker-container-registry-visual-studio-2022.png?text=Select Docker Container Registry" alt-text="Docker Container Registry を選択する":::
 
-   ![プロジェクトの概要ページから発行する](./media/quickstart-custom-container/publish-to-docker-vs2019.png)
+1. **[特定のターゲット]** で **[Azure Container Registry]** を選択し、 **[次へ]** をクリックします。
 
-1. Docker Hub アカウントの資格情報を指定し、 **[保存]** を選択します。
+    :::image type="content" source="./media/quickstart-custom-container/publish-to-azure-container-registry-visual-studio-2022.png?text=Publish to Azure Container Registry" alt-text="プロジェクトの概要ページから発行する":::
 
-   デプロイが完了するまで待ちます。 **[発行]** ページに、後で使用するリポジトリ名が表示されるようになります。
+1. **[発行]** で、正しいサブスクリプションが選択されていることを確認します。 **[コンテナー レジストリ]** で、 **+** ボタンを選択して新しい Azure Container Registry を作成します。
 
-   ![リポジトリ名が強調表示されているスクリーンショット。](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+    :::image type="content" source="./media/quickstart-custom-container/create-new-azure-container-registry.png?text=Create new Azure Container Registry" alt-text="新しい Azure Container Registry を作成する":::
 
-1. 後で使用するのでこのリポジトリ名をコピーします。
+1. **[新規作成]** で、正しいサブスクリプションが選択されていることを確認します。 **[リソース グループ]** で、 **[新規]** を選択し、名前として「*myResourceGroup*」と入力して、 **[OK]** をクリックします。 **[SKU]** で、 **[Basic]** を選択します。 **[レジストリの場所]** で、レジストリの場所を選択してから、 **[作成]** を選択します。
+
+    :::image type="content" source="./media/quickstart-custom-container/new-azure-container-registry-details.png?text=Azure Container Registry details" alt-text="Azure Container Registry の詳細":::
+
+1. **[発行]** の **[コンテナー レジストリ]** で、作成したレジストリを選択し、 **[完了]** を選択します。
+
+    :::image type="content" source="./media/quickstart-custom-container/select-existing-azure-container-registry.png?text=Select existing Azure Container Registry" alt-text="既存の Azure Container Registry を選択する":::
+
+   デプロイが完了するまで待ちます。 **[発行]** ページに、リポジトリ名が表示されるようになります。 後で使用するために **リポジトリ** 名をコピーするには、"コピー ボタン" を選択します *。*
+
+    :::image type="content" source="./media/quickstart-custom-container/published-docker-repository-visual-studio-2022.png?text=Screenshot that highlights the repository name." alt-text="リポジトリ名が強調表示されているスクリーンショット。":::
 
 ## <a name="create-a-windows-container-app"></a>Windows コンテナー アプリの作成
 
-1. [Azure portal]( https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
@@ -95,7 +105,7 @@ ms.locfileid: "131465860"
 
    ![Web App for Containers を作成する](media/quickstart-custom-container/create-web-app-container.png)
 
-1. **[イメージのソース]** に **[Docker Hub]** を選択し、 **[イメージとタグ]** に、「[Docker Hub に発行する](#publish-to-docker-hub)」でコピーしたリポジトリ名を入力します。
+1. **[イメージのソース]** に **[Docker Hub]** を選択し、 **[イメージとタグ]** に、「[Azure Container Registry に発行する](#publish-to-azure-container-registry)」でコピーしたリポジトリ名を入力します。
 
    ![Web App for Containers を構成する](media/quickstart-custom-container/configure-web-app-container.png)
 

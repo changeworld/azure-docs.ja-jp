@@ -4,16 +4,19 @@ description: このクイック スタートでは、Azure portal を使って A
 ms.topic: quickstart
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c449b86ca4718ad93c2b0c4be0a1623169916ecc
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 5c39d6ddae6ad34ad705da8ee2b6de79a8102452
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556523"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398822"
 ---
 # <a name="quickstart-get-started-with-video-analyzer-in-the-portal"></a>クイック スタート: ポータルで Video Analyzer の使用を開始する
 
-[!INCLUDE [header](includes/edge-env.md)]
+![Edge アイコン](media/env-icon/edge.png)  
+または、[ポータル を使用した Video Analyzer ライブ パイプラインの使用の開始](../cloud/get-started-livepipelines-portal.md)に関するページを参照してください。
+
+---
 
 このクイックスタートでは、Azure Video Analyzer の基本的な操作手順について説明します。 Azure portal を使用して、Azure Video Analyzer アカウントとそれに付随するリソースを作成します。 その後、Video Analyzer エッジ モジュールとリアルタイム ストリーミング プロトコル (RTSP) カメラ シミュレーター モジュールを Azure IoT Edge デバイスにデプロイします。
 

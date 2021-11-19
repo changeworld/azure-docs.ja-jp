@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-summarization, ignite-fall-2021
-ms.openlocfilehash: 62144ef2181a872327db3e30c0f81192f5a07ca4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 169772593542f502673194012112d56465ae224d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017540"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518643"
 ---
 # <a name="what-is-text-summarization-preview-in-azure-cognitive-service-for-language"></a>Azure Cognitive Service for Language でのテキストの概要作成 (プレビュー) とは
 
@@ -35,6 +35,6 @@ AI システムには、テクノロジだけでなく、それを使う人、�
 
 ## <a name="next-steps"></a>次のステップ
 
-エンティティ リンク設定機能を使い始めるには、2 つの方法があります。
+テキスト要約機能の使用を開始するには、次の 2 つの方法があります。
 * [Language Studio](../language-studio.md)。コードを記述することなく Azure Cognitive Service for Language の複数の機能を試すことができる Web ベースのプラットフォームです。
 * [クイックスタート記事](quickstart.md)。REST API とクライアント ライブラリ SDK を使用してサービス要求を行う方法が記載されています。  

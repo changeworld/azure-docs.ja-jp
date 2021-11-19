@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b7854bac6706de156eca79e98361310659486b88
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 875763dbbc3beb39133f04579d8c46a9e0343f3a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181775"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492513"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>チュートリアル:マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
 
@@ -249,6 +249,6 @@ Azure Key Vault シークレット クライアント ライブラリを使用�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Spring Cloud でマネージド ID を使用して Storage Blob にアクセスする方法](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](./how-to-enable-system-assigned-managed-identity.md)
+* [Azure Spring Cloud のアプリケーションのシステム割り当てマネージド ID を有効にする方法](./how-to-enable-system-assigned-managed-identity.md)
 * [Azure リソース用マネージド ID の詳細](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する](./github-actions-key-vault.md)

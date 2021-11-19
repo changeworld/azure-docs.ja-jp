@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 11/08/2021
-ms.openlocfilehash: 14642eda290049d02cac18d967808b534516e1a4
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 7dc376bb84c52688e1f665501680f11f6bb317eb
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131998046"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488527"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレスのリアルタイム チャット アプリを作成する
 
@@ -71,27 +71,26 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     func init --worker-runtime dotnet
     ```
 
-1. `Microsoft.Azure.WebJobs.Extensions.WebPubSub` 関数拡張機能パッケージを明示的にインストールします。
+2. `Microsoft.Azure.WebJobs.Extensions.WebPubSub` 関数拡張機能パッケージをインストールします。
 
-   1. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
+    > [!NOTE]
+    > [拡張機能バンドル](/azure/azure-functions/functions-bindings-register#extension-bundles)がサポートされている場合、この手順は省略可能です。
 
-      ```json
-      {
+   a. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
+    ```json
+    {
         "version": "2.0"
-      }
-      ```
+    }
+    ```
+   b. 特定の関数拡張機能パッケージをインストールするコマンドを実行します。
+    ```bash
+    func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0
+    ```
 
-   1. 特定の関数拡張機能パッケージをインストールするコマンドを実行します。
-
-      ```bash
-      func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-      ```
-
-1. クライアントの静的 Web ページを読み取ってホストする `index` 関数を作成します。
+3. クライアントの静的 Web ページを読み取ってホストする `index` 関数を作成します。
     ```bash
     func new -n index -t HttpTrigger
     ```
-
    # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - `index/function.json` を更新して次の json コードをコピーします。
         ```json
@@ -118,18 +117,26 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
    - `index/index.js` を更新して次のコードをコピーします。
         ```js
         var fs = require('fs');
+        var path = require('path');
+
         module.exports = function (context, req) {
-            fs.readFile('index.html', 'utf8', function (err, data) {
+            var index = 'index.html';
+            if (process.env["HOME"] != null)
+            {
+                index = path.join(process.env["HOME"], "site", "wwwroot", index);
+            }
+            context.log("index.html path: " + index);
+            fs.readFile(index, 'utf8', function (err, data) {
                 if (err) {
-                    console.log(err);
-                    context.done(err);
+                console.log(err);
+                context.done(err);
                 }
                 context.res = {
-                    status: 200,
-                    headers: {
-                        'Content-Type': 'text/html'
-                    },
-                    body: data
+                status: 200,
+                headers: {
+                    'Content-Type': 'text/html'
+                },
+                body: data
                 };
                 context.done();
             });
@@ -142,15 +149,21 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
         [FunctionName("index")]
         public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req)
         {
+            string indexFile = "index.html";
+            if (Environment.GetEnvironmentVariable("HOME") != null)
+            {
+                indexFile = Path.Join(Environment.GetEnvironmentVariable("HOME"), "site", "wwwroot", indexFile);
+            }
+            log.LogInformation($"index.html path: {indexFile}.");
             return new ContentResult
             {
-                Content = File.ReadAllText("index.html"),
+                Content = File.ReadAllText(indexFile),
                 ContentType = "text/html",
             };
         }
         ```
 
-1. クライアントがアクセス トークンを含むサービス接続 URL を取得するのに役立つ `negotiate` 関数を作成します。
+4. クライアントがアクセス トークンを含むサービス接続 URL を取得するのに役立つ `negotiate` 関数を作成します。
     ```bash
     func new -n negotiate -t HttpTrigger
     ```
@@ -204,7 +217,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
         }
         ```
 
-2. サービスを使用してクライアント メッセージをブロードキャストするための `message` 関数を作成します。
+5. サービスを使用してクライアント メッセージをブロードキャストするための `message` 関数を作成します。
    ```bash
    func new -n message -t HttpTrigger
    ```
@@ -220,15 +233,14 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
                 {
                     "type": "webPubSubTrigger",
                     "direction": "in",
-                    "name": "message",
-                    "dataType": "binary",
+                    "name": "data",
                     "hub": "simplechat",
                     "eventName": "message",
                     "eventType": "user"
                 },
                 {
                     "type": "webPubSub",
-                    "name": "webPubSubEvent",
+                    "name": "actions",
                     "hub": "simplechat",
                     "direction": "out"
                 }
@@ -237,15 +249,15 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
         ```
    - `message/index.js` を更新して次のコードをコピーします。
         ```js
-        module.exports = async function (context, message) {
-            context.bindings.webPubSubEvent = {
-                "operationKind": "sendToAll",
-                "message": `[${context.bindingData.connectionContext.userId}] ${message}`,
+        module.exports = async function (context, data) {
+            context.bindings.actions = {
+                "actionName": "sendToAll",
+                "data": `[${context.bindingData.request.connectionContext.userId}] ${data}`,
                 "dataType": context.bindingData.dataType
             };
-            // MessageResponse directly return to caller
+            // UserEventResponse directly return to caller
             var response = { 
-                "message": '[SYSTEM] ack.',
+                "data": '[SYSTEM] ack.',
                 "dataType" : "text"
             };
             return response;
@@ -256,26 +268,25 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
    - `message.cs` を更新して `Run` 関数を次のコードに置き換えます。
         ```c#
         [FunctionName("message")]
-        public static async Task<MessageResponse> Run(
-            [WebPubSubTrigger(WebPubSubEventType.User, "message")] ConnectionContext context,
-            BinaryData message,
-            MessageDataType dataType,
-            [WebPubSub(Hub = "simplechat")] IAsyncCollector<WebPubSubOperation> operations)
+        public static async Task<UserEventResponse> Run(
+            [WebPubSubTrigger(WebPubSubEventType.User, "message")] UserEventRequest request,
+            BinaryData data,
+            WebPubSubDataType dataType,
+            [WebPubSub(Hub = "simplechat")] IAsyncCollector<WebPubSubAction> actions)
         {
-            await operations.AddAsync(new SendToAll
+            await actions.AddAsync(WebPubSubAction.CreateSendToAllAction(
+                BinaryData.FromString($"[{request.ConnectionContext.UserId}] {message.ToString()}"),
+                dataType
+            );
+            return new UserEventResponse
             {
-                Message = BinaryData.FromString($"[{context.UserId}] {message.ToString()}"),
-                DataType = dataType
-            });
-            return new MessageResponse
-            {
-                Message = BinaryData.FromString("[SYSTEM] ack"),
-                DataType = MessageDataType.Text
+                Data = BinaryData.FromString("[SYSTEM] ack"),
+                DataType = WebPubSubDataType.Text
             };
         }
         ```
 
-3. プロジェクトのルート フォルダーにクライアントのシングル ページ `index.html` を追加し、次のようにコンテンツをコピーします。
+6. プロジェクトのルート フォルダーにクライアントのシングル ページ `index.html` を追加し、次のようにコンテンツをコピーします。
     ```html
     <html>
         <body>
@@ -389,7 +400,7 @@ Use the following commands to create these items.
 
 ## <a name="configure-the-web-pubsub-service-event-handler"></a>Web PubSub サービス `Event Handler` を構成する
 
-このサンプルでは、`WebPubSubTrigger` を使用して、サービスのアップストリーム メッセージ要求をリッスンしています。 そのため、Web PubSub では、ターゲット クライアント要求を送信するために、関数のエンドポイント情報を知る必要があります。 また、Azure Function App には、拡張機能固有の Webhook メソッドに関するセキュリティのためのシステム キーが必要です。 前の手順で `message` 関数を使用して Function App をデプロイした後、システム キーを取得できます。
+このサンプルでは、`WebPubSubTrigger` を使用して、サービスのアップストリーム要求をリッスンしています。 そのため、Web PubSub では、ターゲット クライアント要求を送信するために、関数のエンドポイント情報を知る必要があります。 また、Azure Function App には、拡張機能固有の Webhook メソッドに関するセキュリティのためのシステム キーが必要です。 前の手順で `message` 関数を使用して Function App をデプロイした後、システム キーを取得できます。
 
 **Azure portal** に移動して、自分の Function App リソースを見つけ、 **[アプリ キー]**  ->  **[システム キー]**  ->  **`webpubsub_extension`** の順に移動します。 `<APP_KEY>` として、値をコピーします。
 

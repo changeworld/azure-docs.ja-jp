@@ -153,7 +153,7 @@
           items:
             - name: NFS ボリュームを作成する
               href: azure-netapp-files-create-volumes.md
-            - name: NFSv 4.1 の既定のドメインを構成する
+            - name: NFSv4.1 ドメインを構成する
               href: azure-netapp-files-configure-nfsv41-domain.md
             - name: NFSv 4.1 の Kerberos 暗号化を構成する
               href: configure-kerberos-encryption.md
@@ -308,4 +308,4 @@
     - name: Azure Files と Azure NetApp Files の比較
       href: ../storage/files/storage-files-netapp-comparison.md
     - name: Microsoft Q&A の Azure NetApp Files
-      href: 'https://docs.microsoft.com/answers/topics/25532/azure-netapp-files.html'
+      href: /answers/topics/25532/azure-netapp-files.html

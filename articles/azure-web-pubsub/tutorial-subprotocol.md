@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 11/01/2021
-ms.openlocfilehash: c1db7a4642d9a4fd14189a1e15e008c9b9ddd6c9
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 8a181f48bcdf7ec186aac1b05d3aaf135fa35c09
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132345643"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550497"
 ---
 # <a name="tutorial-publish-and-subscribe-messages-between-websocket-clients-using-subprotocol"></a>チュートリアル: サブプロトコルを使用して、WebSocket クライアント間でメッセージを発行およびサブスクライブする
 
@@ -61,6 +61,10 @@ ms.locfileid: "132345643"
 # <a name="python"></a>[Python](#tab/python)
 * [Python](https://www.python.org/)
 
+# <a name="java"></a>[Java](#tab/java)
+- [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降
+- [Apache Maven](https://maven.apache.org/download.cgi)
+
 ---
 
 ## <a name="using-a-subprotocol"></a>サブプロトコルの使用
@@ -79,7 +83,7 @@ ms.locfileid: "132345643"
     cd logstream
     dotnet new web
     dotnet add package Microsoft.Extensions.Azure
-    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
+    dotnet add package Azure.Messaging.WebPubSub
     ```
     
     # <a name="javascript"></a>[JavaScript](#tab/javascript)
@@ -91,7 +95,7 @@ ms.locfileid: "132345643"
     npm install --save express
     npm install --save ws
     npm install --save node-fetch
-    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
+    npm install --save @azure/web-pubsub
     ```
 
     # <a name="python"></a>[Python](#tab/python)
@@ -107,6 +111,42 @@ ms.locfileid: "132345643"
     pip install azure-messaging-webpubsubservice
     ```
     
+    # <a name="java"></a>[Java](#tab/java)
+    
+    [Javalin](https://javalin.io/) Web フレームワークを使用して Web ページをホストします。
+    
+    1. まず、Maven を使用して新しいアプリ `logstream-webserver` を作成し、*logstream-webserver* フォルダーに切り替えます。
+    
+        ```console
+        mvn archetype:generate --define interactiveMode=n --define groupId=com.webpubsub.tutorial --define artifactId=logstream-webserver --define archetypeArtifactId=maven-archetype-quickstart --define archetypeVersion=1.4
+        cd logstream-webserver
+        ```
+    
+    2. Azure Web PubSub SDK と`javalin` Web フレームワークの依存関係を `pom.xml` の `dependencies` ノードに追加しましょう。
+    
+        * `javalin`: Java 用の単純な Web フレームワーク
+        * `slf4j-simple`: Java 用ロガー
+        * `azure-messaging-webpubsub`: Azure Web PubSub を使用するためのサービス クライアント SDK
+
+        ```xml
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-messaging-webpubsub</artifactId>
+            <version>1.0.0-beta.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.javalin/javalin -->
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <version>3.13.6</version>
+        </dependency>
+    
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        ```
     ---
     
 2.  `/negotiate` API と Web ページをホストするサーバー側を作成します。
@@ -166,7 +206,7 @@ ms.locfileid: "132345643"
                         var service = context.RequestServices.GetRequiredService<WebPubSubServiceClient>();
                         var response = new
                         {
-                            url = service.GenerateClientAccessUri(roles: new string[] { "webpubsub.sendToGroup.stream", "webpubsub.joinLeaveGroup.stream" }).AbsoluteUri
+                            url = service.GetClientAccessUri(roles: new string[] { "webpubsub.sendToGroup.stream", "webpubsub.joinLeaveGroup.stream" }).AbsoluteUri
                         };
                         await context.Response.WriteAsJsonAsync(response);
                     });
@@ -241,7 +281,71 @@ ms.locfileid: "132345643"
         server.serve_forever()
     
     ```
+    
+    # <a name="java"></a>[Java](#tab/java)
 
+    */src/main/java/com/webpubsub/tutorial* ディレクトリに移動し、*App.java* ファイルをエディタで開き、`Javalin.create` を使用して静的ファイルを提供します。
+
+    ```java
+    package com.webpubsub.tutorial;
+    
+    import com.azure.messaging.webpubsub.WebPubSubServiceClient;
+    import com.azure.messaging.webpubsub.WebPubSubServiceClientBuilder;
+    import com.azure.messaging.webpubsub.models.GetClientAccessTokenOptions;
+    import com.azure.messaging.webpubsub.models.WebPubSubClientAccessToken;
+    
+    import io.javalin.Javalin;
+    
+    public class App {
+        public static void main(String[] args) {
+            
+            if (args.length != 1) {
+                System.out.println("Expecting 1 arguments: <connection-string>");
+                return;
+            }
+    
+            // create the service client
+            WebPubSubServiceClient service = new WebPubSubServiceClientBuilder()
+                    .connectionString(args[0])
+                    .hub("chat")
+                    .buildClient();
+    
+            // start a server
+            Javalin app = Javalin.create(config -> {
+                config.addStaticFiles("public");
+            }).start(8080);
+    
+            
+            // Handle the negotiate request and return the token to the client
+            app.get("/negotiate", ctx -> {
+                GetClientAccessTokenOptions option = new GetClientAccessTokenOptions();
+                option.addRole("webpubsub.sendToGroup.stream");
+                option.addRole("webpubsub.joinLeaveGroup.stream");
+                WebPubSubClientAccessToken token = service.getClientAccessToken(option);
+    
+                // return JSON string
+                ctx.result("{\"url\":\"" + token.getUrl() + "\"}");
+                return;
+            });
+        }
+    }
+    ```
+
+    設定によっては、明示的に言語レベルを Java 8 に設定する必要がある場合があります。 これは pom.xml で行うことができます。 次のスニペットを追加します。
+    ```xml
+    <build>
+        <plugins>
+            <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.8.0</version>
+              <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+              </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    ```
     ---
     
 3.  Web ページの作成
@@ -257,6 +361,9 @@ ms.locfileid: "132345643"
 
     以下のコンテンツを含む HTML ページを作成し、`public/index.html` として保存します。
     
+    # <a name="java"></a>[Java](#tab/java)
+
+    <a name="create-an-html-page-with-below-content-and-save-it-to-srcmainresourcespublicindexhtml"></a>以下の内容の HTML ページを作成し */src/main/resources/public/index.html* に保存します。
     ---
     
     ```html
@@ -313,6 +420,14 @@ ms.locfileid: "132345643"
 
     ```bash
     python server.py "<connection-string>"
+    ```
+
+    # <a name="java"></a>[Java](#tab/java)
+
+    `<connection-string>` を、[前の手順](#get-the-connectionstring-for-future-use)でフェッチされた **ConnectionString** に置き換えて下のコマンドを実行し、ブラウザで http://localhost:8080 を開きます。
+
+    ```console
+    mvn compile & mvn package & mvn exec:java -Dexec.mainClass="com.webpubsub.tutorial.App" -Dexec.cleanupDaemonThreads=false -Dexec.args="'<connection_string>'"
     ```
     ---
 
@@ -485,6 +600,123 @@ ms.locfileid: "132345643"
 
     上記のコードは、サービスへの WebSocket 接続を作成し、データを受信するたびに `ws.send()` を使用してそのデータを発行します。 他のグループに発行するには、`type` を `sendToGroup` に設定し、メッセージでグループ名を指定します。
     
+    # <a name="java"></a>[Java](#tab/java)
+
+    1.  別のターミナルを使用してルート フォルダーに戻り、ストリーミング コンソール アプリ `logstream-streaming` を作成して、*logstream-streaming* フォルダーに切り替えます。
+        ```console
+        mvn archetype:generate --define interactiveMode=n --define groupId=com.webpubsub.quickstart --define artifactId=logstream-streaming --define archetypeArtifactId=maven-archetype-quickstart --define archetypeVersion=1.4
+        cd logstream-streaming
+        ```
+    
+    2. `pom.xml` の `dependencies` ノードに HttpClient の依存関係を追加してみましょう。
+    
+        ```xml
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.8.9</version>
+        </dependency>
+        ```
+    
+    3. ここで、WebSocket を使用してサービスに接続します。 */src/main/java/com/webpubsub/quickstart* ディレクトリに移動し、エディタで *App.java* ファイルをオープンして、下のコードに置き換えます。
+    ```java
+    package com.webpubsub.quickstart;
+    
+    import java.io.BufferedReader;
+    import java.io.IOException;
+    import java.io.InputStreamReader;
+    import java.net.URI;
+    import java.net.http.HttpClient;
+    import java.net.http.HttpRequest;
+    import java.net.http.HttpResponse;
+    import java.net.http.WebSocket;
+    import java.util.concurrent.CompletionStage;
+    
+    import com.google.gson.Gson;
+    
+    public class App 
+    {
+        public static void main( String[] args ) throws IOException, InterruptedException
+        {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/negotiate"))
+                .build();
+    
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            Gson gson = new Gson();
+    
+            String url = gson.fromJson(response.body(), Entity.class).url;
+    
+            WebSocket ws = HttpClient.newHttpClient().newWebSocketBuilder().subprotocols("json.webpubsub.azure.v1")
+                    .buildAsync(URI.create(url), new WebSocketClient()).join();
+            int id = 0;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String streaming = reader.readLine();
+            App app = new App();
+            while (streaming != null && !streaming.isEmpty()){
+                String frame = gson.toJson(app.new GroupMessage(streaming + "\n", ++id));
+                System.out.println("Sending: " + frame);
+                ws.sendText(frame, true);
+                streaming = reader.readLine();
+            }
+        }
+    
+        private class GroupMessage{
+            public String data;
+            public int ackId;
+            public final String type = "sendToGroup";
+            public final String group = "stream";
+            
+            GroupMessage(String data, int ackId){
+                this.data = data;
+                this.ackId = ackId;
+            }
+        }
+    
+        private static final class WebSocketClient implements WebSocket.Listener {
+            private WebSocketClient() {
+            }
+    
+            @Override
+            public void onOpen(WebSocket webSocket) {
+                System.out.println("onOpen using subprotocol " + webSocket.getSubprotocol());
+                WebSocket.Listener.super.onOpen(webSocket);
+            }
+    
+            @Override
+            public CompletionStage<?> onText(WebSocket webSocket, CharSequence data, boolean last) {
+                System.out.println("onText received " + data);
+                return WebSocket.Listener.super.onText(webSocket, data, last);
+            }
+    
+            @Override
+            public void onError(WebSocket webSocket, Throwable error) {
+                System.out.println("Bad day! " + webSocket.toString());
+                WebSocket.Listener.super.onError(webSocket, error);
+            }
+        }
+    
+        private static final class Entity {
+            public String url;
+        }
+    }
+    
+    ```
+
+    4. *pom.xml* ファイルが格納されているディレクトリに移動し、次のコマンドを使用してプロジェクトを実行します
+    
+      ```console
+      mvn compile & mvn package & mvn exec:java -Dexec.mainClass="com.webpubsub.quickstart.App" -Dexec.cleanupDaemonThreads=false
+      ```
+    
     ---
     
     ここに新しい概念 "グループ" があるのを確認できます。 グループは、接続のグループにメッセージを発行できる、ハブの論理的な概念です。 ハブでは、複数のグループを使用でき、1 つのクライアントは同時に複数のグループをサブスクライブできます。 サブプロトコルを使用する場合には、ハブ全体にブロードキャストするのではなく、グループにのみ発行できます。 用語の詳細については、「[基本的な概念](./key-concepts.md)」をご覧ください。
@@ -550,8 +782,19 @@ ms.locfileid: "132345643"
               'webpubsub.joinLeaveGroup.stream']
     token = service.get_client_access_token(roles=roles)
     ```
-    ---
     
+    # <a name="java"></a>[Java](#tab/java)
+    
+    アクセス トークンを生成するときは、次のように `App.java` でクライアントに適切なロールを設定します。
+
+    ```java
+    GetClientAccessTokenOptions option = new GetClientAccessTokenOptions();
+    option.addRole("webpubsub.sendToGroup.stream");
+    option.addRole("webpubsub.joinLeaveGroup.stream");
+    WebPubSubClientAccessToken token = service.getClientAccessToken(option);
+
+    ```
+    ---
 
 5.  最後に、適切に表示されるようにするため、`index.html` にスタイルを適用します。
 
@@ -628,6 +871,16 @@ for i in $(ls -R); do echo $i; sleep 0.1; done | python stream.py
 このチュートリアルの完成したコード サンプルは、[こちら][code-python]にあります。
 
 
+# <a name="java"></a>[Java](#tab/java)
+
+次に、下のコードを実行し、任意のテキストを入力できます。すると、それがブラウザーにリアル タイムで表示されます。
+
+```console
+mvn compile & mvn package & mvn exec:java -Dexec.mainClass="com.webpubsub.quickstart.App" -Dexec.cleanupDaemonThreads=false
+```
+
+このチュートリアルの完全なコード サンプルは、[こちら][code-java]にあります。
+
 ---
 
 
@@ -645,3 +898,5 @@ for i in $(ls -R); do echo $i; sleep 0.1; done | python stream.py
 [code-js]: https://github.com/Azure/azure-webpubsub/tree/main/samples/javascript/logstream/
 
 [code-python]: https://github.com/Azure/azure-webpubsub/tree/main/samples/python/logstream/
+
+[code-java]: https://github.com/Azure/azure-webpubsub/tree/main/samples/java/logstream/

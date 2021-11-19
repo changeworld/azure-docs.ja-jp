@@ -4,20 +4,16 @@ summary: この記事では、Microsoft Sentinel の使用を開始するため�
 metadata:
   title: Microsoft Sentinel のドキュメント
   description: 'この記事では、Microsoft Sentinel の使用を開始するためのユース ケースとシナリオを紹介します。 損害を受ける前に、現代に合わせて再開発された SIEM を使用して脅威を確認して停止します。 Microsoft Sentinel を使用すると、企業全体を鳥瞰できます。# 必須: 検索結果に表示される記事の説明。 160 文字未満。'
-  services: sentinel
-  ms.service: sentinel
-  ms.subservice: microsoft-sentinel
   ms.topic: landing-page
-  ms.collection: collection
   author: yelevin
   ms.author: yelevin
   ms.date: 11/09/2021
-  ms.openlocfilehash: d6a4d50dfeceb4769e377b46b35b949d7a890653
-  ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+  ms.openlocfilehash: 6c3159812641d431ab047fd3084d4f07d18b3a84
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/16/2021
-  ms.locfileid: "132518472"
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132760202"
 landingContent:
 - title: Microsoft Sentinel について
   linkLists:

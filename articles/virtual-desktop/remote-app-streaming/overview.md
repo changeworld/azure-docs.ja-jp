@@ -3,15 +3,15 @@ title: Azure Virtual Desktop リモート アプリ ストリーミングとは 
 description: Azure Virtual Desktop リモート アプリ ストリーミングの概要。
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/06/2021
+ms.date: 11/12/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e1ff4cba43c1e57c39b5e47e2485a262f66bbb5f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c13996fd5c8373ebe0897fa9caa57a2d94600c1b
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032982"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399525"
 ---
 # <a name="what-is-azure-virtual-desktop-remote-app-streaming"></a>Azure Virtual Desktop リモート アプリ ストリーミングとは
 
@@ -68,6 +68,7 @@ Azure Virtual Desktop の設定後は、組織または顧客のニーズに合�
 - [Azure Automation を使用してセッション ホストをスケーリングする](../set-up-scaling-script.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 - [ユニバーサル印刷を設定する](/universal-print/fundamentals/universal-print-getting-started)
 - [Start VM on Connect 機能を設定する](../start-virtual-machine-connect.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Azure Virtual Desktop リソースにタグを付けてコストを管理する](../tag-virtual-desktop-resources.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 
 ## <a name="get-to-know-your-azure-virtual-desktop-deployment"></a>Azure Virtual Desktop のデプロイについての理解を深める
 

@@ -5,16 +5,16 @@ metadata:
   services: security-center
   author: memildin
   manager: rkarlin
-  ms.service: security-center
+  ms.service: defender-for-cloud
   ms.topic: conceptual
   ms.date: 11/09/2021
   ms.author: memildin
-  ms.openlocfilehash: 07e2b794beb1065d4a0b320a3accf8f33b73cb6f
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: a1a34509b3d5a704df81c3c04f123307ba715a58
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132350027"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132486186"
 title: FAQ - データ収集、エージェント、およびワークスペースに関する質問
 summary: >
   Defender for Cloud は、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシンスケールセット、IaaS コンテナー、および非 Azure コンピューター (オンプレミスコンピューターを含む) からデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。
@@ -95,7 +95,7 @@ sections:
       復旧するには、削除したワークスペースに接続されている VM 上の Log Analytics エージェントを削除します。 Defender for Cloud によってエージェントが再インストールされ、新しい既定のワークスペースが作成されます。
   - question: >
       既存の Log Analytics ワークスペースを使用するにはどうすればよいですか?
-    answer: "Defender for Cloud によって収集されたデータを保存する既存の Log Analytics ワークスペースを選択できます。 既存の Log Analytics ワークスペースを使用する場合、次の要件があります。\n\n- 選択した Azure サブスクリプションにワークスペースを関連付ける必要があります。\n- ワークスペースにアクセスするには、少なくとも読み取りアクセス許可が必要です。\n\n> [!NOTE]\n> Log Analytics エージェントとそれが実行されているコンピューターは、両方とも同じテナント内の Log Analytics ワークスペースに報告する必要があります。 別のテナントにレポートしている場合、そのエージェントからのセキュリティの警告は表示されません。\n\n既存の Log Analytics ワークスペースを選択するには、次の手順に従います。\n\n1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。\n1. 関連するサブスクリプションを選択します。\n1. **[自動プロビジョニング]** ページを開きます。\n1. Log Analytics エージェントの場合は、 **[構成の編集]** を選択します。 \n\n    :::image type=\"content\" source=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"自動デプロイの使用時に使用する Log Analytics エージェントの構成\" lightbox=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. **[Connect Azure VMs to a different workspace]\\(Azure VM の別のワークスペースへの接続\\)** を選択し、既存のワークスペースを選択します。\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/choose-workspace.png\" alt-text=\"Log Analytics エージェントに対してレポート先の既定のワークスペース以外のワークスペースを選択する\" lightbox=\"./media/enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > このリストには、アクセス権を持っており、Azure サブスクリプション内にあるワークスペースのみが含められます。\n\n1. **[保存]** を選択します。 監視対象の VM を再構成するかどうかをたずねられます。\n\n    - 新しいワークスペース設定を **新しい VM にのみ適用** する場合は、 **[いいえ]** を選択します。 新しいワークスペース設定は、エージェントの新しいインストール (Log Analytics エージェントがインストールされていない、新たに検出された VM) にのみ適用されます。\n    - 新しいワークスペース設定を **すべての VM に適用** する場合は、 **[はい]** を選択します。 この場合、Defender for Cloud によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。\n\n    > [!NOTE]\n    > **[はい]** を選択した場合、すべての VM が新しいターゲット ワークスペースに再接続されるまで、Defender for Cloud によって作成されたワークスペースを削除しないでください。 ワークスペースの削除が早すぎると、この操作は失敗します。\n"
+    answer: "Defender for Cloud によって収集されたデータを保存する既存の Log Analytics ワークスペースを選択できます。 既存の Log Analytics ワークスペースを使用する場合、次の要件があります。\n\n- 選択した Azure サブスクリプションにワークスペースを関連付ける必要があります。\n- ワークスペースにアクセスするには、少なくとも読み取りアクセス許可が必要です。\n\n> [!NOTE]\n> Log Analytics エージェントとそれが実行されているコンピューターは、両方とも同じテナント内の Log Analytics ワークスペースに報告する必要があります。 別のテナントにレポートしている場合、そのエージェントからのセキュリティの警告は表示されません。\n\n既存の Log Analytics ワークスペースを選択するには、次の手順に従います。\n\n1. Defender for Cloud のメニューで、**[環境設定]** を開きます。\n1. 関連するサブスクリプションを選択します。\n1. **[自動プロビジョニング]** ページを開きます。\n1. Log Analytics エージェントの場合は、 **[構成の編集]** を選択します。 \n\n    :::image type=\"content\" source=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"自動デプロイの使用時に使用する Log Analytics エージェントの構成\" lightbox=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. **[Connect Azure VMs to a different workspace]\\(Azure VM の別のワークスペースへの接続\\)** を選択し、既存のワークスペースを選択します。\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/choose-workspace.png\" alt-text=\"Log Analytics エージェントに対してレポート先の既定のワークスペース以外のワークスペースを選択する\" lightbox=\"./media/enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > このリストには、アクセス権を持っており、Azure サブスクリプション内にあるワークスペースのみが含められます。\n\n1. **[保存]** を選択します。 監視対象の VM を再構成するかどうかをたずねられます。\n\n    - 新しいワークスペース設定を **新しい VM にのみ適用** する場合は、 **[いいえ]** を選択します。 新しいワークスペース設定は、エージェントの新しいインストール (Log Analytics エージェントがインストールされていない、新たに検出された VM) にのみ適用されます。\n    - 新しいワークスペース設定を **すべての VM に適用** する場合は、 **[はい]** を選択します。 この場合、Defender for Cloud によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。\n\n    > [!NOTE]\n    > **[はい]** を選択した場合、すべての VM が新しいターゲット ワークスペースに再接続されるまで、Defender for Cloud によって作成されたワークスペースを削除しないでください。 ワークスペースの削除が早すぎると、この操作は失敗します。\n"
   - question: >
       Log Analytics エージェントが拡張機能として VM に既にインストールされている場合はどうなりますか?
     answer: >
@@ -132,7 +132,7 @@ sections:
       Microsoft Monitoring Extension を削除すると、Defender for Cloud は VM からセキュリティ データを収集できなくなり、一部のセキュリティの推奨とアラートを使用できなくなります。 Defender for Cloud は、VM に拡張機能が存在せず、拡張機能を再インストールすることが 24 時間以内に判断されます。
   - question: >
       自動的なエージェントのインストールとワークスペースの作成をオプトアウトするにはどうすればよいですか?
-    answer: "セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Defender for Cloud のレコメンデーションとアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。\n\n1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。\n1. 関連するサブスクリプションを選択します。\n1. サブスクリプションで [強化されたセキュリティ機能が有効](enable-enhanced-security.md)になっている場合は、**Defender プラン** を開き、**強化されたセキュリティの無効** を選択します。          \n1. **[自動プロビジョニング]** ページから、ペンを選択して **[セキュリティ ポリシー - データ収集]** ページで自動プロビジョニングを無効にします。\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/agent-toggles.png\" alt-text=\"Log Analytics エージェントの自動デプロイを有効にする\":::\n\n1. **[保存]** を選択します。\n"
+    answer: "セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Defender for Cloud のレコメンデーションとアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。\n\n1. Defender for Cloud のメニューで、**[環境設定]** を開きます。\n1. 関連するサブスクリプションを選択します。\n1. サブスクリプションで [強化されたセキュリティ機能が有効](enable-enhanced-security.md)になっている場合は、**Defender プラン** を開き、**強化されたセキュリティの無効** を選択します。          \n1. **[自動プロビジョニング]** ページから、ペンを選択して **[セキュリティ ポリシー - データ収集]** ページで自動プロビジョニングを無効にします。\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/agent-toggles.png\" alt-text=\"Log Analytics エージェントの自動デプロイを有効にする\":::\n\n1. **[保存]** を選択します。\n"
   - question: >
       自動的なエージェントのインストールとワークスペースの作成をオプトアウトすべきでしょうか?
     answer: >

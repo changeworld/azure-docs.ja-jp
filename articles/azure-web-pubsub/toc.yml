@@ -53,6 +53,16 @@
           href: howto-websocket-connect.md
         - name: イベント ハンドラーの構成
           href: howto-develop-eventhandler.md
+        - name: Azure ID を使用して `WebPubSubServiceClient` を作成する
+          items:
+            - name: Azure ID と .NET を使用して `WebPubSubServiceClient` を作成する
+              href: howto-create-serviceclient-with-net-and-azure-identity.md
+            - name: Azure ID と Java を使用して `WebPubSubServiceClient` を作成する
+              href: howto-create-serviceclient-with-java-and-azure-identity.md
+            - name: Azure ID と JavaScript を使用して `WebPubSubServiceClient` を作成する
+              href: howto-create-serviceclient-with-javascript-and-azure-identity.md
+            - name: Azure ID と Python を使用して `WebPubSubServiceClient` を作成する
+              href: howto-create-serviceclient-with-python-and-azure-identity.md
     - name: Monitor
       items:
         - name: Azure Policy を使用したコンプライアンスの監査

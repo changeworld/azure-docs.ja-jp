@@ -5,12 +5,12 @@ description: この記事では、Azure Video Analyzer for Media (旧称 Video I
 ms.topic: overview
 ms.date: 07/15/2021
 ms.author: juliako
-ms.openlocfilehash: a6fd02283bbd6304611dab1c6cfbc8a63e01139e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fddcb1cd3562fde14c38c68811b7272a7d710d2b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658604"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487521"
 ---
 # <a name="what-is-video-analyzer-for-media"></a>Video Analyzer for Media とは
 
@@ -66,7 +66,8 @@ Video Analyzer for Media の分析情報は、次のような多くのシナリ�
 * **ローリング クレジット**: テレビ番組や映画の終わりにあるローリング クレジットの始まりと終わりを識別します。
 * **アニメーション キャラクターの検出** (プレビュー): [Cognitive Services の Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) との統合によって、アニメ化されたコンテンツのキャラクターの検出、グループ化、および認識を行います。 詳細については、「[アニメーション キャラクターの検出](animated-characters-recognition.md)」を参照してください。
 * **編集ショット タイプの検出**: タイプに基づくショットのタグ付け (ワイド ショット、ミディアム ショット、クローズアップ、エクストリーム クローズアップ、2 ショット、複数の人物、屋外、室内など)。 詳細については、「[編集ショット タイプの検出](scenes-shots-keyframes.md#editorial-shot-type-detection)」を参照してください。
-* **観測されたユーザーのトレース**: ビデオで観察されたユーザーを検出し、ビデオ フレーム内のユーザーの場所 (境界ボックスを使用) や、正確なタイムスタンプ (開始、終了)、ユーザーが表示されたときの信頼度などの情報を提供します。 詳細については、「[Trace observed people in a video](observed-people-tracing.md)」\(ビデオ内で確認されたユーザーを追跡する\)を参照してください。
+* **観測されたユーザーのトレース** (プレビュー): ビデオで観察されたユーザーを検出し、ビデオ フレーム内のユーザーの場所 (境界ボックスを使用) や、正確なタイムスタンプ (開始、終了)、ユーザーが表示されたときの信頼度などの情報を提供します。 詳細については、「[Trace observed people in a video](observed-people-tracing.md)」\(ビデオ内で確認されたユーザーを追跡する\)を参照してください。
+    * **検出された人物の衣服**: ビデオに登場する人の衣服の種類を検出し、長袖または半袖、長ズボンまたは半ズボン、スカートまたはワンピースなどの情報を提供します。 検出された衣服はそれを着ている人に関連付けられ、正確なタイムスタンプ (開始,終了) と検出の信頼度が提供されます。
 
 ### <a name="audio-insights"></a>オーディオの分析情報
 

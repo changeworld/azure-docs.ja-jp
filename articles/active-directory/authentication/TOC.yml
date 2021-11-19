@@ -57,7 +57,7 @@
         - name: ライセンス
           href: concept-mfa-licensing.md
         - name: Office 365 での MFA
-          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
+          href: /microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: よく寄せられる質問
           href: multi-factor-authentication-faq.yml
         - name: オペレーターのサポート
@@ -162,8 +162,12 @@
           href: howto-password-ban-bad-on-premises-faq.yml
         - name: エージェントのバージョン履歴
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Microsoft Authenticator セットアップの微調整 (プレビュー)
-      href: how-to-nudge-authenticator-app.md
+    - name: 登録キャンペーンを実行する
+      href: how-to-mfa-registration-campaign.md
+    - name: 数値の照合を使用する (プレビュー)
+      href: how-to-mfa-number-match.md
+    - name: 追加コンテキストを使用する (プレビュー)
+      href: how-to-mfa-additional-context.md
     - name: Microsoft によって管理される設定を使用する
       href: how-to-mfa-microsoft-managed.md
     - name: 一時アクセス パス (プレビュー) の使用
@@ -264,7 +268,7 @@
     - name: MFA ユーザー ガイド
       href: 'https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc'
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
+      href: /samples/browse/?products=azure
     - name: Azure PowerShell コマンドレット
       href: /powershell/azure/
     - name: Microsoft Graph REST API ベータ版

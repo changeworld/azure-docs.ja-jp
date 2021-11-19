@@ -11,17 +11,20 @@ author: niko-neugebauer
 ms.author: nneugebauer
 ms.reviewer: mathoma, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 3e79b90356974e8ce5d77d639d2ca866624288d3
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: a35a001a7d543426f5bb2f842b5b00c9a1139cd3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132290497"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554030"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL Managed Instance とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL Managed Instance はインテリジェントでスケーラブルなクラウド データベース サービスであり、幅広い SQL Server データベース エンジンとの互換性と、フル マネージドの常に最新のサービスとしてのプラットフォームのすべての利点を兼ね備えています。 SQL Managed Instance には、最新の SQL Server (Enterprise Edition) データベース エンジンとの 100% 近い互換性が備わっており、一般的なセキュリティ上の懸念事項に対処するネイティブの[仮想ネットワーク (VNet)](../../virtual-network/virtual-networks-overview.md) の実装と、SQL Server の既存のお客様にとって有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 SQL Managed Instance により、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベースの変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、SQL Managed Instance では、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、[自動バックアップ](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)) を維持します。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 Azure SQL Managed Instance を初めてお使いの方は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の *Azure SQL Managed Instance* に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61/player]
@@ -35,8 +38,8 @@ Azure SQL Managed Instance を初めてお使いの方は、[Azure SQL ビデオ
 
 Azure SQL Managed Instance は、多数のアプリをオンプレミスまたは IaaS、自作、あるいは ISV 提供の環境からフル マネージド PaaS クラウド環境に、できるだけ手間をかけずに移行しようとしているお客様向けに設計されています。 完全に自動化された [Azure Data Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) の利用により、顧客は既存の SQL Server インスタンスを SQL Managed Instance に移行 (リフト アンド シフト) することができます。その結果、VNet のネイティブ サポートにより SQL Server との互換性が維持され、顧客のインスタンスの完全な分離が実現します。 移行オプションとツールの詳細については、[SQL Server から Azure SQL Managed Instance への移行の概要](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)に関するページを参照してください。</br> ソフトウェア アシュアランスに基づき、[SQL Server 用の Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、顧客の既存のライセンスを SQL Managed Instance の割引料金に交換できます。 高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Managed Instance はクラウド内における最適な移行先です。
 
-> [!TIP]
-> Azure SQL を改善するために、 [アンケートにご協力ください。](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)
+
+
 
 ## <a name="key-features-and-capabilities"></a>主な機能
 

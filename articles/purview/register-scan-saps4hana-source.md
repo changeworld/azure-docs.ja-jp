@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: abc98ed4df5da533dc7f6a8483a917150babf0ad
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: fdf5f8ed70d0af65bc80ace02d1e4db503a04abe
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132488030"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549586"
 ---
 # <a name="connect-to-and-manage-sap-s4hana-in-azure-purview"></a>Azure Purview での SAP S/4HANA への接続と管理
 
@@ -38,7 +38,7 @@ ms.locfileid: "132488030"
 * 最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。 詳細については、[セルフホステッド統合ランタイムの作成および構成ガイド](../data-factory/create-self-hosted-integration-runtime.md)に関する記事を参照してください。
 
     >[!NOTE]
-    >SAP S/4HANA のスキャンはメモリを集中的に使用する操作であり、128 GB などの大容量のメモリを搭載したマシンにセルフホステッド統合ランタイムをインストールすることをお勧めします。
+    >SAP S/4HANA のスキャンはメモリを集中的に使用する操作であり、少なくとも 128 GB 以上のメモリを搭載したマシンにセルフホステッド統合ランタイムをインストールすることをお勧めします。
 
 * セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
 

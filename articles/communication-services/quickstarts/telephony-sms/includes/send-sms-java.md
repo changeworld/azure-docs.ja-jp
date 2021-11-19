@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: ea5e7c4c502e7a31fddac78e1931d172acce7b9d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: c0225c1193cd7e3664b9a7f21fa0337be8cb384a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111998"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529599"
 ---
 Communication Services Java SMS SDK を使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -140,7 +140,7 @@ System.out.println("Send Result Successful:" + sendResult.isSuccessful());
 `<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number>` はメッセージの送信先の電話番号で置き換える必要があります。
 
 > [!WARNING]
-> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。 **発信元** の電話番号には短いコード (例: 23456) も使用できます。
 
 ## <a name="send-a-1n-sms-message-with-options"></a>オプションを使用して 1:N の SMS メッセージを送信する
 受信者の一覧に SMS メッセージを送信するには、受信者の電話番号の一覧を使用して `send` メソッドを呼び出します。 また、オプションのパラメーターを渡して、配信レポートを有効にするかどうか、およびカスタム タグを設定するかどうかを指定することもできます。
@@ -166,7 +166,7 @@ for (SmsSendResult result : sendResults) {
 `<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number-1>` と `<to-phone-number-2>` はメッセージの送信先の電話番号で置き換える必要があります。
 
 > [!WARNING]
-> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。 **発信元** の電話番号には短いコード (例: 23456) も使用できます。
 
 `setDeliveryReportEnabled` メソッドは、配信レポートを構成する際に使用します。 これは、SMS メッセージが配信されたときにイベントを生成する場合に便利です。 SMS メッセージの配信レポートを構成するには、[SMS イベントの処理](../handle-sms-events.md)に関するクイックスタートを参照してください。
 

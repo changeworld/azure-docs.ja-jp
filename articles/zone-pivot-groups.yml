@@ -419,7 +419,7 @@ groups:
   - id: development-environment-vscode
     title: Visual Studio Code
   - id: development-environment-vs
-    title: Visual Studio
+    title: Visual Studio
   - id: development-environment-cli
     title: コマンド ライン
 - id: bring-third-party-dependency-programming-functions
@@ -1138,14 +1138,6 @@ groups:
     title: Azure Portal で次の操作を行います。
   - id: rest-api
     title: REST API を使用した場合
-- id: connect-aws-accounts
-  title: AWS アカウントを Azure サブスクリプションに接続する
-  prompt: AWS アカウントの接続方法
-  pivots:
-  - id: env-settings
-    title: 環境設定ページ
-  - id: classic-connector
-    title: クラシック クラウド コネクタ
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: オペレーティング システム/コンソール
   prompt: オペレーティング システムとコンソールの選択
@@ -1406,10 +1398,18 @@ groups:
     title: CLI
   - id: client-portaltier
     title: Azure portal
+- id: iot-develop-nxp-toolset
+  title: IoT デバイス
+  prompt: ビルド環境を選択する
+  pivots:
+  - id: iot-toolset-cmake
+    title: CMake
+  - id: iot-toolset-iar-ewarm
+    title: IAR EWARM
 metadata:
-  ms.openlocfilehash: 97d7281ba21ff3821bb2ed6ff0775c9dad0e0a55
-  ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+  ms.openlocfilehash: 7eb1aefed8cbc026d49ec6dcf1969fde57029be1
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/10/2021
-  ms.locfileid: "132156532"
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132759480"

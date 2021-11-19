@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: eb49c65d3d61e17a8e527016d32d80bcc85894d8
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1c26ed72a804335a675a2456b2908f582848f5a7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541227"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399088"
 ---
 # <a name="monitor-apache-spark-applications-metrics-with-prometheus-and-grafana"></a>Prometheus と Grafana を使用して Apache Spark アプリケーションのメトリックを監視する
 
@@ -86,6 +86,9 @@ az ad sp create-for-rbac --name <service_principal_name>
 6. [ユーザーの選択] で、 **<service_principal_name>** を入力してサービス プリンシパルをクリックします
 
 7. **[適用]** をクリックします (アクセス許可が有効になるまで 3 分間待機します。)
+
+> [!NOTE]
+> サービスプ リンシパルが、Synapse ワークスペースで少なくとも "閲覧者" ロールであることを確認してください。 Azure portal の [アクセス制御 (IAM)] タブに移動し、アクセス許可の設定を確認します。
 
 ## <a name="install-connector-prometheus-server-grafana-dashboard"></a>コネクタ、Prometheus サーバー、Grafana ダッシュボードをインストールする
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/07/2021
+ms.date: 11/15/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7f4c509b1f59db05db9bf6fca34960f7f2ab6b87
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d4e86f2dc3df62b90c45d27d9034e1b97d9b4870
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131054478"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522044"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -258,6 +258,7 @@ PATCH と POST の要求形式は異なります。 POST と PATCH が同じ形�
   - **考慮事項**
     - すべてのロールは primary = false としてプロビジョニングされます。
     - POST にはロールの種類が含まれます。 PATCH 要求には種類は含まれません。 POST 要求と PATCH 要求の両方で種類を送信できるよう、作業を進めています。
+    - AppRoleAssignmentsComplex は、スコープを [すべてのユーザーとグループを同期する] に設定した場合と互換性がありません。 
     
   - **出力例** 
   

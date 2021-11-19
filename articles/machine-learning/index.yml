@@ -51,15 +51,18 @@ conceptualContent:
           text: 'AutoML: 分類モデルをトレーニングする'
     - title: モデルをデプロイする
       links:
-        - url: how-to-deploy-and-where.md
-          itemType: how-to-guide
-          text: モデルをデプロイする方法
+        - url: concept-endpoints.md
+          itemType: concept
+          text: エンドポイントを使用してモデル デプロイを効率化する (プレビュー)
         - url: how-to-deploy-managed-online-endpoints.md
           itemType: how-to-guide
           text: マネージド エンドポイントを使用したリアルタイム スコアリング (プレビュー)
         - url: how-to-use-batch-endpoint.md
           itemType: how-to-guide
           text: マネージド エンドポイントを使用したバッチ スコアリング (プレビュー)
+        - url: how-to-deploy-and-where.md
+          itemType: how-to-guide
+          text: エンドポイントを使用せずにモデルをデプロイするためのオプション
     - title: ML ライフサイクル (MLOps) を管理する
       links:
         - url: how-to-track-monitor-analyze-runs.md

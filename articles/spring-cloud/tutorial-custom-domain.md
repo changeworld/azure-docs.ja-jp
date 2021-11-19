@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: bbead4e25df9646c08ec605694cfa7514b011522
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 73f6c8217b6d630a1e31b53d54da56e5d30582a6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015404"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488964"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>チュートリアル: 既存のカスタム ドメインを Azure Spring Cloud にマップする
 
@@ -24,7 +24,7 @@ ms.locfileid: "122015404"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Spring Cloud にデプロイされたアプリケーション (「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」を参照するか、既存のアプリを使用してください)。
+* Azure Spring Cloud にデプロイされたアプリケーション (「[クイックスタート: Azure portal を使用して Azure Spring Cloud で既存のアプリケーションを起動する](./quickstart.md)」を参照するか、既存のアプリを使用してください)。
 * GoDaddy などのドメイン プロバイダーの DNS レジストリへのアクセス権を持つドメイン名。
 * サードパーティ プロバイダーからのプライベート証明書 (つまり自己署名証明書)。 証明書はドメインと一致している必要があります。
 * [Azure Key Vault](../key-vault/general/overview.md) のデプロイ済みインスタンス
@@ -173,7 +173,7 @@ CNAME を追加した後の DNS レコード ページは、次の例のよう�
 ![DNS レコード ページ](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Azure Spring Cloud アプリへのカスタム ドメインのマップ
-Azure Spring Cloud にアプリケーションがない場合は、「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」の手順に従ってください。
+Azure Spring Cloud にアプリケーションがインストールされている場合は、「[クイックスタート: Azure portal を使用して Azure Spring Cloud で既存のアプリケーションを起動する](./quickstart.md)」の手順に従ってください。
 
 #### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 アプリケーション ページに移動します。

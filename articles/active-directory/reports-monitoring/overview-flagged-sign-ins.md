@@ -1,29 +1,36 @@
 ---
 title: Azure Active Directory におけるフラグが設定されたサインインとは
 description: Azure Active Directory におけるフラグが設定されたサインインの概要について説明します。
+services: active-directory
+documentationcenter: ''
 author: MarkusVi
 manager: karenhoran
+editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
 ms.service: active-directory
+ms.devlang: na
 ms.topic: overview
+ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/27/2021
+ms.date: 11/12/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 518c13780cf7de9e31f3a22e7ecb0440aa0128bc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 056ed3df8e9658b00917680aa2ad291f3529d1c8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456045"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484574"
 ---
 # <a name="what-are-flagged-sign-ins-in-azure-active-directory"></a>Azure Active Directory におけるフラグが設定されたサインインとは
 
 IT 管理者は、ユーザーがサインインに失敗した場合、できるだけ早く問題を解決してユーザーのブロックを解除したいと考えています。 サインイン ログで使用可能なデータの量が原因で、適切な情報を見つけるのが難しい場合があります。
 
 この記事では、関連する問題を見つけやすくすることで、ユーザーのサインインの問題の解決にかかる時間を大幅に短縮する機能の概要について説明します。
+
+
 
 
 ## <a name="what-it-is"></a>説明
@@ -37,7 +44,9 @@ Azure AD のサインイン イベントは、ユーザーのサインインと�
 まとめると、フラグが設定されたサインインを使用して、次のことができます。
 
 - ユーザーに、テナント管理者の支援が必要なサインイン エラーを示す **権限を付与する**。
+
 - ユーザーが解決する必要のあるサインイン エラーを見つけるプロセスを **簡素化する**。
+
 - エンド ユーザーがイベントにフラグを設定するだけで、ヘルプ デスクの担当者がユーザーがヘルプを必要としている問題をプロアクティブに **見つけられるようになる**。
 
 ## <a name="how-it-works"></a>しくみ
@@ -68,20 +77,24 @@ Azure AD のサインイン イベントは、ユーザーのサインインと�
 
 ### <a name="admin-or-developer-find-flagged-events-using-ms-graph"></a>管理者または開発者: MS Graph を使用してフラグが設定されたイベントを見つける
 
-サインイン レポート API を使用して、フィルター処理されたクエリでフラグが設定されたサインインを見つけることができます。 次にサンプル クエリを示します。
+サインイン レポート API を使用して、フィルター処理されたクエリでフラグが設定されたサインインを見つけることができます。
+
+フラグが設定されたすべてのサインインを表示する: `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true`
+
+UPN (例: user@contoso.com) による特定のユーザーのフラグが設定されたサインインのクエリ: `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true and userPrincipalname eq 'user@contoso.com'`
+
+特定のユーザー、かつ特定の日付以降のフラグが設定されたサインインのクエリ: `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true and createdDateTime ge 2021-10-01 and userPrincipalname eq 'user@contoso.com'`
  
-`https://graph.microsoft.com/beta/auditlogs/signins?&$filter=(flaggedForReview eq true)`
-
-サインイン Graph API の使用の詳細については、「[サインイン リソースの種類](/graph/api/resources/signin?view=graph-rest-1.0&preserve-view=true)」を参照してください。
+サインイン Graph API の使用の詳細については、「[サインイン リソースの種類](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-1.0&preserve-view=true)」を参照してください。
 
 
 
  
-## <a name="who-can-create-it"></a>作成できるユーザー
+## <a name="who-can-create-flagged-sign-ins"></a>フラグが設定されたサインインを作成できる人
 
 Web ページ経由で Azure AD にサインインしているすべてのユーザーが、確認用にフラグが設定されたサインインを使用できます。 メンバーとゲスト ユーザーも同様に、確認用にサインイン エラーにフラグを設定できます。 
 
-## <a name="who-can-review-it"></a>確認できるユーザー
+## <a name="who-can-review-flagged-sign-ins"></a>フラグが設定されたサインインを確認できる人
 
 フラグが設定されたサインイン イベントを確認するには、Azure AD ポータルでサインイン レポート イベントを読み取るためのアクセス許可が必要です。 詳細については、「[だれがアクセスできるのか](concept-sign-ins.md#who-can-access-it)」を参照してください。
 

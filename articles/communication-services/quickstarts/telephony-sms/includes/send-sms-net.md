@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: 44cf84b1a9a045d1f9ecd6c6aaf3a8224ec273a6
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 12e16f8078d90ec1faae990a2e1dc4e6e7a42971
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111985"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530082"
 ---
 Communication Services C# SMS SDK を使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -113,7 +113,7 @@ Console.WriteLine($"Sms id: {sendResult.MessageId}");
 `<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number>` はメッセージの送信先の電話番号で置き換える必要があります。
 
 > [!WARNING]
-> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。 **発信元** の電話番号には短いコード (例: 23456) も使用できます。
 
 ## <a name="send-a-1n-sms-message-with-options"></a>オプションを使用して 1:N の SMS メッセージを送信する
 受信者の一覧に SMS メッセージを送信するには、受信者の電話番号の一覧を使用して SmsClient から `Send` または `SendAsync` 関数を呼び出します。 また、オプションのパラメーターを渡して、配信レポートを有効にするかどうか、およびカスタム タグを設定するかどうかを指定することもできます。
@@ -139,7 +139,7 @@ foreach (SmsSendResult result in results)
 `<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number-1>` と `<to-phone-number-2>` はメッセージの送信先の電話番号で置き換える必要があります。
 
 > [!WARNING]
-> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。 **発信元** の電話番号には短いコード (例: 23456) も使用できます。
 
 `enableDeliveryReport` パラメーターは、配信レポートを構成するために使用できる省略可能なパラメーターです。 これは、SMS メッセージが配信されたときにイベントを生成する場合に便利です。 SMS メッセージの配信レポートを構成するには、[SMS イベントの処理](../handle-sms-events.md)に関するクイックスタートを参照してください。
 

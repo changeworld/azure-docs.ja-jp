@@ -1,14 +1,14 @@
 items:
-  - name: Azure API for FHIRドキュメント
+  - name: FHIR 用 Azure API のドキュメント
     href: ./azure-api-for-fhir/index.yml
-  - name: Azure Healthcare API (プレビュー) のドキュメント
+  - name: Azure の医療 Api (プレビュー) のドキュメント
     href: index.yml
   - name: 概要
     expanded: true
     items:
-      - name: 医療 API について
+      - name: 医療 Api について
         href: healthcare-apis-overview.md
-      - name: ワークスペースについて
+      - name: ワークスペースの概要
         href: workspace-overview.md
       - name: FHIR サービス
         href: ./fhir/index.yml
@@ -21,22 +21,29 @@ items:
   - name: クイックスタート
     expanded: true
     items:
-      - name: 医療 API をデプロイする
+      - name: 医療 Api のデプロイ
         href: healthcare-apis-quickstart.md
   - name: 操作方法ガイド
     expanded: true
     items:
-      - name: 認証と承認
-        href: authentication-authorization.md
-      - name: Postman を使用して FHIR サービスにアクセスする
+      - name: ユーザーアクセスとアクセス許可を管理する
+        expanded: true
+        items:
+          - name: 認証と承認
+            href: authentication-authorization.md
+          - name: クライアントアプリケーションを登録する
+            href: register-application.md
+          - name: Azure RBAC を構成する
+            href: configure-azure-rbac.md
+          - name: アクセストークンを取得する
+            href: get-access-token.md
+      - name: Postman を使用したアクセス
         href: use-postman.md
-      - name: cURL を使用したアクセス
+      - name: CURL を使用したアクセス
         href: using-curl.md
       - name: REST クライアントを使用したアクセス
         href: using-rest-client.md
-      - name: アプリケーションの登録
-        href: register-application.md
-      - name: ログの記録
+      - name: ログ記録
         href: logging.md
   - name: 概念
     items:

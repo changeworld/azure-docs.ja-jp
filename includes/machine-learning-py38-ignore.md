@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 08/20/2021
 ms.author: sgilley
-ms.openlocfilehash: 945457f0e859a2b3cf7e0fd6908a720bcd1f6519
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 34f060089a7d6ec3790c31075829991f354397bb
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634136"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529863"
 ---
 > [!NOTE]
-> *[Failure to load...]\(...の読み込み失敗\)* の警告がターミナルに表示されることがあります。 これらの警告は無視してかまいません。 これらの警告の下部にあるリンクを使用して、出力を表示してください。
+> *azureml_run_type_providers の読み込み中にエラーが発生し...* から始まるいくつかの警告が表示される場合があります。これらの警告は無視してかまいません。 これらの警告の下部にあるリンクを使用して、出力を表示してください。

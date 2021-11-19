@@ -9,18 +9,18 @@ ms.subservice: spark
 ms.date: 10/18/2021
 ms.author: nidutta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 072d1481ea1a089db7c02c5bc9af8179dcefccd7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c37e1361a1f0864dc64af3bfb91eb6f8df293949
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091909"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494327"
 ---
-# <a name="apache-spark-gpu-enabled-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Apache Spark GPU 対応プール
+# <a name="apache-spark-gpu-accelerated-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Apache Spark GPU アクセラレータ プール
 
 Apache Spark は、ビッグデータ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする並列処理フレームワークです。 Azure Synapse Analytics の Apache Spark は、Apache Spark を Microsoft がクラウドに実装したものです。 
 
-Azure Synapse では、GPU の大規模な並列処理能力を活用して処理を高速化する、基になる [RAPIDS ライブラリ](https://nvidia.github.io/spark-rapids/)を使用して Spark ワークロードを実行するための Azure Synapse GPU 対応プールを作成できるようになりました。 Apache Spark 用の RAPIDS アクセラレータを使用すると、GPU 対応プール用に事前構成された構成設定を有効にするだけで、**コードを変更することなく** 既存の Spark アプリケーションを実行できます。
+Azure Synapse では、GPU の大規模な並列処理能力を使用して処理を高速化する、基になる [RAPIDS ライブラリ](https://nvidia.github.io/spark-rapids/)を使用して Spark ワークロードを実行するための Azure Synapse GPU 対応プールを作成できるようになりました。 Apache Spark 用の RAPIDS アクセラレータを使用すると、GPU 対応プール用に事前構成された構成設定を有効にするだけで、**コードを変更することなく** 既存の Spark アプリケーションを実行できます。
 この構成を設定することにより、ワークロード、またはワークロードの一部に対して RAPIDS ベースの GPU アクセラレータをオンまたはオフにできます。
 
 ```
@@ -50,7 +50,7 @@ RAPIDS アクセラレータ プラグインでは、GPU と Executor 間の一�
 上記の構成のいずれかを満たしていないワークロードは受け入れられません。 これは、プールで使用可能なすべてのリソースを利用し、最も効率的でパフォーマンスの高い構成で Spark ジョブが実行されるようにするために行われます。
 
 ユーザーは、ワークロードを通じて上記の構成を設定できます。 ノートブックの場合、次に示すように、ユーザーは `%%configure` マジック コマンドを使用して上記の構成のいずれかを設定できます。
-たとえば、3 台のノードで大規模なプールを使用する場合は、次のようになります。
+たとえば、3 つのノードの大規模なプールを使用する場合は、次のようになります。
 
 ```
 %%configure -f
@@ -63,9 +63,9 @@ RAPIDS アクセラレータ プラグインでは、GPU と Executor 間の一�
 }
 ```
 
-## <a name="run-a-sample-spark-job-through-notebook-on-an-azure-synapse-gpu-enabled-pool"></a>Azure Synapse GPU 対応プールでノートブックを介してサンプル Spark ジョブを実行する
+## <a name="run-a-sample-spark-job-through-notebook-on-an-azure-synapse-gpu-accelerated-pool"></a>Azure Synapse GPU アクセラレータ プールでノートブックを介してサンプル Spark ジョブを実行する
 
-このセクションに進む前に、Azure Synapse Analytics での[ノートブックの使用方法の基本的概念](apache-spark-development-using-notebooks.md)を理解しておくことをお勧めします。 GPU アクセラレータを使用して単純な Spark アプリケーションを実行する手順について説明します。 Spark アプリケーションは、Synapse 内でサポートされている 4 つのすべての言語 (PySpark (Python)、Spark (Scala)、SparkSQL、.NET for Spark (C#)) で作成できます。
+このセクションに進む前に、Azure Synapse Analytics での[ノートブックの使用方法の基本的概念](apache-spark-development-using-notebooks.md)を理解しておくことをお勧めします。 GPU アクセラレータを使用して Spark アプリケーションを実行する手順について説明します。 Spark アプリケーションは、Synapse 内でサポートされている 4 つのすべての言語 PySpark (Python)、Spark (Scala)、SparkSQL、.NET for Spark (C#) で作成できます。
 
 1. [こちらのクイックスタート](../quickstart-create-apache-gpu-pool-portal.md)の説明に従って、GPU 対応プールを作成します。
 
@@ -142,7 +142,7 @@ DataFrame empDF = spark.CreateDataFrame(emp, schema);
 ```
 ---
 
-5. 次に、部門 ID ごとの給与の最高額を取得して単純な集計を行い、その結果を表示してみましょう。
+5. 次に、部門 ID ごとの給与の最高額を取得して集計を行い、その結果を表示してみましょう。
 
 ### <a name="scala"></a>[Scala](#tab/scala1)
 
@@ -176,4 +176,7 @@ resultDF.Show();
 
 ### <a name="workspace-level"></a>ワークスペースレベル
 
-すべての Azure Synapse ワークスペースには、既定のクォータである 0 個の GPU 仮想コアが付属しています。 GPU コアのクォータを増やすには、ワークスペース名、リージョン、およびワークロードに必要な GPU クォータの合計を記載した電子メールを AzureSynapseGPU@microsoft.com まで送信してください。
+すべての Azure Synapse ワークスペースには、既定のクォータである 50 個の GPU 仮想コアが付属しています。 GPU コアのクォータを増やすには、ワークスペース名、リージョン、およびワークロードに必要な GPU クォータの合計を記載した電子メールを AzureSynapseGPU@microsoft.com まで送信してください。
+
+## <a name="next-steps"></a>次のステップ
+- [Azure Synapse Analytics](../overview-what-is.md)

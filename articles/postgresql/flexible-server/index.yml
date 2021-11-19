@@ -9,12 +9,12 @@ metadata:
   ms.date: 09/22/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 4ab2a940f0fdb18b60d626cb96813b708860f8ae
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: bb3b8d336eb79991c3c4eb1b379e5d3b60b315cd
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122779689"
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132754540"
 landingContent:
 - title: フレキシブル サーバー (プレビュー) について
   linkLists:
@@ -58,6 +58,8 @@ landingContent:
       url: concepts-logical.md
     - text: インテリジェント チューニング
       url: concepts-intelligent-tuning.md
+    - text: Azure Advisor の推奨事項
+      url: concepts-azure-advisor-recommendations.md
   - linkListType: how-to-guide
     links:
     - text: サーバーを管理する

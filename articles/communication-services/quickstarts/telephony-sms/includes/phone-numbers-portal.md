@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: fc175bdad79bbb01bd0686dcdbf314d8d6ee47fb
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 35394fc33316518dac760363d2b69fdaa0727d6a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201251"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529472"
 ---
 
 ## <a name="prerequisites"></a>前提条件
@@ -37,9 +37,9 @@ ms.locfileid: "114201251"
 1. [番号の種類](../../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)の選択
 2. [番号機能の選択](../../../concepts/telephony-sms/plan-solution.md#phone-number-capabilities-in-azure-communication-services)
 
-電話番号は、**局番** と **無料電話番号** の 2 種類から選択できます。 番号の種類を選択したら、機能を選択することができます。
+電話番号は、**ローカル** と **無料電話番号** の 2 種類から選択できます。 番号の種類を選択したら、機能を選択することができます。
 
-この例では、番号の種類として **[Toll-free]\(無料電話番号\)** を、機能として **[Outbound calling]\(発信通話\)** と **[Inbound and Outbound SMS]\(受信および送信 SMS\)** を選択しました。
+この例では、 **[発信]** と **[SMS の送受信]** 機能を使用して、 **[無料電話番号]** の番号タイプを選択しました。
 
 :::image type="content" source="../../media/manage-phone-azure-portal-select-plans.png" alt-text="機能の選択ビューのスクリーンショット。":::
 
@@ -52,7 +52,7 @@ ms.locfileid: "114201251"
 :::image type="content" source="../../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="[Numbers]\(番号\) ページを示すスクリーンショット。":::
 
 > [!NOTE]
-> このクイックスタートでは、番号の種類が **[Toll-free]\(無料電話番号\)** のカスタマイズ フローを示しています。 番号の種類として **[Geographic]\(局番\)** を選択した場合は操作が多少異なる場合がありますが、最終的な結果は同じになります。
+> このクイックスタートでは、番号の種類が **[Toll-free]\(無料電話番号\)** のカスタマイズ フローを示しています。 番号の種類として **[ローカル]** を選択した場合は操作が多少異なる場合がありますが、最終的な結果は同じになります。
 
 利用可能な市外局番の一覧から **市外局番** を選択し、プロビジョニングする数量を入力した後、 **[Search]\(検索\)** をクリックして、選択した要件を満たす番号を見つけます。 自分のニーズに合った電話番号が月額料金と共に表示されます。
 
@@ -91,11 +91,11 @@ ms.locfileid: "114201251"
 
 ### <a name="update-phone-number-capabilities"></a>電話番号機能を更新する
 
-**[Numbers]\(番号\)** ページで、電話番号を選択してその構成を行うことができます。
+**[Phone Numbers]\(電話番号\)** ページで、電話番号を選択してその構成を行うことができます。
 
 :::image type="content" source="../../media/manage-phone-azure-portal-capability-update.png" alt-text="機能の更新ページのスクリーンショット。":::
 
-目的の機能をオプションから選択し、 **[Confirm]\(確定\)** をクリックして選択内容を適用します。
+目的の機能をオプションから選択し、 **[Save]\(保存\)** をクリックして選択内容を適用します。
 
 ### <a name="release-phone-number"></a>電話番号を解放する
 

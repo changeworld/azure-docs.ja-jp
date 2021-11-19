@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: a9253cbb39bc58d74f6c8dd25b2251b9d2a606ef
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: c6fe1e801578a63df373d67eaa2e81c7e98169ce
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132290516"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552824"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Database とは
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,11 +30,13 @@ Azure SQL Database は、[Microsoft SQL Server データベース エンジン](
 
 SQL Database を使用すると、2 つの異なる購入モデル ([仮想コアベースの購入モデル](service-tiers-vcore.md)と [DTU ベースの購入モデル](service-tiers-dtu.md)) の中でパフォーマンスを簡単に定義してスケールすることができます。 SQL Database は、高可用性、バックアップ、その他の一般的なメンテナンス操作が組み込まれた完全なマネージド サービスです。 SQL とオペレーティング システムのコードの修正プログラムの適用と更新は、すべて Microsoft で処理されます。 ユーザーが基になるインフラストラクチャを管理する必要はありません。
 
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
+
 Azure SQL Database を初めてお使いの方は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure SQL データベースの概要*" に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
 
-> [!TIP]
-> Azure SQL を改善するために、 [アンケートにご協力ください。](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)
+
 
 ## <a name="deployment-models"></a>デプロイ モデル
 

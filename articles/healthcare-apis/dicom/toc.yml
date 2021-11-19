@@ -36,16 +36,6 @@ items:
     items:
       - name: 変更フィードを使用して DICOM の変更をプルする
         href: pull-dicom-changes-from-change-feed.md
-      - name: サービス クライアント アプリケーションを登録する
-        href: dicom-register-service-client-application.md
-      - name: パブリック クライアント アプリケーションを登録する
-        href: dicom-register-public-application.md
-      - name: 機密クライアント アプリケーションを登録する
-        href: dicom-register-confidential-client-application.md
-      - name: DICOM サービス用に Azure RBAC を構成する
-        href: dicom-configure-azure-rbac.md
-      - name: Azure CLI を使用して、DICOM サービスのアクセス トークンを取得する
-        href: dicom-get-access-token-azure-cli.md
   - name: リソース
     expanded: true
     items:

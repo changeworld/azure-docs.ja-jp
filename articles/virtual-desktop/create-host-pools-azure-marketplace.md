@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cf379d2eb5c20c8f8922631d5a467e961ea8f800
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3b95302be3eda412f6941abe359f6da63e235d24
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130228470"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492040"
 ---
 # <a name="tutorial-create-a-host-pool"></a>チュートリアル: ホスト プールを作成する
 
@@ -219,7 +219,12 @@ Azure portal のホスト プール セットアップ プロセス中に仮想�
 
 12. **[仮想マシン管理者アカウント]** で、VM の作成時に追加するローカル管理者アカウントの資格情報を入力します。 このアカウントは、AD と Azure AD 参加済み VM の両方で管理目的で使用できます。
 
-13. **[Next:ワークスペース >]** を選択します。
+13. **[Post update custom configuration]\(更新後のカスタム構成\)** では、セッション ホストの作成後にカスタム構成を実行するための Azure Resource Manager テンプレートの場所を入力します。 Azure Resource Manager テンプレート ファイルと Azure Resource Manager テンプレート パラメーター ファイルの両方の URL を入力する必要があります。 
+
+      >[!NOTE]
+      >Azure Virtual Desktop では、テンプレートを使用して Azure リソースのプロビジョニングを行うことはできません。
+
+14. **[Next:ワークスペース >]** を選択します。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

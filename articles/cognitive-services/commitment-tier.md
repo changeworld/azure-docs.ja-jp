@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/04/2021
-ms.openlocfilehash: a139996e881d38fb9170242196b2139993f501ae
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 94bd9d22876f264ffd438d579c48aa037ed87c3f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028822"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486623"
 ---
 # <a name="quickstart-purchase-commitment-tier-pricing"></a>クイックスタート: コミットメント レベル価格で購入する
 
@@ -97,7 +97,7 @@ Cognitive Services ではコミットメント レベル価格が提供されて
 
 ## <a name="end-a-commitment-plan"></a>コミットメント プランを終了する
 
-コミットメント プランの購入を継続しない場合、リソースの自動更新を **[自動更新しない]** に設定することができます。 コミットメント プランは、表示されたコミットメントの終了日に期限切れになります。 この日以降、コミットメント プランの料金は課金されません。 引き続き Azure リソースを使用して API を呼び出すことができ、従量課金制の料金で課金されます。
+コミットメント プランの購入を継続しない場合、リソースの自動更新を **[自動更新しない]** に設定することができます。 コミットメント プランは、表示されたコミットメントの終了日に期限切れになります。 この日以降、コミットメント プランの料金は課金されません。 引き続き Azure リソースを使用して API を呼び出すことができ、従量課金制の料金で課金されます。 各月の最終日の午前 0 時 (UTC) までコミットメント プランを終了することができ、その場合次の月に対しては課金されません。 
 
 ## <a name="see-also"></a>関連項目
 

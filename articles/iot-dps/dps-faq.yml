@@ -1,0 +1,36 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Azure IoT Hub Device Provisioning Service に関するよく寄せられる質問 (FAQ)
+  description: Azure IoT Hub Device Provisioning Service に関する一般的な質問への回答を示します。
+  author: anastasia-ms
+  ms.author: v-stharr
+  ms.date: 11/08/2021
+  ms.topic: conceptual
+  ms.service: iot-dps
+  services: iot-dps
+  ms.openlocfilehash: 56cc7ef655ee5e874770a691b8f38b1ce0519eaf
+  ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132404308"
+title: Azure IoT Hub Device Provisioning Service に関するよく寄せられる質問 (FAQ)
+summary: >
+  この記事では、Azure IoT Hub Device Provisioning Service に関する一般的な質問に回答します。 次のトピックについて説明します。
+
+
+  * DPS の管理
+
+  * DPS の課金
+sections:
+- name: DPS の管理
+  questions:
+  - question: "IoT Hub アクセス ポリシーの主キーが再生成された場合にリンクされたハブを更新するための推奨される方法は何ですか? \n"
+    answer: >
+      主キーは、DPS が認証に使用する接続文字列内に埋め込まれます。 プライマリ接続文字列が変更されるたびに、主キーも変更され、ハブを DPS に再リンクする必要があります。
+- name: DPS の課金
+  questions:
+  - question: "どのデバイス プロビジョニング サービス API 操作が課金対象となり、どのような価格が適用されますか? \n"
+    answer: >
+      課金対象の操作とその価格については、[Microsoft デバイス プロビジョニング サービスの課金対象サービス操作と価格](about-iot-dps.md#billable-service-operations-and-pricing)に関するページを参照してください。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nこの FAQ でご質問の回答が得られない場合は、次のチャネル (エスカレーション順) を通してお問い合わせいただくことができます。\n\n* この記事のコメント セクション。\n* [Azure DPS の MSFT Q&A ページ (/answers/topics/azure-dps.html).\n* Microsoft サポート。 新しいサポート要求を作成するには、[Azure portal](https://portal.azure.com/) の [ヘルプ] タブで、 **[ヘルプとサポート]** ボタンを選択してから **[新しいサポート要求]** を選択します。\n\n\n> [!div class=\"nextstepaction\"]\n> [https://github.com/anastasia-ms/azure-docs-pr/pull/new/dps-faq](how-to-troubleshoot-dps.md)"

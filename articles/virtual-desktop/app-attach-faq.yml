@@ -9,87 +9,87 @@ metadata:
   ms.date: 08/17/2020
   ms.author: helohr
   manager: femila
-  ms.openlocfilehash: a22d763f9554c8ea734458474dbb9c7e6027bf7f
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: d7a4cc61903ea6560566771e728932d09ddfb9cc
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121729678"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132554467"
 title: MSIX アプリ アタッチに関するごよくある質問
 summary: この記事では、Azure Virtual Desktop の MSIX アプリ アタッチについてよくあるご質問に回答します。
 sections:
 - name: 無視
   questions:
   - question: >
-      What's the difference between MSIX and MSIX app attach?
+      MSIX アプリと MSIX アプリ アタッチの違いは何ですか。
     answer: >
-      MSIX is a packaging format for apps, while MSIX app attach is the feature that delivers MSIX packages to your deployment.
+      MSIX はアプリのパッケージ形式であり、MSIX アプリ アタッチは、デプロイに MSIX パッケージを配信する機能です。
   - question: >
-      Does MSIX app attach use FSLogix?
+      MSIX アプリ アタッチでは FSLogix は使用されますか?
     answer: >
-      MSIX app attach doesn't use FSLogix. However, MSIX app attach and FSLogix are designed to work together to provide a seamless user experience.
+      MSIX アプリ アタッチでは、FSLogix は使用されません。 ただし、MSIX アプリ アタッチと FSLogix は、ユーザーがシームレスなエクスペリエンスを得られるよう連携して動作するように設計されています。
   - question: >
-      Can I use the MSIX app attach outside of Azure Virtual Desktop?
+      MSIX アプリ アタッチは Azure Virtual Desktop の外部で使用できますか?
     answer: >
-      The APIs that power MSIX app attach are available for Windows 10 Enterprise. These APIs can be used outside of Azure Virtual Desktop. However, there's no management plane for MSIX app attach outside of Azure Virtual Desktop.
+      MSIX アプリ アタッチを強化する API が Windows 10 Enterprise 向けに用意されています。 これらの API は、Azure Virtual Desktop の外部で使用できます。 ただし、Azure Virtual Desktop の外部には MSIX アプリ アタッチの管理プレーンはありません。
   - question: >
-      How do I get an MSIX package?
+      MSIX パッケージはどのように入手できますか?
     answer: >
-      Your software vendor will give you an MSIX package. You can also convert non-MSIX packages to MSIX. Learn more at [How to move your existing installers to MSIX](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix).
+      MSIX パッケージは、ご自分のソフトウェア ベンダーから提供されます。 非 MSIX パッケージを MSIX に変換することもできます。 詳細については、「[既存のお使いのインストーラーを MSIX に移行する方法](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix)」を参照してください。
   - question: >
-      Which operating systems support MSIX app attach?
+      MSIX アプリ アタッチはどのオペレーティング システムでサポートされていますか?
     answer: >
-      Windows 10 Enterprise and Windows 10 Enterprise Multi-session, version 2004 or later.
+      Windows 10 Enterprise および Windows 10 Enterprise マルチセッション、バージョン 2004 以降でサポートされています。
   - question: >
-      Is MSIX app attach currently generally available?
-    answer: "MSIX app attach is part of Windows 10 Enterprise and Windows 10 Enterprise Multi-session, version 2004 or later. Both operating systems are currently generally available. \n"
+      現在、MSIX アプリ アタッチは一般公開されていますか。
+    answer: "MSIX アプリ アタッチは、Windows 10 Enterprise および Windows 10 Enterprise マルチセッション、バージョン 2004 以降に含まれています。 現在、両方のオペレーティング システムが一般公開されています。 \n"
   - question: >
-      Can I use MSIX app attach outside of Azure Virtual Desktop?
+      MSIX アプリ アタッチは Azure Virtual Desktop の外部で使用できますか?
     answer: >
-      MSIX and MSIX app attach APIs are part of Windows 10 Enterprise and Windows 10 Enterprise Multi-session, version 2004 and later. We currently don't provide management software for MSIX app attach outside of Azure Virtual Desktop.
+      MSIX と MSIX アプリ アタッチ API は、Windows 10 Enterprise および Windows 10 Enterprise マルチセッション、バージョン 2004 以降に含まれています。 現在、Azure Virtual Desktop の外部の MSIX アプリ アタッチの管理ソフトウェアは提供されていません。
   - question: >
-      Can I run two versions of the same application at the same time?
+      同じアプリケーションの 2 つのバージョンを同時に実行できますか。
     answer: >
-      For two version of the same MSIX applications to run simultaneously, the MSIX package family defined in the appxmanifest.xml file must be different for each app.
+      同じ MSIX アプリケーションの 2 つのバージョンを同時に実行するには、appxmanifest.xml ファイルで定義されている MSIX パッケージ ファミリが、アプリごとに異なっている必要があります。
   - question: >
-      Should I disable auto-update when using MSIX app attach?
+      MSIX アプリ アタッチを使用する場合は、自動更新を無効にする必要がありますか。
     answer: >
-      Yes. MSIX app attach doesn't support auto-update for MSIX applications.
+      はい。 MSIX アプリ アタッチでは、MSIX アプリケーションの自動更新はサポートされていません。
   - question: >
-      How do permissions work with MSIX app attach?
+      MSIX アプリ アタッチでアクセス許可はどのように機能しますか。
     answer: >
-      All virtual machines (VMs) in a host pool that uses MSIX app attach must have read permissions on the file share where the MSIX images are stored. If it also uses Azure Files, they'll need to be granted both role-based access control (RBAC) and New Technology File System (NTFS) permissions.
+      MSIX アプリ アタッチを使用するホスト プール内のすべての仮想マシン (VM) に、MSIX イメージが格納されているファイル共有に対する読み取りアクセス許可が必要です。 Azure Files も使用している場合は、ロールベースのアクセス制御 (RBAC) と New Technology File System (NTFS) の両方のアクセス許可が付与されている必要があります。
   - question: >
-      How many users can use an MSIX image handle?
-    answer: "MSIX app attach mounts MSIX images on a per-machine basis, not a per-user basis. The amount of users who can use an MSIX image handle is based on the size of the machine's file system and throughput of the network. Also, Azure Files has a limit of 2,000 open handles per file. \n"
+      MSIX イメージ ハンドルを使用できるユーザーの数はどれくらいですか?
+    answer: "MSIX アプリ アタッチでは、ユーザーごとではなく、マシンごとに MSIX イメージをマウントします。 MSIX イメージ ハンドルを使用できるユーザーの数は、マシンのファイル システムのサイズとネットワークのスループットに基づいています。 また、Azure Files では、開いているハンドルの数はファイルあたり 2,000 に制限されています。 \n"
   - question: >
-      Can I use Azure Active Directory Domain Services (Azure AD DS) with MSIX app attach?
+      MSIX アプリのアタッチで Azure Active Directory Domain Services (Azure AD DS) を使用できますか。
     answer: >
-      MSIX app attach doesn't currently support Azure AD DS. Because Azure AD DS computer objects aren't synchronized to Azure Active Directory (Azure AD), the administrator can't provide the required role-based access control (RBAC) permissions for Azure Files.
+      MSIX アプリのアタッチでは現在のところ、Azure AD DS がサポートされていません。 Azure AD DS コンピューター オブジェクトが Azure Active Directory (Azure AD) と同期されないため、Azure Files に必要なロールベースのアクセス制御 (RBAC) アクセス許可を管理者は提供できません。
   - question: >
-      Can I use MSIX app attach for HTTP or HTTPs?
+      HTTP または HTTPs で MSIX アプリ アタッチを使用できますか。
     answer: >
-      Using MSIX app attach over HTTP or HTTPs is currently not supported.
+      HTTP または HTTPs で MSIX アプリ アタッチを使用することは、現在サポートされていません。
   - question: >
-      Can I restage the same MSIX application?
+      同じ MSIX アプリケーションを再ステージングすることはできますか。
     answer: >
-      Yes. You can restage applications you've already restaged, and this shouldn't cause any errors.
+      はい。 既に再ステージングされているアプリケーションを再ステージングできます。これによってエラーが発生することはありません。
   - question: >
-      Does MSIX app attach support self-signed certificates?
+      MSIX アプリ アタッチで自己署名証明書はサポートされていますか。
     answer: >
-      Yes. You need to install the self-signed certificate on all the session host VMs where MSIX app attach is used to host the self-signed application. Learn how to create a self-signed certificate at [Create a certificate for package signing](/windows/msix/package/create-certificate-package-signing).
+      はい。 MSIX アプリのアタッチを使用して自己署名アプリケーションをホストするすべてのセッション ホスト VM に、自己署名証明書をインストールする必要があります。 自己署名証明書を作成する方法については、「[パッケージ署名用の証明書を作成する](/windows/msix/package/create-certificate-package-signing)」を参照してください。
   - question: >
-      What applications can I repackage to MSIX?
-    answer: "Each application uses different features of the OS, programming languages, and frameworks. To repackage your application, follow the directions in [How to move your existing installers to MSIX](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix). You can find a list of the things you need in order to repackage an application at [Prepare to package a desktop application](/windows/msix/desktop/desktop-to-uwp-prepare). \n\nCertain applications can't be application layered, which means they can't be repackaged into an MSIX file. Here's a list of the applications that can't be repackaged:\n\n- Drivers \n- Active-X or Silverlight\n- VPN clients\n- Antivirus programs\n"
+      どのアプリケーションを MSIX に再パッケージ化できますか。
+    answer: "使用される OS の機能、プログラミング言語、フレームワークはアプリケーションごとに異なります。 アプリケーションを再パッケージ化するには、「[既存のインストーラーを MSIX に移動する方法](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix)」を参照してください。 アプリケーションの再パッケージ化に必要な項目の一覧は、「[デスクトップ アプリケーションのパッケージ化の準備](/windows/msix/desktop/desktop-to-uwp-prepare)」にあります。 \n\n特定のアプリケーションはアプリケーション層化できません。つまり、MSIX ファイルに再パッケージ化できません。 再パッケージ化できないアプリケーションの一覧を次に示します。\n\n- ドライバー \n- Active-X または Silverlight\n- VPN クライアント\n- ウイルス対策プログラム\n"
   - question: >
-      How many MISX applications can I add to each session host?
+      各セッション ホストには MSIX アプリケーションをいくつ追加できますか。
     answer: >
-      Each session host has different limits based on their CPU, memory, and OS. Going over these limits can affect application performance and overall user experience. However, MSIX app attach itself has no limit on how many applications it can use.
+      各セッション ホストには、CPU、メモリ、OS に基づいて異なる制限があります。 これらの制限を超えると、アプリケーションのパフォーマンスと全体的なユーザー エクスペリエンスに影響する場合があります。 ただし、MSIX アプリのアタッチ自体には、使用できるアプリケーションの数の制限はありません。
   - question: >
-      How many .VHD or .VHDX files can I mount on a host pool?
-    answer: "MSIX app attach itself doesn't have a limit to the number of files you can mount. However, the host pool itself can be limited by the following factors:\n\n- The ability of the OS to handle mounted volumes.\n- The maximum number of open files your storage solution or file system can hold.\n- The host pool's session host memory and CPU utilization.\n\nIn other words, the host pool's limits would be the same as if you're installing and running the apps locally.          \n"
+      ホスト プールに .VHD ファイルまたは .VHDX ファイルをいくつマウントできますか。
+    answer: "MSIX アプリのアタッチ自体には、マウントできるファイルの数の制限はありません。 ただし、ホスト プール自体は、次の要因によって制限されることがあります。\n\n- マウントされたボリュームを処理する OS の機能。\n- ストレージ ソリューションまたはファイル システムで保持できる開いているファイルの最大数。\n- ホスト プールのセッション ホストのメモリと CPU の使用率。\n\n言い換えると、ホスト プールの制限は、アプリをローカルにインストールして実行する場合と同じです。          \n"
   - question: >
-      Should I timestamp my MSIX packages?
+      MSIX パッケージにタイムスタンプを付ける必要がありますか。
     answer: >
-      Check the [MSIX packaging overview](/windows/msix/package/signing-package-overview#timestamping) to see Microsoft's recommendations for using timestamps.
-additionalContent: "\n## Next steps\n\nIf you want to learn more about MSIX app attach, check out our [overview](what-is-app-attach.md) and [glossary](app-attach-glossary.md). Otherwise, get started with [Set up app attach](app-attach.md)."
+      [MSIX パッケージの概要](/windows/msix/package/signing-package-overview#timestamping)に関するページを確認して、タイムスタンプを使用するための Microsoft の推奨事項を確認します。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nMSIX アプリ アタッチの詳細については、[概要](what-is-app-attach.md)と[用語集](app-attach-glossary.md)に関するページを参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。"

@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: a4205f768e004613231961a43f7ec9fa5461f078
-ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
+ms.openlocfilehash: 46e2f60adc895b60370ed7109305bb8966057fa3
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132179647"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402392"
 ---
 # <a name="connect-to-and-manage-an-azure-database-for-postgresql-in-azure-purview"></a>Azure Purview で Azure Database for PostgreSQL に接続して管理する
 
@@ -21,13 +21,14 @@ ms.locfileid: "132179647"
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Purview は、Azure Database for PostgreSQL の単一サーバー デプロイ オプションのみをサポートしています。
-
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan)| [はい](#scan) | [はい](#scan) | [はい](#scan) | いいえ | いいえ** |
+| [あり](#register) | [あり](#scan)| [あり](#scan) | [はい](#scan) | [はい](#scan) | いいえ | いいえ** |
 
 \** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
+
+> [!Important]
+>  Purview は、Azure Database for PostgreSQL の単一サーバー デプロイ オプションのみをサポートしています。 バージョン 8.x ～ 12.x
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +36,7 @@ Purview は、Azure Database for PostgreSQL の単一サーバー デプロイ �
 
 * アクティブな [Purview リソース](create-catalog-portal.md)。
 
-* Purview Studio でソースを登録し管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細は、[Azure Purview のアクセス許可に関するページ](catalog-permissions.md)を参照してください。
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
 ## <a name="register"></a>登録
 

@@ -68,9 +68,9 @@
     - name: すべてのものの分散化 ID (DID) を対象とする業界の作業グループ
       href: 'https://identity.foundation'
     - name: Microsoft の DID ホワイトペーパー
-      href: 'http://aka.ms/didwhitepaper'
+      href: 'https://aka.ms/didwhitepaper'
     - name: DID マーケティングの概要
-      href: 'http://aka.ms/didexplained'
+      href: 'https://aka.ms/didexplained'
     - name: 分散化 ID のブログ
       href: 'https://techcommunity.microsoft.com/t5/tag/decentralized%20identity/tg-p'
     - name: 分散化 ID 概要のビデオ

@@ -8,12 +8,12 @@ ms.date: 03/09/2021
 ms.author: karler
 ms.custom: devx-track-java, contperf-fy21q2
 customer intent: As an Azure Cloud user, I want to deploy, run, and monitor Spring Boot microservices.
-ms.openlocfilehash: ce56ac8e85e727cd4efa88b8f59ea7ec3871a8dc
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 8720a24e975ce7a73ed49f92460de301b5c8dfd8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179339"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485678"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud とは
 
@@ -69,7 +69,7 @@ Azure エコシステムの一部として、Azure Spring Cloud は、ストレ�
 
     * [開発](how-to-prepare-app-deployment.md): Azure Spring Cloud にデプロイするために、既存の Java Spring アプリケーションを準備します。 適切に構成すると、Azure Spring Cloud によって、Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが提供されます。
     * [デプロイ](./how-to-staging-environment.md): Azure Spring Cloud でブルー/グリーン デプロイ パターンを使用して、ステージング環境のデプロイを設定します。 ブルー/グリーン デプロイとは、新しい (グリーン) バージョンのデプロイ中に、既存 (ブルー) のバージョンを実行状態のまま保持する、Azure DevOps の継続的デリバリーのパターンです。
-    * [アプリの構成](./how-to-start-stop-delete.md): Azure Spring Cloud アプリケーションを起動、停止、削除します。 Azure portal または Azure CLI を使用して、Azure Spring Cloud でアプリケーションの状態を変更します。
+    * [アプリの構成](./how-to-start-stop-delete.md): Azure Spring Cloud でアプリケーションを開始、停止、削除します。 Azure portal または Azure CLI を使用して、Azure Spring Cloud でアプリケーションの状態を変更します。
     * [スケール](./how-to-scale-manual.md):Azure portal で Azure Spring Cloud ダッシュボードを使用するか、自動スケーリング設定を使用して、マイクロサービス アプリケーションをスケーリングします。 パブリック IP は、データベース、ストレージ、キー コンテナーなど、外部リソースとの通信に使用できます。
     * [アプリの監視](./how-to-distributed-tracing.md): 分散トレース ツールにより、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、Spring Cloud Sleuth と Azure の Application Insights を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
     * [アプリのセキュリティ保護](./how-to-enable-system-assigned-managed-identity.md): Azure リソースは、Azure Active Directory で自動的に管理される ID を提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。

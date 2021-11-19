@@ -7,13 +7,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-java
 ms.author: vramasubbu
-ms.date: 10/12/2021
-ms.openlocfilehash: a1e4a03b5a9f2c173bb7a8a301fd20997b738005
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 11/12/2021
+ms.openlocfilehash: 967303cc675ebc6537630f08e6871f5b32cf6af4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003006"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488832"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Spring Cloud をプロビジョニングする
 
@@ -208,5 +208,5 @@ echo "Press [ENTER] to continue ..."
    - [MySQL 統合を使用した Pet Clinic アプリ](https://github.com/azure-samples/spring-petclinic-microservices) (MySQL バックエンドを使用したマイクロサービス)。
    - [シンプルな Hello World](./quickstart.md?pivots=programming-language-java&tabs=Azure-CLI)。
 - [カスタム ドメイン](tutorial-custom-domain.md)と Azure Spring Cloud を併用します。
-- [Azure Application Gateway](expose-apps-gateway-azure-firewall.md) を使用して Azure Spring Cloud アプリケーションをインターネットに公開します。
+- [Azure Application Gateway](expose-apps-gateway-azure-firewall.md) を使用して Azure Spring Cloud でアプリケーションをインターネットに公開します。
 - [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/) に基づいた、セキュリティで保護されたエンドツーエンドの [Azure Spring Cloud の参照アーキテクチャ](reference-architecture.md)を参照してください。

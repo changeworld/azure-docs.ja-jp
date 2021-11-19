@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 75ca1779ca358d955f9cb7bdb4af5867347ca569
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 98ac612782eff1b304473b12f3c8883a684bff28
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015429"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491681"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する
 
@@ -111,7 +111,7 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Spring Cloud アプリケーションのアラートとアクション グループを設定する方法について学習しました。 アクション グループの詳細については、次の記事を参照してください。
+このチュートリアルでは、Azure Spring Cloud のアプリケーションのアラートとアクション グループを設定する方法について学習しました。 アクション グループの詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure portal でのアクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)

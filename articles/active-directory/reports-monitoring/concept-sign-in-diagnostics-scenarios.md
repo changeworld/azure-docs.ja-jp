@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/08/2021
+ms.date: 11/12/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f530f406f049876ca393610dc7b7fa02433116a
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: ab25e7150f7930f85df846ece50a3013c0e45818
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997155"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399733"
 ---
 # <a name="sign-in-diagnostics-for-azure-ad-scenarios"></a>Azure AD シナリオのサインイン診断
 
@@ -73,8 +73,14 @@ Azure AD のサインイン診断には、次のシナリオがサポートさ�
     - エラー コードの分析情報  
 
     - レガシ認証  
+    
+    - 条件付きアクセスが原因でブロックされた B2B サインイン
 
     - リスク ポリシーによるブロック 
+    
+    - パススルー認証
+    
+    - シームレスなシングル サインオン
 
 
 
@@ -285,6 +291,20 @@ Azure AD のサインイン診断には、次のシナリオがサポートさ�
 この診断シナリオでは、使用されている認証方法がパススルー認証 (PTA) であり、PTA 固有のエラーがある場合に、ユーザー固有のサインインの問題を識別します。 他の問題が原因のエラー (PTA 認証が使用されている場合でも) も正しく診断されます。 
 
 診断には、エラーとユーザーのサインインに関するコンテキスト情報、サインインに失敗した理由、および問題を解決するために管理者が実行できる推奨アクションが表示されます。 詳細については、[Azure AD Connect: パススルー認証のトラブルシューティング](../hybrid/tshoot-connect-pass-through-authentication.md)に関するページを参照してください。 
+
+
+### <a name="seamless-single-sign-on"></a>シームレスなシングル サインオン
+
+シームレスなシングル サインオンでは、Kerberos 認証とクラウド認証が統合されます。 このシナリオには 2 つの認証プロトコルが関与するため、サインインの問題が発生したときに、障害点の把握が困難な場合があります。 この診断は、これらのシナリオを簡単に診断して解決できるようにすることを目的としています。
+ 
+この診断シナリオでは、サインインに失敗したコンテキストと具体的な失敗原因、サインインの試行に関するコンテキスト情報、および問題を解決するために管理者がオンプレミスまたはクラウド上で取ることができる推奨されるアクションを調べます。 詳しくは、「[Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う](../hybrid/tshoot-connect-sso.md)」をご覧ください。 
+ 
+
+
+
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

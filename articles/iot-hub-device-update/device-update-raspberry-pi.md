@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7d6cb25d553e5215ae3d06810b7c0087dd433ef3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ded90c34a3e43f202c815dc593b3420cf5d88e41
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019934"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518947"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -173,13 +173,13 @@ Device Update for Azure IoT Hub ソフトウェアには、次のライセンス
 
 1. 以前に Device Update インスタンスに接続した IoT Hub にアクセスします。
 
-2. 左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
+2. 左側のナビゲーション バーの [デバイス管理] にある [更新] オプションを選択します。
 
 3. ページの上部にある [グループ] タブを選択します。 
 
 4. [追加] ボタンを選択して、新しいグループを作成します。
 
-5. 前の手順で作成した IoT Hub のタグを一覧から選択します。 [更新プログラム グループの作成] を選択します。
+5. 前の手順で作成した IoT Hub のタグを一覧から選択します。 [グループの作成] を選択します。
 
    :::image type="content" source="media/create-update-group/select-tag.PNG" alt-text="タグの選択を示すスクリーンショット。" lightbox="media/create-update-group/select-tag.PNG":::
 

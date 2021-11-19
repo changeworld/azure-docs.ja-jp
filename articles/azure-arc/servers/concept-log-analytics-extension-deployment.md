@@ -3,12 +3,12 @@ title: Arc 対応サーバーに Log Analytics エージェントをデプロイ
 description: この記事では、ローカル データセンターまたは他のクラウド環境の Azure Arc 対応サーバーに登録されている Windows および Linux ベースのマシンに Log Analytics エージェントをデプロイするさまざまな方法について説明します。
 ms.date: 10/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 150b0c032108cd6d0aad84b6bcadf1b7101c7ef1
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5ba1ccc8407903ca40677938b19846a7e6c205a0
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130269745"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369457"
 ---
 # <a name="understand-deployment-options-for-the-log-analytics-agent-on-azure-arc-enabled-servers"></a>Azure Arc 対応サーバー上の Log Analytics エージェントでのデプロイ オプションを理解する
 
@@ -17,7 +17,7 @@ Azure Monitor では、Log Analytics エージェントをインストールし�
 次のことを行う場合は、Log Analytics エージェントが必要です。
 
 * [VM の分析情報](../../azure-monitor/vm/vminsights-overview.md)を使用して、マシンまたはサーバーで実行されているオペレーティング システムとワークロードを監視します。 [Azure Monitor](../../azure-monitor/overview.md) の他の機能を使用して、さらに分析を行ってアラートを生成します。
-* [Azure Security Center](../../security-center/security-center-introduction.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、Azure でセキュリティ監視を実行します。
+* [Microsoft Defender for Cloud](../../defender-for-cloud/defender-for-cloud-introduction.md) と [Microsoft Sentinel](../../sentinel/overview.md) を使用して、Azure のセキュリティ監視を実行します。
 * [Azure Automation の Update Management](../../automation/update-management/overview.md) を使用して、オペレーティング システムの更新プログラムを管理します。
 * [Azure Automation の変更履歴とインベントリ](../../automation/change-tracking/overview.md)を使用して、インベントリを収集し、変更を追跡します。
 * [Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) を使用して、マシン上で直接、および環境内のリソースに対して、Automation Runbook を実行します。
@@ -77,7 +77,7 @@ Azure Automation でのプロセス自動化動作環境と、PowerShell およ�
 * Azure Automation での Runbook の作成と管理の経験。
 * 対象のオペレーティング システムに応じて、PowerShell または Python での Runbook の作成。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Automation の Update Management を使用してオペレーティング システムの更新プログラムを管理するには、[Automation アカウントからの有効化](../../automation/update-management/enable-from-automation-account.md)に関する記事を確認し、その手順に従ってマシンによるワークスペースへの報告を有効にします。
 
@@ -85,6 +85,6 @@ Azure Automation でのプロセス自動化動作環境と、PowerShell およ�
 
 * Azure Automation のユーザー Hybrid Runbook Worker 機能を使用すると、Arc 対応サーバーに登録されているサーバーまたはマシンで Runbook を直接実行できます。 [Hybrid Runbook Worker VM 拡張機能のデプロイ](../../automation/extension-based-hybrid-runbook-worker-install.md)に関する記事をご覧ください。
 
-* Azure Sentinel でセキュリティ関連イベントの収集を開始するには、[Azure Sentinel へのオンボード](scenario-onboard-azure-sentinel.md)に関する記事をご覧ください。Azure Security Center で収集するには、[Azure Security Center へのオンボード](../../security-center/quickstart-onboard-machines.md)に関する記事をご覧ください。
+* セキュリティ関連のイベントの収集を Microsoft Sentinel で開始する場合は、「[Microsoft Sentinel にオンボードする](scenario-onboard-azure-sentinel.md)」を参照し、Microsoft Defender for Cloud で収集する場合は「[Microsoft Defender for Cloud にオンボードする](../../security-center/quickstart-onboard-machines.md)」を参照してください。
 
 * マシンのパフォーマンスを確認し、検出されたアプリケーション コンポーネントを表示するには、VM の分析情報の[パフォーマンスの監視](../../azure-monitor/vm/vminsights-performance.md)と[依存関係のマップ](../../azure-monitor/vm/vminsights-maps.md)に関する記事をご覧ください。

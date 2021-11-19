@@ -3,16 +3,16 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 10/21/2021
+ms.date: 11/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d21a73b37f9a192ce080b0c5405b280b9100ba8
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6e18baf15b63a37f9c7746ac1273b481f1ea77cc
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247335"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556577"
 ---
-米国政府、日本、シンガポール、韓国、インド、南アフリカ、イギリス、ドイツ、スイス、西ヨーロッパ、オーストラリア、またはブラジルで Data Box をお使いの方で、ご自分の注文の作成時に自己管理による出荷を選択した場合は、こちらの手順に従います。
+米国政府、日本、シンガポール、韓国、インド、南アフリカ、イギリス、ドイツ、スイス、西ヨーロッパ、オーストラリア、またはブラジルで Data Box をお使いの方で、ご自分の注文の作成時に自己管理による出荷を選択した場合は、こちらの手順に従います。 詳細な手順については、[自己管理の出荷の使用](../articles/databox/data-box-portal-customer-managed-shipping.md)に関するページを参照してください。
 
 1. この手順が正常に完了したら、Data Box のローカル Web UI の **[発送準備]** ページに表示される承認コードをメモしておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。

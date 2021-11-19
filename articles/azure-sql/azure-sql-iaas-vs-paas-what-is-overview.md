@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 2360b32a63ad5473f8dfa1f08a6d2df3e0e85fd4
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: b3742fbe8767e46cfdb21c2aee389fe0a2890661
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132136583"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549054"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,8 +32,13 @@ Azure SQL は使い慣れた SQL Server エンジンに基づいて構築され�
 
 ビジネス要件に適したオプションを判断するために、各製品が Microsoft のどの Azure SQL データ プラットフォームに適しているかについて学ぶことができます。 この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に適したアプローチを判断できます。
 
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
+
 Azure SQL を初めて使用する場合は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure SQL の概要*" に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
+
 
 ## <a name="overview"></a>概要
 

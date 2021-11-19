@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 83d8d6498a5ec4906f7cdd7187ae88e4a2f45126
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 07168ec69046973d4e02c2dc40b3b5e256ea26b4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318029"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492115"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>チュートリアル:VSCode で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
@@ -192,6 +192,29 @@ for (word, count) in sortedCollection:
 >2. Synapse Pyspark カーネルに切り替えて、Azure Portal で自動設定を無効にすることをお勧めします。 そうしないと、クラスターをウェイクアップし、初めて使用するために Synapse カーネルを設定するのに時間がかかることがあります。 
 >
 >    ![自動設定](./media/vscode-tool-synapse/auto-settings.png)
+
+## <a name="spark-session-config"></a>Spark セッションの構成
+
+**[Configure session]\(セッションの構成\)** では、現在の Spark セッションに設定するタイムアウト期間、Executor の数とサイズを指定できます。 Spark セッションを再起動すると、構成の変更が有効になります。 キャッシュされたノートブック変数はすべて消去されます。
+
+```python
+%%configure -f
+{
+    // refer to https://github.com/cloudera/livy#request-body for a list of valid parameters to config the session.
+    "driverMemory":"2g",
+    "driverCores":3,
+    "executorMemory":"2g",
+    "executorCores":2,
+    "jars":[],
+    "conf":{
+        "spark.driver.maxResultSize":"10g"
+    }
+}
+```
+
+> [!NOTE]
+>
+> 表示関数や Spark SQL が出力セルに正しく表示されないことがあります。 
 
 ## <a name="submit-pyspark-batch-job-to-spark-pool"></a>PySpark バッチ ジョブを Spark プールに送信する
 

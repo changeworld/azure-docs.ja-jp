@@ -5,16 +5,19 @@ ms.service: azure-video-analyzer
 ms.topic: quickstart
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ed1c4e979d9b593cc701c294c95eda96b27db415
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3f7c134174560d3222e0ba936378c37b931abee7
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554414"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489929"
 ---
 # <a name="quickstart-get-started-with-video-analyzer-live-pipelines-in-the-azure-portal"></a>クイックスタート: Azure portal の Video Analyzer ライブ パイプラインの概要
 
-[!INCLUDE [header](includes/cloud-env.md)]
+![クラウドのアイコン](media/env-icon/cloud.png)  
+または、[Edge を使用して Video Analyzer の使用を開始する](../edge/get-started-detect-motion-emit-events-portal.md)方法に関するページを参照してください。
+
+---
 
 このクイックスタートでは、Azure Video Analyzer サービスのライブ パイプラインを使用して、リアル タイム ストリーミング プロトコル (RTSP) カメラからビデオをキャプチャおよび録画する手順について説明します。
 Azure portal を使用して、Video Analyzer アカウントとそれに付随するリソースを作成します。 実際の RTSP カメラにアクセスできない場合は、RTSP カメラ シミュレーターをデプロイします (インターネット経由でアクセス可能にできます)。 次に、関連する Video Analyzer リソースをデプロイして、Video Analyzer アカウントにビデオを録画します。
@@ -62,7 +65,7 @@ RTSP 対応カメラにアクセスする必要があります[サポートさ�
 
     ```
     cd localmedia
-    wget https://lvamedia.blob.core.windows.net/public/camera-1800s.mkv
+    wget https://avamedia.blob.core.windows.net/public/camera-1800s.mkv
     ```
 1. 次のように構築済みのコンテナー イメージを使用して、VM 上で RTSP サーバーを起動します
 

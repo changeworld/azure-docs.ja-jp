@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/21/2021
-ms.openlocfilehash: e970108e225ef527b7772573b317272be1a775ce
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: aa24ce0f540137f516b7de8452a0ca85c684100e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557720"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337209"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -389,7 +389,7 @@ print(token)
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
 
-Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Azure Security Center に対して、リソースのスキャンと推奨事項の順守を許可する必要があります。 詳細については、[Azure Kubernetes Services と Security Center の統合](../security-center/defender-for-kubernetes-introduction.md)に関する記事を参照してください。
+Microsoft Defender for Cloud では、統合されたセキュリティ管理と高度な脅威に対する保護がハイブリッド クラウド ワークロードに提供されます。 リソースのスキャンを Microsoft Defender for Cloud に許可し、その推奨事項に従う必要があります。 詳細については、[Azure Kubernetes Service と Defender for Cloud の統合](../security-center/defender-for-kubernetes-introduction.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

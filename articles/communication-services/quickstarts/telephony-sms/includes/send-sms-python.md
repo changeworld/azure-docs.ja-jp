@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 9e44cc1f631a56d1948c744a1ecb912208bad11e
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: c6fcc4c63b786af08c48450791a58b4f6f13a6ad
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113659393"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530231"
 ---
 Communication Services Python SMS SDK を使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -105,7 +105,7 @@ sms_responses = sms_client.send(
 `<from-phone-number>` は通信サービス リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number>` はメッセージの送信先の電話番号で置き換える必要があります。
 
 > [!WARNING]
-> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。 **発信元** の電話番号には短いコード (例: 23456) も使用できます。
 
 ## <a name="send-a-1n-sms-message"></a>1:N の SMS メッセージを送信する
 
@@ -126,7 +126,7 @@ sms_responses = sms_client.send(
 `<from-phone-number>` は通信サービス リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number-1>` `<to-phone-number-2>` はメッセージの送信先の電話番号で置き換える必要があります。
 
 > [!WARNING]
-> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。 **発信元** の電話番号には短いコード (例: 23456) も使用できます。
 
 ## <a name="optional-parameters"></a>省略可能のパラメーター
 

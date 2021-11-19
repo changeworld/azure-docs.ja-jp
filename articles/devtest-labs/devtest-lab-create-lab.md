@@ -1,22 +1,22 @@
 ---
-title: ラボを作成する
-description: この記事では、Azure portal と Azure DevTest Labs を使用してラボを作成する手順について説明します。
-ms.topic: how-to
-ms.date: 10/27/2021
-ms.openlocfilehash: ffec989e93bcd394c175a2b4a19c4cb72978beb0
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+title: 'クイック スタート: Azure portal でラボを作成する'
+description: このクイックスタートでは、Azure portal と Azure DevTest Labs を使用してラボを作成します。
+ms.topic: quickstart
+ms.date: 11/04/2021
+ms.openlocfilehash: 5f86c09c4f2d6fab4ad590d7e0bf62194c666e10
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131464493"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286395"
 ---
-# <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
+# <a name="quickstart-create-a-lab-in-azure-devtest-labs-in-azure-portal"></a>クイック スタート: Azure portal で Azure DevTest Labs にラボを作成する
 
-Azure DevTest Labs には Azure 仮想マシン (VM) やネットワークなどのリソースのグループが含まれます。 このインフラストラクチャを使用すると、制限とクォータを指定することで、これらのリソースをより適切に管理できます。 この記事では、Azure Portal を使用してラボを作成する手順を説明します。
+Azure DevTest Labs での作業を開始するために、Azure portal を使用してラボを作成します。 Azure DevTest Labs には Azure 仮想マシン (VM) やネットワークなどのリソースのグループが含まれます。 このインフラストラクチャを使用すると、制限とクォータを指定することで、これらのリソースをより適切に管理できます。 このクイックスタートでは、Azure portal を使用してラボを作成する手順を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプション。 Azure 購入オプションの詳細については、「[Azure の購入方法](https://azure.microsoft.com/pricing/purchase-options/)」または [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。 ラボを作成するには、サブスクリプションの所有者である必要があります。
+アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 ラボを作成するには、サブスクリプションの所有者である必要があります。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -84,7 +84,7 @@ Azure サブスクリプション。 Azure 購入オプションの詳細につ�
 
 |プロパティ | 説明 |
 |---|---|
-|Name| タグ名は大文字と小文字が区別されず、512 文字に制限されます。|
+|名前| タグ名は大文字と小文字が区別されず、512 文字に制限されます。|
 |値| タグ値は大文字と小文字が区別され、256 文字に制限されます。|
 
 :::image type="content" source="./media/devtest-lab-create-lab/portal-create-tags.png" alt-text="タグの詳細のスクリーンショット。":::
@@ -105,11 +105,24 @@ Azure サブスクリプション。 Azure 購入オプションの詳細につ�
 
     :::image type="content" source="./media/devtest-lab-create-lab/lab-home-page.png" alt-text="DevTest Labs の [概要] ページのスクリーンショット。":::
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソースを削除して、Azure でラボを実行するための課金が生じないようにします。 次の記事で VM をラボに追加する予定の場合は、その記事の完了後にリソースをクリーンアップすることができます。 それ以外の場合は、次の手順に従います。
+
+1. 作成したラボのホーム ページに戻ります。
+
+1. 上部のメニューで **[削除]** を選択します。
+
+   :::image type="content" source="./media/devtest-lab-create-lab/portal-lab-delete.png" alt-text="ラボの [削除] ボタンのスクリーンショット。":::
+
+1. **[それを削除してよろしいですか]** のページで、テキスト ボックスにラボの名前を入力し、 **[削除]** を選択します。
+
+1. 削除中、画面の上部にある **[通知]** を選択すると進行状況を表示できます。 ラボの削除には少し時間がかかります。 ラボが削除されたら、次の手順に進みます。
+
+1. 既存のリソース グループ内にラボを作成した場合は、すべてのラボ リソースが削除されています。 このチュートリアル用に新しいリソース グループを作成した場合は、それが空になっていて削除できます。 ラボがまだ存在している場合にリソース グループが削除されることはありません。
+
 ## <a name="next-steps"></a>次のステップ
+このクイックスタートでは、ラボを作成しました。 VM を追加する方法については、次の記事に進んでください。
 
-ラボを作成した後は、次の手順を考慮します。
-
-* [VM をラボに追加する](devtest-lab-add-vm.md)
-* [ラボへのアクセスをセキュリティで保護する](devtest-lab-add-devtest-user.md)
-* [ラボのポリシーを設定する](devtest-lab-set-lab-policy.md)
-
+> [!div class="nextstepaction"]
+> [Azure DevTest Labs で仮想マシンを作成してラボに追加する](devtest-lab-add-vm.md)

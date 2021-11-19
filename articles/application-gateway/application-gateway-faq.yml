@@ -6,15 +6,15 @@ metadata:
   author: vhorne
   ms.service: application-gateway
   ms.topic: article
-  ms.date: 06/08/2021
+  ms.date: 10/20/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: ab8307c0f4c0a60d2d0bdb1323405bacd601cba6
-  ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+  ms.openlocfilehash: a263c2630968ea22c40c18a28d7a2cc93a741f9b
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/12/2021
-  ms.locfileid: "132370671"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132488506"
 title: Application Gateway に関してよく寄せられる質問
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -88,6 +88,9 @@ sections:
       はい。 「[要求への変更](./how-application-gateway-works.md#modifications-to-the-request)」を参照してください。
   - question: アプリケーション ゲートウェイのデプロイにはどのくらい時間がかかりますか? アプリケーション ゲートウェイは更新中にも動作しますか?
     answer: "新しい Application Gateway v1 SKU のデプロイでは、プロビジョニングに最大 20 分かかります。 インスタンスのサイズまたは数を変更しても中断が発生することはありません。ゲートウェイはその間もアクティブな状態が続きます。\n\nv2 SKU を使用するデプロイのほとんどは、プロビジョニングに 6 分ほどかかります。 ただし、デプロイの種類によっては、それよりも時間がかかることがあります。 たとえば、多数のインスタンスを持つ複数の可用性ゾーン全体にわたるデプロイには、6 分以上かかることがあります。 \n"
+  - question: Application gateway の定期メンテナンスはどのように処理されるのですか?
+    answer: >
+      Application Gateway のアップデートでは、ゲートウェイがデプロイされているリージョンの営業時間外に、[更新ドメイン](../../articles/virtual-machines/availability-set-overview.md#how-do-availability-sets-work)が一度に 1 つずつ適用されます。 アクティブな接続は、更新中のインスタンスから正常にドレインされます。  更新の進行中、Application Gateway の容量は一時的に減少しますが、これは構成されているインスタンスの数によって決まります。 更新プロセスは、現在の一連のインスタンスが正常に更新された場合にのみ、次の一連のインスタンスに進みます。
   - question: Application Gateway で Exchange Server をバックエンドとして使用することはできますか?
     answer: いいえ。 Application Gateway は SMTP、IMAP、POP3 などの電子メール プロトコルをサポートしていません。
   - question: v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f83c7a9ac8a910a96a49c2ee354b68a18f4a774
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 0707969fe74714864eb3f92740c911847e21bd92
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892155"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490196"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -128,6 +128,14 @@ Azure AD Connect を使用して Hybrid Azure AD Join を構成するには:
 - デバイスの登録用のローカル イントラネット設定の構成
 - シームレス SSO の構成
 - ダウンレベルの Windows コンピューターに対する Microsoft Workplace Join のインストール
+
+ダウンレベルの Windows デバイスとは、古いオペレーティング システムが搭載されているデバイスです。 ダウンレベルの Windows デバイスは、以下のとおりです。
+
+- Windows 7
+- Windows 8.1
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
 
 > [!NOTE]
 > Windows 7 のサポートは 2020 年 1 月 14 日に終了しました。 詳細については、[Windows 7 のサポートの終了](https://support.microsoft.com/help/4057281/windows-7-support-ended-on-january-14-2020)に関するページを参照してください。

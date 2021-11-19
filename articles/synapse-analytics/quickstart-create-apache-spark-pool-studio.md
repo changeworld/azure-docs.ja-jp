@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14d604a5e15d7ca33cb9b73a41f867016599087d
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462030"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401530"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>クイックスタート:
 
@@ -71,7 +71,8 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
     | **ノード サイズ** | Small (4 vCPU / 32 GB) (S (4 vCPU/32 GB)) | このクイックスタートのコストを削減するために、最小サイズに設定します |
     | **Autoscale** | 無効 | このクイックスタートでは、自動スケーリングは必要ありません |
     | **[Number of nodes]\(ノードの数\)** | 8 | このクイックスタートでは、コストを制限するために小さいサイズを使用します|
-       
+    | **エグゼキューターを動的に割り当てる** |  無効 | この設定は、Spark アプリケーションのエグゼキューターの割り当てに対する Spark 構成の動的割り当てプロパティにマップされます。 このクイックスタートでは、自動スケーリングは必要ありません。|
+    
     ![Synapse Studio の新しい Apache Spark プールの基本](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-24.png)
     
     > [!IMPORTANT]

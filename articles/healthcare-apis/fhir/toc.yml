@@ -34,6 +34,12 @@ items:
   - name: 操作方法ガイド
     expanded: true
     items:
+      - name: Postman を使用したアクセス
+        href: ../use-postman.md
+      - name: CURL を使用したアクセス
+        href: ../using-curl.md
+      - name: REST クライアントを使用したアクセス
+        href: ../using-rest-client.md
       - name: 検索
         expanded: true
         items:
@@ -57,19 +63,8 @@ items:
       - name: 設定の構成
         expanded: true
         items:
-          - name: RBAC の構成
-            href: configure-azure-rbac-for-fhir.md
           - name: CORS を構成する
             href: configure-cross-origin-resource-sharing.md
-      - name: FHIR Azure Active Directory (AAD) を使用する
-        expanded: true
-        items:
-          - name: AAD for FHIR サービス
-            href: azure-active-directory-identity-configuration.md
-          - name: アクセス トークンの検証
-            href: fhir-service-access-token-validation.md
-          - name: CLI を使用してアクセス トークンを取得する
-            href: get-healthcare-apis-access-token-cli.md
       - name: 診断ログ
         expanded: true
         items:
@@ -77,6 +72,8 @@ items:
             href: fhir-service-diagnostic-logs.md
   - name: 概念
     items:
+      - name: FHIR サービスの自動スケール
+        href: fhir-service-autoscale.md
       - name: FHIR Rest API の機能
         href: fhir-rest-api-capabilities.md
   - name: リソース

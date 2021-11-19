@@ -12,10 +12,18 @@
     - name: Bicep ツールのインストール
       href: install.md
       displayName: nightly
+    - name: インストールのトラブルシューティング
+      href: installation-troubleshoot.md
 - name: クイックスタート
   items:
     - name: Bicep テンプレートを作成する - VS Code
       href: quickstart-create-bicep-use-visual-studio-code.md
+    - name: CI/CD
+      items:
+        - name: Bicep とパイプライン
+          href: add-template-to-azure-pipelines.md
+        - name: Bicep と GitHub Actions
+          href: deploy-github-actions.md
 - name: チュートリアル
   items:
     - name: Microsoft Learn - Bicep
@@ -124,12 +132,6 @@
             - name: 機密性の高い値を渡す
               displayName: key vault
               href: key-vault-parameter.md
-        - name: CI/CD
-          items:
-            - name: Bicep とパイプライン
-              href: add-template-to-azure-pipelines.md
-            - name: Bicep と GitHub Actions
-              href: deploy-github-actions.md
     - name: 設定の構成
       items:
         - name: Bicep 構成ファイル

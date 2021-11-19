@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 321e9ae3ccfb994a324b653c3e67fbae9b6b6f4c
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: c63a3859f9ea2fcec88ee220c0abca8429d9b86e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111984"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529823"
 ---
 Communication Services JavaScript SMS SDK を使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -120,7 +120,7 @@ main();
 `<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number-1>` と `<to-phone-number-2>` はメッセージの送信先の電話番号で置き換える必要があります。
 
 > [!WARNING]
-> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。 **発信元** の電話番号には短いコード (例: 23456) も使用できます。
 
 ## <a name="send-a-1n-sms-message-with-options"></a>オプションを使用して 1:N の SMS メッセージを送信する
 
@@ -156,7 +156,7 @@ main();
 `<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number-1>` と `<to-phone-number-2>` はメッセージの送信先の電話番号で置き換える必要があります。
 
 > [!WARNING]
-> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。 **発信元** の電話番号には短いコード (例: 23456) も使用できます。
 
 `enableDeliveryReport` パラメーターは、配信レポートを構成するために使用できる省略可能なパラメーターです。 これは、SMS メッセージが配信されたときにイベントを生成する場合に便利です。 SMS メッセージの配信レポートを構成するには、[SMS イベントの処理](../handle-sms-events.md)に関するクイックスタートを参照してください。
 `tag` は、配信レポートにタグを適用するために使用できる省略可能なパラメーターです。

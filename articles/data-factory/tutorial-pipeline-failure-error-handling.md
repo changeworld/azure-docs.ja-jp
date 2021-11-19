@@ -8,12 +8,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: tutorial
 ms.date: 11/08/2021
-ms.openlocfilehash: 746b8d0b3b24901469f46090adf25b02f786dcef
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: bc9abf7319b3dc51572670f242b5d18a1a5d270d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063867"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522329"
 ---
 # <a name="understanding-pipeline-failure"></a>パイプラインの失敗について
 

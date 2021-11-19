@@ -16,12 +16,12 @@ ms.date: 10/07/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44d896726c189dcb8cae377a857b20c3b72e9a14
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: d8a36c1837273fc3fa173994e2ec3b3465ed4cb6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132296919"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520258"
 ---
 # <a name="management-capabilities-for-privileged-access-groups-preview"></a>特権アクセス グループの管理機能 (プレビュー)
 
@@ -29,6 +29,9 @@ Privileged Identity Management (PIM) では、特権アクセス グループの
 
 >[!Important]
 > Exchange、セキュリティ/コンプライアンス センター、または SharePoint への管理アクセス用のロールに特権アクセス グループを割り当てるには、[特権アクセス グループ] エクスペリエンスではなく、Azure AD ポータルの **[ロールと管理者]** エクスペリエンスを使用して、そのグループに、アクティブ化の候補となるユーザーまたはグループを含めるようにします。
+
+> [!NOTE]
+> Azure AD ロールへの昇格に使用される特権アクセス グループについては、対象となるメンバーの割り当てに承認プロセスを求めることをお勧めします。 承認なしで有効化できる割り当てでは、より低いレベルのアクセス許可を持つ管理者によるセキュリティ リスクが発生する場合があります。 たとえば、ヘルプデスク管理者には、対象となるユーザーのパスワードをリセットするアクセス許可があります。
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>ロール割り当て可能グループごとに異なるポリシーを要求する
 

@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 46efd49a809d8e13fe24045b7575b37f3aff3173
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: e246fa6c20e506952001dff59d3a2f0a9eccc8d1
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015373"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491604"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>チュートリアル:マネージド ID を使用して Azure Spring Cloud アプリから Azure Functions を呼び出す
 
@@ -74,7 +74,7 @@ func init --worker-runtime node
 func new --template HttpTrigger --name HttpTrigger
 ```
 
-Functions は HTTP エンドポイントを保護するために、既定ではキーベースの認証を使用します。 ここでは Azure AD 認証を有効にすることで Functions へのアクセスを保護するため、*function.json* ファイルで[関数の承認レベルを anonymous に設定](../azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)する必要があります。
+Functions は HTTP エンドポイントを保護するために、既定ではキーベースの認証を使用します。 ここでは Azure AD 認証を有効にすることで Functions へのアクセスを保護するため、*function.json* ファイルで [関数の承認レベルを anonymous に設定](../azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)する必要があります。
 
 ```json
 {
@@ -171,6 +171,6 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](./how-to-enable-system-assigned-managed-identity.md)
+* [Azure Spring Cloud のアプリケーションのシステム割り当てマネージド ID を有効にする方法](./how-to-enable-system-assigned-managed-identity.md)
 * [Azure リソース用マネージド ID の詳細](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [App Service にアクセスするようにクライアント アプリを構成する](../app-service/configure-authentication-provider-aad.md#configure-client-apps-to-access-your-app-service)

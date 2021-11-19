@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8771c79aa788627fb73745e98e924bbaa3ab1236
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: d3f3bb466156b08ae90561d5e02e5b5ddf469755
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113224681"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518510"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files のネットワークに関する考慮事項 
 Azure ファイル共有には、次の 2 つの方法で接続できます。
 
-- サーバー メッセージ ブロック (SMB)、Network File System (NFS) (プレビュー)、または FileREST プロトコルを使用して、共有に直接アクセスします。 このアクセス パターンは主に、できるだけ多くのオンプレミス サーバーを排除するために使用されます。
+- サーバー メッセージ ブロック (SMB)、Network File System (NFS)、または FileREST プロトコルを使用して、共有に直接アクセスします。 このアクセス パターンは主に、できるだけ多くのオンプレミス サーバーを排除するために使用されます。
 - Azure File Sync を使用してオンプレミス サーバー上 (Azure VM 上) に Azure ファイル共有のキャッシュを作成し、ユース ケースに合った任意のプロトコル (SMB、NFS、FTPS など) を使用してオンプレミス サーバーからファイル共有のデータにアクセスします。 このアクセス パターンは、オンプレミスのパフォーマンスとクラウド スケールの両方、およびサーバーレスの接続可能なサービス (Azure Backup など) のメリットが組み合わされるために非常に便利です。
 
 この記事では、Azure File Sync を使用するのではなく、直接 Azure ファイル共有にアクセスするためにユース ケースに必要となるネットワークの構成方法に重点を置いています。Azure File Sync のデプロイのネットワークに関する考慮事項の詳細については、「[Azure File Sync のネットワークに関する考慮事項](../file-sync/file-sync-networking-overview.md)」を参照してください。

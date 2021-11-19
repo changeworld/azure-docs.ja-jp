@@ -70,7 +70,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/advisor'
+      href: 'https://azure.microsoft.com/pricing/details/advisor/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
@@ -82,4 +82,4 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure+advisor'
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=advisor'
+      href: /samples/browse/?products=azure

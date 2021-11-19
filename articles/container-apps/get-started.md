@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 68d446ca120ea9378c998cb81c2bf06579ffde7d
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 5817a6a468761391a644a3000aa6e865e6fb1725
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028517"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520847"
 ---
 # <a name="quickstart-deploy-your-first-container-app"></a>クイック スタート: 最初のコンテナー アプリをデプロイする
 

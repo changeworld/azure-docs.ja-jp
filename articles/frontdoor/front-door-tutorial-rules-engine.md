@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e64f27480126fdf444f8dd72abc2d66c78b30407
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 1eac3238bc5f39915360db2de3b0526ed4f699d7
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868809"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491893"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>チュートリアル:ルール エンジンを構成する
 
@@ -48,6 +48,14 @@ ms.locfileid: "107868809"
     ![ルール エンジンの構成](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 
 1. [Move up]\(上に移動\)、[Move down]\(下に移動\)、および [Move to top]\(最上位に移動\) ボタンを使用して、構成内のルールの優先度を決定します。 優先度は昇順です。つまり、最初に表示されるルールが最も重要なルールです。
+
+
+    > [!TIP]
+    > 変更が Azure Front Door にいつ反映されるかを確認したい場合は、次の例を使用してルール内にカスタム応答ヘッダーを作成できます。 応答ヘッダー `_X-<RuleName>-Version_` を追加し、ルールが更新されるたびに値を変更できます。
+    >  
+    > :::image type="content" source="./media/front-door-rules-engine/rules-version.png" alt-text="カスタム バージョン ヘッダー ルールのスクリーンショット。" lightbox="./media/front-door-rules-engine/rules-version-expanded.png":::
+    > 変更が更新された後、URL に移動して、呼び出されるルールのバージョンを確認できます。:::image type="content" source="./media/front-door-rules-engine/version-output.png" alt-text="カスタム ヘッダー バージョンの出力のスクリーンショット。":::
+
 
 1. 1 つまたは複数のルールを作成したら、 **[保存]** を押します。 このアクションにより、ルール エンジン構成が作成されます。
 

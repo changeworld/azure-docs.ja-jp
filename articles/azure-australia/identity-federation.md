@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: 750fa2628648425ef3a66b3eba74b081fdcc21aa
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c0f3628ad5934905d73cc38a25a2fd52a9a68c1f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "116986080"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348052"
 ---
 # <a name="identity-federation-in-azure-australia"></a>Azure オーストラリアにおける ID フェデレーション
 

@@ -13,12 +13,12 @@ metadata:
   ms.reviewer: mal
   ms.custom: it-pro, seo-update-azuread-jan
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: dd15c9412cc9f7b0bed2ac4e0f622c827aaafe17
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 645fc8c5b4dba874d24e353b4ceaabd7454c281d
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130227654"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132719093"
 title: Azure Active Directory B2B コラボレーションの FAQ
 summary: >
   Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関するよく寄せられる質問 (FAQ) は、新しいトピックを追加して定期的に更新されています。
@@ -28,7 +28,7 @@ summary: >
 
   > - **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-web-view-sign-in-support)必要があります。
 
-  > - **2021 年 11 月 1 日以降**、既存のすべてのテナントに対して電子メールのワンタイム パスコード機能をオンにし、新しいテナントに対して既定で有効にするように、変更の展開を開始します。 この変更の一環として、アカウントとテナントの作成を停止します。B2B コラボレーションの招待の引き換え中に、Microsoft は、管理されていない (「バイラル」) Azure AD アカウントとテナントの作成を停止します。 休暇中の中断およびデプロイ ロックダウンを最小限に抑えるために、大多数のテナントは 2022 年 1 月に変更が表示されます。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能が自動的に有効にならないようにする場合は、[無効にする](one-time-passcode.md#disable-email-one-time-passcode)ことができます。
+  > - **2021 年 11 月 1 日以降**、既存のすべてのテナントに対して電子メールのワンタイム パスコード機能をオンにし、新しいテナントに対して既定で有効にするように、変更の展開を開始します。 この変更の一環として、B2B コラボレーションの招待の引き換え中に、Microsoft は、管理されていない (「バイラル」) 新しい Azure AD アカウントとテナントの作成を停止します。 休暇中の中断およびデプロイ ロックダウンを最小限に抑えるために、大多数のテナントに 2022 年 1 月に変更が公開されます。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能が自動的に有効にならないようにする場合は、[無効にする](one-time-passcode.md#disable-email-one-time-passcode)ことができます。
 sections:
 - name: 全般
   questions:
@@ -129,4 +129,8 @@ sections:
       Azure AD B2B を使用する必要があるライセンスは何ですか。
     answer: >
       組織が B2B Azure AD を使用するために必要なライセンスの詳細については、[External Identities の価格](external-identities-pricing.md)に関するページを参照してください。
+  - question: >
+      B2B コラボレーション ユーザーは、UPN 以外の電子メール アドレスでサインインできますか?
+    answer: >
+      はい。 B2B コラボレーション用の代替ログイン ID としての電子メールの詳細については、[電子メール アドレスを使用した B2B ゲスト ユーザーのサインイン](../authentication/howto-authentication-use-email-signin.md#b2b-guest-user-sign-in-with-an-email-address)に関するページを参照してください。
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n[Azure AD B2B コラボレーションとは](what-is-b2b.md)"

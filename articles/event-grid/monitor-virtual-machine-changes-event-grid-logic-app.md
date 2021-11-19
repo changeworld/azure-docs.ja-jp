@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, azla
 ms.topic: tutorial
 ms.date: 07/01/2021
-ms.openlocfilehash: fb315a42dc33a8ead4d3d09e0dbb15972bf8e585
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b1ad7f8af9233aeb49d38d4af93f43dcd7b04566
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646798"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520239"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>チュートリアル:Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する
 
@@ -56,7 +56,7 @@ Azure のリソースやサードパーティのリソースで発生する特�
 
 * 特定の IP アドレスへのトラフィックを制限するファイアウォールがある場合は、ロジック アプリ ワークフローを作成する Azure リージョン内の Azure Logic Apps によって使用される[インバウンド](../logic-apps/logic-apps-limits-and-config.md#inbound)と[アウトバウンド](../logic-apps/logic-apps-limits-and-config.md#outbound)両方の IP アドレスへのアクセスを許可するように、ファイアウォールを設定します。
 
-  この例で使用するマネージド コネクタでは、ロジック アプリ リソースの Azure リージョン内の "*すべて*" の[マネージド コネクタ アウトバウンド IP アドレス](/connectors/common/outbound-ip-addresses)へのアクセスが、ファイアウォールで許可されている必要があります。
+  この例で使用するマネージド コネクタでは、ロジック アプリ リソースの Azure リージョン内の "*すべて*" の [マネージド コネクタ アウトバウンド IP アドレス](/connectors/common/outbound-ip-addresses)へのアクセスが、ファイアウォールで許可されている必要があります。
 
 ## <a name="create-logic-app-resource"></a>ロジック アプリ リソースを作成する
 
@@ -158,7 +158,7 @@ Azure のリソースやサードパーティのリソースで発生する特�
 
    1. 中央のボックスでは、演算子を **[is equal to]** のままにしておきます。
 
-   1. 右側のボックスに、次の値 (監視対象となる具体的な操作) を入力します。
+   1. 右側のボックスに、監視する操作を入力します。この例の値は次のとおりです。
 
       `Microsoft.Compute/virtualMachines/write`
 

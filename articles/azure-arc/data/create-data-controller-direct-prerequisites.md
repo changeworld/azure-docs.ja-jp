@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 11/03/2021
 ms.topic: overview
-ms.openlocfilehash: 0016e3129a755b86acff2dfb1907f0ffcb62b569
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: cd1c12eaf4c4d5df575c7774386da007c9124712
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564197"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549833"
 ---
 # <a name="prerequisites-to-deploy-the-data-controller-in-direct-connectivity-mode"></a>データ コントローラーを直接接続モードでデプロイするための前提条件
 
@@ -35,7 +35,8 @@ Kubernetes クラスターを Azure に接続するには、Azure CLI の `az` �
 
 ### <a name="install-tools"></a>ツールをインストールする
 
-- 最新バージョンの Azure CLI をインストールするか、アップグレードする ([インストール](/sql/azdata/install/deploy-install-azdata)) 
+- Helm バージョン 3.3 以降 ([インストール](https://helm.sh/docs/intro/install/))
+- 最新バージョンの Azure CLI をインストールするか、アップグレードする ([ダウンロード](https://aka.ms/installazurecliwindows))
 
 ### <a name="add-extensions-for-azure-cli"></a>Azure CLI 用の拡張機能を追加する
 

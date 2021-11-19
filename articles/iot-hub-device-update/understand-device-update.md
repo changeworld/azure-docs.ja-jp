@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 3a7ed9fbb30ab770cd7069ebbd97faa41b12cd34
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 0b763f9f6c83f6255a460fc4441f8cfdb74193f0
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606839"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399373"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub (プレビュー) の概要
 
@@ -80,7 +80,7 @@ Device Update の機能は、エージェント統合、インポート、管理
 
 ### <a name="importing"></a>インポート
 
-インポートとは、更新を Device Update に取り込んで、デバイスに展開する仕組みです。 Device Update では、デバイスごとに 1 つの更新のロールアウトをサポートしています。 これは、OS パーティション全体を一度に更新するフルイメージ更新や、デバイス上で更新するすべてのパッケージを記述する apt マニフェストに最適です。 更新を Device Update にインポートするには、まず、更新を記述したインポート マニフェストを作成し、次に更新ファイルとインポート マニフェストをインターネットからアクセス可能な場所にアップロードします。 その後、Azure portal または [Device Update REST API](/rest/api/deviceupdate/) を使用して、更新インポートの非同期プロセスを開始できます。 Device Update によってファイルがアップロードされて処理され、IoT デバイスへの配布に使用できるようになります。
+インポートとは、更新を Device Update に取り込んで、デバイスに展開する仕組みです。 Device Update では、デバイスごとに 1 つの更新のロールアウトをサポートしています。 これは、OS パーティション全体を一度に更新するフルイメージ更新や、指定リポジトリからデバイス上で更新するすべてのパッケージを記述する [APT マニフェスト](device-update-apt-manifest.md)に最適です。 更新を Device Update にインポートするには、まず、更新を記述したインポート マニフェストを作成し、次に更新ファイルとインポート マニフェストをインターネットからアクセス可能な場所にアップロードします。 その後、Azure portal または [Device Update REST API](/rest/api/deviceupdate/) を使用して、更新インポートの非同期プロセスを開始できます。 Device Update によってファイルがアップロードされて処理され、IoT デバイスへの配布に使用できるようになります。
 
 機密性の高いコンテンツの場合、Azure Blob Storage のアドホック SAS などの共有アクセス署名 (SAS) を使用してダウンロードを保護します。 [SAS の詳細](../storage/common/storage-sas-overview.md)
 

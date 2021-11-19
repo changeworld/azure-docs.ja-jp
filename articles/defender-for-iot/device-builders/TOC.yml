@@ -19,7 +19,7 @@
     - name: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
       displayName: 'package, authentication, methods, certificate, authenticate, version'
       href: quickstart-standalone-agent-binary-installation.md
-    - name: Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
+    - name: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
       href: quickstart-create-micro-agent-module-twin.md
     - name: Azure RTOS 用の Defender-IoT-micro-agent を構成する
       href: quickstart-azure-rtos-security-module.md
@@ -155,7 +155,7 @@
           href: how-to-investigate-device.md
     - name: トラブルシューティング
       items:
-        - name: Defender for Cloud IoT マイクロ エージェントのトラブルシューティング (プレビュー)
+        - name: Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
           displayName: 'service status, review logs'
           href: troubleshoot-defender-micro-agent.md
 - name: リファレンス

@@ -17,7 +17,7 @@
     - name: 属性マッピングのカスタマイズ
       href: customize-application-attributes.md
     - name: アプリ固有のプロビジョニングに関するチュートリアル
-      href: /azure/active-directory/saas-apps
+      href: /azure/active-directory/saas-apps/tutorial-list
     - name: SQL ベースのアプリへのプロビジョニング
       href: tutorial-ecma-sql-connector.md
 - name: 概念
@@ -129,7 +129,7 @@
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
     - name: Stack Overflow

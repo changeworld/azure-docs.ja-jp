@@ -200,23 +200,25 @@
         - name: オファーを作成する
           items:
             - name: オファーを作成する
-              href: azure-vm-create.md
+              href: azure-vm-offer-setup.md
             - name: Properties
-              href: azure-vm-create-properties.md
+              href: azure-vm-properties.md
             - name: オファーのリスト登録
-              href: azure-vm-create-listing.md
+              href: azure-vm-offer-listing.md
             - name: プレビュー対象ユーザー
-              href: azure-vm-create-preview.md
+              href: azure-vm-preview-audience.md
             - name: Plans
-              href: azure-vm-create-plans.md
-        - name: CSP を通して再販する
-          href: azure-vm-create-resell-csp.md
+              href: azure-vm-plan-overview.md
+            - name: CSP を通して再販する
+              href: azure-vm-resell-csp.md
+            - name: 体験版を構成する
+              href: azure-vm-test-drive.md
         - name: 技術資産の作成
           items:
             - name: 承認済みのベースから VM を作成する
-              href: azure-vm-create-using-approved-base.md
+              href: azure-vm-use-approved-base.md
             - name: 独自のイメージを使用して VM を作成する
-              href: azure-vm-create-using-own-image.md
+              href: azure-vm-use-own-image.md
             - name: VM イメージをテストする
               href: azure-vm-image-test.md
             - name: SAS URI の取得
@@ -224,9 +226,9 @@
             - name: SAS の失敗メッセージ
               href: azure-vm-sas-failure-messages.md
             - name: VM の作成に関する FAQ
-              href: azure-vm-create-faq.yml
+              href: azure-vm-faq.yml
             - name: VM 認定のトラブルシューティング
-              href: azure-vm-create-certification-faq.yml
+              href: azure-vm-certification-faq.yml
     - name: コンサルティング サービス オファー
       items:
         - name: オファーを計画する
@@ -321,7 +323,7 @@
                   href: iot-edge-plan-availability.md
                 - name: プランの技術的な構成
                   href: iot-edge-plan-technical-configuration.md
-    - name: 管理サービス オファー
+    - name: マネージド サービス オファー
       items:
         - name: オファーを計画する
           href: plan-managed-service-offer.md
@@ -371,7 +373,7 @@
               href: power-bi-visual-manage-names.md
         - name: コマーシャル マーケットプレースへの移行に関する FAQ
           href: power-bi-visual-faq.yml
-    - name: SaaS オファー
+    - name: SaaS プラン
       items:
         - name: オファーを計画する
           href: plan-saas-offer.md

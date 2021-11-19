@@ -5,15 +5,15 @@ author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 08/03/2020
+ms.date: 11/15/2021
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 3fa8c1cef251e9eef1e8e4256dfd654302714743
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c52c2f68754eb87cfca63223674b885f1ba7041e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131008771"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492608"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -222,8 +222,8 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
 1. 前の手順で作成された JAR ファイルをデプロイします。
 
     ```azurecli
-    az spring-cloud app deploy --name api-gateway --jar-path spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
-    az spring-cloud app deploy --name customers-service --jar-path spring-petclinic-customers-service/target/spring-petclinic-customers-service-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
+    az spring-cloud app deploy --name api-gateway --jar-path spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
+    az spring-cloud app deploy --name customers-service --jar-path spring-petclinic-customers-service/target/spring-petclinic-customers-service-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
     ```
 
 1. 次のコマンドを使用して、デプロイ後のアプリの状態を照会します。
@@ -256,9 +256,9 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
 az spring-cloud app create --name admin-server --instance-count 1 --memory 2 --assign-endpoint
 az spring-cloud app create --name vets-service --instance-count 1 --memory 2
 az spring-cloud app create --name visits-service --instance-count 1 --memory 2
-az spring-cloud app deploy --name admin-server --jar-path spring-petclinic-admin-server/target/spring-petclinic-admin-server-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
-az spring-cloud app deploy --name vets-service --jar-path spring-petclinic-vets-service/target/spring-petclinic-vets-service-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
-az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-visits-service/target/spring-petclinic-visits-service-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
+az spring-cloud app deploy --name admin-server --jar-path spring-petclinic-admin-server/target/spring-petclinic-admin-server-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
+az spring-cloud app deploy --name vets-service --jar-path spring-petclinic-vets-service/target/spring-petclinic-vets-service-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
+az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-visits-service/target/spring-petclinic-visits-service-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
 ```
 
 #### <a name="maven"></a>[Maven](#tab/Maven)
@@ -360,7 +360,7 @@ Azure にデプロイするには、Azure アカウントで Azure Toolkit for I
     ![Azure へのデプロイ 1](media/spring-cloud-intellij-howto/deploy-to-azure-1-pet-clinic.png)
 
 1. **[Name]\(名前\)** フィールドで、既存の **名前** に「 *:api-gateway*」を追加します。
-1. **[Artifact]\(成果物\)** ボックスで、 *[spring-petclinic-api-gateway-2.3.6]* を選択します。
+1. **[Artifact]\(成果物\)** ボックスで、 *[spring-petclinic-api-gateway-2.5.1]* を選択します。
 1. **[Subscription]\(サブスクリプション\)** ボックスで、自分のサブスクリプションを確認します。
 1. **[Spring Cloud]** ボックスで、「[Azure Spring Cloud インスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
 1. **[Public Endpoint]\(パブリック エンドポイント\)** を *[Enable]\(有効化\)* に設定します。

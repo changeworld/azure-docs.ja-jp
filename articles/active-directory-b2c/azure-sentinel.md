@@ -1,7 +1,7 @@
 ---
-title: Azure Sentinel を使用して Azure AD B2C をセキュリティで保護する
+title: Microsoft Sentinel を使用して Azure AD B2C をセキュリティで保護する
 titleSuffix: Azure AD B2C
-description: このチュートリアルでは、Azure Sentinel を使用して Azure Active Directory B2C データに対するセキュリティ分析を実行します。
+description: このチュートリアルでは、Microsoft Sentinel を使用して Azure Active Directory B2C データに対するセキュリティ分析を実行します。
 services: active-directory-b2c
 author: gargi-sinha
 manager: martinco
@@ -11,18 +11,18 @@ ms.topic: tutorial
 ms.date: 08/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 157d643ffa2b5af97f05b7272bb3a8c4232dc0c4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5afd5535dc9bd9a6f0dce507e6279b664c90fe8e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131436975"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281421"
 ---
-# <a name="tutorial-configure-security-analytics-for-azure-active-directory-b2c-data-with-azure-sentinel"></a>チュートリアル: Azure Sentinel で Azure Active Directory B2C のデータに関するセキュリティ分析を構成する
+# <a name="tutorial-configure-security-analytics-for-azure-active-directory-b2c-data-with-microsoft-sentinel"></a>チュートリアル: Microsoft Sentinel で Azure Active Directory B2C のデータに関するセキュリティ分析を構成する
 
-ログと監査情報を Azure Sentinel にルーティングすることで、Azure Active Directory B2C (Azure AD B2C) 環境をさらにセキュリティで保護できます。 Azure Sentinel は、クラウドネイティブの SIEM (セキュリティ情報イベント管理) と SOAR (セキュリティ オーケストレーション、自動化、および対応) ソリューションです。 Azure Sentinel では、Azure AD B2C に対してアラートの検出、脅威の可視性、予防的なハンティング、脅威への対応が提供されます。
+ログと監査情報を Microsoft Sentinel にルーティングすることで、Azure Active Directory B2C (Azure AD B2C) 環境をさらにセキュリティで保護できます。 Microsoft Sentinel は、クラウドネイティブの SIEM (セキュリティ情報イベント管理) と SOAR (セキュリティ オーケストレーション、自動化、および対応) ソリューションです。 Microsoft Sentinel では、Azure AD B2C に対してアラートの検出、脅威の可視性、予防的なハンティング、脅威への対応が提供されます。
 
-Azure AD B2C で Azure Sentinel を使用すると、次のことができます。
+Azure AD B2C で Microsoft Sentinel を使用すると、次のことができます。
 
 - Microsoft の分析と脅威インテリジェンスを使用して、過去に検出されたことのない脅威を検出し、擬陽性を最小限に抑えます。
 - AI を使って脅威を調査します。 疑わしいアクティビティを大規模に探索し、Microsoft の長年にわたるサイバーセキュリティ関連の取り組みを活用します。
@@ -33,50 +33,50 @@ Azure AD B2C で Azure Sentinel を使用すると、次のことができます
 
 > [!div class="checklist"]
 > * Azure AD B2C ログを Log Analytics ワークスペースに転送する。
-> * Log Analytics ワークスペースで Azure Sentinel を有効にする。
-> * インシデントをトリガーするサンプル ルールを Azure Sentinel で作成する。
+> * Log Analytics ワークスペースで Microsoft Sentinel を有効にする。
+> * インシデントをトリガーするサンプル ルールを Microsoft Sentinel で作成する。
 > * 自動応答を構成する。
 
 ## <a name="configure-azure-ad-b2c-with-azure-monitor-log-analytics"></a>Azure Monitor Logs Analytics を使用して Azure AD B2C を構成する
 
 リソースのログとメトリックの送信先を定義するには、Azure AD B2C テナント内の Azure AD で **[診断設定]** を有効にします。 その後、[Azure Monitor にログを送信するように Azure AD B2C を構成します](./azure-monitor.md)。
 
-## <a name="deploy-an-azure-sentinel-instance"></a>Azure Sentinel インスタンスをデプロイする
+## <a name="deploy-a-microsoft-sentinel-instance"></a>Microsoft Sentinel インスタンスをデプロイする
 
-Azure Monitor にログを送信するように Azure AD B2C インスタンスを構成したら、Azure Sentinel インスタンスを有効にする必要があります。
+Azure Monitor にログを送信するように Azure AD B2C インスタンスを構成したら、Microsoft Sentinel インスタンスを有効にする必要があります。
 
 >[!IMPORTANT]
->Azure Sentinel を有効にするには、Azure Sentinel ワークスペースが存在するサブスクリプションへの共同作成者のアクセス許可が必要です。 Azure Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です。
+>Microsoft Sentinel を有効にするには、Microsoft Sentinel ワークスペースが存在するサブスクリプションへの共同作成者のアクセス許可が必要です。 Microsoft Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 Log Analytics ワークスペースを作成するサブスクリプションを選択します。
 
-2. **Azure Sentinel** を検索して選択します。
+2. **Microsoft Sentinel** を検索して選択します。
 
-   ![Azure portal での Azure Sentinel の検索を示すスクリーンショット。](./media/azure-sentinel/azure-sentinel-add.png)
+   ![Azure portal での Microsoft Sentinel の検索を示すスクリーンショット。](./media/azure-sentinel/azure-sentinel-add.png)
 
 3. **[追加]** を選択します。
 
 4. 新しいワークスペースを選択します。
 
-   ![Azure Sentinel ワークスペースを選択する場所を示すスクリーンショット。](./media/azure-sentinel/create-new-workspace.png)
+   ![Microsoft Sentinel ワークスペースを選択する場所を示すスクリーンショット。](./media/azure-sentinel/create-new-workspace.png)
 
-5. **[Add Azure Sentinel]\(Azure Sentinel の追加\)** を選択します。
+5. **[Microsoft Sentinel の追加]** を選びます。
 
 >[!NOTE]
->複数のワークスペースで [Azure Sentinel を実行](../sentinel/quickstart-onboard.md)できますが、データは 1 つのワークスペースに分離されます。
+>複数のワークスペースで [Microsoft Sentinel を実行](../sentinel/quickstart-onboard.md)できますが、データは 1 つのワークスペースに分離されます。
 
-## <a name="create-an-azure-sentinel-rule"></a>Azure Sentinel のルールを作成する
+## <a name="create-a-microsoft-sentinel-rule"></a>Microsoft Sentinel ルールを作成する
 
-Azure Sentinel を有効にしたので、Azure AD B2C テナントで何か疑わしいことが発生したときに通知を受け取ります。
+Microsoft Sentinel を有効にしたので、Azure AD B2C テナントで何か疑わしいことが発生したときに通知を受け取ります。
 
 [カスタム分析ルール](../sentinel/detect-threats-custom.md)を作成すると、環境内の脅威や異常動作を検出できます。 これらのルールでは、特定のイベントまたはイベントのセットが検索され、特定のイベントのしきい値または条件に達したときにアラートが生成されます。 その後、さらに調査するためにインシデントが生成されます。
 
 >[!NOTE]
->Azure Sentinel には、Microsoft のセキュリティの専門家とアナリストのチームによって設計された、脅威検出ルールの作成に役立つ組み込みテンプレートが用意されています。 これらのテンプレートから作成されるルールにより、データ全体にわたって疑わしいアクティビティが自動的に検索されます。 現時点で、Azure AD B2C で使用可能なネイティブ コネクタはありません。 このチュートリアルの例では、独自のルールを作成します。
+>Microsoft Sentinel には、Microsoft のセキュリティの専門家とアナリストのチームによって設計された、脅威検出ルールの作成に役立つ組み込みテンプレートが用意されています。 これらのテンプレートから作成されるルールにより、データ全体にわたって疑わしいアクティビティが自動的に検索されます。 現時点で、Azure AD B2C で使用可能なネイティブ コネクタはありません。 このチュートリアルの例では、独自のルールを作成します。
 
 次の例では、何者かが環境に強制的にアクセスしようとしたが失敗した場合に通知を受け取ります。 それは、ブルート フォース攻撃の可能性があります。 60 秒以内にログインが 2 回以上成功しなかった場合に通知を受け取ります。
 
-1. Azure Sentinel の左側のメニューから **[分析]** を選択します。
+1. Microsoft Sentinel の左側のメニューから **[分析]** を選択します。
 
 2. 上部のアクション バーで、 **[+ 作成]**  >  **[スケジュール済みクエリ ルール]** を選択します。 
 
@@ -119,7 +119,7 @@ Azure Sentinel を有効にしたので、Azure AD B2C テナントで何か疑�
     インシデントには複数のアラートを含めることができます。 ケースは、特定の調査に関連するすべての証拠を集計したものです。 重大度や状態などのプロパティは、インシデント レベルで設定できます。
 
     > [!NOTE]
-    > Azure Sentinel の重要な機能は、[インシデントの調査](../sentinel/investigate-cases.md)です。
+    > Microsoft Sentinel の重要な機能は、[インシデントの調査](../sentinel/investigate-cases.md)です。
     
 10. 調査を開始するには、特定のインシデントを選択します。 
 
@@ -137,21 +137,21 @@ Azure Sentinel を有効にしたので、Azure AD B2C テナントで何か疑�
 
 ## <a name="automated-response"></a>自動応答
 
-Azure Sentinel では、[堅牢な SOAR 機能](../sentinel/automation-in-azure-sentinel.md)が提供されます。 Azure Sentinel の "*プレイブック*" と呼ばれる自動化されたアクションを、要件に合わせて分析ルールにアタッチできます。
+Microsoft Sentinel では、[堅牢な SOAR 機能](../sentinel/automation-in-azure-sentinel.md)が提供されます。 Microsoft Sentinel のプレイブックと呼ばれる自動化されたアクションを、要件に合わせて分析ルールにアタッチできます。
 
-この例では、ルールによって作成されるインシデントのメール通知を追加します。 このタスクを実行するには、[Azure Sentinel GitHub リポジトリにある既存のプレイブック](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Incident-Email-Notification)を使用します。 プレイブックを構成したら、既存のルールを編集し、 **[自動応答]** タブでプレイブックを選択します。
+この例では、ルールによって作成されるインシデントのメール通知を追加します。 このタスクを実行するには、[Microsoft Sentinel GitHub リポジトリにある既存のプレイブック](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Incident-Email-Notification)を使用します。 プレイブックを構成したら、既存のルールを編集し、 **[自動応答]** タブでプレイブックを選択します。
 
 ![ルールに関連付けられている自動応答の構成画面の画像を示すスクリーンショット。](./media/azure-sentinel/automation-tab.png)
 
 ## <a name="related-information"></a>関連情報
 
-Azure Sentinel と Azure AD B2C の詳細については、以下を参照してください。
+Microsoft Sentinel と Azure AD B2C の詳細については、以下を参照してください。
 
 - [サンプル ブック](https://github.com/azure-ad-b2c/siem#workbooks)
 
-- [Azure Sentinel のドキュメント](../sentinel/index.yml)
+- [Microsoft Sentinel のドキュメント](../sentinel/index.yml)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Sentinel での偽陽性の処理](../sentinel/false-positives.md)
+> [Microsoft Sentinel での擬陽性の処理](../sentinel/false-positives.md)

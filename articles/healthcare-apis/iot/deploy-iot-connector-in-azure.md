@@ -1,236 +1,236 @@
 ---
-title: Azure portal での IoT コネクタのデプロイ-Azure の医療 Api
-description: この記事では、Azure portal に IoT コネクタをデプロイする方法について説明します。
+title: Azure portal - Azure Healthcare API に IoT コネクタをデプロイする
+description: この記事では、IoT コネクタを Azure portal にデプロイする方法について学習します。
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: f4eaee6afb134513da55b7f39e2d1f6df6c547b7
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 5d55af3165991c8a6d16596ae9d4e8f9f4e8e3e9
+ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132345332"
+ms.lasthandoff: 11/19/2021
+ms.locfileid: "132812354"
 ---
-# <a name="deploy-iot-connector-in-the-azure-portal"></a>Azure portal に IoT コネクタをデプロイする
+# <a name="deploy-iot-connector-in-the-azure-portal"></a>IoT コネクタをクラウドにデプロイAzure portal
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-このクイックスタートでは、Azure portal に IoT コネクタをデプロイする方法について説明します。 IoT コネクタを構成すると、デバイスメッセージ用の Azure Event Hub を使用して、モノのインターネット (IoT) から高速医療相互運用性リソース (FHIR&#174;) サービスにデータを取り込むことができます。
+このクイックスタートでは、IoT コネクタをデプロイする方法について、Azure portal。 IoT コネクタを構成すると、デバイス メッセージ用の Azure Event Hub を使用して、モノのインターネット (IoT) から 高速ヘルスケア相互運用性リソース (FHIR&#174;) サービスにデータを取り込むできます。
 
-## <a name="prerequisites"></a>必須コンポーネント
+## <a name="prerequisites"></a>前提条件
 
-Azure の医療 Api で IoT コネクタインスタンスを作成する手順を開始する前に、次の前提条件を完了しておくことが重要です。
+Azure Healthcare API で IoT コネクタ インスタンスを作成する手順を開始する前に、次の前提条件を満たしていることを確認することが重要です。
 
 * [Azure アカウント](https://azure.microsoft.com/free/search/?OCID=AID2100131_SEM_c4b0772dc7df1f075552174a854fd4bc:G:s&ef_id=c4b0772dc7df1f075552174a854fd4bc:G:s&msclkid=c4b0772dc7df1f075552174a854fd4bc)
-* [Azure portal にデプロイされたリソースグループ](../../azure-resource-manager/management/manage-resource-groups-portal.md)
-* [Azure portal にデプロイされた Event Hubs 名前空間とイベントハブ](../../event-hubs/event-hubs-create.md)
-* [Azure の医療 Api にデプロイされたワークスペース](../healthcare-apis-quickstart.md)  
-* [Azure の医療 Api にデプロイされた FHIR サービス](../fhir/fhir-portal-quickstart.md) 
+* [リソース グループがリソース グループにデプロイAzure portal](../../azure-resource-manager/management/manage-resource-groups-portal.md)
+* [Event Hubsにデプロイされている名前空間とイベント ハブAzure portal](../../event-hubs/event-hubs-create.md)
+* [Azure Healthcare API にデプロイされたワークスペース](../healthcare-apis-quickstart.md)  
+* [Azure Healthcare API にデプロイされた FHIR サービス](../fhir/fhir-portal-quickstart.md) 
 
 ## <a name="deploy-iot-connector"></a>IoT コネクタのデプロイ 
 
-1. [Azure portal](https://portal.azure.com)にサインインし、[**検索** バー] フィールドに、医療 api ワークスペースのリソース名を入力します。
+1. [] ボックス [Azure portal](https://portal.azure.com)サインインし、[検索] バー フィールドに Healthcare API ワークスペースのリソース **名を** 入力します。
  
-   ![[検索バー] フィールドにワークスペースリソース名を入力したスクリーンショット。](media/select-workspace-resource-group.png#lightbox)
+   ![検索バー フィールドにワークスペース リソース名を入力するスクリーンショット。](media/select-workspace-resource-group.png#lightbox)
 
-2. [ **IoT コネクタのデプロイ**] を選択します。
+2. **[IoT コネクタのデプロイ] を選択します**。
 
-   ![IoT コネクタブレードのスクリーンショット。](media/iot-connector-blade.png#lightbox)
+   ![[IoT コネクタ] ブレードのスクリーンショット。](media/iot-connector-blade.png#lightbox)
 
-3. 次に、[ **IoT コネクタの追加**] を選択します。
+3. 次に、[ **IoT コネクタの追加 ] を選択します**。
 
    ![IoT コネクタの追加のスクリーンショット。](media/add-iot-connector.png#lightbox)
 
-## <a name="configure-iot-connector-to-ingest-data"></a>データを取り込むように IoT コネクタを構成する
+## <a name="configure-iot-connector-to-ingest-data"></a>データを取り込む IoT コネクタを構成する
 
-[ **基本** ] タブで、[ **インスタンスの詳細**] の下の必須フィールドに入力します。
+[基本] **タブの** [インスタンスの詳細] の下に必要なフィールド **を入力します**。
 
 ![IoT 構成インスタンスの詳細のスクリーンショット。](media/basics-instance-details.png#lightbox)
 
-1. **IoT コネクタの名前** を入力します。
+1. **IoT コネクタ名 を入力します**。
 
-   **Iot コネクタ名** は、iot コネクタのフレンドリ名です。 IoT Connector の一意の名前を入力します。 たとえば、という名前を付け `healthdemo-iot` ます。
+   IoT **コネクタ名は** 、IoT コネクタの表示名です。 アプリケーションの一意の名前を入力IoT Connector。 例として、 という名前を付けできます `healthdemo-iot` 。
 
-2. **イベントハブ名** を入力します。
+2. イベント ハブ名 **を入力します**。
 
-   イベントハブ名は、デプロイした **Event Hubs インスタンス** の名前です。 
+   イベント ハブ名は、デプロイEvent Hubs **インスタンス** の名前です。 
 
-   Azure Event Hubs の詳細については、「 [クイックスタート: Azure portal を使用してイベントハブを作成](../../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)する」を参照してください。
+   詳細については、「クイック スタート: Azure Event Hubs を使用してイベント ハブを作成[する」をAzure portal。](../../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)
 
-3. **コンシューマーグループ** を入力します。
+3. コンシューマー グループ **を入力します**。
 
-   コンシューマーグループ名を検索するには、 **検索** バーを使用して、デプロイした Event Hubs インスタンスにアクセスし、[  **コンシューマーグループ** ] ブレードを選択します。
+   コンシューマー グループ名は、検索バーを使用して、デプロイした Event Hubs インスタンスに移動し、[コンシューマー グループ] ブレード **を選択することで検索** されます。
 
-   ![コンシューマーグループ名のスクリーンショット。](media/consumer-group-name.png#lightbox)
+   ![コンシューマー グループ名のスクリーンショット。](media/consumer-group-name.png#lightbox)
 
-   コンシューマーグループの詳細については、「 [Azure Event Hubs の機能と用語](../../event-hubs/event-hubs-features.md?WT.mc_id=Portal-Microsoft_Healthcare_APIs#event-consumers)」を参照してください。
+   コンシューマー グループの詳細については、「コンシューマー グループの[機能と用語」をAzure Event Hubs。](../../event-hubs/event-hubs-features.md?WT.mc_id=Portal-Microsoft_Healthcare_APIs#event-consumers)
 
-4. **完全修飾名前空間** の名前を入力します。
+4. 完全修飾名前空間 の **名前を入力します**。
 
-    **完全修飾名前空間** は、Event Hubs 名前空間の [**概要**] ページに配置されている **ホスト名** です。
+    完全修飾 **名前空間は**、Event Hubs 名前空間の[概要] ページにある **ホスト名** です。
 
     ![完全修飾名前空間のスクリーンショット。](media/event-hub-hostname.png#lightbox)  
 
-    Event Hubs 名前空間の詳細については、「Azure Event Hubs の機能と用語」ドキュメントの「 [名前空間](../../event-hubs/event-hubs-features.md?WT.mc_id=Portal-Microsoft_Healthcare_APIs#namespace) 」を参照してください。
+    名前空間の詳細についてはEvent Hubs [ドキュメントの「](../../event-hubs/event-hubs-features.md?WT.mc_id=Portal-Microsoft_Healthcare_APIs#namespace) 機能と用語」の「名前空間Azure Event Hubsしてください。
 
-5. [ **次へ]: [デバイスマッピング**] を選択します。 
+5. [次 **へ: デバイス マッピング] を選択します**。 
   
-## <a name="configure-device-mapping-properties"></a>デバイスマッピングのプロパティを構成する
+## <a name="configure-device-mapping-properties"></a>デバイス マッピングのプロパティを構成する
 
 > [!TIP]
-> IoMT コネクタデータマッパーは、デバイスの入力データを正規化するためのマッピング構成を視覚化し、それを FHIR リソースに変換するためのオープンソースツールです。 開発者はこのツールを使用して、デバイスと FHIR の宛先マッピングを編集およびテストしたり、データをエクスポートして Azure portal の IoT コネクタにアップロードしたりすることができます。 また、このツールを使用すると、開発者はデバイスのデバイスと FHIR の送信先のマッピング構成を理解することができます。
+> IoMT コネクタ データ マッパーは、デバイスの入力データを正規化するマッピング構成を視覚化し、それを FHIR リソースに変換するオープン ソース ツールです。 開発者は、このツールを使用して、デバイスと FHIR 変換先マッピングを編集およびテストし、データをエクスポートして Azure portal の IoT コネクタにアップロードできます。 このツールは、開発者がデバイスの Device と FHIR の変換先マッピング構成を理解するのにも役立ちます。
 >
-> 詳細については、オープンソースのドキュメントを参照してください。
+> 詳細については、オープン ソースのドキュメントを参照してください。
 >
-> [IoMT コネクタデータマッパー](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper)
+> [IoMT コネクタ データ マッパー](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper)
 >
-> [デバイスコンテンツのマッピング](https://github.com/microsoft/iomt-fhir/blob/master/docs/Configuration.md#device-content-mapping)
+> [デバイス コンテンツ マッピング](https://github.com/microsoft/iomt-fhir/blob/master/docs/Configuration.md#device-content-mapping)
 
-1. [ **デバイスマッピング** ] タブで、IoT コネクタに関連付けられているデバイスマッピング JSON コードを入力します。
+1. [デバイス マッピング **] タブで** 、IoT コネクタに関連付けられているデバイス マッピング JSON コードを入力します。
 
-   ![デバイスマッピングの構成のスクリーンショット。](media/configure-device-mapping.png#lightbox)
+   ![デバイス マッピングの構成のスクリーンショット。](media/configure-device-mapping.png#lightbox)
 
-2. [ **次へ** ] を選択して、IoT コネクタに関連付けられている接続先のプロパティを構成 >ます。
+2. [ **次へ: 宛先>** を選択して、IoT コネクタに関連付けられている宛先プロパティを構成します。
 
 ## <a name="configure-fhir-destination-mapping-properties"></a>FHIR 変換先マッピングのプロパティを構成する
 
-[ **宛先** ] タブで、IoT コネクタに関連付けられている変換先プロパティを入力します。
+[宛先 **] タブ** で、IoT コネクタに関連付けられている宛先プロパティを入力します。
 
-   ![変換先プロパティの構成のスクリーンショット。](media/configure-destination-properties.png#lightbox)
+   ![[宛先プロパティの構成] のスクリーンショット。](media/configure-destination-properties.png#lightbox)
 
-1. **Fhir サービス** の AZURE リソース ID を入力します。
+1. FHIR サービスの Azure リソース ID **を入力します**。
 
-   **Fhir サーバー** 名 ( **fhir サービス** とも呼ばれます) を検索するには、**検索** バーを使用して、デプロイした fhir サービスにアクセスし、[**プロパティ**] ブレードを選択します。 **リソース ID** 文字列をコピーし、 **Fhir Server** テキストフィールドに貼り付けます。
+   **FHIR サーバー** 名 **(FHIR** サービスとも呼ばれる) は、検索バーを使用して、デプロイした FHIR サービスに移動し、[プロパティ] ブレードを選択することで **配置** されます。 リソース ID 文字列を **コピーして FHIR** Server テキスト **フィールドに貼り** 付けます。
 
     ![Enter FHIR サーバー名のスクリーンショット。](media/fhir-service-resource-id.png#lightbox) 
 
-2. 宛先の **名前** を入力します。
+2. [宛先名] **を入力します**。
 
-   コピー先の **名前** は、変換先のフレンドリ名です。 宛先の一意の名前を入力します。 たとえば、という名前を付け `iotmedicdevice` ます。
+   [ **宛先名]** は、変換先の表示名です。 宛先の一意の名前を入力します。 例として、 という名前を付けできます `iotmedicdevice` 。
 
-3. **解決の種類** として [**作成**] または [**参照**] を選択します。
+3. [解決 **の種類]** **で [作成** ] または [参照 **] を選択します**。
 
     > [!NOTE]
-    > IoT コネクタの移行先で、FHIR サービスで有効な監視リソースを作成するには、デバイスリソースと患者リソースが FHIR サーバーに存在して **いる必要があり** ます。これにより、データを作成したデバイスとデータの測定元の患者を監視で正しく参照できるようになります。 IoT コネクタでは、デバイスと患者のリソースを解決するために使用できる2つのモードがあります。
+    > IoT コネクタの宛先が FHIR サービスに有効な監視リソースを作成するには、デバイス リソースと患者リソースが FHIR Server に存在する必要があります。そのため、データを作成したデバイスと、データの測定が行った患者を適切に参照できます。 IoT コネクタは、デバイスと患者のリソースを解決するために使用できる 2 つのモードがあります。
 
    **作成**
 
-     IoT コネクタの宛先は、イベントハブメッセージに含まれているデバイス識別子を使用して、FHIR サーバーからデバイスリソースを取得しようとします。 また、イベントハブメッセージに含まれる患者の識別子を使用して、FHIR サーバーから患者のリソースを取得しようとします。 いずれかのリソースが見つからない場合は、イベントハブメッセージに含まれている識別子だけを含む新しいリソースが作成されます (デバイス、患者、またはその両方)。 [ **作成** ] オプションを使用する場合、デバイス id と患者 id の両方をデバイスマッピングで構成できます。 つまり、IoT Connector の宛先が **作成** モードのときは、デバイスや患者のリソースを fhir サーバーに追加すること **なく** 通常どおり機能できます。
+     IoT コネクタの宛先は、イベント ハブ メッセージに含まれるデバイス識別子を使用して、FHIR Server からデバイス リソースを取得します。 また、イベント ハブ メッセージに含まれる患者識別子を使用して、FHIR サーバーから患者リソースを取得することもできます。 いずれかのリソースが見つからない場合は、イベント ハブ メッセージに含まれる識別子を含む新しいリソース (デバイス、患者、または両方) が作成されます。 [作成] オプション **を使用** すると、デバイス ID と患者識別子の両方をデバイス マッピングで構成できます。 言い換えると、IoT Connectorが作成モードの場合、デバイスと患者のリソースを FHIR  Server に追加せずに正常に機能できます。
 
    **Lookup**
 
-     IoT コネクタの宛先は、イベントハブメッセージに含まれているデバイス識別子を使用して、FHIR サーバーからデバイスリソースを取得しようとします。 デバイスリソースが見つからない場合、エラーが発生し、データは処理されません。 **Lookup** を正しく機能させるには、イベントハブメッセージに含まれるデバイス id と一致する識別子を持つデバイスリソースが存在し、デバイスリソースにも存在する患者リソースへの参照 **が含まれている必要****が** あります。 言い換えると、IoT コネクタの宛先が参照モードの場合、データを処理する前に、デバイスと患者のリソースを FHIR サーバーに追加する **必要があり** ます。
+     IoT コネクタの宛先は、イベント ハブ メッセージに含まれるデバイス識別子を使用して、FHIR Server からデバイス リソースを取得します。 デバイス リソースが見つからない場合、エラーが発生し、データは処理されません。 **Lookup が** 正常に機能するには、イベント ハブ メッセージに含まれるデバイス識別子と一致する識別子を持つデバイスリソースが存在する必要があります。また、デバイス リソースにも存在する患者リソースへの参照が必要です。 つまり、IoT コネクタの宛先がルックアップ モードの場合、データを処理する前に、デバイスと患者のリソースを FHIR Server に追加する必要があります。
 
-   詳細については、オープンソースのドキュメント「 [Fhir 変換先のマッピング](https://github.com/microsoft/iomt-fhir/blob/master/docs/Configuration.md#fhir-mapping)」を参照してください。
+   詳細については、オープン ソースのドキュメント [「FHIR 変換先マッピング」を参照してください](https://github.com/microsoft/iomt-fhir/blob/master/docs/Configuration.md#fhir-mapping)。
 
-4. [ **送信先マッピング**] で、コードエディター内に JSON コードを入力します。
+4. [ **変換先マッピング]** で、コード エディター内に JSON コードを入力します。
 
-   マッパーツールの詳細については、「 [IoMT Connector Data マッパー tool](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper)」を参照してください。
+   Mapper ツールの詳細については、「IoMT コネクタ データ マッパー ツール [」を参照してください](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper)。
 
-5. [ **レビュー + 作成**] を選択するか、[ **次へ: タグ** ] を選択してタグを構成することができ >ます。  
+5. [確認と作成 **] を選択するか**、[次へ: タグ] を **選択** >を構成する場合は [タグ] を選択します。  
 
-## <a name="optional-configure-tags"></a>Optionalタグを構成する
+## <a name="optional-configure-tags"></a>(省略可能)タグの構成
 
-タグは、リソースの分類に使用される名前と値のペアです。 タグの詳細については、「 [タグを使用した Azure リソースと管理階層の整理」を](../../azure-resource-manager/management/tag-resources.md)参照してください。
+タグは、リソースの分類に使用される名前と値のペアです。 タグの詳細については、「タグを使用 [して Azure リソースと管理階層を整理する」を参照してください](../../azure-resource-manager/management/tag-resources.md)。
 
-[ **タグ** ] タブで、IoT コネクタに関連付けられているタグのプロパティを入力します。
+[タグ **] タブ** で、IoT コネクタに関連付けられているタグ プロパティを入力します。
 
    ![タグのプロパティのスクリーンショット。](media/tag-properties.png#lightbox)
  
 1. **[名前]** を入力します。
-2. **値** を入力してください。
+2. 値 を入力 **します**。
 3. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-   次の図に示すような **検証成功** メッセージが表示されます。 
+   次の図に **示すように** 、検証の成功メッセージが表示されます。 
 
    ![検証成功メッセージのスクリーンショット。](media/iot-connector-validation-success.png#lightbox) 
 
    > [!NOTE]
-   > IoT コネクタが検証されなかった場合は、検証エラーメッセージを確認し、問題のトラブルシューティングを行います。 構成した各 IoT コネクタタブのプロパティを確認することをお勧めします。
+   > IoT コネクタが検証しなかった場合は、検証エラー メッセージを確認し、問題のトラブルシューティングを行います。 構成した各 IoT コネクタ タブのプロパティを確認してください。
 
 4. 次に、 **[作成]** を選択します。
 
-   新しくデプロイされた IoT コネクタは、Azure リソースグループのページ内に表示されます。
+   新しくデプロイされた IoT コネクタは、Azure リソース グループ ページ内に表示されます。
 
-   ![Azure 最近使用したリソースの一覧に表示されているデプロイ済み IoT コネクタのスクリーンショット。](media/azure-resources-iot-connector-deployed.png#lightbox)  
+   ![[Azure 最近使用したリソース] の一覧に一覧表示されているデプロイされた IoT コネクタのスクリーンショット。](media/azure-resources-iot-connector-deployed.png#lightbox)  
 
-    IoT コネクタがデプロイされたので、イベントハブおよび FHIR サービスにアクセスするためのアクセス許可を割り当てる手順について説明します。 
+    IoT コネクタがデプロイされたので、Event Hub と FHIR サービスにアクセスするためのアクセス許可を割り当てる手順について説明します。 
 
 ## <a name="granting-iot-connector-access"></a>IoT コネクタへのアクセスを許可する
 
-IoT コネクタが正常に動作するようにするには、Event Hub および FHIR サービスへのアクセス許可が付与されている必要があります。 
+IoT コネクタが正常に動作するには、Event Hub および FHIR サービスへのアクセス許可が付与されている必要があります。 
 
-### <a name="accessing-the-iot-connector-from-the-event-hub"></a>Event Hub から IoT コネクタへのアクセス
+### <a name="accessing-the-iot-connector-from-the-event-hub"></a>イベント ハブから IoT コネクタにアクセスする
 
-1. [ **Azure リソースグループ** ] ボックスの一覧で、 **Event Hubs 名前空間** の名前を選択します。
+1. **[Azure リソース グループ] の一** 覧で、名前空間 の名前 **Event Hubs選択します**。
 
-2. [ **アクセス制御 (IAM)** ] ブレードを選択し、[ **+ 追加**] を選択します。   
+2. [アクセス制御 **(IAM)] ブレードを選択し** 、[+ 追加] **を選択します**。   
 
-   ![名前空間のアクセス制御Event Hubsスクリーンショット。](media/access-control-blade-add.png#lightbox)
+   ![Event Hubs 名前空間のアクセス制御のスクリーンショット。](media/access-control-blade-add.png#lightbox)
 
 3. **[ロールの割り当ての追加]** を選択します。
 
    ![ロールの割り当ての追加のスクリーンショット。](media/event-hub-add-role-assignment.png#lightbox)
  
-4. [ロール] **を選択** し、[データ受信者 **] Azure Event Hubs選択します**。
+4. **ロール** を選択し、[ **Azure Event Hubs データレシーバー**] を選択します。
 
-   ![ロールの割り当て必須フィールドの追加のスクリーンショット。](media/event-hub-add-role-assignment-fields.png#lightbox)
+   ![[ロールの割り当てを追加する必要があります。](media/event-hub-add-role-assignment-fields.png#lightbox)
 
-   データAzure Event Hubsロールを使用すると、このロールが割り当てられている IoT コネクタで、このイベント ハブからデータを受信できます。
+   Azure Event Hubs データ受信者ロールを使用すると、このロールが割り当てられている IoT コネクタは、このイベントハブからデータを受信できます。
 
-   アプリケーション ロールの詳細については、「Authentication [& Authorization for the Healthcare API (プレビュー)」を参照してください](.././authentication-authorization.md)。
+   アプリケーションロールの詳細については、「 [医療 api (プレビュー) の認証 & 承認](.././authentication-authorization.md)」を参照してください。
 
-5. [ **アクセス権を に割り当** てる] を選択し、既定のオプションで [ユーザー、グループ、またはサービス プリンシパル] **を選択した状態のままにします**。
+5. [ **アクセスの割り当て先**] を選択し、既定のオプション [ **ユーザー、グループ、またはサービスプリンシパル**] をそのまま使用します。
 
-6. [選択 **] フィールド** に、IoT コネクタのセキュリティ プリンシパルを入力します。  
+6. **[選択**] フィールドに、IoT コネクタのセキュリティプリンシパルを入力します。  
 
    `<your workspace name>/iotconnectors/<your IoT connector name>`
  
-   IoT コネクタをデプロイすると、マネージド ID が作成されます。 マネージド識別名は、ワークスペース名、リソースの種類 (IoT コネクタ)、および IoT コネクタの名前を連結した名前です。
+   IoT コネクタをデプロイすると、管理対象 id が作成されます。 管理された識別名は、ワークスペース名、リソースの種類 (IoT コネクタ)、および IoT コネクタの名前を連結したものです。
 
 7. **[保存]** を選択します。
 
-   ロールの割り当てがイベント ハブに正常に追加されると、通知に緑色のチェック マークが表示され、"ロールの割り当ての追加" というテキストが表示されます。  このメッセージは、IoT コネクタがイベント ハブから読み取り可能な状態を示しています。
+   ロールの割り当てがイベントハブに正常に追加されると、"ロールの割り当てを追加" というテキストを含む緑色のチェックマークが表示されます。  このメッセージは、IoT コネクタがイベントハブから読み取ることができるようになったことを示します。
 
    ![追加されたロールの割り当てメッセージのスクリーンショット。](media/event-hub-added-role-assignment.png#lightbox)
 
-リソースへのアクセスを作成する方法の詳細については、「Event Hubs を使用してアクセスを承認[する」をAzure Active Directory。](../../event-hubs/authorize-access-azure-active-directory.md)  
+Event Hubs リソースへの作成アクセスの詳細については、「 [Azure Active Directory を使用したアクセスの承認](../../event-hubs/authorize-access-azure-active-directory.md)」を参照してください。  
 
-### <a name="accessing-the-iot-connector-from-the-fhir-service"></a>FHIR サービスから IoT コネクタにアクセスする
+### <a name="accessing-the-iot-connector-from-the-fhir-service"></a>FHIR サービスから IoT コネクタへのアクセス
 
-1. **[Azure リソース グループ] の一覧** で **、FHIR** サービスの名前を選択します。
+1. [ **Azure リソースグループ] ボックスの一覧** で、  **fhir サービス** の名前を選択します。
  
-2. [アクセス制御 **(IAM)] ブレードを選択し** 、[+ 追加] **を選択します**。 
+2. [ **アクセス制御 (IAM)** ] ブレードを選択し、[ **+ 追加**] を選択します。 
 
 3. **[ロールの割り当ての追加]** を選択します。
 
-  ![FHIR サービスのロールの割り当てを追加するスクリーンショット。](media/fhir-service-add-role-assignment.png#lightbox)
+  ![FHIR サービスのロール割り当ての追加のスクリーンショット。](media/fhir-service-add-role-assignment.png#lightbox)
 
-4. [ロール] **を選択** し **、[FHIR データ ライター] を選択します**。
+4. **ロール** を選択し、[ **Fhir データライター**] を選択します。
 
-   FHIR データ ライター ロールは、IoT コネクタが機能するために使用する読み取りおよび書き込みアクセスを提供します。 IoT コネクタは別のリソースとしてデプロイされます。そのため、FHIR サービスは IoT コネクタから要求を受信します。 FHIR サービスが要求を行っているユーザーを知らない場合、または割り当てられたロールが割り当てられていない場合は、未承認として要求を拒否します。
+   FHIR データライターロールは、IoT コネクタが機能するために使用する読み取りおよび書き込みアクセス権を提供します。 IoT コネクタは個別のリソースとしてデプロイされるため、FHIR サービスは IoT コネクタから要求を受信します。 FHIR サービスが要求を行っているユーザーを認識しない場合、または割り当てられたロールがない場合は、要求を承認されていないとして拒否します。
 
-   アプリケーション ロールの詳細については、「Authentication [& Authorization for the Healthcare API (プレビュー)」を参照してください](.././authentication-authorization.md)。
+   アプリケーションロールの詳細については、「 [医療 api (プレビュー) の認証 & 承認](.././authentication-authorization.md)」を参照してください。
 
-5. [選択 **] フィールド** に、IoT コネクタのセキュリティ プリンシパルを入力します。  
+5. **[選択**] フィールドに、IoT コネクタのセキュリティプリンシパルを入力します。  
 
     `<your workspace name>/iotconnectors/<your IoT connector name>`
 
 6. **[保存]** を選択します。
 
-   ![FHIR サービスにロールの割り当てメッセージが追加されたスクリーンショット。](media/fhir-service-added-role-assignment.png#lightbox)
+   ![FHIR サービスによって追加されたロールの割り当てメッセージのスクリーンショット。](media/fhir-service-added-role-assignment.png#lightbox)
 
-   FHIR サービスにロールを割り当てる方法の詳細については、「FHIR サービス用に Azure RBAC を構成 [する」を参照してください](../fhir/configure-azure-rbac-for-fhir.md)。
+   FHIR サービスにロールを割り当てる方法の詳細については、「 [Configure AZURE RBAC](.././configure-azure-rbac.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、IoT コネクタを Azure portal にデプロイする方法について学習しました。 IoT コネクタの概要については、以下を参照してください。
+この記事では、Azure portal に IoT コネクタをデプロイする方法を学習しました。 IoT コネクタの概要については、「」を参照してください。
 
 >[!div class="nextstepaction"]
 >[IoT コネクタの概要](iot-connector-overview.md)
 
-(FHIR&#174;) は HL7 の商標であり [、HL7](https://hl7.org/fhir/) の許可を得て使用されます。
+(FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。

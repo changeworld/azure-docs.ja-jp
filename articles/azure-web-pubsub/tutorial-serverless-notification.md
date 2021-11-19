@@ -6,12 +6,12 @@ ms.author: jixin
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 11/01/2021
-ms.openlocfilehash: 8e565d31de0943b592db0bafff3e9a55e15c0fee
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 3fb4c5dbbc8ea073962cd7e0edb3e53c4c9920d5
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578670"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494028"
 ---
 # <a name="tutorial-create-a-serverless-notification-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレス通知アプリを作成する
 
@@ -67,71 +67,77 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
     func init --worker-runtime dotnet
     ```
 
-1. `Microsoft.Azure.WebJobs.Extensions.WebPubSub` 関数拡張機能パッケージを明示的にインストールします。
+2. `Microsoft.Azure.WebJobs.Extensions.WebPubSub` 関数拡張機能パッケージをインストールします。
 
-   1. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
+    > [!NOTE]
+    > [拡張機能バンドル](/azure/azure-functions/functions-bindings-register#extension-bundles)がサポートされている場合、この手順は省略可能です。
 
-      ```json
-      {
+   a. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
+    ```json
+    {
         "version": "2.0"
-      }
-      ```
+    }
+    ```
+   b. 特定の関数拡張機能パッケージをインストールするコマンドを実行します。
+    ```bash
+    func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0
+    ```
 
-   1. 特定の関数拡張機能パッケージをインストールするコマンドを実行します。
-
-      ```bash
-      func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-      ```
-
-1. クライアントの静的 Web ページを読み取ってホストする `index` 関数を作成します。
-
-   ```bash
-   func new -n index -t HttpTrigger
-   ```
-
+3. クライアントの静的 Web ページを読み取ってホストする `index` 関数を作成します。
+    ```bash
+    func new -n index -t HttpTrigger
+    ```
    # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - `index/function.json` を更新して次の json コードをコピーします。
-     ```json
-     {
-         "bindings": [
-             {
-                 "authLevel": "anonymous",
-                 "type": "httpTrigger",
-                 "direction": "in",
-                 "name": "req",
-                 "methods": [
-                   "get",
-                   "post"
-                 ]
-             },
-             {
-                 "type": "http",
-                 "direction": "out",
-                 "name": "res"
-             }
-         ]
-     }
-     ```
+        ```json
+        {
+            "bindings": [
+                {
+                    "authLevel": "anonymous",
+                    "type": "httpTrigger",
+                    "direction": "in",
+                    "name": "req",
+                    "methods": [
+                      "get",
+                      "post"
+                    ]
+                },
+                {
+                    "type": "http",
+                    "direction": "out",
+                    "name": "res"
+                }
+            ]
+        }
+        ```
    - `index/index.js` を更新して次のコードをコピーします。
-     ```js
-     var fs = require('fs');
-     module.exports = function (context, req) {
-         fs.readFile('index.html', 'utf8', function (err, data) {
-             if (err) {
-                 console.log(err);
-                 context.done(err);
-             }
-             context.res = {
-                 status: 200,
-                 headers: {
-                     'Content-Type': 'text/html'
-                 },
-                 body: data
-             };
-             context.done();
-         });
-     }
-     ```
+        ```js
+        var fs = require('fs');
+        var path = require('path');
+
+        module.exports = function (context, req) {
+            var index = 'index.html';
+            if (process.env["HOME"] != null)
+            {
+                index = path.join(process.env["HOME"], "site", "wwwroot", index);
+            }
+            context.log("index.html path: " + index);
+            fs.readFile(index, 'utf8', function (err, data) {
+                if (err) {
+                    console.log(err);
+                    context.done(err);
+                }
+                context.res = {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'text/html'
+                    },
+                    body: data
+                };
+                context.done();
+            });
+        }
+        ```
 
    # <a name="c"></a>[C#](#tab/csharp)
    - `index.cs` を更新して `Run` 関数を次のコードに置き換えます。
@@ -139,15 +145,21 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
         [FunctionName("index")]
         public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req)
         {
+            string indexFile = "index.html";
+            if (Environment.GetEnvironmentVariable("HOME") != null)
+            {
+                indexFile = Path.Join(Environment.GetEnvironmentVariable("HOME"), "site", "wwwroot", indexFile);
+            }
+            log.LogInformation($"index.html path: {indexFile}.");
             return new ContentResult
             {
-                Content = File.ReadAllText("index.html"),
+                Content = File.ReadAllText(indexFile),
                 ContentType = "text/html",
             };
         }
         ```
 
-2. クライアントがアクセス トークンを含むサービス接続 URL を取得するのに役立つ `negotiate` 関数を作成します。
+4. クライアントがアクセス トークンを含むサービス接続 URL を取得するのに役立つ `negotiate` 関数を作成します。
     ```bash
     func new -n negotiate -t HttpTrigger
     ```
@@ -188,7 +200,7 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
         ```c#
         [FunctionName("negotiate")]
         public static WebPubSubConnection Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             [WebPubSubConnection(Hub = "notification")] WebPubSubConnection connection,
             ILogger log)
         {
@@ -198,7 +210,7 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
         }
         ```
 
-3. `TimerTrigger` を使用して通知を生成する `notification` 関数を作成します。
+5. `TimerTrigger` を使用して通知を生成する `notification` 関数を作成します。
    ```bash
     func new -n notification -t TimerTrigger
     ```
@@ -215,7 +227,7 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
                 },
                 {
                 "type": "webPubSub",
-                "name": "webPubSubOperation",
+                "name": "actions",
                 "hub": "notification",
                 "direction": "out"
                 }
@@ -225,9 +237,9 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
    - `notification/index.js` を更新して次のコードをコピーします。
         ```js
         module.exports = function (context, myTimer) {
-            context.bindings.webPubSubOperation = {
-                "operationKind": "sendToAll",
-                "message": `[DateTime: ${new Date()}] Temperature: ${getValue(22, 1)}\xB0C, Humidity: ${getValue(40, 2)}%`,
+            context.bindings.actions = {
+                "actionName": "sendToAll",
+                "data": `[DateTime: ${new Date()}] Temperature: ${getValue(22, 1)}\xB0C, Humidity: ${getValue(40, 2)}%`,
                 "dataType": "text"
             }
             context.done();
@@ -242,12 +254,12 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
         ```c#
         [FunctionName("notification")]
         public static async Task Run([TimerTrigger("*/10 * * * * *")]TimerInfo myTimer, ILogger log,
-            [WebPubSub(Hub = "notification")] IAsyncCollector<WebPubSubOperation> operations)
+            [WebPubSub(Hub = "notification")] IAsyncCollector<WebPubSubAction> actions)
         {
-            await operations.AddAsync(new SendToAll
+            await actions.AddAsync(new SendToAllAction
             {
-                Message = BinaryData.FromString($"[DateTime: {DateTime.Now}] Temperature: {GetValue(23, 1)}{'\xB0'}C, Humidity: {GetValue(40, 2)}%"),
-                DataType = MessageDataType.Text
+                Data = BinaryData.FromString($"[DateTime: {DateTime.Now}] Temperature: {GetValue(23, 1)}{'\xB0'}C, Humidity: {GetValue(40, 2)}%"),
+                DataType = WebPubSubDataType.Text
             });
         }
 
@@ -259,7 +271,7 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
         }
         ``` 
 
-4. プロジェクトのルート フォルダーにクライアントのシングル ページ `index.html` を追加し、次のようにコンテンツをコピーします。
+6. プロジェクトのルート フォルダーにクライアントのシングル ページ `index.html` を追加し、次のようにコンテンツをコピーします。
     ```html
     <html>
         <body>
@@ -296,7 +308,7 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
     </ItemGroup>
     ```
 
-5. Azure Function アプリを構成して実行する
+7. Azure Function アプリを構成して実行する
 
     - ブラウザーで **Azure portal** を開き、先ほどデプロイした Web PubSub サービス インスタンスが正常に作成されていることを確認します。 そのインスタンスに移動します。
     - **[キー]** を選択し、接続文字列をコピーします。

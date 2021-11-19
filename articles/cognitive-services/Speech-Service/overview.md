@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: eur
-ms.openlocfilehash: 739f5b448f49b825cbb0fbec2c02c5385e0de138
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: ece5aa9a17f5f65b96cf85de96a8ce655e9c9ec9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131990004"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485608"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
@@ -114,7 +114,7 @@ Speech Service を使用する機会が得られたら、さまざまなシナ�
 
 ## <a name="get-sample-code"></a>サンプル コードを取得する
 
-Speech Service のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と単発の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。 SDK と REST のサンプルを見るには、次のリンクを使用してください。
+Speech Service のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と開始時の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。 SDK と REST のサンプルを見るには、次のリンクを使用してください。
 
 - [音声変換、テキスト読み上げ、および音声翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [バッチ文字起こしのサンプル (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
