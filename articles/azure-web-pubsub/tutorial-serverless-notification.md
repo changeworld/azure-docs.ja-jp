@@ -6,12 +6,12 @@ ms.author: jixin
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 11/01/2021
-ms.openlocfilehash: 3fb4c5dbbc8ea073962cd7e0edb3e53c4c9920d5
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: c9e0a59e5e228d500ca011ce20c20153c3a9558b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132494028"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709047"
 ---
 # <a name="tutorial-create-a-serverless-notification-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレス通知アプリを作成する
 
@@ -70,7 +70,7 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
 2. `Microsoft.Azure.WebJobs.Extensions.WebPubSub` 関数拡張機能パッケージをインストールします。
 
     > [!NOTE]
-    > [拡張機能バンドル](/azure/azure-functions/functions-bindings-register#extension-bundles)がサポートされている場合、この手順は省略可能です。
+    > [拡張機能バンドル](../azure-functions/functions-bindings-register.md#extension-bundles)がサポートされている場合、この手順は省略可能です。
 
    a. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
     ```json

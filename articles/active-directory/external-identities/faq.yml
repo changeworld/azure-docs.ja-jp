@@ -13,12 +13,12 @@ metadata:
   ms.reviewer: mal
   ms.custom: it-pro, seo-update-azuread-jan
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 645fc8c5b4dba874d24e353b4ceaabd7454c281d
-  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+  ms.openlocfilehash: 661d38755cdaeea830b025fa2747b45d43b4c5d2
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/17/2021
-  ms.locfileid: "132719093"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132490157"
 title: Azure Active Directory B2B コラボレーションの FAQ
 summary: >
   Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関するよく寄せられる質問 (FAQ) は、新しいトピックを追加して定期的に更新されています。
@@ -132,5 +132,5 @@ sections:
   - question: >
       B2B コラボレーション ユーザーは、UPN 以外の電子メール アドレスでサインインできますか?
     answer: >
-      はい。 B2B コラボレーション用の代替ログイン ID としての電子メールの詳細については、[電子メール アドレスを使用した B2B ゲスト ユーザーのサインイン](../authentication/howto-authentication-use-email-signin.md#b2b-guest-user-sign-in-with-an-email-address)に関するページを参照してください。
+      正解です。 B2B コラボレーション用の代替ログイン ID としての電子メールの詳細については、[電子メール アドレスを使用した B2B ゲスト ユーザーのサインイン](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-use-email-signin#b2b-guest-user-sign-in-with-an-email-address)に関するページを参照してください。
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n[Azure AD B2B コラボレーションとは](what-is-b2b.md)"

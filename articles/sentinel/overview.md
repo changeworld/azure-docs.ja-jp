@@ -7,6 +7,8 @@ author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc, ignite-fall-2021
@@ -14,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 04ed46284cee047ef3ee5893e3245ff63eb46746
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 40cfdc1d23b57bbda16e79907d226134e0052134
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132712549"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523488"
 ---
 # <a name="what-is-microsoft-sentinel"></a>Microsoft Sentinel とは
 

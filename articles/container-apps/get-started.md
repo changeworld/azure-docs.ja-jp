@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5817a6a468761391a644a3000aa6e865e6fb1725
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: bb2b24c080f7f8173280d5c31ca711d7241d04f1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520847"
+ms.locfileid: "132552719"
 ---
 # <a name="quickstart-deploy-your-first-container-app"></a>クイック スタート: 最初のコンテナー アプリをデプロイする
 
@@ -82,19 +82,19 @@ az provider register --namespace Microsoft.Web
 # <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli
-RESOURCE_GROUP="my-containerapps"
+RESOURCE_GROUP="my-container-apps"
 LOCATION="canadacentral"
-LOG_ANALYTICS_WORKSPACE="containerapps-logs"
-CONTAINERAPPS_ENVIRONMENT="containerapps-env"
+LOG_ANALYTICS_WORKSPACE="my-container-apps-logs"
+CONTAINERAPPS_ENVIRONMENT="my-environment"
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-$RESOURCE_GROUP="my-containerapps"
+$RESOURCE_GROUP="my-container-apps"
 $LOCATION="canadacentral"
-$LOG_ANALYTICS_WORKSPACE="containerapps-logs"
-$CONTAINERAPPS_ENVIRONMENT="containerapps-env"
+$LOG_ANALYTICS_WORKSPACE="my-container-apps-logs"
+$CONTAINERAPPS_ENVIRONMENT="my-environment"
 ```
 
 ---

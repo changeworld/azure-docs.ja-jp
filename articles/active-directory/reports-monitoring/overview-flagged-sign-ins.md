@@ -17,12 +17,12 @@ ms.date: 11/12/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 056ed3df8e9658b00917680aa2ad291f3529d1c8
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: ef44ff683717bad391fcb0fa8f108000a810b8a2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132484574"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715494"
 ---
 # <a name="what-are-flagged-sign-ins-in-azure-active-directory"></a>Azure Active Directory におけるフラグが設定されたサインインとは
 
@@ -85,7 +85,7 @@ UPN (例: user@contoso.com) による特定のユーザーのフラグが設定�
 
 特定のユーザー、かつ特定の日付以降のフラグが設定されたサインインのクエリ: `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true and createdDateTime ge 2021-10-01 and userPrincipalname eq 'user@contoso.com'`
  
-サインイン Graph API の使用の詳細については、「[サインイン リソースの種類](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-1.0&preserve-view=true)」を参照してください。
+サインイン Graph API の使用の詳細については、「[サインイン リソースの種類](/graph/api/resources/signin?preserve-view=true&view=graph-rest-1.0)」を参照してください。
 
 
 

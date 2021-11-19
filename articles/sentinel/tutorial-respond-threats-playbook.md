@@ -7,6 +7,8 @@ author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc, ignite-fall-2021
@@ -14,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: c9edbb109bd684ac9fbfe440d147c13d9e102a07
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 8a1c290cebe566ec7d3a812de9746df8e0297120
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132711630"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517750"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-microsoft-sentinel"></a>チュートリアル: Microsoft Sentinel でオートメーション ルールとプレイブックを使用する
 

@@ -4,18 +4,16 @@ description: Microsoft Sentinel を使用して、環境全体で何が発生し
 services: sentinel
 author: yelevin
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit, ignite-fall-2021
 ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 45128b80c6404a44c475d0d329fe65ab0e760375
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 345658e8e6d8b90521bc1aa6106c9ab1de06ec2a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132517769"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721102"
 ---
 # <a name="visualize-collected-data"></a>収集されたデータを視覚化する
 
