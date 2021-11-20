@@ -22,7 +22,7 @@
           href: example-terraform-bash.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/cloud-shell-security-baseline?toc=/azure/cloud-shell/TOC.json
@@ -47,9 +47,9 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure
+      href: /cli/azure/
     - name: Azure PowerShell
-      href: /powershell/azure
+      href: /powershell/azure/
 - name: リソース
   items:
     - name: Azure のロードマップ

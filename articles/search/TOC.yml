@@ -170,10 +170,10 @@
           href: search-sku-tier.md
         - name: サービスの作成
           href: search-create-service-portal.md
-        - name: 容量を計画する
-          href: search-capacity-planning.md
         - name: サービスの制限
           href: search-limits-quotas-capacity.md
+        - name: 容量を計画する
+          href: search-capacity-planning.md
         - name: コストの計画と管理
           href: search-sku-manage-costs.md
         - name: 可用性と復旧

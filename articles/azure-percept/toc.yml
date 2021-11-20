@@ -84,8 +84,6 @@
           href: how-to-determine-your-update-strategy.md
         - name: 更新を無線でデプロイするように Azure IoT Hub を設定する
           href: how-to-set-up-over-the-air-updates.md
-        - name: Azure Percept DK 更新パッケージを選択する
-          href: how-to-select-update-package.md
         - name: Azure Percept DK を無線で更新する
           href: how-to-update-over-the-air.md
         - name: Azure Percept DK を USB-C 接続で更新する

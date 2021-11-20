@@ -223,8 +223,6 @@
               href: azure-vm-image-test.md
             - name: SAS URI の取得
               href: azure-vm-get-sas-uri.md
-            - name: SAS の失敗メッセージ
-              href: azure-vm-sas-failure-messages.md
             - name: VM の作成に関する FAQ
               href: azure-vm-faq.yml
             - name: VM 認定のトラブルシューティング

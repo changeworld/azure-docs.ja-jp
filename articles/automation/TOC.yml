@@ -358,13 +358,13 @@
     - name: Azure CLI
       href: /cli/azure/automation
     - name: Azure PowerShell Az
-      href: /powershell/module/az.automation
+      href: /powershell/module/az.automation/
     - name: Azure PowerShell AzureRM
-      href: /powershell/module/azurerm.automation
+      href: /powershell/module/azurerm.automation/
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
-      href: /rest/api/automation
+      href: /rest/api/automation/
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -385,6 +385,6 @@
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=automation'
     - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-automation'
+      href: 'https://stackoverflow.com/questions/tagged/azure-automation'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

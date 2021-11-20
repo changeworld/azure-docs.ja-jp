@@ -133,7 +133,7 @@
     - name: REST API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
     - name: ASP.NET Core SignalR
-      href: /aspnet/core/signalr
+      href: /aspnet/core/signalr/introduction
     - name: Azure SignalR Service のプロトコル
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
     - name: Azure Policy の組み込み
@@ -146,7 +146,7 @@
     - name: 顧客事例
       href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
     - name: SignalR のロードマップ
-      href: 'https://github.com/aspnet/Home/wiki/Roadmap'
+      href: 'https://github.com/dotnet/aspnetcore/wiki/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/'
     - name: 利用可能なリージョン
@@ -164,4 +164,4 @@
     - name: Twitter
       href: 'https://twitter.com/SignalR'
     - name: ASP.NET フォーラム
-      href: 'https://forums.asp.net/1254.aspx'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=aspsignalr'

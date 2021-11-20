@@ -208,7 +208,7 @@
           href: ./faq.yml
         - name: ネットワークと相互接続
           href: ./faq.yml
-        - name: Storage
+        - name: ストレージ
           href: ./faq.yml
         - name: ホスト、クラスター、およびプライベート クラウド
           href: ./faq.yml
@@ -219,7 +219,7 @@
     - name: ビデオ
       items:
         - name: 再生リスト
-          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+          href: 'https://www.youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
         - name: Azure サービスとの統合
           href: 'https://youtu.be/m26iLu6DHbU'
         - name: Azure Application Gateway との統合
@@ -229,7 +229,7 @@
 - name: リファレンス
   items:
     - name: REST API
-      href: /rest/api/avs
+      href: /rest/api/avs/
     - name: Azure CLI
       href: /cli/azure/vmware
     - name: Azure PowerShell

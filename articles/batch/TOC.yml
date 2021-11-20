@@ -44,7 +44,7 @@
         - name: Azure のコード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=batch'
         - name: Batch のサンプル リポジトリ
-          href: 'https://github.com/Azure/azure-batch-samples'
+          href: 'https://github.com/Azure-Samples/azure-batch-samples'
     - name: Azure CLI
       items:
         - name: Batch サービス モードでの Batch アカウントの作成
@@ -280,7 +280,7 @@
     - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
-      href: /powershell/module/az.batch
+      href: /powershell/module/az.batch/
     - name: .NET
       href: /dotnet/api/overview/azure/batch
     - name: Java
@@ -292,7 +292,7 @@
     - name: REST
       items:
         - name: Batch サービス
-          href: /rest/api/batchservice
+          href: /rest/api/batchservice/
         - name: Batch Management
           href: /rest/api/batchmanagement/
     - name: Resource Manager テンプレート
@@ -338,7 +338,7 @@
     - name: ブログ
       href: /archive/blogs/windowshpc/
     - name: Azure での HPC
-      href: /azure/architecture/topics/high-performance-computing/
+      href: /azure/architecture/topics/high-performance-computing
     - name: Batch に関する Microsoft Q&A 質問ページ
       href: /answers/topics/azure-batch.html
     - name: 価格

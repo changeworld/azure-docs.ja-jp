@@ -114,7 +114,7 @@
     - name: Resource Manager テンプレート リファレンス
       href: /azure/templates/microsoft.compute/cloudservices
     - name: REST
-      href: /rest/api/compute/cloudservices
+      href: /rest/api/compute/cloud-services
     - name: .NET
       href: /dotnet/api/overview/azure/virtualmachines/management
     - name: SDK
@@ -126,7 +126,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: ラーニング パス
-      href: /learn/paths/azure-fundamentals/
+      href: /learn/paths/az-900-describe-cloud-concepts/
     - name: Microsoft Q&A
       href: /answers/topics/azure-cloud-services.html
     - name: 価格

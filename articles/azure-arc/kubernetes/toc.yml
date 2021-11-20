@@ -57,7 +57,7 @@
         - name: Azure Monitor を使用してコンテナーを監視する
           href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Microsoft Defender for Cloud を使用して脅威保護を適用する
-          href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
+          href: ../../defender-for-cloud/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Azure Policy を使用したクラスター内でのポリシーの適用
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Azure Arc 対応 Open Service Mesh をデプロイする
@@ -75,7 +75,7 @@
         - name: Azure Arc 対応機械学習
           href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: トラブルシューティング
-      href: Troubleshooting.md
+      href: troubleshooting.md
 - name: リファレンス
   items:
     - name: Azure Policy の組み込み

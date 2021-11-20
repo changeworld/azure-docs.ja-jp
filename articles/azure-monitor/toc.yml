@@ -130,7 +130,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -1125,7 +1125,7 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
-        - name: Monitor
+        - name: モニター
           items:
             - name: パフォーマンスの監視
               href: containers/container-insights-analyze.md
@@ -1179,6 +1179,8 @@
           href: insights/cosmosdb-insights-overview.md
         - name: Azure Data Explorer
           href: insights/data-explorer.md
+        - name: Azure Service Bus
+          href: insights/service-bus-insights.md
         - name: Log Analytics ワークスペース
           href: logs/log-analytics-workspace-insights-overview.md
         - name: ネットワーク
@@ -1435,11 +1437,11 @@
     - name: Azure PowerShell
       items:
         - name: Azure Monitor
-          href: /powershell/module/az.monitor
+          href: /powershell/module/az.monitor/
         - name: Azure Monitor ログ
-          href: /powershell/module/az.operationalinsights
+          href: /powershell/module/az.operationalinsights/
         - name: Application Insights
-          href: /powershell/module/az.applicationinsights
+          href: /powershell/module/az.applicationinsights/
     - name: Azure CLI
       items:
         - name: Azure Monitor
@@ -1456,7 +1458,7 @@
         - name: Azure Monitor
           href: /rest/api/monitor/
         - name: Azure Monitor ログ
-          href: /rest/api/loganalytics
+          href: /rest/api/loganalytics/
         - name: REST API のチュートリアル
           displayname: 'metrics, analyze'
           href: essentials/rest-api-walkthrough.md
@@ -1512,8 +1514,8 @@
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/en-us/updates/?category=management-tools'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
+      href: 'https://azure.microsoft.com/pricing/details/monitor/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor'

@@ -100,7 +100,7 @@
     - name: クックブック
       items:
         - name: デプロイ スクリプト
-          href: 'https://azure.microsoft.com/documentation/scripts/'
+          href: /azure/automation/automation-runbook-gallery
     - name: トラブルシューティング
       items:
         - name: Visual Studio を使用したトラブルシューティング

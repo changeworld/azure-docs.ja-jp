@@ -608,9 +608,9 @@
     - name: Azure データ保護 - CLI
       href: /cli/azure/dataprotection?view=azure-cli-latest&preserve-view=true
     - name: Azure PowerShell
-      href: /powershell/module/az.recoveryservices
+      href: /powershell/module/az.recoveryservices/
     - name: Azure データ保護 - PowerShell
-      href: /powershell/module/az.dataprotection/?view=azps-6.1.0&preserve-view=true
+      href: /powershell/module/az.dataprotection/
     - name: PowerShell – Azure Backup エージェント
       href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
     - name: REST - Azure データ保護

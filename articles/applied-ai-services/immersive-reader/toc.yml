@@ -3,11 +3,11 @@
 - name: 概要
   items:
     - name: Immersive Reader とは
-      href: Overview.md
+      href: overview.md
     - name: 言語のサポート
       href: language-support.md
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+      href: 'https://azure.microsoft.com/pricing/details/immersive-reader/'
     - name: リリース ノート
       href: release-notes.md
 - name: クイックスタート

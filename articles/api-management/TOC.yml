@@ -366,7 +366,7 @@
     - name: リリース ノート
       href: 'https://aka.ms/apim/releases'
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?service=api-management'
     - name: Microsoft Q&A 質問ページ

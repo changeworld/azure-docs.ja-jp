@@ -90,6 +90,8 @@
       href: uwp-react.md
 - name: 概念
   items:
+    - name: 可用性ゾーン
+      href: availability-zones.md
     - name: トランスポート層セキュリティ (TLS)
       href: notification-hubs-tls12.md
     - name: エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス

@@ -119,7 +119,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: リージョン
       displayName: location
       href: regions.md

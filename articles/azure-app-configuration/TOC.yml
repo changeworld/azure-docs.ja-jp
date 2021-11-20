@@ -195,7 +195,7 @@
         - name: PowerShell
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
-          href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_configuration'
     - name: データ プレーン
       items:
         - name: REST API

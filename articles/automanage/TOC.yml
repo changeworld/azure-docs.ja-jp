@@ -44,4 +44,4 @@
     - name: よく寄せられる質問
       href: faq.yml
     - name: クラウド導入フレームワーク
-      href: /azure/cloud-adoption-framework/manage/azure-server-management
+      href: /azure/cloud-adoption-framework/manage/azure-server-management/

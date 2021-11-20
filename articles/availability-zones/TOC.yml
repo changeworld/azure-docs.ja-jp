@@ -116,7 +116,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Azure リージョン
-      href: 'https://azure.microsoft.com/regions/'
+      href: 'https://azure.microsoft.com/global-infrastructure/geographies/'
 - name: Azure Orbital のドキュメント
   items:
     - name: Azure Orbital とは
