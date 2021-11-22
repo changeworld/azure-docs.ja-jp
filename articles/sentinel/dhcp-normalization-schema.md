@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f0287e6f116e8d63c0b20aa970974e48a31524c2
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 27e9e052265264a298e27fe64dfad4561c68dd12
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521455"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724313"
 ---
 # <a name="microsoft-sentinel-dhcp-normalization-schema-reference-public-preview"></a>Microsoft Azure Sentinel の DHCP 正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -28,7 +26,7 @@ ms.locfileid: "132521455"
 
 DHCP 情報モデルは、DHCP サーバーによって報告されるイベントを記述するために使用され、ソースに依存しない分析を有効にするために Microsoft Azure Sentinel によって使用されます。
 
-詳細については、「[正規化と高度な SIEM 情報モデル (ASIM)](normalization.md)」を参照してください。
+詳細については、「[正規化と Microsoft Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > 現在、DHCP 正規化スキーマはプレビュー段階です。 この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。

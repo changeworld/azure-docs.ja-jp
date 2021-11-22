@@ -6,6 +6,8 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -13,12 +15,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 95f60a08b8700da02c1eaf0496bd5bcba4b0d988
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 6279e4cee368a36d66db5f41a326194fb04fe397
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132714582"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518586"
 ---
 # <a name="deploy-a-log-forwarder-to-ingest-syslog-and-cef-logs-to-microsoft-sentinel"></a>ログ フォワーダーをデプロイして Syslog および CEF ログを Microsoft Sentinel に取り込む
 

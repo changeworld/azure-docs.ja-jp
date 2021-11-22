@@ -6,6 +6,8 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -13,12 +15,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cff89d82c96cd20db59e0ed0de77f988dacead90
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: e8541c6205f8cfd7503b16fa918ca531d30d4339
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132721349"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521360"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-microsoft-sentinel"></a>Microsoft Azure Sentinel でのユーザーとエンティティの動作分析 (UEBA) の有効化 
 
@@ -65,7 +67,7 @@ ms.locfileid: "132721349"
 
 1. **[Go to entity search]\(エンティティ検索に進む\)** を選択します。 これでエンティティ検索ウィンドウが表示されます。今後、Microsoft Azure Sentinel のメイン メニューから **[Entity behavior]\(エンティティの動作\)** を選択したとき、これが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このドキュメントでは、Microsoft Azure Sentinel でユーザーとエンティティの動作分析 (UEBA) を有効にし、構成する方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Microsoft Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [Microsoft Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

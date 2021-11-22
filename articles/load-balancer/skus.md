@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: 472816907aeb16dfbab1fb7b793186e165246947
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 0501f703ce32df37a755c05240b24b8262ccf314
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132722945"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491167"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer の SKU
 
@@ -51,9 +51,9 @@ Basic と Standard の SKU の違いを比較して理解するには、次の�
 | **管理操作** | ほとんどの操作は 30 秒未満 | 一般に 60 ～ 90 秒以上 |
 | **SLA** | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | 使用不可 | 
 | **グローバル VNet ピアリング サポート** | Standard ILB は、グローバル VNet ピアリングを介してサポートされます | サポートされていません | 
-| **[NAT Gateway サポート](../virtual-network/nat-gateway/nat-overview.md)** | Standard ILB と Standard Public LB の両方が Nat Gateway 経由でサポートされます。 | サポートされていません。 | 
-| **[Private Link サポート](../private-link/private-link-overview.md)** | Standard ILB は Private Link 経由でサポートされます。 | サポートされていません。 | 
-| **[リージョン間負荷分散 (プレビュー)](./cross-region-overview.md)** | Standard Public LB はリージョン間 LB 経由でサポートされます。 | サポートされていません | 
+| **[NAT Gateway サポート](https://docs.microsoft.com/azure/virtual-network/nat-gateway/nat-overview)** | Standard ILB と Standard Public LB の両方が Nat Gateway 経由でサポートされます。 | サポートされていません | 
+| **[Private Link サポート](https://docs.microsoft.com/azure/private-link/private-link-overview)** | Standard ILB は Private Link 経由でサポートされます。 | サポートされていません | 
+| **[リージョン間負荷分散 (プレビュー)](https://docs.microsoft.com/azure/load-balancer/cross-region-overview)** | Standard Public LB はリージョン間 LB 経由でサポートされます。 | サポートされていません | 
 
 詳細については、「[Load Balancer の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)」を参照してください。 Standard Load Balancer について詳しくは、[概要](./load-balancer-overview.md)、[価格](https://aka.ms/lbpricing)、[SLA](https://aka.ms/lbsla) に関するページもご覧ください。
 

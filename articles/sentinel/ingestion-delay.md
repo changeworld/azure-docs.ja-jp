@@ -6,20 +6,18 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: 41143675d54e4353f7ea5402a4503c78a74a12e2
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 2ce809d9121f97f885888f927a7f1dd2138f2816
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522937"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720893"
 ---
 # <a name="handle-ingestion-delay-in-scheduled-analytics-rules"></a>スケジュールされた分析ルールでインジェストの遅延を処理する
 
@@ -99,7 +97,7 @@ Microsoft Sentinel に用意されている **ワークスペース使用状況�
 :::image type="content" source="media/ingestion-delay/end-to-end-latency.png" alt-text="ワークスペース使用状況レポートにテーブル別のエンドツーエンドの待機時間が示されているスクリーンショット":::
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次を参照してください。
 

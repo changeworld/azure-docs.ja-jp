@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c175df296f00a42fafff53c0488705f877bff4f9
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 6e48372706bb5132054b46415fc5b87746758655
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521873"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722470"
 ---
 # <a name="use-azure-functions-to-connect-microsoft-sentinel-to-your-data-source"></a>Azure Functions を使用して Microsoft Sentinel をデータ ソースに接続する
 

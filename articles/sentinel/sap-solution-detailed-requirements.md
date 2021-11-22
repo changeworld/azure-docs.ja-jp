@@ -3,15 +3,17 @@ title: Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件
 description: Microsoft Azure Sentinel SAP ソリューションの詳細な SAP システム要件について学習します。
 author: batamig
 ms.author: bagold
+ms.service: microsoft-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
 ms.date: 11/09/2021
-ms.openlocfilehash: 2c1383f2917b7f26aaf623b7ddd9666ff2909fc6
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: f826ac6f3d5ec00ca2cf11948a1a18d0cb95de32
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132711851"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521113"
 ---
 # <a name="microsoft-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)
 
@@ -141,7 +143,7 @@ SAP 環境ホスト。32xx、5xx13、および 33xx (xx は SAP インスタン�
 | S_RFC | FUNC | RFC_READ_TABLE |
 | | |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳細については、次を参照してください。
 

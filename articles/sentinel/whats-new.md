@@ -4,15 +4,17 @@ description: この記事では、過去数か月間に追加された Microsoft
 services: sentinel
 author: batamig
 ms.author: bagol
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5318ead9443737bb16130007419dee5f3154b4b0
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: ffeb90d11b2bc65cc8dceb996cd3d6eecee9e03e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132711291"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519897"
 ---
 # <a name="whats-new-in-microsoft-sentinel"></a>Microsoft Sentinel の新機能
 
@@ -88,13 +90,13 @@ SIEM での脅威検出ルールの微調整は、脅威検出の対象範囲の
 
    31 日間の試用期間中、Microsoft Sentinel の料金のみが免除されます。
 
-これらの制限を超える使用量については、[Microsoft Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel)に関するページに記載されている価格に従って課金されます。 [自動化](automation.md)と[独自の機械学習](bring-your-own-ml.md)用の追加機能に関連する料金は、無料試用中であっても適用されます。
+これらの制限を超える使用量については、[Microsoft Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel)に関するページに記載されている価格に従って課金されます。 [自動化](automation-in-azure-sentinel.md)と[独自の機械学習](bring-your-own-ml.md)用の追加機能に関連する料金は、無料試用中であっても適用されます。
 
 > [!TIP]
 > 無料試用中は、Microsoft Sentinel の **[ニュースとガイド] > [無料試用版]** タブで、コスト管理やトレーニングなどのリソースを利用できます。 このタブには、無料試用版の日付と、有効期限が切れるまでの残り日数に関する詳細も表示されます。
 >
 
-詳細については、「[Microsoft Sentinel のコストを計画および管理する](billing.md)」を参照してください。
+詳細については、「[Microsoft Sentinel のコストを計画および管理する](azure-sentinel-billing.md)」を参照してください。
 
 ### <a name="content-hub-and-new-solutions-public-preview"></a>コンテンツ ハブと新しいソリューション (パブリック プレビュー)
 
@@ -348,7 +350,7 @@ Azure Sentinel では、ランサムウェア アクティビティについて�
 
 サポートされているデータ コネクタとして、以下があります。
 
-- [Azure Defender (Azure Security Center)](connect-defender-for-cloud.md)
+- [Azure Defender (Azure Security Center)](connect-azure-security-center.md)
 - [Microsoft Defender for Endpoint](./data-connectors-reference.md#microsoft-defender-for-endpoint)
 - [Microsoft Defender for Identity](./data-connectors-reference.md#microsoft-defender-for-identity)
 - [Microsoft Cloud App Security](./data-connectors-reference.md#microsoft-defender-for-cloud-apps)
@@ -438,7 +440,7 @@ Azure Sentinel では、Microsoft が生成した脅威インテリジェンス 
 
 Azure Sentinel では、地理位置情報を使用してデータを強化する API が提供されるようになりました。 その地理位置情報データを使用して、セキュリティ インシデントの分析と調査を行うことができます。
 
-詳細については、「[REST API を介して地理位置情報データで Azure Sentinel のエンティティを強化する (パブリック プレビュー)](geolocation-data-api.md)」と「[Azure Sentinel でエンティティを使用してデータを分類および分析する](entities.md)」を参照してください。
+詳細については、「[REST API を介して地理位置情報データで Azure Sentinel のエンティティを強化する (パブリック プレビュー)](geolocation-data-api.md)」と「[Azure Sentinel でエンティティを使用してデータを分類および分析する](entities-in-azure-sentinel.md)」を参照してください。
 
 
 ### <a name="support-for-adx-cross-resource-queries-public-preview"></a>ADX クロスリソース クエリのサポート (パブリック プレビュー)
@@ -468,7 +470,7 @@ Azure Sentinel では、次の追加地域で完全データ レジデンシー�
 
 Azure Defender コネクタでは現在、アラートの状態の Defender と Azure Sentinel の間の双方向同期がサポートされています。 Defender アラートを含む Sentinel インシデントを閉じると、アラートは Defender ポータルでも自動的に閉じます。
 
-この「[更新された Azure Defender コネクタの詳細](connect-defender-for-cloud.md)」を参照してください。
+この「[更新された Azure Defender コネクタの詳細](connect-azure-security-center.md)」を参照してください。
 
 ## <a name="june-2021"></a>2021 年 6 月
 

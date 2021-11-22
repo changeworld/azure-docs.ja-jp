@@ -4,15 +4,17 @@ description: デシジョン ツリーを使用して、Microsoft Sentinel ワ�
 services: sentinel
 author: batamig
 ms.author: bagol
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0e18dc78e45c1fb619a8727a550ffa81ce2a7d27
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 0fccafee7a645be13ae17eca98d99305dd2b4a10
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132724389"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521550"
 ---
 # <a name="design-your-microsoft-sentinel-workspace-architecture"></a>Microsoft Sentinel ワークスペース アーキテクチャを設計する
 
@@ -86,13 +88,13 @@ Microsoft Sentinel に使用できる既存のワークスペースがありま�
 
 - **請求またはチャージバックを分割する必要が "*ない*" 場合** は、[手順 5](#step-5-collecting-any-non-soc-data) に進みます。
 
-- **請求またはチャージバックを分割する必要が "*ある*" 場合** は、[使用状況レポートまたは手動でのクロスチャージ](billing.md)が役立つかどうかを検討します。
+- **請求またはチャージバックを分割する必要が "*ある*" 場合** は、[使用状況レポートまたは手動でのクロスチャージ](azure-sentinel-billing.md)が役立つかどうかを検討します。
 
   - **使用状況レポートまたは手動のクロスチャージが役立つ場合** は、[手順 5](#step-5-collecting-any-non-soc-data) に進みます。
 
   - **使用状況レポートと手動のクロスチャージが "*どちらも役立たない*" 場合** は、コストの所有者ごとに個別の Microsoft Sentinel ワークスペースを使用します。
 
-  <a name="note2"></a>[デシジョン ツリーの注 #2](#decision-tree): 詳細については、「[Microsoft Sentinel のコストと課金](billing.md)」を参照してください。
+  <a name="note2"></a>[デシジョン ツリーの注 #2](#decision-tree): 詳細については、「[Microsoft Sentinel のコストと課金](azure-sentinel-billing.md)」を参照してください。
 
 ### <a name="step-5-collecting-any-non-soc-data"></a>手順 5: SOC 以外のデータを収集するか?
 
@@ -150,7 +152,7 @@ Microsoft Sentinel に使用できる既存のワークスペースがありま�
 
   - 個別のワークスペースを維持する価値を見いだすうえでデータ エグレス コストが十分に懸念される場合は、データ エグレス コストを削減する必要があるリージョンごとに個別の Microsoft Sentinel ワークスペースを使用します。
 
-    <a name="note5"></a>[デシジョン ツリーの注 #5](#decision-tree): ワークスペースの数はできる限り少なくすることをお勧めします。 [Azure 価格計算ツール](billing.md#estimate-microsoft-sentinel-costs)を使用してコストを見積もり、実際に必要なリージョンを特定し、エグレス コストが低いリージョンのワークスペースをまとめます。 帯域幅コストは、Microsoft Sentinel と Log Analytics の個々のインジェスト コストと比較すると、Azure の請求額のごく一部でしかない場合があります。
+    <a name="note5"></a>[デシジョン ツリーの注 #5](#decision-tree): ワークスペースの数はできる限り少なくすることをお勧めします。 [Azure 価格計算ツール](azure-sentinel-billing.md#estimate-microsoft-sentinel-costs)を使用してコストを見積もり、実際に必要なリージョンを特定し、エグレス コストが低いリージョンのワークスペースをまとめます。 帯域幅コストは、Microsoft Sentinel と Log Analytics の個々のインジェスト コストと比較すると、Azure の請求額のごく一部でしかない場合があります。
 
     たとえば、次の場合のコストを見積もります。
 
@@ -202,7 +204,7 @@ Microsoft Sentinel に使用できる既存のワークスペースがありま�
 
 - <a name="note9"></a>[デシジョン ツリーの注 #9](#decision-tree): [テーブルレベルの RBAC](../azure-monitor/logs/manage-access.md) では、他のアクセス許可に加えて、Log Analytics ワークスペースのデータをさらにきめ細かく定義できます。 この制御を使用すると、特定のユーザーのグループのみがアクセスできる特定のデータ型を定義できます。 詳細については、「[Microsoft Sentinel のテーブルレベルの RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このデシジョン ツリーの実際の例については、「[Microsoft Sentinel のサンプル ワークスペースの設計](sample-workspace-designs.md)」を参照してください。
 

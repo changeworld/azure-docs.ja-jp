@@ -4,17 +4,15 @@ description: Microsoft Sentinel ワークスペースを管理する際のベス
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 15543989655bf094f221a4259ad0b3e765338329
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 9c70c97c120ae0b5d55ccba37878b344c49aacee
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132524704"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722755"
 ---
 # <a name="best-practices-for-microsoft-sentinel"></a>Microsoft Sentinel のベスト プラクティス
 
@@ -38,7 +36,7 @@ ms.locfileid: "132524704"
     - [Microsoft Sentinel ワークスペース アーキテクチャを設計する](design-your-workspace-architecture.md)
     - [Microsoft Sentinel のサンプル ワークスペースの設計](sample-workspace-designs.md)
     - [データ収集のベスト プラクティス](best-practices-data.md)
-    - [Microsoft Sentinel のコストと請求](azure-sentinel-billing.md)
+    - [Microsoft Sentinel のコストと請求](billing.md)
     - [Microsoft Sentinel のアクセス許可](roles.md)
     - [Microsoft Sentinel で MSSP の知的財産権を保護する](mssp-protect-intellectual-property.md)
     - [Microsoft Sentinel への脅威インテリジェンスの統合](threat-intelligence-integration.md)

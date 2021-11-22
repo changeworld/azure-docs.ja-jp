@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 39dda46d1634996246f6c1d78b57e2747f27223c
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 9465a8c45dd44eca4fcd67a8603e60a2061f2609
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132723515"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518187"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う
 
@@ -340,7 +340,7 @@ providers/Microsoft.Storage/storageAccounts/<YOUR-STORAGE-ACCOUNT-NAME>"
 
 ## <a name="create-a-workspace-using-customer-managed-encryption-keys"></a>カスタマーマネージド暗号化キーを使用してワークフローを作成する
 
-ワークスペースのメタデータは、既定で Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。 Microsoft のマネージド キーを使用する代わりに、独自のキーを指定することもできます。 これにより、データ格納目的で、Azure サブスクリプションで[追加のリソース セット](./concept-data-encryption.md#azure-cosmos-db)が作成されます。
+ワークスペースのメタデータは、既定で Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。 Microsoft のマネージド キーを使用する代わりに、独自のキーを指定することもできます。 これにより、データ格納目的で、Azure サブスクリプションで[追加のリソース セット](/azure/machine-learning/concept-data-encryption#azure-cosmos-db)が作成されます。
 
 暗号化にキーを利用するワークスペースを作成するには、次の前提条件を満たす必要があります。
 

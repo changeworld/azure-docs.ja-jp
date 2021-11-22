@@ -7,6 +7,8 @@ author: batamig
 manager: rkarlin
 editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -14,12 +16,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 26eac13eaee01d4f418abe31b69d0730d28f6afe
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: d1524139049b77cfeeff58563904489ae49728ef
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132707222"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518054"
 ---
 # <a name="audit-microsoft-sentinel-queries-and-activities"></a>Microsoft Sentinel のクエリとアクティビティを監査する
 
