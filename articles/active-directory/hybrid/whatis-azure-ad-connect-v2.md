@@ -11,12 +11,12 @@ ms.date: 09/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management, has-adal-ref
-ms.openlocfilehash: 06b982a43c5155ce5a111bafbac41862363ec07d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 4ef535684c8d2cefcf0db9e2044c59b02318ed97
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355509"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717603"
 ---
 # <a name="introduction-to-azure-ad-connect-v20"></a>Azure AD Connect v2.0 について 
 
@@ -101,14 +101,14 @@ PowerShell の前提条件の詳細については、[こちら](/powershell/scr
 2022 年 6 月に、ADAL はサポートを終了します。 ADAL がサポートされなくなると、認証が予期せず動作を停止し、Azure AD Connect サーバーが正常に動作しなくなる可能性があります。 2022 年 6 月より前に Azure AD Connect V2.0 にアップグレードすることを強くお勧めします。 現在の Azure AD Connect バージョンでサポートされている認証ライブラリにアップグレードすることはできません。 
 
 **2.0 にアップグレードした後、ADSync PowerShell コマンドレットが機能しませんか?** </br>
-これは既知の問題です。  これを解決するには、バージョン2.0 をインストールまたはアップグレードした後、PowerShell セッションを再起動してから、モジュールを再インポートします。  次の指示に従って、モジュールをインポートします。
+これは既知の問題です。 これを解決するには、バージョン2.0 をインストールまたはアップグレードした後、PowerShell セッションを再起動してから、モジュールを再インポートします。 次の指示に従って、モジュールをインポートします。
  
- 1.  管理者特権で Windows PowerShell を開きます
- 2.  次を入力するか、コピーして貼り付けます。 
-    ``` powershell
-              Import-module -Name "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync"
-    ```
+ 1.  管理者特権で Windows PowerShell を開きます。
+ 1.  次のコードを入力するか、コピーして貼り付けます。 
  
+     ```powershell
+     Import-module -Name "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync"
+     ```
 
 ## <a name="license-requirements-for-using-azure-ad-connect-v20"></a>Azure AD Connect V2.0 を使用するためのライセンス要件
 

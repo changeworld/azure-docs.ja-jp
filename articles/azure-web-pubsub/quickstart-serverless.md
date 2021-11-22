@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 11/08/2021
-ms.openlocfilehash: 7dc376bb84c52688e1f665501680f11f6bb317eb
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 3e6af1542452218a5e63182f484d9d5910407c3d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132488527"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715057"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレスのリアルタイム チャット アプリを作成する
 
@@ -74,7 +74,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
 2. `Microsoft.Azure.WebJobs.Extensions.WebPubSub` 関数拡張機能パッケージをインストールします。
 
     > [!NOTE]
-    > [拡張機能バンドル](/azure/azure-functions/functions-bindings-register#extension-bundles)がサポートされている場合、この手順は省略可能です。
+    > [拡張機能バンドル](../azure-functions/functions-bindings-register.md#extension-bundles)がサポートされている場合、この手順は省略可能です。
 
    a. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
     ```json
@@ -223,7 +223,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
    ```
 
    > [!NOTE]
-   > この関数では、実際には `WebPubSubTrigger` が使用されています。 ただし、このサービスはまだプレビュー段階にあり、関数のテンプレートには `WebPubSubTrigger` が組み込まれていません。 `HttpTrigger` を使用して関数テンプレートを初期化し、コードでトリガーの種類を変更します。
+   > この関数では、実際には `WebPubSubTrigger` が使用されています。 ただし、`WebPubSubTrigger` は関数のテンプレートには統合されていません。 `HttpTrigger` を使用して関数テンプレートを初期化し、コードでトリガーの種類を変更します。
 
    # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - `message/function.json` を更新して次の json コードをコピーします。

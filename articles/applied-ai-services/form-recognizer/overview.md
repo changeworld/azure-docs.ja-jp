@@ -7,21 +7,23 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 11/02/2021
+ms.date: 11/16/2021
 ms.author: lajanuar
 recommendations: false
 keywords: 自動データ処理、ドキュメント処理、自動データ入力、フォーム処理
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f9c22bef6236008c772c39a9fea4f4673923b070
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: af81466257839563cd09917335e8eedca107ec0b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131843102"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708779"
 ---
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD024 -->
 # <a name="what-is-azure-form-recognizer"></a>Azure Form Recognizer とは?
+
+:::image type="content" source="media/form-recognizer-icon.png" alt-text="Azure portal の Form Recognizer アイコン。":::
 
 Azure Form Recognizer は、機械学習モデルを使用してドキュメントからフォーム フィールド、テキスト、テーブルを抽出して分析するクラウドベースの [Azure Applied AI Service](../../applied-ai-services/index.yml) です。 Form Recognizer は、フォームとドキュメントを分析し、テキストとデータを抽出して、フィールドのリレーションシップをキーと値のペアとしてマップし、構造化された JSON 出力を返します。 過剰な手動操作を行うことなく、広範なデータ サイエンスに関する専門知識なしで、特定のコンテンツに合わせた正確な結果をすばやく得られます。 Form Recognizer を使用して、アプリケーションとワークフローでのデータ処理を自動化し、データドリブン戦略を強化し、ドキュメント検索機能を強化します。
 

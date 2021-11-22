@@ -85,6 +85,8 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2163454'
     - name: ウィジェット サンプル リポジトリ
       href: 'https://go.microsoft.com/fwlink/?linkid=2173229'
+    - name: Postman サンプル リポジトリ
+      href: 'https://github.com/Azure-Samples/video-analyzer-postman'
 - name: 概念
   items:
     - name: パイプライン

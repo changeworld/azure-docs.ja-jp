@@ -25,7 +25,7 @@
 - name: チュートリアル
   items:
     - name: アプリの統合に関するチュートリアル リスト
-      href: /azure/active-directory/saas-apps/
+      href: /azure/active-directory/saas-apps/tutorial-list
 - name: サンプル
   items:
     - name: アプリ管理サンプルの概要
@@ -100,6 +100,8 @@
               href: manage-application-permissions.md
         - name: ユーザー割り当ての管理
           href: assign-user-or-group-access-portal.md
+        - name: カスタム セキュリティ属性の割り当て
+          href: custom-security-attributes-apps.md
         - name: マイ アプリでのコレクションの作成
           href: access-panel-collections.md
         - name: セルフサービス アプリ アクセスの有効化
@@ -199,7 +201,7 @@
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
     - name: Stack Overflow

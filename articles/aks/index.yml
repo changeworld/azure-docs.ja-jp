@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: 0e38303b435a478b2c6338cd976d7659a3a70c6d
-  ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+  ms.openlocfilehash: 213e8336eb40a56c6f8bb4d1ce0e2f20e02d1fd4
+  ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/18/2021
-  ms.locfileid: "122418439"
+  ms.lasthandoff: 11/20/2021
+  ms.locfileid: "132869214"
 landingContent:
 - title: Azure Kubernetes Service (AKS) について
   linkLists:
@@ -38,6 +38,14 @@ landingContent:
       url: concepts-storage.md
     - text: スケール
       url: concepts-scale.md
+  - linkListType: learn
+    links:
+    - text: Azure Kubernetes Service の概要
+      url: /learn/modules/intro-to-azure-kubernetes-service/
+    - text: Azure 上のコンテナーの概要
+      url: /learn/modules/intro-to-containers/
+    - text: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
+      url: /learn/modules/build-and-store-container-images/
 - title: AKS クラスターを 5 分でデプロイする
   linkLists:
   - linkListType: quickstart
@@ -48,32 +56,20 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager テンプレート
       url: kubernetes-walkthrough-rm-template.md
-- title: Bridge to Kubernetes を使用してアプリケーションを開発、デバッグする
+- title: アプリケーションの開発とデバッグ
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Helm を使用した開発
+      url: quickstart-helm.md
+    - text: Dapr を使用した開発
+      url: quickstart-dapr.md
   - linkListType: how-to-guide
     links:
     - text: Visual Studio Code で Bridge to Kubernetes を使用する
       url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
     - text: Visual Studio で Bridge to Kubernetes を使用する
       url: /visualstudio/containers/bridge-to-kubernetes
-- title: アプリケーションのデプロイ、管理、更新
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 1. AKS 用にアプリケーションを準備する
-      url: tutorial-kubernetes-prepare-app.md
-    - text: 2. Azure Container Registry をデプロイして使用する
-      url: tutorial-kubernetes-prepare-acr.md
-    - text: 3. AKS クラスターのデプロイ
-      url: tutorial-kubernetes-deploy-cluster.md
-    - text: 4. アプリケーションを実行する
-      url: tutorial-kubernetes-deploy-application.md
-    - text: 5. アプリケーションをスケール調整する
-      url: tutorial-kubernetes-scale.md
-    - text: 6. アプリケーションを更新する
-      url: tutorial-kubernetes-app-update.md
-    - text: 7. AKS で Kubernetes をアップグレードする
-      url: tutorial-kubernetes-upgrade-cluster.md
 - title: アーキテクチャのガイダンス
   linkLists:
   - linkListType: architecture
@@ -92,13 +88,31 @@ landingContent:
       url: best-practices.md
     - text: その他の AKS ソリューション
       url: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE
-- title: Microsoft Learn でスキルを身に付ける
+- title: アプリケーションのデプロイ、管理、更新
   linkLists:
-  - linkListType: learn
+  - linkListType: tutorial
     links:
-    - text: Azure Kubernetes Service の概要
-      url: /learn/modules/intro-to-azure-kubernetes-service/
-    - text: Azure 上のコンテナーの概要
-      url: /learn/modules/intro-to-containers/
-    - text: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
-      url: /learn/modules/build-and-store-container-images/
+    - text: 1. AKS 用にアプリケーションを準備する
+      url: tutorial-kubernetes-prepare-app.md
+    - text: 2. Azure Container Registry をデプロイして使用する
+      url: tutorial-kubernetes-prepare-acr.md
+    - text: 3. AKS クラスターのデプロイ
+      url: tutorial-kubernetes-deploy-cluster.md
+    - text: 4. アプリケーションを実行する
+      url: tutorial-kubernetes-deploy-application.md
+    - text: 5. アプリケーションをスケール調整する
+      url: tutorial-kubernetes-scale.md
+    - text: 6. アプリケーションを更新する
+      url: tutorial-kubernetes-app-update.md
+    - text: 7. AKS で Kubernetes をアップグレードする
+      url: tutorial-kubernetes-upgrade-cluster.md
+- title: クラスターの機能を拡張する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Open Service Mesh アドオン
+      url: open-service-mesh-about.md
+    - text: Dapr クラスターの拡張機能
+      url: dapr.md
+    - text: クラスター拡張機能
+      url: cluster-extensions.md

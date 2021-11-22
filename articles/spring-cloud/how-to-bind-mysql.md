@@ -1,20 +1,20 @@
 ---
-title: Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする方法
-description: Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする方法を説明します
+title: Azure Database for MySQL インスタンスを Azure Spring Cloud 内のアプリケーションにバインドする方法
+description: Azure Database for MySQL インスタンスを Azure Spring Cloud 内のアプリケーションにバインドする方法について説明します
 author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 45ded9214f310f3505cc5d032754333c5cf702d8
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 7c48b9eee1ff727cbd3d2ab7204045d962a21f44
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862541"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490347"
 ---
-# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする
+# <a name="bind-an-azure-database-for-mysql-instance-to-your-application-in-azure-spring-cloud"></a>Azure Database for MySQL インスタンスを Azure Spring Cloud 内のアプリケーションにバインドする
 
 **この記事の適用対象:** ✔️ Java
 
@@ -26,7 +26,7 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
 * Azure Database for MySQL アカウント
 * Azure CLI
 
-デプロイされている Azure Spring Cloud インスタンスがない場合は、[Azure portal を使用して Azure Spring Cloud アプリケーションを起動する方法に関するクイックスタート](./quickstart.md)の手順に従って、初めての Spring Cloud アプリをデプロイしてください。
+デプロイされている Azure Spring Cloud インスタンスがない場合は、[クイックスタート: Azure portal を使用して Azure Spring Cloud 内のアプリケーションを起動する](./quickstart.md)方法に関する記事に記載されている手順に従って、初めての Spring Cloud アプリをデプロイしてください。
 
 ## <a name="prepare-your-java-project"></a>Java プロジェクトを準備する
 
@@ -177,4 +177,4 @@ resource "azurerm_spring_cloud_active_deployment" "example" {
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Spring Cloud アプリケーションを Azure Database for MySQL インスタンスにバインドする方法について学習しました。 サービスをアプリケーションにバインドする方法の詳細については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](./how-to-bind-cosmos.md)に関する記事を参照してください。
+この記事では、Azure Spring Cloud 内のアプリケーションを Azure Database for MySQL インスタンスにバインドする方法について学習しました。 サービスをアプリケーションにバインドする方法の詳細については、「[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする](./how-to-bind-cosmos.md)」を参照してください。

@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: overview
 ms.subservice: translator-text
-ms.date: 08/10/2021
+ms.date: 11/16/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, テキスト翻訳, 機械翻訳, 翻訳サービス, カスタム翻訳ツール
-ms.openlocfilehash: 4d5e60beeb69447823369a5dfe610e73354f1ddc
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 5c0d2553438f1765ff5f95d6264961728ee94675
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426960"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706568"
 ---
 # <a name="what-is-translator"></a>Translator とは
+
+:::image type="content" source="media/translator-icon.png" alt-text="Azure portal の Translator アイコン。":::
 
  Translator は、クラウドベースのニューラル機械翻訳サービスであり、REST API の [Azure Cognitive Services](../what-are-cognitive-services.md) ファミリに含まれます。  Translator は、どのオペレーティング システムでも使用でき、世界中の何千もの企業によって使用されている Microsoft の製品やサービスで、言語翻訳や言語に関連するその他の操作を行うのに使用できます。 この概要では、Translator を使用して、[サポートされているすべての言語](./language-support.md)でアプリケーションに対してインテリジェントな複数言語ソリューションを構築する方法について説明します。
 

@@ -10,12 +10,12 @@ ms.author: justinha
 author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 7cee43e911c2713b13f7e8e729a00b4c2379ce22
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: e7b34e98776f252c2122d58601c8067df208b2f2
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251093"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486787"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメール アドレスを使用して Azure AD にサインインする (プレビュー)
 
@@ -30,7 +30,9 @@ ms.locfileid: "130251093"
 * Azure AD UPN を変更すると、オンプレミス環境と Azure AD 環境の間で不一致が生じ、特定のアプリケーションやサービスで問題が発生する可能性があります。
 * ビジネスまたはコンプライアンス上の理由により、組織では、Azure AD へのサインインにオンプレミスの UPN を使用したくないと考えています。
 
-ハイブリッド認証への移行を支援するために、ユーザーが代替ログイン ID として各自のメール アドレスでサインインできるように Azure AD を構成できます。 たとえば、*Contoso* が *Fabrikam* にブランド変更した場合、従来の `balas@contoso.com` UPN でのサインインを続行するのではなく、代替ログイン ID としてメール アドレスを使用できます。 アプリケーションまたはサービスにアクセスするために、ユーザーは、UPN 以外のメール アドレス (`balas@fabrikam.com` など) を使用して Azure AD にサインインします。
+ハイブリッド認証への移行を支援するために、ユーザーが代替ログイン ID として各自のメール アドレスでサインインできるように Azure AD を構成できます。 たとえば、*Contoso* が *Fabrikam* にブランド変更した場合、従来の `ana@contoso.com` UPN でのサインインを続行するのではなく、代替ログイン ID としてメール アドレスを使用できます。 アプリケーションまたはサービスにアクセスするために、ユーザーは、UPN 以外のメール アドレス (`ana@fabrikam.com` など) を使用して Azure AD にサインインします。
+
+![代替ログイン ID としてのメール アドレスの図。](media/howto-authentication-use-email-signin/email-alternate-login-id.png)
 
 この記事では、代替ログイン ID として電子メールを有効にして使用する方法について説明します。
 
@@ -39,7 +41,7 @@ ms.locfileid: "130251093"
 代替ログイン ID としてのメール アドレスについて知る必要がある情報を次に示します。
 
 * この機能は、Azure AD Free エディション以上で使用できます。
-* この機能を使用すると、クラウドで認証された Azure AD ユーザーに対して、検証済みドメインの *ProxyAddresses* を使用したサインインを有効にすることができます。
+* この機能を使用すると、クラウドで認証された Azure AD ユーザーに対して、UPN に加え、*ProxyAddresses* を使用したサインインを有効にすることができます。 Azure AD B2B シナリオへの適用に関する詳細については、「[B2B](#b2b-guest-user-sign-in-with-an-email-address)」に記載されています。
 * ユーザーが UPN 以外のメール アドレスを使用してサインインすると、[ID トークン](../develop/id-tokens.md)内の `unique_name` と `preferred_username` のクレーム (存在する場合) では UPN 以外のメール アドレスが返されます。
 * この機能では、パスワード ハッシュ同期 (PHS) またはパススルー認証 (PTA) による、マネージド認証がサポートされています。
 * この機能を構成するには、2 つのオプションがあります。
@@ -57,8 +59,7 @@ ms.locfileid: "130251093"
 
 * **サポートされていないフロー** - 現在、次のような一部のフローは、UPN 以外のメール アドレスとは互換性がありません。
     * UPN 以外のメール アドレスは、Identity Protection で "*漏洩した資格情報*" のリスク検出と照合されません。 このリスク検出では、UPN を使用して、漏洩した資格情報を照合します。 詳細については、[Azure AD Identity Protection のリスク検出と修復][identity-protection]に関する記事を参照してください。
-    * UPN 以外のメール アドレスに送信される B2B 招待は完全にはサポートされていません。 UPN 以外のメール アドレスに送信された招待を受け入れた後に、UPN 以外のメール アドレスを使用したサインインが、リソース テナント エンドポイントのゲスト ユーザーに対して機能しない場合があります。
-    * ユーザーが UPN 以外のメール アドレスを使用してサインインしている場合、ユーザーは自分のパスワードを変更できません。 Azure AD セルフサービス パスワード リセット (SSPR) は想定どおりに機能します。 SSPR 中に、ユーザーが別のメール アドレスを使用して ID を確認すると、UPN が表示される場合があります。
+    * ユーザーが UPN 以外のメール アドレスを使用してサインインしている場合、ユーザーは自分のパスワードを変更できません。 Azure AD セルフサービス パスワード リセット (SSPR) は想定どおりに機能します。 SSPR 中に、ユーザーが UPN 以外のメール アドレスを使用して自分の ID を確認すると、UPN が表示される場合があります。
 
 * **サポートされていないシナリオ** - 次のシナリオはサポートされていません。 UPN 以外のメール アドレスを使用した次へのサインイン:
     * [ハイブリッド Azure AD 参加済みデバイス](../devices/concept-azure-ad-join-hybrid.md)
@@ -68,8 +69,6 @@ ms.locfileid: "130251093"
     * POP3 や SMTP などのレガシ認証を使用したアプリケーション
     * Skype for Business
     * macOS 上の Microsoft Office
-    * Web 上の Microsoft Teams
-    * OneDrive (サインイン フローに多要素認証が関係しない場合)。
     * Microsoft 365 管理者ポータル
 
 * **サポートされていないアプリ** - `unique_name` または `preferred_username` クレームが不変であると想定する場合、または UPN などの特定のユーザー属性に常に一致する場合は、一部のサードパーティアプリケーションが期待どおりに動作しないことがあります。
@@ -123,6 +122,12 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
 > テナントの確認済みドメインのメールのみが Azure AD に同期されます。 それぞれの Azure AD テナントには、1 つ以上の確認済みドメインがあり、これらは所有権が実証され、テナントに一意にバインドされます。
 >
 > 詳細については、[Azure AD でのカスタム ドメイン名の追加と確認][verify-domain]に関するページをご覧ください。
+
+## <a name="b2b-guest-user-sign-in-with-an-email-address"></a>メール アドレスを使用した B2B ゲスト ユーザーのサインイン
+
+![B2B ゲスト ユーザーのサインイン用の代替ログイン ID としてのメール アドレスの図。](media/howto-authentication-use-email-signin/email-alternate-login-id-b2b.png)
+
+代替ログイン ID としてのメール アドレスは、"サインイン識別子持ち込み" モデルの下で [Azure AD 企業間 (B2B) コラボレーション](../external-identities/what-is-b2b.md)に適用されます。 代替ログイン ID としてのメール アドレスがホーム テナントで有効となっている場合、Azure AD ユーザーは、UPN 以外のメール アドレスを使用して、リソース テナント エンドポイントでゲスト サインインを実行できます。 この機能を有効にするために、リソース テナントで要求される操作はありません。
 
 ## <a name="enable-user-sign-in-with-an-email-address"></a>メール アドレスを使用してユーザーのサインインを有効にする
 
@@ -316,7 +321,7 @@ Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-ユーザーがメール アドレスを使用してサインインするときに問題が発生している場合は、次のトラブルシューティングの手順を確認してください。
+ユーザーがメール アドレスを使用してサインインするときに問題が発生した場合は、次のトラブルシューティングの手順を確認してください。
 
 1. メール アドレスが代替ログイン ID として有効になってから少なくとも 1 時間が経過していることを確認します。 段階的ロールアウト ポリシーの適用対象であるグループにユーザーが最近追加された場合は、グループに追加されてから少なくとも 24 時間が経過していることを確認します。
 1. HRD ポリシーを使用している場合は、Azure AD *HomeRealmDiscoveryPolicy* の *AlternateIdLogin* 定義プロパティが *"Enabled": true* に設定され、*IsOrganizationDefault* プロパティが *True* に設定されていることを確認します。

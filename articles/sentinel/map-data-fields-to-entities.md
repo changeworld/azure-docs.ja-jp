@@ -1,28 +1,28 @@
 ---
-title: データ フィールドを Azure Sentinel エンティティにマップする |Microsoft Docs
-description: インシデント情報の質を向上させるために、テーブルのデータ フィールドを分析ルールの Azure Sentinel エンティティにマップする
+title: データ フィールドを Microsoft Azure Sentinel エンティティにマップする |Microsoft Docs
+description: インシデント情報の質を向上させるために、テーブルのデータ フィールドを分析ルールの Microsoft Azure Sentinel エンティティにマップします
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0e380676a99a74b9a9849322e8a1e611c14db2c1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 48c08771fef5b18445d0a1b5268ea5ea2c535abf
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023065"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523431"
 ---
-# <a name="map-data-fields-to-entities-in-azure-sentinel"></a>データ フィールドを Azure Sentinel のエンティティにマップする 
+# <a name="map-data-fields-to-entities-in-microsoft-sentinel"></a>データ フィールドを Microsoft Azure Sentinel のエンティティにマップする 
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "131023065"
 
 ## <a name="how-to-map-entities"></a>エンティティをマップする方法
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. スケジュールされたクエリ ルールを選択し、 **[編集]** をクリックします。 または、画面の上部にある **[作成] > [スケジュール済みクエリ ルール]** をクリックして新しいルールを作成します。
 
@@ -83,6 +83,6 @@ ms.locfileid: "131023065"
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Sentinel 分析ルールでデータ フィールドをエンティティにマップする方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Microsoft Azure Sentinel 分析ルールでデータ フィールドをエンティティにマップする方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 - [スケジュールされたクエリ分析ルール](detect-threats-custom.md)の完全な画像を取得します。
-- [Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)について詳しく確認します。
+- [Microsoft Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)について詳しく確認します。

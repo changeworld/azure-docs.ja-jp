@@ -1,26 +1,26 @@
 ---
-title: Azure Sentinel に Syslog データを接続する | Microsoft Docs
-description: アプライアンスと Azure Sentinel の間で Linux マシン上のエージェントを使用して、Syslog をサポートするマシンまたはアプライアンスを Azure Sentinel に接続します。
+title: Microsoft Sentinel に Syslog データを接続する | Microsoft Docs
+description: アプライアンスと Microsoft Sentinel の間で Linux マシン上のエージェントを使用して、Syslog をサポートするマシンまたはアプライアンスを Microsoft Sentinel に接続します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9e9460620c3d18c8e7d35663e5e89ca7aa024360
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2342c2b3959ecb4ff9c174e769ce27f06ff36483
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004336"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524552"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog を使用して Linux ベースのソースからデータを収集する
 
@@ -28,24 +28,24 @@ ms.locfileid: "131004336"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-**Syslog** は、Linux に共通のイベント ログ プロトコルです。 Linux のデバイスやアプライアンスに組み込まれた Syslog デーモンを使用して、指定した種類のローカル イベントを収集し、それらのイベントを、**Linux 用 Log Analytics エージェント** (旧称 OMS エージェント) を使用して Azure Sentinel に送信することができます。
+**Syslog** は、Linux に共通のイベント ログ プロトコルです。 Linux のデバイスやアプライアンスに組み込まれた Syslog デーモンを使用して、指定した種類のローカル イベントを収集し、それらのイベントを、**Linux 用 Log Analytics エージェント** (旧称 OMS エージェント) を使用して Microsoft Sentinel に送信することができます。
 
-この記事では、Syslog を使用してデータ ソースを Azure Sentinel に接続する方法について説明します。 この方法でサポートされるデータ コネクタの詳細については、[データ コネクタのリファレンス](data-connectors-reference.md)に関するページを参照してください。
+この記事では、Syslog を使用してデータ ソースを Microsoft Sentinel に接続する方法について説明します。 この方法でサポートされるデータ コネクタの詳細については、[データ コネクタのリファレンス](data-connectors-reference.md)に関するページを参照してください。
 
 ## <a name="architecture"></a>Architecture
 
-VM またはアプライアンスに Log Analytics エージェントがインストールされている場合は、インストール スクリプトによって、UDP ポート 25224 でエージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 メッセージの受信後、メッセージはエージェントによって、HTTPS を介して Log Analytics ワークスペースに送信されます。そこで、メッセージは **[Azure Sentinel] > [ログ]** の Syslog テーブルに取り込まれます。
+VM またはアプライアンスに Log Analytics エージェントがインストールされている場合は、インストール スクリプトによって、UDP ポート 25224 でエージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 メッセージの受信後、メッセージはエージェントによって、HTTPS を介して Log Analytics ワークスペースに送信されます。そこで、メッセージは **[Microsoft Sentinel] > [ログ]** の Syslog テーブルに取り込まれます。
 
 詳細については、「[Azure Monitor の Syslog データ ソース](../azure-monitor/agents/data-sources-syslog.md)」を参照してください。
 
-:::image type="content" source="media/connect-syslog/syslog-diagram.png" alt-text="この図は、Syslog ソースから Azure Sentinel ワークスペースへのデータ フローを示しています。この場合は、データ ソース デバイスに、Log Analytics エージェントが直接インストールされています。":::
+:::image type="content" source="media/connect-syslog/syslog-diagram.png" alt-text="この図は、Syslog ソースから Microsoft Sentinel ワークスペースへのデータ フローを示しています。この場合は、データ ソース デバイスに、Log Analytics エージェントが直接インストールされています。":::
 
-Log Analytics エージェントのローカル インストールを許可しない一部の種類のデバイスについては、代わりに、Linux ベースの専用ログ フォワーダーにエージェントをインストールできます。 転送元のデバイスは、ローカル デーモンではなく、このフォワーダー上の Syslog デーモンに Syslog イベントを送信するように構成されている必要があります。 フォワーダー上の Syslog デーモンから、UDP を介して Log Analytics エージェントにイベントが送信されます。 この Linux フォワーダーで、大量の Syslog イベントを収集することが予期されている場合は、代わりに TCP を介して、Syslog デーモンからエージェントにイベントが送信されます。 いずれの場合も、エージェントは次にそこから、Azure Sentinel 内の Log Analytics ワークスペースにイベントを送信します。
+Log Analytics エージェントのローカル インストールを許可しない一部の種類のデバイスについては、代わりに、Linux ベースの専用ログ フォワーダーにエージェントをインストールできます。 転送元のデバイスは、ローカル デーモンではなく、このフォワーダー上の Syslog デーモンに Syslog イベントを送信するように構成されている必要があります。 フォワーダー上の Syslog デーモンから、UDP を介して Log Analytics エージェントにイベントが送信されます。 この Linux フォワーダーで、大量の Syslog イベントを収集することが予期されている場合は、代わりに TCP を介して、Syslog デーモンからエージェントにイベントが送信されます。 いずれの場合も、エージェントは次にそこから、Microsoft Sentinel 内の Log Analytics ワークスペースにイベントを送信します。
 
-:::image type="content" source="media/connect-syslog/syslog-forwarder-diagram.png" alt-text="この図は、Syslog ソースから Azure Sentinel ワークスペースへのデータ フローを示しています。この場合、別個のログ転送デバイスに Log Analytics エージェントがインストールされています。":::
+:::image type="content" source="media/connect-syslog/syslog-forwarder-diagram.png" alt-text="この図は、Syslog ソースから Microsoft Sentinel ワークスペースへのデータ フローを示しています。この場合、別個のログ転送デバイスに Log Analytics エージェントがインストールされています。":::
 
 > [!NOTE]
-> - アプライアンスが **Syslog を介して Common Event Format (CEF)** をサポートしている場合は、より完全なデータセットが収集され、データは収集時に解析されます。 このオプションを選択し、「[デバイスまたはアプライアンスから CEF 形式のログを Azure Sentinel に取得する](connect-common-event-format.md)」の手順に従う必要があります。
+> - アプライアンスが **Syslog を介して Common Event Format (CEF)** をサポートしている場合は、より完全なデータセットが収集され、データは収集時に解析されます。 このオプションを選択し、「[デバイスまたはアプライアンスの CEF 形式のログを Microsoft Sentinel に取得する](connect-common-event-format.md)」の手順に従う必要があります。
 >
 > - Log Analytics では、**rsyslog** または **syslog-ng** の各デーモンによって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux (RHEL)、CentOS、Oracle Linux 版の既定の syslog デーモン (**sysklog**) は *サポートされません*。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
 
@@ -55,15 +55,15 @@ Syslog コレクションを構成する際には以下の 3 つの手順があ�
 
 - エージェントにイベントを送信することになる Syslog デーモンの場所に対応する **アプリケーションのログ設定を構成** します。
 
-- **Log Analytics エージェント自体を構成します**。 これは Azure Sentinel 内から行われ、構成はインストール済みのすべてのエージェントに送信されます。
+- **Log Analytics エージェント自体を構成します**。 これは Microsoft Sentinel 内から行われ、構成はインストール済みのすべてのエージェントに送信されます。
 
 ## <a name="configure-your-linux-machine-or-appliance"></a>Linux マシンまたはアプライアンスを構成する
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから、 **[データ コネクタ]** を選択します。
 
 1. データ コネクタ ギャラリーから **[Syslog]** を選択してから、 **[コネクタ ページを開く]** を選択します。
 
-    お使いのデバイスの種類が、Azure Sentinel の **データ コネクタ ギャラリー** の一覧に表示される場合は、汎用 Syslog コネクタではなく、そのデバイスのコネクタを選択します。 お使いのデバイスの種類について、追加の手順や特別な手順がある場合は、ブックや分析ルール テンプレートのようなカスタム コンテンツと一緒にデバイスのコネクタ ページに表示されます。
+    お使いのデバイスの種類が、Microsoft Sentinel の **データ コネクタ ギャラリー** の一覧に表示される場合は、汎用 Syslog コネクタではなく、そのデバイスのコネクタを選択します。 お使いのデバイスの種類について、追加の手順や特別な手順がある場合は、ブックや分析ルール テンプレートのようなカスタム コンテンツと一緒にデバイスのコネクタ ページに表示されます。
 
 1. Linux エージェントをインストールします。 **[Choose where to install the agent:]\(エージェントのインストール先を選択してください:\)** で、以下の操作を実行します。
 
@@ -78,13 +78,13 @@ Syslog コレクションを構成する際には以下の 3 つの手順があ�
 
 ### <a name="using-the-same-machine-to-forward-both-plain-syslog-and-cef-messages"></a>同じマシンを使用してプレーンな Syslog *と* CEF メッセージの両方を転送する
 
-既存の [CEF ログ フォワーダー マシン](connect-log-forwarder.md)を使用して、プレーンな Syslog ソースからもログを収集して転送できます。 ただし、両方の形式のイベントを Azure Sentinel に送信しないようにするには、次の手順を実行する必要があります。この結果、イベントが重複することになります。
+既存の [CEF ログ フォワーダー マシン](connect-log-forwarder.md)を使用して、プレーンな Syslog ソースからもログを収集して転送できます。 ただし、両方の形式のイベントを Microsoft Sentinel に送信すると、イベントが重複することになるため、これを避けるには次の手順を行う必要があります。
 
 [CEF ソースからのデータ収集](connect-common-event-format.md)を既に設定していて、Log Analytics エージェントを構成済みの場合:
 
 1. CEF 形式でログを送信する各マシンで Syslog 構成ファイルを編集して、CEF メッセージの送信に使用されているファシリティを削除する必要があります。 これで、CEF で送信されるファシリティは、Syslog で送信されません。 この方法の詳細については、「[Linux エージェントでの Syslog の構成](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent)」を参照してください。
 
-1. これらのマシンで次のコマンドを実行して、エージェントと Azure Sentinel の Syslog 構成との同期を無効にする必要があります。 これで、前の手順で構成に加えた変更が上書きされなくなります。
+1. これらのマシンで次のコマンドを実行して、エージェントと Microsoft Sentinel の Syslog 構成との同期を無効にする必要があります。 これで、前の手順で構成に加えた変更が上書きされなくなります。
 
     ```c
     sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable
@@ -92,9 +92,9 @@ Syslog コレクションを構成する際には以下の 3 つの手順があ�
 
 ## <a name="configure-your-devices-logging-settings"></a>デバイスのログ設定を構成する
 
-多くのデバイスの種類には、**データ コネクタ** ギャラリーに表示される独自のデータ コネクタが用意されています。 これらのコネクタの中には、Azure Sentinel でログ収集を適切に設定するために、特別な追加手順が必要なものがあります。 これらの手順に、Kusto 関数に基づくパーサーの実装が含まれる場合があります。
+多くのデバイスの種類には、**データ コネクタ** ギャラリーに表示される独自のデータ コネクタが用意されています。 これらのコネクタの中には、Microsoft Sentinel でログ収集を適切に設定するために、特別な追加の手順が必要なものがあります。 これらの手順に、Kusto 関数に基づくパーサーの実装が含まれる場合があります。
 
-ギャラリーの一覧に示されるすべてのコネクタについて、ポータルのそれぞれのコネクタ ページや、[Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのそれらのセクションに、具体的な手順が表示されます。
+ギャラリーの一覧に示されるすべてのコネクタについて、ポータルのそれぞれのコネクタ ページや、[Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのそれらのセクションに、具体的な手順が表示されます。
 
 
 ## <a name="configure-the-log-analytics-agent"></a>Log Analytics エージェントの構成
@@ -124,7 +124,7 @@ Syslog コレクションを構成する際には以下の 3 つの手順があ�
 > [!IMPORTANT]
 > 異常な SSH ログイン検出は、現在、**プレビュー段階** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常な Secure Shell (SSH) ログイン アクティビティを識別できます。 シナリオには以下が含まれます。
+Microsoft Sentinel は Syslog データに機械学習 (ML) を適用して、異常な Secure Shell (SSH) ログイン アクティビティを識別できます。 シナリオには以下が含まれます。
 
 - あり得ない移動 - 2 つの成功したログイン イベントが、この 2 つのログイン イベントの期間内に到達できない 2 つの場所で発生した場合。
 
@@ -134,7 +134,7 @@ Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常
 
 1. 上の手順 2 の [[Log Analytics エージェントの構成]](#configure-the-log-analytics-agent) で、**auth** と **authpriv** の両方が監視対象のファシリティとして選択されていること、すべての重大度が選択されていることを確認します。 
 
-2. Syslog 情報が収集されるまで、十分な時間をかけます。 その後、 **[Azure Sentinel - Logs]\(Azure Sentinel - ログ\)** に移動して、次のクエリをコピーして貼り付けます。
+2. Syslog 情報が収集されるまで、十分な時間をかけます。 その後、 **[Microsoft Sentinel] - [ログ]** に移動して、次のクエリをコピーして貼り付けます。
     
     ```kusto
     Syslog
@@ -151,7 +151,7 @@ Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常
     結果の数が 0 より大きい場合、Syslog データは、異常な SSH ログインの検出用に適しています。 この検出は、 **[分析]**  >   **[Rule templates]\(ルール テンプレート\)**  >  **[(Preview) Anomalous SSH Login Detection]\((プレビュー) 異常な SSH ログインの検出\)** で有効にします。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Syslog オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Syslog オンプレミス アプライアンスを Microsoft Sentinel に接続する方法について説明しました。 Microsoft Sentinel の詳細については、次の記事を参照してください。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
 - [ブックを使用](monitor-your-data.md)してデータを監視する。

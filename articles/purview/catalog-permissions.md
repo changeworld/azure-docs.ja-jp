@@ -6,12 +6,12 @@ ms.author: viseshag
 ms.service: purview
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 276069d17dba6b02cbc46026f4660525fe93d136
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: de0904275100f0d72dac8e401736ad276f1c928a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132158343"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401491"
 ---
 # <a name="access-control-in-azure-purview"></a>Azure Purview でのアクセスの制御
 
@@ -22,7 +22,7 @@ Azure Purview では、**コレクション** を使用して、ソース、資�
 コレクションは、資産、ソース、その他の成果物を階層にグループ化して検出可能性を高め、アクセスの制御を管理するために Azure Purview が使用するツールです。 Purview のリソースへのすべてのアクセスは、Purview アカウント自体のコレクションから管理されます。
 
 > [!NOTE]
-> 2021 年 11 月 8 日現在、***分析情報*** にはキュレーター以上のロールからアクセスできます。 データ閲覧者は、分析情報へのアクセス権がありません。
+> 2021 年 11 月 8 日現在、データ キュレーターは、"***分析情報***" を利用できます。 データ閲覧者は、分析情報へのアクセス権がありません。
 >
 >
 ## <a name="roles"></a>ロール
@@ -43,7 +43,7 @@ Azure Purview では、定義済みのロールのセットを使用して、ア
 |用語集を編集するか、新しい分類の定義を設定する必要がある|データ キュレーター|
 |データ資産のガバナンス体制を理解するために分析情報を表示する必要がある|データ キュレーター|
 |アプリケーションのサービス プリンシパルが Azure Purview にデータをプッシュする必要がある|データ キュレーター|
-|Purview Studio を使用してスキャンを設定する必要がある|データ ソース管理者と、少なくとも、ソースが登録されているコレクションのデータ閲覧者 **または** データ キュレーター。|
+|Purview Studio を使用してスキャンを設定する必要がある|コレクションのデータ キュレーター、**または** ソースが登録されている場合は、データ キュレーター **および** データ ソース管理者|
 |サービス プリンシパルまたはグループがカタログの情報にアクセスすることを許可せずに、Azure Purview でスキャンを設定し、監視する必要がある |データ ソース管理者|
 |Azure Purview のロールにユーザーを割り当てる必要がある | コレクション管理者 |
 

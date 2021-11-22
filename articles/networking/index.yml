@@ -84,6 +84,14 @@ additionalContent:
               url: ../route-server/quickstart-configure-route-server-portal.md
             - text: 詳細情報
               url: ../route-server/index.yml
+        - title: 仮想ネットワークへのアウトバンド接続を提供する
+          links:
+            - text: Azure Virtual Network NAT とは
+              url: ../virtual-network/nat-gateway/nat-overview.md
+            - text: NAT ゲートウェイ リソースを作成して構成する
+              url: ../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md
+            - text: 詳細情報
+              url: ../virtual-network/nat-gateway/index.yml
     - title: アプリケーション配信サービス
       items:
         - title: ネットワーク ロード バランサー

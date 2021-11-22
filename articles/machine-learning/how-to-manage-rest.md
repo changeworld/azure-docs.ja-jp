@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: e17f5e53a2ab58ec7fe8edbe1d2b7e64953cf689
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 39dda46d1634996246f6c1d78b57e2747f27223c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729812"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723515"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う
 
@@ -30,8 +30,8 @@ Azure ML リソースを管理するには、いくつかの方法がありま�
 > * サービス プリンシパル認証を使用して適切に書式設定された REST 要求を作成する
 > * GET 要求を使用して Azure ML の階層型リソースに関する情報を取得する
 > * PUT 要求と POST 要求を使用してリソースを作成および変更する
+> * PUT 要求を使用して Azure ML ワークスペースを作成する
 > * DELETE 要求を使用してリソースをクリーンアップする 
-> * キーベースの承認を使用してデプロイされたモデルをスコア付けする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -270,28 +270,9 @@ curl -X PUT \
 
 要求が成功すると `201 Created` 応答が返されますが、この応答は、プロビジョニング プロセスが開始されたことを意味するにすぎないことに注意してください。 それが正常に完了したことを確認するには、ポーリングする (またはポータルを使用する) 必要があります。
 
-### <a name="train-a-model"></a>モデルをトレーニングする
-
-REST を使用してモデルをトレーニングするには、「[REST を使用してモデルをトレーニングする (プレビュー)](how-to-train-with-rest.md)」を参照してください。 
-
-### <a name="delete-resources-you-no-longer-need"></a>不要になったリソースを削除する
-
-一部の (すべてではありません) リソースでは DELETE 動詞がサポートされています。 削除のユース ケース用の REST API に取り組む前に、[API リファレンス](/rest/api/azureml/)を確認してください。 たとえば、モデルを削除するには、次を使用できます。
-
-```bash
-curl
-  -X DELETE \
-'https://<REGIONAL-API-SERVER>/modelmanagement/v1.0/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/models/<YOUR-MODEL-ID>?api-version=2021-03-01-preview' \
-  -H 'Authorization:Bearer <YOUR-ACCESS-TOKEN>' 
-```
-
-## <a name="use-rest-to-score-a-deployed-model"></a>REST を使用してデプロイされたモデルをスコア付けする
-
-REST を使用して、デプロイされたモデルにスコアを付けるには、「[Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する](how-to-consume-web-service.md)」を参照してください。
-
 ## <a name="create-a-workspace-using-rest"></a>REST を使用してワークスペースを作成する 
 
-すべての Azure ML ワークスペースは、他の 4 つの Azure リソースに依存しています。つまり、管理が有効になっているコンテナー レジストリ、キー コンテナー、Application Insights リソース、およびストレージ アカウントです。 これらのリソースがない場合は、ワークスペースを作成することはできません。 このような各リソースの作成の詳細については、REST API リファレンスを参照してください。
+すべての Azure ML ワークスペースは、他の 4 つの Azure リソース (Azure Container Registry リソース、Azure Key Vault、Azure Application Insights、Azure Storage アカウント) に依存しています。 これらのリソースがない場合は、ワークスペースを作成することはできません。 このような各リソースの作成の詳細については、REST API リファレンスを参照してください。
 
 ワークスペースを作成するには、次のような呼び出しを `management.azure.com` に PUT します。 この呼び出しでは多数の変数を設定する必要がありますが、構造的には、この記事で説明した他の呼び出しと同じです。 
 
@@ -303,6 +284,9 @@ curl -X PUT \
   -H 'Content-Type: application/json' \
   -d '{
     "location": "AZURE-LOCATION>",
+    "identity" : {
+        "type" : "systemAssigned"
+    },
     "properties": {
         "friendlyName" : "<YOUR-WORKSPACE-FRIENDLY-NAME>",
         "description" : "<YOUR-WORKSPACE-DESCRIPTION>",
@@ -314,14 +298,109 @@ providers/Microsoft.ContainerRegistry/registries/<YOUR-REGISTRY-NAME>",
 providers/Microsoft.insights/components/<YOUR-APPLICATION-INSIGHTS-NAME>",
         "storageAccount" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
 providers/Microsoft.Storage/storageAccounts/<YOUR-STORAGE-ACCOUNT-NAME>"
-    },
-    "identity" : {
-        "type" : "systemAssigned"
     }
 }'
 ```
 
 `202 Accepted` 応答が返され、返されたヘッダーに `Location` URI が含まれているはずです。 この URI を GET して、デプロイに関する情報を取得できます。これには、依存リソースのいずれかに問題がある場合に役立つデバッグ情報が含まれます (たとえば、コンテナー レジストリで管理者アクセスを有効にすることを忘れた場合など)。 
+
+## <a name="create-a-workspace-using-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を使用してワークスペースを作成する 
+
+ワークスペースを作成する際は、関連付けられているリソースにアクセスするために使用される、ユーザー割り当てのマネージド ID を指定できます。ACR、KeyVault、Storage、および App Insights。 ユーザー割り当てマネージド ID でワークスペースを作成するには、次の要求本文を使用します。 
+
+```bash
+curl -X PUT \
+  'https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-NEW-WORKSPACE-NAME>?api-version=2021-03-01-preview' \
+  -H 'Authorization: Bearer <YOUR-ACCESS-TOKEN>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "location": "AZURE-LOCATION>",
+    "identity": {
+      "type": "SystemAssigned,UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.ManagedIdentity/userAssignedIdentities/<YOUR-MANAGED-IDENTITY>": {}
+      }
+    },
+    "properties": {
+        "friendlyName" : "<YOUR-WORKSPACE-FRIENDLY-NAME>",
+        "description" : "<YOUR-WORKSPACE-DESCRIPTION>",
+        "containerRegistry" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.ContainerRegistry/registries/<YOUR-REGISTRY-NAME>",
+        keyVault" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.Keyvault/vaults/<YOUR-KEYVAULT-NAME>",
+        "applicationInsights" : "subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.insights/components/<YOUR-APPLICATION-INSIGHTS-NAME>",
+        "storageAccount" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.Storage/storageAccounts/<YOUR-STORAGE-ACCOUNT-NAME>"
+    }
+}'
+```
+
+## <a name="create-a-workspace-using-customer-managed-encryption-keys"></a>カスタマーマネージド暗号化キーを使用してワークフローを作成する
+
+ワークスペースのメタデータは、既定で Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。 Microsoft のマネージド キーを使用する代わりに、独自のキーを指定することもできます。 これにより、データ格納目的で、Azure サブスクリプションで[追加のリソース セット](./concept-data-encryption.md#azure-cosmos-db)が作成されます。
+
+暗号化にキーを利用するワークスペースを作成するには、次の前提条件を満たす必要があります。
+
+* Azure Machine Learning サービス プリンシパルには、Azure サブスクリプションへの共同作成者アクセスを与える必要があります。
+* 暗号化キーを含む既存の Azure Key Vault が必要です。
+* Azure Key Vault は、Azure Machine Learning ワークスペースを計画するリージョンと同じ Azure リージョンに置く必要があります。
+* Azure Key Vault では、偶発的削除によるデータ損失を防ぐために、論理削除と消去防止を有効にする必要があります。
+* Azure Cosmos DB アプリケーションに取得、ラップ、ラップ解除のアクセス権を与えるアクセス ポリシーを Azure Key Vault に置く必要があります。
+
+暗号化にユーザー割り当てマネージド ID とカスタマーマネージド キーを使用するワークスペースを作成するには、下の要求本文を使用します。 ワークスペースにユーザー割り当てマネージド ID を使用する場合、さらに `userAssignedIdentity` プロパティをマネージド ID のリソース ID に設定します。
+
+```bash
+curl -X PUT \
+  'https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-NEW-WORKSPACE-NAME>?api-version=2021-03-01-preview' \
+  -H 'Authorization: Bearer <YOUR-ACCESS-TOKEN>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "location": "eastus2euap",
+    "identity": {
+      "type": "SystemAssigned"
+    },
+    "properties": {
+      "friendlyName": "<YOUR-WORKSPACE-FRIENDLY-NAME>",
+      "description": "<YOUR-WORKSPACE-DESCRIPTION>",
+      "containerRegistry" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.ContainerRegistry/registries/<YOUR-REGISTRY-NAME>",
+      "keyVault" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.Keyvault/vaults/<YOUR-KEYVAULT-NAME>",
+      "applicationInsights" : "subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.insights/components/<YOUR-APPLICATION-INSIGHTS-NAME>",
+      "storageAccount" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.Storage/storageAccounts/<YOUR-STORAGE-ACCOUNT-NAME>",
+      "encryption": {
+        "status": "Enabled",
+        "identity": {
+          "userAssignedIdentity": null
+        },      
+        "keyVaultProperties": {
+           "keyVaultArmId": "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.KeyVault/vaults/<YOUR-VAULT>",
+           "keyIdentifier": "https://<YOUR-VAULT>.vault.azure.net/keys/<YOUR-KEY>/<YOUR-KEY-VERSION>",
+           "identityClientId": ""
+        }
+      },
+      "hbiWorkspace": false
+    }
+}'
+```
+
+### <a name="delete-resources-you-no-longer-need"></a>不要になったリソースを削除する
+
+一部の (すべてではありません) リソースでは DELETE 動詞がサポートされています。 削除のユース ケース用の REST API に取り組む前に、[API リファレンス](/rest/api/azureml/)を確認してください。 たとえば、モデルを削除するには、次を使用できます。
+
+```bash
+curl
+  -X DELETE \
+'https://<REGIONAL-API-SERVER>/modelmanagement/v1.0/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/models/<YOUR-MODEL-ID>?api-version=2021-03-01-preview' \
+  -H 'Authorization:Bearer <YOUR-ACCESS-TOKEN>' 
+```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

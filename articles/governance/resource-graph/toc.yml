@@ -52,6 +52,9 @@
     - name: Azure portal でのクエリの作成と共有
       displayName: 'query, portal'
       href: ./tutorials/create-share-query.md
+    - name: Azure Logic Apps を使用してクエリを自動化する
+      displayName: 'query, resource graph, logic app'
+      href: ./tutorials/logic-app-calling-arg.md
 - name: サンプル
   items:
     - name: 言語の例

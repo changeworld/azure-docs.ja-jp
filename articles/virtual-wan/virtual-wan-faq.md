@@ -6,12 +6,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 17482c9de7cc6c26355fa6ec629028739b209785
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: e28d5c9358077e072c31026bdc164a9b2037a40a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132134331"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492476"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN の FAQ
 
@@ -246,6 +246,10 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。
 
 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。 既定のルートはハブ間で伝達されません。
+
+### <a name="is-it-possible-to-create-multiple-virtual-wan-hubs-in-the-same-region"></a>同じリージョンで複数の仮想 WAN ハブを作成できますか。
+正解です。 お客様は同じ Azure Virtual WAN に対して、同じリージョンで複数のハブを作成できるようになりました。 
+
 
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>仮想 WAN 内の仮想ハブは、どのようにして複数のハブからのルートに最適なパスを選択するのですか。
 

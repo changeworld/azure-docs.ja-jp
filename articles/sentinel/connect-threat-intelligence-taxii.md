@@ -1,52 +1,52 @@
 ---
-title: Azure Sentinel を STIX/TAXII 脅威インテリジェンス フィードに接続する | Microsoft Docs
-description: 脅威インジケーターをインポートするために、Azure Sentinel を業界標準の脅威インテリジェンス フィードに接続する方法について説明します。
+title: Microsoft Azure Sentinel を STIX、TAXII 脅威インテリジェンス フィードに接続する | Microsoft Docs
+description: 脅威インジケーターをインポートするために、Microsoft Azure Sentinel を業界標準の脅威インテリジェンス フィードに接続する方法について学習します。
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a3e0381654e8a4d80c9eccffd6e02207b997fad8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 570d296b7f6f8a2831d4f758be5b85108da5d8a2
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004361"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521778"
 ---
-# <a name="connect-azure-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Azure Sentinel を STIX/TAXII 脅威インテリジェンス フィードに接続する
+# <a name="connect-microsoft-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Microsoft Azure Sentinel を STIX、TAXII 脅威インテリジェンス フィードに接続する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-「[脅威インテリジェンス プラットフォーム (TIP) を Azure Sentinel に接続する](connect-threat-intelligence-tip.md)」**も参照してください**
+**関連項目**: [脅威インテリジェンス プラットフォーム (TIP) を Microsoft Azure Sentinel に接続する](connect-threat-intelligence-tip.md)
 
-脅威インテリジェンスの送信に最も広く採用されている業界標準は、[STIX データ形式と TAXII プロトコルの組み合わせ](https://oasis-open.github.io/cti-documentation/)です。 組織が現在の STIX/TAXII バージョン (2.0 または 2.1) をサポートするソリューションから脅威インジケーターを受け取る場合、**脅威インテリジェンス - TAXII データ コネクタ** を使用して、脅威インジケーターを Azure Sentinel に取り込むことができます。 このコネクタを使用すると、Azure Sentinel の組み込み TAXII クライアントで、TAXII 2.x サーバーから脅威インテリジェンスをインポートできます。
+脅威インテリジェンスの送信に最も広く採用されている業界標準は、[STIX データ形式と TAXII プロトコルの組み合わせ](https://oasis-open.github.io/cti-documentation/)です。 組織が現在の STIX、TAXII バージョン (2.0 または 2.1) をサポートするソリューションから脅威インジケーターを受け取る場合、**脅威インテリジェンス - TAXII データ コネクタ** を使用して、脅威インジケーターを Microsoft Azure Sentinel に取り込むことができます。 このコネクタを使用すると、Microsoft Azure Sentinel の組み込み TAXII クライアントで、TAXII 2.x サーバーから脅威インテリジェンスをインポートできます。
 
 :::image type="content" source="media/connect-threat-intelligence-taxii/threat-intel-taxii-import-path.png" alt-text="TAXII のインポート パス":::
 
-Azure Sentinel の[脅威インテリジェンス](understand-threat-intelligence.md)の詳細、特に、Azure Sentinel と統合できる [TAXII 脅威インテリジェンス フィード](threat-intelligence-integration.md#taxii-threat-intelligence-feeds)について確認してください。
+Microsoft Azure Sentinel の[脅威インテリジェンス](understand-threat-intelligence.md)について、特に Microsoft Azure Sentinel と統合できる [TAXII 脅威インテリジェンス フィード](threat-intelligence-integration.md#taxii-threat-intelligence-feeds)について詳細をご確認ください。
 
 ## <a name="prerequisites"></a>前提条件  
 
-- 脅威インジケーターを格納する Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
+- 脅威インジケーターを格納する Microsoft Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 - TAXII 2.0 または TAXII 2.1 の **API ルート URI** と **コレクション ID** が必要です。
 
 ## <a name="instructions"></a>Instructions
 
-TAXII サーバーから Azure Sentinel に STIX 形式の脅威インジケーターをインポートするには、次の手順に従います。
+TAXII サーバーから Microsoft Azure Sentinel に STIX 形式の脅威インジケーターをインポートするには、次の手順に従います。
 
 1. TAXII サーバー API ルートとコレクション ID を取得する
 
-1. Azure Sentinel で脅威インテリジェンス - TAXII データ コネクタを有効にする
+1. Microsoft Azure Sentinel で脅威インテリジェンス - TAXII データ コネクタを有効にする
 
 ### <a name="get-the-taxii-server-api-root-and-collection-id"></a>TAXII サーバー API ルートとコレクション ID を取得する
 
@@ -55,11 +55,11 @@ TAXII 2.x サーバーによって、脅威インテリジェンスのコレク�
 > [!NOTE]
 > 場合によっては、プロバイダーは検出エンドポイントと呼ばれる URL のみを公開します。 [以下で詳しく説明](#find-the-api-root)されているように、cURL ユーティリティを使用して、検出エンドポイントを参照し、API ルートを要求できます。
 
-### <a name="enable-the-threat-intelligence---taxii-data-connector-in-azure-sentinel"></a>Azure Sentinel で脅威インテリジェンス - TAXII データ コネクタを有効にする
+### <a name="enable-the-threat-intelligence---taxii-data-connector-in-microsoft-sentinel"></a>Microsoft Azure Sentinel で脅威インテリジェンス - TAXII データ コネクタを有効にする
 
-TAXII サーバーから Azure Sentinel に脅威インジケーターをインポートするには、次の手順に従います。
+TAXII サーバーから Microsoft Azure Sentinel に脅威インジケーターをインポートするには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) で **Azure Sentinel** サービスに移動します。
+1. [Azure portal](https://portal.azure.com/) から、**Microsoft Azure Sentinel** サービスに移動します。
 
 1. TAXII サーバーからの脅威インジケーターのインポート先となる **ワークスペース** を選択します。
 
@@ -71,7 +71,7 @@ TAXII サーバーから Azure Sentinel に脅威インジケーターをイン�
  
 TAXII サーバーへの接続が正常に確立されたことを示す確認メッセージが表示されます。1 つ以上の TAXII サーバーから複数のコレクションに接続するために、必要な回数だけ上記の最後の手順を繰り返すことができます。
 
-数分以内に、脅威インジケーターが Azure Sentinel ワークスペースに送られるようになります。 新しいインジケーターは、Azure Sentinel ナビゲーション メニューからアクセスできる **[脅威インテリジェンス]** ブレードで確認できます。
+数分以内に、脅威インジケーターが Microsoft Azure Sentinel ワークスペースに送られるようになります。 新しいインジケーターは、Microsoft Azure Sentinel ナビゲーション メニューからアクセスできる **[脅威インテリジェンス]** ブレードで確認できます。
 
 ### <a name="find-the-api-root"></a>API ルートを見つける
 
@@ -181,7 +181,7 @@ TAXII サーバーへの接続が正常に確立されたことを示す確認�
     }
     ```
 
-これで、Anomali Limo によって提供される 1 つ以上の TAXII サーバー コレクションに Azure Sentinel を接続するために必要なすべての情報が得られました。
+これで、Anomali Limo によって提供される 1 つまたは複数の TAXII サーバー コレクションに Microsoft Azure Sentinel を接続するために必要なすべての情報が得られました。
 
 | **API ルート** (https://limo.anomali.com/api/v1/taxii2/feeds/) | コレクション ID |
 | ------------------------------------------------------------ | ------------: |
@@ -199,7 +199,7 @@ TAXII サーバーへの接続が正常に確立されたことを示す確認�
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、TAXII プロトコルを使用して Azure Sentinel を脅威インテリジェンス フィードに接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、TAXII プロトコルを使用して Microsoft Azure Sentinel を脅威インテリジェンス フィードに接続する方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

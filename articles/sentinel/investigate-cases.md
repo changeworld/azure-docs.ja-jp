@@ -1,28 +1,28 @@
 ---
-title: Azure Sentinel でインシデントを調査する | Microsoft Docs
-description: この記事では、Azure Sentinel を使用して、割り当てや調査が可能なインシデントを生成する高度なアラート ルールを作成する方法について説明します。
+title: Microsoft Azure Sentinel でインシデントを調査する | Microsoft Docs
+description: この記事では、Microsoft Azure Sentinel を使用して、割り当てや調査が可能なインシデントを生成する高度なアラート ルールを作成する方法について学習します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dec517fae51463f5589b8dfbf39c4ac3e662395c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 77cf1b6dd4038613af9d079fc6226ab8c784577a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037076"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520144"
 ---
-# <a name="investigate-incidents-with-azure-sentinel"></a>Azure Sentinel でインシデントを調査する
+# <a name="investigate-incidents-with-microsoft-sentinel"></a>Microsoft Azure Sentinel を使用してインシデントを調査する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "131037076"
 > 記載されている機能は、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 >
 
-この記事は、Azure Sentinel でインシデントを調査するためのものです。 Azure Sentinel にデータ ソースを接続した後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Azure Sentinel では、割り当てや調査が可能なインシデントを生成する高度なアラート ルールを作成できます。
+この記事は、Microsoft Azure Sentinel でインシデントを調査するのに役立ちます。 Microsoft Azure Sentinel にデータ ソースを接続した後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Microsoft Azure Sentinel では、割り当てや調査が可能なインシデントを生成する高度なアラート ルールを作成できます。
 
 この記事には、次の内容が含まれます。
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ ms.locfileid: "131037076"
 > * 調査グラフを使用する
 > * 脅威に対応する
 
-インシデントには複数のアラートを含めることができます。 ケースは、特定の調査に関連するすべての証拠を集計したものです。 インシデントは、 **[分析]** ページで作成した分析ルールに基づいて作成されます。 重大度や状態など、アラートに関連するプロパティはインシデント レベルで設定されます。 探している脅威の種類とその検出方法が Azure Sentinel に認識された後、インシデントを調査することで検出された脅威を監視できます。
+インシデントには複数のアラートを含めることができます。 ケースは、特定の調査に関連するすべての証拠を集計したものです。 インシデントは、 **[分析]** ページで作成した分析ルールに基づいて作成されます。 重大度や状態など、アラートに関連するプロパティはインシデント レベルで設定されます。 探している脅威の種類とその検出方法が Microsoft Azure Sentinel に認識された後、インシデントを調査することで検出された脅威を監視できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -98,7 +98,7 @@ ms.locfileid: "131037076"
    > [!IMPORTANT] 
    > - インシデントの調査が可能なのは、分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合のみです。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
    >
-   > - 現在、Azure Sentinel では、**過去 30 日間まで** のインシデントの調査がサポートされています。
+   > - 現在、Microsoft Azure Sentinel では、**過去 30 日間までのインシデント** の調査がサポートされています。
 
 
 1. エンティティを選択すると、 **[エンティティ]** ウィンドウが開き、そのエンティティに関する情報を確認できます。
@@ -136,7 +136,7 @@ ms.locfileid: "131037076"
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="[分類の選択] リストで使用できる分類が強調表示されているスクリーンショット。":::
 
-偽陽性と真陽性について詳しくは、「[Azure Sentinel での偽陽性の処理](false-positives.md)」を参照してください。
+偽陽性と真陽性について詳しくは、「[Microsoft Azure Sentinel での偽陽性の処理](false-positives.md)」を参照してください。
 
 適切な分類を選択した後、 **[コメント]** フィールドに説明文を追加します。 これは、このインシデントを参照する必要がある場合に役立ちます。 完了したら **[適用]** をクリックすると、インシデントが閉じられます。
 
@@ -181,7 +181,7 @@ ms.locfileid: "131037076"
 
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、Azure Sentinel を使用して、インシデントの調査を開始する方法について説明しました。 詳細については、次を参照してください。
+この記事では、Microsoft Azure Sentinel を使用して、インシデントの調査を開始する方法について学習しました。 詳細については、次を参照してください。
 
-- [チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)
+- [チュートリアル: Microsoft Azure Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)
 - [UEBA データを使用したインシデントの調査](investigate-with-ueba.md)

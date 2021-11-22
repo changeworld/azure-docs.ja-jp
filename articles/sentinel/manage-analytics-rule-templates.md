@@ -1,28 +1,28 @@
 ---
-title: Azure Sentinel でスケジュール化された分析ルールのテンプレート バージョンを管理する
+title: Microsoft Azure Sentinel でスケジュール化された分析ルールのテンプレート バージョンを管理する
 description: スケジュール化された分析ルール テンプレートと、それらのテンプレートから作成したルールとの関係を管理する方法について説明します。 テンプレートに加えた更新をルールに統合し、ルールに加えた変更を元のテンプレートに反映します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 27e6a78ec66b3427aa911abba5d7f4cdda20d876
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5845dfd88e3377eacff5b1d27ab927df422e4556
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023084"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522956"
 ---
-# <a name="manage-template-versions-for-your-scheduled-analytics-rules-in-azure-sentinel"></a>Azure Sentinel でスケジュール化された分析ルールのテンプレート バージョンを管理する
+# <a name="manage-template-versions-for-your-scheduled-analytics-rules-in-microsoft-sentinel"></a>Microsoft Azure Sentinel でスケジュール化された分析ルールのテンプレート バージョンを管理する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "131023084"
 
 ## <a name="introduction"></a>はじめに
 
-Azure Sentinel には[分析ルール テンプレート](detect-threats-built-in.md)が用意されており、このコピーを効果的に作成することでアクティブなルールに変換することができます。これは、テンプレートからルールを作成することで実現可能です。 ただし、その時点では、アクティブなルールとテンプレートの接続は切れています。 Microsoft のエンジニアやその他のユーザーによってルール テンプレートに変更が加えられても、事前にそのテンプレートから作成されたルールが、新しいテンプレートに合わせて動的に更新されることは ***ありません***。
+Microsoft Azure Sentinel には[分析ルール テンプレート](detect-threats-built-in.md)が用意されており、このコピーを効果的に作成することでアクティブなルールに変換することができます。これは、テンプレートからルールを作成することで実現可能です。 ただし、その時点では、アクティブなルールとテンプレートの接続は切れています。 Microsoft のエンジニアやその他のユーザーによってルール テンプレートに変更が加えられても、事前にそのテンプレートから作成されたルールが、新しいテンプレートに合わせて動的に更新されることは ***ありません***。
 
 しかし、テンプレートから作成したルールには、どのテンプレートから作成されたかの情報が記録されて ***いる*** ため、以下の 2 つの利点があります。
 
@@ -71,7 +71,7 @@ Azure Sentinel には[分析ルール テンプレート](detect-threats-built-i
 
     > [!NOTE]
     > 上記の画像 2 と 3 は、更新されていないテンプレートから作成した 2 つのルールの例を示しています。
-    > - 画像 2 は、テンプレートのバージョン番号が最新のルールを示しています。 これは、2021 年 10 月に Azure Sentinel でテンプレートのバージョン コントロールが初めて実装された後に、ルールが作成されたことを示しています。
+    > - 画像 2 は、テンプレートのバージョン番号が最新のルールを示しています。 これは、2021 年 10 月に Microsoft Azure Sentinel でテンプレートのバージョン コントロールが初めて実装された後に、ルールが作成されたことを示しています。
     > - 画像 3 は、最新のテンプレート バージョンを持たないルールを示しています。 これは、ルールが 2021 年 10 月より前に作成されたことを示しています。 利用可能な最新のテンプレート バージョンがある場合、これは、ルールの作成に使用されたテンプレートよりも新しいバージョンである可能性があります。
 
 ## <a name="compare-your-active-rule-with-its-template"></a>アクティブなルールとテンプレートを比較する
@@ -88,6 +88,7 @@ Azure Sentinel には[分析ルール テンプレート](detect-threats-built-i
 
 > [!NOTE]
 > このルールを更新すると、既存のルールが最新バージョンのテンプレートで上書きされます。
+
 参照名が変更されている場合があるため、既存のルールを参照している自動化ステップやロジックの検証を行う必要があります。 また、元のルールを作成する際に行ったカスタマイズ (クエリ、スケジュール、グループ、その他の設定への変更) も上書きされている可能性があります。
 
 ### <a name="update-your-rule-with-the-new-template-version"></a>新しいテンプレート バージョンでルールを更新する
@@ -121,7 +122,7 @@ Azure Sentinel には[分析ルール テンプレート](detect-threats-built-i
 ---
 
 ## <a name="next-steps"></a>次の手順
-このドキュメントでは、Azure Sentinel の分析ルール テンプレートのバージョンを追跡し、アクティブなルールを既存のテンプレート バージョンに戻すか、または新しいものに更新する方法について学びました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Microsoft Azure Sentinel の分析ルール テンプレートのバージョンを追跡し、アクティブなルールを既存のテンプレート バージョンに戻すか、または新しいものに更新する方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 
 - [分析ルール](detect-threats-built-in.md)の詳細について確認する。
 - [分析ルール ウィザード](detect-threats-custom.md)の詳細について確認する。

@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 05/07/2021
-  ms.openlocfilehash: 6c2119b81b9eea8c4da0caa68f998e70fab4fae1
-  ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+  ms.openlocfilehash: b41c8a8ed84fc627528f06c8c443fbc112456074
+  ms.sourcegitcommit: 11ca7ba5a017429c22a6b0bc02acb70b83a2984a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/28/2021
-  ms.locfileid: "129154947"
+  ms.lasthandoff: 11/19/2021
+  ms.locfileid: "132814158"
 landingContent:
 - title: Static Web Apps について
   linkLists:
@@ -26,13 +26,13 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: フレームワークなしで最初のアプリを作成する
+    - text: フロントエンド フレームワークを使用せずにアプリをデプロイする
       url: ./getting-started.md?tabs=vanilla-javascript
-    - text: 最初の Angular アプリを作成する
+    - text: Angular アプリをデプロイする
       url: ./getting-started.md?tabs=angular
-    - text: 最初の React アプリを作成する
+    - text: React アプリをデプロイする
       url: ./getting-started.md?tabs=react
-    - text: 最初の Vue アプリを作成する
+    - text: Vue アプリをデプロイする
       url: ./getting-started.md?tabs=vue
   - linkListType: learn
     links:
@@ -44,33 +44,27 @@ landingContent:
     links:
     - text: 静的 Web アプリを構築およびデプロイする
       url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
-- title: 発行シナリオ
+- title: フレームワーク/ライブラリからデプロイする
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Gatsby から発行する
+    - text: Gatsby
       url: publish-gatsby.md
-    - text: Hugo から発行する
+    - text: Hugo
       url: publish-hugo.md
-    - text: VuePress から発行する
+    - text: VuePress
       url: publish-vuepress.md
-    - text: Jekyll から発行する
+    - text: Jekyll
       url: publish-jekyll.md
-    - text: Blazor からデプロイする
+    - text: Blazor
       url: deploy-blazor.md
-    - text: Next.js からデプロイする
+    - text: Next.js
       url: deploy-nextjs.md
-    - text: Nuxt.js からデプロイする
+    - text: Nuxt.js
       url: deploy-nuxtjs.md
-    - text: Azure DevOps を使用してデプロイする
-      url: publish-devops.md
-    - text: ARM テンプレートを使用してデプロイする
-      url: publish-azure-resource-manager.md
-  - linkListType: learn
-    links:
-    - text: Gatsby を使用して静的な Web アプリを発行する
+    - text: Gatsby
       url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
-    - text: Blazor を使用して静的な Web アプリを発行する
+    - text: Blazor
       url: /learn/modules/publish-app-service-static-web-app-api-dotnet
 - title: 主要な概念
   linkLists:
@@ -84,3 +78,13 @@ landingContent:
       url: review-publish-pull-requests.md
     - text: アクセスを制限する
       url: authentication-authorization.md
+    - text: GitHub Actions を使用したビルド構成
+      url: publish-devops.md?tabs=github-actions
+    - text: Azure DevOps を使用したビルド構成
+      url: publish-devops.md?tabs=azure-devops
+- title: サービスとしてのソフトウェア
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ARM テンプレートを使用してデプロイする
+      url: publish-azure-resource-manager.md

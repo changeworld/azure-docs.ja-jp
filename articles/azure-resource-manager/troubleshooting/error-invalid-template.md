@@ -2,13 +2,13 @@
 title: 無効なテンプレート エラー
 description: Azure Resource Manager テンプレートのデプロイ時の無効なテンプレート エラーを解決する方法について説明します。
 ms.topic: troubleshooting
-ms.date: 05/22/2020
-ms.openlocfilehash: f91da0287a0464291e457e3f58de35a1a5e0fc3d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/11/2021
+ms.openlocfilehash: 2565a68b63e23ecd81338c0bfbbdc36878c1a95a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092262"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401917"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>無効なテンプレートのエラーを解決する
 
@@ -54,66 +54,11 @@ Message=Deployment template validation failed
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>解決策 2 - セグメントの長さが不適切
 
-テンプレートが無効であるために発生するエラーは他にもあります。たとえばリソース名が正しい形式になっていないとエラーが発生します。
-
-```
-Code=InvalidTemplate
-Message=Deployment template validation failed: 'The template resource {resource-name}'
-for type {resource-type} has incorrect segment lengths.
-```
-
-ルート レベルのリソースは、名前に含まれるセグメントの数がリソース タイプのセグメントの数よりも 1 つ少なくなっている必要があります。 各セグメントは、スラッシュで区別されます。 次の例は、type のセグメント数が 2 つで、name のセグメント数が 1 つなので、**有効な名前** です。
-
-```json
-{
-  "type": "Microsoft.Web/serverfarms",
-  "name": "myHostingPlanName",
-  ...
-}
-```
-
-しかし次の例は、name と type のセグメント数が同じであるため、 **有効な名前ではありません** 。
-
-```json
-{
-  "type": "Microsoft.Web/serverfarms",
-  "name": "appPlan/myHostingPlanName",
-  ...
-}
-```
-
-子のリソースに関しては、type と name のセグメント数が一致します。 このセグメントの数は理に適っています。子の完全な name と type には親の name と type が含まれるためです。 したがって、完全な name のセグメント数は、やはり完全な type よりも 1 つ少なくなります。
-
-```json
-"resources": [
-  {
-    "type": "Microsoft.KeyVault/vaults",
-    "name": "contosokeyvault",
-    ...
-    "resources": [
-      {
-        "type": "secrets",
-        "name": "appPassword",
-        ...
-      }
-    ]
-  }
-]
-```
-
-複数のリソース プロバイダーに対して適用される Resource Manager タイプでは、セグメントを正しく指定するために注意が必要となります。 たとえば、リソース ロックを Web サイトに適用するためには、type が 4 つのセグメントで構成されている必要があります。 したがって name のセグメント数は 3 つになります。
-
-```json
-{
-  "type": "Microsoft.Web/sites/providers/locks",
-  "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
-  ...
-}
-```
+テンプレートが無効であるために発生するエラーは他にもあります。たとえばリソース名が正しい形式になっていないとエラーが発生します。 このエラーを解決するには、[名前と種類の不一致のエラーの解決](error-invalid-name-segments.md)に関する記事を参照してください。
 
 <a id="parameter-not-valid"></a>
 
-## <a name="solution-3---parameter-is-not-valid"></a>解決策 3 - パラメーターが無効
+## <a name="solution-3---parameter-isnt-valid"></a>解決策 3 - パラメーターが無効
 
 許可されているパラメーター値以外の値を指定すると、次のようなエラー メッセージが表示されます。
 

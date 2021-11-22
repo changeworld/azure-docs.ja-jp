@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f85ab5960aea247a8b47b20d2552cec6e2e534f
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: e3826c7a2cc50e90b42ff1a4f0047dc5a6ca1cf6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129235328"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520733"
 ---
 # <a name="use-azure-ad-groups-to-manage-role-assignments"></a>Azure AD グループを使用してロールの割り当てを管理する
 
@@ -61,6 +61,9 @@ Azure Active Directory (Azure AD) を使用すると、Azure AD グループを�
 ## <a name="use-pim-to-make-a-group-eligible-for-a-role-assignment"></a>PIM を使用して、グループをロール割り当ての対象にする
 
 グループのメンバーにロールへの継続的なアクセスを許可したくない場合は、[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) を使用して、グループをロール割り当ての対象にすることができます。 その後、グループの各メンバーは定められた期間、ロール割り当てのアクティブ化の対象となります。
+
+> [!NOTE]
+> Azure AD ロールへの昇格に使用される特権アクセス グループについては、対象となるメンバーの割り当てに承認プロセスを求めることをお勧めします。 承認なしで有効化できる割り当てでは、より低いレベルのアクセス許可を持つ管理者によるセキュリティ リスクが発生する場合があります。 たとえば、ヘルプデスク管理者には、対象となるユーザーのパスワードをリセットするアクセス許可があります。
 
 ## <a name="scenarios-not-supported"></a>サポートされていないシナリオ
 

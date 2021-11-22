@@ -404,7 +404,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 共有のリリース ノート
       items:
-        - name: 2110 - 最新
+        - name: 2111 - 最新
+          href: azure-stack-edge-gpu-2111-release-notes.md
+        - name: 2110
           href: azure-stack-edge-gpu-2110-release-notes.md
         - name: 2106
           href: azure-stack-edge-gpu-2106-release-notes.md

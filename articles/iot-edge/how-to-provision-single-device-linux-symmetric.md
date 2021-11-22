@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/01/2021
 ms.author: kgremban
-ms.openlocfilehash: adb252ec5c9168b1184b841d91c8813c9c64507f
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 8d0db2b4aa516be4da48a6d80904cfd485e8462e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851947"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490569"
 ---
 # <a name="create-and-provision-an-iot-edge-device-on-linux-using-symmetric-keys"></a>対称キーを使用して Linux で IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -114,18 +114,18 @@ IoT Edge デバイスで構成ファイルを開きます。
    sudo iotedge config mp --connection-string 'PASTE_DEVICE_CONNECTION_STRING_HERE'
    ```
 
-`iotedge config mp` コマンドを実行して、デバイスに構成ファイルを作成し、接続文字列を提供し、構成の変更を適用します。
+   この `iotedge config mp` コマンドは、デバイス上に構成ファイルを作成し、接続文字列をファイルに入力します。
+
+構成の変更を適用します。
+
+   ```bash
+   sudo iotedge config apply
+   ```
 
 構成ファイルを表示する場合は、次の方法で開きます。
 
    ```bash
    sudo nano /etc/aziot/config.toml
-   ```
-
-構成ファイルに変更を加えた場合は、`iotedge config apply` コマンドを使用して変更を適用します。
-
-   ```bash
-   sudo iotedge config apply
    ```
 
 <!-- end 1.2 -->

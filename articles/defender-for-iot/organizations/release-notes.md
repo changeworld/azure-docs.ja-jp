@@ -1,16 +1,16 @@
 ---
-title: Azure Defender for IoT の新機能
+title: Microsoft Defender for IoT の新機能
 description: この記事では、Defender for IoT の最新リリースに含まれる新機能について説明します。
 ms.topic: overview
-ms.date: 11/07/2021
-ms.openlocfilehash: ca588aed8a461e48cf85a01e97d5f8ddd4a42e24
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.date: 11/17/2021
+ms.openlocfilehash: cc35a18f831b0ef59565965f19700d310380ec71
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131988277"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704822"
 ---
-# <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能  
+# <a name="whats-new-in-microsoft-defender-for-iot"></a>Microsoft Defender for IoT の新機能
 
 [!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
@@ -18,13 +18,13 @@ ms.locfileid: "131988277"
 
 記載されている機能はプレビュー段階です。 [Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはその他のまだ一般提供されていない Azure 機能に適用される他の法律条項が含まれています。
 
-## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Azure Defender for IoT のバージョン管理とサポート
+## <a name="versioning-and-support-for-defender-for-iot"></a>Defender for IoT のバージョン管理とサポート
 
-以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Azure Defender for IoT のバージョンを示しています。
+以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Defender for IoT のバージョンを示しています。
 
 ### <a name="servicing-information-and-timelines"></a>サービスの情報とタイムライン
 
-Microsoft では、Azure Defender for IoT の更新プログラムを四半期に 1 回以上リリースする予定です。 Azure Defender for IoT センサーの各一般提供 (GA) バージョンとオンプレミス管理コンソールは、リリース後最大 9 か月間サポートされます。 修正プログラムと新しい機能は、現在サポートされている最新の GA バージョンに適用され、以前の GA バージョンには適用されません。
+Microsoft では、Defender for IoT の更新プログラムを四半期に 1 回以上リリースする予定です。 Defender for IoT センサーの各一般提供 (GA) バージョンとオンプレミス管理コンソールは、リリース後最大 9 か月間サポートされます。 修正プログラムと新しい機能は、現在サポートされている最新の GA バージョンに適用され、以前の GA バージョンには適用されません。
 
 ### <a name="versions-and-support-dates"></a>バージョンとサポートの日付
 
@@ -32,7 +32,20 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 |--|--|--|
 | 10.0 | 2021 年 1 月 | 2021 年 10 月 |
 | 10.3 | 2021 年 4 月 | 01/2022 |
-| 10.5.2 | 2021 年 11 月 | 07/2022 |
+| 10.5.2 | 2021 年 10 月 | 07/2022 |
+| 10.5.3 | 2021 年 11 月 | 2022 年 8 月 |
+
+## <a name="november-2021"></a>2021 年 11 月
+
+次の機能拡張は、Microsoft Defender for IoT のバージョン 10.5.3 で利用できます。
+
+- これで、90 日を超えるアーカイブ済みアラートがセンサーによって自動的に削除されます。
+
+- 顧客からのフィードバックに基づいて、アラートのエクスポートが改善されました。
+
+- パフォーマンスとネットワーク トラフィック分析が改善されました。
+
+- 新しい [ServiceNow 統合 API](references-work-with-defender-for-iot-apis.md#service-now-integration-api---externalv3integration) がオンプレミス管理コンソールに追加されました。
 
 ## <a name="october-2021"></a>2021 年 10 月
 
@@ -46,11 +59,12 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 
 - [Webhook 拡張](#webhook-extended)
 
-- [証明書のパスフレーズに対する Unicode サポート](#unicode-support-for-certificate-passphrases) 
+- [証明書のパスフレーズに対する Unicode サポート](#unicode-support-for-certificate-passphrases)
 
 ### <a name="plc-operating-mode-detections-public-preview"></a>PLC 動作モードの検出 (パブリック プレビュー)
 
 ユーザーは、PLC の動作モードの状態、変更、リスクを表示できるようになりました。 PLC の動作モードは、PLC の論理実行状態と物理キー状態 (物理キー スイッチが PLC に存在する場合) で構成されます。
+
 この新機能は、"*安全でない*" PLC を検出することでセキュリティを向上させるのに役立ち、その結果、PLC プログラムのダウンロードなどの悪意のある攻撃を防ぐのに役立ちます。 石油化学工場に対する 2017 年のトリトン攻撃は、このようなリスクの影響を示しています。
 また、この情報により、エンタープライズ PLC の動作モードに対する極めて重要な可視性を運用エンジニアに提供できます。
 

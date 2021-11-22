@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d7d06180caedf23fb79b05ca9bbc345038722ea2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 50b032779039ed50a1d0132bfd109394be379636
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113985"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491907"
 ---
 # <a name="azure-cosmos-db-net-sdk-v3-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK v3 for SQL API:ダウンロードおよびリリース ノート
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -49,7 +49,17 @@ ms.locfileid: "123113985"
 |**Entity Framework Core のチュートリアル**|[Azure Cosmos DB プロバイダーを使用する Entity Framework Core](/ef/core/providers/cosmos/#get-started)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|
 
-[!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v3/changelog.md)]
+## <a name="release-history"></a>リリース履歴
+
+リリース履歴は Azure Cosmos DB .NET SDK ソース リポジトリで保守管理されています。 機能リリースと各リリースで修正されたバグの詳細な一覧については、[SDK 変更ログのドキュメント](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md)を参照してください
+
+## <a name="recommended-version"></a><a name="recommended-version"></a> 推奨されるバージョン
+
+.NET SDK のさまざまなサブ バージョンは 3.x.x バージョン以下で利用できます。 **推奨される最小バージョンは 3.20.1 です**。
+
+## <a name="known-issues"></a><a name="known-issues"></a> 既知の問題
+
+推奨される最小バージョンの SDK に関する既知の問題の一覧については、「[既知の問題](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md#-known-issues)」セクションを参照してください。
 
 ## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]

@@ -8,24 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/28/2021
+ms.date: 11/15/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: john.garland, maggie.marxen, ian.bennett, marsma
-ms.openlocfilehash: f1378d1e011deaddf793dea9bebc7b099bedde9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc1154965b037fbc57dcafa30f08fd951721bf6f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737306"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486745"
 ---
 # <a name="role-based-access-control-for-application-developers"></a>アプリケーション開発者向けのロールベースのアクセス制御
 
-ロールベースのアクセス制御 (RBAC) を使用すると、特定のユーザーまたはグループに特定のアクセス許可を与えて、アクセスできるリソースや、それらのリソースに対して実行できる操作、およびリソースの管理者に関して規定することができます。 この記事では、アプリケーションに固有のロールベースのアクセス制御について説明します。
-
-> [!NOTE]
-> アプリケーションのロールベースのアクセス制御は、[Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)や、[Azure AD ロールベースのアクセス制御](../roles/custom-overview.md#understand-azure-ad-role-based-access-control)とは異なります。 Azure カスタム ロールと組み込みロールはどちらも Azure RBAC の一部であり、Azure リソースの管理に役立ちます。 Azure AD RBAC では Azure AD リソースを管理できます。
-
+ロールベースのアクセス制御 (RBAC) を使用すると、特定のユーザーまたはグループに特定のアクセス許可を与えて、アクセスできるリソースや、それらのリソースに対して実行できる操作、およびリソースの管理者に関して規定することができます。 アプリケーションのロールベースのアクセス制御は、[Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)や、[Azure AD ロールベースのアクセス制御](../roles/custom-overview.md#understand-azure-ad-role-based-access-control)とは異なります。 Azure カスタム ロールと組み込みロールはどちらも Azure RBAC の一部であり、Azure リソースの管理に役立ちます。 Azure AD RBAC では Azure AD リソースを管理できます。 この記事では、アプリケーションに固有のロールベースのアクセス制御について説明します。
 
 
 ## <a name="what-are-roles"></a>ロールとは何か
@@ -64,8 +60,7 @@ Azure AD ディレクトリでのユーザーの割り当てに関する情報�
 
 カスタム ストレージを使用すると、開発者はユーザーにロールを割り当てる方法と、ロールを表す方法をさらにカスタマイズして制御することが可能になります。 ただし、柔軟性が高まると、より大きな責任も伴います。 たとえば、Azure AD から返されるトークンにこの情報を含めるメカニズムとして、現在利用可能なものはありません。 開発者がカスタム データ ストア内にロール情報を保持する場合は、アプリ側でロールを取得する必要があります。 これは通常、アプリケーションの開発に使用されているプラットフォームで使用できる、ミドルウェアで定義されている機能拡張ポイントを使用して行われます。 さらに開発者は、カスタム データ ストアを適切にセキュリティで保護する責任があります。
 
-> [!NOTE]
-> [Azure AD B2C カスタム ポリシー](../../active-directory-b2c/custom-policy-overview.md)を使用すると、カスタム データ ストアと対話したり、トークン内にカスタム要求を含めたりすることができます。
+[Azure AD B2C カスタム ポリシー](../../active-directory-b2c/custom-policy-overview.md)を使用すると、カスタム データ ストアと対話したり、トークン内にカスタム要求を含めたりすることができます。
 
 ## <a name="choosing-an-approach"></a>アプローチの選択
 
@@ -81,12 +76,9 @@ Azure AD ディレクトリでのユーザーの割り当てに関する情報�
 |**ロールの値は、Azure AD テナント間で一定である**|はい  |いいえ |実装によって異なります。|
 |**ロールの値は、複数のアプリケーションで使用できる**|いいえ。 各アプリ登録でロールの設定を複製した場合を除きます。|はい |はい |
 |**情報がディレクトリ内に格納されている**|はい  |はい |いいえ |
-|**情報はトークンを介して配信される**|はい (ロール要求)  |はい* (グループ要求) |いいえ。 カスタム コードを介して実行時に取得されます。 |
+|**情報はトークンを介して配信される**|はい (ロール要求)  |はい (超過が発生した場合、実行時に "*グループ要求*" の取得が必要となる場合があります) |いいえ。 カスタム コードを介して実行時に取得されます。 |
 |**有効期間**|ディレクトリのアプリ登録内に存在します。 アプリ登録が削除されると、削除されます。|ディレクトリ内に存在します。 アプリ登録が削除されても、そのまま残ります。 |カスタム データ ストアに存在します。 アプリ登録とは関連付けられていません。|
 
-
-> [!NOTE]
-> はい* - 超過が発生した場合、実行時に *グループ要求* を取得する必要がある場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

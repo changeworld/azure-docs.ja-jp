@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 74dea2337bb40469e4d4e94117df080960faca53
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: e35f61d53ead7772743f31acfad686ec62a707af
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858774"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492910"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -232,7 +232,9 @@ MQTT プロトコルを使用してデバイスやエッジ デバイスを接�
 
 :::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="接続および切断されたイベントのイベント ウィンドウを示す図。" border="false":::
 
-接続されたイベントと切断されたイベントは、デバイスの **[生データ]** ビューで表示できます。:::image type="content" source="media/concepts-get-connected/device-connectivity-events.png" alt-text="デバイス接続イベントを表示するようにフィルターされた生データ ビューを示すスクリーンショット。":::
+デバイス接続の状態を監視する方法の詳細については、次の動画をご覧ください。
+
+> [!VIDEO https://www.youtube.com/embed/EUZH_6Ihtto]
 
 接続および切断のイベントは、[IoT Central からのエクスポート](howto-export-data.md#set-up-data-export)に含めることができます。 詳細については、[IoT Hub のイベントへの対応に関する記事の、「デバイス接続イベントおよびデバイス切断イベントの制限事項」](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events)を参照してください。
 

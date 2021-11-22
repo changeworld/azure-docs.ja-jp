@@ -13,12 +13,12 @@ ms.date: 11/09/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: aa56b8a7ab45e5623882a09a02b01c41dcb8c613
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 22e6dbfbda88035f74e19fabfe296974b362e286
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132281334"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517294"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 
@@ -268,7 +268,7 @@ public static async Task<AuthenticationResult> GetTokenAsync(string clientId, X5
       // Configure the memory cache options
       services.Configure<MemoryCacheOptions>(options =>
       {
-          options.SizeLimit = 5000000; // in bytes (5 Mb)
+          options.SizeLimit = 500 * 1024 * 1024; // in bytes (500 Mb)
       });
   }
   );
@@ -739,8 +739,8 @@ MSAL は、[AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/micro
 |  `DurationTotalInMs` | MSAL で費やした合計時間 (ネットワーク呼び出しとキャッシュを含む)   | 全体の待機時間が長い場合のアラーム (1 秒以上)。 値はトークン ソースによって異なります。 キャッシュから: 1 回のキャッシュ アクセス。 AAD から: 2 回のキャッシュ アクセス + 1 回の HTTP 呼び出し。 1 回目 (プロセスごと) の呼び出しでは、1 回分の HTTP 呼び出しが追加で発生するため、時間がかかります。 |
 |  `DurationInCacheInMs` | アプリ開発者によってカスタマイズされた、トークン キャッシュの読み込みまたは保存に要した時間 (Redis に保存するなど)。| スパイク時のアラーム。 |
 |  `DurationInHttpInMs`| AAD への HTTP 呼び出しに要した時間。  | スパイク時のアラーム。|
-|  `TokenSource` | トークンのソースを示します。 キャッシュからのトークンの取得が格段に速くなります (例: ～ 700 ms に対して ～ 100 ms)。 キャッシュ ヒット率の監視とアラーム生成に使用できます。 | <ph id="ph1">`DurationTotalInMs`</ph> と使用します |
-
+|  `TokenSource` | トークンのソースを示します。 キャッシュからのトークンの取得が格段に速くなります (例: ～ 700 ms に対して ～ 100 ms)。 キャッシュ ヒット率の監視とアラーム生成に使用できます。 | `DurationTotalInMs` で使用します。 |
+|  `CacheRefreshReason` | ID プロバイダーからアクセス トークンをフェッチする理由を指定します。 | `TokenSource` で使用します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

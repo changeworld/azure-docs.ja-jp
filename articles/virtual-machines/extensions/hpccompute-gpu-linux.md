@@ -13,15 +13,15 @@ ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/14/2021
+ms.date: 11/15/2021
 ms.author: amverma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bbdf89e9dfd7b256082d935864515b9b0228761c
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 4b8f4b2d9b86620e16064f6d005d5e538e78e863
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046528"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492551"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 
@@ -43,6 +43,10 @@ NVIDIA GPU ドライバーを [Windows の N シリーズ VM](hpccompute-gpu-win
 | Linux: Ubuntu | 16.04 LTS、18.04 LTS、20.04 LTS |
 | Linux: Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6、7.7、7.8 |
 | Linux: CentOS | 7.3、7.4、7.5、7.6、7.7、7.8 |
+
+> [!NOTE]
+> NC シリーズ VM でサポートされている最新の CUDA ドライバーは 470.82.01 です。 それ以降のバージョンのドライバーは、NC の K80 カードではサポートされていません。 拡張機能は NC 向けのこのサポート終了で更新されますが、NC シリーズの K80 カードに対して CUDA ドライバーを手動でインストールしてください。
+
 
 ### <a name="internet-connectivity"></a>インターネット接続
 

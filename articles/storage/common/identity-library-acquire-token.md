@@ -6,23 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/11/2021
+ms.date: 11/13/2021
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd1df757c03552024490b0de13988b4dc63115a7
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 3de8e679cb6c99db4057ec5e5b0ae48b2b4c3500
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859579"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490290"
 ---
 # <a name="use-the-azure-identity-library-to-get-an-access-token-for-authorization"></a>Azure ID ライブラリを使用して承認用のアクセス トークンを取得する
 
-Azure ID クライアント ライブラリを使用すると、[Azure SDK](https://github.com/Azure/azure-sdk) を使用して Azure Active Directory (Azure AD) での承認用の OAuth 2.0 アクセス トークンを取得するプロセスが簡単になります。 .NET、Java、Python、JavaScript 用の最新バージョンの Azure Storage クライアント ライブラリは、各言語用の Azure ID ライブラリと統合され、Azure Storage 要求を承認するためのアクセス トークンを取得するための簡単で安全な手段が提供されます。
+Azure ID クライアント ライブラリを使用すると、[Azure SDK](https://github.com/Azure/azure-sdk) を使用して Azure Active Directory (Azure AD) での承認用の OAuth 2.0 アクセス トークンを取得するプロセスが簡単になります。 .NET、Java、Python、JavaScript、Go 用の最新バージョンの Azure Storage クライアント ライブラリは、各言語用の Azure ID ライブラリに統合され、Azure Storage 要求を承認するためのアクセス トークンを取得するための簡単で安全な手段が提供されます。
 
-Azure ID クライアント ライブラリの利点は、アプリケーションが開発環境または Azure のどちらで実行されているかにかかわらず、同じコードを使用してアクセス トークンを取得できることです。 .NET 用の Azure ID クライアント ライブラリからは、セキュリティ プリンシパルのためのアクセス トークンが返されます。 コードが Azure で実行されている場合は、セキュリティ プリンシパルは、Azure リソース用のマネージド ID、サービス プリンシパル、またはユーザーやグループのいずれでもかまいません。 開発環境では、クライアント ライブラリにより、ユーザーまたはサービス プリンシパルにテストのためのアクセス トークンが提供されます。
+Azure ID クライアント ライブラリの利点は、アプリケーションが開発環境または Azure のどちらで実行されているかにかかわらず、同じコードを使用してアクセス トークンを取得できることです。 Azure ID クライアント ライブラリからは、セキュリティ プリンシパルのためのアクセス トークンが返されます。 コードが Azure で実行されている場合は、セキュリティ プリンシパルは、Azure リソース用のマネージド ID、サービス プリンシパル、またはユーザーやグループのいずれでもかまいません。 開発環境では、クライアント ライブラリにより、ユーザーまたはサービス プリンシパルにテストのためのアクセス トークンが提供されます。
 
 Azure ID クライアント ライブラリによって返されるアクセス トークンは、トークン資格情報にカプセル化されています。 その後、トークン資格情報を使用してサービス クライアント オブジェクトを取得し、Azure Storage に対する承認された操作の実行で使用できます。 アクセス トークンとトークン資格情報を取得する簡単な方法は、Azure ID クライアント ライブラリによって提供される **DefaultAzureCredential** クラスを使用することです。 このクラスのインスタンスによって、さまざまな一般的な方法でトークン資格情報の取得が試みられ、それは開発環境と Azure の両方で動作します。
 
@@ -32,6 +32,7 @@ Azure ID クライアント ライブラリによって返されるアクセス 
 - [Java 用 Azure ID クライアント ライブラリ](/java/api/overview/azure/identity-readme)
 - [Python 用 Azure ID クライアント ライブラリ](/python/api/overview/azure/identity-readme)
 - [JavaScript 用 Azure ID クライアント ライブラリ](/javascript/api/overview/azure/identity-readme)
+- [Go 用 Azure ID クライアント ライブラリ](/javascript/api/overview/azure/identity-readme)
 
 ## <a name="assign-azure-roles-for-access-to-data"></a>データにアクセスするための Azure ロールを割り当る
 

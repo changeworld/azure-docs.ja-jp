@@ -18,8 +18,14 @@
       href: customize-application-attributes.md
     - name: アプリ固有のプロビジョニングに関するチュートリアル
       href: /azure/active-directory/saas-apps/tutorial-list
-    - name: SQL ベースのアプリへのプロビジョニング
-      href: tutorial-ecma-sql-connector.md
+    - name: オンプレミス アプリのプロビジョニングに関するチュートリアル
+      items:
+        - name: オンプレミスの SCIM 対応アプリへのプロビジョニング
+          href: on-premises-scim-provisioning.md
+        - name: SQL ベースのアプリへのプロビジョニング
+          href: on-premises-sql-connector-configure.md
+        - name: LDAP ベースのアプリへのプロビジョニング
+          href: on-premises-ldap-connector-configure.md
 - name: 概念
   expanded: true
   items:
@@ -62,10 +68,6 @@
           href: export-import-provisioning-configuration.md
         - name: レポートのプロビジョニング
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: MS Graph を使用した構成の自動化
-      href: application-provisioning-configuration-api.md
-    - name: 誤削除防止を有効にする
-      href: accidental-deletions.md
     - name: アプリケーションのプロビジョニングのトラブルシューティング
       items:
         - name: 既知の問題
@@ -82,16 +84,6 @@
           href: on-premises-ecma-troubleshoot.md
         - name: プロビジョニング ログ
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: オンプレミス アプリのプロビジョニング
-      items:
-        - name: SQL ベースのアプリへのプロビジョニング
-          href: on-premises-sql-connector-configure.md
-        - name: Generic LDAP コネクタ構成
-          href: on-premises-ldap-connector-configure.md
-        - name: SCIM 対応アプリへのオンプレミス アプリケーションのプロビジョニング
-          href: on-premises-scim-provisioning.md
-        - name: MIM Sync からコネクタを移行する
-          href: on-premises-migrate-microsoft-identity-manager.md
     - name: HR プロビジョニングのトラブルシューティング
       items:
         - name: 属性の取得に関する問題
@@ -104,14 +96,18 @@
           href: hr-manager-update-issues.md
         - name: HR の書き戻しに関する問題
           href: hr-writeback-issues.md
+    - name: 誤削除防止を有効にする
+      href: accidental-deletions.md
+    - name: MS Graph を使用した構成の自動化
+      href: application-provisioning-configuration-api.md
 - name: リファレンス
   items:
+    - name: 属性マッピングの式を記述するための関数リファレンス
+      href: functions-for-customizing-application-data.md
     - name: SCIM 2.0 プロトコルへの準拠
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM と Graph のシナリオ
       href: scim-graph-scenarios.md
-    - name: 属性マッピングの式を記述するための関数リファレンス
-      href: functions-for-customizing-application-data.md
     - name: クラウド HR のプロビジョニング
       items:
         - name: SuccessFactors 属性のリファレンス
@@ -120,6 +116,8 @@
           href: workday-attribute-reference.md
         - name: プロビジョニング エージェントのバージョン履歴
           href: provisioning-agent-release-version-history.md
+        - name: MIM Sync からコネクタを移行する
+          href: on-premises-migrate-microsoft-identity-manager.md
 - name: リソース
   items:
     - name: 開発者向けのサポート オプションとヘルプ オプション

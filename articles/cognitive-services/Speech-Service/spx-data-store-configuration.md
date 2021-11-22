@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.author: eur
-ms.openlocfilehash: 7c323c6900930cda901ffb0ec09ce96150eafce2
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 6b830d9afd3177aaa9efd0effb7fa8d3fd2e46dc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505557"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719924"
 ---
 # <a name="speech-cli-configuration-options"></a>Speech CLI の構成オプション
 
 Speech CLI の動作は、`@` 記号を使用して参照できる構成ファイルの設定に依存することができます。 Speech CLI では、新しい設定は、Speech CLI 用に現在の作業ディレクトリ内に作成される新しい `./spx/data` サブディレクトリに保存されます。 Speech CLI では、構成値を探すときに、現在の作業ディレクトリ、`./spx/data` のデータストア、`spx` バイナリの最後の読み取り専用データストアを含むその他のデータストアの順に検索が行われます。 
 
 Speech CLI のクイックスタートでは、データストアを使用して `@key` 値と `@region` 値を保存したため、各 `spx` コマンドでそれらを指定する必要はありませんでした。 構成ファイルを使用して独自の構成設定を保存したり、これらを使用して実行時に生成された URL やその他の動的コンテンツを渡したりできることを覚えておいてください。
+
+> [!NOTE]
+> PowerShell では、[解析中止トークン](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_special_characters?view=powershell-7.2#stop-parsing-token---) (`--%`) は `spx` に続ける必要があります。 たとえば、`spx --% config @region` を実行すると、現在のリージョンの構成値が表示されます。
 
 ## <a name="create-and-manage-configuration-files-in-the-datastore"></a>データストア内に構成ファイルを作成して管理する
 

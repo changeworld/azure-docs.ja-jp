@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/06/2021
+ms.date: 11/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d87c0221bc5d6bfc8aa4eb308417234bca9f7b14
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 8d06a49431b4b2cfea80a30c05d45374cc135285
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249953"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716767"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro の配置を準備する 
 
@@ -138,6 +138,9 @@ Azure Stack Edge サービスを使用して Azure Stack Edge リソースを作
 
 5. Azure Stack Edge Pro GPU デバイスに使用するサブスクリプションを選択します。 物理デバイスの配送先の国または地域を選択します。 次に、 **[デバイスの表示]** を選択します。
 
+    >[!NOTE] 
+    > クラシック エクスペリエンスはまもなく削除されます。 2021 年 12 月以降、注文は Azure Edge Hardware Center を使用してのみ作成できます。
+
     ![Azure Stack Edge リソースのサブスクリプションと配送先地域を選択するための [デバイスの種類の選択] 画面のスクリーンショット。 [デバイスの表示] ボタンが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
 
 6. デバイスの種類を選択します。 **[Azure Stack Edge Pro]** で、 **[GPU 搭載の Azure Stack Edge Pro]** を選択し、 **[選択]** を選択します。 問題が発生した場合、またはデバイスの種類を選択できない場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
@@ -150,14 +153,14 @@ Azure Stack Edge サービスを使用して Azure Stack Edge リソースを作
 
 8. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
     
-    |設定  |[値]  |
+    |設定  |値  |
     |---------|---------|
     |サブスクリプション    |サブスクリプションは、前の選択に基づいて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 9. 次の **インスタンス情報** を入力または選択します。
 
-    |設定  |[値]  |
+    |設定  |値  |
     |---------|---------|
     |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 から 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|

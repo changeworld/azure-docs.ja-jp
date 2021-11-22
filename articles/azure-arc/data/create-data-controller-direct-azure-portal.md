@@ -9,16 +9,16 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 11/03/2021
 ms.topic: overview
-ms.openlocfilehash: 9c3c5cd60c7eec5832d8e609e960fd42d38855cc
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 85a7ca3dc50cb95fc545be6b486a300247837450
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557815"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714905"
 ---
 #  <a name="create-azure-arc-data-controller-from-azure-portal---direct-connectivity-mode"></a>Azure portal から Azure Arc データ コントローラーを作成する - 直接接続モード
 
-この記事では、Azure Arc データ コントローラーを直接接続モードでデプロイする方法について説明します (この機能は現在プレビュー段階です)。 
+この記事では、Azure portal から Azure Arc データ コントローラーを直接接続モードでデプロイする方法について説明します。 
 
 ## <a name="complete-prerequisites"></a>前提条件を満たす
 

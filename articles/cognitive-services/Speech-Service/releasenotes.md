@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b4b291006795728348aa694e56c3e84a88d8e65c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7a4e02461b7ba7eaba82b74cc2191b9528376b51
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131469960"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486671"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
 
@@ -167,8 +167,8 @@ ms.locfileid: "131469960"
 
 #### <a name="new-features"></a>新機能
 
-- **C++/C#** : `SourceLanguageRecognizer` API を介した新しいスタンドアロンの単発/開始時および継続的な言語識別。 オーディオ コンテンツで話されている言語のみを検出する場合は、この API で可能です。
-- **C++/C#** : 音声認識と翻訳認識で、単発と継続的の両方の言語識別がサポートされるようになったため、文字起こしまたは翻訳される前に、どの言語が話されているかをプログラムで判断できます。 [音声認識](how-to-automatic-language-detection.md)と [Speech Translation](get-started-speech-translation.md) のドキュメントを参照してください。
+- **C++/C#** : `SourceLanguageRecognizer` API を介した新しいスタンドアロンの開始時および継続的な言語識別。 オーディオ コンテンツで話されている言語のみを検出する場合は、この API で可能です。
+- **C++/C#** : 音声認識と翻訳認識で、開始時および継続的の両方の言語識別がサポートされるようになったため、文字起こしまたは翻訳される前に、どの言語が話されているかをプログラムで判断できます。 [音声認識](how-to-automatic-language-detection.md)と [Speech Translation](get-started-speech-translation.md) のドキュメントを参照してください。
 - **C#** : macOS (x64) に Unity のサポートを追加しました。 これにより、複合現実とゲームにおける音声認識と音声合成のユース ケースのロックが解除されます。
 - **Go**: Go プログラミング言語に音声合成およびテキスト読み上げのサポートを追加して、さらに多くのユース ケースで音声合成を利用できるようにしました。 [クイック スタート](get-started-text-to-speech.md?tabs=windowsinstall&pivots=programming-language-go)または Microsoft の[リファレンス ドキュメント](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go)を参照してください。
 - **C++/C#/Java/Python/Objective-C/Go**: 音声シンセサイザーで `connection` オブジェクトがサポートされるようになりました。 これは、音声サービスへの接続を管理および監視するのに役立ち、待機時間を短縮するための事前接続に特に役立ちます。 [こちら](how-to-lower-speech-synthesis-latency.md)のドキュメントを参照してください。

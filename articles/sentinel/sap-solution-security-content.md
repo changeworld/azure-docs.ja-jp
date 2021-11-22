@@ -1,30 +1,28 @@
 ---
-title: Azure Sentinel SAP ソリューション - セキュリティ コンテンツ リファレンス | Microsoft Docs
-description: Azure Sentinel SAP ソリューションで提供される組み込みのセキュリティ コンテンツについて説明します。
+title: Microsoft Sentinel SAP ソリューション - セキュリティ コンテンツ リファレンス | Microsoft Docs
+description: Microsoft Sentinel SAP ソリューションで提供される組み込みのセキュリティ コンテンツについて説明します。
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
-ms.date: 07/28/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: dabfc84a21e7ded8ce3d3e338ffbb03395ef88db
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.openlocfilehash: a1413fefdc12cf9712419adaa8586da0ef7b921d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009056"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711813"
 ---
-# <a name="azure-sentinel-sap-solution-security-content-reference-public-preview"></a>Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス (パブリック プレビュー)
+# <a name="microsoft-sentinel-sap-solution-security-content-reference-public-preview"></a>Microsoft Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、[Azure Sentinel SAP ソリューション](sap-deploy-solution.md#deploy-sap-security-content)で使用できるセキュリティ コンテンツについて詳しく説明します。
+この記事では、[Microsoft Sentinel SAP ソリューション](sap-deploy-solution.md#deploy-sap-security-content)で使用できるセキュリティ コンテンツについて詳しく説明します。
 
 使用できるセキュリティ コンテンツには、組み込みのブックと組み込みの分析ルールがあります。 SAP 関連の[ウォッチリスト](watchlists.md)を追加して、検索、検出規則、脅威ハンティング、応答プレイブックで使用することもできます。
 
 > [!IMPORTANT]
-> Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+> Microsoft Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 >
 
 
@@ -45,7 +43,7 @@ ms.locfileid: "131009056"
 
 ## <a name="built-in-analytics-rules"></a>組み込みの分析ルール
 
-次の表は、Azure Sentinel ソリューション マーケットプレースからデプロイされる、Azure Sentinel SAP ソリューションに含まれている組み込みの[分析ルール](sap-deploy-solution.md#deploy-sap-security-content)の一覧です。
+次の表は、Microsoft Sentinel ソリューション マーケットプレースからデプロイされる、Microsoft Sentinel SAP ソリューションに含まれている組み込みの[分析ルール](sap-deploy-solution.md#deploy-sap-security-content)の一覧です。
 
 ### <a name="built-in-sap-analytics-rules-for-initial-access"></a>初期アクセスに関わる組み込みの SAP 分析ルール
 
@@ -127,13 +125,11 @@ ms.locfileid: "131009056"
 |**SAP - 中 - 機密性の高いロールの変更**     |機密性の高いロールの変更を特定します。 <br><br> [SAP - 機密性の高いロール](#roles) ウォッチリストで機密性の高いロールを管理します。       |  PFCG を使用してロールを変更します。 <br><br>**データ ソース**: SAPcon - ドキュメント変更ログ、SAPcon - 監査ログ   |  影響、特権エスカレーション、永続化    |
 | | | | |
 
-
 ## <a name="available-watchlists"></a>使用可能なウォッチリスト
 
-次の表に、Azure Sentinel SAP ソリューションで使用できる[ウォッチリスト](sap-deploy-solution.md#deploy-sap-security-content)と各ウォッチリストのフィールドを一覧で示します。
+次の表に、Microsoft Sentinel SAP ソリューションで使用できる[ウォッチリスト](sap-deploy-solution.md#deploy-sap-security-content)と各ウォッチリストのフィールドを一覧で示します。
 
-これらのウォッチリストは、Azure Sentinel SAP の継続的な脅威監視ソリューションの構成を提供し、 https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/Analytics/Watchlists の Azure Sentinel GitHub リポジトリからアクセスできます。
-
+これらのウォッチリストにより、Microsoft Sentinel SAP Continuous Threat Monitoring ソリューションの構成が提供されます。 [SAP ウォッチリスト](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/Analytics/Watchlists)は Microsoft Sentinel GitHub リポジトリで入手できます。
 
 |ウォッチリスト名  |説明とフィールド  |
 |---------|---------|
@@ -162,9 +158,9 @@ ms.locfileid: "131009056"
 
 詳細については、次を参照してください。
 
-- [SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
-- [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
-- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
+- [SAP 用 Microsoft Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
+- [Microsoft Azure Sentinel SAP ソリューションのログ リファレンス](sap-solution-log-reference.md)
+- [SNC を使用して Microsoft Azure Sentinel SAP データ コネクタを展開する](sap-solution-deploy-snc.md)
 - [エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
-- [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
-- [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)
+- [Microsoft Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
+- [Microsoft Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

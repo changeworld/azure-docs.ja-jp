@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: overview
-ms.date: 10/07/2021
+ms.date: 11/18/2021
 ms.custom: mvc, references_regions
-ms.openlocfilehash: b5f82dd6b822a1a8c138ce08dcc0f689594150f9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 90786b09586cdf91f69b6e6c90eb4e5b971ff5a9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425370"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724693"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -88,41 +88,41 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 
 ## <a name="built-in-pgbouncer"></a>組み込みの PgBouncer
 
-フレキシブル サーバーには、組み込みの PgBouncer (接続プーラー) が付属しています。 必要に応じてこれを有効にし、同じホスト名とポート 6432 を使用して、PgBouncer 経由でアプリケーションをデータベース サーバーに接続できます。
+フレキシブル サーバーには、[組み込みの PgBouncer](concepts-pgbouncer.md) (接続プーラー) が付属しています。 必要に応じてこれを有効にし、同じホスト名とポート 6432 を使用して、PgBouncer 経由でアプリケーションをデータベース サーバーに接続できます。
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
 Azure でワークロードを実行する利点の 1 つは、グローバルに展開できることです。 フレキシブル サーバーは現在、次の Azure リージョンでご利用いただけます。
 
-| Region | V3/V4 コンピューティングの可用性 | ゾーン冗長 HA | 
-| --- | --- | --- |
-| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | 
-| オーストラリア南東部 | :heavy_check_mark: | :x: | 
-| Brazil South | :heavy_check_mark: (v3 のみ) | :x: |
-| カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | 
-| インド中部 | :heavy_check_mark: | :x: |
-| 米国中部 | :heavy_check_mark: | :heavy_check_mark: | 
-| 東アジア | :heavy_check_mark: | :x: |
-| 米国東部 | :heavy_check_mark: | :heavy_check_mark: | 
-| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| フランス中部 | :heavy_check_mark: | :heavy_check_mark: | 
-| ドイツ中西部 | :heavy_check_mark: | :heavy_check_mark: |
-| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
-| 西日本 | :heavy_check_mark: | :x: |
-| 韓国中部 | :heavy_check_mark: | :x: | 
-| 韓国南部 | :heavy_check_mark: | :x: | 
-| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
-| ノルウェー東部 | :heavy_check_mark: | :x: |
-| 南アフリカ北部 | :heavy_check_mark: | :x: |
-| 米国中南部 | :heavy_check_mark: | :heavy_check_mark: | 
-| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
-| スイス北部 | :heavy_check_mark: | :x: |
-| アラブ首長国連邦北部 | :heavy_check_mark: | :x: |
-| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
-| 英国西部 | :heavy_check_mark: | :x: | 
-| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
-| 米国西部 | :heavy_check_mark: | :x: |
-| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Region | V3/V4 コンピューティングの可用性 | ゾーン冗長 HA | geo 冗長バックアップ (プレビュー) |
+| --- | --- | --- | --- |
+| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| オーストラリア南東部 | :heavy_check_mark: | :x: | :x: |
+| Brazil South | :heavy_check_mark: (v3 のみ) | :x: | :x: |
+| カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | :x: | 
+| インド中部 | :heavy_check_mark: | :x: | :x: |
+| 米国中部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 東アジア | :heavy_check_mark: | :x: | :x: |
+| 米国東部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| フランス中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| ドイツ中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 西日本 | :heavy_check_mark: | :x: | :heavy_check_mark: |
+| 韓国中部 | :heavy_check_mark: | :x: | :x: |
+| 韓国南部 | :heavy_check_mark: | :x: | :x: |
+| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| ノルウェー東部 | :heavy_check_mark: | :x: | :x: |
+| 南アフリカ北部 | :heavy_check_mark: | :x: | :x: |
+| 米国中南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| スイス北部 | :heavy_check_mark: | :x: | :x: |
+| アラブ首長国連邦北部 | :heavy_check_mark: | :x: | :x: |
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 英国西部 | :heavy_check_mark: | :x: | :x: |
+| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 米国西部 | :heavy_check_mark: | :x: | :x: |
+| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 
 <!-- We continue to add more regions for flexible server. -->
 

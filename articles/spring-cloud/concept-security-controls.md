@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 362916e0c4c35907fee7a781c758bc11b8f7f003
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f980c67e22ca031617e9614d2e8facd2e9a9dafa
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130234115"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485701"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud Service のセキュリティ コントロール
 
@@ -34,7 +34,7 @@ ms.locfileid: "130234115"
 
 | セキュリティ コントロール | はい/いいえ | Notes | ドキュメント |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| サービス タグ | はい | **AzureSpringCloud** サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) で送信ネットワーク アクセスの制御を定義し、Azure Spring Cloud アプリケーションへのトラフィックを許可します。 | [サービス タグ](../virtual-network/service-tags-overview.md) |
+| サービス タグ | はい | **AzureSpringCloud** サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) で送信ネットワーク アクセスの制御を定義し、Azure Spring Cloud 内のアプリケーションへのトラフィックを許可します。 | [サービス タグ](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>次の手順
 

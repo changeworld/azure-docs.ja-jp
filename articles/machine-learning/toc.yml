@@ -295,6 +295,8 @@
               href: how-to-manage-rest.md
             - name: Azure Synapse Analytics ワークスペースへのリンク
               href: how-to-link-synapse-ml-workspaces.md
+            - name: ワークスペース診断
+              href: how-to-workspace-diagnostic-api.md
         - name: コンピューティング リソースを作成して管理する
           items:
             - name: コンピューティング インスタンス
@@ -559,7 +561,7 @@
                   href: how-to-use-managed-online-endpoint-studio.md
                 - name: Triton を使用した高パフォーマンスのサービス
                   href: how-to-deploy-with-triton.md
-                - name: マネージド オンライン エンドポイントとマネージド ID を使用してストレージにアクセスする
+                - name: マネージド オンライン エンドポイントから Azure リソースにアクセスする
                   href: how-to-access-resources-from-endpoints-managed-identities.md
                 - name: マネージド オンライン エンドポイントのコストを確認する
                   href: how-to-view-online-endpoints-costs.md

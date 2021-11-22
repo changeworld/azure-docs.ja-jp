@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: references_regions
 ms.service: postgresql
 ms.topic: overview
-ms.date: 09/21/2021
-ms.openlocfilehash: 24b5db0411241778ce9afd63a4a167b9d6d483eb
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/18/2021
+ms.openlocfilehash: 672fa91d0fc6785332ace1d45f8e1c080895347e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433419"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721862"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>リリース ノート - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -20,6 +20,22 @@ ms.locfileid: "131433419"
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
+
+## <a name="release-november-2021"></a>リリース: 2021 年 11 月
+
+* 新規サーバー作成での[最新の PostgreSQL マイナー バージョン](./concepts-supported-versions.md) 13.4、12.8、11.13 のサポート<sup>$</sup>。
+* 選択したペアリージョン (米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、東日本、西日本) での、[geo 冗長バックアップと復元](concepts-backup-restore.md)機能のプレビューのサポート。
+*  高スループットのストリーミング データを既存のテーブルに取り込む [Azure Stream Analytics (ASA) コネクタ (プレビュー)](https://techcommunity.microsoft.com/t5/analytics-on-azure/stream-analytics-updates-ignite-fall-2021-new-outputs-new/ba-p/2919170) のサポート。
+*  複数のバグ修正、安定性とパフォーマンスの向上<sup>$</sup>。
+
+<sup> **$**</sup> 新しいサーバーでは、これらの機能が自動的に取得されます。 既存のサーバーでは、これらの機能は、サーバーの今後のメンテナンス期間中に有効になります。
+
+## <a name="release-october-2021"></a>リリース: 2021 年 10 月
+
+*   [Ddsv4 および Edsv4 SKU](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/flexible-server-now-supports-v4-compute-series-in-postgresql-on/ba-p/2815092) のサポート。 
+*   `azure.enable_temp_tablespaces_on_local_ssd` サーバー パラメーターを使用して一時テーブルスペースのローカル ディスクを選択する機能。
+*   Azure portal の [サーバー パラメーター] ページに、ほとんどのパラメーターの測定単位と PostgreSQL ドキュメントへのリンクが表示されます。
+*   複数のバグ修正、安定性とパフォーマンスの向上。
 
 ## <a name="release-september-2021"></a>リリース: 2021 年 9 月
 
@@ -68,6 +84,13 @@ ms.locfileid: "131433419"
 <!--- * Support for [pglogical](https://github.com/2ndQuadrant/pglogical) extension version 2.3.2. -->
 * パブリック プレビューでの[インテリジェント パフォーマンス](concepts-query-store.md)。
 * 複数のバグ修正、安定性とパフォーマンスの向上。
+
+## <a name="release-october-2020---march-2021"></a>リリース: 2020 年 10 月から 2021 年 3 月
+
+*  Azure CLI で `az postgres flexible- server connect` コマンドを使用してフレキシブル サーバーに[接続](connect-azure-cli.md)するエクスペリエンスが向上しました。
+*  [新しいリージョン](overview.md#azure-regions)のサポート。
+*  マイナー バージョンの表示、概要ブレードでのメトリックの概要など、いくつかのポータルの機能強化。
+*  複数のバグ修正、安定性とパフォーマンスの向上。
 
 ## <a name="contacts"></a>連絡先
 

@@ -5,17 +5,15 @@ services: sentinel
 author: yelevin
 ms.author: yelevin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: quickstart
 ms.date: 11/09/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 46ac4308035491dc2d6b75e34bc0c58a58f93535
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 3c9eab035b48b419a607f5fcdc0738502bc732e4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520809"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712369"
 ---
 # <a name="quickstart-on-board-microsoft-sentinel"></a>クイックスタート: Microsoft Sentinel をオンボードする
 
@@ -28,7 +26,7 @@ Microsoft Sentinel には、Microsoft 365 Defender (旧 Microsoft Threat Protect
 データ ソースを接続した後、優れた設計のブックのギャラリーから選択し、データに基づいて分析情報を表示できます。 これらのブックは、ニーズに合わせて簡単にカスタマイズできます。
 
 >[!IMPORTANT]
-> Microsoft Sentinel の使用に伴う料金については、「[Microsoft Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)」および「[Microsoft Sentinel のコストと課金](azure-sentinel-billing.md)」を参照してください。
+> Microsoft Sentinel の使用に伴う料金については、「[Microsoft Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)」および「[Microsoft Sentinel のコストと課金](billing.md)」を参照してください。
 
 ## <a name="global-prerequisites"></a>グローバルな前提条件
 
@@ -120,11 +118,11 @@ Microsoft Sentinel でサービスとアプリからのデータを取り込む�
 
 詳細については、次を参照してください。
 
-- **代替のデプロイ オプション**:
+- **代替のデプロイ/管理オプション**:
 
-    - [API を使用して Microsoft Sentinel をデプロイする](/rest/api/securityinsights/)
-    - [PowerShell を使用して Microsoft Sentinel をデプロイする](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0)
     - [ARM テンプレートを使用して Microsoft Sentinel をデプロイする](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-all-in-one-accelerator/ba-p/1807933)
+    - [API を使用して Microsoft Sentinel を管理する](/rest/api/securityinsights/)
+    - [PowerShell を使用して Microsoft Sentinel を管理する](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0)
 
 - **作業開始**:
     - [Microsoft Quantum の概要](get-visibility.md)

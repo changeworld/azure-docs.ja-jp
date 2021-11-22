@@ -6,12 +6,12 @@ title: Azure Spring Cloud の参照アーキテクチャ
 ms.author: akaleshian
 ms.service: spring-cloud
 description: この参照アーキテクチャは、Azure Spring Cloud を使用するための一般的なエンタープライズ ハブとスポーク設計を使用した基盤です。
-ms.openlocfilehash: 5d8886453a3047d9ce48b875ce4841d640d0f2b1
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: a3e8cbb94500c92ba4d32e1fef4f02f1acf9c1c9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132323067"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486851"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud の参照アーキテクチャ
 
@@ -146,7 +146,7 @@ Azure Spring Cloud には、次の 2 つの専用サブネットが必要です�
 
 ## <a name="azure-spring-cloud-on-premises-connectivity"></a>Azure Spring Cloud のオンプレミス接続
 
-Azure Spring Cloud で実行されるアプリケーションは、さまざまな Azure、オンプレミス、および外部リソースと通信できます。 ハブとスポークの設計を使用することにより、アプリケーションでは、Express Route またはサイト間仮想プライベート ネットワーク (VPN) を使用して外部またはオンプレミスのネットワークにトラフィックをルーティングできます。
+Azure Spring Cloud 内のアプリケーションは、さまざまな Azure リソース、オンプレミスのリソース、および外部リソースと通信できます。 ハブとスポークの設計を使用することにより、アプリケーションでは、Express Route またはサイト間仮想プライベート ネットワーク (VPN) を使用して外部またはオンプレミスのネットワークにトラフィックをルーティングできます。
 
 ## <a name="azure-well-architected-framework-considerations"></a>Azure Well-Architected Framework に関する考慮事項
 

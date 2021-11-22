@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と X-point Cloud の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と X-point Cloud の統合'
 description: Azure Active Directory と X-point Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/23/2021
+ms.date: 11/16/2021
 ms.author: jeedes
-ms.openlocfilehash: dc73fc916a9d6a5eb4ef7ae07ed6cc00d221a821
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: aac98687ef3fcaa41bb907863423849acbd569a0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132332575"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710600"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-x-point-cloud"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と X-point Cloud の統合
+# <a name="tutorial-azure-a-sso-integration-with-x-point-cloud"></a>チュートリアル: Azure AD SSO と X-point Cloud の統合
 
 このチュートリアルでは、X-point Cloud と Azure Active Directory (Azure AD) を統合する方法について説明します。 X-point Cloud と Azure AD を統合すると、次のことができます。
 
@@ -82,7 +82,7 @@ X-point Cloud に対する Azure AD SSO を構成してテストするには、�
     c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.atledcloud.jp/xpoint`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[X-point Cloud クライアント サポート チーム](mailto:x-point@atled.jp)にご連絡ください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 `https://<SUBDOMAIN>.atledcloud.jp` の `<SUBDOMAIN>` の部分と、使用している X-point Cloud の URL を一致させてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -118,11 +118,14 @@ X-point Cloud に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-x-point-cloud-sso"></a>X-point Cloud SSO の構成
 
-**X-point Cloud** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (生)** と Azure portal からコピーした適切な URL を [X-point Cloud サポート チーム](mailto:x-point@atled.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+X-point Cloud 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と、Azure portal からコピーした **ログイン URL** を、X-point Cloud のドメイン管理メニューの **[SAML service settings]\(SAML サービス設定\)** で使用します。 IdP が署名するために使用する公開キーの証明書と IdP の SSO エンドポイント URL に設定します。
 
 ### <a name="create-x-point-cloud-test-user"></a>X-point Cloud のテスト ユーザーの作成
 
-このセクションでは、X-point Cloud で Britta Simon というユーザーを作成します。 [X-point Cloud サポート チーム](mailto:x-point@atled.jp)と連携して、X-point Cloud プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、X-point Cloud の Azure AD に登録されているユーザーの **メール アドレス** を使用できます。
+@ 以降を削除したユーザーを作成します。
+たとえば、username@companydomain.extension の場合、"username" を X-point Cloud に追加します。シングル サインオンを使用するには、ユーザーを作成して有効にする必要があります。
+
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -136,4 +139,4 @@ X-point Cloud に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-X-point Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を適用する方法をご覧ください](/cloud-app-security/proxy-deployment-aad)。
+X-point Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

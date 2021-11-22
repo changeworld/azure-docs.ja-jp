@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e1ccf10041c36b26b70bf5c4e5a107c0f6bf19ac
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 83b8867ae750fe85bc848e339ddb0409cba85093
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021621"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400606"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Form Recognizer リソース用のマネージド ID を作成して使用する
 
@@ -29,6 +29,10 @@ Azure マネージド ID は、Azure Active Directory (Azure AD) ID と Azure �
 マネージド ID では、プライベート アクセスとパブリック アクセスの Azure BLOB ストレージ アカウントの両方がサポートされます。  パブリック アクセスを持つストレージ アカウントの場合は、Shared Access Signature (SAS) を使用して制限付きアクセスを許可することを選択できます。   この記事では、Form Recognizer インスタンス向けのシステム割り当てマネージド ID を有効にする方法について説明します。
 
 ## <a name="private-storage-account-access"></a>プライベート ストレージ アカウント アクセス
+> [!NOTE]
+>
+> 現在、Form Recognizer は、システム割り当てマネージド ID でのみサポートされています。 ユーザー割り当てマネージド ID は、計画に含まれており、近い将来サポートされる予定です。 
+
 
  プライベート Azure ストレージ アカウントのアクセスと認証は、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) でサポートされています。 Azure ストレージ アカウントが Virtual Network (VNet) またはファイアウォールによって保護されている場合、または Bring Your Own Storage (BYOS) を有効にしている場合、Form Recognizer ではストレージ アカウント データに直接アクセスできません。ただし、マネージド ID が有効になると、Form Recognizer サービスは、割り当てられたマネージド ID 資格情報を使用してストレージ アカウントにアクセスできます。
 

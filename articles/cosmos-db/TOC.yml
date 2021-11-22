@@ -167,8 +167,6 @@
               href: sql/create-sql-api-nodejs.md
             - name: Python アプリ
               href: sql/create-sql-api-python.md
-            - name: Xamarin アプリ
-              href: sql/create-sql-api-xamarin-dotnet.md
     - name: チュートリアル
       items:
         - name: 1 - データの作成と管理
@@ -191,10 +189,6 @@
                   href: sql/sql-api-java-application.md
                 - name: Node.js
                   href: sql/sql-api-nodejs-application.md
-            - name: モバイル アプリを構築する
-              items:
-                - name: Xamarin
-                  href: sql/mobile-apps-with-xamarin.md
         - name: 2 - データの移行
           items:
             - name: データ移行ツールの使用
@@ -209,10 +203,8 @@
           href: sql/tutorial-global-distribution-sql-api.md
     - name: サンプル
       items:
-        - name: .NET V2 SDK のサンプル
-          href: sql/sql-api-dotnet-samples.md
         - name: .NET V3 SDK のサンプル
-          href: sql/sql-api-dotnet-v3sdk-samples.md
+          href: sql/sql-api-dotnet-samples.md
         - name: Java SDK v4 のサンプル
           href: sql/sql-api-java-sdk-samples.md
         - name: Spring Data v3 のサンプル
@@ -229,6 +221,8 @@
           href: sql/templates-samples-sql.md
         - name: Bicep
           href: sql/bicep-samples.md
+        - name: .NET V2 SDK のサンプル (レガシ)
+          href: sql/sql-api-dotnet-v2sdk-samples.md
     - name: 概念
       items:
         - name: モデル化とパーティション分割
@@ -931,13 +925,13 @@
           items:
             - name: .NET SDK v3
               href: sql/sql-api-sdk-dotnet-standard.md
-            - name: .NET SDK v2
+            - name: .NET SDK v2 (レガシ)
               href: sql/sql-api-sdk-dotnet.md
-            - name: .NET Core SDK v2
+            - name: .NET Core SDK v2 (レガシ)
               href: sql/sql-api-sdk-dotnet-core.md
-            - name: .NET 変更フィード ライブラリ v2
+            - name: .NET 変更フィード ライブラリ v2 (レガシ)
               href: sql/sql-api-sdk-dotnet-changefeed.md
-            - name: .NET バルク エグゼキューター ライブラリ v2
+            - name: .NET バルク エグゼキューター ライブラリ v2 (レガシ)
               href: sql/sql-api-sdk-bulk-executor-dot-net.md
         - name: Java SDK とコネクタ
           items:
@@ -1506,7 +1500,11 @@
             - name: 継続的バックアップへの移行
               href: migrate-continuous-backup.md
         - name: 定期バックアップの管理
-          href: configure-periodic-backup-restore.md
+          items:
+            - name: 定期的なバックアップを構成する
+              href: configure-periodic-backup-restore.md
+            - name: バックアップ ストレージの冗長性を更新する
+              href: update-backup-storage-redundancy.md
     - name: セキュリティ
       items:
         - name: IP ファイアウォールの構成

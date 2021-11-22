@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: d7fa588c0711285c968c13ab14e319fb803e9785
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 5a5ef573b4df91e191dac2fa24a09c65aace5cea
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132323469"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723610"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>ポータルまたは Python SDK を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -146,7 +146,7 @@ ms.locfileid: "132323469"
 
 1. ワークスペースの構成が完了したら、 **[確認および作成]** を選択します。 必要に応じて、[ネットワーク](#networking)に関するセクションと[詳細設定](#advanced)に関するセクションを使用し、ワークスペースに対してさらに多くの設定を行います。
 
-1. 設定を確認し、追加の変更または訂正があれば実行します。 設定に問題がなければ、 **[作成]** を選択します。
+1. 設定を確認し、その他の変更や修正を行います。 設定に問題がなければ、 **[作成]** を選択します。
 
    > [!Warning] 
    > クラウドへのワークスペースの作成には数分かかる場合があります。
@@ -306,13 +306,15 @@ ws = Workspace.from_config()
 
 # <a name="python"></a>[Python](#tab/python)
 
-[Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、サブスクリプションを見つけます。  ID をコピーして下のコードで使用して、そのサブスクリプションで使用可能なすべてのワークスペースを確認します。
+[Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、サブスクリプションを見つけます。 ID をコピーして下のコードで使用して、そのサブスクリプションで使用可能なすべてのワークスペースを確認します。
 
 ```python
 from azureml.core import Workspace
 
 Workspace.list('<subscription-id>')
 ```
+
+Workspace.list(..) メソッドによって、完全なワークスペース オブジェクトが返されることはありません。 これには、サブスクリプション内の既存のワークスペースに関する基本情報のみが含まれます。 特定のワークスペースの完全なオブジェクトを取得するには、Workspace.get(..) を使用します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -337,7 +339,7 @@ Workspace.list('<subscription-id>')
 
 [!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
 
-ワークスペースを誤って削除した場合も、ノートブックは引き続き取得することができます。 [こちらのドキュメントを参照してください](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion)。
+ワークスペースを誤って削除した場合も、ノートブックを引き続き取得することができる可能性があります。 詳細については、「[事業継続とディザスター リカバリーのためのフェールオーバー](./how-to-high-availability-machine-learning.md#workspace-deletion)」を参照してください。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -347,7 +349,7 @@ Workspace.list('<subscription-id>')
 ws.delete(delete_dependent_resources=False, no_wait=False)
 ```
 
-既定のアクションでは、ワークスペースに関連付けられているリソース (コンテナー レジストリ、ストレージ アカウント、キー コンテナー、Application Insights) は削除されません。  これらのリソースも削除するには、`delete_dependent_resources` を True に設定します。
+既定のアクションによって、ワークスペースに関連付けられているリソース (コンテナー レジストリ、ストレージ アカウント、キー コンテナー、Application Insights) が削除されることはありません。  これらのリソースも削除するには、`delete_dependent_resources` を True に設定します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

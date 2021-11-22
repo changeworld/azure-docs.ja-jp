@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 03e2ce2c2d40c5edfa35515dd746802307d05f4b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: e74c593b29fc4a8e05a37b3b0a5f0415f120aad8
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990655"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707055"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint-in-azure-active-directory"></a>チュートリアル: Azure Active Directory の SCIM エンドポイントのプロビジョニングを開発および計画する
 
@@ -212,7 +212,7 @@ AAD との互換性を確保するために、SCIM エンドポイントの実�
 
 ##### <a name="users"></a>/Users:
 * エンタイトルメント属性はサポートされていません。
-* ユーザーの一意性のために使用される属性が、フィルター選択されたクエリの一部として使用できる必要があります。 (たとえば、ユーザーの一意性が、userName と emails[type eq "work"] の両方に対して評価される場合、フィルターを使用した /Users への GET は、_userName eq "user@contoso.com"_ クエリと _emails[type eq "work"] eq "user@contoso.com"_ クエリの両方に対して許可される必要があります。
+* ユーザーの一意性のために使用される属性が、フィルター選択されたクエリの一部として使用できる必要があります。 たとえば、ユーザーの一意性が、userName と emails[type eq "work"] の両方に対して評価される場合、フィルターを使用した /Users への GET は、_userName eq "user@contoso.com"_ クエリと _emails[type eq "work"].value eq "user@contoso.com"_ クエリの両方に対して許可される必要があります。
 
 ##### <a name="groups"></a>/Groups:
 * グループはオプションですが、SCIM 実装で **PATCH** 要求がサポートされている場合にのみ、サポートされます。

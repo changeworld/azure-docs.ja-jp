@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: suzizuber
   ms.author: v-szuber
-  ms.date: 10/06/2021
-  ms.openlocfilehash: efc7a0083929d6750544c649e18a74cb929d6605
-  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
+  ms.date: 11/12/2021
+  ms.openlocfilehash: bf6c18fd32288ed99c16dd89314aca7c743a37b3
+  ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/16/2021
-  ms.locfileid: "132555472"
+  ms.lasthandoff: 11/19/2021
+  ms.locfileid: "132812071"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -74,16 +74,26 @@ landingContent:
       url: tutorial-scale-private-cloud.md
     - text: 8 - プライベート クラウドを削除する
       url: tutorial-delete-private-cloud.md
-- title: 障害復旧
+- title: Azure VMware Solution のエンタープライズ規模
   linkLists:
-  - linkListType: how-to-guide
+  - linkListType: architecture
     links:
-    - text: JetStream DR をデプロイする
-      url: deploy-disaster-recovery-using-jetstream.md
-    - text: ディザスター リカバリー用に VMware HCX をデプロイする
-      url: deploy-disaster-recovery-using-vmware-hcx.md
-    - text: ディザスター リカバリー用に VMware SRM をデプロイする
-      url: disaster-recovery-using-vmware-site-recovery-manager.md
+    - text: Azure VMware Solution のエンタープライズ規模
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
+    - text: ID 管理とアクセス管理
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-identity-and-access-management
+    - text: ネットワーク トポロジと接続
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-network-topology-connectivity
+    - text: 管理と監視
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-management-and-monitoring
+    - text: エンタープライズ規模の事業継続とディザスター リカバリー
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-business-continuity-and-disaster-recovery
+    - text: エンタープライズ規模のセキュリティ、ガバナンス、コンプライアンス
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-security-governance-and-compliance
+    - text: プラットフォームの自動化と DevOps
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-platform-automation-and-devops
+    - text: Azure VMware Solution 自動化のエンタープライズ規模
+      url: https://github.com/Azure/Enterprise-Scale-for-AVS
 - title: ID 管理
   linkLists:
   - linkListType: how-to-guide
@@ -152,6 +162,14 @@ landingContent:
       url: set-up-backup-server-for-azure-vmware-solution.md
     - text: Backup Server を使用したプライベート クラウドのバックアップ
       url: backup-azure-vmware-solution-virtual-machines.md
+  - linkListType: deploy
+    links:
+    - text: JetStream DR をデプロイする
+      url: deploy-disaster-recovery-using-jetstream.md
+    - text: ディザスター リカバリー用に VMware HCX をデプロイする
+      url: deploy-disaster-recovery-using-vmware-hcx.md
+    - text: ディザスター リカバリー用に VMware SRM をデプロイする
+      url: disaster-recovery-using-vmware-site-recovery-manager.md
 - title: VMware ソリューション
   linkLists:
   - linkListType: how-to-guide
@@ -194,6 +212,8 @@ landingContent:
       url: /azure/templates/microsoft.avs/privateclouds
     - text: Terraform Azure プロバイダー
       url: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/vmware_private_cloud
+    - text: Azure VMware Solution 自動化のエンタープライズ規模
+      url: https://github.com/Azure/Enterprise-Scale-for-AVS
   - linkListType: video
     links:
     - text: 再生リスト

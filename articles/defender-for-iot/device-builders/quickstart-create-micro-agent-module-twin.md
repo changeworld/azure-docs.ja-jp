@@ -1,16 +1,16 @@
 ---
-title: 'クイック スタート: Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)'
+title: 'クイックスタート: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)'
 description: このクイックスタートでは、新しいデバイス用に個別の DefenderIotMicroAgent モジュール ツインを作成する方法について説明します。
 ms.date: 11/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: 35480236f6a1fc7457e5af5e8a64e2967d8eaa3e
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 3d2829b1d779ab4db711ab590c0da4760a44aefe
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132331530"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709269"
 ---
-# <a name="quickstart-create-a-defender-for-cloud-iot-micro-agent-module-twin-preview"></a>クイック スタート: Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
+# <a name="quickstart-create-a-defender-for-iot-micro-agent-module-twin-preview"></a>クイックスタート: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
 
 新しいデバイス用に個別の  **DefenderIotMicroAgent** モジュール ツインを作成できます。 IoT Hub 内のすべてのデバイスに対して、モジュール ツインを一括作成することもできます。 
 

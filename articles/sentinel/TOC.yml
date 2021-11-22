@@ -128,7 +128,7 @@
         - name: 上位のコネクタ
           expanded: true
           items:
-            - name: AWS CloudTrail
+            - name: アマゾン ウェブ サービス (AWS) ログ
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md

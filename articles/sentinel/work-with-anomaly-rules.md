@@ -1,28 +1,28 @@
 ---
-title: Azure Sentinel で異常検出分析ルールを使用する | Microsoft Docs
-description: この記事では、Azure Sentinel で異常検出分析ルールを表示、作成、管理、評価、および微調整する方法について説明します。
+title: Microsoft Sentinel で異常検出分析ルールを使用する | Microsoft Docs
+description: この記事では、Microsoft Sentinel で異常検出分析ルールを表示、作成、管理、評価、および微調整する方法について説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 96de38a38c5e28117916bc2265a943e4064e8fae
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1469f89877c9a20009dd3e1178b77a7f001314ba
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022894"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518776"
 ---
-# <a name="work-with-anomaly-detection-analytics-rules-in-azure-sentinel"></a>Azure Sentinel で異常検出分析ルールを使用する
+# <a name="work-with-anomaly-detection-analytics-rules-in-microsoft-sentinel"></a>Microsoft Sentinel で異常検出分析ルールを使用する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,9 +32,9 @@ ms.locfileid: "131022894"
 
 ## <a name="view-soc-ml-anomaly-rule-templates"></a>SOC-ML 異常ルール テンプレートを表示する
 
-Azure Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミディエイト値にすぐに使用できる[組み込みの異常テンプレート](detect-threats-built-in.md#anomaly)が提供されます。 これらの異常テンプレートは、数千のデータ ソースと数百万のイベントを使用して堅牢になるように開発されましたが、この機能を使用すると、ユーザー インターフェイス内で異常のしきい値とパラメーターを簡単に変更することもできます。 異常ルールによって異常が生成 ( **[ログ]** セクションの **[異常]** テーブルに表示) されるようにするには、事前にアクティブにする必要があります。
+Microsoft Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミディエイト値にすぐに使用できる[組み込みの異常テンプレート](detect-threats-built-in.md#anomaly)が提供されます。 これらの異常テンプレートは、数千のデータ ソースと数百万のイベントを使用して堅牢になるように開発されましたが、この機能を使用すると、ユーザー インターフェイス内で異常のしきい値とパラメーターを簡単に変更することもできます。 異常ルールによって異常が生成 ( **[ログ]** セクションの **[異常]** テーブルに表示) されるようにするには、事前にアクティブにする必要があります。
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. **[分析]** ブレードで、 **[ルール テンプレート]** タブを選択します。
 
@@ -81,7 +81,7 @@ Azure Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミ�
     > [!NOTE]
     > 必要なデータが使用可能であると仮定しても、 **[アクティブなルール]** タブに新しいルールが表示されるまでに最大 24 時間かかる場合があります。新しいルールを表示するには、[アクティブなルール] タブを選択し、上記のルール テンプレート のリストをフィルター処理したのと同じ方法でフィルター処理します。
 
-異常ルールがアクティブになると、検出された異常は、Azure Sentinel ワークスペースの **[ログ]** セクションの **[異常]** テーブルに格納されます。
+異常ルールがアクティブになると、検出された異常は、Microsoft Sentinel ワークスペースの **[ログ]** セクションの **[異常]** テーブルに格納されます。
 
 各異常ルールにはトレーニング期間があります。そのトレーニング期間が終了するまで、異常はテーブルに表示されません。 トレーニング期間は、各異常ルールの説明で確認できます。
 
@@ -89,7 +89,7 @@ Azure Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミ�
 
 過去 24 時間でルールによって作成された異常のサンプルを確認することで、異常ルールのパフォーマンスを確認できます。 
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. **[分析]** ブレードで、 **[アクティブなルール]** タブが選択されていることを確認します。
 
@@ -97,7 +97,7 @@ Azure Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミ�
 
 1. 評価するルールを選択し、その名前を詳細ウィンドウの上部から右側にコピーします。
 
-1. Azure Sentinel のナビゲーション メニューから **[ログ]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[ログ]** を選択します。
 
 1. **クエリ** ギャラリーが上部にポップアップ表示された場合は、閉じます。
 
@@ -149,7 +149,7 @@ Azure Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Sentinel で SOC-ML 異常検出分析ルールを使用する方法を学習しました。
+このドキュメントでは、Microsoft Sentinel で SOC-ML 異常検出分析ルールを使用する方法を学習しました。
 
 - [SOC-ML](soc-ml-anomalies.md) に関する背景情報をさらに取得します。
 - その他の[分析ルールの種類](detect-threats-built-in.md)を確認します。

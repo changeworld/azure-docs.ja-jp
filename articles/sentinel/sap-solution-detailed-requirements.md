@@ -1,25 +1,23 @@
 ---
-title: Azure Sentinel SAP ソリューションの詳細な SAP 要件 | Microsoft Docs
-description: Azure Sentinel SAP ソリューションの詳細な SAP システム要件について説明します。
+title: Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件 | Microsoft Docs
+description: Microsoft Azure Sentinel SAP ソリューションの詳細な SAP システム要件について学習します。
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
-ms.date: 06/09/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: bf14e52e38a1fae06ef607a4c8c066249055acb8
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.date: 11/09/2021
+ms.openlocfilehash: 2c1383f2917b7f26aaf623b7ddd9666ff2909fc6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132155953"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711851"
 ---
-# <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)
+# <a name="microsoft-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-[Azure Sentinel SAP ソリューションをデプロイするための既定の手順](sap-deploy-solution.md)には、必要な SAP 変更要求と SAP ノートが含まれ、すべての必要なアクセス許可を備えた組み込みロールが用意されています。
+[Microsoft Azure Sentinel SAP ソリューションをデプロイするための既定の手順](sap-deploy-solution.md)には、必要な SAP 変更要求と SAP ノートが含まれ、すべての必要なアクセス許可を備えた組み込みロールが用意されています。
 
 この記事では、必要な SAP 変更要求、ノート、アクセス許可について詳しく説明します。
 
@@ -27,11 +25,11 @@ ms.locfileid: "132155953"
 
 
 > [!IMPORTANT]
-> Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+> Microsoft Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 >
 
 > [!NOTE]
-> セキュリティ保護された SNC 接続を使用して SAP データ コネクタをデプロイしている場合は、追加の要件が示されます。 詳細については、「[SNC を使用して Azure Sentinel SAP データ コネクタを展開する](sap-solution-deploy-snc.md)」を参照してください。
+> セキュリティ保護された SNC 接続を使用して SAP データ コネクタをデプロイしている場合は、追加の要件が示されます。 詳細については、「[SNC を使用して Microsoft Azure Sentinel SAP データ コネクタを展開する](sap-solution-deploy-snc.md)」を参照してください。
 >
 ## <a name="recommended-virtual-machine-sizing"></a>仮想マシンの推奨されるサイズ設定
 
@@ -50,7 +48,7 @@ SAP Basis のバージョンに応じて、SAP ソリューションには次の
 
 - **SAP Basis バージョン 7.50 以降** では、NPLK900144 をインストールします
 - **それより前のバージョンの場合は**、NPLK900146 をインストールします
-- サポートされている SAP Basis バージョンに **必要な承認を持つ SAP ロールを作成するには**、NPLK900140 をインストールします。 詳細については、「[SAP システムを構成する](sap-deploy-solution.md#configure-your-sap-system)」と「[必要な ABAP 承認](#required-abap-authorizations)」を参照してください。
+- サポートされている SAP Basis バージョンに **必要な承認を持つ SAP ロールを作成するには**、NPLK900163 をインストールします。 詳細については、「[SAP システムを構成する](sap-deploy-solution.md#configure-your-sap-system)」と「[必要な ABAP 承認](#required-abap-authorizations)」を参照してください。
 
 > [!NOTE]
 > 必要な SAP ログ変更要求では、コネクタに必要なカスタム RFC VM が公開され、標準オブジェクトやカスタム オブジェクトは変更されません。
@@ -73,12 +71,12 @@ SAP 環境ホスト。32xx、5xx13、および 33xx (xx は SAP インスタン�
 
 ## <a name="required-abap-authorizations"></a>必要な ABAP 承認
 
-次の表は、バックエンド SAP ユーザーが Azure Sentinel を SAP ログに接続するために必要な ABAP 承認の一覧です。 詳細については、「[SAP システムを構成する](sap-deploy-solution.md#configure-your-sap-system)」を参照してください。
+次の表は、バックエンド SAP ユーザーが Microsoft Azure Sentinel を SAP ログに接続するために必要な ABAP 承認の一覧です。 詳細については、「[SAP システムを構成する](sap-deploy-solution.md#configure-your-sap-system)」を参照してください。
 
-必要な承認の一覧は、ログの種類別に示されています。 Azure Sentinel に取り込む予定のログの種類に対して示されている承認だけが必要です。
+必要な承認の一覧は、ログの種類別に示されています。 Microsoft Azure Sentinel に取り込む予定のログの種類に対して示されている承認だけが必要です。
 
 > [!TIP]
-> 必要なすべての承認を備えたロールを作成するには、SAP システムに SAP 変更要求 [NPLK900114](#required-sap-log-change-requests) をデプロイします。 この変更要求により、 **/MSFTSEN/SENTINEL_CONNECTOR** ロールが作成され、Azure Sentinel に接続する ABAP ユーザーにそのロールが割り当てられます。
+> 必要なすべての承認を備えたロールを作成するには、SAP システムに SAP 変更要求 NPLK900163 を展開します。 この変更要求により、 **/MSFTSEN/SENTINEL_CONNECTOR** ロールが作成され、お客様 (通常、SAP Basis またはロール所有者) が Microsoft Azure Sentinel に接続する ABAP ユーザーにそのロールを割り当てる必要があります。
 >
 
 | 承認オブジェクト | フィールド | 値 |
@@ -130,7 +128,7 @@ SAP 環境ホスト。32xx、5xx13、および 33xx (xx は SAP インスタン�
 | **ABAP セキュリティ監査ログ - XAL、ABAP ジョブ ログ、ABAP アプリケーション ログ** | | |
 | S_RFC | FUGR | SXMI |
 | S_XMI_PRD | EXTCOMPANY | Microsoft |
-| S_XMI_PRD | EXTPRODUCT | Azure Sentinel |
+| S_XMI_PRD | EXTPRODUCT | Microsoft Sentinel |
 | **ABAP セキュリティ監査ログ - SAL** | | |
 | S_RFC | FUGR | RSAU_LOG |
 | S_RFC | FUGR | /MSFTSEN/_AUDITLOG |
@@ -139,15 +137,17 @@ SAP 環境ホスト。32xx、5xx13、および 33xx (xx は SAP インスタン�
 | **ABAP ワークフロー ログ** | | |
 | S_RFC | FUGR | SWRR |
 | S_RFC | FUGR | /MSFTSEN/_WF |
+| **ユーザー データ** | | |
+| S_RFC | FUNC | RFC_READ_TABLE |
 | | |
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、次を参照してください。
 
-- [SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
-- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
+- [SAP 用 Microsoft Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
+- [SNC を使用して Microsoft Azure Sentinel SAP データ コネクタを展開する](sap-solution-deploy-snc.md)
 - [エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
-- [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
-- [Azure Sentinel SAP ソリューション: 利用できるセキュリティ コンテンツ](sap-solution-security-content.md)
-- [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)
+- [Microsoft Azure Sentinel SAP ソリューションのログ リファレンス](sap-solution-log-reference.md)
+- [Microsoft Azure Sentinel SAP ソリューション: 利用できるセキュリティ コンテンツ](sap-solution-security-content.md)
+- [Microsoft Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

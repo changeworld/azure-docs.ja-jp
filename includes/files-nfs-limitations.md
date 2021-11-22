@@ -8,14 +8,11 @@ ms.topic: include
 ms.date: 06/30/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 112daf900c3a7447dc5279ea9704ea94eb8ec9ea
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 3bc611aae09bc94bd00f76c0d526f5b6b7d52a0e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113225258"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519433"
 ---
-プレビュー期間中は NFS Azure ファイル共有に次の制限があります。
-
-- Premium レベルでのみ使用できます。
-- NFS 機能の登録前に作成されたストレージ アカウントには、NFS ファイル共有を作成できません。 NFS 機能の登録後に作成されたストレージ アカウントにのみ、NFS ファイル共有を作成できます。
+NFS Azure ファイル共有は、Premium レベルでのみ使用できます。

@@ -1,43 +1,41 @@
 ---
-title: ログ フォワーダーをデプロイして Syslog および CEF ログを Azure Sentinel に取り込む | Microsoft Docs
-description: Syslog と CEF ログを Azure Sentinel に取り込むプロセスの一環として、Syslog デーモンと Log Analytics エージェントで構成されるログ フォワーダーをデプロイする方法について説明します。
+title: ログ フォワーダーをデプロイして Syslog および CEF ログを Microsoft Sentinel に取り込む | Microsoft Docs
+description: Syslog と CEF ログを Microsoft Sentinel に取り込むプロセスの一環として、Syslog デーモンと Log Analytics エージェントで構成されるログ フォワーダーをデプロイする方法について説明します。
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 02ffb7089ac0888fe918ca8f11898f479f273234
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 95f60a08b8700da02c1eaf0496bd5bcba4b0d988
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014070"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714582"
 ---
-# <a name="deploy-a-log-forwarder-to-ingest-syslog-and-cef-logs-to-azure-sentinel"></a>ログ フォワーダーをデプロイして Syslog および CEF ログを Azure Sentinel に取り込む
+# <a name="deploy-a-log-forwarder-to-ingest-syslog-and-cef-logs-to-microsoft-sentinel"></a>ログ フォワーダーをデプロイして Syslog および CEF ログを Microsoft Sentinel に取り込む
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Syslog と CEF ログを Azure Sentinel に取り込むには (特に Log Analytics エージェントを直接インストールできないデバイスとアプライアンスから)、デバイスからログを収集して Azure Sentinel ワークスペースに転送する Linux マシンを指定して構成する必要があります。 このマシンは、オンプレミス環境の物理マシンや仮想マシン、Azure VM のほか、別のクラウドの VM でもかまいません。 
+Syslog と CEF ログを Microsoft Sentinel に取り込むには (特に Log Analytics エージェントを直接インストールできないデバイスとアプライアンスから)、デバイスからログを収集して Microsoft Sentinel ワークスペースに転送する Linux マシンを指定して構成する必要があります。 このマシンは、オンプレミス環境の物理マシンや仮想マシン、Azure VM のほか、別のクラウドの VM でもかまいません。 
 
 このマシンには、このプロセスの要素である 2 つのコンポーネントがあります。
 
 - syslog デーモン (**rsyslog** または **syslog-ng**)。ログを収集します。
-- **Log Analytics エージェント** (別名 OMS エージェント)。ログを Azure Sentinel に転送します。
+- **Log Analytics エージェント** (別名 OMS エージェント)。ログを Microsoft Sentinel に転送します。
 
 以下に用意されているリンクを使用し、指定したマシンで、次のタスクを実行するスクリプトを実行します。
 
 - Linux 用 Log Analytics エージェント ("OMS エージェント" ともいいます) をインストールし、次の用途に構成します。
     - 組み込みの Linux Syslog デーモンからの CEF メッセージを TCP ポート 25226 でリッスンする
-    - メッセージの解析とエンリッチが行われる Azure Sentinel ワークスペースに対し、TLS で安全にメッセージを送信する
+    - メッセージの解析とエンリッチが行われる Microsoft Sentinel ワークスペースに対し、TLS で安全にメッセージを送信する
 
 - 組み込みの Linux Syslog デーモン (rsyslog.d/syslog-ng) を次の用途に構成します。
     - セキュリティ ソリューションからの Syslog メッセージを TCP ポート 514 でリッスンする
@@ -81,7 +79,7 @@ Syslog と CEF ログを Azure Sentinel に取り込むには (特に Log Analyt
     - Log Analytics エージェントをインストールする前に Linux マシンを Azure ワークスペースに接続することは避けてください。
 
 - **データ**
-    - 場合によっては、プロセスの間に Azure Sentinel ワークスペースの **ワークスペース ID** と **ワークスペースの主キー** が必要になります。 これらは、ワークスペース設定の **[エージェント管理]** で確認できます。
+    - 場合によっては、プロセスの間に Microsoft Sentinel ワークスペースの **ワークスペース ID** と **ワークスペースの主キー** が必要になります。 これらは、ワークスペース設定の **[エージェント管理]** で確認できます。
 
 ### <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -93,7 +91,7 @@ Syslog と CEF ログを Azure Sentinel に取り込むには (特に Log Analyt
 
 ## <a name="run-the-deployment-script"></a>展開スクリプトを実行する
  
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタ ギャラリーから製品のコネクタを選択し (製品がリストにない場合は **Common Event Format** (CEF) を選択)、右下の **[コネクタ ページを開く]** ボタンをクリックします。 
+1. Microsoft Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタ ギャラリーから製品のコネクタを選択し (製品がリストにない場合は **Common Event Format** (CEF) を選択)、右下の **[コネクタ ページを開く]** ボタンをクリックします。 
 
 1. コネクタ ページの、 **[1.2 Linux マシンへの CEF コレクターのインストール]** の手順の中で、 **[Run the following script to install and apply the CEF collector]\(CEF コレクターをインストールして適用するには、次のスクリプトを実行します\)** の下にあるリンクをコピーします。  
 そのページにアクセスできない場合は、次のテキストからリンクをコピーします (プレースホルダーを置き換えるように、上記から **ワークスペース ID** と **主キー** をコピーして貼り付けます)。
@@ -115,7 +113,7 @@ Syslog と CEF ログを Azure Sentinel に取り込むには (特に Log Analyt
     >
     > 1. CEF 形式でフォワーダーにログを送信する各ソース マシンで、Syslog 構成ファイルを編集し、CEF メッセージの送信に使用されているファシリティを削除する必要があります。 これで、CEF で送信されるファシリティは、Syslog で送信されません。 この方法の詳細については、「[Linux エージェントでの Syslog の構成](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent)」を参照してください。
     >
-    > 1. これらのマシンで次のコマンドを実行して、エージェントと Azure Sentinel の Syslog 構成との同期を無効にする必要があります。 これで、前の手順で構成に加えた変更が上書きされなくなります。<br>
+    > 1. これらのマシンで次のコマンドを実行して、エージェントと Microsoft Sentinel の Syslog 構成との同期を無効にする必要があります。 これで、前の手順で構成に加えた変更が上書きされなくなります。<br>
     > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="deployment-script-explained"></a>デプロイ スクリプトの説明
@@ -141,7 +139,7 @@ syslog デーモンを選択して、適切な説明を表示してください�
         sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
         ```
 
-1. **ポート 25226 でリッスンして、CEF メッセージを Azure Sentinel に転送するよう、Log Analytics エージェントの構成を設定する**
+1. **ポート 25226 でリッスンして、CEF メッセージを Microsoft Sentinel に転送するよう、Log Analytics エージェントの構成を設定する**
 
     - Log Analytics エージェントの GitHub リポジトリから構成をダウンロードします。
 
@@ -207,7 +205,7 @@ syslog デーモンを選択して、適切な説明を表示してください�
         sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
         ```
 
-1. **ポート 25226 でリッスンして、CEF メッセージを Azure Sentinel に転送するよう、Log Analytics エージェントの構成を設定する**
+1. **ポート 25226 でリッスンして、CEF メッセージを Microsoft Sentinel に転送するよう、Log Analytics エージェントの構成を設定する**
 
     - Log Analytics エージェントの GitHub リポジトリから構成をダウンロードします。
 
@@ -260,8 +258,8 @@ syslog デーモンを選択して、適切な説明を表示してください�
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Log Analytics エージェントをデプロイして、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Log Analytics エージェントをデプロイして、CEF アプライアンスを Microsoft Sentinel に接続する方法について説明しました。 Microsoft Sentinel の詳細については、次の記事を参照してください。
 
 - [Cef および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

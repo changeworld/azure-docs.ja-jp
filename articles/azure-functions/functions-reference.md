@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: db0fc469d7f4429d8a99c5869940dfc50b63e845
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7aef7301207772711bcce7fbec4bde8937c94cf1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477062"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523450"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -218,12 +218,16 @@ Azure Functions では、タイマー トリガーのシングルトン実行の
 
 | 設定                       | 説明                                | 値の例                                        |
 |-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
-| `AzureWebJobsStorage__blobServiceUri`| ストレージ アカウントの BLOB サービスのデータ プレーン URI。 | <storage_account_name>.blob.core.windows.net |
-| `AzureWebJobsStorage__queueServiceUri` | ストレージ アカウントのキュー サービスのデータ プレーン URI。 | <storage_account_name>.queue.core.windows.net |
+| `AzureWebJobsStorage__blobServiceUri`| HTTPS スキームを使用する、ストレージ アカウントの BLOB サービスのデータ プレーン URI。 | https://<storage_account_name>.blob.core.windows.net |
+| `AzureWebJobsStorage__queueServiceUri` | HTTPS スキームを使用する、ストレージ アカウントのキュー サービスのデータ プレーン URI。 | https://<storage_account_name>.queue.core.windows.net |
 
 同様に [ID ベース接続に共通のプロパティ](#common-properties-for-identity-based-connections)を設定することもできます。
 
 グローバル Azure の既定の DNS サフィックスとサービス名を使用するストレージ アカウントを使う場合は、`https://<accountName>.blob/queue/file/table.core.windows.net` 形式に従って、代わりにストレージ アカウントの名前に `AzureWebJobsStorage__accountName` を設定できます。 このアカウントの BLOB およびキュー エンドポイントが推定されます。 ストレージ アカウントがソブリン クラウドにある場合、またはカスタム DNS がある場合、これは機能しません。
+
+| 設定                       | 説明                                | 値の例                                        |
+|-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
+| `AzureWebJobsStorage__accountName` | ストレージ アカウントのアカウント名。アカウントがソブリン クラウドに存在せず、カスタム DNS が与えられていない場合にのみ有効。 | <storage_account_name> |
 
 [!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
 

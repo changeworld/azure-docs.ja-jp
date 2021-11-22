@@ -18,16 +18,19 @@ ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 76b0353022782aecabd2a7df3e5a920d22119402
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 463b806994364083c22dcfc40fd8b78dae87d8da
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643595"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488774"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
 Azure VM エージェントとそれに関連付けられた拡張機能は、Microsoft Azure インフラストラクチャ サービスの一部です。 VM 拡張機能は、VM の機能を拡張し、さまざまな VM の管理操作を簡略化するソフトウェア コンポーネントです。
+
+> [!NOTE]
+> DSC 拡張機能を有効にする前に、[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)という名前の Azure Policy の機能によって管理された、新しいバージョンの DSC が現在プレビューで利用可能になっていることに注意してください。 ゲスト構成機能では、Desired State Configuration (DSC) 拡張機能ハンドラーや Azure Automation State Configuration の機能のほか、顧客のフィードバックで最も一般的に要求されている機能が組み合わされています。 ゲスト構成にはまた、[Arc 対応サーバー](../../azure-arc/servers/overview.md)によるハイブリッド マシンのサポートも含まれています。
 
 Azure Desired State Configuration (DSC) 拡張機能の主な用途は、[Azure Automation State Configuration (DSC) サービス](../../automation/automation-dsc-overview.md)への VM のブートストラップです。
 このサービスには、VM 構成の継続的な管理や、Azure Monitoring などの他の操作ツールとの統合を含む[メリット](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service)があります。

@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: efcff17cd867deb885e8591db48dd23424a445a2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3c21d89329db89b73a0e37046062eae876084e2b
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452435"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399770"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>VNET での Azure Spring Cloud の実行に関するお客様の責任
 
 この記事には、仮想ネットワークで Azure Spring Cloud を使用するための仕様が含まれています。
 
-仮想ネットワークにデプロイする場合、Azure Spring Cloud には、仮想ネットワークの外部にあるサービスへの送信依存関係があります。 管理と運用上の目的から、Azure Spring Cloud は特定のポートと完全修飾ドメイン名 (FQDN) にアクセスする必要があります。 これらのエンドポイントは、Azure Spring Cloud 管理プレーンと通信したり、コア Kubernetes クラスター コンポーネントとセキュリティ更新プログラムをダウンロードしてからインストールしたりするために必要です。
+仮想ネットワークにデプロイする場合、Azure Spring Cloud には、仮想ネットワークの外部にあるサービスへの送信依存関係があります。 管理と運用上の目的から、Azure Spring Cloud は特定のポートと完全修飾ドメイン名 (FQDN) にアクセスする必要があります。 Azure Spring Cloud では、管理プレーンとの通信、およびコア Kubernetes クラスター コンポーネントとセキュリティ更新プログラムのダウンロードとインストールに、これらのエンドポイントが必要です。
 
 既定で、Azure Spring Cloud は、送信 (エグレス) インターネット アクセスが無制限です。 このレベルのネットワーク アクセスでは、実行しているアプリケーションから必要に応じて外部リソースにアクセスできます。 エグレス トラフィックを制限する場合は、メンテナンス タスクに対して、アクセスできるポートとアドレスの数を制限する必要があります。 送信アドレスをセキュリティで保護する最も簡単なソリューションは、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスを使用することです。 たとえば、Azure Firewall では、送信先の FQDN に基づいて HTTP と HTTPS の送信トラフィックを制限できます。 また、適切なファイアウォール規則とセキュリティ規則を構成し、これらの必要なポートとアドレスを許可することができます。
 
@@ -82,4 +82,4 @@ Azure Firewall には、次の構成を簡略化するために FQDN タグ **Az
 ## <a name="see-also"></a>関連項目
 
 * [プライベート ネットワークのアプリケーションにアクセスする](access-app-virtual-network.md)
-* [Application Gateway と Azure Firewall を使用してアプリを公開する](expose-apps-gateway-azure-firewall.md)
+* [Application Gateway を使用して、アプリケーションをインターネットに公開する](expose-apps-gateway.md)

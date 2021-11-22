@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a8af7d5c76552ade3ffd5d50b308cee6b0b1446c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8fb9e276c7f8d0e195c7d7618392e7c5e61c7c9e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091830"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132590590"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,12 +34,14 @@ ms.locfileid: "131091830"
 
 アカウントに言語リソースを関連付けたら、会話言語理解プロジェクトを作成します。 このクイックスタートでは、特定のからのメールを読む、メールを削除する、メールにドキュメントを添付するなど、メールに関するコマンドを識別できるプロジェクトを作成します。
 
-1. [Language Studio](https://aka.ms/languageStudio) で、 **[Understand conversational language]\(会話言語を理解する\)** というセクションを見つけ、 **[会話言語理解]** をクリックします。 これにより、 **[Conversations project]\(会話プロジェクト\)** ページが表示されます。 
- 
+1. [Language Studio](https://aka.ms/languageStudio) で、 **[Understand conversational language]\(会話言語を理解する\)** というセクションを見つけ、 **[会話言語理解]** をクリックします。  
+    :::image type="content" source="../../media/select-custom-clu.png" alt-text="Language Studio のランディングページのカスタム Language Understanding の場所を示すスクリーンショット。" lightbox="../../media/select-custom-clu.png"::: 
     
+
+2. これにより、 **[Conversations project]\(会話プロジェクト\)** ページが表示されます。 **[新しいプロジェクトの作成]** をクリックします。 **[Conversations project]\(会話プロジェクト\)** を選び、 **[次へ]** をクリックします。
+
     :::image type="content" source="../../media/projects-page.png" alt-text="Language Studio の [Conversations project]\(会話プロジェクト\) ページのスクリーンショット。" lightbox="../../media/projects-page.png":::
 
-2. **[新しいプロジェクトの作成]** をクリックします。 **[Conversations project]\(会話プロジェクト\)** を選び、 **[次へ]** をクリックします。
 
 次に、以下の詳細を指定する必要があります。
 

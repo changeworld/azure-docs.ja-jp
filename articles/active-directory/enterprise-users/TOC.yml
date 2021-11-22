@@ -38,6 +38,8 @@
           href: users-bulk-add.md
         - name: ユーザー プロファイルの管理
           href: ../fundamentals/active-directory-users-profile-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: カスタム セキュリティ属性の割り当て
+          href: users-custom-security-attributes.md
         - name: ユーザー情報のダウンロード
           href: users-bulk-download.md
         - name: ユーザー アカウントの共有

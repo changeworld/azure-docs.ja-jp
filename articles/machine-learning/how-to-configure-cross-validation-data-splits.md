@@ -1,7 +1,7 @@
 ---
 title: 自動機械学習でのデータの分割とクロス検証
 titleSuffix: Azure Machine Learning
-description: 自動機械学習の実験のためにデータセットの分割とクロス検証を構成する方法について説明します
+description: 自動機械学習実験のためにトレーニング、検証、クロス検証、テストのデータを構成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
@@ -10,15 +10,15 @@ ms.custom: automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
-ms.date: 10/21/2021
-ms.openlocfilehash: be945319a81165137b890277372ba625ad200cd2
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/15/2021
+ms.openlocfilehash: 69f5913b03db51561cde17117ef97ec3c9e50868
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559677"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520619"
 ---
-# <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>自動機械学習の実験でデータの分割とクロス検証を構成する
+# <a name="configure-training-validation-cross-validation-and-test-data-in-automated-machine-learning"></a>自動機械学習でのトレーニング、検証、クロス検証、テストのデータを構成する
 
 この記事では、自動機械学習 (自動 ML) の実験のために、トレーニング データと検証データの分割をクロス検証設定とあわせて構成するためのさまざまなオプションについて説明します。
 
@@ -27,9 +27,6 @@ Azure Machine Learning では、自動 ML を使用して複数の ML モデル�
 自動 ML の実験によって、モデルの検証が自動的に実行されます。 次のセクションでは、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) で検証の設定をカスタマイズする方法について説明します。 
 
 コードを使用しないエクスペリエンスの詳細については、[Azure Machine Learning Studio での自動機械学習の実験の作成](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)に関するページを参照してください。 
-
-> [!NOTE]
-> 現時点でスタジオでは、トレーニングと検証データの分割とクロス検証オプションの両方がサポートされていますが、検証セットに個別のデータ ファイルを指定することはできません。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,6 +67,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 |---|-----|
 |**20,000&nbsp;行&nbsp;より&nbsp;多い**| トレーニング/検証データの分割が適用されます。 既定では、初期トレーニング データ セットの 10% が検証セットとして取得されます。 次に、その検証セットがメトリックの計算に使用されます。
 |**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は**、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は**、3 つのフォールドが使用されます。
+
 
 ## <a name="provide-validation-data"></a>検証データを指定する
 
@@ -200,6 +198,42 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 K 分割またはモンテカルロ クロス検証を使用すると、各検証のフォールドでメトリックが計算され、集計されます。 この集計操作は、スカラー メトリックの平均であり、グラフの合計です。 クロス検証中に計算されるメトリックは、すべてのフォールドに基づいているため、トレーニング セットのすべてのサンプルです。 [自動機械学習のメトリックの詳細については、こちらを参照してください。](how-to-understand-automated-ml.md)
 
 カスタム検証セットまたは自動的に選択された検証セットを使用すると、モデルの評価メトリックは、トレーニング データではなく、その検証セットからのみ計算されます。
+
+## <a name="provide-test-data-preview"></a>テスト データを指定する (プレビュー)
+
+実験終了後に自動 ML によって生成される推奨モデルを評価するために、テスト データを指定することもできます。 テスト データを指定すると、推奨モデルのテストの実行結果に偏りが出ないように、トレーニングと検証とは別のものと見なされます。 [自動 ML でのトレーニング、検証、テストのデータの詳細情報。](concept-automated-ml.md#training-validation-and-test-data) 
+
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
+
+テスト データセットは [Azure Machine Learning TabularDataset](how-to-create-register-datasets.md#tabulardataset) 形式にする必要があります。 `AutoMLConfig` オブジェクトで `test_data` と `test_size` のパラメーターを使ってテスト データセットを指定できます。  これらのパラメーターは相互に排他的であり、同時に指定することはできません。 
+
+`test_data` パラメーターを使い、`AutoMLConfig` オブジェクトに渡す既存のデータセットを指定します。 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             ...
+                             # Provide an existing test dataset
+                             test_data=test_dataset,
+                             ...
+                             forecasting_parameters=forecasting_parameters)
+```
+
+テスト データを直接指定するのではなく、トレーニングとテストの分割を使う場合は、`AutoMLConfig` の作成時に `test_size` パラメーターを使います。 このパラメーターには、0.0 超から 1.0 未満の浮動小数点値を指定し、テスト データセットに使うトレーニング データセットの割合を指定します。
+
+```python
+automl_config = AutoMLConfig(task = 'regression',
+                             ...
+                             # Specify train/test split
+                             training_data=training_data,
+                             test_size=0.2)
+```
+
+> [!Note]
+> 回帰タスクの場合は、ランダム サンプリングが使われます。<br>
+> 分類タスクの場合は、階層サンプリングが使われますが、階層サンプリングを使用できない場合は、フォールバックとしてランダム サンプリングが使われます。 <br>
+> 現在、予測は、トレーニングとテストの分割を使ったテスト データセットの指定をサポートしていません。
+
+`test_data` または `test_size` のパラメーターを `AutoMLConfig` に渡すと、実験の完了時に自動的にリモート テストの実行がトリガーされます。 このテストの実行には、指定したテスト データが使われ、自動 ML によって推奨される最適なモデルが評価されます。 詳細については、[テストの実行からの予測を取得する方法](how-to-configure-auto-train.md#test-models-preview)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

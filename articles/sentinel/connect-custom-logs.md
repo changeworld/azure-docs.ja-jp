@@ -1,28 +1,28 @@
 ---
-title: カスタム ログ形式のデータを Azure Sentinel に収集する | Microsoft Docs
-description: カスタム データ ソースからデータを収集し、Log Analytics エージェントを使用して Azure Sentinel に取り込みます。
+title: カスタム ログ形式のデータを Microsoft Sentinel に収集する | Microsoft Docs
+description: カスタム データ ソースからデータを収集し、Log Analytics エージェントを使用して Microsoft Sentinel に取り込みます。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/17/2020
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 94dbcf84f705aef7e8d723c6516c8a2d36e010ee
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1a64f6e11abf8531c90968c2f24824f700ac73d9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023414"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524590"
 ---
-# <a name="collect-data-in-custom-log-formats-to-azure-sentinel-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してカスタム ログ形式のデータを Azure Sentinel に収集する
+# <a name="collect-data-in-custom-log-formats-to-microsoft-sentinel-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してカスタム ログ形式のデータを Microsoft Sentinel に収集する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "131023414"
 
 多くのアプリケーションでは、Windows イベント ログや Syslog などの標準のログ記録サービスを使わずに、テキスト ファイルにデータが記録されています。 Log Analytics エージェントを使用すれば、Windows と Linux コンピューターの両方から、非標準形式のテキスト ファイル内のデータを収集できます。 収集されたデータは、クエリで解析して個別のフィールドに格納するか、または収集時に個別のフィールドに抽出することができます。
 
-この記事では、カスタム ログ形式を使用してデータ ソースを Azure Sentinel に接続する方法について説明します。 この方法を使用する、サポートされているデータ コネクタの詳細については、[データ コネクタのリファレンス](data-connectors-reference.md)記事を参照してください。
+この記事では、カスタム ログ形式を使用してデータ ソースを Microsoft Sentinel に接続する方法について説明します。 この方法を使用する、サポートされているデータ コネクタの詳細については、[データ コネクタのリファレンス](data-connectors-reference.md)記事を参照してください。
 
 [Azure Monitor におけるカスタム ログに関するドキュメント](../azure-monitor/agents/data-sources-custom-logs.md)を参照してください。
 
@@ -40,7 +40,7 @@ Syslog と同様に、カスタム ログ収集を構成するための手順は
 
 - アプリケーションのログ設定を構成します。
 
-- Azure Sentinel から Log Analytics エージェントを構成します。
+- Microsoft Sentinel から Log Analytics エージェントを構成します。
 
 ## <a name="install-the-log-analytics-agent"></a>Log Analytics エージェントをインストールする
 
@@ -49,11 +49,11 @@ Syslog と同様に、カスタム ログ収集を構成するための手順は
 > [!NOTE]
 > 一部のベンダーでは、Log Analytics エージェントをデバイスに直接インストールするのではなく、別のログ サーバーにインストールすることを推奨しています。 [データ コネクタのリファレンス](data-connectors-reference.md)ページの該当製品のセクション、または製品自体のドキュメントを参照してください。
 
-該当するコネクタのデータ コネクタ ページが Azure Sentinel にあるかどうかに応じて、以下の適切なタブを選択してください。
+該当するコネクタのデータ コネクタ ページが Microsoft Sentinel にあるかどうかに応じて、以下の適切なタブを選択してください。
 
 # <a name="from-a-specific-data-connector-page"></a>[特定のデータ コネクタ ページから](#tab/DCG)
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから、 **[データ コネクタ]** を選択します。
 
 1. デバイスの種類を選択してから、 **[コネクタ ページを開く]** を選択します。
 
@@ -68,7 +68,7 @@ Syslog と同様に、カスタム ログ収集を構成するための手順は
 
 # <a name="other-data-sources"></a>[その他のデータ ソース](#tab/CUS)
 
-1. Azure Sentinel のナビゲーション メニューで **[設定]** を選択し、 **[ワークスペースの設定]** タブを選択します。
+1. Microsoft Sentinel のナビゲーション メニューで **[設定]** を選択し、 **[ワークスペースの設定]** タブを選択します。
 
 1. ログを生成するデバイスにエージェントをインストールし、オンボードします。 Linux または Windows の内、該当する方を選択します。
 
@@ -81,15 +81,16 @@ Syslog と同様に、カスタム ログ収集を構成するための手順は
 
 ## <a name="configure-the-logs-to-be-collected"></a>収集するログを構成する
 
-多くのデバイスの種類には、Azure Sentinel の **[データ コネクタ]** ページに表示される独自のデータ コネクタがあります。 これらのコネクタの中には、Azure Sentinel でログ収集を適切に設定するために、特別な追加手順が必要なものがあります。 これらの手順には、Kusto 関数に基づくパーサーの実装が含まれる場合があります。 
+多くのデバイスの種類には、Microsoft Sentinel の **[データ コネクタ]** ページに表示される独自のデータ コネクタがあります。 これらのコネクタの中には、Microsoft Sentinel でログ収集を適切に設定するために、特別な追加手順が必要なものがあります。 これらの手順に、Kusto 関数に基づくパーサーの実装が含まれる場合があります。 
 
-ポータルにあるそれぞれのコネクタ ページ、および [Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのセクションには、Azure Sentinel で一覧表示されているすべてのコネクタに関する具体的な手順が表示されています。
+ポータルにあるそれぞれのコネクタ ページ、および [Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのセクションには、Microsoft Sentinel で一覧表示されているすべてのコネクタに関する具体的な手順が表示されています。
 
 製品が **[データ コネクタ]** ページに表示されていない場合は、デバイスのログ記録を構成する手順について、ベンダーのドキュメントを参照してください。
 
 ## <a name="configure-the-log-analytics-agent"></a>Log Analytics エージェントの構成
 
 1. コネクタ ページにある **[Open your workspace custom logs configuration]\(ワークスペースのカスタム ログの構成を開く\)** リンクをクリックします。
+
     または、Log Analytics ワークスペースのナビゲーション メニューから、 **[カスタム ログ]** を選択します。
 
 1. **[カスタム テーブル]** タブで、 **[カスタム ログの追加]** を選択します。
@@ -110,7 +111,7 @@ Syslog と同様に、カスタム ログ収集を構成するための手順は
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、カスタム ログの種類からデータを収集して Azure Sentinel に取り込む方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、カスタム ログの種類からデータを収集して Microsoft Sentinel に取り込む方法について説明しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
 - [ブックを使用](monitor-your-data.md)してデータを監視する。

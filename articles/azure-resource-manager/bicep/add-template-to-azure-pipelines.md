@@ -1,54 +1,54 @@
 ---
 title: Azure Pipelines と Bicep ファイルを使用した CI/CD
-description: Bicep ファイルを使用して、Azure Pipelines で継続的インテグレーションを構成する方法について説明します。 Azure CLI タスクを使用して Bicep ファイルをデプロイする方法を示します。
+description: このクイックスタートでは、Bicep ファイルを使用して、Azure Pipelines で継続的インテグレーションを構成する方法について説明します。 Azure CLI タスクを使用して Bicep ファイルをデプロイする方法を示します。
 author: mumian
-ms.topic: conceptual
+ms.topic: quickstart
 ms.author: jgao
-ms.date: 06/23/2021
-ms.openlocfilehash: 30ab8481456dd03f4ecee597c9626c07772bbe3a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/16/2021
+ms.openlocfilehash: dbca9d692c96d65fa172e9d810e224427c9f5bfc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131059758"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717020"
 ---
-# <a name="integrate-bicep-with-azure-pipelines"></a>Bicep を Azure Pipelines に統合する
+# <a name="quickstart-integrate-bicep-with-azure-pipelines"></a>クイックスタート: Bicep を Azure Pipelines に統合する
 
-Bicep ファイルを Azure Pipelines に統合して、継続的インテグレーションと継続的デプロイ (CI/CD) を実現できます。 この記事では、Azure CLI パイプライン タスクを使用して Bicep ファイルをデプロイする方法について説明します。
+このクイックスタートでは、継続的インテグレーションと継続的デリバリー (Ci/CD) のために Bicep ファイルを Azure Pipelines に統合する方法について説明します。
 
-## <a name="prepare-your-project"></a>プロジェクトを準備する
+Bicep ファイルをデプロイするために必要なパイプライン タスクの概要を簡単に示します。 パイプラインとプロジェクトの設定に関する詳細な手順が必要な場合は、**Microsoft Learn** の「[Bicep と Azure Pipelines を使用して Azure リソースをデプロイ](/learn/paths/bicep-azure-pipelines/)」を参照してください。
 
-この記事は、Bicep ファイルと Azure DevOps 組織でパイプラインを作成する準備ができていることを前提としています。 準備ができていることを確認する手順は次のとおりです。
+## <a name="prerequisites"></a>前提条件
 
-* Azure DevOps 組織があること。 ない場合は、[無料で作成](/azure/devops/pipelines/get-started/pipelines-sign-up)してください。 チームに Azure DevOps 組織が既にある場合は、使用する Azure DevOps プロジェクトの管理者であることを確認します。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-* Azure サブスクリプションへの[サービス接続](/azure/devops/pipelines/library/connect-to-azure)が構成済みであること。 パイプライン内のタスクは、サービス プリンシパルの ID で実行されます。 接続を作成する手順については、「[DevOps プロジェクトを作成する](../templates/deployment-tutorial-pipeline.md#create-a-devops-project)」を参照してください。
+Azure DevOps 組織が必要です。 ない場合は、[無料で作成](/azure/devops/pipelines/get-started/pipelines-sign-up)してください。 チームに Azure DevOps 組織が既にある場合は、使用する Azure DevOps プロジェクトの管理者であることを確認します。
 
-* プロジェクトのインフラストラクチャを定義する [Bicep ファイル](./quickstart-create-bicep-use-visual-studio-code.md)があること。
+Azure サブスクリプションへの[サービス接続](/azure/devops/pipelines/library/connect-to-azure)が構成済みである必要があります。 パイプライン内のタスクは、サービス プリンシパルの ID で実行されます。 接続を作成する手順については、「[DevOps プロジェクトを作成する](../templates/deployment-tutorial-pipeline.md#create-a-devops-project)」を参照してください。
+
+プロジェクトのインフラストラクチャを定義する [Bicep ファイル](./quickstart-create-bicep-use-visual-studio-code.md)が必要です。 このファイルはリポジトリにあります。
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 
-1. まだパイプラインを追加していない場合は、新しいパイプラインを作成する必要があります。 Azure DevOps 組織から、 **[パイプライン]** 、 **[新しいパイプライン]** を選択します。
+1. Azure DevOps 組織から、 **[パイプライン]** 、 **[新しいパイプライン]** を選択します。
 
    ![新しいパイプラインの追加](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. コードの格納場所を指定します。 次の図では、 **[Azure Repos Git]** が選択されています。
+1. コードの格納場所を指定します。
 
    ![コードのソースの選択](./media/add-template-to-azure-pipelines/select-source.png)
 
-1. そのソースから、プロジェクトのコードが含まれているリポジトリを選択します。
+1. プロジェクトのコードが含まれているリポジトリを選択します。
 
    ![リポジトリの選択](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. 作成するパイプラインの種類を選択します。 **[スタート パイプライン]** を選択できます。
+1. 作成するパイプラインの種類として **[スタート パイプライン]** を選びます。
 
    ![パイプラインの選択](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
-Azure PowerShell タスクまたはファイルのコピーとデプロイのタスクのいずれかを追加する準備ができました。
-
 ## <a name="azure-cli-task"></a>Azure CLI タスク
 
-次の YAML ファイルによってリソース グループが作成され、[Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli)を使用して Bicep ファイルがデプロイされます。
+スタート パイプラインを次の YAML に置き換えます。 これによりリソース グループが作成され、[Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli)を使用して Bicep ファイルがデプロイされます。
 
 ```yml
 trigger:
@@ -60,9 +60,9 @@ variables:
   vmImageName: 'ubuntu-latest'
 
   azureServiceConnection: '<your-connection-name>'
-  resourceGroupName: '<your-resource-group-name>'
+  resourceGroupName: 'exampleRG'
   location: '<your-resource-group-location>'
-  templateFile: './azuredeploy.bicep'
+  templateFile: './main.bicep'
 pool:
   vmImage: $(vmImageName)
 
@@ -80,13 +80,32 @@ steps:
 
 Azure CLI タスクでは、次の入力を受け取ります。
 
-* `azureSubscription`。作成したサービス接続の名前を指定します。  「[プロジェクトを準備する](#prepare-your-project)」を参照してください。
+* `azureSubscription`。作成したサービス接続の名前を指定します。  「[前提条件](#prerequisites)」を参照してください。
 * `scriptType`。**bash** を使用します。
 * `scriptLocation`。**inlineScript** または **scriptPath** を使用します。 **scriptPath** を指定する場合は、`scriptPath` パラメーターも指定する必要があります。
-* `inlineScript`。ご自分のスクリプト行を指定します。  このサンプルで提供されているスクリプトは、これにより *azuredeploy.bicep* という名前の Bicep ファイルがビルドされ、リポジトリのルートに存在します。
+* `inlineScript`。ご自分のスクリプト行を指定します。  サンプルで提供されているスクリプトは、*main.bicep* という名前の Bicep ファイルをデプロイします。
+
+**[保存]** を選択します。 ビルド パイプラインが自動的に実行されます。 ビルド パイプラインの概要に戻り、状態を監視します。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Azure リソースが不要になったら、Azure CLI または Azure PowerShell を使用してクイックスタートのリソース グループを削除します。
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+az group delete --name exampleRG
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name exampleRG
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure PipelinesでのBicepの使用の詳細と実践的なガイダンスについては、**Microsoft Learn** で[BicepとAzurePipeline を使用してAzureリソースをデプロイする](/learn/paths/bicep-azure-pipelines/)を参照してください。
-* パイプラインで What-If 操作を使用するには、「[Test ARM templates with What-If in a pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/)」 (パイプラインで What-If を使用して ARM テンプレートをテストする) を参照してください。
-* GitHub Actions で Bicep ファイルを使用する方法については、「[GitHub Actions を使用した Bicep ファイルのデプロイ](./deploy-github-actions.md)」を参照してください。
+> [!div class="nextstepaction"]
+> [GitHub Actions を使用したBicep ファイルのデプロイ](deploy-github-actions.md)

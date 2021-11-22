@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: how-to
 ms.date: 07/27/2021
 ms.author: danlep
-ms.openlocfilehash: 7bc73c3134d01dd88112dd1564b12ecfe5f710b6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fb27e1a96152885446da2e77e0901680affe3569
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639054"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494845"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>Azure API Management から Power Platform に API をエクスポートする 
 
@@ -43,6 +43,9 @@ Microsoft [Power Platform](https://powerplatform.microsoft.com) を使用する�
 コネクタが作成されたら、[Power Apps](https://make.powerapps.com) または [Power Automate](https://flow.microsoft.com) 環境に移動します。 **[データ] > [カスタム コネクタ]** の下に API が一覧表示されます。
 
 :::image type="content" source="media/export-api-power-platform/custom-connector-power-app.png" alt-text="Power Platform 内のカスタム コネクタ":::
+
+> [!NOTE]
+> PowerApps テスト コンソールから API を呼び出すには、API Management インスタンスで [CORS ポリシー](api-management-cross-domain-policies.md#CORS)に呼び出し元として "https://flow.microsoft.com" URL を追加する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Sentinel の検出機能 | Microsoft Docs
-description: Azure Sentinel の組み込みの検索クエリを使用して、データ内の問題を検出するための適切な質問を行うことができます。
+title: Microsoft Sentinel の検出機能 | Microsoft Docs
+description: Microsoft Sentinel の組み込みの検索クエリを使って、データ内の問題を検出するための適切な質問を行うことができます。
+services: sentinel
+documentationcenter: na
 author: yelevin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 88c0b2919b680feb7776e9de63566ad70d885dee
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 73927528d75d23c2276b3fca2a1e396fe076b90e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475317"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721045"
 ---
-# <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel で脅威を検出する
+# <a name="hunt-for-threats-with-microsoft-sentinel"></a>Microsoft Sentinel を使用して脅威を追求する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "131475317"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-セキュリティ アナリストや調査担当者は、セキュリティ上の脅威を事前に探したいと考えていますが、さまざまなシステムやセキュリティ アプライアンスによって、意味のあるイベントに解析してフィルター処理することが困難なデータが生成されています。 Azure Sentinel には、組織のデータ ソースにわたってセキュリティ上の脅威を検出するための、検出機能を強化した検索とクエリのツールが備わっています。 セキュリティ アプリやスケジュールされた分析ルールで検出されなかった新しい異常をセキュリティ アナリストが事前に探すときに役立つように、Azure Sentinel には検出クエリが組み込まれており、これを通じて、ネットワーク上で既に保有しているデータ内の問題を見つけるために適切な質問を行うことができます。 
+セキュリティ アナリストや調査担当者は、セキュリティ上の脅威を事前に探したいと考えていますが、さまざまなシステムやセキュリティ アプライアンスによって、意味のあるイベントに解析してフィルター処理することが困難なデータが生成されています。 Microsoft Sentinel には、組織のデータ ソースにわたってセキュリティ上の脅威を検出するための、検出機能を強化した検索とクエリのツールが備わっています。 セキュリティ アプリやスケジュールされた分析ルールで検出されなかった新しい異常をセキュリティ アナリストが事前に探すときに役立つように、Microsoft Sentinel には検出クエリが組み込まれており、これを通じて、ネットワーク上で既に保有しているデータ内の問題を見つけるために適切な質問を行うことができます。
 
 たとえば、ある組み込みクエリは、インフラストラクチャ上で実行される最もまれなプロセスに関するデータを提供します。 それらが実行されるたびに警告を受ける必要がないことも、それらがまったく無害である可能性もありますが、時々クエリを調べて、異常なことがないか確認できます。
 
@@ -46,26 +46,25 @@ ms.locfileid: "131475317"
 
 - **セキュリティ侵害後**: 侵害またはインシデントが発生した後で、今後同様のインシデントが発生するのを防ぐために、対象範囲と分析情報を必ず向上させるようにします。
 
-    - 既存のクエリを変更するか新しいクエリを作成し、セキュリティ侵害やインシデントから得た分析情報に基づいて早期検出を支援します。
+  - 既存のクエリを変更するか新しいクエリを作成し、セキュリティ侵害やインシデントから得た分析情報に基づいて早期検出を支援します。
 
-    - 可能性のある攻撃についての価値のある分析情報を提供するハンティング クエリを発見または作成した場合は、そのクエリに基づいてカスタム検出ルールを作成し、セキュリティ インシデント レスポンダーへのアラートとしてこれらの分析情報を示します。
+  - 可能性のある攻撃についての価値のある分析情報を提供するハンティング クエリを発見または作成した場合は、そのクエリに基づいてカスタム検出ルールを作成し、セキュリティ インシデント レスポンダーへのアラートとしてこれらの分析情報を示します。
 
-        クエリの結果を表示し、 **[新しいアラート ルール]**  >  **[Azure Sentinel アラートを生成する]** を選択します。 **[分析ルール ウィザード]** を使用して、ご自身のクエリに基づいて新しいルールを作成します。 詳細については、「[脅威を検出するためのカスタム分析ルールを作成する](detect-threats-custom.md)」を参照してください。
-
+    クエリの結果を表示し、 **[新しいアラート ルール]**  >  **[Microsoft Sentinel アラートを生成する]** を選びます。 **[分析ルール ウィザード]** を使用して、ご自身のクエリに基づいて新しいルールを作成します。 詳細については、「[脅威を検出するためのカスタム分析ルールを作成する](detect-threats-custom.md)」を参照してください。
 
 > [!TIP]
+>
 > - パブリック プレビューでは、Azure Data Explorer 内の格納データに対して、ハンティング クエリおよびライブストリーム クエリを作成することもできます。 詳細については、Azure Monitor のドキュメントで、[クロスリソース クエリ作成](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md)に関する詳細情報をご覧ください。
 >
-> - [Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries)などのコミュニティ リソースを使用して、追加のクエリとデータ ソースを検索します。
->
+> - [Microsoft Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries)などのコミュニティ リソースを使って、追加のクエリとデータ ソースを検索します。
 
 ## <a name="use-the-hunting-dashboard"></a>ハンティング ダッシュボードを使用する
 
-ハンティング ダッシュボードを使用すると、1 回選択するだけで、ご自身のクエリをすべて実行したり、特定のサブセットだけを実行したりできます。 Azure Sentinel ポータルで、 **[ハンティング]** を選択します。
+ハンティング ダッシュボードを使用すると、1 回選択するだけで、ご自身のクエリをすべて実行したり、特定のサブセットだけを実行したりできます。 Microsoft Sentinel ポータルで、 **[ハンティング]** を選びます。
 
 テーブルには、Microsoft のセキュリティ アナリスト チームが作成したすべてのクエリと、ご自身が作成または変更した追加クエリが一覧表示されます。 各クエリには、検出の対象と、クエリを実行するデータの種類に関する説明が示されます。 これらのクエリは、MITRE ATT&CK の **戦略** でグループ化されています。 右側のアイコンは、初期アクセス、永続化、侵入など、脅威の種類を分類しています。 MITRE ATT&CK **手法** が **[手法]** 列に示され、ハンティング クエリによって識別される特定の動作について説明しています。
 
-:::image type="content" source="media/hunting/hunting-start.png" alt-text="Azure Sentinel が検出を開始する" lightbox="media/hunting/hunting-start.png":::
+:::image type="content" source="media/hunting/hunting-start.png" alt-text="Microsoft Sentinel が検出を開始する" lightbox="media/hunting/hunting-start.png":::
 
 ハンティング ダッシュボードを使用して、結果の件数、急増、24 時間にわたる結果件数の変化を確認し、どこでハンティングを開始するかを特定します。 お気に入り、データ ソース、MITRE ATT&CK の戦術や手法、結果、結果の差分、または結果の差分の割合で、並べ替えたりフィルター処理したりすることができます。 引き続きデータ ソース接続が必要なクエリを確認し、それらのクエリを有効にする方法についての推奨事項を入手できます。
 
@@ -83,7 +82,6 @@ ms.locfileid: "131475317"
 | **基になるクエリを確認する**                     | 基になるクエリのクイック レビューは、クエリの詳細ウィンドウで実行します。 結果を表示するには、クエリ ウィンドウの下にある **[クエリ結果の表示]** リンク、またはウィンドウの下部にある **[結果の表示]** ボタンをクリックします。 クエリが **[ログ]** (Log Analytics) ブレードで開き、クエリの下でクエリの一致を確認できます。         |
 |     |         |
 
-
 ## <a name="create-a-custom-hunting-query"></a>カスタム ハンティング クエリを作成する
 
 クエリを作成または変更し、独自のクエリとして保存するか、同じテナントに属しているユーザーと共有します。
@@ -97,7 +95,7 @@ ms.locfileid: "131475317"
 1. すべての空フィールドに入力し、 **[作成]** を選択します。
 
     1. **(プレビュー)** エンティティ型、識別子、列を選択して、エンティティ マッピングを作成します。
-    
+
         :::image type="content" source="media/hunting/map-entity-types-hunting.png" alt-text="ハンティング クエリでのエンティティ型のマッピングのスクリーンショット。":::
 
     1. **(プレビュー)** MITRE ATT&CK の手法をハンティング クエリにマップするために、戦術、手法、サブ手法 (該当する場合) を選択します。
@@ -136,15 +134,14 @@ ms.locfileid: "131475317"
 
 - ご自身の結果内で、保持する行のチェックボックスをオンにし、 **[ブックマークの追加]** を選択します。 これにより、行の結果と結果を作成したクエリを含む、マークされた行ごとのレコード (ブックマーク) が作成されます。 各ブックマークには、独自のタグとメモを追加することができます。
 
-    - **(プレビュー)** カスタム クエリと同様に、複数のエンティティ型と識別子を抽出するエンティティ マッピング、およびを特定の戦術と手法を関連付ける MITRE ATT&CK マッピングを使用して、ブックマークをエンリッチできます。
-    - **(プレビュー)** ブックマークでは、既定で、ブックマークされた結果を生成したハンティング クエリと同じエンティティと MITRE ATT&CK 手法マッピングが使用されます。 
+  - **(プレビュー)** カスタム クエリと同様に、複数のエンティティ型と識別子を抽出するエンティティ マッピング、およびを特定の戦術と手法を関連付ける MITRE ATT&CK マッピングを使用して、ブックマークをエンリッチできます。
+  - **(プレビュー)** ブックマークでは、既定で、ブックマークされた結果を生成したハンティング クエリと同じエンティティと MITRE ATT&CK 手法マッピングが使用されます。 
 
 - メインの **[ハンティング]** ページの **[ブックマーク]** タブをクリックして、ブックマークされたすべての結果を確認します。 ブックマークにタグを追加して、フィルター処理用に分類します。 たとえば、攻撃活動を調査している場合は、キャンペーンのタグを作成し、そのタグを関連するブックマークに適用して、キャンペーンに基づくすべてのブックマークをフィルター処理できます。
 
 - ブックマークを選択し、詳細ウィンドウで **[調査]** をクリックして調査エクスペリエンスを開くことで、ブックマークした 1 つの検出結果を調査します。 一覧表示されているエンティティを直接選択して、そのエンティティの対応するエンティティ ページを表示することもできます。
 
     また、1 つ以上のブックマークからインシデントを作成することも、既存のインシデントに 1 つ以上のブックマークを追加することもできます。 使用するブックマークの左側のチェック ボックスをオンにして、 **[インシデント アクション]**  >  **[新しいインシデントの作成]** または **[既存のインシデントに追加]** を選択します。 他のものと同様に、インシデントをトリアージして調査します。
-
 
 > [!TIP]
 > ブックマークは、注目すべき重要なイベントを表します。調査を必要とするほど深刻なブックマークについては、インシデントにエスカレートする必要があります。 潜在的な根本原因、セキュリティ侵害のインジケーター、その他の注目すべきイベントなどは、ブックマークとして上げてください。
@@ -154,11 +151,11 @@ ms.locfileid: "131475317"
 
 ## <a name="use-notebooks-to-power-investigations"></a>ノートブックを使用して調査を支援する
 
-ハンティングと調査がより複雑になったら、Azure Sentinel ノートブックを使用して、機械学習、視覚化、データ分析を使用してアクティビティを強化します。
+ハンティングと調査がより複雑になったら、Microsoft Sentinel ノートブックを使って、機械学習、視覚化、データ分析を使ってアクティビティを強化します。
 
 ノートブックは、独自のカーネルを備えた一種の仮想サンドボックスを提供し、完全な調査を実行できます。 ノートブックには、生データ、そのデータに対して実行するコード、結果、それらの視覚化を含めることができます。 ノートブックを他のユーザーと共有して組織内で再利用できるように、ノートブックを保存します。
 
-ノートブックは、ハンティングや調査が大規模になり、簡単に記憶し、詳細を表示できなくなったときや、クエリや結果を保存する必要がある場合に役立ちます。 ノートブックの作成と共有を支援するために、Azure Sentinel では、オープン ソースの対話型開発およびデータ操作環境である [Jupyter Notebook](https://jupyter.org) が提供されており、Azure Sentinel **Notebook** ページに直接統合されています。
+ノートブックは、ハンティングや調査が大規模になり、簡単に記憶し、詳細を表示できなくなったときや、クエリや結果を保存する必要がある場合に役立ちます。 ノートブックの作成と共有を支援するために、Microsoft Sentinel では、オープン ソースの対話型開発およびデータ操作環境である [Jupyter Notebook](https://jupyter.org) が提供されており、Microsoft Sentinel **Notebook** ページに直接統合されています。
 
 詳細については、次を参照してください。
 
@@ -168,13 +165,13 @@ ms.locfileid: "131475317"
 - [Infosec Jupyter Book](https://infosecjupyterbook.com)
 - [Real Python チュートリアル](https://realpython.com)
 
-次の表では、Jupyter Notebook を使用して Azure Sentinel のプロセスを支援するいくつかの方法について説明します。
+次の表では、Jupyter Notebook を使って Microsoft Sentinel のプロセスを支援するいくつかの方法について説明します。
 
 |メソッド  |説明  |
 |---------|---------|
 |**データの永続性、再現性、バックトラッキング**     |  多くのクエリと結果セットを処理している場合は、調査で物事に行き詰まることがあります。 どのクエリと結果を保持するかと、有用な結果を 1 つのレポートに蓄積する方法を決定する必要があります。 <br><br> Jupyter Notebook を使用すると、調査を進める都度クエリとデータを保存し、変数を使用して異なる値または日付でクエリを再実行し、クエリを保存して今後の調査で再実行できます。       |
 |**スクリプトとプログラミング**     |    Jupyter Notebook を使用して、次のようなプログラミングをクエリに追加します。 <br><br>- [Kusto クエリ言語 (KQL)](/azure/kusto/query/) や SQL などの *宣言型* 言語では、1 つの複雑になる可能性があるステートメントでロジックをエンコードします。<br>- *手続き* 型プログラミング言語では、一連の手順でロジックを実行します。 <br><br>ロジックを複数のステップに分割すると、中間結果を表示およびデバッグし、クエリ言語では使用できない機能を追加し、後の処理手順で部分的な結果を再利用するのに役立つ場合があります。     |
-|**外部データへのリンク**     | Azure Sentinel テーブルにはほとんどのテレメトリとイベント データがありますが、Jupyter Notebook は、ネットワークまたはファイルからアクセスできる任意のデータにリンクできます。 Jupyter Notebook を使用すると、次のようなデータを含めることができます。 <br><br>- 位置情報データや脅威インテリジェンス ソースなど、所有していない外部サービスのデータ<br>- 人事部のデータベースや価値の高い資産の一覧など、組織内にのみ保存されている機密データ<br>- まだクラウドに移行していないデータ。        |
+|**外部データへのリンク**     | Microsoft Sentinel テーブルにはほとんどのテレメトリとイベント データがありますが、Jupyter Notebook は、ネットワークまたはファイルからアクセスできる任意のデータにリンクできます。 Jupyter Notebook を使用すると、次のようなデータを含めることができます。 <br><br>- 位置情報データや脅威インテリジェンス ソースなど、所有していない外部サービスのデータ<br>- 人事部のデータベースや価値の高い資産の一覧など、組織内にのみ保存されている機密データ<br>- まだクラウドに移行していないデータ。        |
 |**特化されたデータ処理、機械学習、視覚化ツール**     | Jupyter Notebook には、追加の視覚化、機械学習ライブラリ、データ処理と変換の機能が用意されています。 <br><br>たとえば、Jupyter Notebook は次の [Python](https://python.org) 機能と共に使用します。<br>- データ処理、クリーンアップ、エンジニアリングのための [pandas](https://pandas.pydata.org/)<br>視覚化のための - [Matplotlib](https://matplotlib.org)、[HoloViews](https://holoviews.org)、[Plotly](https://plot.ly)<br>高度な数値と科学的な処理のための - [NumPy](https://www.numpy.org) と [SciPy](https://www.scipy.org)<br>機械学習のための - [scikit-learn](https://scikit-learn.org/stable/index.html)<br>ディープ ラーニングのための - [TensorFlow](https://www.tensorflow.org/)、[PyTorch](https://pytorch.org)、[Keras](https://keras.io/)<br><br>**ヒント**: Jupyter Notebook では、複数の言語カーネルがサポートされています。 *マジック* を使用して、別の言語を使用して個々のセルを実行できるようにすることで、同じノートブック内に言語を混在させます。 たとえば、PowerShell スクリプトセルを使用してデータを取得し、Python でデータを処理し、JavaScript を使用して視覚化をレンダリングできます。        |
 |     |         |
 
@@ -182,7 +179,7 @@ ms.locfileid: "131475317"
 
 [Microsoft 脅威インテリジェンスセンター (MSTIC)](https://msrc-blog.microsoft.com/tag/mstic/) は、複数の Microsoft プラットフォームのセキュリティ検出を作成し、脅威の識別と調査を行う Microsoft のセキュリティ アナリストとエンジニアのチームです。
 
-MSTIC は、Jupyter Notebook で情報セキュリティの調査とハンティングを行うためのライブラリである [MSTICPy](https://github.com/Microsoft/msticpy) を構築します。 MSTICPy には、ノートブックの作成をスピートアップし、ユーザーが Azure Sentinel でノートブックを簡単に読み取れることを目的とした再利用可能な機能が用意されています。
+MSTIC は、Jupyter Notebook で情報セキュリティの調査とハンティングを行うためのライブラリである [MSTICPy](https://github.com/Microsoft/msticpy) を構築します。 MSTICPy には、ノートブックの作成を高速化し、ユーザーが Microsoft Sentinel でノートブックを簡単に読めるようにすることを目的とした再利用可能な機能が用意されています。
 
 たとえば、MSTICPy では次のことが実現できます。
 
@@ -197,17 +194,16 @@ MSTICPy には、クエリ時間の境界の設定、リストからの項目の
 詳細については、次を参照してください。
 
 - [MSTICPy のドキュメント](https://msticpy.readthedocs.io/en/latest/)
-- [チュートリアル: Azure Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)
-- [Azure Sentinel での Jupyter Notebook と MSTICPy の詳細な構成](notebooks-msticpy-advanced.md)
-
+- [チュートリアル: Microsoft Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)
+- [Microsoft Sentinel での Jupyter Notebook と MSTICPy の詳細な構成](notebooks-msticpy-advanced.md)
 
 ## <a name="useful-operators-and-functions"></a>便利な演算子と関数
 
 ハンティング クエリは、[Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/) で構築されています。これは、ハンティングを次のレベルに引き上げるために必要なパワーと柔軟性を備えた、IntelliSense 言語を使用した強力なクエリ言語です。
 
-これは、分析ルールや Azure Sentinel の他の場所のクエリで使用されている言語と同じものです。 詳細については、[クエリ言語リファレンス](../azure-monitor/logs/get-started-queries.md)をご覧ください。
+これは、分析ルールや Microsoft Sentinel の他の場所のクエリで使われている言語と同じものです。 詳細については、[クエリ言語リファレンス](../azure-monitor/logs/get-started-queries.md)をご覧ください。
 
-次の演算子は、Azure Sentinel ハンティング クエリ内で特に役立ちます。
+次の演算子は、Microsoft Sentinel ハンティング クエリ内で特に役立ちます。
 
 - **where** - テーブルにフィルターが適用され、述語を満たす行のサブセットに絞り込まれます。
 
@@ -229,11 +225,11 @@ MSTICPy には、クエリ時間の境界の設定、リストからの項目の
 
 - **find** - テーブルのセットで述語が一致する行を検索します。
 
-- **adx () (プレビュー)** - この関数は、Azure Sentinel ハンティング エクスペリエンスと Log Analytics から、Azure Data Explorer データ ソースのクロスリソース クエリを実行します。 詳細については、「[Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md)」をご覧ください。
+- **adx () (プレビュー)** - この関数は、Microsoft Sentinel ハンティング エクスペリエンスと Log Analytics から、Azure Data Explorer データ ソースのクロスリソース クエリを実行します。 詳細については、「[Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Sentinel で検出調査を実行する方法を学習しました。 
+この記事では、Microsoft Sentinel で検出調査を実行する方法を学習しました。
 
 詳細については、次を参照してください。
 

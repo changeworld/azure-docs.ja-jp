@@ -1,32 +1,32 @@
 ---
-title: Azure Sentinel でインシデント処理を自動化する |Microsoft Docs
+title: Microsoft Sentinel でインシデント処理を自動化する |Microsoft Docs
 description: この記事では、自動化ルールを使用してインシデント処理を自動化する方法について説明します。これにより、セキュリティの脅威に対して SOC の効率と有効性を最大限に高めることができます。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2d618dacc14c188c188f92be41de3fba20eabe38
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 52f716bf8a5a4457f1f61545e079c17f16c708c3
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014222"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522158"
 ---
-# <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>自動化ルールで Azure Sentinel でのインシデント処理を自動化する
+# <a name="automate-incident-handling-in-microsoft-sentinel-with-automation-rules"></a>オートメーション ルールにより Microsoft Sentinel でのインシデント処理を自動化する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、Azure Sentinel 自動化ルールの概要と、それらを使用してセキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作を実装する方法について説明します。これにより、SOC の有効性が向上し、時間とリソースを節約できます。
+この記事では、Microsoft Sentinel オートメーション ルールの概要と、それらを使用してセキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作を実装する方法について説明します。これにより、SOC の有効性が向上し、時間とリソースを節約できます。
 
 > [!IMPORTANT]
 >
@@ -34,7 +34,7 @@ ms.locfileid: "131014222"
 
 ## <a name="what-are-automation-rules"></a>自動化ルールとは
 
-オートメーション ルールとは、Azure Sentinel における新しい概念です。 この機能により、ユーザーはインシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 自動化ルールにより、Azure Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。
+オートメーション ルールとは、Microsoft Sentinel における新しい概念です。 この機能により、ユーザーはインシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 オートメーション ルールにより、Microsoft Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。
 
 ## <a name="components"></a>コンポーネント
 
@@ -44,7 +44,7 @@ ms.locfileid: "131014222"
 
 自動化ルールは、インシデントの作成によってトリガーされます。 
 
-確認する – [Azure Sentinel で組み込みの分析ルールを使用して脅威を検出する](detect-threats-built-in.md)のチュートリアルで説明されているように、インシデントは、複数の種類の分析ルールによってアラートから作成されます。
+確認する – [Microsoft Sentinel で組み込みの分析ルールを使用して脅威を検出する](detect-threats-built-in.md)のチュートリアルで説明されているように、インシデントは、複数の種類の分析ルールによってアラートから作成されます。
 
 ### <a name="conditions"></a>条件
 
@@ -84,14 +84,14 @@ ms.locfileid: "131014222"
 
 ### <a name="trigger-playbooks-for-microsoft-providers"></a>Microsoft プロバイダーのプレイブックをトリガーする
 
-自動化ルールは、アラートから作成されたインシデントにこれらのルールを適用することによって、Microsoft セキュリティ アラートの処理を自動化する方法を提供します。 自動化ルールでは、プレイブックを呼び出すことができ ([特別なアクセス許可が必要](#permissions-for-automation-rules-to-run-playbooks))、アラートやエンティティなどのすべての詳細情報を含むインシデントをそれらに渡すことができます。 一般に、Azure Sentinel のベスト プラクティスでは、セキュリティ操作の焦点としてインシデント キューを使用します。
+自動化ルールは、アラートから作成されたインシデントにこれらのルールを適用することによって、Microsoft セキュリティ アラートの処理を自動化する方法を提供します。 自動化ルールでは、プレイブックを呼び出すことができ ([特別なアクセス許可が必要](#permissions-for-automation-rules-to-run-playbooks))、アラートやエンティティなどのすべての詳細情報を含むインシデントをそれらに渡すことができます。 一般に、Microsoft Sentinel のベスト プラクティスでは、セキュリティ操作の中心としてインシデント キューを使用します。
 
 Microsoft セキュリティ アラートには、次のものが含まれます。
 
-- Microsoft Cloud App Security (MCAS)
+- Microsoft Defender for Cloud Apps
 - Azure AD Identity Protection
-- Azure Defender (ASC)
-- Defender for IoT (旧称 ASC for IoT)
+- Microsoft Defender for Cloud
+- Defender for IoT (旧 Azure Security Center for IoT)
 - Microsoft Defender for Office 365 (旧称 Office 365 ATP)
 - Microsoft Defender for Endpoint (旧称 MDATP)
 - Microsoft Defender for Identity (旧称 Azure ATP)
@@ -135,27 +135,27 @@ Microsoft セキュリティ アラートには、次のものが含まれます
 
 ### <a name="permissions-for-automation-rules-to-run-playbooks"></a>プレイブックを実行するための自動化ルールへのアクセス許可
 
-Azure Sentinel 自動化ルールでプレイブックを実行すると、このアクションに対して特別に承認された特別な Azure Sentinel サービス アカウントが使用されます。 (ユーザー アカウントではなく) このアカウントを使用すると、サービスのセキュリティ レベルが向上します。
+Microsoft Sentinel オートメーション ルールでプレイブックを実行すると、このアクションに対して特別に承認された特別な Microsoft Sentinel サービス アカウントが使用されます。 (ユーザー アカウントではなく) このアカウントを使用すると、サービスのセキュリティ レベルが向上します。
 
 自動化ルールでプレイブックを実行するには、このアカウントに、プレイブックが存在するリソース グループに対する明示的なアクセス許可が付与されている必要があります。 その時点で、すべての自動化ルールでそのリソース グループ内のすべてのプレイブックを実行できるようになります。
 
-自動化ルールを構成し、 **[プレイブックの実行]** アクションを追加すると、プレイブックのドロップダウン リストが表示されます。 Azure Sentinel がアクセス許可を持たないプレイブックは、使用不可として (「淡色表示」で) 表示されます。 **[プレイブックのアクセス許可の管理]** リンクを選択すると、Azure Sentinel のアクセス許可を、プレイブックのリソース グループにすぐに付与できます。
+自動化ルールを構成し、 **[プレイブックの実行]** アクションを追加すると、プレイブックのドロップダウン リストが表示されます。 Microsoft Sentinel がアクセス許可を持たないプレイブックは、使用不可として (「淡色表示」で) 表示されます。 **[プレイブックのアクセス許可の管理]** リンクを選択すると、Microsoft Sentinel のアクセス許可を、プレイブックのリソース グループにすぐに付与できます。
 
 #### <a name="permissions-in-a-multi-tenant-architecture"></a>マルチテナント アーキテクチャにおけるアクセス許可
 
 自動化ルールでは、クロスワークスペースおよび[マルチテナント デプロイ](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse)が完全にサポートされています (マルチテナントの場合は、[Azure Lighthouse](../lighthouse/index.yml) を使用します)。
 
-そのため、Azure Sentinel デプロイでマルチテナント アーキテクチャを使用している場合、1 つのテナントに自動化ルールを実行して、別のテナントに存在するプレイブックを実行できます。ただし、プレイブックを実行するための Sentinel は、自動化ルールが定義されているテナントではなく、プレイブックが存在するテナントで定義される必要があります。
+そのため、Microsoft Sentinel デプロイでマルチテナント アーキテクチャを使用している場合、1 つのテナントにオートメーション ルールを実行して、別のテナントに存在するプレイブックを実行できます。ただし、プレイブックを実行するための Sentinel は、オートメーション ルールが定義されているテナントではなく、プレイブックが存在するテナントで定義される必要があります。
 
-顧客テナント内でサービス プロバイダー テナントによって Azure Sentinel ワークスペースが管理される、マネージド セキュリティ サービス プロバイダー (MSSP) の特殊なケースでは、注意が必要なシナリオが 2 つあります。
+顧客テナント内でサービス プロバイダー テナントによって Microsoft Sentinel ワークスペースが管理される、マネージド セキュリティ サービス プロバイダー (MSSP) の特殊なケースでは、注意が必要なシナリオが 2 つあります。
 
 - **顧客テナント内に作成された自動化ルールが、サービス プロバイダー テナント内に配置されているプレイブックを実行するように構成されている。** 
 
-    このアプローチは、通常、プレイブック内の知的所有権を保護するために使用されます。 このシナリオは、特に何もしなくても機能します。 自動化ルール内でプレイブック アクションを定義しているとき、( **[プレイブックのアクセス許可の管理]** ウィンドウを使用して) プレイブックが配置されている関連リソース グループに対して Azure Sentinel アクセス許可を付与する段階になると、サービス プロバイダー テナントに属するリソース グループが表示されるので、ここから選択できます。 [プロセス全体については、こちらをご覧ください](tutorial-respond-threats-playbook.md#respond-to-incidents)。
+    このアプローチは、通常、プレイブック内の知的所有権を保護するために使用されます。 このシナリオは、特に何もしなくても機能します。 オートメーション ルール内でプレイブック アクションを定義しているとき、( **[プレイブックのアクセス許可の管理]** ウィンドウを使用して) プレイブックが配置されている関連リソース グループに対して Microsoft Sentinel アクセス許可を付与する段階になると、サービス プロバイダー テナントに属するリソース グループが表示されるので、ここから選択できます。 [プロセス全体については、こちらをご覧ください](tutorial-respond-threats-playbook.md#respond-to-incidents)。
 
 - **(サービス プロバイダー テナントへのサインイン中に) 顧客ワークスペース内に作成された自動化ルールが、顧客テナント内に配置されているプレイブックを実行するように構成されている**。
 
-    この構成は、知的所有権を保護する必要がない場合に使用されます。 このシナリオを機能させるには、プレイブックを実行するためのアクセス許可が、**両方のテナント** 内の Azure Sentinel に付与されている必要があります。 顧客テナント内では、上記のシナリオと同様、_ *[プレイブックのアクセス許可の管理]* * ウィンドウ内でそれらを付与します。 サービス プロバイダー テナント内で関連するアクセス許可を付与するには、プレイブックが存在するリソース グループに対して、**Azure Sentinel Automation 共同作成者** ロールを使用して、**Azure Security Insights** アプリへのアクセス権を付与する追加の Azure Lighthouse 委任を追加する必要があります。
+    この構成は、知的所有権を保護する必要がない場合に使用されます。 このシナリオが機能するためには、プレイブックを実行するためのアクセス許可が、**両方のテナント** 内の Microsoft Sentinel に付与されている必要があります。 顧客テナント内では、上記のシナリオと同様、_ *[プレイブックのアクセス許可の管理]* * ウィンドウ内でそれらを付与します。 サービス プロバイダー テナント内で関連するアクセス許可を付与するには、プレイブックが存在するリソース グループに対して、**Microsoft Sentinel Automation 共同作成者** ロールを使用して、**Azure Security Insights** アプリへのアクセス権を付与する追加の Azure Lighthouse 委任を追加する必要があります。
 
     シナリオは次のようになります。
 
@@ -165,7 +165,7 @@ Azure Sentinel 自動化ルールでプレイブックを実行すると、こ�
 
 ## <a name="creating-and-managing-automation-rules"></a>自動化ルールの作成と管理
 
-特定のニーズやユース ケースに応じて、Azure Sentinel エクスペリエンスのさまざまなポイントから自動化ルールを作成および管理できます。
+特定のニーズやユース ケースに応じて、Microsoft Sentinel エクスペリエンスのさまざまなポイントからオートメーション ルールを作成および管理できます。
 
 - **自動化ブレード**
 
@@ -200,7 +200,7 @@ SecurityIncident
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、自動化ルールを使用して Azure Sentinel インシデント キューを管理し、いくつかの基本的なインシデント処理自動化を実装する方法について説明しました。
+このドキュメントでは、オートメーション ルールを使用して Microsoft Sentinel インシデント キューを管理し、いくつかの基本的なインシデント処理の自動化を実装する方法について説明しました。
 
-- 高度な自動化オプションの詳細については、「 [Azure Sentinel でのプレイブックを使用した脅威の応答の自動化](automate-responses-with-playbooks.md)」を参照してください。
-- オートメーション ルールとプレイブックを実装する方法については、「[チュートリアル: Azure Sentinel での脅威応答の自動化」を](tutorial-respond-threats-playbook.md)参照してください。
+- 高度な自動化オプションの詳細については、「[Microsoft Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)」を参照してください。
+- オートメーション ルールとプレイブックを実装する方法については、[プレイブックを使用して Microsoft Sentinel で脅威への対応を自動化する方法のチュートリアル](tutorial-respond-threats-playbook.md)に関するページを参照してください。

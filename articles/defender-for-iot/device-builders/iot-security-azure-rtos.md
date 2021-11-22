@@ -2,20 +2,19 @@
 title: Azure RTOS 用の Defender-IoT-micro-agent の概要
 description: Azure RTOS 用の Defender-IoT-micro-agent のサポートと、Microsoft Defender for IoT の一部としての実装について説明します。
 ms.topic: conceptual
-ms.date: 11/09/2021
-ms.openlocfilehash: 5bb2ed36d40b5ae92aa41303eb53d995c410e67d
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.date: 11/14/2021
+ms.openlocfilehash: 138c08e510bbfe66cb52460c96ba70764cd3ce20
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132278913"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487152"
 ---
 # <a name="overview-defender-for-iot-defender-iot-micro-agent-for-azure-rtos"></a>概要: Azure RTOS 用の Defender for IoT Defender-IoT-micro-agent
 
 Microsoft Defender for IoT マイクロ モジュールでは、Azure RTOS を使用するデバイス向けの包括的なセキュリティ ソリューションが提供されます。 リアルタイム オペレーティング システム (RTOS) デバイスに関する一般的な脅威と潜在的な悪意のあるアクティビティへの対応が提供されます。 現在、Azure RTOS には Azure IoT Defender-IoT-micro-agent が組み込みで付属しています。
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="Defender for IoT Azure RTOS の図示。":::
-
 
 Azure RTOS 用のマイクロ モジュールには、次の機能があります。
 
@@ -37,7 +36,7 @@ Defender for IoT によって提供される推奨インフラストラクチャ
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Azure RTOS デバイスの保護を開始する
 
-Azure RTOS 用の Defender-IoT-micro-agent は、デバイス用の無料ダウンロードとして提供されています。 Defender for IoT クラウド サービスは、Azure サブスクリプションごとに 30 日間の試用版で利用できます。 開始するには、[for Azure RTOS 用の Defender-IoT-micro-agent](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/device-builders/iot-security-azure-rtos.md) をダウンロードします。 
+Azure RTOS 用の Defender-IoT-micro-agent は、デバイス用の無料ダウンロードとして提供されています。 Defender for IoT クラウド サービスは、Azure サブスクリプションごとに 30 日間の試用版で利用できます。 開始するには、[for Azure RTOS 用の Defender-IoT-micro-agent](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/device-builders/iot-security-azure-rtos.md) をダウンロードします。
 
 ## <a name="next-steps"></a>次のステップ
 

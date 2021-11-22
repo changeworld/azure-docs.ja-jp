@@ -6,21 +6,19 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/27/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3dbeae805c28b9cfbfe7871b49f021a1d3ad19c2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c9c606390a6a0f1831728bc71d50e7074ba8cde4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023160"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720865"
 ---
 # <a name="tutorial-investigate-incidents-with-ueba-data"></a>チュートリアル: UEBA データを使用したインシデントの調査
 
@@ -34,11 +32,11 @@ ms.locfileid: "131023160"
 >
 
 > [!NOTE]
-> このチュートリアルでは、上位の顧客タスク (UEBA データを使用した調査) のシナリオベースの手順について説明します。 詳細については、「[Azure Sentinel でインシデントを調査する](investigate-cases.md)」を参照してください。
+> このチュートリアルでは、上位の顧客タスク (UEBA データを使用した調査) のシナリオベースの手順について説明します。 詳細については、「[Microsoft Azure Sentinel でインシデントを調査する](investigate-cases.md)」を参照してください。
 >
 ## <a name="prerequisites"></a>前提条件
 
-調査時に UEBA データを使用する前に、[Azure Sentinel で [ユーザー エンティティ行動分析 (UEBA)] を有効にする](enable-entity-behavior-analytics.md)必要があります。
+調査時に UEBA データを使用する前に、[Microsoft Azure Sentinel で [ユーザー/エンティティ行動分析 (UEBA)] を有効にする](enable-entity-behavior-analytics.md)必要があります。
 
 UEBA を有効にしてから約 1 週間待ってから、マシン パワーを利用した分析情報の検索を開始してください。
 
@@ -46,7 +44,7 @@ UEBA を有効にしてから約 1 週間待ってから、マシン パワー�
 
 詳細な調査を行う手がかりを得るため、ユーザー アクティビティについて調べる定期的なプロアクティブ検索を実行することをお勧めします。
 
-Azure Sentinel の[ユーザーおよびエンティティ行動分析ブック](identify-threats-with-entity-behavior-analytics.md#hunting-queries-and-exploration-queries)を使用し、次のようなデータに対してクエリを実行できます。
+Microsoft Azure Sentinel の[ユーザー/エンティティ行動分析ブック](identify-threats-with-entity-behavior-analytics.md#hunting-queries-and-exploration-queries)を使用し、次のようなデータに対してクエリを実行できます。
 
 - **危険度の高い上位のユーザー** (異常または付随するインシデントに関係)
 - **特定のユーザーに関するデータ**。対象が実際に侵害されたかどうか、またはユーザーのプロファイルから逸脱したアクションによって内部関係者による脅威が発生したかどうかを判断します。
@@ -76,7 +74,7 @@ Azure Sentinel の[ユーザーおよびエンティティ行動分析ブック]
 
 調査でキャプチャされたインシデントが擬陽性であることがあります。
 
-擬陽性の一般的な例として、あるユーザーが同じ時間帯にニューヨークとロンドンの両方からアプリケーションまたはポータルにサインインしたなど、不可能な移動アクティビティが検出された場合があります。 Azure Sentinel では不可能な移動を異常として警告されたものの、そのユーザーについて調査すると、ユーザーが実際にいた場所とは別の場所で VPN が使用されていたことが判明することがあります。
+擬陽性の一般的な例として、あるユーザーが同じ時間帯にニューヨークとロンドンの両方からアプリケーションまたはポータルにサインインしたなど、不可能な移動アクティビティが検出された場合があります。 Microsoft Azure Sentinel では不可能な移動を異常として警告されたものの、そのユーザーについて調査すると、ユーザーが実際にいた場所とは別の場所で VPN が使用されていたことが判明することがあります。
 
 ### <a name="analyze-a-false-positive"></a>擬陽性を分析する
 
@@ -89,9 +87,9 @@ Azure Sentinel の[ユーザーおよびエンティティ行動分析ブック]
 ユーザー エンティティ ページは、[[インシデント] ページ](investigate-cases.md#how-to-investigate-incidents)自体と[調査グラフ](investigate-cases.md#use-the-investigation-graph-to-deep-dive)からもリンクされています。
 
 > [!TIP]
-> インシデントに関連付けられている特定のユーザーのユーザー エンティティ ページでデータを確認した後、Azure Sentinel の **[ハンティング]** 領域にアクセスして、ユーザーのピアがいつもは同じ場所から接続しているかどうかも把握できます。 そうするならば、これらの情報によって、擬陽性について、より明確な根拠に基づいて判断を下せます。
+> インシデントに関連付けられている特定のユーザーのユーザー エンティティ ページでデータを確認した後、Microsoft Azure Sentinel の **[ハンティング]** 領域にアクセスして、ユーザーのピアがいつもは同じ場所から接続しているかどうかも把握できます。 そうするならば、これらの情報によって、擬陽性について、より明確な根拠に基づいて判断を下せます。
 >
-> **[ハンティング]** 領域で、**異常な地理的な場所でのログオン** に関するクエリを実行します。 詳細については、「[Azure Sentinel で脅威を検出する](hunting.md)」を参照してください。
+> **[ハンティング]** 領域で、**異常な地理的な場所でのログオン** に関するクエリを実行します。 詳細については、「[Microsoft Azure Sentinel で脅威を検出する](hunting.md)」を参照してください。
 >
 
 ### <a name="embed-identityinfo-data-in-your-analytics-rules-public-preview"></a>分析ルールに IdentityInfo データを埋め込む (パブリック プレビュー)
@@ -102,7 +100,7 @@ Azure Sentinel の[ユーザーおよびエンティティ行動分析ブック]
 
 次に例を示します。
 
-- **IT** 部門外のユーザーがサーバーにアクセスした場合にトリガーされるアラートで、セキュリティ イベントを **IdentityInfo** テーブルに関連付けるには:
+- **IT** 部門外の誰かがサーバーにアクセスした場合にトリガーされるアラートで、セキュリティ イベントを **IdentityInfo** テーブルに関連付けるには:
 
     ```kusto
     SecurityEvent
@@ -151,7 +149,7 @@ Azure Sentinel の[ユーザーおよびエンティティ行動分析ブック]
 
 ## <a name="url-detonation-public-preview"></a>zURL デトネーション (パブリック プレビュー)
 
-Azure Sentinel に取り込まれたログに URL がある場合、これらの URL はトリアージ プロセスを加速するために自動的にデトネーションされます。 
+Microsoft Azure Sentinel に取り込まれたログに URL がある場合、これらの URL はトリアージ プロセスを加速するために自動的にデトネーションされます。 
 
 調査グラフには、デトネーションされた URL のノードと、次の詳細が含まれています。
 
@@ -166,14 +164,14 @@ Azure Sentinel に取り込まれたログに URL がある場合、これらの
 > [!TIP]
 > ログに URL が表示されていない場合は、セキュリティで保護された Web ゲートウェイ、Web プロキシ、ファイアウォール、またはレガシ IDS/IPS に対して URL ログ (脅威ログとも呼ばれる) が有効になっていることを確認します。
 >
-> さらに調査するために、カスタム ログを作成して、関心のある特定の URL を Azure Sentinel にチャネル化することもできます。
+> さらに調査するために、カスタム ログを作成して、関心のある特定の URL を Microsoft Azure Sentinel にチャネル化することもできます。
 >
 
 ## <a name="next-steps"></a>次のステップ
 
 UEBA、調査、ハンティングの詳細については、以下をご覧ください。
 
-- [Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する](identify-threats-with-entity-behavior-analytics.md)
-- [Azure Sentinel UEBA エンリッチメント リファレンス](ueba-enrichments.md)
-- [チュートリアル:Azure Sentinel でインシデントを調査する](investigate-cases.md)
-- [Azure Sentinel で脅威を検出する](hunting.md)
+- [Microsoft Azure Sentinel のユーザー/エンティティ行動分析 (UEBA) を使用して高度な脅威を特定する](identify-threats-with-entity-behavior-analytics.md)
+- [Microsoft Azure Sentinel UEBA エンリッチメント リファレンス](ueba-enrichments.md)
+- [チュートリアル: Microsoft Azure Sentinel でインシデントを調査する](investigate-cases.md)
+- [Microsoft Sentinel を使用して脅威を追求する](hunting.md)

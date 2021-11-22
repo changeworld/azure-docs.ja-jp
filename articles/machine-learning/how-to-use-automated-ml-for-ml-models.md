@@ -8,15 +8,15 @@ ms.subservice: automl
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 10/21/2021
+ms.date: 11/15/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: d7bf32faabd6b0a9d2037ad5599a5b2cceb70053
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d4c4188a04db444a153577ead82d79f32c9b137d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556257"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518265"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>スタジオ UI を使用してコード不要の自動 ML トレーニングを設定する 
 
@@ -122,7 +122,6 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
     
         ディープ ラーニングが有効になっている場合、検証は _train_validation split_ に制限されます。 [検証オプションの詳細を確認してください](how-to-configure-cross-validation-data-splits.md)。
 
-
     1. **予測** のためには、以下が可能です。 
     
         1. ディープ ラーニングを有効にします。
@@ -139,13 +138,32 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
     最適なモデルの説明 | 推奨される最適なモデルの説明を表示するために、選択して有効または無効にします。 <br> この機能は、[特定の予測アルゴリズム](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)では現在使用できません。 
     Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。 <br><br> 許可するアルゴリズムは、[SDK 実験](how-to-configure-auto-train.md#supported-models)でのみ使用できます。 <br> [各タスクの種類でサポートされているモデル](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels)を参照してください。
     終了条件| これらの基準のどれかが満たされると、トレーニング ジョブが終了します。 <br> *トレーニング ジョブ時間 (時間単位)* :トレーニング ジョブを実行できる時間の長さ。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。
-    検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 <br> [クロス検証の詳細については、こちらを参照してください](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>予測では、k 分割交差検証のみがサポートされます。
     コンカレンシー| *コンカレント イテレーションの最大数*:トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。 自動 ML による[クラスターでの複数回の子実行](how-to-configure-auto-train.md#multiple-child-runs-on-clusters)の方法に関する詳細を説明します。
 
 1. (任意) 特徴量化の設定を表示する: **追加の構成設定** フォームで **自動を特徴量化** を有効にすることを選択した場合、既定の特徴量化手法が適用されます。 **特徴量化の表示設定** でこれらの既定値を変更し、それに応じてカスタマイズすることができます。 [特徴量化をカスタマイズする](#customize-featurization)方法をご覧ください。 
 
     ![[特徴量化設定の表示] が強調表示された [タスクの種類を選択] ダイアログ ボックスを示すスクリーンショット。](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
+
+1. **[[Optional] Validate and test]\([省略可能] 検証とテスト\)** フォームで、次の操作を行うことができます。 
+
+    1. トレーニング ジョブに使用する検証の種類を指定します。 [クロス検証の詳細については、こちらを参照してください](how-to-configure-cross-validation-data-splits.md#prerequisites)。 
+    
+        1. 予測タスクでは、k 分割交差検証のみがサポートされます。
+    
+    1. テスト データセット (プレビュー) を指定して、実験の最後に自動 ML によって生成される推奨モデルを評価します。 テスト データを指定すると、実験の最後にテストの実行が自動的にトリガーされます。 このテストの実行は、自動 ML によって推奨された最適なモデルでのみ実行されます。 [リモート テスト実行の結果](#view-remote-test-run-results-preview)を取得する方法について学習します。
+    
+        >[!IMPORTANT]
+        > 生成されたモデルを評価するためのテスト データセットの提供は、プレビュー機能です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+
+        1. テスト データは、推奨モデルのテストの実行結果に偏りが出ないように、トレーニングと検証とは別のものと見なされます。 [モデル検証中のバイアスの詳細について確認してください](concept-automated-ml.md#training-validation-and-test-data)。
+        1. 独自のテスト データセットを指定するか、トレーニング データセットの割合を使用することを選択できます。          
+        1. テスト データセットのスキーマは、トレーニング データセットと一致する必要があります。 ターゲット列は省略可能ですが、ターゲット列が示されていない場合、テスト メトリックは計算されません。
+        1. テスト データセットは、トレーニング データセットまたは検証データセットと同じにすべきではありません。
+        1. 予測実行では、トレーニングとテスト分割はサポートされていません。
+        
+        ![検証データとテスト データを選択するフォームを示すスクリーンショット](media/how-to-use-automated-ml-for-ml-models/validate-test-form.png)
+        
 ## <a name="customize-featurization"></a>特徴量化をカスタマイズする
 
 **特徴量化** フォームでは、自動特徴量化を有効または無効にしたり、実験の自動特徴量化設定をカスタマイズしたりできます。 このフォームを開くには、「[実験を作成して実行する](#create-and-run-experiment)」セクションのステップ 10 を参照してください。 
@@ -192,6 +210,43 @@ Included | トレーニングに含める列を指定します。
 
 ![データの変換](./media/how-to-use-automated-ml-for-ml-models/data-transformation.png)
 
+## <a name="view-remote-test-run-results-preview"></a>リモート テストの実行結果を表示する (プレビュー)
+
+テスト データセットを指定した場合、または実験のセットアップ中にトレーニングまたはテスト分割を選択した場合、 **[Validate and test]\(検証とテスト\)** フォームで、自動 ML では、既定で推奨されるモデルを自動的にテストします。 その結果、自動 ML によりテスト メトリックが計算され、推奨されるモデルの品質とその予測が決定されます。 
+
+>[!IMPORTANT]
+> 生成されたモデルを評価するためにテスト データセットを使ってモデルをテストする機能はプレビュー段階です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+
+推奨されるモデルのテストの実行メトリックを表示するには、次のようにします。
+ 
+1. **[モデル]** ページに移動し、最適なモデルを選択します。 
+1. **[テスト結果 (プレビュー)]** タブを選択します。 
+1. 目的の実行を選択し、 **[メトリック]** タブを表示します。![自動的にテストされる、推奨モデルの [テスト結果] タブ](./media/how-to-use-automated-ml-for-ml-models/test-best-model-results.png)
+    
+テスト メトリックの計算に使用されるテスト予測を表示するには、次のようにします。 
+
+1. ページの下部に移動し、 **[出力データセット]** の下にあるリンクを選択して、データセットを開きます。 
+1. **[データセット]** ページで、 **[探索]** タブを選択して、テストの実行からの予測を表示します。
+    1. または、予測ファイルを **[出力とログ]** タブから表示またはダウンロードすることもできます。**Predictions** フォルダーを展開して、`predicted.csv` ファイルを見つけます。
+
+または、予測ファイルを [出力とログ] タブから表示またはダウンロードすることもできます。Predictions フォルダーを展開して、predictions.csv ファイルを見つけます。
+
+## <a name="test-an-existing-automated-ml-model-preview"></a>既存の自動 ML モデルをテストする (プレビュー)
+
+実験が完了したら、自動 ML によって自動的に生成されるモデルをテストできます。 推奨されるモデルではなく、別の 自動 ML 生成モデルをテストする場合は、次の手順を行います。 
+
+1. 既存の 自動 ML 実験実行を選択します。  
+1. 実行の **[モデル]** タブに移動し、テストする完成モデルを選択します。
+1. モデルの **[詳細]** ページで、 **[Test model (preview)]\(モデルのテスト (プレビュー)\)** ボタンを選択して、 **[Test model]\(モデルのテスト\)** ペインを開きます。
+1. **[Test model]\(モデルのテスト\)** ペインで、テストの実行に使用するコンピューティング クラスターとテスト データセットを選択します。 
+1. **[テスト]** ボタンを選択します。 テスト データセットのスキーマは、トレーニング データセットと一致する必要がありますが、**ターゲット列** は省略可能です。
+1. モデル テストの実行が正常に作成されると、 **[詳細]** ページに成功メッセージが表示されます。 **[テスト結果]** タブを選択して、実行の進行状況を確認します。
+
+1. テストの実行の結果を表示するには、 **[詳細]** ページを開き、「[リモート テストの実行結果を表示する](#view-remote-test-run-results-preview)」セクションの手順に従います。 
+
+    ![[Test model]\(モデルのテスト\) フォーム](./media/how-to-use-automated-ml-for-ml-models/test-model-form.png)
+    
+
 ## <a name="model-explanations-preview"></a>モデルの説明 (プレビュー)
 
 モデルについて理解を深めるために、モデルの説明ダッシュボードを使用して、モデルの予測に影響を与えたデータ機能 (未加工または処理適用) を確認できます。 
@@ -235,10 +290,10 @@ Included | トレーニングに含める列を指定します。
     ----|----
     名前| デプロイの一意の名前を入力します。
     説明| このデプロイの目的を識別しやすくするための説明を入力します。
-    コンピューティングの種類| デプロイするエンドポイントの種類を選択します。*Azure Kubernetes Service (AKS)* または *Azure Container Instance (ACI)* です。
+    コンピューティングの種類| デプロイするエンドポイントの種類 ([*Azure Kubernetes Service (AKS)*](../aks/intro-kubernetes.md) または [*Azure Container Instance (ACI)* ](../container-instances/container-instances-overview.md)) を選択します。
     コンピューティング名| *AKS にのみ適用されます。* デプロイする AKS クラスターの名前を選択します。
     認証を有効にする | トークンベースまたはキーベースの認証を許可する場合に選択します。
-    カスタム デプロイ アセットを使用する| 独自のスコアリング スクリプトと環境ファイルをアップロードする場合は、この特徴量を有効にします。 [スコアリング スクリプトの詳細を確認](how-to-deploy-and-where.md)してください。
+    カスタム デプロイ アセットを使用する| 独自のスコアリング スクリプトと環境ファイルをアップロードする場合は、この特徴量を有効にします。 それ以外の場合、既定で、これらのアセットが自動 ML によって提供されます。 [スコアリング スクリプトの詳細を確認](how-to-deploy-and-where.md)してください。
 
     >[!Important]
     > ファイル名の文字数は 32 文字未満にする必要があります。先頭と末尾には英数字を使用してください。 先頭と末尾以外では、ダッシュ、アンダースコア、ピリオド、および英数字を使用できます。 スペースは使用できません。

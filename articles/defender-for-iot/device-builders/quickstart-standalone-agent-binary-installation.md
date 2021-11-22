@@ -1,22 +1,22 @@
 ---
 title: 'クイックスタート: Defender for IoT マイクロ エージェントをインストールする (プレビュー)'
-description: このクイックスタートでは、Defender for Cloud マイクロ エージェントをインストールして認証する方法について説明します。
+description: このクイックスタートでは、Defender for IoT マイクロ エージェントをインストールして認証する方法について説明します。
 ms.date: 11/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5e1ef76bbaf3b4eedae31f08d6cf39efdfaec3df
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 30b8630cacdec1eebcb4b2984154a9869ce816ff
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132343745"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707350"
 ---
 # <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>クイックスタート: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
 
-この記事では、Defender for Cloud マイクロ エージェントをインストールして認証する方法について説明します。
+この記事では、Defender for IoT マイクロ エージェントをインストールして認証する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Defender for IoT モジュールをインストールする前に、IoT Hub にモジュール ID を作成する必要があります。 モジュール ID の作成方法の詳細については、[Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する方法 (プレビュー)](quickstart-create-micro-agent-module-twin.md) に関するページを参照してください。
+Defender for IoT モジュールをインストールする前に、IoT Hub にモジュール ID を作成する必要があります。 モジュール ID の作成方法の詳細については、[Defender for IoT マイクロ エージェントのモジュール ツインを作成する方法 (プレビュー)](quickstart-create-micro-agent-module-twin.md) に関するページを参照してください。
 
 ## <a name="install-the-package"></a>パッケージをインストールする
 
@@ -55,7 +55,7 @@ Defender for IoT モジュールをインストールする前に、IoT Hub に�
     sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
     ```
 
-Debian および Ubuntu ベースの Linux ディストリビューションに Defender for Cloud マイクロ エージェント パッケージをインストールするには、次のコマンドを使用します。
+Debian および Ubuntu ベースの Linux ディストリビューションに Defender for IoT マイクロ エージェント パッケージをインストールするには、次のコマンドを使用します。
 
 ```bash
 sudo apt-get install defender-iot-micro-agent 
@@ -165,13 +165,13 @@ sudo touch /tmp/DefenderForIoTOSBaselineTrigger.txt
 
 ## <a name="micro-agent-versioning"></a>マイクロ エージェントのバージョン管理
 
-特定のバージョンの Defender for Cloud IoT マイクロ エージェントをインストールするには、次のコマンドを実行します。
+特定のバージョンの Defender for IoT マイクロ エージェントをインストールするには、次のコマンドを実行します。
 
 ```bash
 sudo apt-get install defender-iot-micro-agent=<version>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [クイックスタート: Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)](quickstart-create-micro-agent-module-twin.md)
+> [クイックスタート: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)](quickstart-create-micro-agent-module-twin.md)

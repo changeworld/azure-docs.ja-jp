@@ -2,23 +2,25 @@
 title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 10/07/2021
-ms.openlocfilehash: f890f625abc4a6839cd090a49aa7e641ecef9145
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.date: 11/12/2021
+ms.openlocfilehash: 352ff708b9b36eff06be8f3a3dda10b28b02e37b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892023"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493985"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
-この記事では、Bicep ファイルの構造について説明します。 ファイルの各種セクションとそれらのセクションで使用できるプロパティを紹介します。
+この記事では、Bicep ファイルの構造と構文について説明します。 ファイルの各種セクションとそれらのセクションで使用できるプロパティを紹介します。
 
-この記事は、Bicep ファイルにある程度慣れているユーザーを対象としています。 Bicep ファイルの構造に関する詳細情報を提供します。 Bicep ファイルを作成する手順を説明したチュートリアルについては、[「クイックスタート: Visual Studio Code を使用した Bicep ファイルの作成」](./quickstart-create-bicep-use-visual-studio-code.md)を参照してください。
+Bicep ファイルを作成する手順を説明したチュートリアルについては、[「クイックスタート: Visual Studio Code を使用した Bicep ファイルの作成」](./quickstart-create-bicep-use-visual-studio-code.md)を参照してください。
 
 ## <a name="bicep-format"></a>Bicep 形式
 
-Bicep ファイルには次の要素があります。 Bicep は宣言型言語であり、要素を任意の順序で表示できます。  命令型言語とは異なり、要素の順序は配置の処理方法に影響しません。
+Bicep は宣言型言語であり、要素を任意の順序で表示できます。 命令型言語とは異なり、要素の順序は配置の処理方法に影響しません。
+
+Bicep ファイルには次の要素があります。
 
 ```bicep
 targetScope = '<scope>'
@@ -32,55 +34,14 @@ resource <resource-symbolic-name> '<resource-type>@<api-version>' = {
   <resource-properties>
 }
 
-// conditional deployment
-resource <resource-symbolic-name> '<resource-type>@<api-version>' = if (<condition-to-deploy>) {
-  <resource-properties>
-}
-
-// iterative deployment
-@<decorator>(<argument>)
-resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
-  <resource-properties>
-}]
-
 module <module-symbolic-name> '<path-to-file>' = {
   name: '<linked-deployment-name>'
-  params: {
-    <parameter-names-and-values>
-  }
-}
-
-// conditional deployment
-module <module-symbolic-name> '<path-to-file>' = if (<condition-to-deploy>) {
-  name: '<linked-deployment-name>'
-  params: {
-    <parameter-names-and-values>
-  }
-}
-
-// iterative deployment
-module <module-symbolic-name> '<path-to-file>' = [for <item> in <collection>: {
-  name: '<linked-deployment-name>'
-  params: {
-    <parameter-names-and-values>
-  }
-}]
-
-// deploy to different scope
-module <module-symbolic-name> '<path-to-file>' = {
-  name: '<linked-deployment-name>'
-  scope: <scope-object>
   params: {
     <parameter-names-and-values>
   }
 }
 
 output <output-name> <output-data-type> = <output-value>
-
-// iterative output
-output <output-name> array = [for <item> in <collection>: {
-  <output-properties>
-}]
 ```
 
 これらの要素を実装する例を次に示します。
@@ -135,22 +96,25 @@ output storageEndpoint object = stg.properties.primaryEndpoints
 
 パラメーターは、さまざまなデプロイに応じて変化する必要がある値に使用します。 パラメーターには既定値を定義することができ、これは、デプロイ中に値が指定されない場合に使用されます。
 
-たとえば、リソースのさまざまなサイズを指定するための SKU パラメーターを追加することができます。 Bicep 関数を使用して、リソース グループの場所の取得といった、既定値を作成できます。
+たとえば、リソースのさまざまなサイズを指定するための SKU パラメーターを追加できます。 テスト環境と運用環境のいずれかに配置するかに応じて、異なる値を渡すことができます。
 
 ```bicep
 param storageSKU string = 'Standard_LRS'
-param location string = resourceGroup().location
 ```
 
-使用できるデータ型については、[Bicep のデータ型](data-types.md)に関する記事を参照してください。
+このパラメーターは Bicep ファイルで使用できます。
 
-パラメーターの名前を変数、モジュール、またはリソースと同じにすることはできません。
+```bicep
+sku: {
+  name: storageSKU
+}
+```
 
 詳細については、[Bicep のパラメーター](./parameters.md)に関する記事を参照してください。
 
 ## <a name="parameter-decorators"></a>パラメーターのデコレーター
 
-パラメーターごとに 1 つ以上のデコレーターを追加できます。 これらのデコレーターによって、パラメーターに使用できる値を定義します。 次の例では、デプロイできる SKU を Bicep ファイルを使用して指定します。
+パラメーターごとに 1 つ以上のデコレーターを追加できます。 これらのデコレーターは、パラメーターを記述し、渡された値の制約を定義するものです。 次の例にはデコレーターが 1 つありますが、他にもたくさん利用できます。
 
 ```bicep
 @allowed([
@@ -162,49 +126,30 @@ param location string = resourceGroup().location
 param storageSKU string = 'Standard_LRS'
 ```
 
-次の表では、使用できるデコレーターとそれらの使用方法について説明します。
-
-| デコレーター | [適用対象] | 引数 | 説明 |
-| --------- | ---- | ----------- | ------- |
-| [許可] | all | array | パラメーターに使用できる値。 このデコレーターを使用して、ユーザーが正しい値を指定するようにします。 |
-| description | all | string | パラメーターの使用方法を説明するテキスト。 説明は、ポータルを通じてユーザーに表示されます。 |
-| maxLength | array、string | INT | 文字列および配列のパラメーターの最大長。 この値は包含値です。 |
-| maxValue | INT | INT | 整数パラメーターの最大値。 この値は包含値です。 |
-| metadata | all | object | パラメーターに適用するカスタム プロパティ。 description デコレーターに相当する description プロパティを含めることができます。 |
-| minLength | array、string | INT | 文字列および配列のパラメーターの最小長。 この値は包含値です。 |
-| minValue | INT | INT | 整数パラメーターの最小値。 この値は包含値です。 |
-| secure | string、object | なし | パラメーターを、セキュリティで保護されているとしてマークします。 セキュリティで保護されたパラメーターの値はデプロイ履歴に保存されず、ログに記録されません。 詳細については、「[セキュリティで保護された文字列とオブジェクト](data-types.md#secure-strings-and-objects)」を参照してください。 |
-
-デコレーターは、[sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「`sys`」を付けます。 たとえば、Bicep ファイルに `description` という名前のパラメーターが含まれている場合、**description** デコレーターを使用するときに、sys 名前空間を追加する必要があります。
-
-```bicep
-@sys.description('The name of the instance.')
-param name string
-@sys.description('The description of the instance to display.')
-param description string
-```
-
-詳細については、[デコレーター](parameters.md#decorators)に関するページを参照してください。
+使用可能なすべてのデコレーターの説明などの詳細については、「[デコレーター](parameters.md#decorators)」を参照してください。
 
 ## <a name="variables"></a>変数
 
-Bicep ファイル内で繰り返される複雑な式には変数を使用します。 たとえば、複数の値を連結して構成されるリソース名の変数を追加できます。
+複雑な式を変数にカプセル化することで、Bicep ファイルを読みやすくすることができます。 たとえば、複数の値を連結して構成されるリソース名の変数を追加できます。
 
 ```bicep
 var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
 ```
 
-変数には[データ型](data-types.md)を指定しません。 代わりに、データ型は値から推定されます。
+複合式が必要な場合は常にこの変数を適用します。
 
-変数の名前を変数、パラメーター、モジュール、またはリソースと同じにすることはできません。
+```bicep
+resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+  name: uniqueStorageName
+```
 
 詳細については、[Bicep の変数](./variables.md)に関する記事を参照してください。
 
 ## <a name="resource"></a>リソース
 
-デプロイするリソースを定義するには `resource` キーワードを使用します。 リソース宣言には、リソースのシンボリック名が含まれます。 このシンボリック名を、リソースから値を取得する必要がある場合に Bicep ファイルの他の部分で使用します。 シンボリック名は大文字と小文字が区別されます。 文字、数字、および _ を含めることができますが、数字で始めることはできません。
+デプロイするリソースを定義するには `resource` キーワードを使用します。 リソース宣言には、リソースのシンボリック名が含まれます。 このシンボリック名を Bicep ファイルの他の部分で使用し、リソースから値を取得します。
 
-リソース宣言には、リソースの種類と API バージョンも含まれます。
+リソース宣言には、リソースの種類と API バージョンが含まれます。 リソース宣言の本文内に、リソースの種類に固有のプロパティを含めます。
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
@@ -220,47 +165,11 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-リソース宣言には、リソースの種類のプロパティを含めます。 これらのプロパティは、リソースの種類ごとに固有です。
-
 詳細については、[Bicep のリソース宣言](resource-declaration.md)に関する記事を参照してください。
-
-[リソースを条件付きでデプロイ](conditional-resource-deployment.md)するには、`if` 式を追加します。
-
-```bicep
-resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
-  name: uniqueStorageName
-  location: location
-  sku: {
-    name: storageSKU
-  }
-  kind: 'StorageV2'
-  properties: {
-    supportsHttpsTrafficOnly: true
-  }
-}
-```
-
-リソースの種類から[複数のインスタンスをデプロイ](loops.md)するには、`for` 式を追加します。 この式では、配列のメンバーに対して反復処理を行うことができます。
-
-```bicep
-resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = [for storageName in storageAccounts: {
-  name: storageName
-  location: location
-  sku: {
-    name: storageSKU
-  }
-  kind: 'StorageV2'
-  properties: {
-    supportsHttpsTrafficOnly: true
-  }
-}]
-```
-
-リソースの名前を、パラメーター、変数またはモジュールと同じにすることはできません。
 
 ## <a name="modules"></a>モジュール
 
-モジュールを使用して、再利用するコードが含まれる他の Bicep ファイルにリンクします。 モジュールには、デプロイするリソースが 1 つ以上含まれています。 これらのリソースは、Bicep ファイル内の他のリソースと共にデプロイされます。
+モジュールを使用すると、他の Bicep ファイル内の Bicep ファイルからコードを再利用できます。 モジュール宣言では、再利用するファイルにリンクします。 Bicep ファイルをデプロイすると、モジュール内のリソースもデプロイされます。
 
 ```bicep
 module webModule './webApp.bicep' = {
@@ -272,11 +181,7 @@ module webModule './webApp.bicep' = {
 }
 ```
 
-シンボリック名を使用すると、ファイル内の別の場所からモジュールを参照できます。 たとえば、シンボリック名および出力値の名前を使用して、モジュールから出力値を取得できます。 シンボリック名には、a-z、A-Z、0-9、'_' を含めることができます。名前の先頭を数字にすることはできません。
-
-モジュールの名前を、パラメーター、変数、またはリソースと同じにすることはできません。
-
-リソースと同様に、モジュールも条件付きで、または反復的にデプロイできます。 モジュールの構文は、リソースと同じです。
+シンボリック名を使用すると、ファイル内の別の場所からモジュールを参照できます。 たとえば、シンボリック名および出力値の名前を使用して、モジュールから出力値を取得できます。
 
 詳細については、「[Bicep モジュールを使用する](./modules.md)」を参照してください。
 
@@ -284,7 +189,7 @@ module webModule './webApp.bicep' = {
 
 デコレーターを、リソースまたはモジュールの定義に追加できます。 サポートされているデコレーターは `batchSize(int)` のみです。 これは、`for` 式を使用するリソースまたはモジュールの定義だけに適用できます。
 
-既定では、リソースは並列でデプロイされます。 完了する順序はわかりません。 `batchSize` デコレーターを追加する場合、インスタンスを順次にデプロイします。 並列でデプロイするインスタンスの数を指定するには、整数引数を使用します。
+既定では、リソースは並列でデプロイされます。 `batchSize` デコレーターを追加する場合、インスタンスを順次にデプロイします。
 
 ```bicep
 @batchSize(3)
@@ -293,27 +198,81 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
 }]
 ```
 
-`batchSize` デコレーターは、[sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「**sys**: `@sys.batchSize(2)`」を付けます。
-
 詳細については、[「バッチでのデプロイ」](loops.md#deploy-in-batches)を参照してください。
 
 ## <a name="outputs"></a>出力
 
-出力を使用して、デプロイから値が返されるようにします。 通常は、別の操作に値を再利用する必要がある場合に、デプロイされたリソースからその値が返されるようにします。
+出力を使用し、デプロイから値を返します。 通常は、別の操作に値を再利用する必要がある場合に、デプロイされたリソースからその値が返されるようにします。
 
 ```bicep
 output storageEndpoint object = stg.properties.primaryEndpoints
 ```
 
-出力値には[データ型](data-types.md)を指定します。
-
-出力の名前を、パラメーター、変数、モジュール、またはリソースと同じにすることはできません。
-
 詳細については、[Bicep の出力](./outputs.md)に関する記事を参照してください。
+
+## <a name="loops"></a>ループ
+
+Bicep ファイルに反復的なループを追加し、次の複数のコピーを定義できます。
+
+* resource
+* name
+* 変数
+* property
+* output
+
+`for` 式を使用してループを定義します。
+
+```bicep
+param moduleCount int = 2
+
+module stgModule './example.bicep' = [for i in range(0, moduleCount): {
+  name: '${i}deployModule'
+  params: {
+  }
+}]
+```
+
+配列、オブジェクト、または整数インデックスを反復処理できます。
+
+詳細については [、「Bicep の反復ループ」を参照してください](loops.md)。
+
+## <a name="conditional-deployment"></a>条件付きデプロイ
+
+条件付きでデプロイされるリソースまたはモジュールを Bicep ファイルに追加できます。 デプロイ中に条件が評価され、その結果によりデプロイ対象としてリソースまたはモジュールが決定されます。 `if` 式を使用し、条件付きデプロイを追加します。
+
+```bicep
+param deployZone bool
+
+resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
+  name: 'myZone'
+  location: 'global'
+}
+```
+
+詳細については [、「Bicep での条件付きデプロイ」を参照してください](conditional-resource-deployment.md)。
 
 ## <a name="whitespace"></a>空白
 
-Bicep ファイルを作成する際、スペースとタブは無視されます。 ただし改行には、[オブジェクト](./data-types.md#objects)や[配列](./data-types.md#arrays)の宣言などでセマンティックな意味があります。
+Bicep ファイルを作成する際、スペースとタブは無視されます。
+
+Bicep では改行が識別されます。 次に例を示します。
+
+```bicep
+resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
+  ...
+}
+```
+
+これを次のように記述することはできません。
+
+```bicep
+resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' =
+    if (newOrExisting == 'new') {
+      ...
+    }
+```
+
+複数の行に[オブジェクト](./data-types.md#objects)と[配列](./data-types.md#arrays)を定義します。
 
 ## <a name="comments"></a>説明
 
@@ -363,6 +322,11 @@ this is multi-line
   "stringVar": "this is multi-line\r\n  string with formatting\r\n  preserved.\r\n"
 }
 ```
+
+## <a name="known-limitations"></a>既知の制限事項
+
+- 単一の apiProfile をリソースの種類ごとの apiVersion のセットにマップするために使用される apiProfile の概念はサポートされていません。
+- ユーザー定義関数はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

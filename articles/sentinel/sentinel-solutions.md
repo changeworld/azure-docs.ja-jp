@@ -1,76 +1,76 @@
 ---
-title: Azure Sentinel コンテンツとソリューションについて | Microsoft Docs
-description: この記事では、Azure Sentinel のコンテンツとソリューションについて説明します。お客様は、データ コネクタと共にパッケージ化されたデータ分析ツールを検索するために使用できます。
+title: Microsoft Sentinel コンテンツとソリューションについて | Microsoft Docs
+description: この記事では、Microsoft Sentinel のコンテンツとソリューションについて説明します。データ コネクタと一緒にパッケージ化されているデータ分析ツールを見つけるために利用できます。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 38508b591d79e0dee910468f595fa144353574c9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 940acf043711c7645423a9e52d8c4dabc2592e3f
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064071"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132516924"
 ---
-# <a name="about-azure-sentinel-content-and-solutions"></a>Azure Sentinel のコンテンツとソリューションについて
+# <a name="about-microsoft-sentinel-content-and-solutions"></a>Microsoft Sentinel コンテンツとソリューションについて
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >
-> Azure Sentinel **コンテンツ ハブ** とソリューションは現在 **プレビュー版** です。個別のソリューション パッケージもすべてプレビュー版です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> Microsoft Sentinel **コンテンツ ハブ** とソリューションは現在 **プレビュー版** です。個別のソリューション パッケージもすべてプレビュー版です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Azure Sentinel コンテンツは、Azure Sentinel 内のさまざまな製品、プラットフォーム、サービスに対してデータの取り込み、監視、アラート、監視、調査、応答、接続を行うことができるようにする、セキュリティ情報およびイベント管理 (SIEM) のコンテンツです。
+Microsoft Sentinel "*コンテンツ*" は、Microsoft Sentinel のさまざまな製品、プラットフォーム、サービスに対してデータの取り込み、監視、アラート、監視、調査、応答、接続を行うことができるようにするセキュリティ情報イベント管理 (SIEM) のコンテンツです。
 
-Azure Sentinel のコンテンツには、次のいずれかの種類が含まれます。
+Microsoft Sentinel のコンテンツには、次のいずれかの種類が含まれます。
 
-- **[データ コネクタ](connect-data-sources.md)** は、さまざまなソースから Azure Sentinel へのログの取り込みを提供します
-- **[パーサー](normalization-about-parsers.md)** は [ASIM](normalization.md) 形式へのログの書式設定または変換を提供し、さまざまな Azure Sentinel コンテンツの種類とシナリオでの使用をサポートします。
-- **[ブック](get-visibility.md)** は Azure Sentinel のデータとの監視、視覚化、対話機能を提供し、ユーザーにとって意味のある分析情報を強調表示します
+- **[データ コネクタ](connect-data-sources.md)** によって、ログが、さまざまなソースから Microsoft Sentinel に取り込まれます
+- **[パーサー](normalization-about-parsers.md)** では、ログの書式設定または [ASIM](normalization.md) 形式への変換が提供され、Microsoft Sentinel コンテンツのさまざまな種類とシナリオでの使用に対応しています
+- **[ブック](get-visibility.md)** によって、Microsoft Sentinel のデータの監視、視覚化、対話機能が提供され、ユーザーにとって意味のある分析情報が強調表示されます
 - **[分析ルール](detect-threats-built-in.md)** では、インシデントを介して関連する SOC アクションを指すアラートが提供されます。
-- **[ハンティング クエリ](hunting.md)** は、Azure Sentinel で脅威を事前に発見するために SOC チームによって使用されます
+- **[ハンティング クエリ](hunting.md)** は、SOC チームが、Microsoft Sentinel で脅威を事前にハンティングするために使用します
 - **[Notebook](notebooks.md)** は、SOC チームが Jupyter と Azure Notebooks の高度なハンティング機能を使用するのに役立ちます
 - **[ウォッチリスト](watchlists.md)** は、脅威の検出を強化し、アラート疲れを減らすために、特定のデータの取り込みをサポートします
-- **[プレイブックと Azure Logic Apps カスタム コネクタ](automate-responses-with-playbooks.md)** は、Azure Sentinel での自動的な調査、修復、対応のシナリオを実現する機能を提供します。
+- **[プレイブックと Azure Logic Apps カスタム コネクタ](automate-responses-with-playbooks.md)** の機能を使用して、Microsoft Sentinel で自動的な調査、修復、対応のシナリオを実現します
 
-Azure Sentinel ソリューションは、Azure Sentinel コンテンツまたは Azure Sentinel API の統合のパッケージであり、Azure Sentinel のエンドツーエンドの製品、ドメイン、または業界の垂直シナリオを満たします。
+Microsoft Sentinel "*ソリューション*"は、Microsoft Sentinel コンテンツまたは Microsoft Sentinel API 統合のパッケージであり、Microsoft Sentinel のエンドツーエンドの製品、ドメイン、または業界の垂直シナリオを実現します。
 
 > [!TIP]
-> 独自のニーズに合わせてすぐに使えるコンテンツをカスタマイズすることも、コミュニティ内の他のユーザーと共有するコンテンツを含む独自のソリューションを作成することもできます。 詳細については、ソリューションの作成と発行に関する [Azure Sentinel ソリューションのビルド ガイド](https://aka.ms/sentinelsolutionsbuildguide)を参照してください。
+> 独自のニーズに合わせてすぐに使えるコンテンツをカスタマイズすることも、コミュニティ内の他のユーザーと共有するコンテンツを含む独自のソリューションを作成することもできます。 詳細については、ソリューションの作成と発行に関する [Microsoft Sentinel ソリューションのビルド ガイド](https://aka.ms/sentinelsolutionsbuildguide)を参照してください。
 >
-## <a name="discover-and-manage-azure-sentinel-content"></a>Azure Sentinel コンテンツを検出して管理する
+## <a name="discover-and-manage-microsoft-sentinel-content"></a>Microsoft Sentinel コンテンツを検出して管理する
 
-Azure Sentinel **コンテンツ ハブ** を使用して、すぐに使える (組み込みの) コンテンツを一元的に検出してインストールします。
+Microsoft Sentinel **コンテンツ ハブ** を使用して、すぐに使える (組み込みの) コンテンツを一元的に検出してインストールします。
 
-Azure Sentinel コンテンツ ハブを使用すると、製品内での検出性、単一ステップでのデプロイ、Azure Sentinel のエンドツーエンドの製品、ドメイン、またはすぐに利用できる垂直のソリューションとコンテンツの有効化を実現できます。
+Microsoft Sentinel コンテンツ ハブを使用すると、Microsoft Sentinel のエンドツーエンドの製品、ドメイン、すぐに利用できる垂直のソリューションとコンテンツを、製品内で簡単に検出し、ワンステップでデプロイして、有効にすることができます。
 
-- **コンテンツ ハブ** で、[カテゴリ](#azure-sentinel-out-of-the-box-content-and-solution-categories)とその他のパラメーターでフィルター処理するか、強力なテキスト検索を使用して、組織のニーズに最も適したコンテンツを見つけます。 **コンテンツ ハブ** は、コンテンツの各部分に適用される [サポート モデル](#azure-sentinel-out-of-the-box-content-and-solution-support-models)も示しています。一部のコンテンツは Microsoft によって管理されており、他のコンテンツはパートナーまたはコミュニティによって管理されています。
+- **コンテンツ ハブ** で、[カテゴリ](#microsoft-sentinel-out-of-the-box-content-and-solution-categories)とその他のパラメーターでフィルター処理するか、強力なテキスト検索を使用して、組織のニーズに最も適したコンテンツを見つけます。 **コンテンツ ハブ** は、コンテンツの各部分に適用される [サポート モデル](#microsoft-sentinel-out-of-the-box-content-and-solution-support-models)も示しています。一部のコンテンツは Microsoft によって管理されており、他のコンテンツはパートナーまたはコミュニティによって管理されています。
 
-    Azure Sentinel **コンテンツ ハブ** を使用して [すぐに使えるコンテンツの更新プログラム](sentinel-solutions-deploy.md#install-or-update-a-solution)を管理し、 **[リポジトリ]** ページを使用してカスタム コンテンツを作成します。
+    Microsoft Sentinel **コンテンツ ハブ** を使用して [すぐに使えるコンテンツの更新](sentinel-solutions-deploy.md#install-or-update-a-solution)を管理し、 **[リポジトリ]** ページを使用してカスタム コンテンツの更新を管理します。
 
-- 独自のニーズに合わせてすぐに使用するコンテンツをカスタマイズしたり、分析ルール、ハンティング クエリ、ノートブック、ブックなどのカスタム コンテンツを作成したりできます。 Azure Sentinel カスタム コンテンツは、ワークスペース内で直接管理するか、[Azure Sentinel API](/rest/api/securityinsights/) を介して、または独自のソース管理リポジトリ内で Azure Sentinel [[リポジトリ]](ci-cd.md) ページを介して管理します。
+- 独自のニーズに合わせてすぐに使用するコンテンツをカスタマイズしたり、分析ルール、ハンティング クエリ、ノートブック、ブックなどのカスタム コンテンツを作成したりできます。 カスタム コンテンツは、[Microsoft Sentinel API](/rest/api/securityinsights/) を介して Microsoft Sentinel ワークスペースで直接管理するか、Microsoft Sentinel の [[リポジトリ]](ci-cd.md) ページを介して独自のソース管理リポジトリで管理します。
 
 ### <a name="why-content-hub-and-solutions"></a>コンテンツ ハブとソリューションを使用する理由
 
-Azure Sentinel ソリューションは、1 つまたは複数のドメインまたは垂直のシナリオについて、エンドツーエンドの製品価値を提供するパッケージ コンテンツまたは統合です。
+Microsoft Sentinel "*ソリューション*" は、1 つ以上のドメインまたは垂直のシナリオについて、エンドツーエンドの製品価値を提供するパッケージ コンテンツまたは統合です。
 
-ソリューションのエクスペリエンスは、ソリューションの見つけやすさとデプロイのために [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) によって強化されています。 詳細については、ソリューションの作成と発行に関する [Azure Sentinel ソリューションのビルド ガイド](https://aka.ms/sentinelsolutionsbuildguide)を参照してください。
+ソリューションのエクスペリエンスは、ソリューションの見つけやすさとデプロイのために [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) によって強化されています。 詳細については、ソリューションの作成と発行に関する [Microsoft Sentinel ソリューションのビルド ガイド](https://aka.ms/sentinelsolutionsbuildguide)を参照してください。
 
-Azure Sentinel ソリューションでは、製品内検出機能、ワンステップのデプロイ方法、エンドツーエンド製品の実現手段、ドメイン、Azure Sentinel サービス間の垂直的利用を提供しています。 ソリューションの検索、デプロイ、有効化は Azure Marketpace で、ソリューションの作成と公開は Microsoft パートナー センター で行います。
+Microsoft Sentinel ソリューションを使用すると、Microsoft Sentinel のエンドツーエンドの製品、ドメイン、垂直のソリューションを、製品内で簡単に検出し、ワンステップでデプロイして、有効にすることができます。 ソリューションの検索、デプロイ、有効化は Azure Marketpace で、ソリューションの作成と公開は Microsoft パートナー センター で行います。
 
-- **パッケージ化されたコンテンツ** は、データ コネクタ、ブック、分析ルール、プレイブック、ハンティング クエリ、ウォッチリスト、パーサーなど、1 つまたは複数の Azure Sentinel コンテンツのコレクションです。
+- **パッケージ化されたコンテンツ** は、データ コネクタ、ブック、分析ルール、プレイブック、ハンティング クエリ、ウォッチリスト、パーサーなど、1 つまたは複数の Microsoft Sentinel コンテンツのコレクションです。
 
-- **統合** には、Azure Sentinel または Azure Log Analytics API を使用して構築されたサービスまたはツールが含まれます。これらの API は、Azure と既存の顧客アプリケーション間の統合をサポートしたり、データやクエリなどをアプリケーションから Azure Sentinel に移行したりすることができます。
+- **統合** には、Microsoft Sentinel または Azure Log Analytics API を使用して構築されたサービスまたはツールが含まれ、Azure と既存の顧客アプリケーション間の統合をサポートしたり、データやクエリなどをアプリケーションから Microsoft Sentinel に移行したりすることができます。
 
 ソリューションを使用して、すぐに使えるコンテンツのパッケージを 1 回の手順でインストールすることもできます。インストール後は、多くの場合、コンテンツをすぐに使用できます。 プロバイダーとパートナーは、統合された製品、ドメイン、または垂直の値を提供することにより、ソリューションを使用して投資を行うことができます。
 
@@ -78,12 +78,12 @@ Azure Sentinel ソリューションでは、製品内検出機能、ワンス�
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel のすぐに使えるコンテンツとソリューションを一元的に検出してデプロイする](sentinel-solutions-deploy.md)
-- [Azure Sentinel コンテンツ ハブ カタログ](sentinel-solutions-catalog.md)
+- [Microsoft Sentinel のすぐに使えるコンテンツとソリューションを一元的に検出してデプロイする](sentinel-solutions-deploy.md)
+- [Microsoft Sentinel コンテンツ ハブ カタログ](sentinel-solutions-catalog.md)
 
-## <a name="azure-sentinel-out-of-the-box-content-and-solution-categories"></a>Azure Sentinel のすぐに使えるコンテンツとソリューションのカテゴリ
+## <a name="microsoft-sentinel-out-of-the-box-content-and-solution-categories"></a>Microsoft Sentinel のすぐに使えるコンテンツとソリューションのカテゴリ
 
-Azure Sentinel のすぐに使えるコンテンツは、次の 1 つまたは複数のカテゴリで適用できます。 **コンテンツ ハブ** で、表示するカテゴリを選択して、表示されるコンテンツを変更します。
+Microsoft Sentinel のすぐに使えるコンテンツは、次の 1 つまたは複数のカテゴリで適用できます。 **コンテンツ ハブ** で、表示するカテゴリを選択して、表示されるコンテンツを変更します。
 
 ### <a name="domain-categories"></a>ドメイン カテゴリ
 
@@ -98,7 +98,7 @@ Azure Sentinel のすぐに使えるコンテンツは、次の 1 つまたは�
 | **IT 運用**| IT 管理を行う製品とサービス   |
 | **移行**    | 移行の有効化製品、サービス、および               |
 | **ネットワーク**   | ネットワーク製品、サービス、ツール    |
-| **プラットフォーム**     | Azure Sentinel の汎用またはフレームワークのコンポーネント、クラウド インフラストラクチャ、プラットフォーム|
+| **プラットフォーム**     | Microsoft Sentinel の汎用またはフレームワークのコンポーネント、クラウド インフラストラクチャ、プラットフォーム|
 | **セキュリティ - その他**   | その他の明確なカテゴリを持たない他のセキュリティ製品とサービス           |
 | **セキュリティ - 脅威インテリジェンス**  | 脅威インテリジェンスのプラットフォーム、フィード、製品、サービス        |
 | **セキュリティ - 脅威からのデータ保護**   | 脅威からの保護、電子メール保護、XDR およびエンドポイント保護製品とサービス     |
@@ -126,25 +126,24 @@ Azure Sentinel のすぐに使えるコンテンツは、次の 1 つまたは�
 | **小売**       | 小売業界に固有の製品、サービス、コンテンツ       |
 | | |
 
-## <a name="azure-sentinel-out-of-the-box-content-and-solution-support-models"></a>Azure Sentinel のすぐに使えるコンテンツおよびソリューションのサポート モデル
+## <a name="microsoft-sentinel-out-of-the-box-content-and-solution-support-models"></a>Microsoft Sentinel のすぐに使えるコンテンツおよびソリューションのサポート モデル
 
-Microsoft およびその他の組織は、Azure Sentinel のすぐに使えるコンテンツとソリューションを作成します。 すぐに使えるコンテンツまたはソリューションの各部分には、次のいずれかのサポートの種類があります。
+Microsoft と他の組織の両方が、Microsoft Sentinel のすぐに使えるコンテンツとソリューションを作成しています。 すぐに使えるコンテンツまたはソリューションの各部分には、次のいずれかのサポートの種類があります。
 
 | サポート モデル  | 説明 |
 | ---------- | ----------------------- |
 | **Microsoft によるサポート**| 適用対象: <br>- Microsoft がデータ プロバイダー、関連、作成者であるコンテンツまたはソリューション。 <br> - Microsoft 以外のデータ ソース用に Microsoft が作成した一部のデータ コネクタ。 <br><br>    Microsoft では、[Microsoft Azure サポート プラン](https://azure.microsoft.com/support/options/#overview)に従って、このサポート モデルでのコンテンツまたはソリューションをサポートし、管理しています。 <br>パートナーまたはコミュニティでは、Microsoft 以外の任意のパーティーによって作成されたコンテンツまたはソリューションをサポートしています。|
-|**パートナーによるサポート** | Microsoft 以外のパーティーによって作成されたコンテンツまたはソリューションに適用されます。  <br><br>   パートナー企業は、これらのコンテンツまたはソリューションのサポートまたはメンテナンスを提供しています。 パートナー企業は、独立系ソフトウェア ベンダー、マネージド サービス プロバイダー (MSP/MSSP)、システム インテグレーター (SI)、またはその一部のコンテンツまたはソリューションの Azure Sentinel ページに連絡先情報が提供されている任意の組織である場合があります。<br><br>    パートナーがサポートするソリューションに関する問題については、指定されたサポートの連絡先にお問い合わせください。|
-|**コミュニティによるサポート** |Microsoft または Azure Sentinel のサポートとメンテナンスのための連絡先が一覧表示されていないパートナー開発者が作成したコンテンツまたはソリューションに適用されます。<br><br>    これらのソリューションについてご質問または問題がある場合は、[Azure Sentinel GitHub コミュニティ](https://aka.ms/threathunters)で[問題を報告](https://github.com/Azure/Azure-Sentinel/issues/new/choose)してください。 |
+|**パートナーによるサポート** | Microsoft 以外のパーティーによって作成されたコンテンツまたはソリューションに適用されます。  <br><br>   パートナー企業は、これらのコンテンツまたはソリューションのサポートまたはメンテナンスを提供しています。 パートナー企業には、独立系ソフトウェア ベンダー、マネージド サービス プロバイダー (MSP/MSSP)、システム インテグレーター (SI)、その一部のコンテンツまたはソリューションについて Microsoft Sentinel ページに連絡先情報が記載されている組織があります。<br><br>    パートナーがサポートするソリューションに関する問題については、指定されたサポートの連絡先にお問い合わせください。|
+|**コミュニティによるサポート** |Microsoft または、Microsoft Sentinel にサポートとメンテナンスのための連絡先が記載されていないパートナー開発者が作成したコンテンツまたはソリューションに適用されます。<br><br>    これらのソリューションについてご質問または問題がある場合は、[Microsoft Sentinel GitHub コミュニティ](https://aka.ms/threathunters)で[問題を報告](https://github.com/Azure/Azure-Sentinel/issues/new/choose)してください。 |
 | | |
 
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
+Microsoft Sentinel コンテンツについて学習した後、Microsoft Sentinel ワークスペースでコンテンツとソリューションの管理を開始してください。
 
-Azure Sentinel コンテンツについて学習した後、Azure Sentinel ワークスペースでコンテンツとソリューションの管理を開始します。
-
-Azure Sentinel **コンテンツ ハブ** からソリューションを見つけてインストールします。 詳細については、次を参照してください。
+Microsoft Sentinel **コンテンツ ハブ** からソリューションを検出してインストールします。 詳細については、次を参照してください。
 
 - [すぐに使えるコンテンツとソリューションを一元的に検出してデプロイする (パブリック プレビュー)](sentinel-solutions-deploy.md)
-- [Azure Sentinel コンテンツ ハブ カタログ](sentinel-solutions-catalog.md)
-- [Azure Sentinel データ コネクタ](connect-data-sources.md)
-- [Azure Sentinel データ コネクタを見つける](data-connectors-reference.md)
+- [Microsoft Sentinel コンテンツ ハブ カタログ](sentinel-solutions-catalog.md)
+- [Microsoft Sentinel データ コネクタ](connect-data-sources.md)
+- [Microsoft Azure Sentinel データ コネクタを見つける](data-connectors-reference.md)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/09/2021
 ms.author: v-bcatherine
 ms.custom: ''
-ms.openlocfilehash: dc0550e4e32e84bbf99456a337a66c3da8f6cf57
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: e2f2bf2cafc60bca637bee3309f4b721965f30fd
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132525567"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710282"
 ---
 # <a name="quickstart-deploy-your-first-container-app-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して最初のコンテナー アプリをデプロイする
 
@@ -100,9 +100,9 @@ Do we need to include steps to login?  Probably not..
 
     エラーが発生した場合は、エラーが含まれているタブに赤い点が表示されます。  適切なタブに移動します。エラーが含まれているフィールドは、赤で強調表示されます。  すべてのエラーを修正したら、 **[確認と作成]** をもう一度選択します。
 
-1. **［作成］** を選択します
+1. **作成** を選択します。
 
-    "*デプロイが進行中です*" というメッセージを含むページが表示されます。  デプロイが正常に完了すると、"デプロイが完了しました" というメッセージが表示されます。
+    "*デプロイが進行中です*" というメッセージを含むページが表示されます。  デプロイが正常に完了すると、"*デプロイが完了しました*" というメッセージが表示されます。
 
 ### <a name="view-your-deployed-application"></a>デプロイされたアプリケーションを表示する
 

@@ -5,23 +5,23 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 09/17/2021
+ms.date: 11/15/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, seo-azure-cli
 keywords: Cosmos DB, Azure CLI サンプル, Azure CLI コード サンプル, Azure CLI スクリプト サンプル
-ms.openlocfilehash: 4529b51ff5109bfa6b8814b23e7e82844e7fb95c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9960aee77d909f3e944f352b7d039a82997307c9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128567720"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710243"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Azure Cosmos DB Core (SQL) API 用の Azure CLI サンプル
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 次の表には、Azure Cosmos DB の Azure CLI スクリプトのサンプルへのリンクが含まれています。 API 固有のサンプルに移動するには、右側のリンクを使用します。 共通サンプルは、すべての API で同じです。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](/cli/azure/cosmosdb)で確認できます。 Azure Cosmos DB CLI のサンプル スクリプトについては、[Azure Cosmos DB CLI GitHub リポジトリ](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)もご覧ください。
 
-これらのサンプルを使用するには、Azure CLI バージョン 2.12.1 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください
+これらのサンプルを使用するには、Azure CLI バージョン 2.30 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください
 
 他の API の Azure CLI サンプルについては、[Cassandr 用の CLI サンプル](../cassandra/cli-samples.md)、[MongoDB 用の CLI サンプル](../mongodb/cli-samples.md)、[Gremlin 用の CLI サンプル](../graph/cli-samples.md)、[Table 用の CLI サンプル](../table/cli-samples.md)を参照してください
 
@@ -43,6 +43,7 @@ ms.locfileid: "128567720"
 |タスク | 説明 |
 |---|---|
 | [Azure Cosmos アカウント、データベース、コンテナーを作成する](../scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Core (SQL) API 用の Azure Cosmos DB アカウント、データベース、コンテナーを作成します。 |
+| [サーバーレス Azure Cosmos アカウント、データベース、コンテナーを作成する](../scripts/cli/sql/serverless.md?toc=%2fcli%2fazure%2ftoc.json)| Core (SQL) API 用のサーバーレス Azure Cosmos DB アカウント、データベース、コンテナーを作成します。 |
 | [Azure Cosmos アカウント、データベース、自動スケーリングのコンテナーを作成する](../scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Core (SQL) API 用に Azure Cosmos DB アカウント、データベース、自動スケーリングのコンテナーを作成します。 |
 | [スループット操作](../scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | データベースとコンテナーに対する読み取り、更新、および自動スケーリングと標準スループット間の移行を行います。|
 | [リソースが削除されないようにロックする](../scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。|

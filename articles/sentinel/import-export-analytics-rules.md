@@ -1,26 +1,26 @@
 ---
-title: Azure Sentinel 分析ルールのインポートとエクスポート | Microsoft Docs
+title: Microsoft Sentinel 分析ルールのインポートとエクスポート | Microsoft Docs
 description: デプロイを支援するために ARM テンプレート間で分析ルールをエクスポートおよびインポートします
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 905455a371bd479d83418eaf68fbc5bf327ce4e4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 97eb1145e8eebaed91019fbd68330c1399522002
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009398"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518548"
 ---
 # <a name="export-and-import-analytics-rules-to-and-from-arm-templates"></a>ARM テンプレート間で分析ルールをエクスポートおよびインポートします
 
@@ -32,7 +32,7 @@ ms.locfileid: "131009398"
 
 ## <a name="introduction"></a>はじめに
 
-Azure Sentinel デプロイをコードとして管理および制御する一環として、分析ルールを Azure Resource Manager (ARM) テンプレート ファイルからエクスポートし、それらのルールを同様のファイルにインポートできます。 エクスポート操作により、ブラウザーのダウンロード場所に JSON ファイル (*Azure_Sentinel_analytic_rule.json* という名前) が作成されます。このファイルは、ファイル名の変更や移動など、他のファイルと同様に処理することができます。
+Microsoft Sentinel デプロイをコードとして管理および制御する一環として、分析ルールを Azure Resource Manager (ARM) テンプレート ファイルからエクスポートし、それらのルールを同様のファイルにインポートできます。 エクスポート操作により、ブラウザーのダウンロード場所に JSON ファイル (*Azure_Sentinel_analytic_rule.json* という名前) が作成されます。このファイルは、ファイル名の変更や移動など、他のファイルと同様に処理することができます。
 
 エクスポートされた JSON ファイルはワークスペースに依存しないので、他のワークスペースや他のテナントにもインポートできます。 コードとして、マネージド CI/CD フレームワークでバージョン管理、更新、デプロイすることもできます。
 
@@ -40,7 +40,7 @@ Azure Sentinel デプロイをコードとして管理および制御する一�
 
 ## <a name="export-rules"></a>ルールのエクスポート
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. エクスポートするルールを選択し、画面の上部にあるバーから **[エクスポート]** をクリックします。
 
@@ -57,7 +57,7 @@ Azure Sentinel デプロイをコードとして管理および制御する一�
 
 1. 分析ルールの ARM テンプレート JSON ファイルを準備します。
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. 画面上部にあるバーから **[インポート]** をクリックします。 表示されるダイアログ ボックスで、インポートするルールが含まれる JSON ファイルに移動して選択し、 **[開く]** を選択します。
 

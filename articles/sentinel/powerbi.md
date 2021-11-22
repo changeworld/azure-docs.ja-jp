@@ -1,26 +1,25 @@
 ---
-title: Azure Sentinel のデータから Power BI レポートを作成する
-description: Azure Sentinel の Log Analytics からエクスポートされたクエリを使用して Power BI レポートを作成する方法について説明します。 レポートを Power BI サービスや Teams チャネルの他のユーザーと共有します。
+title: Microsoft Azure Sentinel のデータから Power BI レポートを作成する
+description: Microsoft Azure Sentinel の Log Analytics からエクスポートされたクエリを使用して Power BI レポートを作成する方法について学習します。 レポートを Power BI サービスや Teams チャネルの他のユーザーと共有します。
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 558d6d979321148923f8a10bc2f92bb13eedd746
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 345e6fc447c2c20fcb2219a7280a740dade7a205
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023046"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712457"
 ---
-# <a name="tutorial-create-a-power-bi-report-from-azure-sentinel-data"></a>チュートリアル: Azure Sentinel のデータから Power BI レポートを作成する
+# <a name="tutorial-create-a-power-bi-report-from-microsoft-sentinel-data"></a>チュートリアル: Microsoft Azure Sentinel のデータから Power BI レポートを作成する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [Power BI](https://powerbi.microsoft.com/) は、データをイマーシブで一貫性のある対話型の視覚化に変えるレポートおよび分析プラットフォームです。 Power BI を使用すると、データ ソースへの接続、リレーションシップの視覚化と検出、必要に応じた分析情報の共有を簡単に実行できます。
 
-Azure Sentinel の Log Analytics ワークスペースからのデータに基づいて Power BI レポートを作成し、Azure Sentinel にアクセスできないユーザーとレポートを共有できます。 たとえば、Azure Sentinel へのアクセスを許可することなく、失敗したサインイン試行に関する情報をアプリの所有者と共有できます。 Power BI の視覚化を使用すると、データを一目で確認できます。
+Microsoft Azure Sentinel の Log Analytics ワークスペースからのデータに基づいて Power BI レポートを作成し、Microsoft Azure Sentinel にアクセスできないユーザーとレポートを共有できます。 たとえば、Microsoft Azure Sentinel へのアクセスを許可することなく、失敗したサインイン試行に関する情報をアプリの所有者と共有できます。 Power BI の視覚化を使用すると、データを一目で確認できます。
 
 このチュートリアルでは、次の作業を行いました。
 
@@ -30,24 +29,24 @@ Azure Sentinel の Log Analytics ワークスペースからのデータに基�
 > * レポートを Power BI サービスに公開して、他のユーザーと共有します。
 > * Teams チャネルにレポートを追加します。
 
-Power BI サービスでアクセスが許可されたユーザーと Teams チャネルのメンバーは、Azure Sentinel のアクセス許可を必要とせずにレポートを表示できます。
+Power BI サービスでアクセスが許可されたユーザーと Teams チャネルのメンバーは、Microsoft Azure Sentinel のアクセス許可を必要とすることなくレポートを表示できます。
 
 > [!NOTE]
-> このチュートリアルでは、Azure Sentinel のデータの分析レポートを Power BI で表示するという、お客様からのよくある質問に対するシナリオベースの手順について説明します。 詳細については、「[データ ソースの接続](connect-data-sources.md)」と「[収集されたデータを視覚化する](get-visibility.md)」を参照してください。
+> このチュートリアルでは、Microsoft Azure Sentinel のデータの分析レポートを Power BI で表示するという、お客様からのよくある質問に対するシナリオ ベースの手順を提供します。 詳細については、「[データ ソースの接続](connect-data-sources.md)」と「[収集されたデータを視覚化する](get-visibility.md)」を参照してください。
 >
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次のものが必要です。
 
-- 少なくとも、サインイン試行を監視する Azure Sentinel の Log Analytics ワークスペースへの読み取りアクセス。
+- 少なくとも、サインイン試行を監視する Microsoft Azure Sentinel の Log Analytics ワークスペースへの読み取りアクセス。
 - Log Analytics ワークスペースの読み取りアクセスを持つ Power BI アカウント。
 - [Microsoft Store からインストールされた Power BI Desktop](https://aka.ms/pbidesktopstore)。
 
 ## <a name="export-a-query-from-log-analytics"></a>Log Analytics からクエリをエクスポートする
 
-Azure Sentinel の Log Analytics ワークスペースで、Kusto クエリを作成、実行、エクスポートします。 
+Microsoft Azure Sentinel の Log Analytics ワークスペースで、Kusto クエリを作成、実行、エクスポートします。 
 
-1. 単純なクエリを作成するには、Azure Sentinel の Log Analytics ワークスペースで **[ログ]** を選択します。 クエリ エディターの **[新しいクエリ 1]** で、次の Kusto クエリを入力します。
+1. 単純なクエリを作成するには、Microsoft Azure Sentinel の Log Analytics ワークスペースで **[ログ]** を選択します。 クエリ エディターの **[新しいクエリ 1]** で、次の Kusto クエリを入力します。
    
    ```kusto
    SigninLogs
@@ -57,7 +56,7 @@ Azure Sentinel の Log Analytics ワークスペースで、Kusto クエリを�
    | sort by Failed
    ```
    
-   または、任意の Azure Sentinel の Log Analytics の Kusto クエリを使用します。
+   または、お気に入りの Microsoft Azure Sentinel の Log Analytics の Kusto クエリを使用します。
    
 1. **[実行]** を選択してクエリを実行し、結果を生成します。
    
@@ -145,7 +144,7 @@ Azure Sentinel の Log Analytics ワークスペースで、Kusto クエリを�
    
 ### <a name="refresh-the-data-and-save-the-report"></a>データを最新の情報に更新してレポートを保存する
 
-1. **[最新の情報に更新]** を選択して、Azure Sentinel から最新のデータを取得します。
+1. **[最新の情報に更新]** を選択して、Microsoft Azure Sentinel から最新のデータを取得します。
    
    :::image type="content" source="media/powerbi/refresh.png" alt-text="リボンの [最新の情報に更新] ボタンを示すスクリーンショット。":::
    
@@ -155,7 +154,7 @@ Azure Sentinel の Log Analytics ワークスペースで、Kusto クエリを�
 
 レポートを共有するための Power BI ワークスペースを作成するには、次の手順を実行します。
 
-1. Power BI Desktop と Azure Sentinel の読み取りアクセスに使用するのと同じアカウントで [powerbi.com](https://powerbi.com) にサインインします。
+1. Power BI Desktop と Microsoft Azure Sentinel の読み取りアクセスに使用するのと同じアカウントで [powerbi.com](https://powerbi.com) にサインインします。
    
 1. **[ワークスペース]** で **[ワークスペースの作成]** を選択します。 ワークスペースに "*管理レポート*" という名前を付けて、 **[保存]** を選択します。
    

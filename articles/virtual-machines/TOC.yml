@@ -858,7 +858,7 @@
                 - name: Windows
                   displayName: 'Log Analytics, extension'
                   href: ./extensions/oms-windows.md
-            - name: VM に対する Azure Monitor
+            - name: VM insights
               items:
                 - name: Linux の依存関係エージェント
                   displayName: Azure Monitor
@@ -1294,6 +1294,8 @@
         - name: Windows
           displayName: Expand a disk - Windows
           href: ./windows/expand-os-disk.md
+        - name: 非管理対象ディスク
+          href: expand-unmanaged-disks.md
     - name: ストレージの管理
       items:
         - name: Resource Manager テンプレートによるディスクのデプロイ
@@ -1692,23 +1694,18 @@
               href: ./windows/tutorial-config-management.md
 - name: 監視
   items:
-    - name: 概要
-      displayName: 'Monitoring Overview, monitoring'
-      href: ../azure-monitor/vm/monitor-vm-azure.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-    - name: VM の監視
+    - name: 仮想マシンの監視
+      href: monitor-vm.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+    - name: 仮想マシン リファレンスの監視
+      href: monitor-vm-reference.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+    - name: チュートリアル
       items:
-        - name: 概要
-          href: ../azure-monitor/vm/monitor-virtual-machine.md?context=/azure/virtual-machines/context/context
-        - name: 監視の構成
-          href: ../azure-monitor/vm/monitor-virtual-machine-configure.md?context=/azure/virtual-machines/context/context
-        - name: データを分析する
-          href: ../azure-monitor/vm/monitor-virtual-machine-analyze.md?context=/azure/virtual-machines/context/context
-        - name: セキュリティを監視する
-          href: ../azure-monitor/vm/monitor-virtual-machine-security.md?context=/azure/virtual-machines/context/context
-        - name: アラートを作成する
-          href: ../azure-monitor/vm/monitor-virtual-machine-alerts.md?context=/azure/virtual-machines/context/context
-        - name: ワークロードの監視
-          href: ../azure-monitor/vm/monitor-virtual-machine-workloads.md?context=/azure/virtual-machines/context/context
+        - name: 監視を有効にする
+          href: ../azure-monitor/vm/tutorial-monitor-vm-enable.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: マシン ダウン時のアラート
+          href: ../azure-monitor/vm/tutorial-monitor-vm-alert.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+        - name: ゲスト ログとメトリックを収集する
+          href: ../azure-monitor/vm/tutorial-monitor-vm-guest.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: エージェント
       items:
         - name: エージェントの概要
@@ -1716,23 +1713,23 @@
         - name: よく寄せられる質問
           displayName: Agents
           href: ../azure-monitor/faq.yml
-        - name: Azure Diagnostics 拡張機能
+        - name: Azure Monitor エージェント
           items:
             - name: 概要
-              displayName: Azure Diagnostics extension
-              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-            - name: Linux Diagnostics 拡張機能
-              items:
-                - name: Version 4.0
-                  displayName: Linux diagnostics extension
-                  href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
-                - name: Version 3.0
-                  displayName: Linux diagnostics extension
-                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
-                - name: Telegraf を使用したメトリックの収集
-                  displayName: Linux diagnostics extension
-                  href: ../azure-monitor/essentials/collect-custom-metrics-linux-telegraf.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-                  displayname: diagnostics extension
+              displayname: Azure Monitor agent
+              href: ../azure-monitor/agents/azure-monitor-agent-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+            - name: インストール
+              displayname: Azure Monitor agent
+              href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+            - name: データ コレクション
+              displayname: 'data collection rule,Azure Monitor agent'
+              href: ../azure-monitor/agents/data-collection-rule-azure-monitor-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+            - name: レガシ エージェントから移行する
+              displayname: Migrate to Azure Monitor agent
+              href: ../azure-monitor/agents/azure-monitor-agent-migration.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+            - name: よく寄せられる質問
+              displayname: Azure Monitor agent FAQ
+              href: ../azure-monitor/faq.yml?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Log Analytics エージェント
           items:
             - name: 概要
@@ -1778,16 +1775,16 @@
               href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Log Analytics Linux エージェント
               href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
-        - name: VM に対する Azure Monitor
+        - name: VM の分析情報
           items:
             - name: 概要
-              displayName: Azure monitor for VMs
+              displayName: VM insights
               href: ../azure-monitor/vm/vminsights-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 一般提供の FAQ
-              displayName: Azure monitor for VMs
+              displayName: VM insights
               href: ../azure-monitor/vm/vminsights-ga-release-faq.yml?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: よく寄せられる質問
-              displayName: Azure monitor for VMs
+              displayName: VM insights
               href: ../azure-monitor/faq.yml?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 監視を有効にする
               items:

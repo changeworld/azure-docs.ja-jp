@@ -3,12 +3,12 @@ title: 'クイックスタート: エージェントベースのソリューシ�
 description: このクイックスタートでは、Azure IoT Hub で Defender for IoT セキュリティ サービスをオンボードし、有効にする方法について説明します。
 ms.topic: quickstart
 ms.date: 11/09/2021
-ms.openlocfilehash: f22b319a409b481fdeb26a68cdd4b58809b8d015
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 953251215b8cd682e9d882e8ca7a14545a7da9c6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132281856"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709306"
 ---
 # <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>クイックスタート: エージェントベースのソリューションに Defender for IoT をオンボードする
 
@@ -72,4 +72,4 @@ Defender for IoT を既存の IoT ハブにオンボードするには:
 次の記事に進んで、ソリューションを構成してください。
 
 > [!div class="nextstepaction"]
-> [Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する](quickstart-create-micro-agent-module-twin.md)
+> [Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)](quickstart-create-micro-agent-module-twin.md)

@@ -72,6 +72,16 @@ items:
                 href: 'https://aka.ms/ct-authoring-swagger'
               - name: ランタイム予測 API
                 href: 'https://aka.ms/ct-runtime-swagger'
+          - name: SDK (v3.2 プレビュー 2)
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+              - name: Java
+                href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+              - name: Node.js
+                href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
   - name: カスタム固有表現認識 (NER) (プレビュー)
     items:
       - name: 概要
@@ -120,6 +130,16 @@ items:
                 href: 'https://aka.ms/ct-authoring-swagger'
               - name: ランタイム予測 API
                 href: 'https://aka.ms/ct-runtime-swagger'
+          - name: SDK (v3.2 プレビュー 2)
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+              - name: Java
+                href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+              - name: Node.js
+                href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
   - name: Conversational Language Understanding (プレビュー)
     items:
       - name: 概要
@@ -162,6 +182,12 @@ items:
             items:
               - name: Authoring
                 href: 'https://aka.ms/clu-authoring-apis'
+          - name: SDK
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
   - name: エンティティ リンク設定
     items:
       - name: 概要

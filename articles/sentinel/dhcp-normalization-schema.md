@@ -1,34 +1,34 @@
 ---
-title: Azure Sentinel の DHCP 正規化スキーマ リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel の DHCP 正規化スキーマについて説明します。
+title: Microsoft Azure Sentinel の DHCP 正規化スキーマ リファレンス | Microsoft Docs
+description: この記事では、Microsoft Azure Sentinel の DHCP 正規化スキーマについて説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: aa633024754c82e1a9879f79c9410e6948405eeb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f0287e6f116e8d63c0b20aa970974e48a31524c2
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004011"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521455"
 ---
-# <a name="azure-sentinel-dhcp-normalization-schema-reference-public-preview"></a>Azure Sentinel の DHCP 正規化スキーマ リファレンス (パブリック プレビュー)
+# <a name="microsoft-sentinel-dhcp-normalization-schema-reference-public-preview"></a>Microsoft Azure Sentinel の DHCP 正規化スキーマ リファレンス (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-DHCP 情報モデルは、DHCP サーバーによって報告されるイベントを記述するために使用され、ソースに依存しない分析を有効にするために Azure Sentinel によって使用されます。
+DHCP 情報モデルは、DHCP サーバーによって報告されるイベントを記述するために使用され、ソースに依存しない分析を有効にするために Microsoft Azure Sentinel によって使用されます。
 
-詳細については、「[正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
+詳細については、「[正規化と高度な SIEM 情報モデル (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > 現在、DHCP 正規化スキーマはプレビュー段階です。 この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。
@@ -48,7 +48,7 @@ DHCP サーバーでクライアントが拒否される場合があります。
 
 ## <a name="schema-details"></a>スキーマの詳細
 
-ASIM は、[Open Source Security Events Metadata (OSSEM)](https://github.com/OTRF/OSSEM) プロジェクトに合わせて調整されます。
+ASIM は、[オープン ソース セキュリティ イベント メタデータ (OSSEM)](https://github.com/OTRF/OSSEM) プロジェクトに合わせて調整されます。
 
 OSSEM には、ASIM DHCP スキーマに相当する DHCP スキーマがありません。
 
@@ -146,6 +146,6 @@ OSSEM には、ASIM DHCP スキーマに相当する DHCP スキーマがあり�
 詳細については、次を参照してください。
 
 - [ASIM ウェビナー](https://www.youtube.com/watch?v=WoGD-JeC7ng)を視聴したり、[スライド](https://1drv.ms/b/s!AnEPjr8tHcNmjDY1cro08Fk3KUj-?e=murYHG)を確認したりしてください
-- [Azure Sentinel 情報モデルのスキーマ](normalization-about-schemas.md)
-- [Azure Sentinel 情報モデルのパーサー](normalization-about-parsers.md)
-- [Azure Sentinel 情報モデルのコンテンツ](normalization-content.md)
+- [Advanced SIEM Information Model のスキーマ](normalization-about-schemas.md)
+- [Advanced SIEM Information Model のパーサー](normalization-about-parsers.md)
+- [Advanced SIEM Information Model のコンテンツ](normalization-content.md)

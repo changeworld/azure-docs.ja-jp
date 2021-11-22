@@ -7,20 +7,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/08/2020
+ms.date: 10/06/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afc3d1d84d7b50cdaa7031230d7085e9f611c6c6
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 143b6a0c15c094cf31798ab7fa2a5d27cf98bd81
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304972"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717622"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 
-Azure AD Connect は、ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft のツールです。  また、以下のような特徴があります。
+Azure AD Connect は、ハイブリッド ID の目標を満たして実現するように設計されたオンプレミスの Microsoft アプリケーションです。 目標を満たす最適な方法を評価している場合は、クラウドマネージド ソリューションである [Azure AD Connect クラウド同期](../cloud-sync/what-is-cloud-sync.md)についても検討してください。
+
+Azure AD Connect には、次の機能が用意されています。
      
 - [パスワード ハッシュ同期](whatis-phs.md) - ユーザーのオンプレミス AD パスワードのハッシュを Azure AD と同期させるサインイン方法。
 - [パススルー認証](how-to-connect-pta.md) - ユーザーがオンプレミスとクラウド内で同じパスワードを使用できるようにするサインイン方法ですが、フェデレーション環境の追加のインフラストラクチャは必要ありません。

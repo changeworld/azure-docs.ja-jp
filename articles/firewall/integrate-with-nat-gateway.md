@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2fa0bef35d6bbc76f30ca1f0dde3199780743a14
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 30d1da573bec205212658fa6aff5ac3b71ad2e50
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131044933"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399012"
 ---
 # <a name="scale-snat-ports-with-azure-nat-gateway"></a>Azure NAT ゲートウェイを使用した SNAT ポートのスケーリング
 
@@ -28,7 +28,7 @@ NAT ゲートウェイ リソースが Azure Firewall サブネットに関連�
 このアーキテクチャでは、二重 NAT はありません。 Azure Firewall インスタンスは、Azure Firewall のパブリック IP アドレスではなく、プライベート IP アドレスを使用して、NAT ゲートウェイにトラフィックを送信します。
 
 > [!NOTE]
-> [Azure Firewall を複数の可用性ゾーンに](deploy-availability-zone-powershell.md)デプロイしている場合、現在は Azure NAT Gateway の使用は Azure Firewall と互換性がありません。 [Azure NAT Gateway と可用性ゾーン](../virtual-network/nat-gateway/nat-gateway-resource.md#cross-zone-outbound-scenarios-not-supported)の詳細について、ご確認ください。
+> 現時点では、[Azure Firewall を複数の可用性ゾーン](deploy-availability-zone-powershell.md)にデプロイしている場合、Azure Firewall で Azure NAT Gateway を使用することができません。
 
 ## <a name="associate-nat-gateway-with-azure-firewall-subnet---azure-powershell"></a>NAT ゲートウェイを Azure Firewall サブネットに関連付ける - Azure PowerShell
 

@@ -5,22 +5,22 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/12/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93f5af54992189d553c9e5c5c141a6ca08b7018e
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 334ebbecdd9da5bd55eff57f4c170c1a898e6c12
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860525"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486895"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure AD Multi-Factor Authentication のセッションの有効期間について理解する
 
-Azure Active Directory (Azure AD) には、ユーザーが再認証を必要とする頻度を決定する設定が複数あります。 この再認証は、パスワード、FIDO、パスワードレス Microsoft Authenticator などの第 1 要素を使用するか、多要素認証 (MFA) を実行するためである場合があります。 これらの再認証の設定は、必要に応じて、独自の環境と目的のユーザー エクスペリエンスに合わせて構成することができます。
+Azure Active Directory (Azure AD) には、ユーザーが再認証を必要とする頻度を決定する設定が複数あります。 この再認証は、パスワード、FIDO、パスワードレス Microsoft Authenticator などの第 1 要素と併せて実行されるか、多要素認証 (MFA) を実行するためのものである場合があります。 これらの再認証の設定は、必要に応じて、独自の環境と目的のユーザー エクスペリエンスに合わせて構成することができます。
 
 ユーザー サインインの頻度に関する Azure AD の既定の構成は、90 日間のローリング ウィンドウです。 ユーザーに資格情報を求めることはしばしば目的にかなっているように思われますが、不足の結果に終わる可能性があります。 考えることなしに資格情報を入力するようにユーザーが訓練されている場合、悪意のある資格情報プロンプトに情報を意図せず渡してしまうことがあります。
 
@@ -100,7 +100,11 @@ Azure AD Premium 1 のライセンスをお持ちの場合は、*永続ブラウ
 
 ## <a name="review-your-tenant-configuration"></a>テナント構成を確認する  
 
-さまざまな設定のしくみと推奨される構成について理解しましたので、次はテナントの構成を確認し、それに応じて変更を加えます。
+さまざまな設定のしくみと推奨される構成について理解しましたので、次はテナントの構成を確認します。 最初に、サインイン ログを参照して、サインイン時にどのセッションの有効期間ポリシーが適用されたかを把握することができます。
+
+各サインイン ログで、 **[認証の詳細]** タブに移動して、 **[セッションの有効期間ポリシーが適用されました]** を確認します。 詳細については「[認証の詳細](../reports-monitoring/concept-sign-ins.md#authentication-details)」を参照してください。
+
+![[認証の詳細] のスクリーンショット。](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/details.png)
 
 *[Remain signed-in] (サインインしたままの状態を続ける)* オプションを構成または確認するには、次の手順を実行します。
 
@@ -108,7 +112,7 @@ Azure AD Premium 1 のライセンスをお持ちの場合は、*永続ブラウ
 1. **[会社のブランド]** を選択してから、ロケールごとに **[サインインしたままにするオプションを表示する]** を選択します。
 1. *[はい]* を選択してから、 **[保存]** を選択します。
 
-信頼済みデバイスで Multi-Factor Authentication の設定を記憶するには、次の手順を実行します。
+信頼済みデバイスに多要素認証の設定を記憶させるには、次の手順を実行します。
 
 1. Azure AD portal で、 *[Azure Active Directory]* を検索して選択します。
 1. **セキュリティ** を選択してから、**MFA** を選択します。

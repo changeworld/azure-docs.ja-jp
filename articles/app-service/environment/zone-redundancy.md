@@ -1,26 +1,24 @@
 ---
-title: App Service 環境での可用性ゾーンのサポート
+title: App Service Environment v2 での可用性ゾーンのサポート
 description: アプリがゾーン冗長になるように App Service Environment をデプロイする方法について説明します。
-author: ccompy
-ms.assetid: 24e3e7eb-c160-49ff-8d46-e947818ef186
+author: madsd
 ms.topic: article
-ms.date: 07/05/2021
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 551146d18fa17aac365d62dbd1f8cbaa2d23a389
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: 5c60b2496acb03f52da066e56feab1423ac6ae91
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132284762"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520942"
 ---
-# <a name="availability-zone-support-for-app-service-environments"></a>App Service 環境での可用性ゾーンのサポート
+# <a name="availability-zone-support-for-app-service-environment-v2"></a>App Service Environment v2 での可用性ゾーンのサポート
 
 > [!NOTE]
-> この記事は、Isolated App Service プランで使用される App Service Environment v2 に関するものです
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です。
 > 
 
-App Service Environment (ASE) は、Availability Zones (AZ) にデプロイできます。  ユーザーは、Azure リージョン内の特定の AZ に内部ロード バランサー (ILB) ASE をデプロイできます。 ILB ASE を特定の AZ に固定すると、ILB ASE によって使用されるリソースは、指定した AZ に固定されるか、ゾーン冗長の形式でデプロイされます。  
+App Service Environment v2 (ASE) は、Availability Zones (AZ) にデプロイできます。  ユーザーは、Azure リージョン内の特定の AZ に内部ロード バランサー (ILB) ASE をデプロイできます。 ILB ASE を特定の AZ に固定すると、ILB ASE によって使用されるリソースは、指定した AZ に固定されるか、ゾーン冗長の形式でデプロイされます。  
 
 ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプロイされた ILB ASE は、ゾーンのリソースと見なされます。 次の ILB ASE の依存関係は、指定されたゾーンに固定されます。
 

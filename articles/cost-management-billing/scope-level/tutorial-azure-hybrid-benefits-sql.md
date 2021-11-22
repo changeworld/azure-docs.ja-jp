@@ -3,21 +3,21 @@ title: チュートリアル - SQL Server に対して一元的に管理され�
 description: このチュートリアルでは、Azure で SQL Server のライセンスを事前に割り当て、Azure ハイブリッド特典を管理および最適化する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2021
+ms.date: 11/11/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 6031bd83a5a32ffc5e76a4a967e305324f8d7ee8
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a8db95d33ae6398898108dfbf62a57b5b5f48d9d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130218865"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708312"
 ---
 # <a name="tutorial-optimize-centrally-managed-azure-hybrid-benefit-for-sql-server"></a>チュートリアル: SQL Server に対して一元的に管理された Azure ハイブリッド特典を最適化する
 
-このチュートリアルでは、Azure で SQL Server のライセンスを積極的に割り当て、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を一元的に管理および最適化する方法について説明します。 特典を最適化することで、Azure SQL の運用コストを削減できます。
+このチュートリアルでは、Azure で SQL Server のライセンスを積極的に割り当て、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を一元的に管理しながら最適化する方法について説明します。 特典を最適化することで、Azure SQL の運用コストを削減できます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,10 +32,10 @@ ms.locfileid: "130218865"
 
 開始する前に、次の要件が満たされていることを確認します。
 
-「[一元管理された Azure ハイブリッド特典とは](overview-azure-hybrid-benefit-scope.md)」の記事を読み、理解していること。 この記事では、Azure ハイブリッド特典の対象となる SQL Server ライセンスの種類について説明します。また、サブスクリプションまたは全体の課金アカウント レベルで選択したスコープで Azure ハイブリッド特典を有効にして使用する方法についても説明します。
+「[一元管理された Azure ハイブリッド特典とは](overview-azure-hybrid-benefit-scope.md)」の記事を読み、理解していること。 この記事では、Azure ハイブリッド特典の対象となる SQL Server ライセンスの種類について説明します。 また、選択したサブスクリプションまたは課金アカウントのスコープで特典を有効にする方法についても説明します。
 
 > [!NOTE]
-> スコープ レベルで Azure ハイブリッド特典を一元的に管理することは、現在パブリック プレビュー段階であり、エンタープライズのお客様に限定されています。
+> スコープ レベルで Azure ハイブリッド特典を一元的に管理する方法は、現在パブリック プレビュー中であり、企業のお客様と、Microsoft 顧客契約を結んで Azure.com から直接購入されるお客様に限定されています。
 
 この新しいエクスペリエンスの使用を開始する前に、Azure で SQL Server を実行する自己インストールした仮想マシンが登録されていることを確認してください。 そうすると、SQL Server を実行している Azure リソースがお客様と Azure から見えるようになります。 Azure に SQL VM を登録する方法については、「[SQL Server VM を SQL IaaS Agent 拡張機能に登録する](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)」と「[Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md)」を参照してください。
 
@@ -43,28 +43,27 @@ ms.locfileid: "130218865"
 
 "_最初の手順は準備です。_ " 組織内の他部署と連携して、次の 2 点を理解します。
 
-- 現在と今後 1 年間で予定されている Azure SQL と SQL Server の使用状況はどのくらいですか。
-- Azure に割り当てることができる SQL Server コア ライセンスの数はいくつありますか。
+- 今後の計画期間中に Azure でどの程度の SQL Server の使用量が予想されますか?
+- ソフトウェア アシュアランスのある (またはサブスクリプション内の) SQL Server コア ライセンスをいくつ購入し、Azure に割り当て可能ですか?
 
-次に、現在と、今後 1 年間または他の延長期間 (少なくとも 1 か月間) で "_予定されている_" Azure SQL の使用状況を判断します。
+システムにより検出された最近の Azure SQL 使用状況の詳細は、[Azure ハイブリッド特典用の SQL Server ライセンスの割り当てを作成する](create-sql-license-assignments.md)ときに表示されます。
 
-Azure SQL 使用状況の詳細は、[Azure ハイブリッド特典用の SQL Server ライセンスの割り当てを作成する](create-sql-license-assignments.md)と表示されます。
-
-組織の適切な担当者に相談して上記の情報を検証することをお勧めします。 たとえば、"_予定されている_" 使用状況と予想される SQL Server の使用状況の増加などです。 このような計画を担当する個人やグループが集中している場合もあれば、複数のチームに分散している場合もあります。
+組織内の適切な担当者に相談して、その情報を検証し、計画されている SQL Server の使用量の増加について確認することをお勧めします。
 
 オプションではありますが、Azure SQL の使用状況 (リソース レベルでの Azure ハイブリッド特典の使用状況を含む) を調査する便利な方法として、Azure ハイブリッド特典の [sql-license-usage PowerShell スクリプト](https://github.com/anosov1960/sql-server-samples/tree/master/samples/manage/azure-hybrid-benefit)を使用することができます。 これにより、特定のサブスクリプションまたはアカウント全体のすべての SQL リソースの合計の SQL Server ライセンス使用状況が分析され、追跡されます。
 
-### <a name="determine-the-number-of-sql-server-core-licenses-available-to-assign-to-azure"></a>Azure に割り当てることができる SQL Server コア ライセンスの数を決定する
+### <a name="determine-the-number-of-eligible-sql-server-core-licenses-available-to-assign-to-azure"></a>Azure に割り当てることができる SQL Server コア ライセンスの数を決定する
 
-数量は、購入したライセンス数と、オンプレミス サーバーと Azure VM の間で既に使用されているライセンス数によって変わります。
-
-確実かつシームレスに移行を行うために、180 日間は SQL Server ライセンスの二重使用権があります。 180 日の期間を過ぎると、SQL Server ライセンスは Azure でのみ使用できるようになります。 ライセンスの可用性を計画するときには、その点を考慮してください。 たとえば、移行するライセンスは、割り当て可能なライセンスとして考えることができます。
+数量は、購入したライセンスの数 (ソフトウェア アシュアランスまたはサブスクリプションを使用) と、Azure の外部 (通常はオンプレミス) で既に使用されているライセンスの数によって決まります。
 
 ソフトウェア調達部門やソフトウェア資産管理部門がこのような情報を持っていると考えられます。
 
+> [!TIP]
+> オンプレミスから Azure にワークロードを移行すると、関連付けられているライセンスを Azure に割り当てることができます。 これは、Azure ハイブリッド特典を使用しているためで、移行中は SQL Server ライセンスに対して 180 日間の二重使用権 (Azure とオンプレミス) が付与されるためです。 これにより、シームレスな実行を実現できます。
+
 ## <a name="buy-more-licenses-if-needed"></a>必要に応じてライセンスを追加購入する
 
-収集した情報を確認した上で、使用できる SQL Server ライセンスの数が予定されている Azure SQL の使用状況をカバーするには不十分であることが確実な場合は、ソフトウェア アシュアランス (またはサブスクリプション ライセンス) 付きの SQL Server コア ライセンスを追加購入するように調達部門に相談します。
+収集した情報を確認した上で、使用できる SQL Server ライセンスの数が予定されている Azure SQL の使用状況をカバーするには不十分であることが判明した場合は、ソフトウェア アシュアランス (またはサブスクリプション ライセンス) 付きの SQL Server コア ライセンスを追加購入するように調達部門に相談します。
 
 SQL Server のライセンスを購入して Azure ハイブリッド特典を適用する方が、Azure で SQL Server に時間単位で支払うよりも低コストです。 予定されているすべての Azure SQL の使用をカバーするのに十分な数のライセンスを購入することで、組織は特典によるコスト削減を最大化することができます。
 
@@ -110,7 +109,7 @@ SQL Server のライセンスを購入して Azure ハイブリッド特典を�
 1. 次に、必要なライセンスが既に使用できるか、間もなく購入されるかを調達チームに確認します。 この確認により、確実にライセンスを Azure に割り当てられるようにします。
    - オンプレミスで使用しているライセンスは、関連付けられているワークロードが Azure に移行されている場合、Azure に割り当てることができると考えられます。 前述のとおり、Azure ハイブリッド特典では、最大 180 日間の二重使用が可能です。
    - あなたは、Azure に割り当てることができる SQL Server Enterprise Edition ライセンスは 1,800 個、SQL Server Standard Edition ライセンスは 2,000 個あると判断します。 使用できるライセンスは、9,200 個の正規化されたコア ライセンスに相当します。 これは、必要な 8,750 個 (2,000 x 4 + 750 = 8,750) を少し上回る数です。
-1. 次に、1,800 個の SQL Server Enterprise Edition と 2,000 個の SQL Server Standard Edition を Azure に割り当てます。 そのアクションの結果、毎時実行される Azure SQL リソースに適用できる 9,200 個の正規化されたコア ライセンスになります。 必要以上のライセンスを割り当てることで、使用状況が予想よりも早く増加した場合のバッファーを確保できます。
+1. 次に、1,800 個の SQL Server Enterprise Edition と 2,000 個の SQL Server Standard Edition を Azure に割り当てます。 そのアクションの結果、毎時実行される Azure SQL リソースにシステムで適用できる正規化されたコア ライセンスは 9,200 個になります。 必要以上のライセンスを割り当てることで、使用状況が予想よりも早く増加した場合のバッファーを確保できます。
 
 その後、割り当てられたライセンスの使用状況を定期的に (理想的には毎月) 監視します。 10 か月後、使用率は 95% に近づき、Azure SQL の使用状況が予想以上に増加していることがわかりました。 あなたは調達チームに相談し、ライセンスを追加して割り当てられるようにします。
 

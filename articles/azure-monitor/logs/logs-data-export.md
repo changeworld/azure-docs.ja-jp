@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: yossi-y
 ms.author: yossiy
 ms.date: 10/17/2021
-ms.openlocfilehash: 8088b85ceefef2d3ffb11e7713fefd115c84b781
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9814c90a60aaa67ff6c1914c28568fb478bd0f87
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131435170"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488546"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -73,7 +73,7 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
     - 米国西部 2
 
 ## <a name="data-completeness"></a>データの完全性
-データ エクスポートでは、エクスポート先が使用できない場合、最大 30 分間、データ送信の再試行が続行されます。 エクスポート先が 30 分経ってもまだ使用できない場合、データは破棄されます。
+データ エクスポートは、大量のデータをエクスポート先に移動するために最適化されており、特定の再試行条件では、重複するレコードの一部を含めることができます。 エクスポート先へのエクスポート操作は、受信制限に達すると失敗する可能性があります。詳細については、「[データ エクスポート ルールを作成または更新する](#create-or-update-data-export-rule)」を参照してください。 エクスポートは最大 30 分間、再試行され続けます。エクスポート先がデータを受け取れない場合、データは、エクスポート先が使用可能になるまで破棄されます。
 
 ## <a name="cost"></a>コスト
 現在、データ エクスポート機能に追加料金は発生しません。 データ エクスポートの価格は、後で発表され、課金が始まる前に通知されます。 通知期間後もデータ エクスポートを引き続き使用することを選択した場合は、該当する料金が適用されます。

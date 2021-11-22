@@ -8,12 +8,12 @@ ms.subservice: mlops
 ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: ecde110225ef42ace6b19e54930ee9f4152acec6
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c704af7d5249ca1a24da554e7789d3c92a360861
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558632"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519460"
 ---
 # <a name="monitor-managed-online-endpoints-preview"></a>マネージド オンライン エンドポイント (プレビュー) を監視する
 
@@ -54,6 +54,13 @@ ms.locfileid: "131558632"
 - 要求待ち時間 P90 (90 パーセンタイルでの要求待ち時間)
 - 要求待ち時間 P95 (95 パーセンタイルでの要求待ち時間)
 - 1 分あたりの要求数
+- 1 秒あたりの新しい接続数
+- アクティブな接続数
+- ネットワーク バイト数
+
+> ![注] 上限を超えた場合、帯域幅が調整されます (「[Azure Machine Learning を使用するリソースのクォータの管理と引き上げ](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)」のマネージド オンライン エンドポイントに関するセクションをご覧ください)。 要求が調整されるかどうかを確認するには:
+> - "ネットワーク バイト数" メトリックを監視する
+> - 応答ヘッダーには `ms-azureml-bandwidth-request-delay-ms` フィールドと `ms-azureml-bandwidth-response-delay-ms` フィールドが与えられます。 フィールドの値は帯域幅調整の遅延 (ミリ秒単位) です。
 
 次のディメンションで分割:
 

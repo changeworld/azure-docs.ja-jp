@@ -1,34 +1,32 @@
 ---
-title: Azure Sentinel と CEF または Syslog データ コネクタ間の接続のトラブルシューティング | Microsoft Docs
-description: Azure Sentinel CEF または Syslog データ コネクタに関する問題をトラブルシューティングする方法について説明します。
+title: Microsoft Sentinel と CEF または Syslog データ コネクタ間の接続のトラブルシューティング | Microsoft Docs
+description: Microsoft Sentinel CEF または Syslog データ コネクタに関する問題をトラブルシューティングする方法について説明します。
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9d25b3e448fdf450001120d0c9fabf48f0e23b97
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4bdc3272fa114d4c270d906b03226a17d52bf893
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022913"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711517"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>CEF または Syslog データ コネクタのトラブルシューティング
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、Azure Sentinel の CEF または Syslog データ コネクタを検証してトラブルシューティングするための一般的な方法について説明します。
+この記事では、Microsoft Sentinel の CEF または Syslog データ コネクタを検証してトラブルシューティングするための一般的な方法について説明します。
 
-たとえば、ログが Azure Sentinel の Syslog または共通セキュリティ ログ テーブルに表示されない場合、データ ソースの接続に失敗しているか、データが取り込まれない別の原因が発生している可能性があります。
+たとえば、ログが Microsoft Sentinel の Syslog または共通セキュリティ ログ テーブルに表示されない場合、データ ソースの接続に失敗しているか、データが取り込まれない別の原因が発生している可能性があります。
 
 コネクタの展開が失敗した場合に発生する他の現象としては、**security_events.conf** または **security-omsagent.config.conf** ファイルのいずれかが欠落している場合や、rsyslog サーバーがポート 514 をリッスンしていない場合などがあります。
 
@@ -46,7 +44,7 @@ ms.locfileid: "131022913"
 
 ## <a name="validate-cef-connectivity"></a>CEF 接続の検証
 
-[ログ フォワーダーをデプロイ](connect-common-event-format.md)し、[CEF メッセージを送信するようにセキュリティ ソリューションを構成](./connect-common-event-format.md)したら (手順 2)、本セクションの手順に従って、セキュリティ ソリューションと Azure Sentinel との間の接続を検証します。
+[ログ フォワーダーをデプロイ](connect-common-event-format.md)し、[CEF メッセージを送信するようにセキュリティ ソリューションを構成](./connect-common-event-format.md)したら (手順 2)、本セクションの手順に従って、セキュリティ ソリューションと Microsoft Sentinel との間の接続を検証します。
 
 1. 次の前提条件を満たしていることを確認します。
 
@@ -56,13 +54,13 @@ ms.locfileid: "131022913"
 
     - 場合によっては、プロセスの間にワークスペース ID とワークスペースの主キーが必要になることがあります。 それらはワークスペース リソースの **[エージェント管理]** で確認できます。
 
-1. Azure Sentinel ナビゲーション メニューから **[ログ]** を開きます。 **CommonSecurityLog** スキーマを使用して、セキュリティ ソリューションからログが届いているかどうかを確認するクエリを実行します。
+1. Microsoft Sentinel ナビゲーション メニューから **[ログ]** を開きます。 **CommonSecurityLog** スキーマを使用して、セキュリティ ソリューションからログが届いているかどうかを確認するクエリを実行します。
 
     ログが **Log Analytics** に表示されるようになるまで、最大 20 分かかる場合があります。
 
 1. クエリの結果がまったく表示されない場合は、セキュリティ ソリューションからイベントが生成されていることを確認するか、なんらかのイベントを生成してみてください。それらのイベントが、指定した Syslog フォワーダー マシンに転送されていることを確認します。
 
-1. ログ フォワーダーで次のスクリプトを実行し (プレースホルダーをワークスペース ID に置き換えます)、セキュリティ ソリューション、ログ フォワーダー、および Azure Sentinel 間の接続を確認します。 デーモンが適切なポートでリッスンしていること、転送が適切に構成されていること、デーモンと Log Analytics エージェントとの間の通信がブロックされていないことが、このスクリプトによって確認されます。 また、モック メッセージ "TestCommonEventFormat" を送信することで、エンドツーエンドの接続が確認されます。 <br>
+1. ログ フォワーダーで次のスクリプトを実行し (プレースホルダーをワークスペース ID に置き換えます)、セキュリティ ソリューション、ログ フォワーダー、および Microsoft Sentinel 間の接続を確認します。 デーモンが適切なポートでリッスンしていること、転送が適切に構成されていること、デーモンと Log Analytics エージェントとの間の通信がブロックされていないことが、このスクリプトによって確認されます。 また、モック メッセージ "TestCommonEventFormat" を送信することで、エンドツーエンドの接続が確認されます。 <br>
 
     ```bash
     sudo wget -O cef_troubleshoot.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
@@ -162,7 +160,7 @@ ms.locfileid: "131022913"
     sudo tcpdump -A -ni any port 25226 -vv
     ```
 
-1. MOCK データを localhost のポート 514 に送信します。 このデータは、Azure Sentinel ワークスペースから次のクエリを実行することによって観察できます。
+1. MOCK データを localhost のポート 514 に送信します。 このデータは、Microsoft Sentinel ワークスペースから次のクエリを実行することによって観察できます。
 
     ```kusto
     CommonSecurityLog
@@ -256,7 +254,7 @@ ms.locfileid: "131022913"
     sudo tcpdump -A -ni any port 25226 -vv
     ```
 
-1. MOCK データを localhost のポート 514 に送信します。 このデータは、Azure Sentinel ワークスペースから次のクエリを実行することによって観察できます。
+1. MOCK データを localhost のポート 514 に送信します。 このデータは、Microsoft Sentinel ワークスペースから次のクエリを実行することによって観察できます。
 
     ```kusto
     CommonSecurityLog
@@ -272,13 +270,13 @@ ms.locfileid: "131022913"
 
 Azure 仮想マシンを Syslog コレクターとして使用している場合は、次のことを確認してください。
 
-- Syslog データ コネクタの設定中は、[MMA または OMS エージェント[の ](../security-center/security-center-enable-data-collection.md)Azure Security Center の自動プロビジョニング設定](connect-windows-security-events.md#connector-options)を必ずオフにするようにしてください。
+- Syslog データ コネクタの設定中は、[MMA または OMS エージェント[の ](../security-center/security-center-enable-data-collection.md)Microsoft Defender for Cloud の自動プロビジョニング設定](connect-windows-security-events.md#connector-options)を必ずオフにするようにしてください。
 
     データ コネクタの設定が完了したら、再びオンにすることができます。
 
 - [Common Event Format データ コネクタの python スクリプト](./connect-log-forwarder.md)をデプロイする前に、仮想マシンが既に既存の Syslog ワークスペースに接続されていないことを確認してください。 この情報は、Syslog ワークスペースに接続されている VM が **[接続済み]** と表示されている、Log Analytics ワークスペースの仮想マシンの一覧にあります。
 
-- Azure Sentinel が、**Securityinsights** ソリューションがインストールされている正しい Syslog ワークスペースに接続されていることを確認します。
+- Microsoft Sentinel が、**SecurityInsights** ソリューションがインストールされている正しい Syslog ワークスペースに接続されていることを確認します。
 
     詳細については、[手順 1: ログ フォワーダーを展開する](./connect-log-forwarder.md)方法に関するページを参照してください。
 
@@ -289,7 +287,7 @@ Azure 仮想マシンを Syslog コレクターとして使用している場合
 データ コネクタにオンプレミスのマシンまたは Azure 以外の仮想マシンを使用している場合は、サポートされている Linux オペレーティング システムの新規インストールでインストールスクリプトを実行していることを確認してください。
 
 > [!TIP]
-> このスクリプトは、Azure Sentinel の **Common Event Format** のデータ コネクタ ページで取得することもできます。
+> このスクリプトは、Microsoft Sentinel の **Common Event Format** のデータ コネクタ ページで取得することもできます。
 >
 
 ```cli
@@ -300,7 +298,7 @@ sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sent
 
 Syslog サーバー (rsyslog または syslog-ng) は、関連する構成ファイルで定義されているすべてのデータを転送します。これには、Log Analytics ワークスペースで定義されている設定が自動的に設定されます。
 
-Azure Sentinel に取り込むファシリティと重要度のログ レベルに関する詳細を追加するようにしてください。 構成プロセスには約 20 分かかる場合があります。
+Microsoft Sentinel に取り込むファシリティと重要度のログ レベルに関する詳細を追加するようにしてください。 構成プロセスには約 20 分かかる場合があります。
 
 詳細については、[デプロイ スクリプトの説明](./connect-log-forwarder.md#deployment-script-explained)に関するページと、[Azure portal で Syslog を構成する](../azure-monitor/agents/data-sources-syslog.md)方法に関するページを参照してください。
 
@@ -396,7 +394,7 @@ if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
 この手順では、SELinux が現在 `permissive` 状態にあるかどうか、または OMS エージェントへの接続をブロックしているかどうかを確認する方法について説明します。 この手順は、お使いのオペレーティング システムが RedHat または CentOS からのディストリビューションである場合に関連します。
 
 > [!NOTE]
-> Azure Sentinel の CEF および Syslog のサポートには、FIPS のセキュリティ強化のみが含まれます。 SELinux や CIS などの他のセキュリティ強化方法は、現在サポートされていません。
+> Microsoft Sentinel の CEF および Syslog のサポートには、FIPS のセキュリティ強化のみが含まれます。 SELinux や CIS などの他のセキュリティ強化方法は、現在サポートされていません。
 >
 
 1. 次を実行します。
@@ -407,8 +405,8 @@ if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
 
     状態は、次のいずれかの値として報告されます。
 
-    - `disabled`. この構成は、Azure Sentinel への接続でサポートされています。
-    - `permissive`. この構成は、Azure Sentinel への接続でサポートされています。
+    - `disabled`. この構成は、Microsoft Sentinel への接続でサポートされています。
+    - `permissive`. この構成は、Microsoft Sentinel への接続でサポートされています。
     - `enforced`. この構成はサポートされていないので、状態を無効にするか、`permissive` に設定する必要があります。
 
 1. 現在、状態が `enforced` に設定されている場合は、一時的にオフにして、これがブロックの要因であるかどうかを確認してください。 次を実行します。
@@ -499,7 +497,7 @@ if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
 
 ## <a name="linux-and-oms-agent-related-issues"></a>Linux と OMS エージェントに関連する問題
 
-この記事のここまでの手順を実行しても問題が解決しない場合は、OMS エージェントと Azure Sentinel ワークスペース間の接続に問題がある場合が考えられます。
+この記事のここまでの手順を実行しても問題が解決しない場合は、OMS エージェントと Microsoft Sentinel ワークスペース間の接続に問題がある場合が考えられます。
 
 このような場合は、次を確認してトラブルシューティングを続行します。
 
@@ -527,11 +525,11 @@ Heartbeat
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事のトラブルシューティング手順で問題が解決しない場合は、サポート チケットを開くか、Azure Sentinel のコミュニティ リソースを使用してください。 詳細については、「[Azure Sentinel の操作に便利なリソース](resources.md)」を参照してください。
+この記事のトラブルシューティング手順で問題が解決しない場合は、サポート チケットを開くか、Microsoft Sentinel のコミュニティ リソースを使ってください。 詳細については、「[Microsoft Sentinel の操作に便利なリソース](resources.md)」を参照してください。
 
-Azure Sentinel の詳細については、次の記事をご覧ください。
+Microsoft Sentinel の詳細については、次の記事を参照してください。
 
 - [Cef および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
 - [ブックを使用](monitor-your-data.md)してデータを監視する。

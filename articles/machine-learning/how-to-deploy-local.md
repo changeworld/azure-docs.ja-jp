@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: how-to
 ms.custom: deploy
-ms.openlocfilehash: fa5c362db03af7004751e39708553edf79f5827a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 14fb372a00621806ed4423813ee5e23b3c313688
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446529"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402430"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Azure Machine Learning でトレーニングされたモデルをローカル コンピューターにデプロイする 
 
@@ -188,7 +188,7 @@ Docker を使用してモデルを Web サービスとしてデプロイする�
 - コマンドラインで `az ml model download` を使用する ([model download](/cli/azure/ml/model#az_ml_model_download) に関するセクションを参照)。
 - Python SDK `Model.download()` メソッドを使用する (「[Model クラス](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-)」を参照)。
 
-Azure モデルは、1 つまたは複数のシリアル化された Python オブジェクトであり、Python pickle ファイル ( .pkl 拡張子) としてパッケージ化されています。 pickle ファイルの内容は、モデルのトレーニングに使用された機械学習ライブラリまたは技法によって異なります。 たとえば、チュートリアルのモデルを使用している場合は、次のようにしてモデルを読み込むことができます。
+Azure モデルは、フレームワークで使用されている形式であるものの、1 つまたは複数のシリアル化された Python オブジェクトであり、Python pickle ファイル (.pkl 拡張子) としてパッケージ化されています。 pickle ファイルの内容は、モデルのトレーニングに使用された機械学習ライブラリまたは技法によって異なります。 たとえば、チュートリアルのモデルを使用している場合は、次のようにしてモデルを読み込むことができます。
 
 ```python
 import pickle

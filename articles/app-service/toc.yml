@@ -251,7 +251,7 @@
           href: configure-authentication-file-based.md
     - name: アプリのセキュリティ保護
       items:
-        - name: TSL/SSL 証明書を追加する
+        - name: TLS/SSL 証明書の追加
           href: configure-ssl-certificate.md
         - name: アクセスを制限する
           href: app-service-ip-restrictions.md

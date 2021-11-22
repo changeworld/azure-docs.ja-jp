@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7ede1ecbbe86f0ec5ef3a79d38b42ff58b653b0b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 61d80fb7e187910416958b7e3e0183a875590344
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005355"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399828"
 ---
 # <a name="access-your-application-in-a-private-network"></a>プライベート ネットワークのアプリにアクセスする
 
@@ -212,7 +212,7 @@ az spring-cloud app update --name $SPRING_CLOUD_APP \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Application Gateway と Azure Firewall を使用してアプリをインターネットに公開する](./expose-apps-gateway-azure-firewall.md)
+- [Application Gateway を使用して、アプリケーションをインターネットに公開する](./expose-apps-gateway.md)
 
 ## <a name="see-also"></a>関連項目
 

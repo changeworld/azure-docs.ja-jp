@@ -8,16 +8,16 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 730b7344a213922bd87d5efa3a659d352ff8624f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fe9450310e3f8774b31557fd7c045f05ed9b56b1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019147"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518358"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>Azure NFS ファイル共有に関する問題のトラブルシューティングを行います
 
-この記事では、Azure NFS ファイル共有 (プレビュー) に関連する一般的な問題をいくつか説明します。 これらの問題が発生した場合に考えられる原因と回避策を提示します。 この記事では、パブリック プレビューでの既知の問題についても説明します。
+この記事では、Azure NFS ファイル共有に関連する一般的な問題と既知の問題をいくつか説明します。 これらの問題が発生した場合に考えられる原因と回避策を提示します。
 
 ## <a name="applies-to"></a>適用対象
 | ファイル共有の種類 | SMB | NFS |
@@ -44,31 +44,7 @@ idmapping が無効になっており、再度有効にするものがないこ�
 
 ## <a name="unable-to-create-an-nfs-share"></a>NFS 共有を作成できない
 
-### <a name="cause-1-subscription-is-not-enabled"></a>原因 1:サブスクリプションが有効になっていない
-
-サブスクリプションが Azure Files の NFS のプレビューに登録されていない可能性があります。 この機能を有効にするには、Cloud Shell またはローカル ターミナルから、さらにいくつかのコマンドレットを実行する必要があります。
-
-> [!NOTE]
-> 登録が完了するまで最長で 30 分ほどお待ちいただく必要がある場合があります。
-
-
-#### <a name="solution"></a>解決策
-
-次のスクリプトを使用して機能とリソース プロバイダーを登録します。スクリプトを実行する前に `<yourSubscriptionIDHere>` を置き換えてください。
-
-```azurepowershell
-Connect-AzAccount
-
-#If your identity is associated with more than one subscription, set an active subscription
-$context = Get-AzSubscription -SubscriptionId <yourSubscriptionIDHere>
-Set-AzContext $context
-
-Register-AzProviderFeature -FeatureName AllowNfsFileShares -ProviderNamespace Microsoft.Storage
-
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-### <a name="cause-2-unsupported-storage-account-settings"></a>原因 2:ストレージ アカウントの設定がサポートされていない
+### <a name="cause-1-unsupported-storage-account-settings"></a>原因 1: ストレージ アカウントの設定がサポートされていない
 
 NFS は、次の構成のストレージ アカウントでのみ使用できます。
 
@@ -79,14 +55,6 @@ NFS は、次の構成のストレージ アカウントでのみ使用できま
 #### <a name="solution"></a>解決策
 
 次の記事の手順に従ってください。[NFS 共有を作成する方法](storage-files-how-to-create-nfs-shares.md)
-
-### <a name="cause-3-the-storage-account-was-created-prior-to-registration-completing"></a>原因 3:登録が完了する前にストレージ アカウントが作成された
-
-ストレージ アカウントでこの機能を使用するには、サブスクリプションで NFS の登録を完了した後にそれを作成する必要があります。 登録が完了するまで最長で 30 分かかる場合があります。
-
-#### <a name="solution"></a>解決策
-
-登録が完了したら、次の記事の手順に従ってください。[NFS 共有を作成する方法](storage-files-how-to-create-nfs-shares.md)
 
 ## <a name="cannot-connect-to-or-mount-an-azure-nfs-file-share"></a>Azure NFS ファイル共有を接続またはマウントできない
 

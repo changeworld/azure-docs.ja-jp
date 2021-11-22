@@ -1,32 +1,30 @@
 ---
-title: Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする | Microsoft Docs
-description: この記事では、Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする方法について説明します。
+title: Microsoft Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする | Microsoft Docs
+description: この記事では、Microsoft Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする方法について説明します。
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: 223fa4bf0e62790e31ae8d872ef47c72a15b4634
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b7a42d6a80e602170264e6cbe94e410e46246f79
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083875"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721007"
 ---
-# <a name="enrich-entities-in-azure-sentinel-with-geolocation-data-via-rest-api-public-preview"></a>Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする (パブリック プレビュー)
+# <a name="enrich-entities-in-microsoft-sentinel-with-geolocation-data-via-rest-api-public-preview"></a>Microsoft Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする方法について説明します。
+この記事では、Microsoft Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする方法について示します。
 
 > [!IMPORTANT]
 > 現在、この機能はプレビュー段階にあります。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
@@ -123,12 +121,12 @@ ms.locfileid: "131083875"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Sentinel の詳細については、次の記事をご覧ください。
+Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 
 - エンティティの詳細を確認します。
 
-    - [Azure Sentinel エンティティ型リファレンス](entities-reference.md)
-    - [Azure Sentinel でエンティティを使用してデータを分類および分析する](entities-in-azure-sentinel.md)
-    - [データ フィールドを Azure Sentinel のエンティティにマップする](map-data-fields-to-entities.md)
+    - [Microsoft Azure Sentinel エンティティ型リファレンス](entities-reference.md)
+    - [Microsoft Azure Sentinel でエンティティを使用してデータを分類および分析する](entities.md)
+    - [データ フィールドを Microsoft Azure Sentinel のエンティティにマップする](map-data-fields-to-entities.md)
 
-- [Azure Sentinel API](/rest/api/securityinsights/) の他の使用方法を確認する
+- [Microsoft Azure Sentinel API](/rest/api/securityinsights/) の他の使用方法を確認する

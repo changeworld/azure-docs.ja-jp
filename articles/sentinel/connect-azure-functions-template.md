@@ -1,50 +1,50 @@
 ---
-title: Azure Functions を使用して Azure Sentinel をデータ ソースに接続する | Microsoft Docs
-description: Azure Functions を使用して、データソースから Azure Sentinel にデータを取り込むデータ コネクタを構成する方法について説明します。
+title: Azure Functions を使用して Microsoft Sentinel をデータ ソースに接続する | Microsoft Docs
+description: Azure Functions を使用して、データソースから Microsoft Sentinel にデータを取り込むデータ コネクタを構成する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/07/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7d921c1b1d44f8378a51fa6a419378cd199cd57d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c175df296f00a42fafff53c0488705f877bff4f9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037295"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521873"
 ---
-# <a name="use-azure-functions-to-connect-azure-sentinel-to-your-data-source"></a>Azure Functions を使用して Azure Sentinel をデータ ソースに接続する
+# <a name="use-azure-functions-to-connect-microsoft-sentinel-to-your-data-source"></a>Azure Functions を使用して Microsoft Sentinel をデータ ソースに接続する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-[Azure Functions](../azure-functions/functions-overview.md) を、[PowerShell](../azure-functions/functions-reference-powershell.md) や Python などのさまざまなコーディング言語と組み合わせて使用して、互換性のあるデータ ソースの REST API エンドポイントへのサーバーレス コネクタを作成することができます。 Azure 関数アプリにより、データ ソースの REST API に Azure Sentinel を接続してログをプルすることができます。
+[Azure Functions](../azure-functions/functions-overview.md) を、[PowerShell](../azure-functions/functions-reference-powershell.md) や Python などのさまざまなコーディング言語と組み合わせて使用して、互換性のあるデータ ソースの REST API エンドポイントへのサーバーレス コネクタを作成することができます。 Azure 関数アプリにより、データ ソースの REST API に Microsoft Sentinel を接続してログをプルすることができます。
 
-この記事では、Azure 関数アプリを使用するために Azure Sentinel を構成する方法について説明します。 さらに、ソース システムを構成する必要がある場合もありますが、ポータルの各データ コネクタのページ、または [Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションで、ベンダー固有および製品固有の情報リンクを見つけることができます。
+この記事では、Azure 関数アプリを使用するために Microsoft Sentinel を構成する方法について説明します。 さらに、ソース システムを構成する必要がある場合もありますが、ポータルの各データ コネクタのページ、または [Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションで、ベンダー固有および製品固有の情報リンクを見つけることができます。
 
 
 
 
 > [!NOTE]
-> - データは、Azure Sentinel に取り込まれると、Azure Sentinel を実行しているワークスペースの地理的な場所に保存されます。
+> - データは、Microsoft Sentinel に取り込まれると、Microsoft Sentinel を実行しているワークスペースの地理的な場所に保存されます。
 >
 >     長期間の保有の場合、Azure Data Explorer にデータを保存したいと考える場合もあります。 詳細については、[Azure Data Explorer の統合](store-logs-in-azure-data-explorer.md)に関するページを参照してください。
 >
-> - Azure Functions を使用して Azure Sentinel にデータを取り込むと、追加のデータ インジェスト コストが発生する可能性があります。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。
+> - Azure Functions を使用して Microsoft Sentinel にデータを取り込むと、追加のデータ インジェスト コストが発生する可能性があります。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Functions を使用して Azure Sentinel をデータ ソースに接続し、そのログを Azure Sentinel にプルする前に、次のアクセス許可と資格情報があることを確認してください。
+Azure Functions を使用して Microsoft Sentinel をデータ ソースに接続し、そのログを Microsoft Sentinel にプルする前に、次のアクセス許可と資格情報があることを確認してください。
 
-- Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
+- Microsoft Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
 - ワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)を参照してください。
 
@@ -52,21 +52,21 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
 - また、製品の API にアクセスするための資格情報 (ユーザー名とパスワード、トークン、キー、またはその他の組み合わせ) も必要になります。 さらにエンドポイント URI などの他の API 情報が必要な場合もあります。
 
-    詳細については、接続先のサービスのドキュメントおよび、[Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションを参照してください。
+    詳細については、接続先のサービスのドキュメントおよび、[Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションを参照してください。
 
 ## <a name="configure-and-connect-your-data-source"></a>データ ソースを構成して接続する
 
 > [!NOTE]
 > - Azure Key Vault には、ワークスペースと API の認可キーまたはトークンを安全に格納できます。 Azure Key Vault には、キー値を格納および取得するためのセキュリティで保護されたメカニズムが用意されています。 Azure 関数アプリで Azure Key Vault を使用するには、[これらの手順に従います](../app-service/app-service-key-vault-references.md)。
 >
-> - 一部のデータ コネクタは、正常に動作するために、[Kusto 関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)に基づくパーサーに依存しています。 Kusto 関数とエイリアスを作成する手順のリンクについては、[Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスのセクションを参照してください。
+> - 一部のデータ コネクタは、正常に動作するために、[Kusto 関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)に基づくパーサーに依存しています。 Kusto 関数とエイリアスを作成する手順のリンクについては、[Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスのセクションを参照してください。
 
 
 ### <a name="step-1---get-your-source-systems-api-credentials"></a>手順 1 - ソース システムの API 資格情報を取得する
 
 ソース システムの指示に従って、その **API 資格情報/認可キー/トークン** を取得します。 後のために、それらをコピーして、テキスト ファイルに貼り付けます。
 
-必要となる正確な資格情報の詳細と、それらを見つけて作成するための製品の手順のリンクは、ポータルのデータ コネクタ ページと、[Azure Sentinel データ コネクタ のリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションで参照できます。
+必要となる正確な資格情報の詳細と、それらを見つけて作成するための製品の手順のリンクは、ポータルのデータ コネクタ ページと、[Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションで参照できます。
 
 また、ソース システムでログまたはその他の設定を構成する必要がある場合もあります。 それらと関連する手順については、前の段落を参照してください。
 ### <a name="step-2---deploy-the-connector-and-the-associated-azure-function-app"></a>手順 2 - コネクタと関連付けられている Azure 関数アプリをデプロイする
@@ -77,9 +77,9 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
 この方法により、ARM テンプレートを使用して Azure 関数ベースのコネクタを自動的にデプロイできます。
 
-1. Azure Sentinel ポータルで **[Data connectors]\(データ コネクタ\)** を選択します。 一覧から Azure Functions ベースのコネクタを選択し、**コネクタ ページを開きます**。
+1. Microsoft Sentinel ポータルで **[Data connectors]\(データ コネクタ\)** を選択します。 一覧から Azure Functions ベースのコネクタを選択し、**コネクタ ページを開きます**。
 
-1. **[構成]** で、Azure Sentinel の **[ワークスペース ID]** と **[主キー]** をコピーし、控えておきます。
+1. **[構成]** で、Microsoft Sentinel の **[ワークスペース ID]** と **[主キー]** をコピーし、控えておきます。
 
 1. **[Azure に配置する]** を選択します。 (ボタンを見つけるために、下へスクロールする必要がある場合があります。)
 
@@ -88,12 +88,12 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
     - 上記の[手順 1](#step-1---get-your-source-systems-api-credentials) で保存した API 資格情報/認可キー/トークンを入力します。
 
-    - Azure Sentinel の **[ワークスペース ID]** と **[ワークスペース キー]** (主キー) に、先ほどコピーした値を入力します。
+    - Microsoft Sentinel の **[ワークスペース ID]** と **[ワークスペース キー]** (主キー) に、先ほどコピーした値を入力します。
 
         > [!NOTE]
         > 上記のいずれかの値に対して Azure Key Vault シークレットを使用する場合は、文字列値の代わりに `@Microsoft.KeyVault(SecretUri={Security Identifier})` スキーマを使用します。 詳細については、Key Vault のリファレンスのドキュメントを参照してください。
 
-    - **[カスタム デプロイ]** 画面で、フォームのその他のフィールドを入力します。 ポータルのデータ コネクタ ページ、または [Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスのセクションを参照してください。
+    - **[カスタム デプロイ]** 画面で、フォームのその他のフィールドを入力します。 ポータルのデータ コネクタ ページ、または [Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスのセクションを参照してください。
 
     - **[Review + create]\(レビュー + 作成\)** を選択します。 検証が完了したら、 **[作成]** を選択します。
 
@@ -101,9 +101,9 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
 次の手順を使用して、PowerShell 関数を使用する Azure Functions ベースのコネクタを手動でデプロイします。
 
-1. Azure Sentinel ポータルで **[Data connectors]\(データ コネクタ\)** を選択します。 一覧から Azure Functions ベースのコネクタを選択し、**コネクタ ページを開きます**。
+1. Microsoft Sentinel ポータルで **[Data connectors]\(データ コネクタ\)** を選択します。 一覧から Azure Functions ベースのコネクタを選択し、**コネクタ ページを開きます**。
 
-1. **[構成]** で、Azure Sentinel の **[ワークスペース ID]** と **[主キー]** をコピーし、控えておきます。
+1. **[構成]** で、Microsoft Sentinel の **[ワークスペース ID]** と **[主キー]** をコピーし、控えておきます。
 
 1. **関数アプリを作成する**
     1. Azure portal から、**関数アプリ** を検索して選択します。
@@ -138,7 +138,7 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
     1. 関数が作成されたら、左ウィンドウで **[コードとテスト]** を選択します。
 
-    1. ソース システムのベンダーから提供されている関数アプリ コードをダウンロードし、コピーして、**関数アプリ** *run.ps1* エディターに貼り付けて、既定でそこにある内容を置き換えます。 ダウンロード リンクは、コネクタ ページ、または [Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスのセクションにあります。
+    1. ソース システムのベンダーから提供されている関数アプリ コードをダウンロードし、コピーして、**関数アプリ** *run.ps1* エディターに貼り付けて、既定でそこにある内容を置き換えます。 ダウンロード リンクは、コネクタ ページ、または [Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスのセクションにあります。
 
     1. **[保存]** を選択します。
 
@@ -147,7 +147,7 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
     1. **[アプリケーションの設定]** タブで、 **[+ 新しいアプリケーション設定]** を選択します。
 
-    1. 製品について規定されているアプリケーション設定を、大文字と小文字を区別する各文字列値で個別に追加します。 データ コネクタ ページ、または [Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスについてのセクションの製品のセクションを参照してください。
+    1. 製品について規定されているアプリケーション設定を、大文字と小文字を区別する各文字列値で個別に追加します。 データ コネクタ ページ、または [Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスについてのセクションの製品のセクションを参照してください。
 
         > [!TIP]
         > 必要に応じて、専用クラウドを使用している場合は、*logAnalyticsUri* アプリケーション設定を使用して、ログ分析 API エンドポイントを上書きします。 そのため、たとえば、パブリック クラウドを使用している場合は、値を空のままにします。Azure GovUS クラウド環境では、`https://<CustomerId>.ods.opinsights.azure.us` の形式で値を指定します。
@@ -157,16 +157,16 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
 次の手順を使用して、Python 関数を使用する Azure Functions ベースのコネクタを手動でデプロイします。 この種類のデプロイには Visual Studio Code が必要です。
 
-1. Azure Sentinel ポータルで **[Data connectors]\(データ コネクタ\)** を選択します。 一覧から Azure Functions ベースのコネクタを選択し、**コネクタ ページを開きます**。
+1. Microsoft Sentinel ポータルで **[Data connectors]\(データ コネクタ\)** を選択します。 一覧から Azure Functions ベースのコネクタを選択し、**コネクタ ページを開きます**。
 
-1. **[構成]** で、Azure Sentinel の **[ワークスペース ID]** と **[主キー]** をコピーし、控えておきます。
+1. **[構成]** で、Microsoft Sentinel の **[ワークスペース ID]** と **[主キー]** をコピーし、控えておきます。
 
 1. **関数アプリをデプロイする**
 
     > [!NOTE]
     > Azure 関数の開発には [Visual Studio Code (VS Code) を準備する](../azure-functions/create-first-function-vs-code-python.md)必要があります。
 
-    1. Azure Function App ファイルをダウンロードするには、データ コネクタ ページおよび [Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスのセクションに提供されているリンクを使用します。 アーカイブをローカル開発用コンピューターに抽出します。
+    1. Azure 関数アプリ ファイルをダウンロードするには、データ コネクタ ページおよび [Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスのセクションに提供されているリンクを使用します。 アーカイブをローカル開発用コンピューターに抽出します。
 
     1. VS Code を起動します。 メニュー バーから、 **[ファイル] > [フォルダーを開く...]** を選択します。
 
@@ -194,7 +194,7 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
     1. **[アプリケーションの設定]** タブで、 **[+ 新しいアプリケーション設定]** を選択します。
 
-    1. 製品について規定されているアプリケーション設定を、大文字と小文字を区別する各文字列値で個別に追加します。 追加するアプリケーション設定については、データ コネクタ ページ、または [Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスについてのセクションを参照してください。
+    1. 製品について規定されているアプリケーション設定を、大文字と小文字を区別する各文字列値で個別に追加します。 追加するアプリケーション設定については、データ コネクタ ページ、または [Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページでお使いのサービスについてのセクションを参照してください。
 
         - 必要に応じて、専用クラウドを使用している場合は、*logAnalyticsUri* アプリケーション設定を使用して、ログ分析 API エンドポイントを上書きします。 そのため、たとえば、パブリック クラウドを使用している場合は、値を空のままにします。Azure GovUS クラウド環境では、`https://<CustomerId>.ods.opinsights.azure.us` の形式で値を指定します。
 
@@ -202,7 +202,7 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
 ## <a name="find-your-data"></a>データの検索
 
-接続が正常に確立されると、[Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションに記載されている表で、 *[CustomLogs]* の下の **[ログ]** にデータが表示されます。
+接続が正常に確立されると、[Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションに記載されている表で、 *[CustomLogs]* の下の **[ログ]** にデータが表示されます。
 
 データのクエリを実行するには、クエリ ウィンドウで、それらのいずれかのテーブル名 (または関連する Kusto 関数エイリアス) を入力します。
 
@@ -214,8 +214,8 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Functions ベースのコネクタを使用して Azure Sentinel をデータ ソースに接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Azure Functions ベースのコネクタを使用して Microsoft Sentinel をデータ ソースに接続する方法について説明しました。 Microsoft Sentinel の詳細については、次の記事を参照してください。
 
 - [データと潜在的な脅威を可視化](./get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
 - [ブックを使用](./monitor-your-data.md)してデータを監視する。

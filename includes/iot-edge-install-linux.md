@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 32adad7acee7c1dbb75516d4ccaa597f2c69b9fb
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: e4c78fe2037beb23f69700ae7a340a4d5c6cc160
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131845083"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490568"
 ---
 ## <a name="install-iot-edge"></a>IoT Edge をインストールする
 
@@ -20,31 +20,24 @@ IoT Edge ランタイムをインストールするように準備するには�
 
 ### <a name="access-the-microsoft-installation-packages"></a>Microsoft インストール パッケージにアクセスする
 
-1. デバイスのオペレーティング システムに一致するリポジトリ構成をインストールします。
+1. デバイスのオペレーティング システムに対応するリポジトリ構成パッケージをダウンロードします。
 
    * **Ubuntu Server 18.04**:
 
       ```bash
-      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/packages-microsoft-prod.deb > ./packages-microsoft-prod.deb
       ```
 
    * **Raspberry Pi OS Stretch**:
 
       ```bash
-      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+      curl https://packages.microsoft.com/config/debian/stretch/multiarch/packages-microsoft-prod.deb > ./packages-microsoft-prod.deb
       ```
 
-1. 生成されたリストを sources.list.d ディレクトリにコピーします。
+1. 構成パッケージをインストールして、Microsoft のパッケージ リポジトリと GPG 公開キーを追加します。
 
    ```bash
-   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-   ```
-
-1. Microsoft GPG 公開キーをインストールします。
-
-   ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   sudo apt install ./packages-microsoft-prod.deb
    ```
 
 > [!NOTE]

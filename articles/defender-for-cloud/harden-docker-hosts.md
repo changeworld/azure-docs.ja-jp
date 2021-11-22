@@ -5,14 +5,14 @@ author: memildin
 ms.author: memildin
 ms.date: 11/09/2021
 ms.topic: how-to
-ms.service: security-center
+ms.service: defender-for-cloud
 manager: rkarlin
-ms.openlocfilehash: 9081da3e2db3a902c541b079e32eea1b60ad8d43
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: d977fadcb4d7975924afddc5c26770e568daafcb
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132373421"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524944"
 ---
 # <a name="harden-your-docker-hosts"></a>Docker ホストのセキュリティを強化する
 
@@ -34,7 +34,7 @@ Defender for Cloud には、CI Docker ベンチマークのルールセット全
 |リリース状態:|一般公開 (GA)|
 |価格:|[Microsoft Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|ホストが接続するワークスペースの **閲覧者**|
-|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png":::国/ソブリン (Azure Government、Azure China 21Vianet)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 各国 (Azure Government、Azure China 21Vianet)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Docker 構成のセキュリティの脆弱性を特定して修復する

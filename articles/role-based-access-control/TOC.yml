@@ -46,6 +46,8 @@
           href: conditions-prerequisites.md
         - name: 条件に関する FAQ
           href: conditions-faq.md
+        - name: カスタム セキュリティ属性の例
+          href: conditions-custom-security-attributes-example.md
     - name: セキュリティ
       items:
         - name: Azure Policy によるセキュリティ制御
@@ -104,6 +106,8 @@
           href: conditions-role-assignments-template.md
         - name: 条件のトラブルシューティング
           href: conditions-troubleshoot.md
+        - name: 条件とカスタム セキュリティ属性
+          href: conditions-custom-security-attributes.md
     - name: ロールの割り当てを削除する
       href: role-assignments-remove.md
     - name: 拒否割り当てを一覧表示する

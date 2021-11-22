@@ -1,30 +1,28 @@
 ---
-title: Azure Stack Hub 仮想マシンを Azure Sentinel にオンボードする | Microsoft Docs
-description: この記事では、Azure Monitor, Update, and Configuration Management 仮想マシン拡張機能を Azure Stack Hub 仮想マシン上にプロビジョニングし、Azure Sentinel を使用してそれらの監視を開始する方法を示します。
+title: Azure Stack Hub 仮想マシンを Microsoft Sentinel にオンボードする | Microsoft Docs
+description: この記事では、Azure Monitor, Update, and Configuration Management 仮想マシン拡張機能を Azure Stack Hub 仮想マシン上にプロビジョニングし、Microsoft Sentinel を使用してそれらの監視を開始する方法を示します。
 services: sentinel
 documentationcenter: na
 author: yelevin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 02ba134062b51ba074ad5d19506eef13e5e3b89c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3f8367a723cb11ab1c6260bc323240d08181dddc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004266"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715209"
 ---
-# <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack Hub 仮想マシンを Azure Sentinel に接続する
+# <a name="connect-azure-stack-hub-virtual-machines-to-microsoft-sentinel"></a>Azure Stack Hub 仮想マシンを Microsoft Sentinel に接続する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Sentinel では、Azure 上で稼動する VM と Azure Stack Hub で稼動する VM を 1 か所で監視できます。 Azure Stack マシンを Azure Sentinel にオンボードするにはまず、既存の Azure Stack Hub 仮想マシンに仮想マシン拡張機能を追加する必要があります。 
+Microsoft Sentinel では、Azure 上で稼動する VM と Azure Stack Hub で稼動する VM を 1 か所で監視できます。 Azure Stack マシンを Microsoft Sentinel にオンボードするにはまず、既存の Azure Stack Hub 仮想マシンに仮想マシン拡張機能を追加する必要があります。 
 
 Azure Stack Hub マシンを接続したら、データに基づく分析情報を可視化したダッシュボードをギャラリーから選択します。 これらのダッシュボードは、お客様のニーズに合わせて簡単にカスタマイズすることができます。
 
@@ -34,7 +32,7 @@ Azure Stack Hub で動作している仮想マシンに **Azure Monitor, Update 
 
 1. 新しいブラウザー タブで、[Azure Stack Hub ポータル](/azure-stack/user/azure-stack-use-portal#access-the-portal)にログインします。
 
-1. **[仮想マシン]** ページに移動し、Azure Sentinel を使用して保護したい仮想マシンを選択します。 Azure Stack Hub で仮想マシンを作成する方法については、「[Azure Stack Hub ポータルを使用して Windows サーバー VM を作成する](/azure-stack/user/azure-stack-quick-windows-portal)」または「[Azure Stack Hub ポータルを使用して Linux サーバー VM を作成する](/azure-stack/user/azure-stack-quick-linux-portal)」を参照してください。
+1. **[仮想マシン]** ページに移動し、Microsoft Sentinel を使用して保護したい仮想マシンを選択します。 Azure Stack Hub で仮想マシンを作成する方法については、「[Azure Stack Hub ポータルを使用して Windows サーバー VM を作成する](/azure-stack/user/azure-stack-quick-windows-portal)」または「[Azure Stack Hub ポータルを使用して Linux サーバー VM を作成する](/azure-stack/user/azure-stack-quick-linux-portal)」を参照してください。
 
 1. **[拡張機能]** を選択します。 この仮想マシンにインストールされている仮想マシン拡張機能の一覧が表示されます。
 
@@ -47,17 +45,17 @@ Azure Stack Hub で動作している仮想マシンに **Azure Monitor, Update 
    >[!NOTE]
    > **Azure Monitor, Update and Configuration Management** 拡張機能が Marketplace に一覧表示されていない場合は、担当の Azure Stack Hub オペレーターに連絡して使用可能にしてください。
 
-1. Azure Sentinel メニューで、 **[ワークスペースの設定]** 、 **[Advanced]\(詳細\)** の順に選択し、 **[ワークスペース ID]** と **[ワークスペース キー (主キー)]** をコピーします。 
+1. Microsoft Sentinel メニューで、 **[ワークスペースの設定]** 、 **[Advanced]\(詳細\)** の順に選択し、 **[ワークスペース ID]** と **[ワークスペース キー (主キー)]** をコピーします。 
 
 1. Azure Stack Hub の **[拡張機能のインストール]** ウィンドウで、指定されたフィールドにそれらを貼り付け、 **[OK]** を選択します。
 
-1. 拡張機能のインストールが完了すると、その状態が **[プロビジョニング成功]** と表示されます。 Azure Sentinel ポータルに仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
+1. 拡張機能のインストールが完了すると、その状態が **[プロビジョニング成功]** と表示されます。 Microsoft Sentinel ポータルに仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
 
 Windows 用エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard)に関するページを参照してください。
 
 エージェントの問題に対する Linux のトラブルシューティングについては、[Azure Log Analytics Linux エージェントのトラブルシューティング](../azure-monitor/agents/agent-linux-troubleshoot.md)に関するページを参照してください。
 
-Azure の Azure Sentinel ポータルの **[Virtual Machines]** に、すべての VM とコンピューターの概要がその状態と共に表示されます。 
+Azure の Microsoft Sentinel ポータルの **[Virtual Machines]** に、すべての VM とコンピューターの概要がその状態と共に表示されます。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -75,8 +73,8 @@ Azure の Azure Sentinel ポータルの **[Virtual Machines]** に、すべて�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Sentinel の詳細については、次の記事をご覧ください。
+Microsoft Sentinel の詳細については、次の記事を参照してください。
 
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
-- [一般的なイベント形式のアプライアンス](connect-common-event-format.md)から Azure Sentinel へのデータのストリーム配信。
+- [Microsoft Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [一般的なイベント形式のアプライアンス](connect-common-event-format.md)から Microsoft Sentinel へのデータのストリーム配信。

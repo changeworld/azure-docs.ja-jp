@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
-ms.date: 10/21/2021
+ms.date: 11/15/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: c175c0340c954aa86f35cf808031b08130db7036
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 57d529d74d5e320c8a41fdcf71ddd61d11e4379e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132286300"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519384"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
@@ -91,7 +91,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>トレーニング、検証、テストのデータ
 
-`AutoMLConfig` コンストラクターでは、個別の **トレーニング データと検証データのセット** を直接指定できます。 AutoML 実験用に[データの分割とクロス検証を構成する方法](how-to-configure-cross-validation-data-splits.md)に関するページをご確認ください。 
+`AutoMLConfig` コンストラクターでは、個別の **トレーニング データと検証データのセット** を直接指定できます。 自動 ML 実験の詳細については、[トレーニング、検証、クロス検証、テストのデータの構成方法](how-to-configure-cross-validation-data-splits.md)に関する記事を参照してください。 
 
 `validation_data` または `n_cross_validation` パラメーターを明示的に指定しない場合、自動 ML では、既定の手法を適用して検証の実行方法を決定します。 この決定は、`training_data` パラメーターに割り当てられたデータセット内の行の数によって異なります。 
 
@@ -100,7 +100,15 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 |**20,000&nbsp;行&nbsp;より&nbsp;多い**| トレーニング/検証データの分割が適用されます。 既定では、初期トレーニング データ セットの 10% が検証セットとして取得されます。 次に、その検証セットがメトリックの計算に使用されます。
 |**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は**、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は**、3 つのフォールドが使用されます。
 
-現時点では、モデルの評価用に独自の **テストデータ** を提供する必要があります。 モデル評価のために独自のテスト データを取り込むコード例については、[この Jupyter ノートブック](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)の **テスト** に関するセクションを参照してください。
+
+> [!TIP] 
+> **テスト データ (プレビュー)** をアップロードすると、自動 ML によって生成されたモデルを評価することができます。 これらの機能は[試験段階の](/python/api/overview/azure/ml/#stable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。
+> 具体的には、次の方法を学習します。 
+> * [テスト データを AutoMLConfig オブジェクトに渡す](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview)。 
+> * [実験用に自動 ML によって生成されたモデルをテストする](#test-models-preview)。
+>  
+> コードなしエクスペリエンスが望ましい場合は、[スタジオ UI を使った自動 ML の設定に関する記事の手順 11](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment) を参照してください。
+
 
 ### <a name="large-data"></a>大きなデータ 
 
@@ -508,9 +516,59 @@ RunDetails(run).show()
 
 ![自動機械学習の場合の Jupyter Notebook ウィジェット](./media/how-to-configure-auto-train/azure-machine-learning-auto-ml-widget.png)
 
+## <a name="test-models-preview"></a>モデルをテストする (プレビュー)
+
+>[!IMPORTANT]
+> 自動 ML によって生成されたモデルを評価するために、テスト データセットを使ってモデルをテストすることは、プレビュー機能です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+
+`test_data` または `test_size` のパラメーターを `AutoMLConfig` に渡すと、指定されたテスト データを使うリモート テストの実行が自動的にトリガーされ、実験終了時に自動 ML によって推奨される最適なモデルが評価されます。 このリモート テストの実行は、実験の最後に、最適なモデルが決まった時点で行われます。 [テスト データを `AutoMLConfig` に渡す](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview)方法を参照してください。 
+
+### <a name="get-test-run-results"></a>テストの実行結果を取得する 
+
+リモート テストの実行の予測値とメトリックは、[Azure Machine Learning スタジオ](how-to-use-automated-ml-for-ml-models.md#view-remote-test-run-results-preview)から、または次のコードを使って取得できます。 
+
+```python
+best_run, fitted_model = remote_run.get_output()
+test_run = next(best_run.get_children(type='automl.model_test'))
+test_run.wait_for_completion(show_output=False, wait_post_processing=True)
+
+# Get test metrics
+test_run_metrics = test_run.get_metrics()
+for name, value in test_run_metrics.items():
+    print(f"{name}: {value}")
+
+# Get test predictions as a Dataset
+test_run_details = test_run.get_details()
+dataset_id = test_run_details['outputDatasets'][0]['identifier']['savedId']
+test_run_predictions = Dataset.get_by_id(workspace, dataset_id)
+predictions_df = test_run_predictions.to_pandas_dataframe()
+
+# Alternatively, the test predictions can be retrieved via the run outputs.
+test_run.download_file("predictions/predictions.csv")
+predictions_df = pd.read_csv("predictions.csv")
+
+```
+
+### <a name="test-existing-automated-ml-model"></a>既存の自動 ML モデルをテストする
+
+作成された他の既存の自動 ML モデル、最適な実行、または子実行をテストするには、メインの自動 ML の実行が完了した後に [`ModelProxy()`](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy) を使ってモデルをテストします。 `ModelProxy()` からは既に予測値とメトリックが返されているので、出力を取得するための追加の処理は必要ありません。
+
+> [!NOTE]
+> ModelProxy は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー クラスであり、いつでも変更される可能性があります。
+
+次のコードは、[ModelProxy.test()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#test-test-data--azureml-data-abstract-dataset-abstractdataset--include-predictions-only--bool---false-----typing-tuple-azureml-data-abstract-dataset-abstractdataset--typing-dict-str--typing-any--) メソッドを使い、任意の実行からモデルをテストする方法を示しています。 test() メソッドでは、`include_predictions_only` パラメーターを使ってテストの実行の予測のみを表示するかどうかを指定できます。 
+
+```python
+from azureml.train.automl.model_proxy import ModelProxy
+
+model_proxy = ModelProxy(child_run=my_run, compute_target=cpu_cluster)
+predictions, metrics = model_proxy.test(test_data, include_predictions_only= True
+)
+```
+
 ## <a name="register-and-deploy-models"></a>モデルを登録してデプロイする
 
-モデルは登録できます。そのため、後で使用するためにモデルに戻ることができます。 
+モデルをテストし、運用環境で使うことを決めたら、後で使用できるようにモデルを登録することができます 
 
 自動化された ML 実行からモデルを登録するには、[`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) メソッドを使用します。 
 

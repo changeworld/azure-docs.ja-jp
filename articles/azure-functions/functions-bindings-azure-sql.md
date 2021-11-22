@@ -3,16 +3,17 @@ title: Functions の Azure SQL バインド
 description: Azure Functions で Azure SQL のバインドを使用する方法について説明します。
 author: dzsquared
 ms.topic: reference
-ms.date: 11/9/2021
+ms.date: 11/12/2021
 ms.author: drskwier
-ms.openlocfilehash: 9cb9d7a404f7191a4683009657df515dce07f18b
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.reviewer: cachai
+ms.openlocfilehash: ece79028f5cf0211f7d7345d54e1ccdb096cc6c9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132350180"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490745"
 ---
-# <a name="azure-sql-bindings-for-azure-functions-overview"></a>Azure Functions における Azure SQL バインドの概要
+# <a name="azure-sql-bindings-for-azure-functions-overview-preview"></a>Azure Functions における Azure SQL バインドの概要 (プレビュー)
 
 この一連の記事では、Azure Functions で [Azure SQL](/azure/azure-sql/) バインドを操作する方法について説明します。 Azure Functions は、Azure SQL 製品と SQL Server 製品の入力バインドと出力バインドをサポートしています。
 

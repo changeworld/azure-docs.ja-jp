@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3373c1f9a82f79782ed1758fd09c83bcfbe6fc03
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 033bc34d82e497f7de7b63d8e69a606e9a9501ee
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963711"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486808"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>パスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -53,6 +53,9 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
    1. **有効にする** - [はい] または [いいえ]
    1. **ターゲット** - [すべてのユーザー] または [ユーザーの選択]
 1. 構成を **保存** します。
+
+   >[!NOTE]
+   >保存しようとしたときにエラーが表示される場合は、追加されているユーザーまたはグループの数が原因である可能性があります。 回避策として、追加しようとしているユーザーとグループを 1 つのグループに置き換え、同じ操作で、もう一度 **[保存]** をクリックします。
 
 
 ### <a name="fido-security-key-optional-settings"></a>FIDO セキュリティ キーのオプションの設定 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 30c96f2d7b679b0032a2b8c406cc6c210c143a11
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 74a1093f8a084360669c5b436fa56d6ea7aa33d8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062172"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494579"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion に関する FAQ
 
@@ -166,3 +166,6 @@ Azure Bastion は、VNet またはピアリングされた VNet 内にデプロ�
 |Microsoft.Network/virtualNetworks/read|仮想ネットワークの定義を取得します。|アクション|
 |Microsoft.Network/virtualNetworks/subnets/virtualMachines/read|仮想ネットワーク サブネットのすべての仮想マシンへの参照を取得します。|アクション|
 |Microsoft.Network/virtualNetworks/virtualMachines/read|仮想ネットワークのすべての仮想マシンへの参照を取得します。|アクション|
+
+### <a name="what-is-the-maximum-screen-resolution-supported-via-bastion"></a>Bastion でサポートされる最大画面解像度は何ですか?  
+現在、サポートされている最大解像度は 1920x1080 (1080p) です。 

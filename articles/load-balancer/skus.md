@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: 204de2d0b3ed6e75d8b599e094a58e0b2e1826b0
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 472816907aeb16dfbab1fb7b793186e165246947
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576113"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722945"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer の SKU
 
@@ -35,6 +35,8 @@ Basic と Standard の SKU の違いを比較して理解するには、次の�
 | --- | --- | --- |
 | **シナリオ** |  ハイ パフォーマンスと非常に短い待機時間を必要とする場合に、ネットワーク層のトラフィックを負荷分散する機能を備えています。 リージョン内およびリージョン間でトラフィックをルーティングし、高い回復性を実現するために可用性ゾーンにルーティングします。 | 高可用性や冗長性を必要としない小規模なアプリケーション向けに搭載されています。 可用性ゾーンと互換性がありません。 |
 | **バックエンドの種類** | IP ベース、NIC ベース | NIC ベース |
+| **プロトコル** | TCP、UDP | TCP、UDP |
+| **[フロントエンド IP 構成](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | 最大 600 の構成をサポートします。 | 最大 200 の構成をサポートします。 |
 | **[バックエンド プールのサイズ](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | 最大 1,000 インスタンスをサポート。 | 最大 300 インスタンスをサポート。 |
 | **バックエンド プール エンドポイント** | 単一の仮想ネットワーク内の任意の仮想マシンまたは仮想マシン スケール セット。 | 単一の可用性セットまたは仮想マシン スケール セット内の仮想マシン。 |
 | **[正常性プローブ](./load-balancer-custom-probe-overview.md#types)** | TCP、HTTP、HTTPS | TCP、HTTP |
@@ -49,6 +51,9 @@ Basic と Standard の SKU の違いを比較して理解するには、次の�
 | **管理操作** | ほとんどの操作は 30 秒未満 | 一般に 60 ～ 90 秒以上 |
 | **SLA** | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | 使用不可 | 
 | **グローバル VNet ピアリング サポート** | Standard ILB は、グローバル VNet ピアリングを介してサポートされます | サポートされていません | 
+| **[NAT Gateway サポート](../virtual-network/nat-gateway/nat-overview.md)** | Standard ILB と Standard Public LB の両方が Nat Gateway 経由でサポートされます。 | サポートされていません。 | 
+| **[Private Link サポート](../private-link/private-link-overview.md)** | Standard ILB は Private Link 経由でサポートされます。 | サポートされていません。 | 
+| **[リージョン間負荷分散 (プレビュー)](./cross-region-overview.md)** | Standard Public LB はリージョン間 LB 経由でサポートされます。 | サポートされていません | 
 
 詳細については、「[Load Balancer の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)」を参照してください。 Standard Load Balancer について詳しくは、[概要](./load-balancer-overview.md)、[価格](https://aka.ms/lbpricing)、[SLA](https://aka.ms/lbsla) に関するページもご覧ください。
 

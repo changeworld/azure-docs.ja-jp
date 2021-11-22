@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 10/13/2020
+ms.date: 11/15/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9deae17e0fa5b03e033c76abd3be136881aa2d7e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c01b0a61aa8af8332780b352f0a5543754db4497
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786587"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708582"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 用の Azure CLI サンプル
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -40,6 +40,7 @@ ms.locfileid: "121786587"
 |タスク | 説明 |
 |---|---|
 | [Azure Cosmos のアカウント、キースペース、およびテーブルを作成する](../scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API 用の Azure Cosmos DB のアカウント、キースペース、およびテーブルを作成します。 |
+| [Cassandra API、キースペース、テーブル用のサーバーレス Azure Cosmos アカウントを作成する](../scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API 用のサーバーレス Azure Cosmos DB のアカウント、キースペース、テーブルを作成します。 |
 | [Azure Cosmos アカウント、キースペース、自動スケーリングのテーブルを作成する](../scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API 用に Azure Cosmos DB アカウント、キースペース、自動スケーリングのテーブルを作成します。 |
 | [スループット操作](../scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | キースペースとテーブルに対する読み取り、更新、および自動スケーリングと標準スループット間の移行を行います。|
 | [リソースが削除されないようにロックする](../scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。|

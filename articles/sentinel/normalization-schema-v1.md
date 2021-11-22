@@ -1,34 +1,34 @@
 ---
-title: Azure Sentinel ネットワーク正規化スキーマ (レガシ バージョン - パブリック プレビュー) | Microsoft Docs
-description: この記事では、Azure Sentinel データ正規化スキーマを示します。
+title: Microsoft Azure Sentinel のネットワーク正規化スキーマ (レガシ バージョン - パブリック プレビュー) | Microsoft Docs
+description: この記事では、Microsoft Azure Sentinel のデータ正規化スキーマを示します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/15/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7442db85d7b6105278024c9fc23bca9eba20ab19
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c5f88a7b5234e2a791d26ecc339e6750497ef6a9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064395"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522861"
 ---
-# <a name="azure-sentinel-network-normalization-schema-legacy-version---public-preview"></a>Azure Sentinel ネットワーク正規化スキーマ (レガシ バージョン - パブリック プレビュー)
+# <a name="microsoft-sentinel-network-normalization-schema-legacy-version---public-preview"></a>Microsoft Azure Sentinel のネットワーク正規化スキーマ (レガシ バージョン - パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-ネットワーク正規化スキーマは、報告されたネットワーク イベントを説明するために使用されます。Azure Sentinel では、ソースに依存しない分析を可能にするために使用されます。
+ネットワーク正規化スキーマは、報告されたネットワーク イベントを説明するために使用されます。Microsoft Azure Sentinel では、ソースに依存しない分析を可能にするために使用されます。
 
-詳細については、「[正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
+詳細については、「[正規化と高度な SIEM 情報モデル (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > この記事は、ASIM が使用可能になる前にプレビューとしてリリースされた、ネットワーク正規化スキーマのバージョン 0.1 に関連しています。 [バージョン 0.2](network-normalization-schema.md) のネットワーク正規化スキーマは ASIM と適合し、その他の拡張機能が提供されます。
@@ -38,11 +38,11 @@ ms.locfileid: "131064395"
 
 ## <a name="terminology"></a>用語
 
-次の用語が、Azure Sentinel のスキーマで使用されます。
+次の用語が、Microsoft Azure Sentinel のスキーマで使用されます。
 
 | 項目 | 定義 |
 | ---- | ---------- |
-| **レポート デバイス** | レコードを Azure Sentinel に送信するシステム。 レコードのサブジェクト システムではない場合があります。 |
+| **レポート デバイス** | レコードを Microsoft Azure Sentinel に送信するシステム。 レコードのサブジェクト システムではない場合があります。 |
 | **レコード** | レポート デバイスから送信されるデータの単位。 このデータの単位は、`log`、`event`、または `alert` と呼ばれることがよくありますが、他の種類が含まれる場合もあります。|
 |
 
@@ -88,13 +88,13 @@ ms.locfileid: "131064395"
 | **EventVendor** | String | Microsoft | イベントを生成している製品のベンダー。 | event |
 | **EventResult** | 複数値:Success、Partial、Failure、[空] (文字列) | Success | アクティビティについて報告された結果。 該当しない場合は空の値。 | event |
 | **EventResultDetails** | String | パスワードが違います | EventResult で報告された結果の理由または詳細 | event |
-| **EventSchemaVersion** | Real | 0.1 | Azure Sentinel スキーマのバージョン。 現時点では 0.1。 | event |
+| **EventSchemaVersion** | Real | 0.1 | Microsoft Azure Sentinel スキーマのバージョン。 現時点では 0.1。 | event |
 | **EventSeverity** | String | 低 | 報告されたアクティビティがセキュリティに影響を与える場合、影響の重大度を示します。 | event |
 | **EventOriginalUid** | String | af6ae8fe-ff43-4a4c-b537-8635976a2b51 | レポート デバイスからのレコード ID。 | event |
 | **EventStartTime** | 日付/時刻 | 「データ型」をご覧ください | イベントが開始した時刻 | event |
 | **TimeGenerated** | 日付/時刻 | 「データ型」をご覧ください | レポート ソースによって報告された、イベントが発生した時刻。 | カスタム フィールド |
-| **EventTimeIngested** | 日付/時刻 | 「データ型」をご覧ください | イベントが Azure Sentinel に取り込まれたされた時刻。 Azure Sentinel によって追加されます。 | event |
-| **EventUid** | Guid (文字列) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Azure Sentinel が行をマークするために使用する一意の識別子。 | event |
+| **EventTimeIngested** | 日付/時刻 | 「データ型」をご覧ください | イベントが Microsoft Azure Sentinel に取り込まれた時刻。 Microsoft Azure Sentinel によって追加されます。 | event |
+| **EventUid** | Guid (文字列) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Microsoft Azure Sentinel が行をマークするために使用される一意の識別子。 | event |
 | **NetworkApplicationProtocol** | String | HTTPS | 接続またはセッションで使用されるアプリケーション レイヤー プロトコル。 | ネットワーク |
 | **DstBytes** | INT | 32455 | 接続またはセッションで送信先から送信元に送信されたバイト数。 | 宛先 |
 | **SrcBytes** | INT | 46536 | 接続またはセッションで送信元から送信先に送信されたバイト数。 | source |
@@ -200,7 +200,7 @@ ms.locfileid: "131064395"
 
 ## <a name="differences-between-the-version-01-and-version-02"></a><a name="changes"></a>バージョン 0.1 とバージョン 0.2 の相違点
 
-Azure Sentinel ネットワーク セッション正規化スキーマ バージョン 0.1 の元のバージョンは、ASIM が使用可能になる前にプレビューとしてリリースされました。
+Microsoft Azure Sentinel のネットワーク セッション正規化スキーマ バージョン 0.1 の元のバージョンは、ASIM が使用可能になる前にプレビューとしてリリースされました。
 
 この記事で説明されているバージョン 0.1 と[バージョン 0.2](network-normalization-schema.md) の相違点を次に示します。
 
@@ -366,9 +366,9 @@ Azure Sentinel ネットワーク セッション正規化スキーマ バージ
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel での正規化](normalization.md)
-- [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
-- [Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
-- [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Azure Sentinel プロセス イベント正規化スキーマ リファレンス](process-events-normalization-schema.md)
-- [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)
+- [Microsoft Azure Sentinel での正規化](normalization.md)
+- [Microsoft Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
+- [Microsoft Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
+- [Microsoft Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
+- [Microsoft Azure Sentinel プロセス イベント正規化スキーマ リファレンス](process-events-normalization-schema.md)
+- [Microsoft Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)

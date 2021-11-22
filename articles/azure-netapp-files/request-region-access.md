@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/09/2021
+ms.date: 11/15/2021
 ms.author: b-juche
-ms.openlocfilehash: 55a4d9c74e0f4e2ee54b3a7bc16e2ef7e4b30502
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: 9d610a74e63c85a66cd0be42cfdda3139c673f67
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132159233"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520638"
 ---
 # <a name="request-region-access-for-azure-netapp-files"></a>Azure NetApp Files のリージョン アクセスを要求する
 
-この記事では、リージョンへのアクセスを要求する方法について説明します。
+特殊な状況では、リージョンへのアクセスを明示的に要求することが必要になる場合があります。 この記事では、要求を送信する方法について説明します。 
 
 ## <a name="steps"></a>手順
 

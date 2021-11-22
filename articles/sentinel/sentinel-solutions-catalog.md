@@ -1,40 +1,40 @@
 ---
-title: Azure Sentinel コンテンツ ハブ カタログ | Microsoft Docs
-description: この記事では、現在提供されている Azure Sentinel コンテンツ ハブ パッケージと、その詳細を示します。
+title: Microsoft Sentinel コンテンツ ハブ カタログ | Microsoft Docs
+description: この記事では、現在提供されている Microsoft Sentinel コンテンツ ハブ パッケージと、その詳細を示します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/12/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b02ce290d0910e2dccc19643c94ee338f80b6989
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 375f6150c9d08f06c09f51ab18276a5ec97f576c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131467456"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132516927"
 ---
-# <a name="azure-sentinel-content-hub-catalog"></a>Azure Sentinel コンテンツ ハブ カタログ
+# <a name="microsoft-sentinel-content-hub-catalog"></a>Microsoft Sentinel コンテンツ ハブ カタログ
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >
-> Azure Sentinel コンテンツ ハブのエクスペリエンスは、現在 **プレビュー版** です。個別のソリューション パッケージもすべてプレビュー版です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> Microsoft Sentinel コンテンツ ハブのエクスペリエンスは、現在 **プレビュー版** です。個別のソリューション パッケージもすべてプレビュー版です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-[Azure Sentinel ソリューション](sentinel-solutions.md)は、データ コネクタ、ブック、分析、オートメーションといった Azure Sentinel のコンテンツを 1 回のデプロイ ステップでワークスペースに取得する、統合された方法を提供します。
+[Microsoft Sentinel ソリューション](sentinel-solutions.md)は、データ コネクタ、ブック、分析、オートメーションといった Microsoft Sentinel のコンテンツを 1 回のデプロイ ステップでワークスペースに取得する、統合された方法を提供します。
 
-この記事では、ワークスペースへのデプロイのために提供されている、Azure Sentinel のすぐに利用できる (組み込みの) オンデマンドのデータ コネクタとソリューションの一覧を示します。 ソリューションをデプロイすると、データ コネクタ、プレイブック、ブック、ルールなど、含まれているすべてのセキュリティ コンテンツが Azure Sentinel の関連領域に作成されます。 
+この記事では、ワークスペースへのデプロイのために提供されている、Microsoft Sentinel のすぐに利用できる (組み込みの) オンデマンドのデータ コネクタとソリューションの一覧を示します。 ソリューションをデプロイすると、データ コネクタ、プレイブック、ブック、ルールなど、含まれているすべてのセキュリティ コンテンツが Microsoft Sentinel の関連領域に作成されます。 
 
-詳細については、「[Azure Sentinel のすぐに使えるコンテンツとソリューションを一元的に検出してデプロイする](sentinel-solutions-deploy.md)」を参照してください。
+詳細については、「[Microsoft Sentinel のすぐに使えるコンテンツとソリューションを一元的に検出してデプロイする](sentinel-solutions-deploy.md)」を参照してください。
 
 ## <a name="domain-solutions"></a>ドメイン ソリューション
 
@@ -42,10 +42,9 @@ ms.locfileid: "131467456"
 |---------|---------|---------|---------|
 |**Microsoft インサイダー リスク管理** |[データ コネクタ](data-connectors-reference.md#microsoft-365-insider-risk-management-irm-preview)、ブック、分析ルール、ハンティング クエリ |セキュリティ - 内部関係者による脅威 | Microsoft|
 | **Microsoft MITRE ATT&CK クラウド用ソリューション**| ブック、分析ルール、ハンティング クエリ|セキュリティ - 脅威からのデータ保護、セキュリティ - その他 |Microsoft |
-| **Azure Sentinel Deception** | [ブック、分析ルール、ウォッチリスト](monitor-key-vault-honeytokens.md)  | セキュリティ - 脅威からのデータ保護  |Microsoft |
+| **Microsoft Sentinel Deception** | [ブック、分析ルール、ウォッチリスト](monitor-key-vault-honeytokens.md)  | セキュリティ - 脅威からのデータ保護  |Microsoft |
 |**ゼロ トラスト** (TIC 3.0) |Workbooks |ID、セキュリティ - その他 |Microsoft |
 | | | | |
-
 
 ## <a name="arista-networks"></a>Arista Networks
 
@@ -70,8 +69,8 @@ ms.locfileid: "131467456"
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
 |**Azure Firewall Solution for Sentinel**| [データ コネクタ](data-connectors-reference.md#azure-firewall)、ブック、分析ルール、プレイブック、ハンティング クエリ、カスタム ロジック アプリ コネクタ |セキュリティ - ネットワーク セキュリティ、ネットワーク | コミュニティ|
-|**SQL PaaS 用 Azure Sentinel**     |  [データ コネクタ](data-connectors-reference.md#azure-sql-databases)、ブック、分析ルール、プレイブック、ハンティング クエリ     | Application        |      コミュニティ   |
-|**Azure Sentinel トレーニング ラボ** |ブック、分析ルール、プレイブック、ハンティング クエリ | トレーニングとチュートリアル |Microsoft |
+|**SQL PaaS 用 Microsoft Sentinel**     |  [データ コネクタ](data-connectors-reference.md#azure-sql-databases)、ブック、分析ルール、プレイブック、ハンティング クエリ     | Application        |      コミュニティ   |
+|**Microsoft Sentinel トレーニング ラボ** |ブック、分析ルール、プレイブック、ハンティング クエリ | トレーニングとチュートリアル |Microsoft |
 |**Azure SQL** | [データ コネクタ](data-connectors-reference.md#azure-sql-databases)、ブック、分析、プレイブック、ハンティング クエリ  | Application |Microsoft  |
 | | | | |
 
@@ -88,7 +87,7 @@ ms.locfileid: "131467456"
 
 |名前   |Includes  |Categories |サポートしているもの  |
 |------------------|---------|---------|---------|
-|**Check Point Azure Sentinel ソリューション**   |[データ コネクタ](data-connectors-reference.md#check-point)、プレイブック、カスタム ロジック アプリ コネクタ  | セキュリティ - Automation (SOAR) | [チェックポイント](https://www.checkpoint.com/support-services/contact-support/)|
+|**Check Point Microsoft Sentinel ソリューション**   |[データ コネクタ](data-connectors-reference.md#check-point)、プレイブック、カスタム ロジック アプリ コネクタ  | セキュリティ - Automation (SOAR) | [チェックポイント](https://www.checkpoint.com/support-services/contact-support/)|
 | | | | |
 
 
@@ -123,7 +122,7 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**Contrast Protect Azure Sentinel ソリューション**|データ コネクタ、ブック、分析ルール |セキュリティ - 脅威からのデータ保護 |Microsoft  |
+|**Contrast Protect Microsoft Sentinel ソリューション**|データ コネクタ、ブック、分析ルール |セキュリティ - 脅威からのデータ保護 |Microsoft  |
 | | | | |
 
 ## <a name="crowdstrike"></a>Crowdstrike
@@ -192,7 +191,7 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**HYAS Insight for Azure Sentinel Solutions Gallery**| プレイブック| セキュリティ - 脅威インテリジェンス、セキュリティ - Automation (SOAR) |Microsoft |
+|**HYAS Insight for Microsoft Sentinel ソリューション ギャラリー**| プレイブック| セキュリティ - 脅威インテリジェンス、セキュリティ - Automation (SOAR) |Microsoft |
 | | | | |
 
 ## <a name="imperva"></a>Imperva
@@ -214,7 +213,7 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**IronNet CyberSecurity Iron Defense - Azure Sentinel** | |セキュリティ - ネットワーク |Microsoft |
+|**IronNet CyberSecurity Iron Defense - Microsoft Sentinel** | |セキュリティ - ネットワーク |Microsoft |
 | | | |
 
 
@@ -239,7 +238,7 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**Azure Sentinel 用 Lookout Mobile Threat Defense**| [データ コネクタ](data-connectors-reference.md#lookout-mobile-threat-defense-preview)|セキュリティ - ネットワーク |[Lookout](https://www.lookout.com/support) |
+|**Microsoft Sentinel 用 Lookout Mobile Threat Defense**| [データ コネクタ](data-connectors-reference.md#lookout-mobile-threat-defense-preview)|セキュリティ - ネットワーク |[Lookout](https://www.lookout.com/support) |
 | | | |
 
 ## <a name="mcafee"></a>McAfee
@@ -254,8 +253,8 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**Azure Sentinel 4 Microsoft Dynamics 365**     |   [データ コネクタ](data-connectors-reference.md#dynamics-365)、ブック、分析ルール、ハンティング クエリ |      Application   |Microsoft         |
-|**Azure Sentinel for Teams**     | データ コネクタ、分析ルール、プレイブック、ハンティング クエリ      |   Application      |    コミュニティ     |
+|**Microsoft Sentinel 4 Microsoft Dynamics 365**     |   [データ コネクタ](data-connectors-reference.md#dynamics-365)、ブック、分析ルール、ハンティング クエリ |      Application   |Microsoft         |
+|**Teams 用 Microsoft Sentinel**     | データ コネクタ、分析ルール、プレイブック、ハンティング クエリ      |   Application      |    コミュニティ     |
 | | | | |
 
 
@@ -346,7 +345,7 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**Senserva Offer for Azure Sentinel** |データ コネクタ、ブック、分析ルール、ハンティング クエリ |コンプライアンス |[Senserva](https://www.senserva.com/contact/) |
+|**Senserva Offer for Microsoft Sentinel** |データ コネクタ、ブック、分析ルール、ハンティング クエリ |コンプライアンス |[Senserva](https://www.senserva.com/contact/) |
 | | | | |
 
 
@@ -354,7 +353,7 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**Sonrai Security - Azure Sentinel** |データ コネクタ、ブック、分析ルール   | コンプライアンス|Sonrai Security |
+|**Sonrai Security - Microsoft Sentinel** |データ コネクタ、ブック、分析ルール   | コンプライアンス|Sonrai Security |
 | | | | |
 
 ## <a name="slack"></a>Slack
@@ -412,7 +411,7 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**vArmour Application Controller と Azure Sentinel ソリューション**|データ コネクタ、ブック、分析ルール |IT 運用 |[vArmour](https://www.varmour.com/contact-us/) |
+|**vArmour Application Controller と Microsoft Sentinel のソリューション**|データ コネクタ、ブック、分析ルール |IT 運用 |[vArmour](https://www.varmour.com/contact-us/) |
 | | | | |
 
 ## <a name="vectra"></a>Vectra
@@ -434,13 +433,13 @@ ms.locfileid: "131467456"
 
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
-|**Corelight for Azure Sentinel**|データ コネクタ、ブック、分析ルール、ハンティング クエリ、パーサー | IT 運用、セキュリティ - ネットワーク | [Zeek Network](https://support.corelight.com/)|
+|**Corelight for Microsoft Sentinel**|データ コネクタ、ブック、分析ルール、ハンティング クエリ、パーサー | IT 運用、セキュリティ - ネットワーク | [Zeek Network](https://support.corelight.com/)|
 | | | | |
 
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、Azure Sentinel ソリューションの概要と、それらを見つけてデプロイする方法について説明しました。
+このドキュメントでは、Microsoft Sentinel ソリューションと、それを見つけてデプロイする方法について説明しました。
 
-- [Azure Sentinel ソリューション](sentinel-solutions.md)について理解を深める。
-- [Azure Sentinel ソリューションを検索してデプロイする](sentinel-solutions-deploy.md)。
+- [Microsoft Sentinel ソリューション](sentinel-solutions.md)に関する詳細を確認します。
+- [Microsoft Azure Sentinel ソリューションを見つけて展開します](sentinel-solutions-deploy.md)。

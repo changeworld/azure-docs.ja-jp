@@ -1,24 +1,24 @@
 ---
-title: Azure Sentinel での偽陽性の処理
-description: オートメーション ルールを作成するか、分析ルールを変更して例外を指定することで、Azure Sentinel で偽陽性を解決する方法について説明します。
+title: Microsoft Sentinel での擬陽性の処理
+description: オートメーション ルールを作成するか、分析ルールを変更して例外を指定することで、Microsoft Azure Sentinel で偽陽性を解決する方法について学習します。
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d14d4942f659be48b49615e6fe9addb2ffa34905
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 009cb9d66f4294bc72bafdcf515a68131d9b7e38
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046890"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521161"
 ---
-# <a name="handle-false-positives-in-azure-sentinel"></a>Azure Sentinel での偽陽性の処理
+# <a name="handle-false-positives-in-microsoft-sentinel"></a>Microsoft Sentinel での擬陽性の処理
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-ネットワークで疑わしい問題が発生すると、[Azure Sentinel の分析ルール](detect-threats-built-in.md)によって通知されます。 完璧な分析ルールはありません。必ず処理が必要な偽陽性を受け取ります。 この記事では、オートメーションを使用するか、スケジュールが設定された分析ルールを変更して、偽陽性を処理する方法について説明します。
+ネットワークで疑わしい問題が発生すると、[Microsoft Azure Sentinel の分析ルール](detect-threats-built-in.md)によって通知されます。 完璧な分析ルールはありません。必ず処理が必要な偽陽性を受け取ります。 この記事では、オートメーションを使用するか、スケジュールが設定された分析ルールを変更して、偽陽性を処理する方法について説明します。
 
 ## <a name="false-positive-causes-and-prevention"></a>偽陽性の原因と防止
 
@@ -49,17 +49,17 @@ ms.locfileid: "131046890"
 
 偽陽性を処理するオートメーション ルールを追加するには、次のようにします。
 
-1. Azure Sentinel の **[インシデント]** で、例外を作成するインシデントを選択します。
+1. Microsoft Azure Sentinel の **[インシデント]** で、例外を作成するインシデントを選択します。
 1. **[オートメーション ルールを作成する]** を選択します。
 1. **[Create new automation rule]\(新しいオートメーション ルールの作成\)** サイドバーで、必要に応じて、アラート ルール名だけではなく、新しいルール名を変更して例外を識別します。
 1. **[条件]** の下に、必要に応じて、例外を適用する **分析ルール名** を追加します。
 1. サイドバーには、現在のインシデントで、偽陽性の原因となった可能性がある特定のエンティティが表示されます。 自動提案を受け入れるか、修正して例外を微調整します。 たとえば、IP アドレスの条件を変更して、サブネット全体に適用することができます。
 
-   :::image type="content" source="media/false-positives/create-rule.png" alt-text="Azure Sentinel でインシデントのオートメーション ルールを作成する方法を示すスクリーンショット。":::
+   :::image type="content" source="media/false-positives/create-rule.png" alt-text="Microsoft Azure Sentinel でインシデントのオートメーション ルールを作成する方法を示すスクリーンショット。":::
 
 1. トリガーを定義した後は、引き続きそのルールの動作を定義できます。
 
-   :::image type="content" source="media/false-positives/apply-rule.png" alt-text="Azure Sentinel でオートメーション ルールの作成と適用を完了する方法を示すスクリーンショット。":::
+   :::image type="content" source="media/false-positives/apply-rule.png" alt-text="Microsoft Azure Sentinel でオートメーション ルールの作成と適用を完了する方法を示すスクリーンショット。":::
 
    - このルールは、例外条件を満たすインシデントをクローズするように既に構成されています。
    - 自動的にクローズされたインシデントには、例外を説明するコメントを追加できます。 たとえば、インシデントが既知の管理アクティビティからのものであることを指定できます。
@@ -68,7 +68,7 @@ ms.locfileid: "131046890"
 1. **[適用]** を選択して例外をアクティブにします。
 
 > [!TIP]
-> インシデントから開始することなく、オートメーション ルールをゼロから作成することもできます。 Azure Sentinel の左側のナビゲーション メニューから **[オートメーション]** を選択し、 **[作成]**  >  **[新しいルールの追加]** を選択します。
+> インシデントから開始することなく、オートメーション ルールをゼロから作成することもできます。 Microsoft Azure Sentinel の左側のナビゲーション メニューから **[オートメーション]** を選択し、 **[作成]**  >  **[新しいルールの追加]** を選択します。
 
 ## <a name="add-exceptions-by-modifying-analytics-rules"></a>分析ルールを変更して例外を追加する
 
@@ -76,7 +76,7 @@ ms.locfileid: "131046890"
 
 ### <a name="modify-the-query"></a>クエリを変更する
 
-既存の分析ルールを編集するには、Azure Sentinel の左側のナビゲーション メニューから、 **[オートメーション]** を選択します。 編集するルールを選択し、右下にある **[編集]** を選択して、**分析ルール ウィザード** を開きます。
+既存の分析ルールを編集するには、Microsoft Azure Sentinel の左側のナビゲーション メニューから **[オートメーション]** を選択します。 編集するルールを選択し、右下にある **[編集]** を選択して、**分析ルール ウィザード** を開きます。
 
 **分析ルール ウィザード** を使用して分析ルールを作成および編集する方法の詳細については、「[脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)」をご覧ください。
 
@@ -150,6 +150,6 @@ let subnets = _GetWatchlist('subnetallowlist');
 
 詳細については、次を参照してください。
 - [UEBA データを使用して擬陽性を分析する](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
-- [自動化ルールで Azure Sentinel でのインシデント処理を自動化する](automate-incident-handling-with-automation-rules.md)
+- [オートメーション ルールで Microsoft Azure Sentinel でのインシデント処理を自動化する](automate-incident-handling-with-automation-rules.md)
 - [脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)
-- [Azure Sentinel ウォッチリストを使用する](watchlists.md)
+- [Microsoft Sentinel ウォッチリストを使用する](watchlists.md)

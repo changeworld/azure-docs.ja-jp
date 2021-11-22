@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 08/18/2021
-  ms.openlocfilehash: 6f4b12d1c4b4293ee32a30475d99810ac16af8a7
-  ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+  ms.date: 11/17/2021
+  ms.openlocfilehash: 7c825fcb85cc311b77e8ea851815a58974a5edf4
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/19/2021
-  ms.locfileid: "122445033"
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132754825"
 landingContent:
 - title: Bicep
   linkLists:
@@ -47,28 +47,36 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 関数を使用する
-      url: ./bicep-functions.md
-    - text: 演算子を使用する
-      url: ./operators.md
-    - text: データ型を使用する
-      url: ./data-types.md
+    - text: Bicep ファイルの構造と構文
+      url: ./file.md
     - text: パラメーターを定義する
       url: ./parameters.md
     - text: 変数の定義
       url: ./variables.md
     - text: リソースを定義する
       url: ./resource-declaration.md
+    - text: モジュールを定義する
+      url: ./modules.md
     - text: 出力を定義する
       url: outputs.md
   - linkListType: reference
     links:
-    - text: Bicep ファイルの構造
-      url: ./file.md
+    - text: 関数
+      url: ./bicep-functions.md
+    - text: 演算子
+      url: ./operators.md
+    - text: データ型
+      url: ./data-types.md
     - text: Azure クイック スタート テンプレート
       url: https://azure.microsoft.com/resources/templates/
 - title: Bicep ファイルをデプロイする
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bicep とパイプライン
+      url: add-template-to-azure-pipelines.md
+    - text: Bicep と GitHub Actions
+      url: deploy-github-actions.md
   - linkListType: how-to-guide
     links:
     - text: PowerShell
@@ -93,6 +101,16 @@ landingContent:
       url: deploy-to-tenant.md
     - text: 拡張リソースの範囲設定
       url: scope-extension-resources.md
+- title: ガイダンスとパターン
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ベスト プラクティス
+      url: best-practices.md
+    - text: 構成セット パターン
+      url: patterns-configuration-set.md
+    - text: 共有変数ファイル パターン
+      url: patterns-shared-variable-file.md
 - title: リファレンス コンテンツの確認
   linkLists:
   - linkListType: reference

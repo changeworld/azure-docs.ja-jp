@@ -1,28 +1,28 @@
 ---
-title: Microsoft 365 Defender のデータを Azure Sentinel に接続する | Microsoft Docs
-description: Microsoft 365 Defender から Azure Sentinel にインシデント、アラート、および未加工のイベント データを取り込む方法について説明します。
+title: Microsoft 365 Defender のデータを Microsoft Azure Sentinel に接続する | Microsoft Docs
+description: Microsoft 365 Defender から Microsoft Azure Sentinel にインシデント、アラート、未加工のイベント データを取り込む方法について学習します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1f55f38e126ae9aa64752b45ff449bcde321aaaf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: edef094a6d4db97208124a97732f1ec354f2106c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083937"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522063"
 ---
-# <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Microsoft 365 Defender から Azure Sentinel にデータを接続する
+# <a name="connect-data-from-microsoft-365-defender-to-microsoft-sentinel"></a>Microsoft 365 Defender から Microsoft Azure Sentinel にデータを接続する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -40,11 +40,11 @@ ms.locfileid: "131083937"
 
 ## <a name="background"></a>背景
 
-インシデント統合と共に Azure Sentinel の [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) コネクタを使用すると、すべての M365D インシデントとアラートを Azure Sentinel にストリーミングし、両方のポータル間でインシデントの同期を維持することができます。 M365D インシデントには、すべてのアラート、エンティティ、およびその他の関連情報が含まれています。これらは M365D のコンポーネント サービスである **Microsoft Defender for Endpoint**、**Microsoft Defender for Identity**、**Microsoft Defender for Office 365**、および **Microsoft Cloud App Security** によって強化され、アラートがグループ化されています。
+インシデント統合と共に Microsoft Azure Sentinel の [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) コネクタを使用すると、すべての M365D インシデントとアラートを Microsoft Azure Sentinel にストリーミングし、両方のポータル間でインシデントの同期を維持することができます。 M365D インシデントには、すべてのアラート、エンティティ、その他の関連情報が含まれています。これらは M365D のコンポーネント サービスである **Microsoft Defender for Endpoint**、**Microsoft Defender for Identity**、**Microsoft Defender for Office 365**、**Microsoft Defender for Cloud Apps** によって強化され、アラートがグループ化されています。
 
-このコネクタを使用すると、Microsoft Defender for Endpoint と Microsoft Defender for Office 365 から Azure Sentinel に **詳細な捜索** イベントをストリーミングできます。これにより、これらの Defender コンポーネントの詳細な捜索クエリを Azure Sentinel にコピーすること、Sentinel アラートを Defender コンポーネントの未加工のイベント データを使用して強化し、追加の分析情報を提供すること、保持期間を長くしてログを Log Analytics に格納することができます。
+このコネクタを使用すると、Microsoft Defender for Endpoint と Microsoft Defender for Office 365 から Microsoft Azure Sentinel に **詳細な捜索** イベントをストリーミングすることもできます。これにより、これらの Defender コンポーネントの詳細な捜索クエリを Microsoft Azure Sentinel にコピーすること、Sentinel アラートを Defender コンポーネントの未加工のイベント データを使用して強化し、追加の分析情報を提供すること、保有期間を長くしてログを Log Analytics に格納することができます。
 
-インシデント統合と詳細な捜索イベントの収集の詳細については、「[Microsoft 365 Defender と Azure Sentinel の統合](microsoft-365-defender-sentinel-integration.md#advanced-hunting-event-collection)」を参照してください。
+インシデント統合と詳細な捜索イベントの収集の詳細については、「[Microsoft 365 Defender と Microsoft Azure Sentinel の統合](microsoft-365-defender-sentinel-integration.md#advanced-hunting-event-collection)」を参照してください。
 
 > [!IMPORTANT]
 >
@@ -58,7 +58,7 @@ ms.locfileid: "131083937"
 
 ## <a name="connect-to-microsoft-365-defender"></a>Microsoft 365 Defender に接続する
 
-1. Azure Sentinel で、 **[データ コネクタ]** を選択し、ギャラリーから **[Microsoft 365 Defender (プレビュー)]** を選択して、 **[コネクタを開く]** ページを選択します。
+1. Microsoft Azure Sentinel で、 **[データ コネクタ]** を選択し、ギャラリーから **[Microsoft 365 Defender (プレビュー)]** を選択して、 **[コネクタを開く]** ページを選択します。
 
 1. **[インシデントとアラートの接続]** セクションの **[構成]** で、 **[インシデントとアラートの接続]** ボタンを選択します。
 
@@ -150,7 +150,7 @@ let Now = now();
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Microsoft 365 Defender コネクタを使用し、Microsoft 365 Defender インシデントと、Microsoft Defender for Endpoint および Defender for Office 365 からの詳細な捜索イベント データを Azure Sentinel に統合する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Microsoft 365 Defender コネクタを使用し、Microsoft 365 Defender インシデントと、Microsoft Defender for Endpoint および Defender for Office 365 からの詳細な捜索イベント データを Microsoft Azure Sentinel に統合する方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

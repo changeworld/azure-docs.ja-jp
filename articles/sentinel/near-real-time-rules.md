@@ -6,8 +6,8 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 70fbed7df5ece53eb4403fea7f055563eaac1633
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 1b46989647146d433f86b7e9698222900fb455dd
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132308188"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518852"
 ---
 # <a name="detect-threats-quickly-with-near-real-time-nrt-analytics-rules-in-microsoft-sentinel"></a>Microsoft Sentinel でほぼリアルタイム (NRT) の分析ルールを使用し、脅威をすばやく検出する
 
@@ -38,7 +38,7 @@ Microsoft Sentinel の[ほぼリアルタイム分析ルール](detect-threats-b
 
 NRT ルールは、1 分ごとに 1 回実行し、前の 1 分間に取り込まれたイベントをキャプチャして、可能な限り最新の情報を提供できるハードコードされています。
 
-インジェストのタイム ラグを考慮して組み込みの 5 分間の延期期間で実行される定期的なスケジュールされたルールとは異なり、NRT ルールはわずか 2 分の延期期間で実行され、ソースでの生成時間 (TimeGenerated フィールド) ではなく、イベントのインジェスト時間に対してクエリを実行することで、インジェスト延期期間の問題を解決します。 この結果により、検出の周波数と正確性の両方が向上します。 (この問題を完全に理解するには、[「クエリのスケジュール設定とアラートのしきい値」](detect-threats-custom.md#query-scheduling-and-alert-threshold)と、そこにリンクが記載されている[Microsoft Sentinel でスケジュールされているアラート ルールでインジェスト遅延を処理する](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851)方法に関する記事を参照してください)
+インジェストのタイム ラグを考慮して組み込みの 5 分間の延期期間で実行される定期的なスケジュールされたルールとは異なり、NRT ルールはわずか 2 分の延期期間で実行され、ソースでの生成時間 (TimeGenerated フィールド) ではなく、イベントのインジェスト時間に対してクエリを実行することで、インジェスト延期期間の問題を解決します。 この結果により、検出の周波数と正確性の両方が向上します。 (この問題をもっと完全に理解するには、「[クエリのスケジュール設定とアラートのしきい値](detect-threats-custom.md#query-scheduling-and-alert-threshold)」と「[スケジュールされた分析ルールでのインジェスト遅延の処理](ingestion-delay.md)」を参照してください)
 
 NRT ルールには、スケジュールされた分析ルールとしての機能と特徴の多くがあります。 アラート エンリッチメント機能の完全なセットを使用できます。エンティティをマップし、カスタムの詳細をサーフェスし、アラートの詳細の動的コンテンツを構成できます。 アラートをインシデントにグループ化する方法を選択し、結果を生成した後にクエリの実行を一時的に抑制できます。また、ルールから生成されたアラートやインシデントに応答して実行する自動化ルールとプレイブックを定義できます。
 

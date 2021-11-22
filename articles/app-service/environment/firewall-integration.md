@@ -1,18 +1,18 @@
 ---
 title: 送信トラフィックをロックダウンする
-description: Azure Firewall と統合して、App Service Environment 内からの送信トラフィックをセキュリティで保護する方法について説明します。
-author: ccompy
+description: Azure Firewall と統合し、App Service 環境内からの送信トラフィックをセキュリティで保護する方法について説明します。
+author: madsd
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 ms.date: 09/16/2021
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: d1deab13de8272cde24396241af5e8fe99066e90
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: d8896f9bbe7ee4429236eac7763d66b1efd4313c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132372551"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523716"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment をロックする
 

@@ -1,26 +1,26 @@
 ---
-title: Azure Sentinel エンティティ タイムラインのアクティビティをカスタマイズする | Microsoft Docs
-description: Azure Sentinel のエンティティ ページのタイムラインで追跡および表示される内容に、カスタマイズしたアクティビティを追加します
+title: Microsoft Sentinel エンティティ タイムラインのアクティビティをカスタマイズする | Microsoft Docs
+description: Microsoft Sentinel のエンティティ ページのタイムラインで追跡および表示される内容に、カスタマイズしたアクティビティを追加します
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6fd6db5b75124552bff3f48a516cd352d817cf27
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0483d839af7a8707aa3be632f9d168447488e768
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055219"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523621"
 ---
 # <a name="customize-activities-on-entity-page-timelines"></a>エンティティ ページのタイムラインのアクティビティをカスタマイズする
 
@@ -32,7 +32,7 @@ ms.locfileid: "131055219"
 
 ## <a name="introduction"></a>はじめに
 
-既定で用意されている Azure Sentinel のタイムラインで追跡および表示されるアクティビティに加えて、追跡したいその他のアクティビティを作成して、それらもタイムラインに表示できます。 接続されている任意のデータ ソースのエンティティ データのクエリに基づいて、カスタマイズされたアクティビティを作成できます。 たとえば、次の方法でこの機能を使用できます。
+既定で用意されている Microsoft Sentinel のタイムラインで追跡および表示されるアクティビティに加えて、追跡するその他のアクティビティを作成し、それらもタイムラインに表示できます。 接続されている任意のデータ ソースのエンティティ データのクエリに基づいて、カスタマイズされたアクティビティを作成できます。 たとえば、次の方法でこの機能を使用できます。
 
 - 既定で用意されている既存のアクティビティ テンプレートを変更して、エンティティ タイムラインに新しいアクティビティを追加する。
 
@@ -40,7 +40,7 @@ ms.locfileid: "131055219"
 
 ## <a name="getting-started"></a>作業の開始
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Entity behavior]\(エンティティ動作\)** を選択します。
+1. Microsoft Azure Sentinel のナビゲーション メニューから、 **[Entity behavior]\(エンティティの動作\)** を選択します。
 
 1. **[エンティティの動作]** ブレードで、画面の上部にある **[エンティティ ページのカスタマイズ]** を選択します。
 
@@ -146,7 +146,7 @@ SecurityEvent
 
 便宜上、アクティビティの出力に動的パラメーターを追加することで、タイムラインでのアクティビティの表示方法を決定できます。
 
-Azure Sentinel には、使用できる組み込みのパラメーターが用意されています。また、クエリで投影したフィールドに基づいて他のパラメーターを使用することもできます。
+Microsoft Sentinel には、使用できる組み込みのパラメーターが用意されています。また、クエリで投影したフィールドに基づいて他のパラメーターを使用できます。
 
 パラメーターには `{{ParameterName}}` という形式を使用します。
 
@@ -209,6 +209,6 @@ Azure Sentinel には、使用できる組み込みのパラメーターが用�
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、エンティティ ページのタイムラインにカスタム アクティビティを作成する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、エンティティ ページのタイムラインにカスタム アクティビティを作成する方法について説明しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 - [エンティティ ページ](identify-threats-with-entity-behavior-analytics.md)の詳細を確認する。
 - [エンティティと識別子](entities-reference.md)の完全な一覧を確認する。

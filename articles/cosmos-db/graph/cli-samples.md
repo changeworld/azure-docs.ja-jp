@@ -5,22 +5,22 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 10/13/2020
+ms.date: 11/15/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 694f9bd30fa89effa1e8b575404e006e849afc36
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 012446923b8205fb3a06570cbb16ce748e7da98d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121788173"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709567"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 用の Azure CLI サンプル
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
 
 次の表には、Azure Cosmos DB の Azure CLI スクリプトのサンプルへのリンクが含まれています。 API 固有のサンプルに移動するには、右側のリンクを使用します。 共通サンプルは、すべての API で同じです。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](/cli/azure/cosmosdb)で確認できます。 Azure Cosmos DB CLI のサンプル スクリプトについては、[Azure Cosmos DB CLI GitHub リポジトリ](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)もご覧ください。
 
-これらのサンプルを使用するには、Azure CLI バージョン 2.12.1 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください
+これらのサンプルを使用するには、Azure CLI バージョン 2.30 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください
 
 ## <a name="common-samples"></a>一般的なサンプル
 
@@ -40,6 +40,7 @@ ms.locfileid: "121788173"
 |タスク | 説明 |
 |---|---|
 | [Azure Cosmos のアカウント、データベース、およびグラフを作成する](../scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API 用の Azure Cosmos DB のアカウント、データベース、およびグラフを作成します。 |
+| [Gremlin API、データベース、グラフ用のサーバーレス Azure Cosmos アカウントを作成する](../scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API 用のサーバーレス Azure Cosmos DB のアカウント、データベース、グラフを作成します。 |
 | [Azure Cosmos アカウント、データベース、自動スケーリングのグラフを作成する](../scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API 用に Azure Cosmos DB アカウント、データベース、自動スケーリングのグラフを作成します。 |
 | [スループット操作](../scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | データベースとグラフに対する読み取り、更新、および自動スケーリングと標準スループット間の移行を行います。|
 | [リソースが削除されないようにロックする](../scripts/cli/gremlin/lock.md?toc=%2fcli%2fazure%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。|

@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 09/27/2021
-ms.openlocfilehash: 65691a2bb48c3dece51effef4fbc7b65d19d8449
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 475c742cae311cc1d816c7b879af61aa09fe882e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247799"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709845"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -47,7 +47,7 @@ ms.locfileid: "130247799"
 
 次の表に、接続の確立に使用できるさまざまな選択肢を示します。
 
-| **オプション**                        | **長所**                                               | <bpt id="p1">**</bpt>短所<ept id="p1">**</ept>                                            |
+| **オプション**                        | **長所**                                               | **短所**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | プライベート エンドポイント                 | 仮想ネットワーク内のプライベート IP 経由でのバックアップを可能にする  <br><br>   ネットワークとコンテナーの側で詳細な制御を提供する | 標準のプライベート エンドポイント <bpt id="p1">[</bpt>コスト<ept id="p1">](https://azure.microsoft.com/pricing/details/private-link/)</ept>が発生する |
 | NSG サービス タグ                  | 範囲の変更が自動的にマージされるため管理しやすい   <br><br>   追加のコストが発生しない | NSG でのみ使用可能  <br><br>    サービス全体へのアクセスを提供する |
@@ -97,7 +97,8 @@ Azure Firewall を使用している場合は、<bpt id="p1">*</bpt>AzureBackup<
 
 ### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する
 
-Azure VM で実行されている SAP HANA データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 必要なサービスへのアクセスを許可するには、上記で説明した IP と FQDN の一覧を使用します。 認証済みプロキシ サーバーはサポートされません。
+> [!NOTE]
+> 現時点では、SAP HANA のプロキシはサポートされていません。 HANA VM の Azure バックアップを使用したデータベース バックアップの送信接続要件を取り除くには、プライベート エンド ポイントなどの他のオプションを検討してください。
 
 ## <a name="understanding-backup-and-restore-throughput-performance"></a>バックアップと復元のスループット パフォーマンスについて
 
@@ -187,7 +188,7 @@ hdbuserstore list
 | `<sid>`adm (OS)   |   HANA OS   |    次のコマンドを実行します。 <br> `hdbuserstore List`   |   結果に次のような新しい行が結果に含まれているかどうかを確認します。 <br><br>  `KEY AZUREWLBACKUPHANAUSER` <br>  `ENV : localhost: 3<Instance#>13`   <br> `USER: AZUREWLBACKUPHANAUSER`    |
 | Azure 共同作成者     |    Azure portal    |   Azure Backup サービス、Azure AD、および Azure Storage への送信トラフィックを許可するように、NSG、NVA、Azure Firewall などを構成します。     |    [ネットワーク接続を設定する](#set-up-network-connectivity)    |
 | Azure 共同作成者 |   Azure portal    |   Recovery Services コンテナーを作成するかまたは開いて、HANA バックアップを選択します。   |   バックアップするすべてのターゲット HANA VM を検出します。   |
-| Azure 共同作成者    |   Azure portal    |   HANA データベースを検出し、バックアップ ポリシーを構成します。   |  例: <br><br>  週次バックアップ: 毎週日曜日午前 2 時、保持期間は週単位で 12 週間、月単位で 12 か月、年単位で 3 年間   <br>   差分または増分: 日曜日を除く毎日    <br>   ログ: 15 分ごと、保持期間は 35 日間    |
+| Azure 共同作成者    |   Azure portal    |   HANA データベースを検出し、バックアップ ポリシーを構成します。   |  次に例を示します。 <br><br>  週次バックアップ: 毎週日曜日午前 2 時、保持期間は週単位で 12 週間、月単位で 12 か月、年単位で 3 年間   <br>   差分または増分: 日曜日を除く毎日    <br>   ログ: 15 分ごと、保持期間は 35 日間    |
 | Azure 共同作成者  |   Azure portal    |    Recovery Service コンテナー – バックアップ項目 – SAP HANA     |   バックアップ ジョブ (Azure ワークロード) を確認します。    |
 | HANA 管理者    | HANA Studio   | Backup Console、Backup カタログ、backup.log、backint.log、および globa.ini を確認します   |    SYSTEMDB とテナント データベースの両方。   |
 

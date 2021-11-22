@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.collection: linux
 ms.date: 06/12/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f5fbea307653b8ee603c799a442f0e4d0a132be7
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: fcecc23d99ddc11169200ff903767be6c8c62b9b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300401"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486176"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -22,6 +22,8 @@ Desired State Configuration (DSC) は、コードで構成を行って IT およ
 
 > [!NOTE]
 > Linux 用の DSC 拡張機能と [Linux 用の Log Analytics 仮想マシン拡張機能](./oms-linux.md)には現在競合があるため、並列構成ではサポートされていません。 2 つのソリューションを同じ VM で同時に使用しないでください。
+>
+> DSC 拡張機能を有効にする前に、[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)という名前の Azure Policy の機能によって管理された、新しいバージョンの DSC が現在プレビューで利用可能になっていることに注意してください。 ゲスト構成機能では、Desired State Configuration (DSC) 拡張機能ハンドラーや Azure Automation State Configuration の機能のほか、顧客のフィードバックで最も一般的に要求されている機能が組み合わされています。 ゲスト構成にはまた、[Arc 対応サーバー](../../azure-arc/servers/overview.md)によるハイブリッド マシンのサポートも含まれています。
 
 DSCForLinux 拡張機能は Microsoft によって公開され、サポートされています。 拡張機能では、OMI および DSC のエージェントが Azure 仮想マシンにインストールされます。 DSC 拡張機能では、さらに次のアクションを実行できます。
 

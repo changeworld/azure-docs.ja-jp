@@ -69,12 +69,14 @@
       href: concepts-scale.md
     - name: ノードの自動修復
       href: node-auto-repair.md
+    - name: サービス メッシュ
+      href: servicemesh-about.md
     - name: ベスト プラクティス
       items:
         - name: 概要
           href: best-practices.md
         - name: AKS クラスターのベースライン アーキテクチャ
-          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks
           maintainContext: true
         - name: クラスター オペレーター向け
           items:
@@ -361,9 +363,9 @@
     - name: アプリケーションの開発と実行
       items:
         - name: Visual Studio Code で Bridge to Kubernetes を使用する
-          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+          href: /visualstudio/bridge/bridge-to-kubernetes-vs-code
         - name: Visual Studio で Bridge to Kubernetes を使用する
-          href: /visualstudio/containers/bridge-to-kubernetes
+          href: /visualstudio/bridge/bridge-to-kubernetes-vs
         - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用
@@ -384,42 +386,32 @@
         - name: Dapr を使用する (プレビュー)
           href: dapr.md
           maintainContext: true
-    - name: サービス メッシュのデプロイ
+    - name: Open Service Mesh AKS アドオンをデプロイする
       items:
-        - name: サービス メッシュについて
-          href: servicemesh-about.md
-        - name: Open Service Mesh AKS アドオン
-          items:
-            - name: OSM の概要
-              href: open-service-mesh-about.md
-            - name: OSM AKS アドオンをデプロイする
-              items:
-                - name: Azure CLI を使用する
-                  href: open-service-mesh-deploy-addon-az-cli.md
-                - name: Bicep テンプレートを使用する
-                  href: open-service-mesh-deploy-addon-bicep.md
-            - name: OSM クライアント バイナリをダウンロードして構成する
-              href: open-service-mesh-binary.md
-            - name: OSM のチュートリアル
-              items:
-                - name: 新しいアプリケーションのデプロイを管理する
-                  href: open-service-mesh-deploy-new-application.md
-                - name: アプリケーションをメッシュにオンボードする
-                  href: open-service-mesh-deploy-existing-application.md
-                - name: Azure Application Gateway イングレス コントローラーの使用
-                  href: open-service-mesh-azure-application-gateway-ingress.md
-                - name: Kubernetes Nginx イングレス コントローラーの使用
-                  href: open-service-mesh-nginx-ingress.md
-                - name: Prometheus、Grafana、Jaeger を使用して監視を構成する
-                  href: open-service-mesh-open-source-observability.md
-                - name: IP とポート範囲を除外する
-                  href: open-service-mesh-ip-port-exclusion.md
-            - name: Azure Monitor を構成する
-              href: open-service-mesh-azure-monitor.md
-            - name: OSM のトラブルシューティング
-              href: open-service-mesh-troubleshoot.md
-            - name: OSM を無効にする
-              href: open-service-mesh-disable-add-on.md
+        - name: Open Service Mesh について
+          href: open-service-mesh-about.md
+        - name: Azure CLI を使用する
+          href: open-service-mesh-deploy-addon-az-cli.md
+        - name: Bicep テンプレートを使用する
+          href: open-service-mesh-deploy-addon-bicep.md
+        - name: OSM CLI をインストールする
+          href: open-service-mesh-binary.md
+        - name: 新しいアプリケーションを管理する
+          href: open-service-mesh-deploy-new-application.md
+        - name: 既存のアプリケーションをオンボードする
+          href: open-service-mesh-deploy-existing-application.md
+        - name: IP アドレスとポート範囲の除外を構成する
+          href: open-service-mesh-ip-port-exclusion.md
+        - name: Azure Monitor を構成する
+          href: open-service-mesh-azure-monitor.md
+        - name: Azure Application Gateway イングレスとの統合
+          href: open-service-mesh-azure-application-gateway-ingress.md
+        - name: NGINX イングレス コントローラーとの統合
+          href: open-service-mesh-nginx-ingress.md
+        - name: Open Service Mesh のトラブルシューティング
+          href: open-service-mesh-troubleshoot.md
+        - name: Open Service Mesh AKS アドオンをアンインストールする
+          href: open-service-mesh-uninstall-add-on.md
     - name: クラスター拡張機能を使用する (プレビュー)
       href: cluster-extensions.md
     - name: DevOps
@@ -451,9 +443,9 @@
     - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
-      href: /rest/api/aks
+      href: /rest/api/aks/
     - name: PowerShell
-      href: /powershell/module/az.aks#aks
+      href: /powershell/module/az.aks/#aks
     - name: .NET
       href: /dotnet/api/overview/azure/containerservice
     - name: Python
@@ -472,9 +464,9 @@
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-container-instances&azure-container-registry
     - name: 利用可能なリージョン
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+      href: 'https://azure.microsoft.com/pricing/details/kubernetes-service/'
     - name: サポート ポリシー
       href: support-policies.md
     - name: Azure のロードマップ

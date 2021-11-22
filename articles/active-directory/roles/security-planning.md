@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1af397b12c01d64e1947448dbd0b5096ae436343
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: fd62f1b5974d03e19bd210eec7f8a2cadca0eb22
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132335292"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487906"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -303,7 +303,7 @@ Azure Active Directory がオンプレミスの Active Directory に接続され
 
 #### <a name="establish-integrated-monitoring"></a>統合型の監視を確立する
 
-[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) は次を行います。
+[Microsoft Defender for Cloud](../../defender-for-cloud/defender-for-cloud-introduction.md) は次を行います。
 
 * Azure サブスクリプション全体のセキュリティ監視とポリシー管理を統合します
 * 他の方法では見過ごされてしまう可能性のある脅威を検出します

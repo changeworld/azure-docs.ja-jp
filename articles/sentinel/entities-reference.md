@@ -1,38 +1,36 @@
 ---
-title: Azure Sentinel エンティティ型リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel のエンティティ型とその必須識別子について説明します。
+title: Microsoft Azure Sentinel エンティティ型リファレンス | Microsoft Docs
+description: この記事では、Microsoft Azure Sentinel のエンティティ型とその必須識別子について説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 44f8eb527901f5457a4eddfab0bfdd8191f60d0f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d147808610ce0377396ae602296f8e54a9bfdd0c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046833"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721273"
 ---
-# <a name="azure-sentinel-entity-types-reference"></a>Azure Sentinel エンティティ型リファレンス
+# <a name="microsoft-sentinel-entity-types-reference"></a>Microsoft Azure Sentinel エンティティ型リファレンス
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="entity-types-and-identifiers"></a>エンティティ型と識別子
 
-次の表では、現在 Azure Sentinel でマッピングに使用できる **エンティティ型** と、各エンティティ型の **識別子** として使用できる **属性** を示します。これは、[分析ルール ウィザード](detect-threats-custom.md)の [エンティティ マッピング](map-data-fields-to-entities.md) セクションの **[識別子]** ドロップダウンの一覧に表示されます。
+次の表では、現在 Microsoft Azure Sentinel でマッピングに使用できる **エンティティ型** と、各エンティティ型の **識別子** として使用できる **属性** を示します。これは、[分析ルール ウィザード](detect-threats-custom.md)の [エンティティ マッピング](map-data-fields-to-entities.md) セクションの **[識別子]** ドロップダウン リストに表示されます。
 
 「**必須識別子**」列の各識別子は、そのエンティティを識別するために最低限必要なものです。 ただし、必須識別子だけでは、"*一意の*" ID を提供するのに十分ではない場合があります。 使用する識別子が多いほど、ID が一意になる可能性が高くなります。 1 つのエンティティ マッピングに最大で 3 つの識別子を使用できます。
 
-最適な結果が得られるようにするには (保証された一意の識別)、可能な限り、「**最も強い識別子**」列の識別子を使用する必要があります。 強い識別子を複数使用すると、さまざまなデータ ソースやスキーマの強い識別子の相関関係が可能になります。 これにより、Azure Sentinel で特定のエンティティについてより包括的な分析情報を提供できます。
+最適な結果が得られるようにするには (保証された一意の識別)、可能な限り、「**最も強い識別子**」列の識別子を使用する必要があります。 強い識別子を複数使用すると、さまざまなデータ ソースやスキーマの強い識別子の相関関係が可能になります。 これにより、Microsoft Azure Sentinel で特定のエンティティについてより包括的な分析情報を提供できます。
 
 | エンティティ型 | 識別子 | 必須識別子 | 最も強い識別子 |
 | - | - | - | - |
@@ -141,7 +139,7 @@ ms.locfileid: "131046833"
 | ----- | ---- | ----------- |
 | Type | String | "ip" |
 | Address | String | 文字列としての IP アドレス (例: 127.0.0.1、IPv4 または IPv6 のいずれか)。 |
-| 場所 | GeoLocation | IP エンティティに関連付けられている地理的な場所のコンテキスト。 <br><br>詳細については、「[REST API を介して位置情報データで Azure Sentinel のエンティティを強化する (パブリック プレビュー)](geolocation-data-api.md)」も参照してください。 |
+| 場所 | GeoLocation | IP エンティティに関連付けられている地理的な場所のコンテキスト。 <br><br>詳細については、「[Microsoft Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする (パブリック プレビュー)](geolocation-data-api.md)」も参照してください。 |
 |
 
 IP エンティティの強い識別子:
@@ -503,7 +501,7 @@ SubmissionMail エンティティの強い識別子:
 |17865|Ariba Inc|
 |18432|Zscaler|
 |19688|Xactly|
-|20595|Microsoft Cloud App Security|
+|20595|Microsoft Defender for Cloud Apps|
 |20892|Microsoft SharePoint Online|
 |20893|Microsoft Exchange Online|
 |20940|Active Directory|
@@ -542,6 +540,6 @@ SubmissionMail エンティティの強い識別子:
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Sentinel でのエンティティの構造、識別子、およびスキーマについて説明しました。
+このドキュメントでは、Microsoft Azure Sentinel でのエンティティの構造、識別子、スキーマについて学習しました。
 
-[エンティティ](entities-in-azure-sentinel.md)と[エンティティ マッピング](map-data-fields-to-entities.md)に関する詳細をご確認ください。 
+[エンティティ](entities.md)と[エンティティ マッピング](map-data-fields-to-entities.md)に関する詳細をご確認ください。 

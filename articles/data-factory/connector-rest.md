@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 11/11/2021
 ms.author: makromer
-ms.openlocfilehash: f24bb345442b2320344cf1c9e89d383571447ded
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 5ea0e509f7969c011cb18f99433c85fc97ed5528
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130044769"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487195"
 ---
 # <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーおよび変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -511,6 +511,9 @@ REST API からデータをコピーするとき、通常、REST API では、1 
 | AbsoluteUrl | 次の要求を発行する URL を示します。 これは、**絶対 URL と相対 URL のどちらか** です。 |
 | QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 |
 | Headers.*request_header* または Headers['request_header'] | "request_header" は、次の HTTP 要求内で 1 つのヘッダー名を参照するユーザー定義です。 |
+| EndCondition:*end_condition* | "end_condition" は、次の HTTP 要求で改ページ ループを終了させる条件を示すユーザー定義です。 |
+| MaxRequestNumber | 改ページ要求の最大数を示します。 これを空のままにすると、制限がなくなります。 |
+| SupportRFC5988 | RFC 5988 は、改ページ規則でサポートされています。 既定では、これは true に設定されています。 これは、他の改ページ規則が定義されていない場合にのみ優先されます。
 
 改ページ位置の自動修正規則で **サポートされる値**:
 

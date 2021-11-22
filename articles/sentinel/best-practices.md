@@ -1,74 +1,74 @@
 ---
-title: Azure Sentinel のベスト プラクティス
-description: Azure Sentinel ワークスペースを管理する際のベスト プラクティスについて説明します。
+title: Microsoft Sentinel のベスト プラクティス
+description: Microsoft Sentinel ワークスペースを管理する際のベスト プラクティスについて説明します。
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b53b634315487d7940cf4d202c29005498bcdfb9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 15543989655bf094f221a4259ad0b3e765338329
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060784"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524704"
 ---
-# <a name="best-practices-for-azure-sentinel"></a>Azure Sentinel のベスト プラクティス
+# <a name="best-practices-for-microsoft-sentinel"></a>Microsoft Sentinel のベスト プラクティス
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この一連のベストプラクティスでは、Azure Sentinel のデプロイ、管理、使用に関するガイダンスを提供しています。詳細については、他の記事へのリンクも含まれています。
+この一連のベストプラクティスでは、Microsoft Sentinel のデプロイ、管理、使用に関するガイダンスを提供しています。詳細に関する、他の記事へのリンクも含まれています。
 
 > [!IMPORTANT]
-> Azure Sentinel をデプロイする前に、「[展開前のアクティビティと前提条件](prerequisites.md)」を確認し、完了させてください。
+> Microsoft Sentinel をデプロイする前に、[デプロイ前のアクティビティと前提条件](prerequisites.md)に関するページを確認し、完了してください。
 >
 
 
 ## <a name="best-practice-references"></a>ベスト プラクティスのリファレンス
 
-この Azure Sentinel のドキュメントには、記事全体にわたってベスト プラクティス ガイダンスが含まれています。 この記事で提供されている内容に加え、詳細については、次の記事を参照してください。
+この Microsoft Sentinel のドキュメントには、記事全体にわたってベスト プラクティス ガイダンスが含まれています。 この記事で提供されている内容に加え、詳細については、次の記事を参照してください。
 
 - **[管理者ユーザー]**:
 
-    - [Azure Sentinel をデプロイするためのデプロイ前のアクティビティと前提条件](prerequisites.md)
-    - [Azure Sentinel ワークスペース アーキテクチャのベスト プラクティス](best-practices-workspace-architecture.md)
-    - [Azure Sentinel ワークスペース アーキテクチャを設計する](design-your-workspace-architecture.md)
-    - [Azure Sentinel のサンプル ワークスペースの設計](sample-workspace-designs.md)
+    - [Microsoft Sentinel のデプロイ前のアクティビティとデプロイの前提条件](prerequisites.md)
+    - [Microsoft Sentinel ワークスペース アーキテクチャのベスト プラクティス](best-practices-workspace-architecture.md)
+    - [Microsoft Sentinel ワークスペース アーキテクチャを設計する](design-your-workspace-architecture.md)
+    - [Microsoft Sentinel のサンプル ワークスペースの設計](sample-workspace-designs.md)
     - [データ収集のベスト プラクティス](best-practices-data.md)
-    - [Azure Sentinel のコストと課金](azure-sentinel-billing.md)
-    - [Azure Sentinel のアクセス許可](roles.md)
-    - [Azure Sentinel で MSSP の知的財産権を保護する](mssp-protect-intellectual-property.md)
-    - [Azure Sentinel への脅威インテリジェンスの統合](threat-intelligence-integration.md)
-    - [Azure Sentinel クエリとアクティビティの監査](audit-sentinel-data.md)
+    - [Microsoft Sentinel のコストと請求](azure-sentinel-billing.md)
+    - [Microsoft Sentinel のアクセス許可](roles.md)
+    - [Microsoft Sentinel で MSSP の知的財産権を保護する](mssp-protect-intellectual-property.md)
+    - [Microsoft Sentinel への脅威インテリジェンスの統合](threat-intelligence-integration.md)
+    - [Microsoft Sentinel のクエリとアクティビティの監査](audit-sentinel-data.md)
 
 - **アナリスト**:
 
     - [推奨されるプレイブック](automate-responses-with-playbooks.md#recommended-playbooks)
-    - [Azure Sentinel での偽陽性の処理](false-positives.md)
-    - [Azure Sentinel で脅威を検出する](hunting.md)
-    - [一般的に使用される Azure Sentinel ブック](top-workbooks.md)
+    - [Microsoft Sentinel での擬陽性の処理](false-positives.md)
+    - [Microsoft Sentinel を使用して脅威を追求する](hunting.md)
+    - [一般的に使用される Microsoft Azure Sentinel ブック](top-workbooks.md)
     - [難しい設定なしで脅威を検出する](detect-threats-built-in.md)
     - [脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)
     - [Jupyter Notebook を使用してセキュリティの脅威を検出する](notebooks.md)
 
-詳細については、「[Architecting SecOps for Success: Best Practices for Deploying Azure Sentinel (成功するための SecOps の設計: Azure Sentinel のデプロイに関するベスト プラクティス)](https://youtu.be/DyL9MEMhqmI)」という動画をご覧ください
+詳細については、「[SecOps を成功に導くアーキテクチャ: Microsoft Sentinel 導入のベストプラクティス](https://youtu.be/DyL9MEMhqmI)」という動画をご覧ください
 
 ## <a name="regular-soc-activities-to-perform"></a>実行する標準 SOC アクティビティ
 
-継続的なセキュリティのベストプラクティスを確保するために、次の Azure Sentinel アクティビティを定期的にスケジュールします。
+継続的なセキュリティのベストプラクティスを確保するために、次の Microsoft Sentinel アクティビティを定期的にスケジュール設定します。
 
 ### <a name="daily-tasks"></a>毎日のタスク
 
-- **インシデントをトリアージして調査します**。  Azure Sentinel **[インシデント]** ページで、現在設定されている分析ルールによって生成された新しいインシデントを確認し、新しいインシデントの調査を開始します。 詳細については、「[チュートリアル:Azure Sentinel でインシデントを調査する](investigate-cases.md)」を参照してください。
+- **インシデントをトリアージして調査します**。  Microsoft Sentinel **[インシデント]** ページで、現在設定されている分析ルールによって生成された新しいインシデントを確認し、新しいインシデントの調査を開始します。 詳細については、[Microsoft Sentinel でインシデントを調査する](investigate-cases.md)方法に関するページを参照してください。
 
 - **ハンティング クエリとブックマークを確認します**。 すべての組み込みクエリの結果を確認し、既存のハンティング クエリとブックマークを更新します。 新しいインシデントを手動で生成するか、該当する場合は古いインシデントを更新します。  詳細については、次を参照してください。
 
     - [Microsoft セキュリティ アラートからインシデントを自動的に作成する](create-incidents-from-alerts.md)
-    - [Azure Sentinel で脅威を検出する](hunting.md)
-    - [Azure Sentinel でハンティング中にデータを追跡する](bookmarks.md)
+    - [Microsoft Sentinel を使用して脅威を追求する](hunting.md)
+    - [Microsoft Sentinel でハンティング中にデータを追跡する](bookmarks.md)
 
 - **分析ルール**。  新しくリリースされたルールと最近接続されたデータ コネクタから新たに利用可能になったルールなど、必要に応じて新しい分析ルールを確認し、有効にします。
 
@@ -76,33 +76,32 @@ ms.locfileid: "131060784"
 
 - **Log Analytics エージェント**。 サーバーとワークステーションのワークスペースへの接続が有効なことを確認し、失敗した接続のトラブルシューティングと修復を行います。   詳細については、「[Log Analytics エージェントの概要](../azure-monitor/agents/log-analytics-agent.md)」を参照してください。
 
-- **プレイブックのエラー**。 プレイブックの状態を確認し、エラーが発生した場合はトラブルシューティングを行います。   詳細については、「[チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)」を参照してください。
-
+- **プレイブックのエラー**。 プレイブックの状態を確認し、エラーが発生した場合はトラブルシューティングを行います。   詳細については、「[チュートリアル: Microsoft Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)」を参照してください。
 
 ### <a name="weekly-tasks"></a>毎週行うタスク
 
-- **ブックの更新**。 ブックにインストールしなければならない更新プログラムがあるかどうかを確認します。 詳細については、「[一般的に使用される Azure Sentinel ブック](top-workbooks.md)」を参照してください。
+- **ブックの更新**。 ブックにインストールしなければならない更新プログラムがあるかどうかを確認します。 詳細については、「[一般的に使われる Microsoft Sentinel ブック](top-workbooks.md)」を参照してください。
 
-- **Azure Sentinel の GitHub リポジトリの確認**。 [Azure Sentinel GitHub](https://github.com/Azure/Azure-Sentinel) リポジトリを確認して、分析ルール、ブック、ハンティング クエリ、プレイブックなど、環境に有効な新しいリソースまたは更新されたリソースがないかどうかを調べます。
+- **Microsoft Sentinel の GitHub リポジトリの確認**。 [Microsoft Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel)を確認して、分析ルール、ブック、ハンティング クエリ、プレイブックなど、環境に有効な新しいリソースまたは更新されたリソースがないかどうかを調べます。
 
-- **Azure Sentinel 監査**。 Azure Sentinel アクティビティを使用して、誰が分析ルールやブックマークなどのリソースを更新または削除したかを確認します。 詳細については、「[Azure Sentinel クエリとアクティビティの監査](audit-sentinel-data.md)」をご覧ください。
+- **Microsoft Sentinel の監査**。 Microsoft Sentinel アクティビティを使用して、誰が分析ルールやブックマークなどのリソースを更新または削除したかを確認します。 詳細については、「[Microsoft Sentinel クエリとアクティビティの監査](audit-sentinel-data.md)」をご覧ください。
 
 ### <a name="monthly-tasks"></a>毎月行うタスク
 
-- **ユーザーのアクセスを確認**。 ユーザーのアクセス許可を確認し、無効なユーザーを検査します。 詳細については、「[Azure Sentinel のアクセス許可](roles.md)」を参照してください。
+- **ユーザーのアクセスを確認**。 ユーザーのアクセス許可を確認し、無効なユーザーを検査します。 詳細については、「[Microsoft Sentinel のアクセス許可](roles.md)」を参照してください。
 
 - **Log Analytics ワークスペースの確認**。 Log Analytics ワークスペースのデータ保持ポリシーが組織のポリシーと引き続き整合していることを確認します。  詳細については、「[データ保持ポリシー](/workplace-analytics/privacy/license-expiration)」と、「[Azure Data Explorer の統合によるログの長期保存](store-logs-in-azure-data-explorer.md)」を参照してください。
 
 
 ## <a name="integrate-with-microsoft-security-services"></a>他の Microsoft セキュリティ サービスとの統合
 
-Azure Sentinel は、ワークスペースにデータを送信するコンポーネントによって強化されており、他の Microsoft サービスとの統合によってより強力になっています。 Microsoft Cloud App Security、Microsoft Defender for Endpoint、Microsoft Defender for Identity などの製品に取り込まれたログは、これらのサービスが検知情報を作成し、その検知情報を Azure Sentinel に提供します。 また、ログを Azure Sentinel に直接取り込んで、イベントやインシデントの全体像を把握することもできます。
+Microsoft Sentinel は、ワークスペースにデータを送信するコンポーネントによって強化されており、他の Microsoft サービスとの統合によってより強力になります。 Microsoft Defender for Cloud Apps、Microsoft Defender for Endpoint、Microsoft Defender for Identity などの製品に取り込まれたログは、これらのサービスにより検知情報が作成され、その検知情報が Microsoft Sentinel に提供されます。 また、ログを Microsoft Sentinel に直接取り込んで、イベントやインシデントの全体像を把握することもできます。
 
-たとえば次の図は、Azure Sentinel が他の Microsoft サービスやマルチクラウド、パートナーのプラットフォームからデータを取り込み、環境に適したものにする方法を示しています。
+たとえば次の図は、Microsoft Sentinel が他の Microsoft サービスやマルチクラウド、パートナーのプラットフォームからデータを取り込み、環境に適したものにする方法を示しています。
 
-:::image type="content" source="media/best-practices/azure-sentinel-and-other-services.png" alt-text="Azure Sentinel と他の Microsoft およびパートナーサービスとの統合":::
+:::image type="content" source="media/best-practices/azure-sentinel-and-other-services.png" alt-text="Microsoft Sentinel と他の Microsoft やパートナーのサービスとの統合":::
 
-Azure Sentinel は、他のソースからアラートやログを取り込むだけでなく、以下のような機能も備えています。
+Microsoft Sentinel は、他のソースからアラートやログを取り込むだけでなく、以下のような機能も備えています。
 
 - **取り込んだ情報を [機械学習](bring-your-own-ml.md)で利用する** ことで、より優れたイベントの相関、アラートの集約、異常検知などが可能になります。
 - **[ワークブック](get-visibility.md)を使って、トレンドや関連情報、管理業務や調査に使用する主要データを示すインタラクティブなビジュアルを構築し、提示** します。
@@ -116,11 +115,11 @@ Azure Sentinel は、他のソースからアラートやログを取り込む�
 
 :::image type="content" source="media/best-practices/incident-handling.png" alt-text="インシデント管理プロセス: トリアージ。準備。修復。根絶。インシデント アクティビティの投稿。":::
 
-次のセクションでは、Azure Sentinel 機能を使用してプロセス全体のインシデント管理と応答を行う方法について、プロセス全体を通して高度な説明を行います。 詳細については、「[チュートリアル:Azure Sentinel でインシデントを調査する](investigate-cases.md)」を参照してください。
+次のセクションでは、Microsoft Sentinel 機能を使用したインシデント管理と応答の方法について、プロセス全体を通して大まかに説明します。 詳細については、[Microsoft Sentinel でインシデントを調査する](investigate-cases.md)方法に関するページを参照してください。
 
 ### <a name="use-the-incidents-page-and-the-investigation-graph"></a>[インシデント] ページと調査グラフを使用する
 
-Azure Sentinel の **[インシデント]** ページと **調査グラフ** で、新しいインシデントに対するあらゆるトリアージ プロセスを開始します。 
+Microsoft Sentinel の新しいインシデントについてのあらゆるトリアージ プロセスは、Microsoft Sentinel の **[インシデント]** ページと **調査グラフ** で、開始します。 
 
 アカウント、Url、IP アドレス、ホスト名、アクティビティ、タイムラインなどの主要なエンティティを検出します。 このデータを使用して、[偽陽性](false-positives.md)があるかどうかを把握します。この場合、インシデントを直接閉じることができます。
 
@@ -128,12 +127,12 @@ Azure Sentinel の **[インシデント]** ページと **調査グラフ** で
 
 **[インシデント]** ページは **調査グラフ** と連動しています。これは、ユーザーがアラートを調査して深く掘り下げ、攻撃の全容を示すことができるインタラクティブなツールです。 その後、ユーザーはイベントのタイムラインを構築し、脅威チェーンの範囲を検出できます。
 
-インシデントが真陽性であることが判明した場合、 **[インシデント]** ページから直接アクションを起こし、ログやエンティティを調査し、脅威の連鎖を検査します。 脅威を特定し、アクション プランを作成したら、Azure Sentinel と[その他の Microsoft セキュリティサービス](best-practices.md#integrate-with-microsoft-security-services)の他のツールを使用して調査を続行します。
+インシデントが真陽性であることが判明した場合、 **[インシデント]** ページから直接アクションを起こし、ログやエンティティを調査し、脅威の連鎖を検査します。 脅威を特定し、アクション プランを作成したら、Microsoft Sentinel と[その他の Microsoft セキュリティサービス](best-practices.md#integrate-with-microsoft-security-services)の他のツールを使用して調査を続行します。
 
 
 ### <a name="handle-incidents-with-workbooks"></a>ブックでインシデントを処理する
 
-Azure Sentinel ブックは、[情報や傾向を視覚化して表示する](get-visibility.md)だけでなく、貴重な調査ツールでもあります。
+Microsoft Sentinel ブックは、[情報や傾向を視覚化して表示する](get-visibility.md)だけでなく、重要な調査ツールでもあります。
 
 たとえば、[調査分析情報](top-workbooks.md#investigation-insights)ブックを使用して、関連付けられているエンティティやアラートと共に特定のインシデントを調査します。 このブックを使用すると、関連するログ、アクション、およびアラートを表示することで、エンティティをより深く掘り下げていくことができます。
 
@@ -145,11 +144,11 @@ Azure Sentinel ブックは、[情報や傾向を視覚化して表示する](ge
 
 ### <a name="handle-incidents-with-entity-behavior"></a>エンティティの動作によるインシデントの処理
 
-Azure Sentinel のエンティティの動作を使用すると、ユーザーは、アカウントやホスト名の調査など、特定のエンティティのアクションとアラートを確認し、調査できます。 詳細については、次を参照してください。
+Microsoft Sentinel のエンティティの動作を使用すると、ユーザーは、アカウントやホスト名の調査など、特定のエンティティのアクションとアラートを確認し、調査できます。 詳細については、次を参照してください。
 
-- [Azure Sentinel でのユーザーとエンティティの動作分析の有効化 (UEBA)](enable-entity-behavior-analytics.md)
+- [Microsoft Sentinel でのユーザーとエンティティの動作分析 (UEBA) の有効化](enable-entity-behavior-analytics.md)
 - [UEBA データを使用したインシデントの調査](investigate-with-ueba.md)
-- [Azure Sentinel UEBA エンリッチメント リファレンス](ueba-enrichments.md)
+- [Microsoft Sentinel UEBA エンリッチメント リファレンス](ueba-enrichments.md)
 
 ### <a name="handle-incidents-with-watchlists-and-threat-intelligence"></a>ウォッチリストと脅威インテリジェンスによるインシデントの処理
 
@@ -166,7 +165,7 @@ Azure Sentinel のエンティティの動作を使用すると、ユーザー�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Sentinel の概要は、以下を参照してください。
+Microsoft Sentinel の使用を開始するには、以下を参照してください。
 
-- [Azure Sentinel をオンボードする](quickstart-onboard.md)
+- [Microsoft Sentinel をオンボードする](quickstart-onboard.md)
 - [アラートの視覚化](get-visibility.md)

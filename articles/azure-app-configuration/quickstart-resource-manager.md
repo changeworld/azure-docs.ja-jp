@@ -8,12 +8,12 @@ ms.date: 06/09/2021
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 15e0bc45bc4fea645ff0ccf7b17110ce4361a9a0
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: beb16b541f764cde806d94bcbf2fe8649fcbae88
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983422"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719677"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure App Configuration ストアを作成する
 
@@ -32,6 +32,13 @@ ms.locfileid: "111983422"
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+## <a name="authorization"></a>承認
+
+ARM テンプレート内のキーと値のデータにアクセスするには、共同作成者や所有者などの Azure Resource Manager ロールが必要です。 現在、Azure App Configuration の[データ プレーン ロール](concept-enable-rbac.md)を使用したアクセスはサポートされていません。
+
+> [!NOTE]
+> アクセス キー認証が無効になっている場合、ARM テンプレート内のキーと値のデータへのアクセスは無効になります。 詳細については、「[アクセス キー認証を無効にする](./howto-disable-access-key-authentication.md#limitations)」を参照してください。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
@@ -66,9 +73,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > ```azurecli-interactive
 > az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
 > ```
-
-> [!NOTE]
-> アクセス キー認証が無効になっている場合、ARM テンプレート内でのキー値データへのアクセスが無効になるという制限があります。 詳細については、[アクセス キー認証の無効化](./howto-disable-access-key-authentication.md#limitations)に関する記事を参照してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: d9c24868fa847ef3b8be13ca0d7775e24b3116cc
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 001b88e5abe0fc8710d7c87d792de23db4135e16
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015550"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486282"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot アクチュエータを使用したアプリの管理と監視
 
@@ -22,7 +22,7 @@ ms.locfileid: "122015550"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、Azure Spring Cloud サービスに問題なくデプロイして起動できる Spring Boot 2.x アプリケーションがあることを前提としています。  「[クイック スタート:Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」をご覧ください。
+この記事では、Azure Spring Cloud サービスに問題なくデプロイして起動できる Spring Boot 2.x アプリケーションがあることを前提としています。  [クイックスタート: Azure portal を使用して Azure Spring Cloud 内の既存のアプリケーションを起動する](./quickstart.md)方法に関する記事を参照してください
 
 ## <a name="verify-app-through-test-endpoint"></a>テスト エンドポイントを介してアプリを検証する
 

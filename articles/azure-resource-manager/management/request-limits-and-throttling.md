@@ -2,14 +2,14 @@
 title: 要求の制限と調整
 description: サブスクリプションの上限に達したときに、Azure Resource Manager の要求をスロットルする方法について説明します。
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 11/15/2021
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: cb562d6f6489ff30c6b940963a20974eb987b031
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 781c958e1a75e87c3f042e80282909e132730978
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322187"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523390"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 
@@ -36,6 +36,8 @@ ms.locfileid: "108322187"
 これらの制限は、要求を行うセキュリティ プリンシパル (ユーザーまたはアプリケーション) と、サブスクリプション ID またはテナント ID の範囲に設定されます。 複数のセキュリティ プリンシパルから要求が発信されると、サブスクリプションまたはテナント全体の制限は、1 時間あたり 12,000 件および 1,200 件を超えます。
 
 これらの制限は、各 Azure Resource Manager インスタンスに適用されます。 すべての Azure リージョンに複数のインスタンスがあり、Azure Resource Manager はすべての Azure リージョンにデプロイされます。  したがって、実際の制限はこれらの制限よりも高くなります。 通常、ユーザーからの要求は、Azure Resource Manager の異なるインスタンスによって処理されます。
+
+残りの要求は、[応答ヘッダー値](#remaining-requests)で返されます。
 
 ## <a name="resource-provider-limits"></a>リソース プロバイダーの制限
 
@@ -93,6 +95,7 @@ Azure SDK を使用している場合は、SDK に自動再試行構成が含ま
 
 | 応答ヘッダー | 説明 |
 | --- | --- |
+| x-ms-ratelimit-remaining-subscription-deletes |サブスクリプション スコープの残りの削除要求数。 この値は削除操作で返されます。 |
 | x-ms-ratelimit-remaining-subscription-reads |サブスクリプション スコープの残りの読み取り要求数。 この値は読み取り操作で返されます。 |
 | x-ms-ratelimit-remaining-subscription-writes |サブスクリプション スコープの残りの書き込み要求数。 この値は書き込み操作で返されます。 |
 | x-ms-ratelimit-remaining-tenant-reads |テナント スコープの残りの読み取り要求数。 |
