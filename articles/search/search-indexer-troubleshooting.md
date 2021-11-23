@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 47a06786c99e156eb541c08c4965c10ae845bdc8
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: d54aec5bae8fb86b9c0ed0356cd6af713500527f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132722546"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492059"
 ---
 # <a name="indexer-troubleshooting-guidance-for-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -205,7 +205,7 @@ Azure Cognitive Search は、Cosmos DB のインデックス付けに暗黙に�
 インデクサーでは、インデックス作成時にデータ ソース内の新規および変更されたすべてのドキュメントが確実に取得されるように、保守的なバッファリング戦略が利用されます。 特定の状況で、これらのバッファーが重複することで、インデクサーによってドキュメントに 2 回以上インデックスが作成される結果、処理されるドキュメントの数がデータ ソース内のドキュメントの実際の数より多くなることがあります。 この動作は、インデックスに格納されるデータ (ドキュメントの複製など) には影響 **しません** が、最終的に整合されるまで時間がかかる可能性があります。 これは、次のいずれかの条件に該当する場合に特によく見られます。
 
 - オンデマンド インデクサー要求がすばやく連続して発行される
-- データ ソースのトポロジに、複数のレプリカとパーティションが含まれる (このような例の 1 つについては、[こちら](../cosmos-db/consistency-levels.md)を参照)
+- データ ソースのトポロジに、複数のレプリカとパーティションが含まれる (このような例の 1 つについては、[こちら](https://docs.microsoft.com/azure/cosmos-db/consistency-levels)を参照)
 
 インデクサーは、すばやく連続して複数回呼び出されることが意図されていません。 すばやい更新が必要な場合、サポートされているアプローチでは、更新をインデックスにプッシュし、同時にデータ ソースを更新します。 オンデマンド処理の場合は、5 分以上の間隔で要求のペースを調整し、スケジュールに従ってインデクサーを実行することをお勧めします。
 

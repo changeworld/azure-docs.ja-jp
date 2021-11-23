@@ -13,7 +13,7 @@ items:
       - name: Android アプリの作成
         href: quick-android-map.md
       - name: iOS アプリの作成
-        href: quick-ios-app.md
+        href: quick-iOS-app.md
   - name: チュートリアル
     items:
       - name: Web SDK のチュートリアル
@@ -338,7 +338,7 @@ items:
           - name: Render Service
             href: /rest/api/maps/render
           - name: Render Service V2
-            href: /rest/api/maps/render-v2
+            href: /rest/api/maps/renderv2
           - name: Route Service
             href: /rest/api/maps/route
           - name: 検索サービス
@@ -366,11 +366,11 @@ items:
               - name: WFS サービス
                 href: /rest/api/maps/v2/wfs
           - name: Maps アカウント管理
-            href: /rest/api/maps-management/
+            href: /rest/api/maps-management
       - name: JavaScript
         items:
           - name: マップ コントロール
-            href: /javascript/api/azure-maps-control/
+            href: /javascript/api/azure-maps-javascript/
           - name: 描画ツール
             href: /javascript/api/azure-maps-drawing-tools/
           - name: サービス モジュール
@@ -396,7 +396,7 @@ items:
           - name: IoT Hub Device Provisioning Service
             href: ../iot-dps/index.yml
           - name: IoT Central
-            href: /azure/iot-central/
+            href: /microsoft-iot-central/
           - name: IoT Edge
             href: ../iot-edge/index.yml
           - name: IoT プラグ アンド プレイ
@@ -414,7 +414,7 @@ items:
       - name: Azure Maps の使用条件
         href: 'https://azure.microsoft.com/support/legal/'
       - name: Azure Maps の価格
-        href: 'https://azure.microsoft.com/pricing/details/azure-maps/'
+        href: 'https://azure.microsoft.com/pricing/details/azure-maps'
       - name: 料金計算ツール
         href: 'https://azure.microsoft.com/pricing/calculator/'
       - name: Azure Maps のビデオ
@@ -426,9 +426,9 @@ items:
       - name: Azure Maps の用語集
         href: glossary.md
       - name: サービスの更新情報
-        href: 'https://azure.microsoft.com/updates/'
+        href: 'https://azure.microsoft.com/updates'
       - name: Azure IoT デベロッパー センター
-        href: 'https://azure.microsoft.com/overview/iot/'
+        href: 'https://azure.microsoft.com/develop/iot/'
       - name: Azure のロードマップ
         href: 'https://azure.microsoft.com/roadmap/?category=iot'
       - name: 技術的なケース スタディ

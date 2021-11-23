@@ -6,6 +6,8 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,12 +15,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d147808610ce0377396ae602296f8e54a9bfdd0c
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: c5917011bd937e88811c9f0cffaed7f8c1c61f00
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132721273"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521208"
 ---
 # <a name="microsoft-sentinel-entity-types-reference"></a>Microsoft Azure Sentinel エンティティ型リファレンス
 
@@ -542,4 +544,4 @@ SubmissionMail エンティティの強い識別子:
 
 このドキュメントでは、Microsoft Azure Sentinel でのエンティティの構造、識別子、スキーマについて学習しました。
 
-[エンティティ](entities.md)と[エンティティ マッピング](map-data-fields-to-entities.md)に関する詳細をご確認ください。 
+[エンティティ](entities-in-azure-sentinel.md)と[エンティティ マッピング](map-data-fields-to-entities.md)に関する詳細をご確認ください。 

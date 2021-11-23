@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 815b1b640fad26587d354a306d4bfb4188cef053
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 8d071fe7f24015f64734a07d25844df265a88307
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132524647"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724579"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-microsoft-sentinel"></a>独自の機械学習 (ML) を Microsoft Sentinel に導入する
 
@@ -176,7 +174,7 @@ ML の結果がカスタム ログ テーブルにあり、スコアの忠実度
 ### <a name="view-and-respond-to-incidents"></a>インシデントを表示して対応する
 ML の結果に基づいて分析ルールを設定した後、クエリで設定したしきい値を超える結果が発生すると、インシデントが生成されて Microsoft Sentinel の **[インシデント]** ページに表示されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Microsoft Sentinel の BYO-ML プラットフォームを使用して、データを分析して脅威を検出する独自の機械学習アルゴリズムを作成またはインポートする方法について学習しました。
 

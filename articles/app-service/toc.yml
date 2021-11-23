@@ -126,7 +126,7 @@
       href: overview-arc-integration.md
     - name: セキュリティ
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -385,7 +385,7 @@
         - name: 参照アーキテクチャ
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: デプロイ スクリプト
-          href: 'https://azure.microsoft.com/documentation/scripts/'
+          href: /azure/automation/automation-runbook-gallery
     - name: トラブルシューティング
       items:
         - name: 断続的な送信接続エラーのトラブルシューティング

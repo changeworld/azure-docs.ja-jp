@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 07a2f605c2cb0211d7aaa1dae37d3cf015e369db
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: c6abd0f799f3f8f2f457352de3a23bdd2ecbd9de
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132518605"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721083"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-microsoft-sentinel"></a>Microsoft Sentinel のユーザー/エンティティ行動分析 (UEBA) を使用して高度な脅威を特定する
 
@@ -75,7 +73,7 @@ Microsoft Sentinel を利用すると、セキュリティ アナリストは、
 
 ## <a name="entity-pages"></a>エンティティ ページ
 
-[Microsoft Sentinel のエンティティ](entities-in-azure-sentinel.md)に関する詳細と、[サポートされているエンティティと識別子](entities-reference.md)の完全な一覧をご覧ください。
+[Microsoft Sentinel のエンティティ](entities.md)に関する詳細と、[サポートされているエンティティと識別子](entities-reference.md)の完全な一覧をご覧ください。
 
 エンティティ検索、アラート、または調査でユーザーまたはホスト エンティティ (IP アドレス エンティティはプレビュー段階です) を検出した場合は、そのエンティティを選択して **エンティティ ページ** に移動できます。これは、そのエンティティに関する役立つ情報が豊富に含まれているデータシートです。 このページで見つけることができる情報の種類には、そのエンティティについての基本的な事実、このエンティティに関連した注目すべきイベントのタイムライン、そのエンティティの行動に関する分析情報が含まれます。
  

@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 11/12/2021
 ms.author: drskwier
 ms.reviewer: cachai
-ms.openlocfilehash: ece79028f5cf0211f7d7345d54e1ccdb096cc6c9
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: b5054da620e67c38b427c12956d73727bf23d519
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132490745"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715380"
 ---
 # <a name="azure-sql-bindings-for-azure-functions-overview-preview"></a>Azure Functions における Azure SQL バインドの概要 (プレビュー)
 
-この一連の記事では、Azure Functions で [Azure SQL](/azure/azure-sql/) バインドを操作する方法について説明します。 Azure Functions は、Azure SQL 製品と SQL Server 製品の入力バインドと出力バインドをサポートしています。
+この一連の記事では、Azure Functions で [Azure SQL](../azure-sql/index.yml) バインドを操作する方法について説明します。 Azure Functions は、Azure SQL 製品と SQL Server 製品の入力バインドと出力バインドをサポートしています。
 
 | アクション | Type |
 |---------|---------|
@@ -47,8 +47,8 @@ ms.locfileid: "132490745"
 
 ## <a name="known-issues"></a>既知の問題
 
-- データ型 `NTEXT`、`TEXT`、`IMAGE` の列ではテーブルに対して出力バインドできません。データのアップサートは失敗します。 これらの型は将来のバージョンの SQL Server で[削除され](https://docs.microsoft.com/sql/t-sql/data-types/ntext-text-and-image-transact-sql)、この Azure Functions バインドで使用される `OPENJSON` 関数とは互換性がありません。
-- 大文字と小文字を区別する[照合順序](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#Collation_Defn)は現在、サポートされていません。 [GitHub item #133](https://github.com/Azure/azure-functions-sql-extension/issues/133) では、この問題の進捗状況を追跡しています。
+- データ型 `NTEXT`、`TEXT`、`IMAGE` の列ではテーブルに対して出力バインドできません。データのアップサートは失敗します。 これらの型は将来のバージョンの SQL Server で[削除され](/sql/t-sql/data-types/ntext-text-and-image-transact-sql)、この Azure Functions バインドで使用される `OPENJSON` 関数とは互換性がありません。
+- 大文字と小文字を区別する[照合順序](/sql/relational-databases/collations/collation-and-unicode-support#Collation_Defn)は現在、サポートされていません。 [GitHub item #133](https://github.com/Azure/azure-functions-sql-extension/issues/133) では、この問題の進捗状況を追跡しています。
 
 
 ## <a name="open-source"></a>ソースを開く

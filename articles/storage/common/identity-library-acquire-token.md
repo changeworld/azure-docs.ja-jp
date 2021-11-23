@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/13/2021
+ms.date: 11/16/2021
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3de8e679cb6c99db4057ec5e5b0ae48b2b4c3500
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 62033ff6c76c2c16a6a3b0d442fec843ae2e86af
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132490290"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724019"
 ---
 # <a name="use-the-azure-identity-library-to-get-an-access-token-for-authorization"></a>Azure ID ライブラリを使用して承認用のアクセス トークンを取得する
 
@@ -32,7 +32,7 @@ Azure ID クライアント ライブラリによって返されるアクセス 
 - [Java 用 Azure ID クライアント ライブラリ](/java/api/overview/azure/identity-readme)
 - [Python 用 Azure ID クライアント ライブラリ](/python/api/overview/azure/identity-readme)
 - [JavaScript 用 Azure ID クライアント ライブラリ](/javascript/api/overview/azure/identity-readme)
-- [Go 用 Azure ID クライアント ライブラリ](/javascript/api/overview/azure/identity-readme)
+- [Go 用 Azure ID クライアント ライブラリ](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/azidentity)
 
 ## <a name="assign-azure-roles-for-access-to-data"></a>データにアクセスするための Azure ロールを割り当る
 

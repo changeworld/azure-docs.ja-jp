@@ -4,17 +4,15 @@ description: Microsoft Sentinel のワークスペースを設計する際のベ
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 83909e0ef8667b4ee466b9e8f1ad04a717e8302a
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: a7d4dd4c8bcda776b5fe4cea886b5e8a6bd87ea9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132524761"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714620"
 ---
 # <a name="microsoft-sentinel-workspace-architecture-best-practices"></a>Microsoft Sentinel ワークスペース アーキテクチャのベスト プラクティス
 
@@ -39,7 +37,7 @@ Microsoft Sentinel ワークスペース デプロイを計画する際、Log An
 使用するテナントとワークスペースの数を決定する際は、ほとんどの Microsoft Sentinel 機能が単一のワークスペースまたは Microsoft Sentinel インスタンスを使用して動作し、Microsoft Sentinel によってワークスペース内に保存されているすべてのログが取り込まれることを考慮してください。
 
 > [!IMPORTANT]
-> コストは、Microsoft Sentinel アーキテクチャを決定する際の主な考慮事項の 1 つです。 詳細については、[Microsoft Sentinel のコストと課金](azure-sentinel-billing.md)に関する記事をご覧ください。
+> コストは、Microsoft Sentinel アーキテクチャを決定する際の主な考慮事項の 1 つです。 詳細については、[Microsoft Sentinel のコストと課金](billing.md)に関する記事をご覧ください。
 >
 ### <a name="working-with-multiple-tenants"></a>複数のテナントの利用
 
@@ -168,7 +166,7 @@ union Update, workspace("contosoretail-it").Update, workspace("WORKSPACE ID").Up
 ```
 
 詳細については、「[ワークスペースおよびテナント全体での Microsoft Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)」を参照してください。
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 > [!div class="nextstepaction"]

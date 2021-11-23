@@ -6,12 +6,12 @@ ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 11/11/2021
-ms.openlocfilehash: 6de7ed1acffd7f4c05d912f7f565f4b811ebd357
-ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+ms.openlocfilehash: aa49185d8941038ab100a0a480061cf63560f439
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132402042"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705457"
 ---
 # <a name="create-diagnostic-settings-to-send-azure-monitor-platform-logs-and-metrics-to-different-destinations"></a>Azure Monitor プラットフォームのログとメトリックを異なる宛先に送信するための診断設定を作成する
 
@@ -64,7 +64,7 @@ Azure のアクティビティ ログやリソース ログなど、[プラッ�
 | [Log Analytics ワークスペース](../logs/design-logs-deployment.md) | メトリックは、ログ形式に変換されます。 このオプションは、すべてのリソースの種類で使用できるとは限りません。 Azure Monitor ログ ストア (Log Analytics から検索可能) に送信すると、既存のログ データを使用してクエリ、アラート、および視覚化に統合できます。  
 | [Azure Storage アカウント](../../storage/blobs/index.yml) | Azure ストレージ アカウントにログとメトリックをアーカイブすると、監査、スタティック分析、またはバックアップに役立ちます。 Azure Monitor ログや Log Analytics ワークスペースと比較すると、Azure ストレージはコストが低く、ログを無期限に保持することができます。  | 
 | [Event Hubs](../../event-hubs/index.yml) | Event Hubs にログとメトリックを送信すると、サードパーティ製の SIEM やその他の Log Analytics ソリューションなどの外部システムにデータをストリーミングできます。  |
-| [Azure Monitor パートナーとの統合](/azure/partner-solutions/overview/)| Azure Monitor と Microsoft 以外のその他の監視プラットフォームとの間の特別な統合。 パートナーのいずれかを既に使用している場合に便利です。  |
+| [Azure Monitor パートナーとの統合](../../partner-solutions/overview.md)| Azure Monitor と Microsoft 以外のその他の監視プラットフォームとの間の特別な統合。 パートナーのいずれかを既に使用している場合に便利です。  |
 
 ## <a name="requirements-and-limitations"></a>要件と制限事項
 
@@ -91,7 +91,7 @@ Azure のアクティビティ ログやリソース ログなど、[プラッ�
 | Log Analytics ワークスペース | ワークスペースは、監視対象のリソースと同じリージョンにする必要がありません。|
 | Azure ストレージ アカウント | データへのアクセスをより適切に制御できるように、他の非監視データが格納されている既存のストレージ アカウントは使用しないでください。 アクティビティ ログとリソース ログを一緒にアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じストレージ アカウントを使用できます。<br><br>データを不変ストレージに送信するには、「[BLOB ストレージの不変ポリシーを設定および管理する](../../storage/blobs/immutable-policy-configure-version-scope.md)」の説明に従って、ストレージ アカウントの不変ポリシーを設定します。 保護された追加 BLOB 書き込みの有効化を含め、このリンク先の記事のすべての手順に従う必要があります。<br><br>ストレージ アカウントは、リソースがリージョン別の場合、監視対象のリソースと同じリソースにする必要があります。|
 | Event Hubs | 名前空間の共有アクセス ポリシーでは、ストリーミング メカニズムが保有するアクセス許可が定義されます。 Event Hubs にストリーミングするには、管理、送信、リッスンの各アクセス許可が必要です。 ストリーミングを含めるように診断設定を更新するには、その Event Hubs の承認規則に対する ListKey アクセス許可が必要です。<br><br>イベント ハブ名前空間は、リソースがリージョン別の場合、監視対象のリソースと同じリソースにする必要があります。 <br><br> 仮想ネットワークが有効になっている場合、診断設定から Event Hubs リソースにアクセスできません。 *[信頼された Microsoft サービスを許可]* を有効にして Event Hubs のこのファイアウォール設定をバイパスすることで、Azure Monitor (診断設定) サービスから Event Hubs リソースにアクセスできるようにする必要があります。|
-| パートナー統合 | パートナーによって異なります。  詳細については、[Azure Monitor パートナー統合に関するドキュメント](/azure/partner-solutions/overview/)を参照してください。  
+| パートナー統合 | パートナーによって異なります。  詳細については、[Azure Monitor パートナー統合に関するドキュメント](../../partner-solutions/overview.md)を参照してください。  
 
 ### <a name="azure-data-lake-storage-gen2-as-a-destination"></a>宛先としての Azure Data Lake Storage Gen2
 
@@ -147,11 +147,11 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
         ![ストレージへの送信](media/diagnostic-settings/storage-settings-new.png)
 
         > [!TIP]
-        > アイテム保持ポリシーは 0 に設定し、[Azure Storage のライフサイクル ポリシー](/azure/storage/blobs/lifecycle-management-policy-configure)を使用するか、またはスケジュールされたジョブを使用してストレージからデータを削除することを検討してください。 このような方針を用いることで、多くの場合、動作の一貫性が向上します。 
+        > アイテム保持ポリシーは 0 に設定し、[Azure Storage のライフサイクル ポリシー](../../storage/blobs/lifecycle-management-policy-configure.md)を使用するか、またはスケジュールされたジョブを使用してストレージからデータを削除することを検討してください。 このような方針を用いることで、多くの場合、動作の一貫性が向上します。 
         >
         > まず、ストレージをアーカイブ用に使用している場合は、一般的にデータを 365 日以上保持することをお勧めします。 2 つ目の方法として、0 より大きいアイテム保持ポリシーを選択すると、保存時に有効期限日がログに付加されます。 保存後にログの日付を変更することはできません。 たとえば、*WorkflowRuntime* のアイテム保持ポリシーを 180 日に設定し、24 時間後に 365 日に設定した場合、最初の 24 時間の間に保存されたログは 180 日後に自動的に削除されますが、その種類の後続のすべてのログは、365 日後に自動的に削除されます。 後でアイテム保持ポリシーを変更しても、最初の 24 時間のログが 365 日間保持されるようにはなりません。
 
-     1. **パートナー統合** - まず、サブスクリプションにパートナー統合をインストールする必要があります。 構成オプションはパートナーによって異なります。 詳細については、[Azure Monitor パートナーとの統合](/azure/partner-solutions/overview/)に関するページを参照してください。 
+     1. **パートナー統合** - まず、サブスクリプションにパートナー統合をインストールする必要があります。 構成オプションはパートナーによって異なります。 詳細については、[Azure Monitor パートナーとの統合](../../partner-solutions/overview.md)に関するページを参照してください。 
     
 6. **[保存]** をクリックします。
 

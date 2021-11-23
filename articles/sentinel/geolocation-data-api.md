@@ -6,6 +6,8 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
@@ -13,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: b7a42d6a80e602170264e6cbe94e410e46246f79
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: cce16ca2f0db3d4f44c4077e4760f599e565bae6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132721007"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520600"
 ---
 # <a name="enrich-entities-in-microsoft-sentinel-with-geolocation-data-via-rest-api-public-preview"></a>Microsoft Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする (パブリック プレビュー)
 
@@ -126,7 +128,7 @@ Microsoft Azure Sentinel の詳細については、次の記事を参照して�
 - エンティティの詳細を確認します。
 
     - [Microsoft Azure Sentinel エンティティ型リファレンス](entities-reference.md)
-    - [Microsoft Azure Sentinel でエンティティを使用してデータを分類および分析する](entities.md)
+    - [Microsoft Azure Sentinel でエンティティを使用してデータを分類および分析する](entities-in-azure-sentinel.md)
     - [データ フィールドを Microsoft Azure Sentinel のエンティティにマップする](map-data-fields-to-entities.md)
 
 - [Microsoft Azure Sentinel API](/rest/api/securityinsights/) の他の使用方法を確認する

@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: edef094a6d4db97208124a97732f1ec354f2106c
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 0ad84db74a303277323c800edf88ff2bd9197738
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522063"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718111"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-microsoft-sentinel"></a>Microsoft 365 Defender から Microsoft Azure Sentinel にデータを接続する
 
@@ -153,4 +151,4 @@ let Now = now();
 このドキュメントでは、Microsoft 365 Defender コネクタを使用し、Microsoft 365 Defender インシデントと、Microsoft Defender for Endpoint および Defender for Office 365 からの詳細な捜索イベント データを Microsoft Azure Sentinel に統合する方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Microsoft Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

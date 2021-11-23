@@ -6,6 +6,8 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: de25a8a32a2b2b1182acd4ef2a68834cb4b4c190
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 233f83083a061bf12caae58172d2c80bab876fcf
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132711441"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519840"
 ---
 # <a name="use-soc-ml-anomalies-to-detect-threats-in-microsoft-sentinel"></a>Microsoft Sentinel で SOC-ML 異常検知を使用して脅威を検出する
 
@@ -40,7 +42,7 @@ ms.locfileid: "132711441"
 
 異常検知は強力なツールですが、ノイズが多いことでも有名です。 通常、特定の環境に合わせるための退屈なチューニングや複雑な後処理が必要になります。 Microsoft Sentinel SOC-ML の異常検知テンプレートは Microsoft のデータ サイエンス チームによってチューニングされ、追加設定なしにすぐに使える値が備わっていますが、さらにチューニングが必要な場合でも、その手順はシンプルで機械学習の知識は必要ありません。 多くの異常のしきい値やパラメーターは構成可能で、使い慣れた分析ルールのユーザー インターフェイスを使用して微調整できます。 インターフェイス内で元のしきい値およびパラメーターのパフォーマンスと新しいものとを比較でき、テスト中やフライト化の段階で必要に応じてさらに調整できます。 異常検知がパフォーマンスの目標を満たしたら、新しいしきい値またはパラメーターによる異常検知を、ボタンをクリックするだけで運用環境にレベル上げできます。 Microsoft Sentinel SOC-ML 異常検知を使用すると、労力をかけずに異常検知の利点を得ることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Microsoft Sentinel で SOC-ML がどのように異常の検出に役立つかを学びました。
 

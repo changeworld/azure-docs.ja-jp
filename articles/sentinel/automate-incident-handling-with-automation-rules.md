@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 52f716bf8a5a4457f1f61545e079c17f16c708c3
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 83f9a7e8787cee4079cc3fb643c107922ef0a213
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522158"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722869"
 ---
 # <a name="automate-incident-handling-in-microsoft-sentinel-with-automation-rules"></a>オートメーション ルールにより Microsoft Sentinel でのインシデント処理を自動化する
 
@@ -36,7 +34,7 @@ ms.locfileid: "132522158"
 
 オートメーション ルールとは、Microsoft Sentinel における新しい概念です。 この機能により、ユーザーはインシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 オートメーション ルールにより、Microsoft Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。
 
-## <a name="components"></a>コンポーネント
+## <a name="components"></a>Components
 
 自動化ルールは、次のいくつかのコンポーネントで構成されています。
 

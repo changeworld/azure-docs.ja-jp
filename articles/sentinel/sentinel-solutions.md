@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 940acf043711c7645423a9e52d8c4dabc2592e3f
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: d5e4f129c53ac26c66a6ca26dbe70781803809a3
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132516924"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711649"
 ---
 # <a name="about-microsoft-sentinel-content-and-solutions"></a>Microsoft Sentinel コンテンツとソリューションについて
 
@@ -102,7 +100,7 @@ Microsoft Sentinel のすぐに使えるコンテンツは、次の 1 つまた�
 | **セキュリティ - その他**   | その他の明確なカテゴリを持たない他のセキュリティ製品とサービス           |
 | **セキュリティ - 脅威インテリジェンス**  | 脅威インテリジェンスのプラットフォーム、フィード、製品、サービス        |
 | **セキュリティ - 脅威からのデータ保護**   | 脅威からの保護、電子メール保護、XDR およびエンドポイント保護製品とサービス     |
-| **セキュリティ - ゼロデイの脆弱性**   | [Nobelium](/azure/security/fundamentals/recover-from-identity-compromise) などのゼロデイ攻撃に特化したソリューション |
+| **セキュリティ - ゼロデイの脆弱性**   | [Nobelium](../security/fundamentals/recover-from-identity-compromise.md) などのゼロデイ攻撃に特化したソリューション |
 | **セキュリティ - Automation (SOAR)**   | セキュリティ自動化、SOAR (セキュリティ操作と自動化された応答)、セキュリティ操作、インシデント対応の製品とサービス。   |
 | **セキュリティ - クラウド セキュリティ** | CASB (クラウド アクセス セキュリティ ブローカー)、CWPP (クラウド ワークロード保護プラットフォーム)、CSPM (クラウド セキュリティの状態管理)、その他のクラウド セキュリティ製品およびサービス |
 | **セキュリティ - Azure Information Protection**   | 情報保護とドキュメント保護の製品およびサービス|
@@ -137,7 +135,7 @@ Microsoft と他の組織の両方が、Microsoft Sentinel のすぐに使える
 |**コミュニティによるサポート** |Microsoft または、Microsoft Sentinel にサポートとメンテナンスのための連絡先が記載されていないパートナー開発者が作成したコンテンツまたはソリューションに適用されます。<br><br>    これらのソリューションについてご質問または問題がある場合は、[Microsoft Sentinel GitHub コミュニティ](https://aka.ms/threathunters)で[問題を報告](https://github.com/Azure/Azure-Sentinel/issues/new/choose)してください。 |
 | | |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Microsoft Sentinel コンテンツについて学習した後、Microsoft Sentinel ワークスペースでコンテンツとソリューションの管理を開始してください。
 

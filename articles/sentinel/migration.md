@@ -4,17 +4,16 @@ description: 組織全体でスケーラブルかつインテリジェントな�
 services: sentinel
 documentationcenter: na
 author: batamig
-ms.service: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5df30dd53422da751271ac644adf7072efc6dc46
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 5e1946affdf33239c89bbc5556f5905ccad6ed4f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520790"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713177"
 ---
 # <a name="migrate-to-microsoft-sentinel-from-an-existing-siem"></a>既存の SIEM から Microsoft Sentinel に移行する
 
@@ -72,7 +71,7 @@ Microsoft Sentinel ではオンプレミスとクラウドの両方に対して�
 > [!NOTE]
 > 多くの組織では、コストと複雑さのために、複数のオンプレミス分析ソリューションを実行しないようにしています。
 >
-> Microsoft Sentinel では[従量課金制の価格](azure-sentinel-billing.md)と柔軟なインフラストラクチャが提供され、SOC チームは変更に適応する時間を得ることができます。 組織に最適なペースでコンテンツを移行してテストします。
+> Microsoft Sentinel では[従量課金制の価格](billing.md)と柔軟なインフラストラクチャが提供され、SOC チームは変更に適応する時間を得ることができます。 組織に最適なペースでコンテンツを移行してテストします。
 >
 ### <a name="short-term-approach"></a>短期的なアプローチ
 
@@ -181,7 +180,7 @@ Microsoft Sentinel でクラウド データなどのデータを分析し、生
 
 1. 次のリソースのいずれかを使用してデータを取り込みます。
 
-    - **Microsoft Sentinel の[組み込みのデータ コネクタ](connect-data-sources.md)** を使用して、データの取り込みを開始します。 たとえば、クラウド データを使用して[無料試用版](azure-sentinel-billing.md#free-trial)を開始したり、[無料のデータ コネクタ](azure-sentinel-billing.md#free-data-sources)を使用して他の Microsoft 製品からデータを取り込んだりすることができます。
+    - **Microsoft Sentinel の[組み込みのデータ コネクタ](connect-data-sources.md)** を使用して、データの取り込みを開始します。 たとえば、クラウド データを使用して[無料試用版](billing.md#free-trial)を開始したり、[無料のデータ コネクタ](billing.md#free-data-sources)を使用して他の Microsoft 製品からデータを取り込んだりすることができます。
 
     - **[Syslog](connect-data-sources.md#syslog)、[Common Event Format (CEF)](connect-data-sources.md#common-event-format-cef)、または [REST API](connect-data-sources.md#rest-api-integration)** を使用して、他のデータ ソースを接続します。
 
@@ -261,7 +260,7 @@ Microsoft Sentinel では、機械学習分析を使用して忠実で実用的�
 
 詳細については、次を参照してください。
 
-- [Microsoft Sentinel でのセキュリティ オーケストレーション、オートメーション、および応答 (SOAR)](automation-in-azure-sentinel.md)
+- [Microsoft Sentinel でのセキュリティ オーケストレーション、オートメーション、および応答 (SOAR)](automation.md)
 - [Microsoft Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)
 - [自動化ルールで Microsoft Sentinel でのインシデント処理を自動化する](automate-incident-handling-with-automation-rules.md)
 
@@ -276,7 +275,7 @@ Microsoft Sentinel では、機械学習分析を使用して忠実で実用的�
 |**プロセスの準備**     |  **プレイブック**: [調査と検出プロセス](investigate-cases.md)を Microsoft Sentinel に更新します。<br><br>**メトリック**: Microsoft Sentinel からすべての主要なメトリックを取得できることを確認します。<br><br>**ブック**: [カスタム ブック](monitor-your-data.md)を作成するか、組み込みのブック テンプレートを使用して、[データ ソースに接続する](connect-data-sources.md)とすぐに洞察を得ることができます。<br><br>**インシデント**: 必要なソース データを含めて、現在のすべてのインシデントを新しいシステムに転送してください。        |
 |**スタッフの準備**     |  **SOC アナリスト**: チームの全員が Microsoft Sentinel のトレーニングを受け、問題なくレガシ SIEM を離れることができることを確認します。   |
 |     |         |
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 移行後は、Microsoft の Microsoft Sentinel リソースを調べてスキルを伸ばし、Microsoft Sentinel を最大限に活用してください。
 
@@ -286,7 +285,7 @@ Microsoft Sentinel では、機械学習分析を使用して忠実で実用的�
 
 - [ルールの移行のベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sentinel/best-practices-for-migrating-detection-rules-from-arcsight/ba-p/2216417)
 - [ウェビナー: 検出ルールを変換するためのベスト プラクティス](https://www.youtube.com/watch?v=njXK1h9lfR4)
-- [Microsoft Sentinel でのセキュリティ オーケストレーション、オートメーション、および応答 (SOAR)](automation-in-azure-sentinel.md)
+- [Microsoft Sentinel でのセキュリティ オーケストレーション、オートメーション、および応答 (SOAR)](automation.md)
 - [インシデント メトリックを使用して SOC をより適切に管理する](manage-soc-with-incident-metrics.md)
 - [Microsoft Sentinel のラーニング パス](/learn/paths/security-ops-sentinel/)
 - [SC-200 Microsoft Security Operations Analyst 認定資格](/learn/certifications/exams/sc-200)

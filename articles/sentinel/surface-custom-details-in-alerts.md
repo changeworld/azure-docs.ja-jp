@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 022c58b2d51405043620174030f1f1b85e3238a6
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 0b8cf32cce618ec5298ac9494062a67b53d98d76
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132523849"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711611"
 ---
 # <a name="surface-custom-event-details-in-alerts-in-microsoft-sentinel"></a>Microsoft Sentinel でアラートに含まれるカスタム イベントの詳細を表示する 
 
@@ -74,4 +72,4 @@ ms.locfileid: "132523849"
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft Sentinel 分析ルールを使用してアラートにカスタムの詳細を表示する方法について説明します。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 - [スケジュールされたクエリ分析ルール](detect-threats-custom.md)の完全な画像を取得します。
-- [Microsoft Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)について詳しく確認します。
+- [Microsoft Azure Sentinel のエンティティ](entities.md)について詳しく確認します。

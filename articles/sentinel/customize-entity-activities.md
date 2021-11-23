@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0483d839af7a8707aa3be632f9d168447488e768
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: c787600e29f7e813ca8e27ac827803c572986ff1
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132523621"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721425"
 ---
 # <a name="customize-activities-on-entity-page-timelines"></a>エンティティ ページのタイムラインのアクティビティをカスタマイズする
 
@@ -104,7 +102,7 @@ ms.locfileid: "132523621"
 
 イベントの関連付けやカスタム アクティビティの検出のために、KQL ではエンティティの種類に応じた複数のパラメーターの入力が必要になります。 それらのパラメーターは対象となるエンティティのさまざまな識別子です。
 
-クエリ結果とエンティティの間に一対一のマッピングを作成するため、強い識別子を選択することをお勧めします。 弱い識別子を選択すると、不正確な結果になるおそれがあります。 [エンティティと強い識別子および弱い識別子の詳細をご確認ください](entities-in-azure-sentinel.md)。
+クエリ結果とエンティティの間に一対一のマッピングを作成するため、強い識別子を選択することをお勧めします。 弱い識別子を選択すると、不正確な結果になるおそれがあります。 [エンティティと強い識別子および弱い識別子の詳細をご確認ください](entities.md)。
 
 次の表で、エンティティの識別子に関する情報を示します。
 

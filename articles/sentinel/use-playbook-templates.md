@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: how-to
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f2034ba667e3d96846aa27e58dce2555da39116b
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 407c57a235a1c716edeb8e17b80cbd1881d562ea
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132518833"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711156"
 ---
 # <a name="create-and-customize-microsoft-sentinel-playbooks-from-built-in-templates"></a>組み込みテンプレートから Microsoft Sentinel プレイブックを作成してカスタマイズする
 
@@ -162,7 +160,7 @@ Microsoft Sentinel のナビゲーション メニューから **[オートメ�
 
 この記事では、プレイブック テンプレートを使用し、ニーズに合わせてプレイブックを作成およびカスタマイズする方法について説明しました。 Microsoft Sentinel でのプレイブックとオートメーションの詳細については、以下を参照してください。
 
-- [Microsoft Sentinel でのセキュリティ オーケストレーション、オートメーション、および応答 (SOAR)](automation-in-azure-sentinel.md)
+- [Microsoft Sentinel でのセキュリティ オーケストレーション、オートメーション、および応答 (SOAR)](automation.md)
 - [Microsoft Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)
 - [チュートリアル: Microsoft Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)
 - [Microsoft Sentinel へのプレイブックの認証](authenticate-playbooks-to-sentinel.md)

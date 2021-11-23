@@ -5,16 +5,18 @@ services: sentinel
 author: yelevin
 manager: rkarlin
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7fbd367ce4d78c6cf71e95e091eb0580c2274f2e
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 6ad57bdde0ce86f69747e3d29258bc128888b212
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132712226"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522481"
 ---
 # <a name="useful-resources-for-working-with-microsoft-sentinel"></a>Microsoft Azure Sentinel の操作に便利なリソース
 

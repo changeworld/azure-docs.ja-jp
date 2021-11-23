@@ -6,6 +6,8 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
@@ -13,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 14188ad0738b0e817bb10fcff7b05441022efac5
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 9e20c875068387342edf6fd70fe93689e26fb1ad
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132720798"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523602"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>インシデント メトリックを使用して SOC をより適切に管理する
 

@@ -4,17 +4,15 @@ description: 複数のテナント、クラウド、リージョンを使用し�
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cb2332a4c9854aafe1ef8193da9ca76e9aaaed95
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 2c23760aa98f2930f10524a4920d27df1dc05d25
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520068"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712038"
 ---
 # <a name="microsoft-sentinel-sample-workspace-designs"></a>Microsoft Sentinel のサンプル ワークスペースの設計
 

@@ -3,16 +3,15 @@ title: Microsoft Sentinel での擬陽性の処理
 description: オートメーション ルールを作成するか、分析ルールを変更して例外を指定することで、Microsoft Azure Sentinel で偽陽性を解決する方法について学習します。
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 009cb9d66f4294bc72bafdcf515a68131d9b7e38
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 817c87f1cf3c718eda9b1f8cbd6140c780d983d6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521161"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723097"
 ---
 # <a name="handle-false-positives-in-microsoft-sentinel"></a>Microsoft Sentinel での擬陽性の処理
 

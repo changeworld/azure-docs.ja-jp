@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 5a5ef573b4df91e191dac2fa24a09c65aace5cea
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 5d569598c51429cb12027f3955fa9315a05b16bb
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132723610"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521987"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>ポータルまたは Python SDK を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -339,7 +339,7 @@ Workspace.list(..) メソッドによって、完全なワークスペース オ
 
 [!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
 
-ワークスペースを誤って削除した場合も、ノートブックを引き続き取得することができる可能性があります。 詳細については、「[事業継続とディザスター リカバリーのためのフェールオーバー](./how-to-high-availability-machine-learning.md#workspace-deletion)」を参照してください。
+ワークスペースを誤って削除した場合も、ノートブックを引き続き取得することができる可能性があります。 詳細については、「[事業継続とディザスター リカバリーのためのフェールオーバー](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion)」を参照してください。
 
 # <a name="python"></a>[Python](#tab/python)
 

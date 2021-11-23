@@ -5,6 +5,8 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -12,12 +14,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9f9040bdc637e6da0fb36c8710ef99766c834969
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 1490e7b1b0364918ec63bf39ad5e1c70120549ec
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132721691"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523070"
 ---
 # <a name="connect-your-threat-intelligence-platform-to-microsoft-sentinel"></a>脅威インテリジェンス プラットフォームを Microsoft Sentinel に接続する
 
@@ -141,7 +143,7 @@ TIP を使用しているか、カスタム ソリューションを使用して
 
 数分以内に、脅威インジケーターが Microsoft Sentinel ワークスペースに送られるようになります。 新しいインジケーターは、Microsoft Sentinel ナビゲーション メニューからアクセスできる **[脅威インテリジェンス]** ブレードで確認できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Microsoft Sentinel に脅威インテリジェンス プラットフォームを接続する方法を説明しました。 Microsoft Sentinel の詳細については、次の記事をご覧ください。
 

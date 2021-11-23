@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c5f88a7b5234e2a791d26ecc339e6750497ef6a9
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: b263a0d7be7d0bd42494dc5c5a931f9c97b00bfb
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522861"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712853"
 ---
 # <a name="microsoft-sentinel-network-normalization-schema-legacy-version---public-preview"></a>Microsoft Azure Sentinel のネットワーク正規化スキーマ (レガシ バージョン - パブリック プレビュー)
 
@@ -28,7 +26,7 @@ ms.locfileid: "132522861"
 
 ネットワーク正規化スキーマは、報告されたネットワーク イベントを説明するために使用されます。Microsoft Azure Sentinel では、ソースに依存しない分析を可能にするために使用されます。
 
-詳細については、「[正規化と高度な SIEM 情報モデル (ASIM)](normalization.md)」を参照してください。
+詳細については、「[正規化と Microsoft Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > この記事は、ASIM が使用可能になる前にプレビューとしてリリースされた、ネットワーク正規化スキーマのバージョン 0.1 に関連しています。 [バージョン 0.2](network-normalization-schema.md) のネットワーク正規化スキーマは ASIM と適合し、その他の拡張機能が提供されます。
@@ -366,9 +364,9 @@ Microsoft Azure Sentinel のネットワーク セッション正規化スキー
 
 詳細については、次を参照してください。
 
-- [Microsoft Azure Sentinel での正規化](normalization.md)
-- [Microsoft Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
-- [Microsoft Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
+- [Microsoft Sentinel での正規化](normalization.md)
+- [Microsoft Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
+- [Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
 - [Microsoft Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Microsoft Azure Sentinel プロセス イベント正規化スキーマ リファレンス](process-events-normalization-schema.md)
-- [Microsoft Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)
+- [Microsoft Sentinel プロセス イベント正規化スキーマ リファレンス](process-events-normalization-schema.md)
+- [Microsoft Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)

@@ -5,8 +5,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -14,12 +12,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 570d296b7f6f8a2831d4f758be5b85108da5d8a2
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 3d63fd26cf55350309352f54d3a6aadc6e7d2f30
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521778"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721710"
 ---
 # <a name="connect-microsoft-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Microsoft Azure Sentinel を STIX、TAXII 脅威インテリジェンス フィードに接続する
 
@@ -202,4 +200,4 @@ TAXII サーバーへの接続が正常に確立されたことを示す確認�
 このドキュメントでは、TAXII プロトコルを使用して Microsoft Azure Sentinel を脅威インテリジェンス フィードに接続する方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Microsoft Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

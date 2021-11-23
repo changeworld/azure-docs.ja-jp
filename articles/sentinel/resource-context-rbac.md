@@ -6,6 +6,8 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b890d0c0b4975a015d6a039dd1d0c313ed841d9c
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 38fd7f30dc412872ccdb6817ae1f502b78a77641
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132712264"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522500"
 ---
 # <a name="manage-access-to-microsoft-sentinel-data-by-resource"></a>リソースによる Microsoft Sentinel データへのアクセスを管理する
 

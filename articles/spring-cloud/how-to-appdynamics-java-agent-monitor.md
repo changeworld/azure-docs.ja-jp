@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: b549ce3e8e79b7315144f52484fe63f7553982c4
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 8c4a708cd04334f10f44c07d5daf9468f7137acf
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132492646"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722698"
 ---
 # <a name="how-to-monitor-spring-boot-apps-with-the-appdynamics-java-agent-preview"></a>AppDynamics Java エージェントを使用して Spring Boot アプリを監視する方法 (プレビュー)
 
@@ -222,4 +222,4 @@ AppDynamics エージェントの制限事項については、[Java エージ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Spring Cloud で Application Insights Java インプロセス エージェントを使用する](/azure/spring-cloud/how-to-application-insights)
+* [Azure Spring Cloud で Application Insights Java インプロセス エージェントを使用する](./how-to-application-insights.md)

@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 48c08771fef5b18445d0a1b5268ea5ea2c535abf
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 7a4e0dba6dbbd460eac651eb16dd5de108deffe1
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132523431"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723078"
 ---
 # <a name="map-data-fields-to-entities-in-microsoft-sentinel"></a>データ フィールドを Microsoft Azure Sentinel のエンティティにマップする 
 
@@ -42,7 +40,7 @@ ms.locfileid: "132523431"
 
 ## <a name="how-to-map-entities"></a>エンティティをマップする方法
 
-1. Microsoft Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. スケジュールされたクエリ ルールを選択し、 **[編集]** をクリックします。 または、画面の上部にある **[作成] > [スケジュール済みクエリ ルール]** をクリックして新しいルールを作成します。
 
@@ -85,4 +83,4 @@ ms.locfileid: "132523431"
 
 このドキュメントでは、Microsoft Azure Sentinel 分析ルールでデータ フィールドをエンティティにマップする方法について学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 - [スケジュールされたクエリ分析ルール](detect-threats-custom.md)の完全な画像を取得します。
-- [Microsoft Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)について詳しく確認します。
+- [Microsoft Azure Sentinel のエンティティ](entities.md)について詳しく確認します。

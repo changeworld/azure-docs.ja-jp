@@ -6,6 +6,8 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
@@ -13,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: 256743af821f1dc3cdb83d71246cf31ed2b9a7cc
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 4c1d4f5dcbb0a707f0ec6ff728ddb72a27ab1e0d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132721615"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521740"
 ---
 # <a name="resources-for-creating-microsoft-sentinel-custom-connectors"></a>Microsoft Sentinel カスタム コネクタを作成するためのリソース
 
@@ -210,7 +212,7 @@ Microsoft Sentinel は、クエリ時の解析に対応しています。 クエ
 > [!NOTE]
 > パーサーの更新は、Microsoft Sentinel に既に取り込んだデータにも適用されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Microsoft Sentinel に取り込まれたデータを使用して、次のいずれかのプロセスで環境をセキュリティ保護します。
 

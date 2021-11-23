@@ -3,12 +3,12 @@ title: Event Grid の問題のトラブルシューティング
 description: この記事では、Azure Event Grid の問題をトラブルシューティングするためのさまざまな方法を紹介します。
 ms.topic: conceptual
 ms.date: 06/10/2021
-ms.openlocfilehash: 94370af8a3325d1798c3e2bcb65c2ccb3e54a43b
-ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
+ms.openlocfilehash: c055c3ce926844a976c95aece7888b595125f414
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/16/2021
-ms.locfileid: "132546350"
+ms.locfileid: "132517560"
 ---
 # <a name="troubleshoot-azure-event-grid-issues"></a>Azure Event Grid の問題のトラブルシューティング
 この記事では、Azure Event Grid の問題をトラブルシューティングするのに役立つ情報を提供します。 
@@ -31,7 +31,8 @@ Azure Event Grid メトリックとアクティビティ ログ操作に関す�
 ## <a name="error-codes"></a>エラー コード
 400、409、403 などのエラー コードを含むエラー メッセージが表示された場合は、[Event Grid エラーのトラブルシューティング](troubleshoot-errors.md)に関するページを参照してください。 
 
-## <a name="distributed-tracing"></a>分散トレース
+## <a name="distributed-tracing"></a>分散トレース 
+
 .NET、Java、Python、JavaScript の Event Grid ライブラリでは、トレースを分散できます。 分散トレースに関する [CloudEvents 仕様のガイダンス](https://github.com/cloudevents/spec/blob/v1.0.1/extensions/distributed-tracing.md)に従うため、分散トレースが有効になっている場合、ライブラリでは `CloudEvent` 拡張機能の `traceparent` 属性と `tracestate` 属性が設定されます。
 
 アプリケーションで分散トレースを有効にする方法の詳細については、Azure SDK の分散トレースに関するドキュメントを参照してください。

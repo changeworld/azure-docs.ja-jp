@@ -4,16 +4,17 @@ description: Microsoft Sentinel データ コネクタの具体的な構成手�
 services: sentinel
 documentationcenter: na
 author: batamig
+ms.service: microsoft-sentinel
 ms.topic: reference
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b32e2aae53d590bcec82cae6f083d20969c26a0c
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: c5ba2be13c48c85786f2ab916eaf9a37c649a5e9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132723135"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518567"
 ---
 # <a name="find-your-microsoft-sentinel-data-connector"></a>Microsoft Azure Sentinel データ コネクタを見つける
 
@@ -332,7 +333,7 @@ Vectra インターフェイスから、[設定] > [通知] の順に移動し�
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Microsoft Defender for Cloud からセキュリティ アラートを接続する](connect-defender-for-cloud.md)** (上位のコネクタの記事) |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Microsoft Defender for Cloud からセキュリティ アラートを接続する](connect-azure-security-center.md)** (上位のコネクタの記事) |
 | **Log Analytics テーブル** | SecurityAlert |
 | **サポートしているもの** | Microsoft |
 | | |

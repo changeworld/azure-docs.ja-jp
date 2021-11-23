@@ -4,15 +4,17 @@ description: Microsoft Azure Sentinel のデプロイ前のアクティビティ
 services: sentinel
 author: batamig
 ms.author: bagol
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 90637b5637a6855318b78e73289225fd1536019b
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: bae2e792ab85ec87f1187c632f9582e9d38e87ed
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132712283"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521132"
 ---
 # <a name="pre-deployment-activities-and-prerequisites-for-deploying-microsoft-sentinel"></a>Microsoft Azure Sentinel のデプロイ前のアクティビティとデプロイの前提条件
 
@@ -36,13 +38,13 @@ Microsoft Azure Sentinel をデプロイする前に、できるだけ早く次�
 
     詳細については、[ワークスペース アーキテクチャのベスト プラクティス](best-practices-workspace-architecture.md)および[サンプル ワークスペースの設計](sample-workspace-designs.md)に関する記事を参照してください。
 
-1. ビジネス ユース ケース、データ ソース、およびデータ サイズの要件が特定された後、計画された各シナリオのコストへの影響を考慮して、[予算の計画を開始](billing.md)します。
+1. ビジネス ユース ケース、データ ソース、およびデータ サイズの要件が特定された後、計画された各シナリオのコストへの影響を考慮して、[予算の計画を開始](azure-sentinel-billing.md)します。
 
     Microsoft Azure Sentinel と Azure Log Analytics の両方、デプロイされるプレイブックなどのデータ インジェストのコストが予算に含まれていることを確認します。
 
     詳細については、次を参照してください。
 
-    - [Microsoft Azure Sentinel のコストと課金](billing.md)
+    - [Microsoft Azure Sentinel のコストと課金](azure-sentinel-billing.md)
     - [Microsoft Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)
     - [Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/)
     - [Logic Apps (プレイブック) の価格](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -79,7 +81,7 @@ Microsoft Azure Sentinel をデプロイする前に、Azure テナントで次�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
->[Microsoft Sentinel のオンボード](quickstart-onboard.md)
+>[Microsoft Azure Sentinel のオンボード](quickstart-onboard.md)
 
 > [!div class="nextstepaction"]
 >[アラートの視覚化](get-visibility.md)

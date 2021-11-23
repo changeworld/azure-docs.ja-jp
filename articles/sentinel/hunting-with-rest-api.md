@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
@@ -15,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 0c12c96e5a9cb8fb532cdd8ad462ff3d6a5f0bfc
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 4b479fbe2782cb7316cee565f51d7b6170c17579
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520505"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721026"
 ---
 # <a name="manage-hunting-and-livestream-queries-in-microsoft-sentinel-using-rest-api"></a>REST API を使用して Microsoft Azure Sentinel でのハンティングとライブストリームのクエリを管理する
 
