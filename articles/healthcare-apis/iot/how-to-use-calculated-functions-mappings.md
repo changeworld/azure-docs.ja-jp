@@ -1,32 +1,32 @@
 ---
-title: デバイス マッピングの CalculatedContentTemplate IoT Connectorのマッピング - Azure Healthcare API
-description: この記事では、IoT コネクタのデバイス マッピング テンプレートで CalculatedContentTemplate マッピングを使用する方法について説明します。
+title: IoT Connector デバイスマッピングでの CalculatedContentTemplate マッピング-Azure の医療 api
+description: この記事では、IoT コネクタのデバイスマッピングテンプレートで CalculatedContentTemplate マッピングを使用する方法について説明します。
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 3e1ccf989bcd67e5e45d381ae681287730cad1d2
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 6e92acd7cc537b9723b1b114b11d8408cf941443
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733501"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132940987"
 ---
-# <a name="how-to-use-calculatedcontenttemplate-mappings"></a>CalculatedContentTemplate マッピングを使用する方法
+# <a name="how-to-use-calculatedcontenttemplate-mappings"></a>CalculatedContentTemplate マッピングの使用方法
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
 > [!TIP]
-> IoT コネクタの Device と FHIR の変換先マッピングの編集、テスト、トラブルシューティングを行う [IoMT](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) コネクタ データ マッパー ツールを確認してください。 Azure portal で IoT コネクタにアップロードしたり、オープン ソース バージョンの IoT コネクタで使用したりするために [マッピングをエクスポート](https://github.com/microsoft/iomt-fhir) します。
+> IoT コネクタデバイスと FHIR の宛先マッピングの編集、テスト、トラブルシューティングについては、 [IoMT コネクタデータマッパー](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) ツールをご覧ください。 Azure portal で IoT コネクタにアップロードするか、 [オープンソースバージョン](https://github.com/microsoft/iomt-fhir) の iot コネクタで使用するためのマッピングをエクスポートします。
 
-この記事では、IoT コネクタのデバイス マッピング テンプレートで CalculatedContentTemplate マッピングを使用する方法について説明します。
+この記事では、IoT コネクタのデバイスマッピングテンプレートで CalculatedContentTemplate マッピングを使用する方法について説明します。
 
 ## <a name="calculatedcontenttemplate"></a>CalculatedContentTemplate
 
-IoT コネクタには、必要なテンプレートと抽出値の両方に一致する式ベースのコンテンツ テンプレートが用意されています。 **式** は、JSONPath または JmesPath で使用できます。 テンプレート内の各式は、独自の式言語を選択できます。 
+IoT コネクタでは、必要なテンプレートと値を抽出するために、式ベースのコンテンツテンプレートが提供されます。 **式** は、jsonpath または Jのパスのいずれかで使用できます。 テンプレート内の各式は、独自の式言語を選択できます。 
 
 > [!NOTE]
 > 式言語が定義されていない場合は、テンプレート用に構成された既定の式言語が使用されます。 既定値は JSONPath ですが、必要に応じて上書きできます。
@@ -40,7 +40,7 @@ IoT コネクタには、必要なテンプレートと抽出値の両方に一�
     }
 ```
 
-次の例では *、typeMatchExpression は次* のように定義されています。
+次の例では、 *typeMatchExpression* は次のように定義されています。
 
 ```json
 "templateType": "CalculatedContent",
@@ -54,7 +54,7 @@ IoT コネクタには、必要なテンプレートと抽出値の両方に一�
     }
 ```
 > [!TIP]
-> デバイス マッピング テンプレートに使用する既定の式言語は JsonPath です。 JsonPath を使用する場合は、式を単独で指定できます。
+> デバイスマッピングテンプレートに使用する既定の式言語は、JsonPath です。 JsonPath を使用する場合は、式だけを指定できます。
 
 ```json
 "templateType": "CalculatedContent",
@@ -65,7 +65,7 @@ IoT コネクタには、必要なテンプレートと抽出値の両方に一�
     }
 ```
 
-テンプレートに使用する既定の式言語は、 パラメーターを使用して明示的に設定 `defaultExpressionLanguage` できます。
+テンプレートに使用する既定の式言語は、パラメーターを使用して明示的に設定でき `defaultExpressionLanguage` ます。
 
 ```json
 "templateType": "CalculatedContent",
@@ -77,24 +77,24 @@ IoT コネクタには、必要なテンプレートと抽出値の両方に一�
     }
 ```
 
-CalculatedContentTemplate では、次に定義されている式を使用して、Azure Event  Hub メッセージの値を照合および抽出できます。
+CalculatedContentTemplate では、以下に定義されている **式** を使用して、Azure イベントハブメッセージの値の照合と抽出を行うことができます。
 
-|プロパティ|説明|例|
+|プロパティ|[説明]|例|
 |--------|-----------|-------|
 |TypeName|テンプレートに一致する測定値に関連付ける型|`heartrate`|
-|TypeMatchExpression|EventData ペイロードに対して評価される式。 一致する JToken が見つかった場合、テンプレートは一致と見なされます。 以降のすべての式は、ここで一致した抽出された JToken に対して評価されます。|`$..[?(@heartRate)]`|
+|TypeMatchExpression|EventData ペイロードに対して評価される式。 一致する JToken が見つかった場合、テンプレートは一致と見なされます。 それ以降のすべての式は、ここで一致した抽出済みの JToken に対して評価されます。|`$..[?(@heartRate)]`|
 |TimestampExpression|測定の OccurrenceTimeUtc のタイムスタンプ値を抽出する式。|`$.matchedToken.endDate`|
-|DeviceIdExpression|デバイス識別子を抽出する式。|`$.matchedToken.deviceId`|
-|PatientIdExpression|*IdentityResolution* が作成モードの場合は必須、IdentityResolution が参照モードの場合は **省略** 可能。 患者識別子を抽出する式。|`$.matchedToken.patientId`|
-|EncounterIdExpression|*省略* 可能: 検出識別子を抽出する式。|`$.matchedToken.encounterId`|
-|CorrelationIdExpression|*省略* 可能: 関連付け識別子を抽出する式。 この出力は、FHIR 変換先マッピングの 1 つの観測値に値をグループ化するために使用できます。|`$.matchedToken.correlationId`|
-|Values[].ValueName|次の式によって抽出された値に関連付ける名前。 FHIR 変換先マッピング テンプレートで必要な値/コンポーネントをバインドするために使用されます。|`hr`|
-|Values[].ValueExpression|必要な値を抽出する式。|`$.matchedToken.heartRate`|
-|Values[].Required|ペイロード内に値が存在する必要があります。 見つからない場合、測定値は生成されません。InvalidOperationException が作成されます。|`true`|
+|DeviceIdExpression|デバイス id を抽出する式。|`$.matchedToken.deviceId`|
+|PatientIdExpression|指定された場合に指定する *必要* があります、**作成** モードで、指定する場合は *オプション*、**参照** モードでの場合。 患者の識別子を抽出する式。|`$.matchedToken.patientId`|
+|EncounterIdExpression|*省略可能*: 検出された識別子を抽出する式。|`$.matchedToken.encounterId`|
+|Correlationide の場合|*省略可能*: 相関 id を抽出する式。 この出力を使用して、FHIR 変換先マッピングの1つの監視に値をグループ化できます。|`$.matchedToken.correlationId`|
+|Values[].ValueName|次の式によって抽出された値に関連付ける名前。 FHIR 変換先マッピングテンプレートで必要な値またはコンポーネントをバインドするために使用されます。|`hr`|
+|Values[].ValueExpression|目的の値を抽出する式。|`$.matchedToken.heartRate`|
+|Values[].Required|ペイロード内に値が存在する必要があります。 見つからない場合は、測定値が生成されず、InvalidOperationException が作成されます。|`true`|
 
 ### <a name="expression-languages"></a>式言語
 
-式に使用する言語を指定する場合、次の値が有効です。
+式に使用する言語を指定すると、次の値が有効になります。
 
 | 式言語 | 値        |
 |---------------------|--------------|
@@ -102,23 +102,23 @@ CalculatedContentTemplate では、次に定義されている式を使用して
 | JmesPath            | **JmesPath** |
 
 >[!TIP]
->JSONPath の詳細については、「JSONPath」 [を参照してください](https://goessner.net/articles/JsonPath/)。 [CalculatedContentTemplate](#calculatedcontenttemplate)では[、JSONPath](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm)式を解決するために JSON .NET 実装が使用されます。
+>JSONPath の詳細については、「 [jsonpath](https://goessner.net/articles/JsonPath/)」を参照してください。 [CalculatedContentTemplate](#calculatedcontenttemplate)は、jsonpath 式を解決するために[JSON .net 実装](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm)を使用します。
 >
->JmesPath の詳細については、「JmesPath [」を参照してください](https://jmespath.org/specification.html)。 [CalculatedContentTemplate では](#calculatedcontenttemplate)[、JmesPath 式を解決するために JmesPath .NET](https://github.com/jdevillard/JmesPath.Net)実装が使用されます。
+>Jのパスの詳細については、 [Jのパス](https://jmespath.org/specification.html)を参照してください。 [CalculatedContentTemplate は j](#calculatedcontenttemplate) [path .net 実装](https://github.com/jdevillard/JmesPath.Net)を使用して j path 式を解決します。
 
 ### <a name="custom-functions"></a>カスタム関数
 
-IoT コネクタのカスタム関数のセットも使用できます。 これらのカスタム関数は、JmesPath 仕様の一部として提供される関数の外部です。 カスタム関数の詳細については [、「IoT コネクタのカスタム関数」を参照してください](./how-to-use-custom-functions.md)。
+一連の IoT コネクタカスタム関数も使用できます。 これらのカスタム関数は、Jのパスの仕様の一部として提供されている関数の外部にあります。 カスタム関数の詳細については、「 [IoT コネクタのカスタム関数](./how-to-use-custom-functions.md)」を参照してください。
 
-### <a name="matched-token"></a>一致したトークン
+### <a name="matched-token"></a>一致するトークン
 
-**TypeMatchExpression は**、受信 EventData ペイロードに対して評価されます。 一致する JToken が見つかった場合、テンプレートは一致と見なされます。 
+**TypeMatchExpression** は、受信 EventData ペイロードに対して評価されます。 一致する JToken が見つかった場合、テンプレートは一致と見なされます。 
 
-以降のすべての式は、新しい JToken に対して評価されます。 この新しい JToken には、元の EventData ペイロードと、ここで一致した抽出された JToken の両方が含まれています。 
+それ以降のすべての式は、新しい JToken に対して評価されます。 この新しい JToken には、元の EventData ペイロードと、ここで見つかった抽出した JToken の両方が含まれています。 
 
-この方法では、元のペイロードと一致するオブジェクトを、後の式ごとに使用できます。 抽出された JToken は、 プロパティ **matchedToken として使用できます**。
+これにより、元のペイロードと一致したオブジェクトが、後の各式で使用できるようになります。 抽出された JToken は、プロパティ **Matchedtoken** として使用できます。
 
-次の例のメッセージを指定します。
+このメッセージの例を次に示します。
 
 *メッセージ*
 
@@ -175,7 +175,7 @@ IoT コネクタのカスタム関数のセットも使用できます。 これ
 }
 ```
 
-上記の式を使用して 2 つの一致が抽出され、JTokens の作成に使用されます。 以降の式は、次の JTokens を使用して評価されます。
+上記の式を使用して2つの一致が抽出され、JTokens の作成に使用されます。 後の式は、次の JTokens を使用して評価されます。
 
 ```json
 {
@@ -236,7 +236,7 @@ IoT コネクタのカスタム関数のセットも使用できます。 これ
 
 ### <a name="examples"></a>例
 
-**[Heart Rate]を選択します。**
+**ハートレート**
 
 *メッセージ*
 
@@ -273,7 +273,7 @@ IoT コネクタのカスタム関数のセットも使用できます。 これ
     }
 ```
 
-**血圧**
+**血圧の圧力**
 
 *メッセージ*
 
@@ -316,7 +316,7 @@ IoT コネクタのカスタム関数のセットも使用できます。 これ
     }
 ```
 
-**Projectメッセージからの複数の測定値の作成**
+**1つのメッセージから複数の測定値を Project する**
 
 *メッセージ*
 
@@ -375,7 +375,7 @@ IoT コネクタのカスタム関数のセットも使用できます。 これ
     }
 ```
 
-**Project配列から複数の測定値を取得する**
+**メッセージ内の配列から複数の測定値を Project する**
 
 *メッセージ*
 
@@ -424,7 +424,7 @@ IoT コネクタのカスタム関数のセットも使用できます。 これ
     }
 ```
 
-**Projectトークンと元のイベントからのデータの収集**
+**一致したトークンと元のイベントからデータを Project**
 
 *メッセージ*
 
@@ -476,9 +476,9 @@ IoT コネクタのカスタム関数のセットも使用できます。 これ
     }
 ```
 
-**受信データを選択して変換する**
+**受信データの選択と変換**
 
-次の例では、高さのデータはインチまたはメートルで到着します。 すべての正規化された高さのデータをメートルで指定する必要があります。 この結果を実現するために、高さのデータのみをインチ単位でターゲットにし、それをメートルに変換するテンプレートを作成します。 別のテンプレートでは、高さのデータをメートルでターゲットにし、単に同じ方法で格納します。
+次の例では、高さデータがインチまたはメーターで到着します。 すべての正規化された高さデータをメートル単位で計算します。 この結果を得るには、インチ単位の高さデータのみを対象として、メーターに変換するテンプレートを作成します。 別のテンプレートは、メートル単位の高さデータをターゲットにし、そのままそのまま格納します。
 
 *メッセージ*
 
@@ -548,11 +548,14 @@ IoT コネクタのカスタム関数のセットも使用できます。 これ
     }
 ```
 
-## <a name="next-steps"></a>次の手順
+> [!TIP]
+> 一般的なエラーと問題の解決については、「IoT コネクタの [トラブルシューティングガイド](./iot-troubleshoot-guide.md) 」を参照してください。
 
-この記事では、デバイス マッピングを使用する方法について学習しました。 FHIR 変換先マッピングを使用する方法については、次を参照してください。
+## <a name="next-steps"></a>次のステップ
+
+この記事では、デバイスマッピングの使用方法について説明しました。 FHIR 変換先マッピングの使用方法については、「」を参照してください。
 
 >[!div class="nextstepaction"]
->[FHIR 変換先マッピングを使用する方法](how-to-use-fhir-mappings.md)
+>[FHIR 変換先マッピングの使用方法](how-to-use-fhir-mappings.md)
 
-(FHIR&#174;) は HL7 の商標であり [、HL7](https://hl7.org/fhir/) の許可を得て使用されます。
+(FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。

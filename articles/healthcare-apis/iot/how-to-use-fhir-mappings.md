@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: c2c7043cd7dc5f234886144a97228db21a218621
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 9f6374ad6ba021e6f67f1ea9780aa90d49a7f5a2
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733543"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132940298"
 ---
 # <a name="how-to-use-the-fhir-destination-mappings"></a>FHIR 変換先マッピングの使用方法
 
@@ -271,11 +271,14 @@ FHIR データ型 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableC
 }
 ```
 
+> [!TIP]
+> 一般的なエラーと [問題の修正については、IoT](./iot-troubleshoot-guide.md) コネクタのトラブルシューティング ガイドを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、FHIR 変換先マッピングの使用方法について説明しました。 デバイスマッピングの使用方法については、「」を参照してください。
+この記事では、FHIR 変換先マッピングを使用する方法について学習しました。 デバイス マッピングを使用する方法については、以下を参照してください。
 
 >[!div class="nextstepaction"]
->[デバイスマッピングの使用方法](how-to-use-device-mappings.md)
+>[デバイス マッピングを使用する方法](how-to-use-device-mappings.md)
 
-(FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。
+(FHIR&#174;) は HL7 の商標であり [、HL7](https://hl7.org/fhir/) の許可を得て使用されます。

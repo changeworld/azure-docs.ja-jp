@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 96b110b03f211d62a0ed778e40aa7a6ad8c8c3ce
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 4b86742fb3bb5cc5c642b4d97b96c6aebc7c887c
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733494"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132936582"
 ---
 # <a name="how-to-use-device-mappings"></a>デバイスマッピングの使用方法
 
@@ -88,15 +88,18 @@ IoT コネクタには、2種類の JSON ベースのマッピングが必要で
 
 さまざまな種類のテンプレートが存在し、デバイスマッピングファイルを作成するときに使用できます。
 
-|名前                                                                     | 説明                                                                   |  
+|名前                                                                     | [説明]                                                                   |  
 |-------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 |[JsonPathContentTemplate](./how-to-use-jsonpath-content-mappings.md)     |JsonPath を使用した式の作成をサポートするテンプレート                  
 |[CollectionContentTemplate](./how-to-use-collection-content-mappings.md) |正規化中に使用されるテンプレートの一覧を表すために使用されるテンプレート。                                                            |                                                           
 |[CalculatedContentTemplate](./how-to-use-calculated-functions-mappings.md)|複数の式言語のいずれかを使用した式の作成をサポートするテンプレート。 では、Jのパス関数を使用したデータ変換がサポートされています。|
 |[IotJsonPathContentTemplate](./how-to-use-iot-jsonpath-content-mappings.md)|Azure iot Hub から送信されたメッセージ、または Azure Iot Central の従来のデータエクスポート機能をサポートするテンプレート。|
-|[IotCentralJsonPathContentTemplate](./how-to-use-iot-central-json-content-mappings.md)|Azure Iot Central のデータのエクスポート機能を使用して送信されたメッセージをサポートするテンプレート。|  
+|[IotCentralJsonPathContentTemplate](./how-to-use-iot-central-json-content-mappings.md)|Azure Iot Central のデータのエクスポート機能を使用して送信されたメッセージをサポートするテンプレート。| 
 
-## <a name="next-steps"></a>次の手順
+> [!TIP]
+> 一般的なエラーと問題の解決については、「IoT コネクタの [トラブルシューティングガイド](./iot-troubleshoot-guide.md) 」を参照してください。 
+
+## <a name="next-steps"></a>次のステップ
 
 この記事では、デバイスマッピングの使用方法について説明しました。 FHIR 変換先マッピングの使用方法については、「」を参照してください。
 

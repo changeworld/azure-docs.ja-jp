@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 6a20c1130156a18da7b18a9454b5a37232a609be
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 56304f99e786a06abdfa67495bea061d21ebabb4
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733571"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132936508"
 ---
 # <a name="how-to-use-iotjsonpathcontenttemplate-mappings"></a>IotJsonPathContentTemplate マッピングを使用する方法
 
@@ -28,7 +28,7 @@ ms.locfileid: "132733571"
 
 IotJsonPathContentTemplate は、必須ではない を除き、JsonPathContentTemplate に `DeviceIdExpression` `TimestampExpression` 似ています。
 
-このテンプレートを使用する場合、評価されるメッセージは[、Azure IoT Hub Device SDK](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)または Azure IoT Central のデータのエクスポート[(レガシ)](../../iot-central/core/howto-export-data-legacy.md)機能を使用[して送信されたという前提があります](../../iot-central/core/overview-iot-central.md)。 
+このテンプレートを使用する場合、評価されるメッセージは[、Azure IoT Hub Device SDK](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)または Azure IoT Central のデータのエクスポート[(レガシ)](../../iot-central/core/howto-export-data-legacy.md)機能を使用して送信[されたという前提があります](../../iot-central/core/overview-iot-central.md)。 
 
 これらの SDK を使用している場合、デバイス ID とメッセージのタイムスタンプが既知です。
 
@@ -120,6 +120,9 @@ Azure IoT Hub Device SDK を使用している場合でも、デバイス ID ま
     ]
 }
 ```
+
+> [!TIP]
+> 一般的なエラーと [問題の修正については、IoT](./iot-troubleshoot-guide.md) コネクタのトラブルシューティング ガイドを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

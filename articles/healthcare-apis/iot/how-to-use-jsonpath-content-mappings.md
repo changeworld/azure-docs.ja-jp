@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 7def9d932f36a7720d0da7e19a29cf72f2ef0b98
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 9c8ce02be3301bdfaf8d151ef84e1475edaa6b03
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733487"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132937262"
 ---
 # <a name="how-to-use-jsonpathcontenttemplate-mappings"></a>JsonPathContentTemplate マッピングの使用方法
 
@@ -28,7 +28,7 @@ ms.locfileid: "132733487"
 
 JsonPathContentTemplate を使用すると、JSONPath を使用して Azure イベントハブメッセージの値の照合と抽出を行うことができます。
 
-|プロパティ|説明|例|
+|プロパティ|[説明]|例|
 |--------|-----------|-------|
 |TypeName|テンプレートに一致する測定値に関連付ける型|`heartrate`|
 |TypeMatchExpression|EventData ペイロードに対して評価される JSONPath 式。 一致する JToken が見つかった場合、テンプレートは一致と見なされます。 それ以降のすべての式は、ここで一致した抽出済みの JToken に対して評価されます。|`$..[?(@heartRate)]`|
@@ -224,6 +224,9 @@ JsonPathContentTemplate を使用すると、JSONPath を使用して Azure イ�
     }
 }
 ```
+
+> [!TIP]
+> 一般的なエラーと問題の解決については、「IoT コネクタの [トラブルシューティングガイド](./iot-troubleshoot-guide.md) 」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
