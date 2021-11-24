@@ -1,18 +1,18 @@
 ---
 title: IoT コネクタの関連 GitHub プロジェクト-Azure の医療 api
-description: IoT コネクタのすべてのオープンソース (GitHub) リポジトリの一覧表示
+description: IoT コネクタには、一般的なウェアラブルデバイスからの取り込みデバイスメッセージ用の堅牢なオープンソース (GitHub) ライブラリが用意されています。
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 10/28/2021
+ms.date: 11/23/2021
 ms.author: jasteppe
-ms.openlocfilehash: 76bf145ea76ea44d65e2c5dc3873cb51707840a5
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: c7b80efbb032315bfca36511cf07e1f5a1f3b8a4
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132309849"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061461"
 ---
 # <a name="open-source-projects"></a>オープンソース プロジェクト
 
@@ -20,15 +20,15 @@ ms.locfileid: "132309849"
 
 ## <a name="iot-connector-github-projects"></a>IoT コネクタ GitHub プロジェクト
 
-#### <a name="fhir-integration"></a>FHIR の統合
+### <a name="fhir-integration"></a>FHIR の統合
 
-* [microsoft/iomt-fhir](https://github.com/microsoft/iomt-fhir): Azure の医療 api IoT コネクタで管理されているサービスのオープンソースバージョン。 [Fhir R7](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)をサポートする高速の医療相互運用性リソース (fhir&#174;) サービスで使用でき&#174;
+* [microsoft/iomt-fhir](https://github.com/microsoft/iomt-fhir): Azure の医療 api IoT コネクタで管理されているサービスのオープンソースバージョン。 [Fhir R4](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)をサポートする高速の医療相互運用性リソース (fhir&#174;) サービスで使用でき&#174;
 
-#### <a name="device-and-fhir-destination-mappings"></a>デバイスおよび FHIR の宛先マッピング
+### <a name="device-and-fhir-destination-mappings"></a>デバイスおよび FHIR の宛先マッピング
 
 * [IoMT Connector Data マッパー](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper): IoT コネクタデバイスと FHIR の宛先マッピングの編集、テスト、トラブルシューティングを行うためのツールです。 Azure portal の IoT コネクタにアップロードするためのマッピングをエクスポートするか、オープンソースのバージョンと共に使用します。
 
-#### <a name="wearables-integration"></a>ウェアラブルの統合
+### <a name="wearables-integration"></a>ウェアラブルの統合
 
 Fitbit
 
