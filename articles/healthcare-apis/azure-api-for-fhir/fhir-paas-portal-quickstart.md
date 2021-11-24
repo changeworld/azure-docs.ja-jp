@@ -8,12 +8,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 08/05/2021
 ms.author: zxue
-ms.openlocfilehash: b57a7703cda0ed445a2a4f71cdce086447390ffd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: mode-portal
+ms.openlocfilehash: b58292ee41a4f6fd13fd667ca3b4dbe5e550cea3
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785534"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133056029"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure API for FHIR をデプロイする
 
