@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/19/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 9730f95f6a384a03fffa0fb3a56b37ef3292b3ab
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: b93169ced916f5d16adcbd11fcc2d2217a07b643
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132715475"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451181"
 ---
 # <a name="preview-azure-automanage-for-machine-best-practices"></a>プレビュー: Azure Automanage for machine のベスト プラクティス
 
@@ -132,7 +132,7 @@ VM に対して Automanage を初めて有効にする場合は、Azure portal �
 > マシンの構成プロファイルを変更する場合は、目的の構成プロファイルを使用してマシンを再び開くだけでできます。 ただし、マシンの状態が "アップグレードが必要" の場合は、最初に無効にしてから Automanage を再び有効にする必要があります。 
 
 対象となる Azure サービスの完全な一覧と、それらによって基本設定がサポートされているかどうかについては、次をご覧ください。
-- [Linux 用 Automanage](automanage-linux.md)
+- [Linux 用 Automanage](automanage-windows-server.md)
 - [Windows Server 用 Automanage](automanage-windows-server.md)
 
 

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: e442cad97c01c4cd15c931dea45a849cc723cb76
-ms.sourcegitcommit: 01b678462a4a390c30463c525432ffbbbe0195cf
+ms.openlocfilehash: 82ede0faff91b74f329d9555b6df90152d9fbf8b
+ms.sourcegitcommit: 3a063c59bb9396ce1d4b9a3565b194edf30393a2
 ms.translationtype: MT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/23/2021
-ms.locfileid: "132954271"
+ms.locfileid: "132964898"
 ---
 # <a name="iot-connector-data-flow"></a>IoT コネクタのデータ フロー
 
@@ -28,10 +28,10 @@ ms.locfileid: "132954271"
 
 次のセクションでは、IoMT (Internet of Medical Things) データがイベント ハブから IoT コネクタに受信された後に通過するステージについて説明します。
 
-:::image type="content" source="media/iot-data-flow/iot-data-flow.png" alt-text="IoT デバイスからイベント ハブへの IoMT データ フロー。IoT コネクタによって取り込まれた IoMT データは、正規化され、グループ化され、変換され、FHIR サービスに保持されます。" lightbox="media/iot-data-flow/iot-data-flow.png":::
+:::image type="content" source="media/iot-data-flow/iot-data-flow.png" alt-text="IoMT データは、IoT デバイスからイベント ハブにフローします。IoMT データは、正規化、グループ化、変換、および FHIR サービスでの永続化の間、IoT コネクタによって取り込されます。" lightbox="media/iot-data-flow/iot-data-flow.png":::
 
 ## <a name="ingest"></a>取り込み
-取り込みは、デバイス データを IoT コネクタに受信する最初のステージです。 デバイス データのインジェスト エンドポイントは、次の[Azure Event Hubs。](../../event-hubs/index.yml) Azure Event Hubsプラットフォームでは、1 秒あたり数百万件のメッセージを受信して処理する機能を備えた、高いスケールとスループットがサポートされています。 また、IoT コネクタでメッセージを非同期的に使用することもできます。これにより、デバイス データが処理されるのをデバイスが待機する必要がなされます。
+取り込みは、デバイス データを IoT コネクタに受信する最初のステージです。 デバイス データのインジェスト エンドポイントは、次の[Azure Event Hubs。](../../event-hubs/index.yml) Azure Event Hubsプラットフォームでは、1 秒あたり数百万件のメッセージを受信および処理する機能を備えた、高いスケールとスループットがサポートされています。 また、IoT コネクタでメッセージを非同期的に使用することもできます。これにより、デバイス データが処理されるのをデバイスが待機する必要がなされます。
 
 > [!NOTE]
 > 現時点でデバイス データの形式としてサポートされているは JSON のみです。
