@@ -2,14 +2,14 @@
 author: mattchenderson
 ms.service: azure-functions
 ms.topic: include
-ms.date: 10/08/2021
+ms.date: 11/12/2021
 ms.author: mahender
-ms.openlocfilehash: 204e2b629740bba53154f3a43fa4e723e3a73248
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 4a78d64e2a66f5d3025407b6d7d7907d085b1fe6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994348"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529526"
 ---
 ## <a name="connections"></a>接続
 
@@ -32,9 +32,9 @@ ms.locfileid: "129994348"
 
 | プロパティ                  | 環境変数テンプレート                       | 説明                                | 値の例                                        |
 |---------------------------|-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
-| アカウント エンドポイント | `<CONNECTION_NAME_PREFIX>__accountEndpoint` | Azure Cosmos DB アカウント エンドポイント URI。 | <database_account_name>.documents.azure.com |
+| アカウント エンドポイント | `<CONNECTION_NAME_PREFIX>__accountEndpoint` | Azure Cosmos DB アカウント エンドポイント URI。 | https://<database_account_name>.documents.azure.com:443/ |
 
-接続をカスタマイズするために、追加のプロパティを設定できます。 「[ID ベース接続に共通のプロパティ](../articles/azure-functions/functions-reference.md#common-properties-for-identity-based-connections)」を参照してください。
+接続のカスタマイズには、プロパティを追加設定します。 「[ID ベース接続に共通のプロパティ](../articles/azure-functions/functions-reference.md#common-properties-for-identity-based-connections)」を参照してください。
 
 [!INCLUDE [functions-identity-based-connections-configuration](./functions-identity-based-connections-configuration.md)]
 

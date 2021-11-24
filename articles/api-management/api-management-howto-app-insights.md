@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/27/2021
 ms.author: danlep
-ms.openlocfilehash: eaeacb016098df74d4a8ff7f20ebf677e4322479
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0833e80c17294bc50489f37b21a0b605a0b0ac9d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447457"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717508"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management と Azure Application Insights を統合する方法
 
@@ -110,7 +110,7 @@ Application Insights に届くデータ:
 [`emit-metric`](api-management-advanced-policies.md#emit-metrics) ポリシーを構成することで、カスタム メトリックを出力できます。 
 
 Application Insights の事前に集計されたメトリックを API Management で使用するには、サービスでカスタム メトリックを手動で有効にする必要があります。
-1. [`emit-metric`](api-management-advanced-policies.md#emit-metrics)ポリシーを [API の作成または更新](https://docs.microsoft.com/rest/api/apimanagement/2021-04-01-preview/api-diagnostic/create-or-update)で使用します。
+1. [`emit-metric`](api-management-advanced-policies.md#emit-metrics)ポリシーを [API の作成または更新](/rest/api/apimanagement/2021-04-01-preview/api-diagnostic/create-or-update)で使用します。
 1. ペイロードに、他のプロパティと共に `"metrics":true` を追加します。
 
 > [!NOTE]
@@ -125,7 +125,7 @@ Application Insights の事前に集計されたメトリックを API Managemen
 * 監査システムを意図しています。
 * ハイボリューム API の個々の要求をログに記録する場合に適しています。
 
-[**[サンプリング]** 設定](#enable-application-insights-logging-for-your-api)を調整することで、ログに記録された要求の数を操作できます。 値が 100% の場合、すべての要求が記録されます。値が 0% の場合、何も記録されません。 
+[ **[サンプリング]** 設定](#enable-application-insights-logging-for-your-api)を調整することで、ログに記録された要求の数を操作できます。 値が 100% の場合、すべての要求が記録されます。値が 0% の場合、何も記録されません。 
 
 **サンプリング** を利用することで利用統計情報の量が減り、パフォーマンスの大きな低下を効果的に回避しながら、ログ利用の長所を維持できます。
 
