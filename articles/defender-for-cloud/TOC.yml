@@ -309,7 +309,7 @@
         - name: アラートへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
-- name: リファレンス
+- name: 関連項目
   items:
     - name: アーカイブされたリリース ノート (6 か月以上前)
       displayName: 'changelog, news'
@@ -335,7 +335,7 @@
     - name: Azure Policy の組み込み
       displayName: 'samples, policy'
       href: policy-reference.md
-    - name: Azure ロードマップのブログ
+    - name: Azure の更新に関するブログ
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: エンドポイント保護の評価および推奨事項
       href: endpoint-protection-recommendations-technical.md
@@ -350,21 +350,19 @@
     - name: ユーザー データを管理する
       href: privacy.md
     - name: Microsoft Defender for IoT のドキュメント
-      href: /azure/asc-for-iot/
+      href: /azure/defender-for-iot/
     - name: Azure のセキュリティのドキュメント
       href: ../security/index.yml
-    - name: Azure の更新情報
-      href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: 準備のロードマップ
       href: security-center-readiness-roadmap.md
     - name: Microsoft Defender for Cloud Tech Community ブログ
-      href: 'https://techcommunity.microsoft.com/t5/azure-security-center/bg-p/AzureSecurityCenterBlog'
+      href: 'https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bg-p/MicrosoftDefenderCloudBlog'
     - name: Stack Overflow 上の Microsoft Defender for Cloud
-      href: 'https://stackoverflow.com/search?q=azure-security-center'
-    - name: ASCinTheField の YouTube 動画
-      href: 'https://www.youtube.com/results?search_query=%23ASCInTheField'
+      href: 'https://stackoverflow.com/search?q=microsoft+defender+for+cloud'
+    - name: MDfCinTheField の YouTube 動画
+      href: 'https://www.youtube.com/hashtag/mdfcinthefield'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+      href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: トラブルシューティング ガイド

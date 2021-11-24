@@ -91,7 +91,7 @@
               href: service-accounts-govern-on-premises.md
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
-        - name: セキュリティの既定値群
+        - name: セキュリティの既定値
           href: concept-fundamentals-security-defaults.md
         - name: レガシ認証をブロックする
           href: concept-fundamentals-block-legacy-authentication.md
@@ -115,6 +115,8 @@
           href: active-directory-architecture.md
         - name: すべてのアプリを Azure AD と統合する
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: 並列 ID オプション
+          href: azure-active-directory-parallel-identity-options.md
         - name: マルチテナント ユーザー管理
           items:
             - name: マルチテナント ユーザー管理の概要

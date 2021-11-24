@@ -30,7 +30,7 @@
       href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
-    - name: Standard/Premium SKU
+    - name: Standard および Premium レベル
       href: standard-premium/overview.md
     - name: キャッシュ
       href: front-door-caching.md

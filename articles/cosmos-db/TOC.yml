@@ -98,6 +98,8 @@
               href: continuous-backup-restore-frequently-asked-questions.yml
             - name: 継続的バックアップ - リソース モデル
               href: continuous-backup-restore-resource-model.md
+            - name: 最新の復元可能タイムスタンプ
+              href: latest-restore-timestamp-continuous-backup.md
     - name: Azure Cosmos DB コストの最適化
       items:
         - name: コストの計画と管理
@@ -1495,6 +1497,8 @@
               href: continuous-backup-restore-permissions.md
             - name: アカウントのプロビジョニング - 継続的バックアップ
               href: provision-account-continuous-backup.md
+            - name: 最新の復元タイムスタンプを取得する
+              href: get-latest-restore-timestamp.md
             - name: アカウントの復元 - 継続的バックアップ
               href: restore-account-continuous-backup.md
             - name: 継続的バックアップへの移行

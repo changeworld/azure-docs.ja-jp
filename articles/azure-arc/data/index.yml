@@ -10,12 +10,12 @@ metadata:
   author: MikeRayMSFT
   ms.author: mikeray
   ms.date: 12/16/2020
-  ms.openlocfilehash: cdfa89d1b39e6bc823d863bdb156c706d4c7247f
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.openlocfilehash: c7313545fc9d11b6659805f8cc972a6675f872eb
+  ms.sourcegitcommit: 01b678462a4a390c30463c525432ffbbbe0195cf
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129716092"
+  ms.lasthandoff: 11/23/2021
+  ms.locfileid: "132956485"
 landingContent:
 - title: 詳細
   linkLists:
@@ -33,22 +33,14 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: データ コントローラーの作成
-      url: create-data-controller.md
+    - text: デプロイを計画する
+      url: plan-azure-arc-data-services.md
     - text: クライアント ツールのインストール
       url: install-client-tools.md
-- title: Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 作成
-      url: create-postgresql-hyperscale-server-group.md
-    - text: 接続する
-      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
-    - text: 移行
-      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-    - text: 復元
-      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+    - text: 前提条件を満たす
+      url: create-data-controller-direct-prerequisites.md
+    - text: データ コントローラーの作成
+      url: create-data-controller-direct-azure-portal.md
 - title: Azure Arc 対応 SQL Managed Instance
   linkLists:
   - linkListType: quickstart
@@ -67,3 +59,15 @@ landingContent:
     links:
     - text: ジャンプスタート
       url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/
+- title: Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 作成
+      url: create-postgresql-hyperscale-server-group.md
+    - text: 接続する
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: 移行
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: 復元
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md

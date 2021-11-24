@@ -235,7 +235,7 @@
               href: configure-authentication-provider-google.md
             - name: Twitter による認証
               href: configure-authentication-provider-twitter.md
-            - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
+            - name: OpenID Connect プロバイダーを使用した認証
               href: configure-authentication-provider-openid-connect.md
             - name: Apple でのサインインを使用した認証 (プレビュー)
               href: configure-authentication-provider-apple.md

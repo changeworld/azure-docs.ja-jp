@@ -403,7 +403,7 @@
           href: functions-geo-disaster-recovery.md
         - name: リージョン間で移動する
           href: functions-move-across-regions.md
-    - name: モニター
+    - name: Monitor
       items:
         - name: 監視の構成
           href: configure-monitoring.md
@@ -431,7 +431,7 @@
               href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Twitter による認証
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
-            - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
+            - name: OpenID Connect プロバイダーを使用した認証
               href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Apple でのサインインを使用した認証 (プレビュー)
               href: ../app-service/configure-authentication-provider-apple.md?toc=%2fazure%2fazure-functions%2ftoc.json

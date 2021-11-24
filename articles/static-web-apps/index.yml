@@ -8,13 +8,13 @@ metadata:
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 05/07/2021
-  ms.openlocfilehash: b41c8a8ed84fc627528f06c8c443fbc112456074
-  ms.sourcegitcommit: 11ca7ba5a017429c22a6b0bc02acb70b83a2984a
+  ms.date: 11/19/2021
+  ms.openlocfilehash: 60ccc61d3783681365de58979263c5ad7e05888f
+  ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/19/2021
-  ms.locfileid: "132814158"
+  ms.lasthandoff: 11/20/2021
+  ms.locfileid: "132871682"
 landingContent:
 - title: Static Web Apps について
   linkLists:
@@ -40,11 +40,15 @@ landingContent:
       url: /learn/modules/publish-app-service-static-web-app-api
     - text: API を発行する
       url: /learn/modules/publish-static-web-app-api-preview-url
+    - text: Gatsby アプリを作成してデプロイする
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - text: Blazor WebAssembly アプリと .NET API を発行する
+      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
   - linkListType: video
     links:
     - text: 静的 Web アプリを構築およびデプロイする
       url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
-- title: フレームワーク/ライブラリからデプロイする
+- title: ビルドとデプロイ
   linkLists:
   - linkListType: tutorial
     links:
@@ -62,29 +66,25 @@ landingContent:
       url: deploy-nextjs.md
     - text: Nuxt.js
       url: deploy-nuxtjs.md
-    - text: Gatsby
-      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
-    - text: Blazor
-      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
+- title: コードとしてのインフラストラクチャ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ARM テンプレートを使用して Azure Static Web App を作成する
+      url: publish-azure-resource-manager.md
 - title: 主要な概念
   linkLists:
   - linkListType: concept
     links:
     - text: 構成
       url: configuration-overview.md
-    - text: パブリック API
+    - text: サーバーレス API エンドポイント
       url: apis.md
     - text: ステージング環境
       url: review-publish-pull-requests.md
-    - text: アクセスを制限する
+    - text: 認証と権限承認
       url: authentication-authorization.md
     - text: GitHub Actions を使用したビルド構成
       url: publish-devops.md?tabs=github-actions
     - text: Azure DevOps を使用したビルド構成
       url: publish-devops.md?tabs=azure-devops
-- title: サービスとしてのソフトウェア
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: ARM テンプレートを使用してデプロイする
-      url: publish-azure-resource-manager.md

@@ -4,6 +4,10 @@
   items:
     - name: AKS について
       href: intro-kubernetes.md
+    - name: クォータと地域の制限
+      href: quotas-skus-regions.md
+    - name: サポートされている Kubernetes バージョン
+      href: supported-kubernetes-versions.md
     - name: ソリューションのアーキテクチャ
       href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json?WT.mc_id=AKSDOCSTOC
 - name: クイックスタート
@@ -48,10 +52,8 @@
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: 概念
   items:
-    - name: クラスターとワークロード
+    - name: 主要な概念
       href: concepts-clusters-workloads.md
-    - name: アクセスと ID
-      href: concepts-identity.md
     - name: Security
       items:
         - name: セキュリティ ベースライン
@@ -61,6 +63,10 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: ホスト OS でのセキュリティ強化
+          href: security-hardened-vm-host-image.md
+    - name: アクセスと ID
+      href: concepts-identity.md
     - name: ネットワーク
       href: concepts-network.md
     - name: ストレージ
@@ -71,6 +77,8 @@
       href: node-auto-repair.md
     - name: サービス メッシュ
       href: servicemesh-about.md
+    - name: 持続可能なソフトウェア エンジニアリング
+      href: concepts-sustainable-software-engineering.md
     - name: ベスト プラクティス
       items:
         - name: 概要
@@ -104,8 +112,6 @@
               href: developer-best-practices-resource-management.md
             - name: ポッドのセキュリティ
               href: developer-best-practices-pod-security.md
-    - name: クォータと地域の制限
-      href: quotas-skus-regions.md
     - name: AKS への移行
       items:
         - name: 移行の計画と実施
@@ -134,16 +140,6 @@
         - name: ASP.NET アプリのコンテナ化と移行
           href: ../migrate/tutorial-app-containerization-aspnet-kubernetes.md
           maintainContext: false
-    - name: サポートされている Kubernetes バージョン
-      href: supported-kubernetes-versions.md
-    - name: Cloud Controller Manager (プレビュー)
-      href: out-of-tree.md
-    - name: ホスト OS でのセキュリティ強化
-      href: security-hardened-vm-host-image.md
-    - name: Azure Kubernetes Service 診断の概要
-      href: concepts-diagnostics.md
-    - name: 持続可能なソフトウェア エンジニアリング
-      href: concepts-sustainable-software-engineering.md
 - name: 操作方法ガイド
   items:
     - name: クラスターの操作
@@ -156,6 +152,8 @@
           href: start-stop-cluster.md
         - name: 計画メンテナンスを使用する (プレビュー)
           href: planned-maintenance.md
+        - name: Cloud Controller Manager (プレビュー)
+          href: out-of-tree.md
         - name: AKS クラスターのアップグレード
           href: upgrade-cluster.md
         - name: アップタイム SLA を使用する
@@ -207,79 +205,6 @@
           href: kubernetes-portal.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
-    - name: データ ボリュームの構成
-      items:
-        - name: Azure ディスク - 動的
-          href: azure-disks-dynamic-pv.md
-        - name: Azure ディスク - 静的
-          href: azure-disk-volume.md
-        - name: Azure Files - 動的
-          href: azure-files-dynamic-pv.md
-        - name: Azure Files - 静的
-          href: azure-files-volume.md
-        - name: Azure HPC Cache
-          href: azure-hpc-cache.md
-        - name: NFS サーバー - 静的
-          href: azure-nfs-volume.md
-        - name: Azure NetApp Files
-          href: azure-netapp-files.md
-        - name: Azure Ultra Disks を使用する
-          href: use-ultra-disks.md
-        - name: CSI ストレージ ドライバー
-          items:
-            - name: CSI ストレージ ドライバーを有効にする
-              href: csi-storage-drivers.md
-            - name: Azure Disk CSI ドライバー
-              href: azure-disk-csi.md
-            - name: Azure Files CSI ドライバー
-              href: azure-files-csi.md
-    - name: ネットワークを構成する
-      items:
-        - name: 既存の仮想ネットワークの作成または使用
-          items:
-            - name: kubenet の使用
-              href: configure-kubenet.md
-            - name: Azure-CNI の使用
-              href: configure-azure-cni.md
-        - name: 内部ロード バランサーを作成します。
-          href: internal-lb.md
-        - name: Standard Load Balancer の使用
-          href: load-balancer-standard.md
-        - name: 静的 IP アドレスと DNS ラベルの使用
-          href: static-ip.md
-        - name: HTTP プロキシの使用 (プレビュー)
-          href: http-proxy.md
-        - name: イングレス
-          items:
-            - name: 基本的なコントローラーの作成
-              href: ingress-basic.md
-            - name: HTTP アプリケーション ルーティングの使用
-              href: http-application-routing.md
-            - name: 内部ネットワークの使用
-              href: ingress-internal-ip.md
-            - name: 既存の AKS クラスターの AGIC アドオンを有効にする
-              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
-              maintainContext: true
-            - name: 独自の証明書での TLS の使用
-              href: ingress-own-tls.md
-            - name: Let's Encrypt での TLS の使用
-              items:
-                - name: 動的パブリック IP アドレスの使用
-                  href: ingress-tls.md
-                - name: 静的パブリック IP アドレスの使用
-                  href: ingress-static-ip.md
-        - name: エグレス
-          items:
-            - name: クラスターのエグレス トラフィックの制限および制御
-              href: limit-egress-traffic.md
-            - name: ユーザー定義ルートをエグレスに使用する
-              href: egress-outboundtype.md
-            - name: 基本的なロード バランサーと静的 IP アドレスを使用する
-              href: egress.md
-            - name: 管理された NAT Gateway (プレビュー)
-              href: nat-gateway.md
-        - name: CoreDNS のカスタマイズ
-          href: coredns-custom.md
     - name: セキュリティと認証
       items:
         - name: サービス プリンシパルの作成
@@ -333,6 +258,79 @@
               href: csi-secrets-store-nginx-tls.md
             - name: トラブルシューティング
               href: csi-secrets-store-troubleshooting.md
+    - name: ネットワークを構成する
+      items:
+        - name: 既存の仮想ネットワークの作成または使用
+          items:
+            - name: kubenet の使用
+              href: configure-kubenet.md
+            - name: Azure-CNI の使用
+              href: configure-azure-cni.md
+        - name: 内部ロード バランサーを作成します。
+          href: internal-lb.md
+        - name: Standard Load Balancer の使用
+          href: load-balancer-standard.md
+        - name: 静的 IP アドレスと DNS ラベルの使用
+          href: static-ip.md
+        - name: HTTP プロキシの使用 (プレビュー)
+          href: http-proxy.md
+        - name: イングレス
+          items:
+            - name: 基本的なコントローラーの作成
+              href: ingress-basic.md
+            - name: HTTP アプリケーション ルーティングの使用
+              href: http-application-routing.md
+            - name: 内部ネットワークの使用
+              href: ingress-internal-ip.md
+            - name: 既存の AKS クラスターの AGIC アドオンを有効にする
+              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
+              maintainContext: true
+            - name: 独自の証明書での TLS の使用
+              href: ingress-own-tls.md
+            - name: Let's Encrypt での TLS の使用
+              items:
+                - name: 動的パブリック IP アドレスの使用
+                  href: ingress-tls.md
+                - name: 静的パブリック IP アドレスの使用
+                  href: ingress-static-ip.md
+        - name: エグレス
+          items:
+            - name: クラスターのエグレス トラフィックの制限および制御
+              href: limit-egress-traffic.md
+            - name: ユーザー定義ルートをエグレスに使用する
+              href: egress-outboundtype.md
+            - name: 基本的なロード バランサーと静的 IP アドレスを使用する
+              href: egress.md
+            - name: 管理された NAT Gateway (プレビュー)
+              href: nat-gateway.md
+        - name: CoreDNS のカスタマイズ
+          href: coredns-custom.md
+    - name: データ ボリュームの構成
+      items:
+        - name: Azure ディスク - 動的
+          href: azure-disks-dynamic-pv.md
+        - name: Azure ディスク - 静的
+          href: azure-disk-volume.md
+        - name: Azure Files - 動的
+          href: azure-files-dynamic-pv.md
+        - name: Azure Files - 静的
+          href: azure-files-volume.md
+        - name: Azure HPC Cache
+          href: azure-hpc-cache.md
+        - name: NFS サーバー - 静的
+          href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
+        - name: Azure Ultra Disks を使用する
+          href: use-ultra-disks.md
+        - name: CSI ストレージ ドライバー
+          items:
+            - name: CSI ストレージ ドライバーを有効にする
+              href: csi-storage-drivers.md
+            - name: Azure Disk CSI ドライバー
+              href: azure-disk-csi.md
+            - name: Azure Files CSI ドライバー
+              href: azure-files-csi.md
     - name: 監視およびログ記録
       items:
         - name: AKS の監視
@@ -438,6 +436,8 @@
           href: troubleshoot-linux.md
         - name: Resource Health のイベントを確認する (プレビュー)
           href: aks-resource-health.md
+        - name: Azure Kubernetes Service 診断 (プレビュー)
+          href: concepts-diagnostics.md
 - name: リファレンス
   items:
     - name: Azure CLI

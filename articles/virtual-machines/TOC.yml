@@ -714,6 +714,8 @@
               href: ./windows/ps-template.md
             - name: TLS および SSL による Web サーバーのセキュリティ保護
               href: ./windows/tutorial-secure-web-server.md
+    - name: VM とそのリソースを削除する
+      item: delete.md
     - name: 仮想マシンに接続する
       items:
         - name: Linux

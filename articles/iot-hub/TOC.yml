@@ -203,19 +203,23 @@
       items:
         - name: デバイス SDK とサービス SDK の使用
           items:
-            - name: C 用 Azure IoT device SDK の使用
-              href: iot-hub-device-sdk-c-intro.md
+            - name: Azure IoT Embedded C SDK
+              href: iot-hub-device-embedded-c-sdk.md
+            - name: Azure IoT C SDK
               items:
-                - name: IoTHubClient の使用
-                  href: iot-hub-device-sdk-c-iothubclient.md
-            - name: Azure IoT C SDK のリソース情報
-              href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
-            - name: 制約のあるデバイス向けの開発
-              href: iot-hub-devguide-develop-for-constrained-devices.md
-            - name: モバイル デバイス向けの開発
-              href: iot-hub-how-to-develop-for-mobile-devices.md
-            - name: Android Things プラットフォーム向けの開発
-              href: iot-hub-how-to-android-things.md
+                - name: Azure IoT C SDK の使用
+                  href: iot-hub-device-sdk-c-intro.md
+                  items:
+                    - name: IoTHubClient の使用
+                      href: iot-hub-device-sdk-c-iothubclient.md
+                - name: Azure IoT C SDK のリソース情報
+                  href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
+                - name: 制約のあるデバイス向けの開発
+                  href: iot-hub-devguide-develop-for-constrained-devices.md
+                - name: モバイル デバイス向けの開発
+                  href: iot-hub-how-to-develop-for-mobile-devices.md
+                - name: Android Things プラットフォーム向けの開発
+                  href: iot-hub-how-to-android-things.md
         - name: Android でのデバイスの制御
           href: quickstart-control-device-android.md
         - name: ハブ ルートからの Avro データのクエリ

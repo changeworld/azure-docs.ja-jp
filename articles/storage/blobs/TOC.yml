@@ -176,7 +176,7 @@ items:
                 href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: ネットワーク ルーティング設定の構成
                 href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: データの保護
+          - name: データ保護
             items:
               - name: 概要
                 href: data-protection-overview.md
@@ -642,7 +642,7 @@ items:
         items:
           - name: Azure の更新情報
             href: 'https://azure.microsoft.com/updates/?product=storage'
-          - name: Azure ストレージ エクスプローラー
+          - name: Azure Storage Explorer
             items:
               - name: Storage Explorer のダウンロード
                 href: 'https://azure.microsoft.com/features/storage-explorer/'
@@ -748,6 +748,8 @@ items:
             href: data-lake-storage-introduction.md
       - name: チュートリアル
         items:
+          - name: Synapse SQL と共に使用する
+            href: data-lake-storage-use-sql.md
           - name: Databricks および Spark と共に使用する
             href: data-lake-storage-use-databricks-spark.md
           - name: Apache Hive および HDInsight と共に使用する

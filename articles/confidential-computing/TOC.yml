@@ -12,6 +12,12 @@
 - name: クイックスタート
   expanded: true
   items:
+    - name: 機密 VM
+      items:
+        - name: Azure CLI で機密 VM を作成する
+          href: quick-create-confidential-vm-arm-amd.md
+        - name: Azure portal で機密 VM を作成する
+          href: quick-create-confidential-vm-portal-amd.md
     - name: エンクレーブを使用した機密 VM
       items:
         - name: Intel SGX をデプロイする
@@ -33,20 +39,32 @@
       href: confidential-computing-deployment-models.md
     - name: 機密仮想マシン
       items:
-        - name: エンクレーブを使用してビルドする
+        - name: 機密 VM について
+          href: confidential-vm-overview.md
+        - name: AMD 機密 VM に関する FAQ
+          href: confidential-vm-faq-amd.yml
+        - name: 機密 VM 用の AMD プロセッサ オプション
+          href: virtual-machine-solutions-amd.md
+        - name: DCasv5 および DCadsv5 シリーズ
+          href: ../virtual-machines/dcasv5-dcadsv5-series.md
+        - name: ECasv5 および ECadsv5 シリーズ
+          href: ../virtual-machines/ecasv5-ecadsv5-series.md
+    - name: エンクレーブを使用してビルドする
+      items:
+        - name: エンクレーブの概要
+          href: confidential-computing-enclaves.md
+        - name: エンクレーブ アプリケーションの開発
           items:
-            - name: エンクレーブの概要
-              href: confidential-computing-enclaves.md
-            - name: エンクレーブ アプリケーションの開発
-              items:
-                - name: エンクレーブ開発の概要
-                  href: application-development.md
-                - name: 開発用のオープンソース プロジェクト
-                  href: enclave-development-oss.md
-                - name: アプリケーション エンクレーブの構成証明
-                  href: attestation.md
+            - name: エンクレーブ開発の概要
+              href: application-development.md
+            - name: 開発用のオープンソース プロジェクト
+              href: enclave-development-oss.md
+            - name: アプリケーション エンクレーブの構成証明
+              href: attestation.md
             - name: Intel SGX 仮想マシンのデプロイ
               href: virtual-machine-solutions-sgx.md
+            - name: AMD 仮想マシンのデプロイ
+              href: virtual-machine-solutions-amd.md
             - name: アプリケーション エンクレーブ VM に関する FAQ
               href: faq-application-enclaves.yml
     - name: 機密コンテナー

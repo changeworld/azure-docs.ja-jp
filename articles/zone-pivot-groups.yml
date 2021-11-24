@@ -1130,6 +1130,14 @@ groups:
     title: Azure Arc
   - id: azure-portal
     title: Defender for Cloud のポータル ページ
+- id: connect-aws-accounts
+  title: AWS アカウントを追加する
+  prompt: AWS アカウントの接続方法
+  pivots:
+  - id: env-settings
+    title: 環境設定
+  - id: classic-connector
+    title: クラシック コネクタ
 - id: manage-asc-initiatives
   title: Defender for Cloud のイニシアチブを管理する
   prompt: Defender for Cloud のイニシアチブを管理する方法
@@ -1406,10 +1414,12 @@ groups:
     title: CMake
   - id: iot-toolset-iar-ewarm
     title: IAR EWARM
+  - id: iot-toolset-mcuxpresso
+    title: MCUXpresso
 metadata:
-  ms.openlocfilehash: 7eb1aefed8cbc026d49ec6dcf1969fde57029be1
-  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
+  ms.openlocfilehash: 51f29806ed58662a6d2c8a037013d772ee4991dd
+  ms.sourcegitcommit: 6f30424a4ab8dffc4e690086e898ab52bc4da777
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/18/2021
-  ms.locfileid: "132759480"
+  ms.lasthandoff: 11/22/2021
+  ms.locfileid: "132902630"

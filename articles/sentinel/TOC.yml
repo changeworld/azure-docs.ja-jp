@@ -244,6 +244,8 @@
           href: playbook-triggers-actions.md
         - name: テンプレートからプレイブックをカスタマイズする
           href: use-playbook-templates.md
+        - name: ウォッチリストとプレイブックの両方でアクティビティを自動化する
+          href: automate-playbook-watchlist.md
     - name: Microsoft Sentinel を管理する
       items:
         - name: MSSP 用 Microsoft Sentinel

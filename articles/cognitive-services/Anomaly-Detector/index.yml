@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/12/2021
   ms.author: mbullwin
-  ms.openlocfilehash: 7711aad94cab4255285b2c3ace267457d8bdc330
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: bf9d0fbfb60e486fe83fba235c01ff470c34a223
+  ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121737076"
+  ms.lasthandoff: 11/23/2021
+  ms.locfileid: "132934441"
 landingContent:
 - title: Anomaly Detector API について
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
       url: whats-new.md
   - linkListType: get-started
     links:
-    - text: デモの Web アプリケーション (一変量)
+    - text: デモの Web アプリケーション (一変量および多変量)
       url: https://aka.ms/adDemo
   - linkListType: video
     links:

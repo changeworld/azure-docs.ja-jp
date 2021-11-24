@@ -55,6 +55,8 @@ items:
         displayName: 'Azure CLI, az spatial-anchors-account'
   - name: 操作方法
     items:
+      - name: Azure Spatial Anchors アカウントを作成する
+        href: how-tos/create-asa-account.md
       - name: アンカーの作成と配置
         href: create-locate-anchors-overview.md
         items:
@@ -96,6 +98,10 @@ items:
     items:
       - name: Azure Spatial Anchors のサンプル (GitHub)
         href: 'https://github.com/Azure/azure-spatial-anchors-samples'
+      - name: MROpenXR Azure Spatial Anchors のサンプル (GitHub)
+        href: 'https://github.com/microsoft/OpenXR-Unity-MixedReality-Samples'
+      - name: MRTK Azure Spatial Anchors 学習モジュール
+        href: /learn/modules/azure-spatial-anchors-tutorials/
   - name: 概念
     items:
       - name: 認証

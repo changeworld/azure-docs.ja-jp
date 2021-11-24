@@ -55,6 +55,8 @@ items:
             href: quickstarts/voice-video-calling/call-automation-api-sample.md
           - name: 通話を記録する
             href: quickstarts/voice-video-calling/call-recording-sample.md
+          - name: 未加工メディアアクセス
+            href: quickstarts/voice-video-calling/get-started-raw-media-access.md
       - name: UI ライブラリ
         items:
           - name: 複合の概要

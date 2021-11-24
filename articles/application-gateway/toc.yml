@@ -280,6 +280,8 @@
           href: application-gateway-backend-health-troubleshooting.md
         - name: Key Vault エラー
           href: application-gateway-key-vault-common-errors.md
+    - name: プロキシバッファーの構成
+      href: proxy-buffers.md
     - name: カスタム エラー ページ
       href: custom-error.md
     - name: v1 から v2 への移行
