@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: ARM テンプレートを使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする'
-description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して fhir (プレビュー) 用の Azure IoT コネクタをデプロイする方法について説明します。
+description: このクイックスタートでは、新しいテンプレート (ARM テンプレート) をAzure IoTして Azure Resource Manager Connector for FHIR (プレビュー) をデプロイする方法について説明します。
 author: rbhaiya
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
 ms.author: rabhaiya
 ms.date: 09/10/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 611d43d7b34b729beee162d6bf9db5d099095ade
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: devx-track-azurepowershell, mode-other
+ms.openlocfilehash: 332b7aeaa9368dbdd0c4c863dfbaf174b2037331
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748825"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061507"
 ---
 # <a name="quickstart-use-an-azure-resource-manager-arm-template-to-deploy-azure-iot-connector-for-fhir-preview"></a>クイックスタート: Azure Resource Manager (ARM) テンプレートを使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 

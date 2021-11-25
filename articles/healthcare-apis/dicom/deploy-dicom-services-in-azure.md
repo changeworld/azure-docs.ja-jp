@@ -7,12 +7,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 08/04/2021
 ms.author: aersoy
-ms.openlocfilehash: b07d9bba578aeac026864e40a23236816b510f1e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: mode-portal
+ms.openlocfilehash: fefaf7fc2daced95ffde90834ad38131ecfc6b94
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121787243"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133041689"
 ---
 # <a name="deploy-dicom-service-using-the-azure-portal"></a>Azure portal を使用して DICOM サービスをデプロイする
 
@@ -70,9 +71,3 @@ DICOM サービスをデプロイするには、Azure portal にワークスペ�
 
 >[!div class="nextstepaction"]
 >[DICOM サービスの概要](dicom-services-overview.md)
-
-
-
-
-
-
