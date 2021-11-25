@@ -8,13 +8,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: zxue
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dee268ab686eda1c83fde4cef7bce6f4e88b1c50
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: devx-track-azurecli, mode-api
+ms.openlocfilehash: de3d4a64829e76ab451460ba153a3af9632aa786
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121787918"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133069759"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure API for FHIR をデプロイする
 

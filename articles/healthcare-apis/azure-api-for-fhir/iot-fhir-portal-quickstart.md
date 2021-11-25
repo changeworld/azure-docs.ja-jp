@@ -8,12 +8,13 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 09/10/2021
 ms.author: rabhaiya
-ms.openlocfilehash: 6eca34979b1be4abc6985492bcace04072f4135d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: mode-portal
+ms.openlocfilehash: 6feeb319d96b74b2f7dac82236274f587ae75445
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748880"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061534"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 
@@ -180,7 +181,7 @@ IoT Central アプリケーションをデプロイすると、すぐに使用�
 新しい変換先を作成します。
 - [変換先] **タブに** 移動し、新しい宛先を作成します。
 - まず、変換先に一意の名前を付け始める。
-- 変換 *Azure Event Hubs* として [名前] を選択します。
+- コピー *Azure Event Hubs* 種類として [名前] を選択します。
 - [接続文字列Azure IoT前の手順で取得したコネクタ for FHIR の接続文字列を **指定** します。
 
 新しいデータ エクスポートを作成します。
