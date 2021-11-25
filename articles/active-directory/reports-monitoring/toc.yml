@@ -54,6 +54,8 @@
   items:
     - name: Reports
       items:
+        - name: アクセスのアクティビティ ログ
+          href: howto-access-activity-logs.md
         - name: ログをダウンロードする
           href: howto-download-logs.md
         - name: Azure AD での非アクティブなユーザー アカウントの管理

@@ -171,7 +171,7 @@
               href: sql/create-sql-api-python.md
     - name: チュートリアル
       items:
-        - name: 1 - データの作成と管理
+        - name: データの作成と管理
           items:
             - name: コンソール アプリの構築
               items:
@@ -191,18 +191,20 @@
                   href: sql/sql-api-java-application.md
                 - name: Node.js
                   href: sql/sql-api-nodejs-application.md
-        - name: 2 - データの移行
+        - name: データの移行
           items:
             - name: データ移行ツールの使用
               href: import-data.md
             - name: .NET Bulk サポートの使用
               href: sql/tutorial-sql-api-dotnet-bulk-import.md
-        - name: 3 - データのクエリ
+        - name: クエリ データ
           href: sql/tutorial-query-sql-api.md
-        - name: 4 - ノートブックの作成
+        - name: ノートブックを作成する
           href: sql/create-notebook-visualize-data.md
-        - name: 5 - データのグローバル分散
+        - name: データのグローバル分散
           href: sql/tutorial-global-distribution-sql-api.md
+        - name: Azure Kubernetes Service での Spring Boot アプリ
+          href: sql/tutorial-springboot-azure-kubernetes-service.md
     - name: サンプル
       items:
         - name: .NET V3 SDK のサンプル
@@ -1477,6 +1479,8 @@
           href: configure-synapse-link.md
         - name: Azure Synapse Link に接続する
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Synapse Link と統合 Power BI
+          href: integrated-power-bi-synapse-link.md
         - name: 分析ストアとプライベート エンドポイント
           href: analytical-store-private-endpoints.md
         - name: Azure Synapse Spark 3 を使用してクエリを実行する
@@ -1497,7 +1501,7 @@
               href: continuous-backup-restore-permissions.md
             - name: アカウントのプロビジョニング - 継続的バックアップ
               href: provision-account-continuous-backup.md
-            - name: 最新の復元タイムスタンプを取得する
+            - name: 最新の復元可能タイムスタンプを取得する
               href: get-latest-restore-timestamp.md
             - name: アカウントの復元 - 継続的バックアップ
               href: restore-account-continuous-backup.md

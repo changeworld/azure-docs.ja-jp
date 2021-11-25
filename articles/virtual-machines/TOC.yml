@@ -161,6 +161,8 @@
               href: av2-series.md
             - name: 負荷の急増に対応できる B シリーズ
               href: sizes-b-series-burstable.md
+            - name: DCasv5 および DCadsv5 シリーズ
+              href: dcasv5-dcadsv5-series.md
             - name: DCsv2 シリーズ
               href: dcv2-series.md
             - name: DCsv3 および DCdsv3 シリーズ
@@ -181,6 +183,8 @@
               href: ddv5-ddsv5-series.md
             - name: Dasv5 および Dadsv5 シリーズ
               href: dasv5-dadsv5-series.md
+            - name: DCasv5 および DCadsv5 シリーズ
+              href: dcasv5-dcadsv5-series.md
         - name: コンピューティング最適化
           items:
             - name: 概要
@@ -211,6 +215,8 @@
               href: edv5-edsv5-series.md
             - name: Easv5 および Eadsv5 シリーズ
               href: easv5-eadsv5-series.md
+            - name: ECasv5 および ECadsv5 シリーズ
+              href: ecasv5-ecadsv5-series.md
             - name: M シリーズ
               href: m-series.md
             - name: Msv2 および Mdsv2 ミディアム メモリ シリーズ

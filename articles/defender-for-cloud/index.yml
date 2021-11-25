@@ -4,19 +4,19 @@ summary: Microsoft Defender for Cloud では、統合されたセキュリティ
 metadata:
   title: Microsoft Defender for Cloud のドキュメント
   description: Microsoft が提供するクイックスタートとチュートリアルを使用して、Defender for Cloud の利用開始、ワークロードをセキュリティで保護する方法の確認、リスクの抑制、攻撃の検出および対応を行えます。
-  services: security-center
-  ms.service: defender-for-cloud
-  ms.topic: landing-page
-  ms.collection: collection
+  services: defender-for-cloud
   author: memildin
   ms.author: memildin
+  manager: raynew
+  ms.topic: landing-page
+  ms.collection: collection
   ms.date: 10/21/2021
-  ms.openlocfilehash: 66839c045da6af6c4b6279ac0501a85ab7ea939b
-  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+  ms.openlocfilehash: fc2ad72084b56df50a4f35da9e7e0f9d5b0d57ab
+  ms.sourcegitcommit: e9e332a512ed615a3c8ad5a11baa21649f14116d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/15/2021
-  ms.locfileid: "132487091"
+  ms.lasthandoff: 11/24/2021
+  ms.locfileid: "133097701"
 landingContent:
 - title: Defender for Cloud について
   linkLists:
@@ -28,20 +28,22 @@ landingContent:
       url: security-center-os-coverage.md
     - text: Defender for Cloud の開始方法
       url: get-started.md
+    - text: セキュリティ ポリシー、イニシアチブ、および推奨事項とは
+      url: security-policy-concept.md
 - title: 最新情報
   linkLists:
   - linkListType: whats-new
     links:
     - text: Defender for Cloud のリリース ノート
       url: release-notes.md
-    - text: マシンに Azure セキュリティ ベースラインを適用する
-      url: apply-security-baseline.md
-    - text: 統合ブック レポートを使用する
-      url: custom-dashboards-azure-workbooks.md
-    - text: ハイブリッドおよびマルチクラウド Kubernetes クラスターを保護する
-      url: defender-for-kubernetes-azure-arc.md
-    - text: オープンソース リレーショナル データベース用 Microsoft Defender
-      url: defender-for-databases-introduction.md
+    - text: 今後予定されている重要な変更
+      url: upcoming-changes.md
+    - text: マルチクラウド セキュリティ - AWS EKS クラスターを保護する
+      url: defender-for-kubernetes-introduction.md#protect-amazon-elastic-kubernetes-service-clusters
+    - text: 環境設定で AWS アカウントを接続する
+      url: quickstart-onboard-aws.md
+    - text: 脅威と脆弱性の管理の脆弱性評価
+      url: deploy-vulnerability-assessment-tvm.md
 - title: はじめに
   linkLists:
   - linkListType: get-started
@@ -50,12 +52,12 @@ landingContent:
       url: get-started.md
     - text: 強化されたセキュリティ機能を有効にする
       url: enable-enhanced-security.md
+    - text: ハイブリッド マシンとマルチクラウド マシンの接続
+      url: quickstart-onboard-machines.md
     - text: 自動プロビジョニングを構成する
       url: enable-data-collection.md
     - text: メール通知の設定
       url: configure-email-notifications.md
-    - text: Azure 以外のマシンを接続する
-      url: quickstart-onboard-machines.md
 - title: セキュリティ スコアを向上させる
   linkLists:
   - linkListType: how-to-guide

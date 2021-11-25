@@ -30,9 +30,9 @@
   items:
     - name: 1. サブスクリプションで Defender for Cloud を有効にする
       href: get-started.md
-    - name: 2. 強化された保護を有効にする
+    - name: 2. 強化されたセキュリティ機能を有効にする
       href: enable-enhanced-security.md
-    - name: 3. ハイブリッド コンピューターとマルチクラウド コンピューターの接続
+    - name: 3. ハイブリッド マシンとマルチクラウド マシンの接続
       items:
         - name: Azure 以外のマシンを接続する
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'

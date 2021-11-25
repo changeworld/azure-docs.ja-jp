@@ -228,6 +228,9 @@ items:
                 href: concepts-integration-runtime-performance.md
               - name: データ フロー キャンバスの管理
                 href: concepts-data-flow-manage-graph.md
+              - name: Flowlets
+                href: concepts-data-flow-flowlet.md
+                displayName: flowlet
               - name: 式ビルダー
                 href: concepts-data-flow-expression-builder.md
                 displayName: 'regex, regular expressions'
@@ -643,6 +646,9 @@ items:
             href: data-flow-filter.md
           - name: フラット化
             href: data-flow-flatten.md
+          - name: Flowlet
+            href: data-flow-flowlet.md
+            displayName: flowlet
           - name: Join
             href: data-flow-join.md
             displayName: 'merge, timeout'
@@ -945,6 +951,8 @@ items:
             href: solution-template-move-files.md
           - name: Azure Databricks による変換
             href: solution-template-databricks-notebook.md
+          - name: ノートブック アクティビティを使用した Synapse パイプラインの呼び出し
+            href: solution-template-synapse-notebook.md
       - name: 価格について
         items:
           - name: データ フロー予約容量の概要
