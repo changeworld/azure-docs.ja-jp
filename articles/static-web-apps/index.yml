@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 11/19/2021
-  ms.openlocfilehash: 60ccc61d3783681365de58979263c5ad7e05888f
-  ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
+  ms.openlocfilehash: 8f522788d818d3e66ff4de03198fe2c4b842373c
+  ms.sourcegitcommit: e9e332a512ed615a3c8ad5a11baa21649f14116d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/20/2021
-  ms.locfileid: "132871682"
+  ms.lasthandoff: 11/24/2021
+  ms.locfileid: "133097888"
 landingContent:
 - title: Static Web Apps について
   linkLists:
@@ -66,12 +66,6 @@ landingContent:
       url: deploy-nextjs.md
     - text: Nuxt.js
       url: deploy-nuxtjs.md
-- title: コードとしてのインフラストラクチャ
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: ARM テンプレートを使用して Azure Static Web App を作成する
-      url: publish-azure-resource-manager.md
 - title: 主要な概念
   linkLists:
   - linkListType: concept
@@ -88,3 +82,9 @@ landingContent:
       url: publish-devops.md?tabs=github-actions
     - text: Azure DevOps を使用したビルド構成
       url: publish-devops.md?tabs=azure-devops
+- title: コードとしてのインフラストラクチャ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ARM テンプレートを使用して Azure Static Web App を作成する
+      url: publish-azure-resource-manager.md

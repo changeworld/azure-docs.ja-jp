@@ -442,7 +442,7 @@
           href: deploy-github-actions.md
     - name: オーサリング ツールを使用する
       items:
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: create-visual-studio-deployment-project.md
         - name: VS デプロイ スクリプトを Az モジュールに更新する
           href: update-visual-studio-deployment-script.md
@@ -472,6 +472,8 @@
           href: template-functions-object.md
         - name: リソース関数
           href: template-functions-resource.md
+        - name: スコープ関数
+          href: template-functions-scope.md
         - name: 文字列関数
           href: template-functions-string.md
     - name: REST
