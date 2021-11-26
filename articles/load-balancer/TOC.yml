@@ -218,6 +218,10 @@
           href: troubleshoot-outbound-connection.md
         - name: リソース正常性と受信の可用性に関する問題
           href: troubleshoot-rhc.md
+        - name: Azure Instance Metadata Service (IMDS) の一般的なエラー コード
+          href: troubleshoot-load-balancer-imds.md
+        - name: 一般的なデプロイのエラー
+          href: load-balancer-common-deployment-errors.md
 - name: リファレンス
   items:
     - name: コード サンプル
@@ -241,10 +245,6 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
-    - name: Azure Instance Metadata Service (IMDS) の一般的なエラー コード
-      href: troubleshoot-load-balancer-imds.md
-    - name: 一般的なデプロイのエラー
-      href: load-balancer-common-deployment-errors.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
