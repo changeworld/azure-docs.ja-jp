@@ -5,17 +5,15 @@ author: yelevin
 ms.author: yelevin
 manager: rkarlin
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.date: 11/09/2021
-ms.openlocfilehash: 7ddfa01141ac95b78371d8fbe0a239e09057481a
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: b423543ee06f02be08b066bb5f435d5f89a54d28
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132524742"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716273"
 ---
 # <a name="keep-track-of-data-during-hunting-with-microsoft-sentinel"></a>Microsoft Sentinel によるハンティング中にデータを追跡する
 
@@ -33,7 +31,7 @@ ms.locfileid: "132524742"
 >
 > MITRE ATT&CK 手法のブックマークへのマッピングは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-また、Microsoft Sentinel Analytics でサポートされているエンティティ型と識別子の完全なセットをカスタム クエリでマッピングすることで、ブックマークを使用してハンティング中にさらに多くの種類のエンティティを調査することもできます。 これにより、[エンティティ ページ](entities-in-azure-sentinel.md#entity-pages)、[インシデント](investigate-cases.md)、[調査グラフ](investigate-cases.md#use-the-investigation-graph-to-deep-dive)を使用して、ハンティング クエリ結果で返されるエンティティをブックマークを使用して探索できます。 ブックマークがハンティング クエリの結果をキャプチャすると、クエリの MITRE ATT&CK 手法とエンティティ マッピングが自動的に継承されます。
+また、Microsoft Sentinel Analytics でサポートされているエンティティ型と識別子の完全なセットをカスタム クエリでマッピングすることで、ブックマークを使用してハンティング中にさらに多くの種類のエンティティを調査することもできます。 これにより、[エンティティ ページ](entities.md#entity-pages)、[インシデント](investigate-cases.md)、[調査グラフ](investigate-cases.md#use-the-investigation-graph-to-deep-dive)を使用して、ハンティング クエリ結果で返されるエンティティをブックマークを使用して探索できます。 ブックマークがハンティング クエリの結果をキャプチャすると、クエリの MITRE ATT&CK 手法とエンティティ マッピングが自動的に継承されます。
 
 > [!IMPORTANT]
 >
