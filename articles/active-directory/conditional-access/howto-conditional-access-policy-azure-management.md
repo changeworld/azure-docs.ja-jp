@@ -5,28 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 11/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb, rogoya
+ms.reviewer: calebb, davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04372a1803bb20685acf14ca89901f13f11162db
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 308f64681c3d78070f70e295c4947842d8694b6f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595372"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715567"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>条件付きアクセス:Azure 管理のために MFA を必須にする
 
-組織はさまざまな Azure サービスを使用すると共に、それらを Azure Resource Manager ベースの次のようなツールで管理します。
+組織は多くの Azure サービスを使用すると共に、それらを Azure Resource Manager ベースの次のようなツールで管理します。
 
 * Azure portal
 * Azure PowerShell
 * Azure CLI
 
-これらのツールは、リソースに対する高い特権のアクセスを提供できます。このアクセス権によって、サブスクリプション全体の構成、サービス設定、サブスクリプションの課金を変更できます。 これらの特権リソースを保護するために、Microsoft では、これらのリソースにアクセスするすべてのユーザーに対して多要素認証を必須にすることをお勧めします。 Azure AD では、これらのツールは [Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management) と呼ばれるスイートにまとめられています。 Azure Government の場合、これは Azure Government Cloud Management API アプリになっているはずです。 
+これらのツールは、リソースに対する高い特権のアクセスを提供できます。このアクセス権によって、サブスクリプション全体の構成、サービス設定、サブスクリプションの課金を変更できます。 これらの特権リソースを保護するために、Microsoft では、これらのリソースにアクセスするすべてのユーザーに対して多要素認証を必須にすることをお勧めします。 Azure AD では、これらのツールは [Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management) と呼ばれるスイートにまとめられています。 Azure Government の場合、このスイートは Azure Government Cloud Management API アプリになっているはずです。 
 
 ## <a name="user-exclusions"></a>ユーザーの除外
 
@@ -37,9 +37,13 @@ ms.locfileid: "128595372"
 * **サービス アカウント** と **サービス プリンシパル** (Azure AD Connect 同期アカウントなど)。 サービス アカウントは、特定のユーザーに関連付けられていない非対話型のアカウントです。 これらは通常、アプリケーションへのプログラムによるアクセスを可能にするバックエンド サービスによって使用されますが、管理目的でシステムにサインインする場合にも使用されます。 プログラムでは MFA を完了できないため、このようなサービス アカウントは対象外とする必要があります。 サービス プリンシパルによって行われた呼び出しは、条件付きアクセスによってブロックされることはありません。
    * 組織のスクリプトまたはコードでこれらのアカウントが使用されている場合は、それを[マネージド ID](../managed-identities-azure-resources/overview.md) に置き換えることを検討してください。 これらの特定のアカウントは、一時的な回避策として、ベースライン ポリシーの対象外にすることができます。
 
+## <a name="template-deployment"></a>テンプレートのデプロイ
+
+組織は、このポリシーをデプロイするのに以下に示す手順を使用するか、[条件付きアクセス テンプレート (プレビュー) ](concept-conditional-access-policy-common.md#conditional-access-templates-preview)を使用するかを選ぶことができます。 
+
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
-次の手順では、[Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management) スイートへのアクセス権を持つユーザーに対して、多要素認証の実行を必須にする条件付きアクセス ポリシーを作成します。
+次の手順では、[Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management) スイートへアクセスするユーザーに対して、多要素認証を行うことを必須にする条件付きアクセス ポリシーを作成します。
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
@@ -51,13 +55,13 @@ ms.locfileid: "128595372"
    1. **[Done]** を選択します。
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[アプリを選択]** を選択し、 **[Microsoft Azure Management]\(Microsoft Azure の管理\)** を選択し、 **[Select]\(選択する\)** 、 **[Done]\(完了\)** の順に選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** 、 **[Require multi-factor authentication]\(多要素認証を要求する\)** の順に選択し、 **[Select]\(選択する\)** を選択します。
-1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
+1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
+
+管理者は、[[レポート専用モード]](howto-conditional-access-insights-reporting.md) を使用して設定を確認した後、 **[ポリシーの有効化]** トグルを **[レポートのみ]** から **[オン]** に移動できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
-
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

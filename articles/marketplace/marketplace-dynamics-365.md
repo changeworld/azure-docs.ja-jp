@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: f83fb2b1dbcadf9d40431c7670a1d8618557b047
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0d31c44a5daa21c16cd7c598f407501104dc53c6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866959"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546312"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>Microsoft Dynamics 365 オファーを計画する
 
@@ -24,7 +24,16 @@ ms.locfileid: "122866959"
 
 新しいオファーを公開する準備を行う際、選択するライセンス オプションを決定する必要があります。 これにより、後でパートナー センターでオファーを作成する際に提供する必要がある追加情報が決まります。
 
-Dynamics 365 オファーで使用可能なライセンス オプションは次のとおりです。
+Dynamics 365 オファー タイプで使用可能なライセンス オプションは次のとおりです。
+
+| プランの種類 | リスト オプション |
+| --- | --- |
+| Dynamics 365 for Operations | [Contact me (お問い合わせ)] |
+| Dynamics 365 Customer Engagement および PowerApps | 今すぐ入手する<br>Get it now (今すぐ入手する) (無料)<br>Free trial (無料試用版) (一覧)<br>[Contact me (お問い合わせ)] |
+| Dynamics 365 Business Central | Get it now (今すぐ入手する) (無料)<br>Free trial (無料試用版) (一覧)<br>[Contact me (お問い合わせ)] |
+|||
+
+次の表では、各リスト オプションのトランザクション プロセスについて説明します。
 
 | ライセンス オプション | トランザクション プロセス |
 | --- | --- |

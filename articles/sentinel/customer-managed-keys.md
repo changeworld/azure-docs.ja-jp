@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d0b172d2af5393c71acb9ea25e1b2d3df6091276
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 535b0295bac0aa8b8ccdfddbc8735dd8e7b162e8
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522918"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721520"
 ---
 # <a name="set-up-microsoft-sentinel-customer-managed-key"></a>Microsoft Sentinel のカスタマー マネージド キーの設定
 

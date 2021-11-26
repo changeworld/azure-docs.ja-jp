@@ -3,15 +3,17 @@ title: SAP の継続的な脅威監視をデプロイする | Microsoft Docs
 description: SAP 環境用の Microsoft Sentinel ソリューションをデプロイする方法について説明します。
 author: batamig
 ms.author: bagol
+ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.date: 11/09/2021
-ms.openlocfilehash: dfafd0ccdb37e2f716bf50195ce19ad06486eb50
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: e8d58104e2a622482280ea0a546dbacc95cdc832
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132712064"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520106"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-preview"></a>SAP の継続的な脅威監視をデプロイする (プレビュー)
 
@@ -340,7 +342,7 @@ SAP HANA データベースの監査ログを Syslog で構成している場合
 
 1. Microsoft Sentinel で、取り込んだログに HANA データベース イベントが表示されるようになったことを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Microsoft Sentinel SAP ソリューションの詳細を確認します。
 

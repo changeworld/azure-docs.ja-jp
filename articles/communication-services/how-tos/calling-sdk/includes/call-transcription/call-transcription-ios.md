@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: d2011720b203493b5b17fabb3d65ca912e7ec37d
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: e895050eb2f3d0c298bf0f127395aff0cee4b52c
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129585290"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132590655"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-ios.md)]
 
@@ -18,10 +18,10 @@ ms.locfileid: "129585290"
 > [!NOTE]
 > この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling iOS SDK の "ベータ" リリースを使用してください
 
-通話の文字起こしは、コア `Call` API の拡張機能です。 まず、文字起こし機能 API オブジェクトを取得する必要があります。
+通話の文字起こしは、コア `Call` オブジェクトの拡張機能です。 まず、文字起こし機能オブジェクトを取得する必要があります。
 
 ```swift
-let callTranscriptionFeature = call.api(Features.transcription)
+let callTranscriptionFeature = call.feature(Features.transcription)
 ```
 
 次に、通話が文字起こしされているかどうかを確認するために、`callTranscriptionFeature` の `isTranscriptionActive` プロパティを調べます。 `Bool` を返します。

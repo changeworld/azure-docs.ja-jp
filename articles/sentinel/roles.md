@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 77d9af26c175de162576fc8948dc3b8d5eedcada
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: bdca3fe600fe41f0f4a5f54ebe718481881b1ae4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132516990"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712188"
 ---
 # <a name="permissions-in-microsoft-sentinel"></a>Microsoft Azure Sentinel のアクセス許可
 

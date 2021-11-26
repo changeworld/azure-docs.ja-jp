@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01086769e006ee0005665ddde5d7717b8b69a513
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 4d87a78c809791f01745f4406b58832258ea4d36
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858421"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548541"
 ---
 # <a name="connect-to-and-manage-postgresql-in-azure-purview-preview"></a>Azure Purview で PostgreSQL に接続して管理する (プレビュー)
 
@@ -26,13 +26,13 @@ ms.locfileid: "131858421"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| はい|
+| [あり](#register)| [はい](#scan)| いいえ | いいえ | いいえ | いいえ| はい|
 
 サポートされている PostgreSQL サーバーのバージョンは、8.4 から 12.x です。
 
 PostgreSQL ソースをスキャンするとき、Purview では以下がサポートされます。
 
-- PostgreSQL サーバー、データベース、スキーマ、テーブル、ビュー、テーブル/ビュー列などのメタデータの抽出。
+- PostgreSQL サーバー、データベース、スキーマ、テーブル、ビュー、テーブル/ビュー列を含むメタデータの抽出。
 - テーブルとビュー間の資産リレーションシップの系列のフェッチ。
 
 ## <a name="prerequisites"></a>前提条件
@@ -45,7 +45,7 @@ PostgreSQL ソースをスキャンするとき、Purview では以下がサポ�
 
 * 最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。 詳細については、[セルフホステッド統合ランタイムの作成および構成ガイド](../data-factory/create-self-hosted-integration-runtime.md)に関する記事を参照してください。
 
-* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.PostgreSQL.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
+* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) がインストールされていることを確認します。
 
 * セルフホステッド統合ランタイム マシンに Visual Studio 2012 Update 4 の Visual C++ 再頒布可能パッケージがインストールされていることを確認します。 この更新プログラムがインストールされていない場合は、[ここからダウンロードできます](https://www.microsoft.com/download/details.aspx?id=30679)。
 

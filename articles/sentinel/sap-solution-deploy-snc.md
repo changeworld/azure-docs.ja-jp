@@ -3,17 +3,15 @@ title: Secure Network Communications (SNC) を使用して Microsoft Sentinel SA
 description: NetWeaver/ABAP インターフェイス ベースのログのために、SNC を介してセキュリティで保護された接続を使用して、SAP 環境用の Microsoft Sentinel データ コネクタをデプロイする方法について説明します。
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.date: 11/09/2021
-ms.subservice: microsoft-sentinel
-ms.openlocfilehash: cc3c58743fc1cfca90ff8a2f20e5450895accc75
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 2437859c3ee236e1dc3c641f22de5e1d3ce07fff
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132519878"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711889"
 ---
 # <a name="deploy-the-microsoft-sentinel-sap-data-connector-with-snc"></a>SNC を使用して Microsoft Sentinel SAP データ コネクタをデプロイする
 
@@ -284,7 +282,7 @@ SNC がデータコネクタ VM で有効になります。
 
 上記の手順をもう一度実行し、SNC でセキュリティ保護された接続を構成してみてください。 詳細については、[Microsoft Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)に関するページも参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SAP データ コネクタがアクティブになったら、**Microsoft Sentinel - Continuous Threat Monitoring for SAP** ソリューションをデプロイして続行します。 詳細については、「[SAP セキュリティ コンテンツをデプロイする](sap-deploy-solution.md#deploy-sap-security-content)」を参照してください。
 

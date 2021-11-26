@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 66ccebb9154285c7f387b7ef51424cbfb177fa04
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: a054570ed76d7245962cd387ac5f793692af2cde
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521569"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721463"
 ---
 # <a name="create-custom-analytics-rules-to-detect-threats"></a>脅威を検出するためのカスタム分析規則を作成する
 
@@ -95,7 +93,7 @@ Microsoft Sentinel に[データ ソースを接続](quickstart-onboard.md)し�
 
 - **エンティティ マッピング** 構成に関するセクションを参考にして、クエリ結果からのパラメーターを Microsoft Sentinel で認識しているエンティティにマッピングします。 エンティティにより、ルールの出力 (アラートとインシデント) が、その後の調査プロセスと修正アクションの構成要素として機能する重要な情報で強化されます。 また、 **[インシデントの設定]** タブでアラートをインシデントにグループ化するための条件でもあります。
 
-    [Microsoft Sentinel のエンティティ](entities-in-azure-sentinel.md)の詳細を確認します。
+    [Microsoft Sentinel のエンティティ](entities.md)の詳細を確認します。
 
     エンティティのマッピングの詳細な手順と、[下位互換性](map-data-fields-to-entities.md#notes-on-the-new-version)に関する重要な情報については、「[データ フィールドを Microsoft Sentinel のエンティティにマップする](map-data-fields-to-entities.md)」を参照してください。
 
@@ -300,7 +298,7 @@ Microsoft Sentinel から分析ルールを使用して脅威を検出する場�
 詳細については、次を参照してください。
 
 - [チュートリアル: Microsoft Sentinel でインシデントを調査する](investigate-cases.md)
-- [Microsoft Sentinel でエンティティを使用してデータを分類および分析する](entities-in-azure-sentinel.md)
+- [Microsoft Sentinel でエンティティを使用してデータを分類および分析する](entities.md)
 - [チュートリアル: Microsoft Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)
 
 また、[カスタム コネクタ](create-custom-connector.md)で [Zoom を監視する](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516)するときにカスタム分析ルールを使用する例も参照してください。

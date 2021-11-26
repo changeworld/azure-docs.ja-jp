@@ -12,18 +12,21 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/11/2021
-ms.openlocfilehash: 4bcfc687e1a91fd2ecc652ced2481963974e155f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1011306cb83403b13f90fe3969470ed9722da2e1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643348"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554195"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 この記事では、Azure Active Directory (Azure AD) インスタンスを作成して設定した後、[Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) で Azure AD を使用する方法を示します。 概要については、「[Azure Active Directory 認証](authentication-aad-overview.md)」を参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD の認証方法
 
@@ -330,7 +333,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングできます。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者をプロビジョニングします。 (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者を削除します。 |

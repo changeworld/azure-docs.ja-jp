@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: c80b6f432943c11318949a43c2889d3c86b78c90
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: d7d11ea059128c8d2623ae3b9613acb57c97e1c1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132487008"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549510"
 ---
 # <a name="split-data-component"></a>Split Data (データの分割) コンポーネント
 
@@ -58,7 +58,7 @@ Split Data (データの分割) コンポーネントを使用して、データ
   
 1. 2 つのグループに送信するデータの選択をランダム化する場合は、**[Randomized spli]\(ランダム分割\)** オプションを選択します。 これは、トレーニングとテストのデータセットを作成するときに推奨されるオプションです。
 
-1. **Random Seed**: **Randomized split ** が false に設定されている場合、このパラメーターは無視されます。 または、負でない整数値を入力して、使用するインスタンスの擬似乱数シーケンスを開始します。 この既定のシードは、乱数を生成するすべてのコンポーネントで使用されます。 
+1. **Random Seed**: **Randomized split** が false に設定されている場合、このパラメーターは無視されます。 または、負でない整数値を入力して、使用するインスタンスの擬似乱数シーケンスを開始します。 この既定のシードは、乱数を生成するすべてのコンポーネントで使用されます。 
 
    シードを指定すると、結果は再現可能になります。 分割操作の結果を繰り返す必要がある場合は、乱数ジェネレーターに対して同じシード番号を指定する必要があります。 
 

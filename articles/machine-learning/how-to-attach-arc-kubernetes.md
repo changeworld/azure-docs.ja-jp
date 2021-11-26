@@ -6,15 +6,15 @@ author: luisquintanilla
 ms.author: luquinta
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 10/21/2021
+ms.date: 11/17/2021
 ms.topic: how-to
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 635153d510b18bc0ce97033094abf21a3b6d3d74
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 5ae6b6c636e1713d9f423b00301759ffb469b5f0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132491630"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723432"
 ---
 # <a name="configure-kubernetes-clusters-for-machine-learning-preview"></a>機械学習のための Kubernetes クラスターを構成する (プレビュー)
 
@@ -42,7 +42,7 @@ Azure Machine Learning の拡張機能を Azure Kubernetes Service クラスタ�
     > [!NOTE]
     > AKS クラスターについて、それらを Azure Arc に接続するかどうかは **任意** です。
 
-* [Azure Arc のネットワーク要件](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)を満たすこと
+* [Azure Arc のネットワーク要件](../azure-arc/kubernetes/quickstart-connect-cluster.md?tabs=azure-cli#meet-network-requirements)を満たすこと
 
     > [!IMPORTANT]
     > 送信プロキシ サーバーまたはファイアウォールの内側で実行するクラスターには、追加のネットワーク構成が必要です。
@@ -64,7 +64,7 @@ Azure Machine Learning の拡張機能を Azure Kubernetes Service クラスタ�
 
 * **Azure RedHat OpenShift Service (ARO) および OpenShift Container Platform (OCP) のみ**
 
-    * ARO または OCP Kubernetes クラスターが稼働している。 詳細については、[ARO Kubernetes クラスターの作成](/azure/openshift/tutorial-create-cluster)に関する記事と [OCP Kubernetes クラスターの作成](https://docs.openshift.com/container-platform/4.6/installing/installing_platform_agnostic/installing-platform-agnostic.html)に関するページを参照してください
+    * ARO または OCP Kubernetes クラスターが稼働している。 詳細については、[ARO Kubernetes クラスターの作成](../openshift/tutorial-create-cluster.md)に関する記事と [OCP Kubernetes クラスターの作成](https://docs.openshift.com/container-platform/4.6/installing/installing_platform_agnostic/installing-platform-agnostic.html)に関するページを参照してください
     * AzureML サービス アカウントへの特権アクセスを許可する。
 
         `oc edit scc privileged` を実行し、次を追加します 
@@ -253,9 +253,11 @@ Azure Arc 対応 Kubernetes クラスターを接続すると、ワークスペ�
 
 1. コンピューティング名を入力し、ドロップダウンから Azure Arc 対応 Kubernetes クラスターを選択します。
 
-   **(省略可能)** システム割り当てまたはユーザー割り当てのマネージド ID を割り当てます。 マネージド ID により、開発者は資格情報を管理する必要がなくなります。 詳細については、[マネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)を参照してください。
+    * **(オプション)** Kubernetes の名前空間を入力します。デフォルトは `default` です。 すべての機械学習ワークロードは、クラスター内の指定された kubernetes 名前空間に送信されます。
 
-   ![Kubernetes クラスターを構成する](./media/how-to-attach-arc-kubernetes/configure-kubernetes-cluster-2.png)
+    * **(省略可能)** システム割り当てまたはユーザー割り当てのマネージド ID を割り当てます。 マネージド ID により、開発者は資格情報を管理する必要がなくなります。 詳細については、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
+
+    ![Kubernetes クラスターを構成する](./media/how-to-attach-arc-kubernetes/configure-kubernetes-cluster-2.png)
 
 1. **[接続]** を選択します
 
@@ -269,7 +271,7 @@ Azure Machine Learning Python SDK を使い、[`attach_configuration`](/python/a
 
 次の Python コードは、Azure Arc 対応 Kubernetes クラスターを接続し、それをコンピューティング先として、マネージド ID を有効にして使用する方法を示しています。
 
-マネージド ID により、開発者は資格情報を管理する必要がなくなります。 詳細については、[マネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)を参照してください。
+マネージド ID により、開発者は資格情報を管理する必要がなくなります。 詳細については、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
 
 ```python
 from azureml.core.compute import KubernetesCompute

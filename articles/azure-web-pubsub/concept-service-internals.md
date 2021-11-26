@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 11/08/2021
-ms.openlocfilehash: ec1a0bfcc883e9434c8c80264c574c3630e395b0
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 660ae01280f116097d1a16282c8fed4faa18b6c2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131995088"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706972"
 ---
 #  <a name="azure-web-pubsub-service-internals"></a>Azure Web PubSub サービスの内部構造
 
@@ -198,7 +198,7 @@ client2.onopen = e => {
 
 PubSub WebSocket クライアントについて説明したときにお気付きかもしれませんが、クライアントは *認可されている* 場合にのみ、他のクライアントに発行できます。 クライアントの `role` により、クライアントが持つ "*最初*" のアクセス許可が決まります。
 
-| Role | アクセス許可 |
+| ロール | アクセス許可 |
 |---|---|
 | 指定なし | クライアントはイベントを送信できます。
 | `webpubsub.joinLeaveGroup` | クライアントは、どのグループについても、参加と脱退が可能です。
@@ -221,7 +221,7 @@ PubSub WebSocket クライアントについて説明したときにお気付き
 <a name="event_handler"></a>
 
 ### <a name="event-handler"></a>イベント ハンドラー
-イベント ハンドラーでは、受信クライアント イベントが処理されます。 イベント ハンドラーは、事前にポータルまたは Azure CLI を通じて登録し構成して、クライアント イベントがトリガーされたときに、そのイベントが処理されることが期待されているかどうかをサービスが識別できるようにします。 パブリック プレビューでは、`PUSH` モードを使用してイベント ハンドラーを呼び出します。そのイベント ハンドラーはサーバー側として、イベントがトリガーされたときに、サービスによって呼び出されるパブリックにアクセス可能なエンドポイントを公開します。 それは、**Webhook** として機能します。 
+イベント ハンドラーでは、受信クライアント イベントが処理されます。 イベント ハンドラーは、事前にポータルまたは Azure CLI を通じて登録し構成して、クライアント イベントがトリガーされたときに、そのイベントが処理されることが期待されているかどうかをサービスが識別できるようにします。 そして、`PUSH` モードを使用してイベント ハンドラーを呼び出します。そのイベント ハンドラーはサーバー側として、イベントがトリガーされたときに、サービスによって呼び出されるパブリックにアクセス可能なエンドポイントを公開します。 それは、**Webhook** として機能します。 
 
 サービスは、[CloudEvents HTTP プロトコル](https://github.com/cloudevents/spec/blob/v1.0.1/http-protocol-binding.md)を使用して、アップストリームの Webhook にクライアント イベントを配信します。
 
@@ -269,7 +269,7 @@ Azure portal または CLI を使用して、アップストリームにイベ�
    - 特定のグループまたはすべてのグループの参加/発行アクセス許可を取り消す
    - クライアントに、特定のグループまたはすべてのグループへの参加/発行アクセス許可があるかどうかを確認する
    
-パブリック プレビューでは、サービスで、サーバーが接続管理を行うための REST API を提供しています。
+サービスによって、サーバーが接続管理を行うための REST API が提供されます。
 
 ![Web PubSub サービス接続マネージャーのワークフローを示す図。](./media/concept-service-internals/manager-rest.png)
 

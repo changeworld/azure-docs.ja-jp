@@ -12,20 +12,22 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: mathoma, vanto
 ms.date: 01/25/2021
-ms.openlocfilehash: 3b009686bf113c233e04dc238429d16980427c26
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ed77571e076dad04fc2110f688c80d4418fb840d
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607389"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554144"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database と Azure Synapse Analytics の接続アーキテクチャ
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 この記事では、Azure SQL Database または Azure Synapse Analytics のサーバーにネットワーク トラフィックを誘導するさまざまなコンポーネントのアーキテクチャについて説明します。 さまざまな接続ポリシーと、それが Azure 内から接続するクライアントと Azure 外から接続するクライアントに与える影響について説明します。
 
-> [!IMPORTANT]
-> この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。 [マネージド インスタンスの接続アーキテクチャ](../managed-instance/connectivity-architecture-overview.md)に関するページを参照してください。
+この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。 [マネージド インスタンスの接続アーキテクチャ](../managed-instance/connectivity-architecture-overview.md)に関するページを参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 

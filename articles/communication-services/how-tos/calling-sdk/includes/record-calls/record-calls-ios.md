@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: 029e4ce2f699eb66f0807f47cc80a893052f7a57
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 5aedf9a85c4635208dee10f14d9a6ca24e6d4df8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129584934"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132590603"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-ios.md)]
 
@@ -19,10 +19,10 @@ ms.locfileid: "129584934"
 > [!NOTE]
 > この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling iOS SDK の "ベータ" リリースを使用してください
 
-通話記録は、コア `Call` API の拡張機能です。 まず、記録機能 API オブジェクトを取得する必要があります。
+通話記録は、コア `Call` オブジェクトの拡張機能です。 まず、記録機能オブジェクトを取得する必要があります。
 
 ```swift
-let callRecordingFeature = call.api(Features.recording)
+let callRecordingFeature = call.feature(Features.recording)
 ```
 
 次に、通話が記録されているかどうかを確認するために、`callRecordingFeature` の `isRecordingActive` プロパティを調べます。 `Bool` を返します。

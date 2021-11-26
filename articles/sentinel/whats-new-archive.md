@@ -4,17 +4,15 @@ description: 6 か月前以前の、Azure Sentinel の新機能と変更点の�
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9a4203f053fc295c2dfeac2a5ad40184dcd9c3b6
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 5c9d7e56ce82dfeff44d44e8dbea7952cbd5af68
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522443"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711194"
 ---
 # <a name="archive-for-whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報のアーカイブ
 
@@ -96,7 +94,7 @@ Azure Firewalls に対する検出は、組み込みのテンプレート ギャ
 
 最初に、エンティティ マッピングを次のレベルにします。 ユーザー、ホスト、および IP アドレスから、ファイルとプロセス、メールボックス、Azure リソース、および IoT デバイスへ、20 種類近くのエンティティをマップできるようになりました。 また、各エンティティに複数の識別子を使用して、一意の ID を強化することもできます。 これによって、さらに豊富なデータ セットがインシデント内に提供され、より広範な相関関係やより強力な調査が可能になります。 アラートで[エンティティをマップする新しい方法について](map-data-fields-to-entities.md)確認してください。
 
-[エンティティの詳細](entities-in-azure-sentinel.md)に関する記事をご覧ください。また、[使用可能なエンティティとその識別子の完全なリスト](entities-reference.md)を参照してください。
+[エンティティの詳細](entities.md)に関する記事をご覧ください。また、[使用可能なエンティティとその識別子の完全なリスト](entities-reference.md)を参照してください。
 
 未加工のイベントから詳細情報を引き出すようにアラートをカスタマイズすることによって、調査と応答の機能をさらに強化できます。 インシデントでのイベント コンテンツの可視性を向上させることで、セキュリティ上の脅威に対応し調査する際の能力と柔軟性を高めることができます。 アラートで[カスタム詳細を引き出す方法](surface-custom-details-in-alerts.md)について確認してください。
 

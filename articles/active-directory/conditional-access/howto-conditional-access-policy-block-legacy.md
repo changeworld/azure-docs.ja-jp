@@ -5,22 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb, rogoya
+ms.reviewer: calebb, davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c6bea41020b97244a29c719ca1dd5c60f607297
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9baa605a8ee97129c589d08e2ea1c3beee95ff83
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636233"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708971"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件付きアクセス:レガシ認証をブロックする
 
-レガシ認証プロトコルに関連したリスクが増大しているため、Microsoft では組織に対して、これらのプロトコルを使用した認証要求をブロックし、先進認証を必須にすること推奨しています。
+レガシ認証プロトコルに関連したリスクが増大しているため、Microsoft では組織に対して、これらのプロトコルを使用した認証要求をブロックし、先進認証を必須にすること推奨しています。 レガシ認証をブロックすることが重要である理由について詳しくは、「[方法: 条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする](block-legacy-authentication.md)」を参照してください。
+
+## <a name="template-deployment"></a>テンプレートのデプロイ
+
+組織は、このポリシーをデプロイするのに以下に示す手順を使用するか、[条件付きアクセス テンプレート (プレビュー) ](concept-conditional-access-policy-common.md#conditional-access-templates-preview)を使用するかを選ぶことができます。 
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
@@ -44,14 +48,14 @@ ms.locfileid: "128636233"
 1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
 
+管理者は、[[レポート専用モード]](howto-conditional-access-insights-reporting.md) を使用して設定を確認した後、 **[ポリシーの有効化]** トグルを **[レポートのみ]** から **[オン]** に移動できます。
+
 > [!NOTE]
 > 条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する組織の防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセス権を判定できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
-
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
 

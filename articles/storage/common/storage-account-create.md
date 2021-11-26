@@ -10,12 +10,12 @@ ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7b34040e9516daeda71704d74ceac64a03572214
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3be79a2af3dfb05b289a0111c9e1f9fcf17bab02
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452511"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555548"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
@@ -150,6 +150,7 @@ Azure portal を使用して Azure ストレージ アカウントを作成す�
 | セキュリティ | ストレージ アカウント キーへのアクセスを有効にする (プレビュー) | 省略可能 | この設定を有効にすると、クライアントは、アカウント アクセス キーまたは Azure Active Directory (Azure AD) アカウントのいずれかを使用して、ストレージ アカウントへの要求を承認できます (既定)。 この設定を無効にすると、アカウント アクセス キーによる承認はできなくなります。 詳細については、[Azure ストレージ アカウントの共有キーによる認可の禁止](shared-key-authorization-prevent.md)に関するページを参照してください。 |
 | セキュリティ | TLS の最小バージョン | 必須 | ストレージ アカウントへの受信要求に対するトランスポート層セキュリティ (TLS) の最小バージョンを選択します。 既定値は TLS バージョン 1.2 です。 既定値に設定すると、TLS 1.0 または TLS 1.1 を使用して行われた受信要求は拒否されます。 詳細については、「[ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する](transport-layer-security-configure-minimum-version.md)」を参照してください。 |
 | Data Lake Storage Gen2 | 階層型名前空間を有効にする | 省略可能 | このストレージ アカウントを Azure Data Lake Storage Gen2 ワークロードに使用するには、階層型名前空間を構成します。 詳細については、「[Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)」を参照してください。 |
+| セキュア ファイル転送プロトコル (SFTP) | SFTP を有効にする | オプション | セキュア ファイル転送プロトコル (SFTP) の使用を有効にして、インターネット経由で安全にデータを転送します。 詳細については、「[Azure Blob Storage でのセキュア ファイル転送 (SFTP) プロトコルのサポート](../blobs/secure-file-transfer-protocol-support.md)」を参照してください。 |
 | BLOB ストレージ | Enable network file share (NFS) v3 (NFS (ネットワーク ファイル共有) v3 を有効にする) | 省略可能 | NFS v3 により、オブジェクト ストレージのスケールで Linux ファイル システムの互換性が得られます。また、Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスのコンピューターから Blob Storage にコンテナーをマウントできます。 詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート](../blobs/network-file-system-protocol-support.md)」を参照してください。 |
 | BLOB ストレージ | アクセス層 | 必須 | BLOB アクセス層を使用すると、使用方法に基づいて、最もコスト効率の高い方法で BLOB データを格納できます。 頻繁にアクセスされるデータには、ホット層 (既定値) を選択します。 頻繁にアクセスされないデータには、クール層を選択します。 詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](../blobs/access-tiers-overview.md)に関するページを参照してください。 |
 | Azure Files | 大型ファイル共有を有効にする | 省略可能 | LRS または ZRS 冗長性を使用する標準のファイル共有でのみ使用できます。 |

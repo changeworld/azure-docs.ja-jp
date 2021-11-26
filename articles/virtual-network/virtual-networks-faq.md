@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 2a916c83cc3249b304648d090f739e66bb6b7dd3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3e59e95de15a34e11bba2071f5b22c722c6845a4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130245590"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552130"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network についてよく寄せられる質問 (FAQ)
 
@@ -230,6 +230,18 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 
 ### <a name="do-virtual-networks-store-customer-data"></a>顧客データは仮想ネットワークに格納されるのですか?
 いいえ。 仮想ネットワークに顧客データは格納されません。 
+
+### <a name="can-i-set-flowtimeoutinminutes-property-for-an-entire-subscription"></a>[FlowTimeoutInMinutes](/powershell/module/az.network/set-azvirtualnetwork?view=azps-6.5.0) プロパティをサブスクリプション全体に設定することはできますか？ 
+いいえ。 これは仮想ネットワークで設定する必要があります。 大規模なサブスクリプションに対してこのプロパティの設定を自動化する場合に以下が役立ちます。  
+```Powershell
+$Allvnet = Get-AzVirtualNetwork
+$time = 4 #The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking. $null to disable. 
+ForEach ($vnet in $Allvnet)
+{
+    $vnet.FlowTimeoutInMinutes = $time
+    $vnet | Set-AzVirtualNetwork
+}
+```
 
 ## <a name="apis-schemas-and-tools"></a>API、スキーマ、およびツール
 

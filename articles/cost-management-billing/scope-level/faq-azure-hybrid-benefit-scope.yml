@@ -10,12 +10,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 09/30/2021
   ms.author: banders
-  ms.openlocfilehash: 2e14b1e3ba341dc5b7992f128c07f8102df9f0f6
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: dee90b2d8c16eb06324b8fa5fcdd1ccd82c05b5c
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130552703"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132708287"
 title: Azure ハイブリッド特典一元管理の FAQ
 summary: ''
 sections:
@@ -47,9 +47,10 @@ sections:
     answer: >
       次の契約では、スコープレベル Azure ハイブリッド特典の新システムが自動的に適用されます。
 
-        - Microsoft Azure エンタープライズ - MS-AZR-0017P
-        - Azure Government Enterprise - MS-AZR-USGOV-0017P
-        - Microsoft Azure プラン - MS-AZR-0017G
+        - エンタープライズ契約 (以下を含む)
+            - Microsoft Azure エンタープライズ - MS-AZR-0017P
+            - Azure Government Enterprise - MS-AZR-USGOV-0017P
+        - Microsoft カスタマー契約 - Microsoft Azure プラン - MS-AZR-0017G
 
       その他の契約は、まだサポートしていません。 詳細については、「[前提条件](create-sql-license-assignments.md#prerequisites)」を参照してください。
   - question: Azure ハイブリッド特典の対象になる SQL ライセンスを教えてください。

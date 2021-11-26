@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 85aff2a31d2ac7221f78439a142dbe7517ab042a
-ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+ms.openlocfilehash: ff7f250fa7fae2fb0a68710c94a9437204a61439
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132398898"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714830"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -34,7 +34,7 @@ Azure Monitor とは、毎月増加するテラバイト単位のデータを送
 
 エージェントと管理ソリューションは、さまざまな方法を使用して仮想マシンからデータを収集します。これが待機時間に影響する場合があります。 具体的な例をいくつか次に示します。
 
-| データの種類  | 収集の頻度  | メモ |
+| データの種類  | 収集の頻度  | Notes |
 |:--------------|:----------------------|:------|
 | Windows イベント、syslog イベント、パフォーマンス メトリック | すぐに収集される| | 
 | Linux パフォーマンス カウンター | 30 秒間隔でポーリングされる| |
@@ -73,7 +73,7 @@ Azure データが Azure Monitor ログのインジェスト ポイントで使�
 - Microsoft 365 ソリューションを使用すると、Management Activity API (現在はほぼリアルタイムの待機時間を保証していません) を使用して、アクティビティ ログがポーリングされます。
 - Windows Analytics ソリューション (Update Compliance など) のデータは、毎日の頻度でソリューションによって収集されます。
 
-各ソリューションのコレクションの頻度を判断するには、[そのドキュメント](/azure/azure-monitor/insights/solutions)を参照してください。
+各ソリューションのコレクションの頻度を判断するには、[そのドキュメント](../insights/solutions.md)を参照してください。
 
 ### <a name="pipeline-process-time"></a>パイプライン処理時間
 

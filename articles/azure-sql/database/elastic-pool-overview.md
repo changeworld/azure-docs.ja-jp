@@ -11,17 +11,20 @@ author: arvindshmicrosoft
 ms.author: arvindsh
 ms.reviewer: mathoma
 ms.date: 06/23/2021
-ms.openlocfilehash: a3847bb1ac435779e50ce8cc41a3940bb6adfab7
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 669b8610cba44be369ba805834eca2f700d211e0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112965132"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548883"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Azure SQL Database におけるエラスティック プールを利用した複数のデータベースの管理およびスケーリング
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL Database のエラスティック プールは、予期できない多様な使用ニーズを持つ複数のデータベースを管理しスケーリングするための、シンプルでコスト効率の高いソリューションです。 エラスティック プール内のデータベースは、単一のサーバー上にあり、設定された数のリソースを設定価格で共有します。 Azure SQL Database のエラスティック プールを使用すると、SaaS 開発者は、各データベースのパフォーマンスに弾力性を提供しながら、データベース グループの価格に対するパフォーマンスを所定の予算内で最適化できます。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="what-are-sql-elastic-pools"></a>SQL エラスティック プールとは
 

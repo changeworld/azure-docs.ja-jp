@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 62bf35c4638433cc4e9820f8d0bb7e2592bcebf5
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 471c76128d0df5aef41e4d50f6ddcdf7f97f34ff
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132517579"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722907"
 ---
 # <a name="microsoft-sentinel-authentication-normalization-schema-reference-public-preview"></a>Microsoft Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -192,8 +190,8 @@ Microsoft Azure Sentinel には、次の組み込みの製品固有の認証イ�
 
 詳細については、次を参照してください。
 
-- [Microsoft Azure Sentinel での正規化](normalization.md)
+- [Microsoft Sentinel での正規化](normalization.md)
 - [Microsoft Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Microsoft Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
+- [Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
 - [Microsoft Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
 - [Microsoft Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)](process-events-normalization-schema.md)

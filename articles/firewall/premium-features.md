@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d00bfe9e9ed43ed1eafc65d61718de6cb4ecf04e
-ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
+ms.openlocfilehash: 833bec745be68131709a78df1e52ed2ff782b167
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132179846"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548085"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium の機能
 
@@ -21,7 +21,7 @@ ms.locfileid: "132179846"
 
 Azure Firewall Premium では、決済業界や医療業界など、機密性が高く、規制された環境のニーズを満たす高度な脅威保護が提供されます。 
 
-組織は、IDPS や TLS 検査などの Premium Stock-Keeping Unit (SKU) フィーチャーを活用して、マルウェアやウイルスがネットワーク全体に横方向と水平方向の両方に広がるのを防ぐことができます。 IDPS および TLS 検査のパフォーマンス要求の増加に対応するために、Azure Firewall Premium ではより強力な仮想マシン SKU が使用されます。 Standard SKU と同様に、Premium SKU はシームレスに最大 30 Gbps まで拡張でき、可用性ゾーンと統合して、99.99 パーセントのサービス レベル アグリーメント (SLA) をサポートできます。 Premium SKU は、Payment Card Industry Data Security Standard (PCI DSS) 環境のニーズに準拠しています。
+組織は、IDPS や TLS 検査などの Premium Stock-Keeping Unit (SKU) フィーチャーを活用して、マルウェアやウイルスがネットワーク全体に横方向と水平方向の両方に広がるのを防ぐことができます。 IDPS および TLS 検査のパフォーマンス要求の増加に対応するために、Azure Firewall Premium ではより強力な仮想マシン SKU が使用されます。 Standard SKU と同様に、Premium SKU は最大 30 Gbps までシームレスにスケールアップすることができます。また、可用性ゾーンとの統合により、99.99 パーセントのサービス レベル アグリーメント (SLA) をサポートします。 Premium SKU は、Payment Card Industry Data Security Standard (PCI DSS) 環境のニーズに準拠しています。
 
 :::image type="content" source="media/premium-features/premium-overview.png" alt-text="Azure Firewall Premium の概要を示す図":::
 
@@ -58,7 +58,16 @@ IDPS を使用すると、暗号化されていないトラフィックですべ
 
 IDPS バイパス一覧を使用すると、バイパス一覧に指定された IP アドレス、範囲、サブネットへのトラフィックをフィルター処理しないようにすることができます。
 
-IDPS モードが **[アラート]** に設定されているが、関連付けられているトラフィックを含めてブロックする署名が 1 つ以上ある場合にも、署名規則を使用できます。 この場合、TLS 検査モードを **[拒否]** に設定することで新しい署名規則を追加できます。
+IDPS シグネチャ規則 (プレビュー) を使用すると、以下を行うことができます。
+
+- 1 つ以上のシグネチャをカスタマイズし、それらのモードを *[無効化済み]* 、 *[アラート]* 、 *[アラートを出して拒否]* に変更します。 
+
+   たとえば、正当な要求が、不完全なシグネチャが原因で Azure Firewall によってブロックされる誤検知が発生する場合、アプリケーション ルール ログのシグネチャ ID を使用し、IDPS モードをオフに設定できます。 これにより、"不完全な" 署名が無視され、誤検知の問題が解決されます。
+- 優先順位の低いアラートを頻繁に作成することで優先度の高いアラートの可視性を妨げている署名に対しても、同様の微調整手順を適用できます。
+- 55,000 のシグネチャ全体の包括的なビューを取得します
+- スマート検索
+
+   任意の種類の属性を使用して、シグネチャ データベース全体を検索できます。 たとえば、検索バーに ID を入力するだけで、特定の CVE ID を検索して、この CVE を管理しているシグネチャを検出できます。
 
 
 ## <a name="url-filtering"></a>URL フィルタリング
@@ -171,6 +180,7 @@ Azure Firewall Premium には、次の既知の問題があります。
 |証明書伝達|CA 証明書がファイアウォールに適用された後、証明書が有効になるまでに 5 分から 10 分かかることがあります。|解決策を調査中です。|
 |TLS 1.3 のサポート|TLS 1.3 は部分的にサポートされています。 クライアントからファイアウォールへの TLS トンネルは TLS 1.2 に基づいており、ファイアウォールから外部 Web サーバーへは TLS 1.3 に基づいています。|更新を調査中です。|
 |KeyVault のプライベート エンドポイント|KeyVault は、プライベート エンドポイント アクセスをサポートして、ネットワークへの露出を制限します。 [KeyVault のドキュメント](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)で説明されているように、例外が構成されている場合、信頼された Azure サービスはこの制限を回避できます。 Azure Firewall は現在信頼されたサービスとして列挙されていないため、KeyVault にアクセスできません。|解決策を調査中です。|
+|IDPS バイパス一覧|IDPS バイパス一覧では IP グループはサポートされません。|解決策を調査中です。|
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.subservice: service-overview
 ms.topic: how-to
 ms.date: 06/30/2021
-ms.openlocfilehash: 29d0bdba30bb75a085e147c72438f22121744870
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 5f1464c6fb74bc04dacb230cd2a5993f7566e82a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113134584"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546882"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>Azure SQL Database のコストを計画および管理する
 
@@ -21,6 +21,8 @@ ms.locfileid: "113134584"
 
 最初に、Azure 料金計算ツールを使用して Azure リソースを追加し、推定コストを確認します。 Azure SQL Database リソースの使用を開始した後、コスト管理機能を使用して、予算を設定し、コストを監視します。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Azure SQL Database のコストは、Azure で課金される月額料金の一部でしかありません。 この記事では、Azure SQL Database のコストを計画して管理する方法について説明しますが、課金は、Azure サブスクリプションで使用されるすべての Azure サービスとリソース (サードパーティのサービスを含む) に対して行われます。
 
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="prerequisites"></a>前提条件
 

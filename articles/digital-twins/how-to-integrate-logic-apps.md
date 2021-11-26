@@ -8,12 +8,12 @@ ms.date: 9/1/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: aa8ea41233cad42bcad9fc387b8f984503c6e75e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 21658ad276b16292a15fe7dc778c152104e6916e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124797766"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718635"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>カスタム コネクタを使用して Logic Apps と統合する
 
@@ -74,7 +74,11 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 次に、作成したコネクタを Azure Digital Twins に接続するように構成します。
 
-まず、Logic Apps で動作するように変更されたカスタム Azure Digital Twins Swagger をダウンロードします。 **[ZIP のダウンロード]** ボタンを選択して、[Azure Digital Twins Custom Swaggers (Logic Apps コネクタ)](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) サンプルをダウンロードします。 ダウンロードした *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* フォルダーに移動し、解凍します。 
+まず、Logic Apps で動作するように変更されたカスタム Azure Digital Twins Swagger をダウンロードします。 [Azure Digital Twins のカスタム Swaggers (Logic Apps コネクター) のサンプル](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)に移動し、タイトルの下にある **[Browse code]\(コードの参照\)** ボタンを選択して、サンプルの GitHub リポジトリに移動します。 **[コード]** ボタンをクリックした後、 **[Download ZIP]\(ZIP のダウンロード\)** をクリックすると、ご使用のマシンでサンプルが取得されます。
+
+:::image type="content" source="media/how-to-integrate-logic-apps/download-repo-zip.png" alt-text="zip としてダウンロードする手順を強調表示した GitHub 上のデジタル ツインのカスタム swagger リポジトリを示すスクリーンショット。" lightbox="media/how-to-integrate-logic-apps/download-repo-zip.png"::: 
+
+ダウンロードしたフォルダーに移動してそれを解凍します。 
 
 このチュートリアル用のカスタム Swagger は、*digital-twins-custom-swaggers-main\LogicApps* フォルダーに配置されます。 このフォルダーには、*stable* と *preview* という名前のサブフォルダーが含まれています。どちらも、日付別に編成された異なるバージョンの Swagger を保持しています。 最新の日付のフォルダーには、Swagger 定義ファイルの最新のコピーが含まれます。 どちらのバージョンを選択した場合でも、Swagger ファイルには _digitaltwins.json_ という名前が付けられています。
 

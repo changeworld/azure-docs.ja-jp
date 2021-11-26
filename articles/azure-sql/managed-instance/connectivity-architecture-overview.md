@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova
 ms.date: 04/29/2021
-ms.openlocfilehash: 142e35a0335f01e8b9b2315d3c309f5841c244c9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 04a275c0e4bc9c3eb52fee8b02ea2606e52d4958
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216231"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554068"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の接続アーキテクチャ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,6 +30,9 @@ SQL Managed Instance は、マネージド インスタンス専用の Azure 仮
 - オンプレミス ネットワークを SQL Managed Instance に接続する機能。
 - SQL Managed Instance をリンク サーバーまたは別のオンプレミス データ ストアに接続する機能。
 - SQL Managed Instance を Azure リソースに接続する機能。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="communication-overview"></a>通信の概要
 
@@ -109,7 +112,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
   - Microsoft.Network/serviceEndpointPolicies 型のリソース (リソース名が \_e41f87a2\_ で始まる場合)。
   - Microsoft.Network/networkIntentPolicies 型のすべてのリソース
   - Microsoft.Network/virtualNetworks/subnets/contextualServiceEndpointPolicies 型のすべてのリソース
-- **仮想ネットワーク上のロック:** 専用サブネットの仮想ネットワーク、その親リソース グループ、またはサブスクリプションに対する[ロック](../../azure-resource-manager/management/lock-resources.md)によって、SQL Managed Instance の管理とメンテナンスの操作が妨げられる可能性があります。 このようなロックを使う場合は、特に注意してください。
+- **仮想ネットワーク上のロック:** 専用サブネットの仮想ネットワーク、その親リソース グループ、またはサブスクリプションに対する [ロック](../../azure-resource-manager/management/lock-resources.md)によって、SQL Managed Instance の管理とメンテナンスの操作が妨げられる可能性があります。 このようなロックを使う場合は、特に注意してください。
 
 > [!IMPORTANT]
 > マネージド インスタンスを作成すると、ネットワーク設定に対する非準拠の変更を防止するために、ネットワーク インテント ポリシーが適用されます。 最後のインスタンスがサブネットから削除されると、ネットワーク インテント ポリシーも削除されます。 下のルールは情報提供のみを目的としています。ARM テンプレート、PowerShell、または CLI を使用してこれらをデプロイしないでください。 最新の公式テンプレートを使用する場合は、常に[ポータルから取得](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)できます。
@@ -117,7 +120,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の受信セキュリティ規則
 これらの規則は、受信管理トラフィック フローを確認するために必要です。 接続アーキテクチャと管理トラフィックの詳細については、[上の段落](#high-level-connectivity-architecture)を参照してください。
 
-| 名前       |Port                        |Protocol|source           |到着地|アクション|
+| 名前       |Port                        |Protocol|source           |宛先|アクション|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |CorpNetSaw       |MI SUBNET  |Allow |
@@ -128,7 +131,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の送信セキュリティ規則
 これらの規則は、送信管理トラフィック フローを確認するために必要です。 接続アーキテクチャと管理トラフィックの詳細については、[上の段落](#high-level-connectivity-architecture)を参照してください。
 
-| 名前       |Port          |Protocol|source           |到着地|アクション|
+| 名前       |Port          |Protocol|source           |宛先|アクション|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |

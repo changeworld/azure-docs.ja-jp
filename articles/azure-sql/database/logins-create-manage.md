@@ -13,12 +13,12 @@ author: AndreasWolter
 ms.author: anwolter
 ms.reviewer: vanto, mathoma
 ms.date: 03/23/2020
-ms.openlocfilehash: c8cbb041c366bd530ac63d622a40e31a931e1fd7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e8b058e18625d20427eb2c26cdc8c20817f640bf
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706218"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546988"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance、Azure Synapse Analytics へのデータベース アクセスを承認する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -33,6 +33,9 @@ ms.locfileid: "110706218"
 
 > [!IMPORTANT]
 > Azure SQL Database、Azure SQL Managed Instance、Azure Synapse のデータベースは、この記事の残りの部分ではまとめてデータベースと呼ばれています。また、サーバーは、Azure SQL Database と Azure Synapse のデータベースを管理する[サーバー](logical-servers.md)を指しています。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="authentication-and-authorization"></a>認証と権限承認
 

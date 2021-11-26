@@ -11,20 +11,23 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 334ca6aadf43756985c7d187b460b625c5588525
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: fb607461e446ee44a92cee8e6dff60e8c2e6dd45
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693040"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546495"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 単一データベースのリソースの種類では、Azure SQL Database 内にその独自のリソース セットでデータベースが作成され、[サーバー](logical-servers.md)経由で管理されます。 単一データベースでは、各データベースが分離され、移植可能となります。 それぞれに、[DTU ベースの購入モデル](service-tiers-dtu.md)または[仮想コアベースの購入モデル](service-tiers-vcore.md)内で独自のサービス レベルが与えられ、特定のコンピューティング サイズが保証されます。
 
-> [!IMPORTANT]
-> 単一データベースは、Azure SQL Database 用のリソースの種類の 1 つです。 もう 1 つは[エラスティック プール](elastic-pool-overview.md)です。
+単一データベースは、Azure SQL Database のデプロイ モデルです。 もう 1 つは[エラスティック プール](elastic-pool-overview.md)です。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
+
 
 ## <a name="dynamic-scalability"></a>動的スケーラビリティ
 

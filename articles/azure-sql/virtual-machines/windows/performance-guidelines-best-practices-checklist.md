@@ -16,12 +16,12 @@ ms.date: 06/01/2021
 ms.author: pamela
 ms.custom: contperf-fy21q3
 ms.reviewer: mathoma
-ms.openlocfilehash: f698b4c9393d536152d7058115ab7d82ad29b151
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 54830fd4052e6121551d6246d6b325e6036b4800
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132298111"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551389"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>チェックリスト: Azure VM 上の SQL Server のベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,6 +29,8 @@ ms.locfileid: "132298111"
 この記事では、Azure 仮想マシン (VM) 上の SQL Server のパフォーマンスを最適化するための一連のベスト プラクティスおよびガイドラインとして、クイック チェックリストを提供します。 
 
 包括的な詳細については、このシリーズの他の記事 ([チェックリスト](performance-guidelines-best-practices-checklist.md)、[VM サイズ](performance-guidelines-best-practices-vm-size.md)、[ストレージ](performance-guidelines-best-practices-storage.md)、[セキュリティ](security-considerations-best-practices.md)、[HADR の構成](hadr-cluster-best-practices.md)、[ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)) を参照してください。 
+
+[Azure VM 上の SQL Server 用の SQL Assessment](sql-assessment-for-sql-vm.md) を有効にすると、お使いの SQL Server が既知のベスト プラクティスに照らして評価され、その結果が Azure portal の [SQL VM 管理ページ](manage-sql-vm-portal.md)に表示されます。
 
 
 ## <a name="overview"></a>概要
@@ -173,5 +175,7 @@ SQL Server の可用性グループまたはフェールオーバー クラス�
 - [ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)
 
 セキュリティのベスト プラクティスについては、「[Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項](security-considerations-best-practices.md)」をご覧ください。
+
+[Azure vm での SQL Server の SQL Assessment ](sql-assessment-for-sql-vm.md)を有効にすることを検討してください。
 
 SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。

@@ -3,12 +3,12 @@ title: Bicep モジュール
 description: Bicep ファイルでモジュールを定義する方法と、モジュールのスコープを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/12/2021
-ms.openlocfilehash: b01b37d9adb605e1e3c2b257114a33f120e89ef9
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: a8aedd784875fccbad81957550380cc4fa236616
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132491357"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551276"
 ---
 # <a name="bicep-modules"></a>Bicep モジュール
 
@@ -91,7 +91,7 @@ module <symbolic-name> 'br:<registry-name>.azurecr.io/<file-path>:<tag>' = {
 
 レジストリ内のモジュールを参照すると、Visual Studio Code の Bicep 拡張機能によって [bicep restore](bicep-cli.md#restore) が自動的に呼び出されて、外部モジュールがローカル キャッシュにコピーされます。 外部モジュールが復元されるまで、しばらく時間がかかります。 モジュールの IntelliSense がすぐに機能しない場合は、復元が完了するまで待ちます。
 
-レジストリ内のモジュールの完全なパスは長くなる場合があります。 モジュールを使用するたびに完全なパスを指定する代わりに、[bicepconfig.json ファイルでエイリアスを構成する](bicep-config.md#aliases-for-modules)ことができます。 エイリアスを使用すると、モジュールの参照が簡単になります。 たとえば、エイリアスを使用すると、パスを次のように短縮できます。
+レジストリ内のモジュールの完全なパスは長くなる場合があります。 モジュールを使用するたびに完全なパスを指定する代わりに、[bicepconfig.json ファイルでエイリアスを構成する](bicep-config-modules.md#aliases-for-modules)ことができます。 エイリアスを使用すると、モジュールの参照が簡単になります。 たとえば、エイリアスを使用すると、パスを次のように短縮できます。
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/alias-definition.bicep" highlight="1" :::
 

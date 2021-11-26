@@ -12,14 +12,14 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2838c6be64718669fb03b3a04dbbea41e5de8c19
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: d3dc75a0c9d5f47d7f415a5df29398e8d407d7cf
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131841830"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546541"
 ---
-# <a name="restrict-access-to-a-tenant-in-azure-active-directory"></a>Azure Active Directory でテナントへのアクセスを制限する
+# <a name="restrict-access-to-a-tenant"></a>アクセスをテナントに制限する
 
 セキュリティを重視する大規模な組織は、Microsoft 365 などのクラウド サービスへの移行を望んでいますが、ユーザーが承認済みリソースにしかアクセスできないことを認識しておく必要があります。 従来より、企業ではアクセスを管理するときにドメイン名や IP アドレスを制限しています。 この方法は、SaaS (サービスとしてのソフトウェア) アプリがパブリック クラウドでホストされ、[outlook.office.com](https://outlook.office.com/) や [login.microsoftonline.com](https://login.microsoftonline.com/) などの共有ドメイン名で実行されている環境では失敗します。 これらのアドレスをブロックすると、ユーザーを承認済みの ID やリソースに単に制限するのではなく、ユーザーは Web 上の Outlook にまったくアクセスできなくなります。
 

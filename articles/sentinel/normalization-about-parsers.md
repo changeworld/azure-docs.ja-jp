@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: ofshezaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 43ec5162b0dc1bfd9def8afea6a36c7899483a55
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 38b276bda8242f1cfef39c58925552ba35625baa
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520296"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712834"
 ---
 # <a name="advanced-siem-information-model-asim-parsers-public-preview"></a>Advanced SIEM Information Model (ASIM) パーサー (パブリック プレビュー)
 

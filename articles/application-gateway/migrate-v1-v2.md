@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 000daf7c60d0bc823aacdab85de42af3b6cbbf55
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 55445659ef58d073eb8992060b82c76bd08f8e18
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129419052"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548313"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -43,6 +43,7 @@ ms.locfileid: "129419052"
 * v2 では IPv6 がサポートされていないため、IPv6 が有効になっている v1 ゲートウェイは移行されません。 スクリプトを実行しても、完了しない可能性があります。
 * v1 ゲートウェイにプライベート IP アドレスのみがある場合、スクリプトでは、新しい v2 ゲートウェイ用のパブリック IP アドレスとプライベート IP アドレスが作成されます。 v2 ゲートウェイでは、現在、プライベート IP アドレスのみはサポートされていません。
 * 文字、数字、ハイフン、およびアンダースコア以外を含む名前のヘッダーは、アプリケーションに渡されません。 ヘッダーの値ではなくヘッダー名にのみ適用されます。 これは v1 からの重大な変更です。
+* NTLM および Kerberos 認証は Application Gateway v2 ではサポートされていません。 このスクリプトでは、ゲートウェイがこの種類のトラフィックを処理しているかどうかを検出できません。実行すると、v1 から v2 ゲートウェイへの破壊的変更が発生する可能性があります。
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 

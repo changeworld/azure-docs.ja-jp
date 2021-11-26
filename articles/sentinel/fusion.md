@@ -4,8 +4,6 @@ description: Microsoft Sentinel の Fusion テクノロジを利用して、ア�
 services: sentinel
 documentationcenter: na
 author: yelevin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -13,12 +11,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8fa4fea5502f2e034aa6b5ba3f672cf8012dcd5a
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 808910eb32973a3d567960c98364d1d60036d673
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520049"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721140"
 ---
 # <a name="advanced-multistage-attack-detection-in-microsoft-sentinel"></a>Microsoft Sentinel での高度なマルチステージ攻撃の検出
 
@@ -29,18 +27,18 @@ ms.locfileid: "132520049"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Microsoft Sentinel では、スケーラブルな機械学習アルゴリズムに基づく関連付けエンジンである Fusion を使用して、キル チェーンのさまざまな段階で観察される異常な動作と疑わしいアクティビティの組み合わせを特定することによって、マルチステージ攻撃 (持続的標的型攻撃または APT とも呼ばれる) を自動的に検出します。 これらの検出を基に、Microsoft Sentinel では、これ以外では検出が困難であろうインシデントが生成されます。 このインシデントは、2 つ以上のアラートまたはアクティビティで構成されています。 設計上、このようなインシデントでは、ボリュームが低、忠実度が高、重大度が高になります。
+Microsoft Sentinel では、スケーラブルな機械学習アルゴリズムに基づく関連付けエンジンである Fusion を使用して、キル チェーンのさまざまな段階で観察される異常な動作と疑わしいアクティビティの組み合わせを特定することによって、マルチステージ攻撃 (持続的標的型攻撃または APT とも呼ばれる) を自動的に検出します。 これらの検出を基に、Microsoft Sentinel では、Microsoft Sentinel 以外では検出が困難であろうインシデントが生成されます。 このインシデントは、2 つ以上のアラートまたはアクティビティで構成されています。 設計上、このようなインシデントでは、ボリュームが低、忠実度が高、重大度が高になります。
 
 この検出テクノロジはご利用の環境によってカスタマイズされるため、[誤検知](false-positives.md)率を減らすだけでなく、情報が制限されているか、不足している攻撃も検出できます。
 
-Fusion では、高度なマルチステージ攻撃を検出するためにさまざまな製品からの複数の信号を関連付けるため、成功した Fusion 検出は、Microsoft Sentinel の **[インシデント]** ページに **アラート** としてではなく **Fusion インシデント** として表示され、 **[ログ]** では *SecurityAlerts* テーブルではなく *Incidents* テーブルに格納されます。
+Fusion は、高度なマルチステージ攻撃を検出するためにさまざまな製品からの複数の信号を関連付けるため、成功した Fusion 検出は、Microsoft Sentinel の **[インシデント]** ページに **Fusion インシデント** として表示され、**アラート** としては表示されず、 **[ログ]** の *[インシデント]* テーブルに格納され、 *[セキュリティ アラート]* テーブルには格納されません。
 
 ### <a name="configure-fusion"></a>Fusion を構成する
 
 Fusion は、**高度なマルチステージ攻撃の検出** と呼ばれる[分析ルール](detect-threats-built-in.md#view-built-in-detections)として、Microsoft Sentinel で既定で有効になります。 ルールの状態を表示および変更したり、Fusion ML モデルに含めるソース シグナルを構成したり、Fusion 検出から環境に適用できない特定の検出パターンを除外したりすることができます。 [Fusion ルールの構成方法](configure-fusion-rules.md)についての記事を参照してください。
 
 > [!NOTE]
-> 現在、Microsoft Sentinel では 30 日間の履歴データを使用して Fusion エンジンの機械学習アルゴリズムをトレーニングしています。 このデータは、機械学習パイプラインを通過するときに、Microsoft のキーを使用して常に暗号化されます。 ただし、Microsoft Sentinel ワークスペースで CMK を有効にした場合、トレーニング データは[カスタマー マネージド キー (CMK)](customer-managed-keys.md) を使用して暗号化されません。 Fusion をオプトアウトするには、 **[Microsoft Sentinel]** \> **[構成]** \> **[分析] \> [アクティブな規則]** の順に移動し、 **[高度なマルチステージ攻撃の検出]** 規則を右クリックし、 **[無効にする]** を選択します。
+> 現在、Microsoft Sentinel では 30 日間の履歴データを使用して Fusion エンジンの機械学習アルゴリズムをトレーニングしています。 このデータは、機械学習パイプラインを通過するときに、Microsoft のキーを使用して常に暗号化されます。 ただし、Microsoft Sentinel ワークスペースで CMK を有効にした場合、トレーニング データは[カスタマー マネージド キー (CMK)](customer-managed-keys.md) を使用して暗号化されません。 Fusion をオプトアウトするには、 **[Microsoft Sentinel]** \> **[構成]** \> **[分析]\> [アクティブな規則] の順にクリックし、** **[Advanced Multistage Attack Detection]\(高度なマルチステージ攻撃の検出\)** 規則を右クリックし、 **[無効にする]** を選択します。
 
 ## <a name="fusion-for-emerging-threats"></a>新しい脅威用の Fusion
 
@@ -76,7 +74,7 @@ Fusion エンジンの関連付けによって、新たな脅威が検出され�
 
 Microsoft Sentinel の Fusion エンジンでは、次のデータ ソースからさまざまな種類の複数のアラートを検出したときにインシデントを生成し、ランサムウェア アクティビティに関連している可能性があることを判断します。
 
-- [Microsoft Defender for Cloud](connect-azure-security-center.md)
+- [Microsoft Defender for Cloud](connect-defender-for-cloud.md)
 - [Microsoft Defender for Endpoint](./data-connectors-reference.md#microsoft-defender-for-endpoint)
 - [Microsoft Defender for Identity](./data-connectors-reference.md#microsoft-defender-for-identity)
 - [Microsoft Defender for Cloud Apps](./data-connectors-reference.md#microsoft-defender-for-cloud-apps)

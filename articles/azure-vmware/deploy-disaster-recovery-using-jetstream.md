@@ -1,22 +1,18 @@
 ---
-title: JetStream DR を使用してディザスター リカバリーをデプロイする (プレビュー)
+title: JetStream DR を使用してディザスター リカバリーをデプロイする
 description: Azure VMware Solution プライベート クラウドとオンプレミス VMware のワークロード用に、JetStream DR を実装する方法について説明します。
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: f43d2a8db4ef29588ad5260c583faab31bd01228
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 394cda9b1cfb45d260a13de910d734755e58cd42
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129279072"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717844"
 ---
-# <a name="deploy-disaster-recovery-using-jetstream-dr-preview"></a>JetStream DR を使用してディザスター リカバリーをデプロイする (プレビュー)
+# <a name="deploy-disaster-recovery-using-jetstream-dr"></a>JetStream DR を使用してディザスター リカバリーをデプロイする
 
->[!IMPORTANT]
->Azure VMware Solution の JetStream DR (プレビュー) の Azure ディスク プールは現在、パブリック プレビュー段階にあります。
->このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
->詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 [JetStream DR](https://www.jetstreamsoft.com/product-portfolio/jetstream-dr/) は、障害が発生した場合に仮想マシン (VM) のダウンタイムを最小限に抑えるように設計されたクラウドネイティブのディザスター リカバリー ソリューションです。 JetStream DR のインスタンスは、保護されたサイトと復旧サイトの両方にデプロイされます。 
 
@@ -288,33 +284,6 @@ JetStream DR MSA と JetStream VIB が Azure VMware Solution クラスターに�
    | **実行の名前を指定**  | 実行の英数字名 (例: **Uninstall-JetDR-Exec1**)。   コマンドレットが正常に実行されたかどうかを確認するために使用されます。  |
 
  1. [実行の状態を表示します](concepts-run-command.md#view-the-status-of-an-execution)。
-
-
-## <a name="region-availability"></a>利用可能なリージョン
-
-JetStream DR for Azure VMware Solution は、次のリージョンで利用できます。 
-
-- 米国東部 
-
-- 北ヨーロッパ 
-
-- 米国南部 
-
-- 西ヨーロッパ 
-
-- 米国中部 
-
-- 米国西部 
-
-- 東アジア 
-
-- 東日本 
-
-- ブラジル南部 
-
-- カナダ東部 
-
-- 英国西部 
 
 
  

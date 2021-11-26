@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d196fa6eabd0a6f9fc08b8d1b1d60e649d02ee1b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: ca051199e6fcbfab9a8de9e4a03d845bfa03c454
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234967"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553745"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -41,6 +41,8 @@ ms.locfileid: "129234967"
 デスクトップ アプリケーションで使用するリダイレクト URI は、使用するフローによって決まります。
 
 Azure portal の **[アプリの登録]** でアプリの [プラットフォーム設定を構成](quickstart-register-app.md#add-a-redirect-uri)して、アプリのリダイレクト URI を指定します。
+
+- [Web Authentication Manager (WAM)](scenario-desktop-acquire-token-wam.md) を使用するアプリケーションの場合、リダイレクト URI は MSAL で構成する必要はありませんが、[アプリの登録で](scenario-desktop-acquire-token-wam.md#redirect-uri)構成する必要があります。
 
 - 対話型認証を使用するアプリの場合:
 

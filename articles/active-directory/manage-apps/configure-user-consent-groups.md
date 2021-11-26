@@ -13,14 +13,14 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0613875ad8ecfb12590ac7c2ec51924c0523162d
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 5195b32c05b5f7f8e10e22200c2a345248e43490
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619768"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550762"
 ---
-# <a name="configure-group-owner-consent-to-applications-in-azure-active-directory"></a>Azure Active Directory でアプリケーションに対するグループ所有者の同意を構成する
+# <a name="configure-group-owner-consent-to-applications"></a>アプリケーションに対するグループ所有者の同意を構成する
 
 グループ所有者とチーム所有者は、アプリケーション (たとえば、サードパーティ ベンダーによって発行されたアプリケーション) が、グループに関連付けられている組織のデータにアクセスすることを承認できます。 たとえば、Microsoft Teams のチーム所有者は、アプリがチーム内のすべての Teams メッセージを読み取ること、またはグループのメンバーの基本プロファイルを一覧表示することを許可できます。 詳細については、「[Microsoft Teams でのリソース固有の同意](/microsoftteams/resource-specific-consent)」を参照してください。
 

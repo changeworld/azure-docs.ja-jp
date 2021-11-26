@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa931198c380fe020e4b71ff82cc908aa3adba8
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f89be09e665b6bea096b81db41d4262f51426eb3
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130248832"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719715"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) では、すべてのユーザーに既定の�
 ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。 詳細については、「[LinkedIn アカウント接続のデータ共有と同意](../enterprise-users/linkedin-user-consent.md)」を参照してください。
 セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」をご覧ください。
 Microsoft 365 グループを作成する機能 | このオプションを [いいえ] に設定すると、ユーザーは Microsoft 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Microsoft 365 グループを作成できます。 その場合でも、全体管理者とユーザー管理者は Microsoft 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」をご覧ください。
-Azure AD 管理ポータルへのアクセスを制限する | <p>このオプションを [いいえ] に設定すると、管理者以外の管理者が Azure AD 管理ポータルを使用して Azure AD リソースの読み取りと管理を行うことができます。 [はい] の場合、管理者以外はすべて、管理ポータルでの Azure AD データへのアクセスが制限されます。</p><p>**注**: この設定では、PowerShell または他のクライアント (Visual Studio など) を使用した Azure AD データへのアクセスは制限されません。[はい] に設定した場合、特定の非管理者ユーザーに Azure AD 管理ポータルを使用する権限を付与するには、ディレクトリ閲覧者ロールなどの管理ロールを割り当ててください。</p><p>**注**: この設定は、グループまたはアプリケーションの所有者である、管理者以外のユーザーが、Azure portal を使用して自分が所有しているリソースを管理できないようにします。</p><p>このロールでは、メンバー ユーザーが既定で所有している (ゲストとサービス プリンシパルは所有していない) 基本的なディレクトリ情報を読み取ることができます。</p>
+Azure AD 管理ポータルへのアクセスを制限する | <p>このオプションを [いいえ] に設定すると、管理者以外の管理者が Azure AD 管理ポータルを使用して Azure AD リソースの読み取りと管理を行うことができます。 [はい] の場合、管理者以外はすべて、管理ポータルでの Azure AD データへのアクセスが制限されます。</p><p>**注**: この設定では、PowerShell または他のクライアント (Visual Studio など) を使用した Azure AD データへのアクセスは制限されません。[はい] に設定した場合、特定の非管理者ユーザーに Azure AD 管理ポータルを使用する権限を付与するには、ディレクトリ閲覧者ロールなどの管理ロールを割り当ててください。</p><p>**注**: この設定は、グループまたはアプリケーションの所有者である、管理者以外のユーザーが、Azure portal を使用して自分が所有しているリソースを管理できないようにします。</p><p>このロールでは、メンバー ユーザーが既定で所有している (ゲストとサービス プリンシパルは所有していない) 基本的なディレクトリ情報を読み取ることができます。</p><p>**注**: ユーザーにカスタム ロールまたはいずれかのロールが割り当てられ、単なるユーザーではない限り、この設定ではアクセスは制限されません。</p>
 他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 このフラグを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、このフラグを $false に設定することは推奨されません。
 
 >[!NOTE]

@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.reviewer: hirsin
-ms.openlocfilehash: a266e60ef3079ecb12b227b047519abad5d26bf1
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: c0d182f2e0eb4fc3efe21be1c0a4e6111ad8de39
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619730"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555492"
 ---
-# <a name="configure-sign-in-behavior-in-azure-active-directory"></a>Azure Active Directory でサインインの動作を構成する
+# <a name="configure-sign-in-behavior"></a>サインイン動作を構成する
 
 この記事では、ホーム領域検出 (HRD) ポリシーを使用してフェデレーション ユーザーのために Azure Active Directory (Azure AD) 認証の動作を構成することの概要を示します。  自動高速化を使用して、ユーザー名入力画面をスキップし、自動的にフェデレーション ログイン エンドポイントにユーザーを転送することを取り上げます。  FIDO (First Identity Online) などのより強力な認証方法を使用できない可能性があり、コラボレーションの妨げとなるため、Microsoft では自動高速化を構成することは、もはやお勧めしていません。
 

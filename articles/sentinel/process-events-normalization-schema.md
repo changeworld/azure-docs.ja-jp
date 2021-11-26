@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cff85330635a5c6f9501f6064d36fa623159df22
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 6f788517a6a29e568ec983b509594039fe99e6e9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522823"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712303"
 ---
 # <a name="microsoft-sentinel-process-event-normalization-schema-reference-public-preview"></a>Microsoft Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -177,7 +175,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **ActingProcessFileVersion**       | オプション     | String     |               実行プロセス イメージ ファイルのバージョン情報からの製品バージョン。 <br><br>例: `7.9.5.0`   |
 | **ActingProcessFileInternalName**  | オプション     | String     |      実行プロセス イメージ ファイルのバージョン情報からの製品内部ファイル名。 |
 | **ActingProcessFileOriginalName** | オプション     | String     |実行プロセス イメージ ファイルのバージョン情報からの製品の元のファイル名。       <br><br> 例: `Notepad++.exe` |
-| **ActingProcessIsHidden**          | オプション     | Boolean    |      実行プロセスが非表示モードかどうかを示します。  |
+| **ActingProcessIsHidden**          | オプション     | ブール型    |      実行プロセスが非表示モードかどうかを示します。  |
 | **ActingProcessInjectedAddress**   | オプション     | String     |      責任ある実行プロセスが格納されているメモリ アドレス。           |
 | **ActingProcessId**| Mandatory    | String        | 実行プロセスのプロセス ID (PID)。<br><br>例: `48610176`           <br><br>**注**: さまざまなシステムに対応するために、型は "*文字列*" として定義されますが、Windows と Linux ではこの値は数値である必要があります。 <br><br>Windows または Linux のマシンを使用しており、かつ別の型を使用した場合は、必ず値を変換してください。 たとえば、16 進数の値を使用した場合は、10 進数の値に変換します。    |
 | **ActingProcessGuid**              | 省略可能     | string     |  実行プロセスの生成された一意識別子 (GUID)。 システム間でプロセスを識別できます。  <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
@@ -195,7 +193,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **ParentProcessFileDescription**   | オプション     | String     |  親プロセス イメージ ファイルのバージョン情報からの説明。    <br><br>例: `Notepad++ : a free (GPL) source code editor`|
 | **ParentProcessFileProduct**       | オプション     | String     |親プロセス イメージ ファイルのバージョン情報からの製品名。    <br><br>  例: `Notepad++`  |
 | **ParentProcessFileVersion**       | オプション     | String     | 親プロセス イメージ ファイルのバージョン情報からの製品バージョン。    <br><br> 例: `7.9.5.0` |
-| **ParentProcessIsHidden**          | オプション     | Boolean    |   親プロセスが非表示モードかどうかを示します。  |
+| **ParentProcessIsHidden**          | オプション     | ブール型    |   親プロセスが非表示モードかどうかを示します。  |
 | **ParentProcessInjectedAddress**   | オプション     | String     |    責任ある親プロセスが格納されているメモリ アドレス。           |
 | **ParentProcessId**| Mandatory    | String    | 親プロセスのプロセス ID (PID)。   <br><br>     例: `48610176`    |
 | **ParentProcessGuid**              | オプション     | String     |  親プロセスの生成された一意識別子 (GUID)。  システム間でプロセスを識別できます。    <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
@@ -220,7 +218,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **TargetProcessFileVersion**       | オプション     | String     |ターゲット プロセス イメージ ファイルのバージョン情報の製品バージョン。   <br><br>  例: `7.9.5.0` |
 | **TargetProcessFileInternalName**  |    オプション          | String  |   ターゲット プロセスのイメージ ファイルのバージョン情報の製品内部ファイル名。 |
 | **TargetProcessFileOriginalName** |       オプション       | String   |   ターゲット プロセスのイメージ ファイルのバージョン情報からの製品の元のファイル名。 |
-| **TargetProcessIsHidden**          | オプション     | Boolean    |   ターゲット プロセスが非表示モードかどうかを示します。  |
+| **TargetProcessIsHidden**          | オプション     | ブール型    |   ターゲット プロセスが非表示モードかどうかを示します。  |
 | **TargetProcessInjectedAddress**   | オプション     | String     |    責任あるターゲット プロセスが格納されているメモリ アドレス。           |
 | **TargetProcessMD5**               | オプション     | MD5        | ターゲット プロセス イメージ ファイルの MD5 ハッシュ。   <br><br> 例: `75a599802f1fa166cdadb360960b1dd0`|
 | **TargetProcessSHA1**              | オプション     | SHA1       | ターゲット プロセス イメージ ファイルの SHA-1 ハッシュ。       <br><br>  例: `d55c5a4df19b46db8c54c801c4665d3338acdab0`   |

@@ -9,12 +9,12 @@ ms.reviewer: tzgitlin
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
-ms.openlocfilehash: 2c472ae5950bc035612987c35e76291dc5c23f49
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: cb275db1c34fa8e479a10a3ac5495160855c6add
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132485657"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720361"
 ---
 # <a name="ingest-blobs-into-azure-synapse-data-explorer-by-subscribing-to-event-grid-notifications-preview"></a>Event Grid の通知をサブスクライブすることで Azure Synapse Data Explorer に BLOB を取り込む (プレビュー)
 
@@ -27,7 +27,7 @@ ms.locfileid: "132485657"
 
 [!INCLUDE [data-connector-intro](../includes/data-explorer-ingest-data-intro.md)]
 
-この記事では、Event Grid データ接続を使用してストレージ アカウントから Azure Synapse Data Explorer に BLOB を取り込む方法について説明します。 [Azure Event Grid](/azure/event-grid/overview) サブスクリプションを設定する Event Grid データ接続を作成します。 Event Grid サブスクリプションでは、Azure Event Hub 経由でストレージ アカウントから Data Explorer にイベントをルーティングします。 その後、システム全体のデータ フローの例が表示されます。
+この記事では、Event Grid データ接続を使用してストレージ アカウントから Azure Synapse Data Explorer に BLOB を取り込む方法について説明します。 [Azure Event Grid](../../../event-grid/overview.md) サブスクリプションを設定する Event Grid データ接続を作成します。 Event Grid サブスクリプションでは、Azure Event Hub 経由でストレージ アカウントから Data Explorer にイベントをルーティングします。 その後、システム全体のデータ フローの例が表示されます。
 
 Event Grid から Data Explorer への取り込みに関する一般的な情報については、[Event Grid への接続](data-explorer-ingest-event-grid-overview.md)に関する記事をご覧ください。<!-- To create resources manually in the Azure portal, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md). -->
 
@@ -56,7 +56,7 @@ Event Grid から Data Explorer への取り込みに関する一般的な情報
         ```
 
 * [ストレージ アカウント](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)を作成します。
-* Event Grid 通知サブスクリプションは、`BlobStorage`、`StorageV2`、または [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction) に対して Azure Storage アカウントで設定できます。
+* Event Grid 通知サブスクリプションは、`BlobStorage`、`StorageV2`、または [Data Lake Storage Gen2](../../../storage/blobs/data-lake-storage-introduction.md) に対して Azure Storage アカウントで設定できます。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -96,7 +96,7 @@ Event Grid から Data Explorer への取り込みに関する一般的な情報
         * BLOB プレフィックス (または Azure Data Lake Gen2 のフォルダー) に対してフィルターを定義するには、フィールドを *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`* のように設定する "*必要があります*"。
     * **[Suffix]\(サフィックス\)** フィールドは、BLOB の "*リテラル*" サフィックスです。 ワイルドカードは使用できません。
     * **[Case-Sensitive]\(大文字と小文字の区別\)** フィールドは、プレフィックスとサフィックスのフィルターで大文字と小文字が区別されるかどうかを示します
-    * イベントのフィルター処理の詳細については、[Blob Storage のイベント](/azure/storage/blobs/storage-blob-event-overview#filtering-events)に関するページを参照してください。
+    * イベントのフィルター処理の詳細については、[Blob Storage のイベント](../../../storage/blobs/storage-blob-event-overview.md#filtering-events)に関するページを参照してください。
 
     :::image type="content" source="../media/ingest-data-event-grid/filter-settings.png" alt-text="Event Grid のフィルター設定。":::
 
@@ -148,7 +148,7 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
 1. 既存のファイルを (BLOB として) そのコンテナーにアップロードする。
 1. コンテナー内の BLOB を一覧表示する。
 
-[Azure Cloud Shell](/azure/cloud-shell/overview) を使用して、このスクリプトをポータルで直接実行できます。
+[Azure Cloud Shell](../../../cloud-shell/overview.md) を使用して、このスクリプトをポータルで直接実行できます。
 
 ファイルにデータを保存し、このスクリプトでそれをアップロードします。
 

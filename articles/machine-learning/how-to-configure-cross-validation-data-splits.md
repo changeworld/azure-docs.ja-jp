@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 11/15/2021
-ms.openlocfilehash: 69f5913b03db51561cde17117ef97ec3c9e50868
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: d8f94f4e6c7b6d94a2865d0a6a6c4454b1356210
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132520619"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722147"
 ---
 # <a name="configure-training-validation-cross-validation-and-test-data-in-automated-machine-learning"></a>自動機械学習でのトレーニング、検証、クロス検証、テストのデータを構成する
 
@@ -205,7 +205,14 @@ K 分割またはモンテカルロ クロス検証を使用すると、各検�
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-テスト データセットは [Azure Machine Learning TabularDataset](how-to-create-register-datasets.md#tabulardataset) 形式にする必要があります。 `AutoMLConfig` オブジェクトで `test_data` と `test_size` のパラメーターを使ってテスト データセットを指定できます。  これらのパラメーターは相互に排他的であり、同時に指定することはできません。 
+> [!WARNING]
+> この機能は、次の自動 ML シナリオでは使用できません
+>  * [Computer Vision タスク (プレビュー)](how-to-auto-train-image-models.md)
+>  * [多数モデルおよび階層型時系列予測トレーニング (プレビュー)](how-to-auto-train-forecast.md)
+>  * [ディープ ラーニング ニューラル ネットワーク (DNN) が有効になっている予測タスク](how-to-auto-train-forecast.md#enable-deep-learning)
+>  * [ローカル コンピューティングまたは Azure Databricks クラスターからの自動 ML 実行](how-to-configure-auto-train.md#compute-to-run-experiment)
+
+テスト データセットは [Azure Machine Learning TabularDataset](how-to-create-register-datasets.md#tabulardataset) 形式にする必要があります。 `AutoMLConfig` オブジェクトで `test_data` と `test_size` のパラメーターを使ってテスト データセットを指定できます。  これらのパラメーターは相互に排他的であり、同時に指定したり、`cv_split_column_names` または `cv_splits_indices` と一緒に指定したりすることはできません。
 
 `test_data` パラメーターを使い、`AutoMLConfig` オブジェクトに渡す既存のデータセットを指定します。 
 
@@ -231,7 +238,8 @@ automl_config = AutoMLConfig(task = 'regression',
 > [!Note]
 > 回帰タスクの場合は、ランダム サンプリングが使われます。<br>
 > 分類タスクの場合は、階層サンプリングが使われますが、階層サンプリングを使用できない場合は、フォールバックとしてランダム サンプリングが使われます。 <br>
-> 現在、予測は、トレーニングとテストの分割を使ったテスト データセットの指定をサポートしていません。
+> 現在、予測は、`test_size` パラメーターでのトレーニングとテストの分割を使ったテスト データセットの指定をサポートしていません。
+
 
 `test_data` または `test_size` のパラメーターを `AutoMLConfig` に渡すと、実験の完了時に自動的にリモート テストの実行がトリガーされます。 このテストの実行には、指定したテスト データが使われ、自動 ML によって推奨される最適なモデルが評価されます。 詳細については、[テストの実行からの予測を取得する方法](how-to-configure-auto-train.md#test-models-preview)に関する記事を参照してください。
 

@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 22b0b3dfc76c6ae2dc8de38113b3cb2075117a70
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 81f4775771c162dce061bc1ad8901bd9b9542d40
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858457"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554942"
 ---
 # <a name="connect-to-and-manage-salesforce-in-azure-purview-preview"></a>Azure Purview で Salesforce に接続して管理する (プレビュー)
 
@@ -26,9 +26,9 @@ ms.locfileid: "131858457"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| いいえ|
+| [あり](#register)| [はい](#scan)| いいえ | いいえ | いいえ | いいえ| いいえ|
 
-Salesforce をスキャンする場合、Purview では、Salesforce の組織、オブジェクト、フィールド、外部キー、unique_constraints などのメタデータの抽出がサポートされます。
+Salesforce をスキャンする場合、Purview では、Salesforce の組織、オブジェクト、フィールド、外部キー、unique_constraints を含むメタデータの抽出がサポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ Salesforce をスキャンする場合、Purview では、Salesforce の組織�
 
 * 最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。 詳細については、[セルフホステッド統合ランタイムの作成および構成ガイド](../data-factory/create-self-hosted-integration-runtime.md)に関する記事を参照してください。
 
-* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.Salesforce.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
+* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) がインストールされていることを確認します。
 
 * セルフホステッド統合ランタイム マシンに Visual Studio 2012 Update 4 の Visual C++ 再頒布可能パッケージがインストールされていることを確認します。 この更新プログラムがインストールされていない場合は、[ここからダウンロードできます](https://www.microsoft.com/download/details.aspx?id=30679)。
 

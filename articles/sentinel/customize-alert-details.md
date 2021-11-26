@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6ce94549c4e58e0a19fff40e944ece22f948f953
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 8cbffe40ac7773401535eed3d249f0e13903b1e7
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521722"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721406"
 ---
 # <a name="customize-alert-details-in-microsoft-sentinel"></a>Microsoft Sentinel でアラートの詳細をカスタマイズする 
 
@@ -67,4 +65,4 @@ ms.locfileid: "132521722"
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft Sentinel 分析ルールでアラートの詳細をカスタマイズする方法について学習しました。 Microsoft Sentinel の詳細については、次の記事を参照してください。
 - [スケジュールされたクエリ分析ルール](detect-threats-custom.md)の完全な画像を取得します。
-- [Microsoft Sentinel のエンティティ](entities-in-azure-sentinel.md)の詳細を確認します。
+- [Microsoft Sentinel のエンティティ](entities.md)の詳細を確認します。

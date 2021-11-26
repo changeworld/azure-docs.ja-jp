@@ -4,17 +4,15 @@ description: データ ソースを Microsoft Sentinel に接続するときに�
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 17561127c040fc1aedac771093e0bfa6366c4d30
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: b64e7d9cedeb0e979f6b733163617a67c69d79fe
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132524780"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714639"
 ---
 #  <a name="data-collection-best-practices"></a>データ収集のベスト プラクティス
 
@@ -24,7 +22,7 @@ ms.locfileid: "132524780"
 
 ## <a name="prioritize-your-data-connectors"></a>データ コネクタの優先順位を設定する
 
-どのデータ コネクタがお使いの環境に最適か不明な場合は、まずすべての[無料のデータ コネクタ](azure-sentinel-billing.md#free-data-sources)を有効にしてください。
+どのデータ コネクタがお使いの環境に最適か不明な場合は、まずすべての[無料のデータ コネクタ](billing.md#free-data-sources)を有効にしてください。
 
 無料のデータ コネクタにより、すぐに Microsoft Sentinel の価値が示されるようになり、その間に、引き続き他のデータ コネクタや予算についての計画を立てることができます。
 
@@ -47,7 +45,7 @@ ms.locfileid: "132524780"
 - **Logstash**。 ログ メッセージへの変更を含む、メッセージ内容のフィルター処理をサポートします。 詳細については、「[Logstash を使用して接続する](create-custom-connector.md#connect-with-logstash)」を参照してください。
 
 > [!IMPORTANT]
-> Logstash を使用してメッセージの内容をフィルター処理すると、ログがカスタム ログとして取り込まれ、[Free レベルのログ](azure-sentinel-billing.md#free-data-sources)が有料レベルのログになります。
+> Logstash を使用してメッセージの内容をフィルター処理すると、ログがカスタム ログとして取り込まれ、[Free レベルのログ](billing.md#free-data-sources)が有料レベルのログになります。
 >
 > カスタム ログは自動的に追加されないため、[分析ルール](automate-incident-handling-with-automation-rules.md)、[脅威ハンティング](hunting.md)、および[ブック](get-visibility.md)に組み込む必要もあります。 また、カスタム ログは現在、[機械学習](bring-your-own-ml.md)機能に対してサポートされていません。
 >

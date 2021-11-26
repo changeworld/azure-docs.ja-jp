@@ -8,12 +8,12 @@ author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
 ms.date: 10/11/2021
-ms.openlocfilehash: 0ef727d47949acb1d095bbfb3890021b273c50db
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 767b25e6578c051b4d4e7ea0a95d927be29db5c7
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811211"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724959"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [使用量] ダッシュボード
 
@@ -191,6 +191,7 @@ _**表 1: データ用語の辞書**_
 | 実行した操作 | 実行した操作 | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>公開元が、オファーのカスタム測定ディメンションの顧客による超過分の使用量を正規または誤りと認めた時間を指定します。<br><bpt id="p1">_</bpt>公開元にカスタム測定ディメンションを持つオファーがない場合、プログラムによるアクセスによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | ActionTakenAt |
 | 操作の実行者 | 操作の実行者 | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>オファーのカスタム測定ディメンションの顧客による超過分の使用量を正規または誤りと認めたユーザーを指定します。<br><bpt id="p1">_</bpt>公開元にカスタム測定ディメンションを持つオファーがない場合、プログラムによるアクセスによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | ActionTakenBy |
 | 推定される財務上の影響 (米国ドル) | 推定される財務上の影響 (米国ドル) | <bpt id="p1">**</bpt>カスタム測定ディメンションを持つオファーに適用されます<ept id="p1">**</ept>。<br>パートナー センターでオファーのカスタム測定ディメンションの顧客による超過分の使用量が異常としてフラグされた場合、このフィールドではこの異常な超過分の使用量による財務上の影響 (USD) の推定を指定します。<br><bpt id="p1">_</bpt>公開元がカスタム測定ディメンションを持つオファーを持っていない場合、プログラムによってこの列をエクスポートすると、値は null になります。<ept id="p1">_</ept> | EstimatedFinancialImpactUSD |
+| 資産 ID | 資産 ID | コマーシャル マーケットプレース サービスの顧客の注文の一意識別子。 仮想マシンの使用量ベースのプランは、注文に関連付けられていません。 | 資産 ID |
 | 該当なし | リソース ID | リソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 これは、ダウンロード レポートでのみ使用できるデータ フィールドであることに注意してください。<br>次の形式を使用します。<br> /subscriptions/<GUID>/resourceGroups/<リソース グループ名>/<リソース プロバイダー名前空間>/<リソースの種類>/<リソース名><br>**注**: このフィールドは 2021 年 10 月 20 日に非推奨になります。 | 該当なし |
 |||||
 

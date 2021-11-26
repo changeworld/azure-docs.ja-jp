@@ -3,21 +3,21 @@ title: パブリック マルチテナント App Service での可用性ゾー�
 description: アプリがゾーン冗長になるようにアプリ サービスをデプロイする方法について説明します。
 author: seligj95
 ms.topic: article
-ms.date: 09/01/2021
+ms.date: 11/16/2021
 ms.author: jordanselig
 ms.custom: references_regions
-ms.openlocfilehash: 1fb6959ab6e47ad631ea3cac208a3dc52ca41e41
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e0388695708e8ab3c47ea8049038fb95384dabd2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832702"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551295"
 ---
 # <a name="availability-zone-support-for-public-multi-tenant-app-service"></a>パブリック マルチテナント App Service での可用性ゾーンのサポート
 
-Microsoft Azure App Service は、お客様のアプリの[高可用性](https://en.wikipedia.org/wiki/High_availability)を実現する[可用性ゾーン (AZ)](../availability-zones/az-overview.md) にデプロイできます。 このアーキテクチャは、ゾーン冗長とも呼ばれます。
+Microsoft Azure App Service を[可用性ゾーン (AZ)](../availability-zones/az-overview.md) にデプロイして、ビジネス クリティカルなワークロードの回復性と信頼性を実現するのに役立てることができます。 このアーキテクチャは、ゾーン冗長とも呼ばれます。
 
-アプリは App Service プラン (ASP) で稼働し、App Service プランは単一のスケール ユニット内に存在します。 アプリ サービスがゾーン冗長として構成されていると、プラットフォームによって、選択されたリージョン内の 3 つのゾーンすべてに対して App Service プランの VM インスタンスが自動的に分散されます。 3 を超える容量が指定されていて、インスタンスの数が 3 で割り切れる場合は、インスタンスが均等に分散されます。 それ以外の場合は、3*N を超えるインスタンス数が残りの 1 つまたは 2 つのゾーンに対して分散されます。
+アプリは App Service プラン (ASP) で稼働し、App Service プランは単一のスケール ユニット内に存在します。 アプリ サービスがゾーン冗長として構成されていると、プラットフォームによって、選択されたリージョン内の 3 つのゾーンすべてに対して App Service プランの VM インスタンスが自動的に分散されます。 3 を超える容量が指定されていて、インスタンスの数が 3 で割り切れる場合は、インスタンスが均等に分散されます。 それ以外の場合は、3*N を超えるインスタンス数が残りの 1 つまたは 2 つのゾーンに対して分散されます。 ゾーン冗長に構成されていない App Services の場合、VM インスタンスは選択したリージョンの単一ゾーンに配置されます。
 
 ## <a name="requirements"></a>必要条件
 

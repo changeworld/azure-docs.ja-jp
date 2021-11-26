@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1e5e0752459362dbb3cea63b9adb5f453f40d2fd
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 3b8f06a5700dd4bb0ec4c75223ffe9680515215f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132524476"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721159"
 ---
 # <a name="microsoft-sentinel-file-event-normalization-schema-reference-public-preview"></a>Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -189,7 +187,7 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 
 パスは、次のいずれかの形式と一致するように正規化される必要があります。 値が正規化される形式は、それぞれの **FilePathType** フィールドに反映されます。
 
-|Type  |例  |メモ  |
+|Type  |例  |Notes  |
 |---------|---------|---------|
 |**Windows ローカル**     |   `C:\Windows\System32\notepad.exe`      |      Windows のパス名は大文字と小文字が区別されないため、この型は値の大文字と小文字が区別されないことを示します。   |
 |**Windows 共有**     |      `\\Documents\My Shapes\Favorites.vssx`   | Windows のパス名は大文字と小文字が区別されないため、この型は値の大文字と小文字が区別されないことを示します。        |

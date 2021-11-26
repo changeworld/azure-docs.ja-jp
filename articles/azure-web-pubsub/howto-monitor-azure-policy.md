@@ -6,18 +6,18 @@ ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 10/25/2021
 ms.author: jixin
-ms.openlocfilehash: a755b0bb9e01dff95c83bb2caf8d7773bb2d46d4
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: c2cc6b0a3b16d69a4ddeb94a8775ad5abc3afec8
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130270087"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714810"
 ---
 # <a name="audit-compliance-of-azure-web-pubsub-service-resources-using-azure-policy"></a>Azure Policy を使用して Azure Web PubSub サービス リソースのコンプライアンスを監査する
 
 [Azure Policy](../governance/policy/overview.md) は、ポリシーの作成、割り当て、管理に使用する Azure のサービスです。 これらのポリシーは、リソースにさまざまなルールと効果を適用して、それらのリソースが会社の標準とサービス レベル アグリーメントに準拠した状態に保たれるようにします。
 
-この記事では、Azure Web PubSub サービスの組み込みポリシー (プレビュー) について説明します。 これらのポリシーを使用して、新規および既存の Web PubSub リソースのコンプライアンスを監査します。
+この記事では、Azure Web PubSub サービスの組み込みポリシーについて説明します。 これらのポリシーを使用して、新規および既存の Web PubSub リソースのコンプライアンスを監査します。
 
 Azure Policy を使用するのに料金は一切かかりません。
 

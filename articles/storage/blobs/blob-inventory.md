@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 712cf4c6002983a47e44fb87be983bfca575f534
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 0de81ce6f7f6f042ce0e0cb933a85566af7f3875
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129996819"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724161"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure Storage BLOB インベントリ
 
@@ -231,7 +231,7 @@ BLOB インベントリの実行は、毎日自動的にスケジュールされ
 
 次の表で、`BlobInventoryPolicyCompleted` イベントのスキーマについて説明します。
 
-|フィールド|Type|説明|
+|フィールド|型|説明|
 |---|---|
 |scheduleDateTime|string|インベントリ ポリシーがスケジュールされた時刻。|
 |accountName|string|ストレージ アカウント名。|
@@ -329,14 +329,14 @@ Azure Storage BLOB インベントリの価格の詳細については、[Azure 
 
 ## <a name="feature-support"></a>機能サポート
 
-この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
-|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![はい](../media/icons/yes-icon.png) <sup>2</sup> |
-| Premium ブロック BLOB | ![はい](../media/icons/yes-icon.png)| ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> | SFTP <sup>1</sup> |
+|--|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![はい](../media/icons/yes-icon.png) <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
+| Premium ブロック BLOB | ![はい](../media/icons/yes-icon.png)| ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
 
-<sup>1</sup> Data Lake Storage Gen2 と Network File System (NFS) 3.0 プロトコルはどちらも、階層型名前空間を有効にしたストレージ アカウントが必要です。
+<sup>1</sup> Data Lake Storage Gen2、ネットワーク ファイル システム (NFS) 3.0 プロトコル、セキュア ファイル転送プロトコル (SFTP) のサポートでは、すべて階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 <sup>2</sup> 機能のサポートはプレビュー段階です。
 

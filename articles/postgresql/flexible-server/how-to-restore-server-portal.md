@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 04/22/2021
-ms.openlocfilehash: 795cc61f89729da352deb1dc1688bd19e780ca10
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 11/18/2021
+ms.openlocfilehash: a9d09169b81e274202e9bf3df5a91844cf34807b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987726"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132721946"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>フレキシブル サーバーのポイントインタイム リストア
 
@@ -66,6 +66,24 @@ ms.locfileid: "107987726"
 6.  **[OK]** をクリックします。
 
 7.  復元操作が開始されたことを示す通知が表示されます。
+
+## <a name="performing-geo-restore-preview"></a>geo リストアの実行 (プレビュー)
+
+ソース サーバーが geo 冗長バックアップを使用して構成されている場合は、ペアになっているリージョンにサーバーを復元できます。 最初に復元するときは、ソース サーバーが作成された後、少なくとも1時間待機してください。
+
+1.  [Azure portal](https://portal.azure.com/) で、バックアップの geo リストア元のフレキシブル サーバーを選択します。
+
+2.  [概要] ページで、 **[復元]** をクリックします。
+ :::image type="content" source="./media/how-to-restore-server-portal/geo-restore-click.png" alt-text="[復元] をクリックします":::
+
+3. [復元] ページで、[Geo-Redundant restore]\(Geo 冗長復元\) を選択して、ペアになっているリージョンに復元します。 
+ :::image type="content" source="./media/how-to-restore-server-portal/geo-restore-choose-checkbox.png" alt-text="[Geo リストア] の選択":::
+ 
+4. リージョンとデータベースのバージョンがあらかじめ選択されています。 これは、ペアのリージョンで使用可能な最後のデータに復元されます。 復元先のリージョン内の **可用性ゾーン** を選択できます。
+
+5. 既定では、復元されたサーバーのバックアップは Geo 冗長バックアップを使用して構成されます。 Geo 冗長バックアップが必要ではない場合は、 **[サーバーの構成]** をクリックして、Geo 冗長バックアップをオフにします。
+
+6. ソース サーバーが **プライベート アクセス** で構成されている場合、リモート リージョンの別の VNET にしか復元できません。 既存の VNET を選択するか、新しい VNET を作成し、その VNET にサーバーを復元することができます。  
 
 ## <a name="next-steps"></a>次のステップ
 

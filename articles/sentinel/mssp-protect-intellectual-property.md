@@ -7,8 +7,6 @@ author: batamig
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
@@ -16,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: 11ee855d2606376ab893d581a091afeca3dd6713
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: a0e2874782432c707aabc571ed77370b512e2dbf
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132518871"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713119"
 ---
 # <a name="protecting-mssp-intellectual-property-in-microsoft-sentinel"></a>Microsoft Sentinel で MSSP の知的財産権を保護する
 

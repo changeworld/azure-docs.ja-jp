@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: a69a880453ffffcb55fd257b8f1b65de75d2f80d
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: e871bfe8f6fa787a3ffffc4fa0efb2df6d920a0e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132289150"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548389"
 ---
-# <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>アプリケーションの同意の管理と Azure Active Directory の同意要求の評価
+# <a name="manage-consent-to-applications-and-evaluate-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
 
 Microsoft では、ユーザーが検証された発行元からのアプリと選択したアクセス許可に対してのみ同意できるように、[ユーザーの同意を制限する](../../active-directory/manage-apps/configure-user-consent.md)ことをお勧めします。 このポリシーを満たしていないアプリの場合、組織のセキュリティ チームと ID 管理者チームに意思決定プロセスが一元化されます。
 

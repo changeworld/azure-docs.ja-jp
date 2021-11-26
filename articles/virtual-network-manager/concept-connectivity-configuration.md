@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: face052462909e755771f12ff19fed8139675183
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: bf7adbb0fd54243e71f6e313892f3f418071c217
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132484599"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719170"
 ---
 # <a name="connectivity-configuration-in-azure-virtual-network-manager-preview"></a>Azure Virtual Network Manager の接続構成 (プレビュー)
 
@@ -72,7 +72,7 @@ VM 上の有効なルートを確認すると、ハブ アンド スポーク仮
 
 ### <a name="use-hub-as-a-gateway"></a>ハブをゲートウェイとして使用する
 
-ハブアンドスポーク構成で有効にできるもう 1 つのオプションは、ハブをゲートウェイとして使用する方法です。 この設定により、ネットワーク グループ内のすべての仮想ネットワークが、ハブ仮想ネットワーク内の VPN または ExpressRoute ゲートウェイを介してトラフィックを渡すことを許可します。 [ゲートウェイとオンプレミスの接続](/azure/virtual-network/virtual-network-peering-overview#gateways-and-on-premises-connectivity)を参照してください。
+ハブアンドスポーク構成で有効にできるもう 1 つのオプションは、ハブをゲートウェイとして使用する方法です。 この設定により、ネットワーク グループ内のすべての仮想ネットワークが、ハブ仮想ネットワーク内の VPN または ExpressRoute ゲートウェイを介してトラフィックを渡すことを許可します。 [ゲートウェイとオンプレミスの接続](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity)を参照してください。
 
 Azure portal からハブ アンド スポーク トポロジをデプロイすると、ネットワーク グループ内のスポーク仮想ネットワークに対して、**ハブをゲートウェイとして使用する** が規定で有効になります。 Azure Virtual Network Manager は、リソース グループ内のハブ アンド スポーク仮想ネットワークの間に仮想ネットワーク ピアリング接続を作成します。 ゲートウェイがハブ仮想ネットワークに存在しない場合、スポーク仮想ネットワークからハブへのピアリング作成は失敗します。 ハブからスポークへのピアリング接続は、確立された接続なしで作成されます。 
 

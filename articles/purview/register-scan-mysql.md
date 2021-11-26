@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a8d6d95e015400ce92d4963527ae976ddde689fe
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 8f7d2dbdab590d2236032d3dd96a2008e2aa79c0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858367"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553840"
 ---
 # <a name="connect-to-and-manage-mysql-in-azure-purview-preview"></a>Azure Purview で MySQL に接続して管理する (プレビュー)
 
@@ -26,13 +26,13 @@ ms.locfileid: "131858367"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| はい|
+| [あり](#register)| [はい](#scan)| いいえ | いいえ | いいえ | いいえ| はい|
 
 サポートされている MySQL サーバーのバージョンは、5.7 から 8.x です。
 
 MySQL ソースをスキャンするとき、Purview では以下がサポートされます。
 
-- MySQL サーバー、データベース、テーブル、ビュー、テーブル/ビュー列などのメタデータの抽出。
+- MySQL サーバー、データベース、テーブル、ビュー、テーブル/ビュー列を含むメタデータの抽出。
 - テーブルとビュー間の資産リレーションシップの系列のフェッチ。
 
 ## <a name="prerequisites"></a>前提条件
@@ -45,7 +45,7 @@ MySQL ソースをスキャンするとき、Purview では以下がサポート
 
 * 最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。 詳細については、[セルフホステッド統合ランタイムの作成および構成ガイド](../data-factory/create-self-hosted-integration-runtime.md)に関する記事を参照してください。
 
-* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.MySQL.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
+* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) がインストールされていることを確認します。
 
 * セルフホステッド統合ランタイム マシンに Visual Studio 2012 Update 4 の Visual C++ 再頒布可能パッケージがインストールされていることを確認します。 この更新プログラムがインストールされていない場合は、[ここからダウンロードできます](https://www.microsoft.com/download/details.aspx?id=30679)。
 

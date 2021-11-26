@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/27/2020
+ms.date: 11/15/2021
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: c19646a554a9c12315a23cfa272625629c844e37
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3474b44f7661fd60a3885ee237f926f13dbfa361
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127157"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549810"
 ---
 # <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>DMV を使用して Azure Synapse Analytics の専用 SQL プールのワークロードを監視する
 
@@ -220,7 +220,7 @@ ORDER BY sr.request_id;
 
 クエリで大量のメモリを消費しているか、tempdb の割り当てに関するエラー メッセージが表示された場合は、非常に大きな [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) または [INSERT SELECT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントが実行されていることが原因の可能性があります。この場合、最終的なデータ移動操作に失敗します。 これは通常、最終的な INSERT SELECT の直前の、分散クエリ プランの ShuffleMove 操作として識別できます。  ShuffleMove 操作を監視するには、[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用します。
 
-最も一般的な軽減策は、データ ボリュームが tempdb の制限である 1 TB (ノードあたり) を超えないように、CTAS または INSERT SELECT ステートメントを複数の LOAD ステートメントに分割することです。 また、クラスターをより大きなサイズにスケーリングすることができます。これにより、より多くのノードに tempdb サイズが分散され、個々のノードの tempdb が減ります。
+最も一般的な軽減策は、データ ボリュームが tempdb の制限であるノードあたり 2 TB (DW500c 以上の場合) を超えないように、CTAS または INSERT SELECT ステートメントを複数の LOAD ステートメントに分割することです。 また、クラスターをより大きなサイズにスケーリングすることができます。これにより、より多くのノードに tempdb サイズが分散され、個々のノードの tempdb が減ります。
 
 CTAS ステートメントと INSERT SELECT ステートメントだけでなく、大規模で複雑なクエリがメモリ不足の状態で実行されると、tempdb に書き込まれ、クエリが失敗する可能性があります。  tempdb への書き込みを避けるために、より大きな[リソース クラス](resource-classes-for-workload-management.md)を使用して実行することを検討してください。
 

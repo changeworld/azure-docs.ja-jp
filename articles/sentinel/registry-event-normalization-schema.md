@@ -6,8 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +13,12 @@ ms.topic: reference
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4a22c8b2f207d8d6d2019f417bfcb025dcca9fa1
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 99892cb92bd2a7ac4ba854b96928707801ccd1aa
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132523925"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712245"
 ---
 # <a name="microsoft-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Microsoft Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -176,6 +174,6 @@ Microsoft Sentinel には、[[IFEO レジストリ キーを使用した永続�
 
 - [Microsoft Sentinel での正規化](normalization.md)
 - [Microsoft Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
-- [Microsoft Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
+- [Microsoft Sentinel の DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
 - [Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
 - [Microsoft Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)

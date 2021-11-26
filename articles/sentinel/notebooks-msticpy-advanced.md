@@ -4,16 +4,15 @@ description: Microsoft Sentinel で作業するときに、Jupyter Notebook と 
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 513f7c3c7e80f526f76e899a509de2b743fc9e7c
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 68274be9eb1cc45bf9b96454314246149e90c4ec
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132516971"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712682"
 ---
 # <a name="advanced-configurations-for-jupyter-notebooks-and-msticpy-in-microsoft-sentinel"></a>Microsoft Sentinel での Jupyter Notebook と MSTICPy の詳細な構成
 

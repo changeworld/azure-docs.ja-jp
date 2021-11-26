@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bed39bd544ac1b586dcefefb890927fe1ce472b2
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 3eeec8e1b1318018f5d07ee6ef045f4e10f40cc6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129402153"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720569"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードのサポート
 
@@ -301,14 +301,14 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="feature-support"></a>機能サポート
 
-この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> |
-|--|--|--|--|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
-| Premium ブロック BLOB | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> | SFTP <sup>1</sup> |
+|--|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
-<sup>1</sup> Data Lake Storage Gen2 と Network File System (NFS) 3.0 プロトコルはどちらも、階層型名前空間を有効にしたストレージ アカウントが必要です。
+<sup>1</sup> Data Lake Storage Gen2、ネットワーク ファイル システム (NFS) 3.0 プロトコル、セキュア ファイル転送プロトコル (SFTP) のサポートでは、すべて階層型名前空間が有効になっているストレージ アカウントが必要です
 
 ## <a name="faq"></a>よく寄せられる質問
 

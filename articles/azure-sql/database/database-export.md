@@ -11,12 +11,12 @@ ms.author: chadam
 ms.reviewer: ''
 ms.date: 11/01/2021
 ms.topic: how-to
-ms.openlocfilehash: d65e4c496b3be19e710fe94b955bcc7ad01be945
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 52342bded2ac0af55dd0cdd4b7670b05f5f0b249
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470283"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710503"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC ファイルへのエクスポート - Azure SQL Database および Azure SQL Managed Instance
 
@@ -30,6 +30,7 @@ ms.locfileid: "131470283"
 - Blob Storage にエクスポートする場合、BACPAC ファイルの最大サイズは 200 GB です。 大きな BACPAC ファイルをアーカイブするには、ローカル ストレージにエクスポートします。
 - この記事で説明されている方法を用いた Azure Premium Storage への BACPAC ファイルのエクスポートはサポートされていません。
 - ファイアウォールの背後にある Storage は現在サポートされていません。
+- 不変ストレージは現在サポートされていません。
 - Storage のファイル名または StorageURI の入力値は 128 文字未満の長さにする必要があり、かつ '.' で終了したり、空白文字や '<,>,*,%,&,:,\,/,?' などの特殊文字を含んでいたりすることはできません。 
 - エクスポート操作が 20 時間を超える場合は取り消されることがあります。 エクスポート中にパフォーマンスを向上させるには、次の操作を実行します。
 

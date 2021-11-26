@@ -13,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e4f03e2f7540b4724b7dfe001f5fc77ac3c0706e
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4ea75a7aa9b5a2e06ecce612654604af4db1bdf3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617836"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546901"
 ---
-# <a name="troubleshoot-application-sign-in-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション サインインのトラブルシューティング
+# <a name="troubleshoot-application-sign-in"></a>アプリケーションのサインインのトラブルシューティング
 
 Web ベースのポータルであるマイ アプリを使用すると、Azure Active Directory (Azure AD) の職場または学校アカウントを持つユーザーは、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 マイ アプリは、[https://myapps.microsoft.com](https://myapps.microsoft.com) で Web ブラウザーの使用によりアクセスされます。
 

@@ -3,16 +3,16 @@ title: Azure portal を使用して VM を復元する
 description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します。たとえば、リージョンをまたがる復元機能があります。
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 11/09/2021
+ms.date: 11/16/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 65cf378ffc4e627d482999b5ea65e4d238b8d368
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 09cadbdc0ba340c863b7ad3ddc62ea29a5d92ef1
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132308562"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717920"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -98,6 +98,9 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 1. **[復元]** を選択して復元操作をトリガーします。
 
+>[!Note]
+>NSG 設定を変更する前に、VM の復元操作が完了していることを確認してください。 「[復元操作の追跡](#track-the-restore-operation)」について学習してください。
+
 ## <a name="restore-disks"></a>ディスクを復元する
 
 [復元オプション](#restore-options)の 1 つであり、復元ポイントからディスクを作成できます。 その後、ディスクを使用して次のいずれかのアクションを実行できます。
@@ -166,7 +169,7 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 1. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** を選択します。
 
 >[!NOTE]
->CRR 機能をサポートする種類のバックアップ管理のみが一覧に表示されます。 現時点では、セカンダリ リージョン データをセカンダリ リージョンに復元することのみが許可されています。<br></br>Azure VM の CRR は、Azure マネージド VM (暗号化された Azure VM を含む) でサポートされています。 [リージョンをまたがる復元に対応する管理方式](/azure/backup/backup-support-matrix#cross-region-restore)に関するページを参照してください。
+>CRR 機能をサポートする種類のバックアップ管理のみが一覧に表示されます。 現時点では、セカンダリ リージョン データをセカンダリ リージョンに復元することのみが許可されています。<br></br>Azure VM の CRR は、Azure マネージド VM (暗号化された Azure VM を含む) でサポートされています。 [リージョンをまたがる復元に対応する管理方式](./backup-support-matrix.md#cross-region-restore)に関するページを参照してください。
 
 ![セカンダリ リージョン内の仮想マシン](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 

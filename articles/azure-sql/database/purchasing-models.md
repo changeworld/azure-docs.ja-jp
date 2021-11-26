@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a0c499ad15618d874a99be65f6d3af8d11fd88ec
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 30039e687750cbe7f21cea62b117608e41ee4f93
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408949"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553213"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>仮想コアと DTU のどちらかの購入モデルを選択する - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,11 @@ Azure SQL Database と Azure SQL Managed Instance を利用すると、パフォ
 
 - [仮想コア (vCore) ベースの購入モデル](service-tiers-vcore.md) (推奨)。 この購入モデルでは、プロビジョニングされたコンピューティング レベルとサーバーレス コンピューティング レベルのいずれかを選択できます。 プロビジョニングされたコンピューティング レベルでは、お使いのワークロードに対して常にプロビジョニングされる正確なコンピューティング リソース量を選択します。 サーバーレス コンピューティング レベルでは、構成可能なコンピューティングの範囲で、コンピューティング リソースの自動スケーリングを指定します。 このコンピューティング レベルでは、ワークロード アクティビティに基づいてデータベースを自動的に一時停止および再開することもできます。 時間単位あたりの仮想コアの単価は、プロビジョニングされたコンピューティング レベルの方がサーバーレス コンピューティング レベルよりも低くなります。
 - [データベース トランザクション ユニット (DTU) ベースの購入モデル](service-tiers-dtu.md)。 この購入モデルでは、一般的なワークロード向けに配分されたコンピューティングとストレージのバンドル パッケージが提供されます。
+
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021) 
+
 
 次の 2 つの購入モデルがあります。
 

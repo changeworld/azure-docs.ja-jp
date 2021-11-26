@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 9/9/2021
-ms.openlocfilehash: f5cc4321f49a2cee75f8111bd975f750f075680f
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 12f445c1b532ff3989010ca2a4b747ca0c241aef
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094181"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546494"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,6 +33,10 @@ Azure SQL Database の Hyperscale サービス レベルは、仮想コアベー
 >
 > - 仮想コアベースの購入モデルでの General Purpose サービス レベルと Business Critical サービス レベルの詳細については、[General Purpose](service-tier-general-purpose.md) サービス レベルと [Business Critical](service-tier-business-critical.md) サービス レベルの記事を参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](purchasing-models.md)に関する記事をご覧ください。
 > - Hyperscale サービス レベルは現在、Azure SQL Database でのみ使用でき、Azure SQL Managed Instance では使用できません。
+
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>ハイパースケールの機能とは
 

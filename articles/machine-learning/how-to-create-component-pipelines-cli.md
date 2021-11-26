@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 71e611855023becf474337b309f510244507bc96
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 7dafb069419c1ff42d2ec5358fbd8eb37465c88f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131848460"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552343"
 ---
 # <a name="create-and-run-machine-learning-pipelines-using-components-with-the-azure-machine-learning-cli-preview"></a>Azure Machine Learning CLI でコンポーネントを使用して機械学習パイプラインを作成して実行する (プレビュー)
 
@@ -189,13 +189,13 @@ print("componentA_output path: %s" % args.componentA_output)
 ## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="how-do-i-change-the-location-of-the-outputs-generated-by-the-pipeline"></a>パイプラインによって生成された出力の場所を変更するにはどうすればいいですか?
-パイプライン ジョブの `settings` セクションを使用すると、パイプライン内のすべてのジョブに対して別のデータストアを指定できます ([こちらの例](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)の 25 - 26 行目を参照)。 特定のジョブまたは特定の出力に対して別のデータストアを指定することは、現在サポートされていません。 データストア上で出力が保存されるパスを指定することも、現在サポートされていません。
+パイプライン ジョブの `settings` セクションを使用すると、パイプライン内のすべてのジョブに対して別のデータストアを指定できます ([こちらの例](https://github.com/Azure/azureml-examples/blob/main/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)の 25 - 26 行目を参照)。 特定のジョブまたは特定の出力に対して別のデータストアを指定することは、現在サポートされていません。 データストア上で出力が保存されるパスを指定することも、現在サポートされていません。
 
 ### <a name="how-do-i-specify-a-compute-that-can-be-used-by-all-jobs"></a>すべてのジョブで使用できるコンピューティングを指定するにはどうすればいいですか?
-パイプライン ジョブ レベルでコンピューティングを指定できます。これかが、明示的にコンピューティングを指定していないジョブで使用されます。 ([こちらの例](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)の 28 行目を参照)。
+パイプライン ジョブ レベルでコンピューティングを指定できます。これかが、明示的にコンピューティングを指定していないジョブで使用されます。 ([こちらの例](https://github.com/Azure/azureml-examples/blob/main/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)の 28 行目を参照)。
 
 ### <a name="what-job-types-are-supported-in-the-pipeline-job"></a>パイプライン ジョブではどのようなジョブの種類がサポートされていますか?
-現在のリリースでは、コマンドとコンポーネントのジョブの種類がサポートされています。 コンポーネントのジョブの種類では、コマンド コンポーネントのみがサポートされています。 今後のリリースでは、スイープなど、より多くのジョブの種類がサポートされます。
+現在のリリースでは、コマンド、コンポーネント、スイープ ジョブの種類がサポートされています。
 
 ### <a name="what-are-the-different-modes-that-i-use-with-inputs-or-outputs"></a>入力または出力で使用するモードにはどのようなものがありますか?
 | カテゴリ | 許可されるモード | Default |
@@ -209,10 +209,10 @@ print("componentA_output path: %s" % args.componentA_output)
 
 ### <a name="im-doing-distributed-training-in-my-component-the-component-which-is-registered-specifies-distributed-training-settings-including-node-count-how-can-i-change-the-number-of-nodes-used-during-runtime-the-optimal-number-of-nodes-is-best-determined-at-runtime-so-i-dont-want-to-update-the-component-and-register-a-new-version"></a>コンポーネントで分散トレーニングを行っています。 登録されているコンポーネントでは、ノード数を含む分散トレーニング設定が指定されています。 実行時に使用されるノード数を変更するにはどうすればいいですか? 最適なノード数の決定は実行時に行うのが最良なので、コンポーネントを更新して新しいバージョンを登録したくありません。
 
-コンポーネント ジョブの [上書き] セクションを使用すると、リソースと分散の設定を変更できます。 [TensorFlow を使用したこちらの例](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/6a_tf_hello_world/)または [PyTorch を使用したこちらの例](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/6y_pytorch_hello_world)を参照してください。  
+コンポーネント ジョブの [上書き] セクションを使用すると、リソースと分散の設定を変更できます。 [TensorFlow を使用したこちらの例](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/6a_tf_hello_world)または [PyTorch を使用したこちらの例](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/6c_pytorch_hello_world)を参照してください。  
 
 ### <a name="how-can-i-define-an-environment-with-conda-dependencies-inside-a-component"></a>コンポーネント内に Conda 依存関係を含む環境を定義するにはどうすればいいですか?
-[こちらの例](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/5c_env_conda_file)を参照してください。
+[こちらの例](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/5c_env_conda_file)を参照してください。
  
 
 ## <a name="next-steps"></a>次のステップ

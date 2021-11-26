@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 11/08/2021
-ms.openlocfilehash: 40904b087d58ee6a07ca7acecdd2b2927348799e
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 863fd6ce34c2f2fb822490ae363cf2f979594c99
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132493250"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705191"
 ---
 #  <a name="azure-web-pubsub-trigger-and-bindings-for-azure-functions"></a>Azure Functions での Azure Web PubSub のトリガーとバインド
 
@@ -576,7 +576,7 @@ C# 言語では、使用可能なアクションを検出できるように、`W
 > [!IMPORTANT]
 > データ変換のあいまいさを避けるために、データ型が `json` または `text` に設定されている場合、メッセージの送信に関連するアクションのメッセージ データ プロパティは `string` である必要があります。 `JSON.stringify()` を使用して、必要な JSON オブジェクトを変換してください。 これは、`WebPubSubTrigger` と連携する `UserEventResponse.Data` など、メッセージ プロパティを使用するあらゆる場所に適用されます。 
 > 
-> データ型が `binary` に設定されている場合は、`function.json` で `binary` として構成された `dataType` が自然にサポートされるバインドを利用できます。詳細については、「[トリガーとバインドの定義](/azure/azure-functions/functions-triggers-bindings?tabs=csharp#trigger-and-binding-definitions)」を参照してください。
+> データ型が `binary` に設定されている場合は、`function.json` で `binary` として構成された `dataType` が自然にサポートされるバインドを利用できます。詳細については、「[トリガーとバインドの定義](../azure-functions/functions-triggers-bindings.md?tabs=csharp#trigger-and-binding-definitions)」を参照してください。
 
 ---
 
@@ -602,6 +602,6 @@ C# 言語では、使用可能なアクションを検出できるように、`W
 [azure_sub]: https://azure.microsoft.com/free/
 [samples_ref]: https://github.com/Azure/azure-webpubsub/tree/main/samples/functions
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [next step](includes/include-next-step.md)]

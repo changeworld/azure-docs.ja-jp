@@ -6,16 +6,16 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 11/11/2021
-ms.openlocfilehash: 899f9845721412ceef9171c334383e596fd798e6
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 8f566159f51ccee7c7e567de83d199e55a35c76b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132493067"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705172"
 ---
 # <a name="javascript-sdk-for-azure-web-pubsub"></a>リファレンス - Azure Web PubSub 用の JavaScript SDK
 
-[Azure Web PubSub](https://aka.ms/awps/doc) サービスは、開発者がリアルタイムの機能と発行-サブスクライブ パターンを利用して Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。 サーバーとクライアント間、またはクライアント間で、リアルタイムのパブリッシュ-サブスクライブ メッセージングを必要とするあらゆるシナリオに、Azure Web PubSub サービスを使用できます。 従来のリアルタイム機能は、多くの場合、サーバーからのポーリングや HTTP 要求の送信を必要としますが、そのようなリアルタイム機能にも Azure Web PubSub サービスを使用できます。
+[Azure Web PubSub](./index.yml) サービスは、開発者がリアルタイムの機能と発行-サブスクライブ パターンを利用して Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。 サーバーとクライアント間、またはクライアント間で、リアルタイムのパブリッシュ-サブスクライブ メッセージングを必要とするあらゆるシナリオに、Azure Web PubSub サービスを使用できます。 従来のリアルタイム機能は、多くの場合、サーバーからのポーリングや HTTP 要求の送信を必要としますが、そのようなリアルタイム機能にも Azure Web PubSub サービスを使用できます。
 
 JavaScript には、サービス クライアント ライブラリと Express ミドルウェアの 2 つのライブラリが用意されています。 以下のセクションでは、これらのライブラリの詳細について説明します。
 
@@ -40,8 +40,8 @@ JavaScript には、サービス クライアント ライブラリと Express �
 
 [ソース コード](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/web-pubsub/web-pubsub) |
 [パッケージ (NPM)](https://www.npmjs.com/package/@azure/web-pubsub) |
-[API リファレンス ドキュメント](https://aka.ms/awps/sdk/js) |
-[製品ドキュメント](https://aka.ms/awps/doc) |
+[API リファレンス ドキュメント]() |
+[製品ドキュメント](./index.yml) |
 [サンプル][samples_ref]
 
 ### <a name="getting-started"></a>はじめに
@@ -253,8 +253,8 @@ WebSocket が接続すると、Web PubSub サービスが接続ライフサイ�
 
 [ソース コード](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/web-pubsub/web-pubsub-express) |
 [パッケージ (NPM)](https://www.npmjs.com/package/@azure/web-pubsub-express) |
-[API リファレンス ドキュメント](https://aka.ms/awps/sdk/js) |
-[製品ドキュメント](https://aka.ms/awps/doc) |
+[API リファレンス ドキュメント]() |
+[製品ドキュメント](./index.yml) |
 [サンプル][samples_ref]
 
 ### <a name="getting-started"></a>はじめに

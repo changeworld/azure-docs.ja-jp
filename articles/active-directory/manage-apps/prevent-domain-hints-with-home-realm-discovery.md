@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: db874b82a8d0c966dbe6cdbecd14cf3c5fe521d2
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 912299553e48bbaec6c815e44f91a6ac0b42441e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615735"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547471"
 ---
-# <a name="disable-auto-acceleration-sign-in-in-azure-active-directory"></a>Azure Active Directory で自動高速化サインインを無効にする
+# <a name="disable-auto-acceleration-sign-in"></a>自動高速化サインインを無効にする
 
 [ホーム領域検出ポリシー](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) により、管理者がユーザー認証の方法と場所を制御するための複数の方法が提供されます。 HRD ポリシーの `domainHintPolicy` セクションを使用すると、フェデレーション ユーザーを常に Azure AD のサインイン ページにアクセスさせ、ドメイン ヒントによってフェデレーション IDP に自動高速化されないようにすることで、[FIDO](../authentication/howto-authentication-passwordless-security-key.md) などのクラウドで管理されている資格情報に移行させるのに役立ちます。
 

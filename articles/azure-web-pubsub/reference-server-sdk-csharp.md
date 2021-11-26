@@ -6,16 +6,16 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 11/11/2021
-ms.openlocfilehash: a3ec19ab07ebe74c618ce3c6af8981d442f6fc21
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: ac940b7760ce94beaca5148bfc4e33a59e14b626
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132486647"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709787"
 ---
 # <a name="azure-web-pubsub-service-client-library-for-net"></a>.NET 用 Azure Web PubSub サービス クライアント ライブラリ
 
-[Azure Web PubSub サービス](https://aka.ms/awps/doc)は、開発者がリアルタイムの機能とパブリッシュ-サブスクライブ パターンを使って Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。 サーバーとクライアント間、またはクライアント間で、リアルタイムのパブリッシュ-サブスクライブ メッセージングを必要とするあらゆるシナリオに、Azure Web PubSub サービスを使用できます。 従来のリアルタイム機能は、多くの場合、サーバーからのポーリングや HTTP 要求の送信を必要としますが、そのようなリアルタイム機能にも Azure Web PubSub サービスを使用できます。
+[Azure Web PubSub サービス](./index.yml)は、開発者がリアルタイムの機能とパブリッシュ-サブスクライブ パターンを使って Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。 サーバーとクライアント間、またはクライアント間で、リアルタイムのパブリッシュ-サブスクライブ メッセージングを必要とするあらゆるシナリオに、Azure Web PubSub サービスを使用できます。 従来のリアルタイム機能は、多くの場合、サーバーからのポーリングや HTTP 要求の送信を必要としますが、そのようなリアルタイム機能にも Azure Web PubSub サービスを使用できます。
 
 次の図に示すように、このライブラリをアプリ サーバー側で使用して、WebSocket クライアント接続を管理できます。
 
@@ -32,8 +32,8 @@ ms.locfileid: "132486647"
  
 [ソース コード](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/webpubsub/Azure.Messaging.WebPubSub/src) |
 [パッケージ](https://www.nuget.org/packages/Azure.Messaging.WebPubSub) |
-[API リファレンス ドキュメント](https://aka.ms/awps/sdk/csharp) |
-[製品ドキュメント](https://aka.ms/awps/doc) |
+[API リファレンス ドキュメント]() |
+[製品ドキュメント](./index.yml) |
 [サンプル][samples_ref]
 
 ## <a name="getting-started"></a>作業の開始
@@ -119,7 +119,7 @@ serviceClient.SendToAll(RequestContent.Create(stream), ContentType.ApplicationOc
 ### <a name="setting-up-console-logging"></a>コンソール ログの設定
 また、サービスに対して行う要求の詳細を確認する場合は、[コンソールのログ記録を簡単に有効にする](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/Diagnostics.md#logging)こともできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [next step](includes/include-next-step.md)]
 

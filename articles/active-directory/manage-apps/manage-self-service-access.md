@@ -13,18 +13,18 @@ ms.date: 09/23/2021
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: phsignor
-ms.openlocfilehash: 2a076fa39266a0295d2b1fda6c60f9e6a528f143
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b0e70acffd8f2d10e8e0a4d2fec8c84b7c5e1747
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132054640"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550289"
 ---
-# <a name="enable-self-service-application-assignment-in-azure-active-directory"></a>Azure Active Directory でセルフサービス アプリケーションの割り当てを有効にします
+# <a name="enable-self-service-application-assignment"></a>セルフサービス アプリケーションの割り当てを有効にする
 
 この記事では、Azure Active Directory Admin Center で、セルフサービス アプリケーション アクセスを有効にする方法を説明します。
 
-ユーザーが **マイ アプリ ポータル** から自分でアプリケーションを見つけられるようにするには、アプリケーションで[セルフサービス アプリケーション アクセス](my-apps-deployment-plan.md)を有効にする必要があります。 この機能は、Azure AD Gallery または [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)から追加されたアプリケーションや、[ユーザーまたは管理者の同意](../develop/application-consent-experience.md)を使用して追加されたアプリケーションで使用できます。
+ユーザーが **マイ アプリ ポータル** から自分でアプリケーションを見つけられるようにするには、アプリケーションで [セルフサービス アプリケーション アクセス](my-apps-deployment-plan.md)を有効にする必要があります。 この機能は、Azure AD Gallery または [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)から追加されたアプリケーションや、[ユーザーまたは管理者の同意](../develop/application-consent-experience.md)を使用して追加されたアプリケーションで使用できます。
 
 この機能を使用すると、以下のような操作ができます。
 

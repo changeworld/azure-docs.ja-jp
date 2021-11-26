@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: how-to
 ms.custom: deploy
-ms.openlocfilehash: 14fb372a00621806ed4423813ee5e23b3c313688
-ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+ms.openlocfilehash: 97b8d6f32b2e59dd2e19b1d41b4fa01f97158325
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132402430"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547688"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Azure Machine Learning でトレーニングされたモデルをローカル コンピューターにデプロイする 
 
@@ -250,5 +250,6 @@ model = Model.register(model_path="sklearn_regression_model.pkl",
 
 ## <a name="next-steps"></a>次のステップ
 
+- Azure Machine Learning で VS Code を使用する方法については、「[Visual Studio Code でコンピューティング インスタンスに接続する (プレビュー)](how-to-set-up-vs-code-remote.md)」を参照してください。
 - 環境の管理の詳細については、「[Azure Machine Learning でソフトウェア環境を作成して使用する](how-to-use-environments.md)」を参照してください。
 - データストアからデータへのアクセスの詳細については、「[Azure のストレージ サービスに接続する](how-to-access-data.md)」を参照してください。

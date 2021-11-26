@@ -6,8 +6,6 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 09835e201417040d3f8db6fd2387f325b2728e9d
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 76c0043fb2bc2d339f997f12b8f05e9aff97fcd2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132516952"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132712112"
 ---
 # <a name="understand-threat-intelligence-in-microsoft-sentinel"></a>Microsoft Sentinel の脅威インテリジェンスについて
 
@@ -118,7 +116,7 @@ Microsoft では、位置情報と WhoIs の追加データを使用して各イ
 
 Microsoft Azure Sentinel のような SIEM ソリューションでの脅威インジケーターの最も重要なユース ケースは、脅威を検出するための分析ルールの強化です。 このようなインジケーターベースのルールでは、データ ソースで発生した未加工のイベントが脅威インジケーターと比較され、組織内のセキュリティ上の脅威が検出されます。 Microsoft Azure Sentinel の **[分析]** で、スケジュールに従って実行され、セキュリティ アラートを生成する分析ルールを作成します。 ルールは、ルールを実行する頻度、セキュリティ アラートとインシデントを生成するクエリ結果の種類、それに応じてトリガーされる自動化 (ある場合) を決定する構成とともに、クエリによって駆動されます。
 
-新しい分析ルールを最初から作成することは常に可能ですが、Microsoft Azure Sentinel には、Microsoft セキュリティ エンジニアが作成した組み込みのルール テンプレートのセットが用意されていて、それらをそのまま使用することも、ニーズに合わせて変更することもできます。 脅威インジケーターを使用するルール テンプレートは、すべて "**TI map**..." (TI で ... にマップする) で始まるタイトルが付いているため、簡単に特定できます。 これらのルール テンプレートはすべて同じように動作しますが、使用される脅威インジケーターの種類 (ドメイン、電子メール、ファイル ハッシュ、IP アドレス、または URL) と照合するイベントの種類が異なります。 各テンプレートには、ルールが機能するために必要なデータ ソースが一覧表示されます。そのため、必要なイベントが Microsoft Azure Sentinel に既にインポートされているかどうかを一目で確認できます。 既存のルール テンプレートを編集して保存するか、新しいルールを作成すると、それは既定で有効になります。
+新しい分析ルールを最初から作成することは常に可能ですが、Microsoft Azure Sentinel には、Microsoft セキュリティ エンジニアが作成した組み込みのルール テンプレートのセットが用意されていて、それらをそのまま使用することも、ニーズに合わせて変更することもできます。 脅威インジケーターを使用するルール テンプレートは、すべて "**TI map**..." (TI で ... にマップする) で始まるタイトルが付いているため、簡単に特定できます。 これらのルール テンプレートはすべて同じように動作しますが、使用される脅威インジケーターの種類 (ドメイン、電子メール、ファイル ハッシュ、IP アドレス、または URL) と照合するイベントの種類が異なります。 各テンプレートには、ルールを機能させるために必要なデータ ソースが一覧表示されます。そのため、必要なイベントが Microsoft Sentinel に既にインポートされているかどうかを一目で確認できます。 既存のルール テンプレートを編集して保存するか、新しいルールを作成すると、それは既定で有効になります。
 
 Microsoft Azure Sentinel の **[分析]** セクションにある **[アクティブな規則]** タブで、有効になっているルールを確認できます。 そこからアクティブなルールの編集、有効化、無効化、複製、または削除を行うことができます。 新しいルールはアクティブ化すると直ちに実行され、それ以降は定義したスケジュールで実行されます。
 
@@ -136,12 +134,12 @@ Microsoft Azure Sentinel では、分析ルールから生成されたアラー�
 
 脅威インテリジェンス ブックの使用とカスタマイズの詳細については、[Microsoft Azure Sentinel での脅威インジケーターの操作](work-with-threat-indicators.md#workbooks-provide-insights-about-your-threat-intelligence)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、脅威インテリジェンス ブレードを含め、Microsoft Azure Sentinel の脅威インテリジェンス機能について説明しました。 Microsoft Azure Sentinel の脅威インテリジェンス機能の使用に関する実用的なガイダンスについては、次の記事を参照してください。
 
 - Microsoft Azure Sentinel を [STIX、TAXII 脅威インテリジェンス フィード](./connect-threat-intelligence-taxii.md)に接続する。
-- Microsoft Azure Sentinel に[脅威インテリジェンス プラットフォームを接続する](./connect-threat-intelligence-tip.md)。
+- Microsoft Sentinel に[脅威インテリジェンス プラットフォームを接続する](./connect-threat-intelligence-tip.md)。
 - Microsoft Azure Sentinel と容易に統合できる [TIP プラットフォーム、TAXII フィード、エンリッチメント](threat-intelligence-integration.md)を確認する。
 - Microsoft Azure Sentinel エクスペリエンス全体で[脅威インジケーターを操作する](work-with-threat-indicators.md)。
 - Microsoft Azure Sentinel で[組み込み](./detect-threats-built-in.md)または[カスタム](./detect-threats-custom.md)の分析ルールを使用して脅威を検出する

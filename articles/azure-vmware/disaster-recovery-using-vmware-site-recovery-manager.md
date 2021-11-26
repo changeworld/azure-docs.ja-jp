@@ -3,12 +3,12 @@ title: VMware Site Recovery Manager を使用してディザスター リカバ�
 description: Azure VMware Solution のプライベート クラウドで VMware Site Recovery Manager (SRM) を使用してディザスター リカバリーをデプロイします。
 ms.topic: how-to
 ms.date: 10/04/2021
-ms.openlocfilehash: 2cefe85f71c770ce29a14fb4aad7a91efd91651c
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 116c7b672874c1e012b4d9abadacb10bc4ca895f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129430100"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547247"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用してディザスター リカバリーをデプロイする
 
@@ -213,6 +213,8 @@ VMware SRM と vSphere Replication をインストールした後は、vCenter �
 
 - [Perform a Failback (フェールバックを実行する) (vmware.com)](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.admin.doc/GUID-556E84C0-F8B7-4F9F-AAB0-0891C084EDE4.html)
 
+   >[!NOTE]
+   >AVS 環境とオンプレミス環境の間のネットワーク マッピングに IP カスタマイズ規則が定義されている場合、SRM 8.3.0 の[既知の問題](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/rn/srm-releasenotes-8-3.html#knownissues)が原因で、AVS 環境からオンプレミス環境へのフェールバック時にこれらの規則は適用されません。 この制限を回避するには、保護グループ内のすべての VM から保護を削除し、フェールバックを開始する前に保護を再構成します。
 
 
 ## <a name="ongoing-management-of-your-srm-solution"></a>SRM ソリューションの継続的な管理

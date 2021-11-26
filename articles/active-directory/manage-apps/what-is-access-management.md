@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 89acfa0c1074d170dd0b0b9fb19f227a4e0c21ab
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 0f162e7c14fc2f4c9d123c5beca6a76dc9e6a072
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061050"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553102"
 ---
-# <a name="manage-access-to-apps-in-azure-active-directory"></a>Azure Active Directory でアプリへのアクセスを管理する
+# <a name="manage-access-to-an-application"></a>アプリケーションへのアクセスの管理
 
 継続的なアクセスの管理、使用状況の評価、レポート作成は、アプリが組織の ID システムに統合された後でも簡単な作業ではありません。 アプリへのアクセスの管理では、多くの場合、IT 管理者またはヘルプ デスクが進行中のアクティブな役割を担う必要があります。 場合によっては、割り当ては一般的なまたは部門の IT チームによって実行されます。 割り当ての決定はビジネスの意思決定者に委ねられ、IT が割り当てを行う前に彼らの承認が求められることが一般的です。  
 

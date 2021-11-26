@@ -11,12 +11,12 @@ ms.subservice: automl
 ms.date: 11/15/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 57d529d74d5e320c8a41fdcf71ddd61d11e4379e
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 8a9f31dc34e412521a9a74dfb113da13af66afa3
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132519384"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722641"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
@@ -107,7 +107,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 > * [テスト データを AutoMLConfig オブジェクトに渡す](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview)。 
 > * [実験用に自動 ML によって生成されたモデルをテストする](#test-models-preview)。
 >  
-> コードなしエクスペリエンスが望ましい場合は、[スタジオ UI を使った自動 ML の設定に関する記事の手順 11](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment) を参照してください。
+> コードなしエクスペリエンスが望ましい場合は、[スタジオ UI を使った自動 ML の設定に関する記事の手順 12](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment) を参照してください。
 
 
 ### <a name="large-data"></a>大きなデータ 
@@ -521,11 +521,19 @@ RunDetails(run).show()
 >[!IMPORTANT]
 > 自動 ML によって生成されたモデルを評価するために、テスト データセットを使ってモデルをテストすることは、プレビュー機能です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
 
+> [!WARNING]
+> この機能は、次の自動 ML シナリオでは使用できません
+>  * [Computer Vision タスク (プレビュー)](how-to-auto-train-image-models.md)
+>  * [多数モデルおよび階層型時系列予測トレーニング (プレビュー)](how-to-auto-train-forecast.md)
+>  * [ディープ ラーニング ニューラル ネットワーク (DNN) が有効になっている予測タスク](how-to-auto-train-forecast.md#enable-deep-learning)
+>  * [ローカル コンピューティングまたは Azure Databricks クラスターからの自動 ML 実行](how-to-configure-auto-train.md#compute-to-run-experiment)
+
 `test_data` または `test_size` のパラメーターを `AutoMLConfig` に渡すと、指定されたテスト データを使うリモート テストの実行が自動的にトリガーされ、実験終了時に自動 ML によって推奨される最適なモデルが評価されます。 このリモート テストの実行は、実験の最後に、最適なモデルが決まった時点で行われます。 [テスト データを `AutoMLConfig` に渡す](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview)方法を参照してください。 
 
 ### <a name="get-test-run-results"></a>テストの実行結果を取得する 
 
 リモート テストの実行の予測値とメトリックは、[Azure Machine Learning スタジオ](how-to-use-automated-ml-for-ml-models.md#view-remote-test-run-results-preview)から、または次のコードを使って取得できます。 
+
 
 ```python
 best_run, fitted_model = remote_run.get_output()
@@ -548,6 +556,8 @@ test_run.download_file("predictions/predictions.csv")
 predictions_df = pd.read_csv("predictions.csv")
 
 ```
+
+モデル テストの実行では、predictions.csv ファイルが生成され、ワークスペースで作成された既定のデータストアに格納されます。 このデータストアは、同じサブスクリプションを持つすべてのユーザーに表示されます。 テストの実行は、テストの実行で使用または作成された情報を非公開にする必要があるシナリオにはお勧めできません。
 
 ### <a name="test-existing-automated-ml-model"></a>既存の自動 ML モデルをテストする
 

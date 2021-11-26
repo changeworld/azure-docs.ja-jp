@@ -11,12 +11,12 @@ author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 10/21/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: b251c85752af69ce58e48f93be29cb07f1bc9966
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: e82ba7fbab8d82d266fb3a4d86d97598bc9b6703
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132492741"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722964"
 ---
 # <a name="connect-to-storage-by-using-identity-based-data-access"></a>ID ベースのデータ アクセスを使用してストレージに接続する
 
@@ -142,7 +142,7 @@ adls2_dstore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                        account_name='myadls2')
 ```
 ### <a name="azure-sql-database"></a>Azure SQL データベース
-Azure SQL データベースの場合は、[register_azure_sql_database()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-sql-database-workspace--datastore-name--server-name--database-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--endpoint-none--overwrite-false--username-none--password-none--subscription-id-none--resource-group-none--grant-workspace-access-false----kwargs-) を使用して、Azure SQL データベース ストレージに接続するデータストアを登録します。
+Azure SQL データベースの場合は、[register_azure_sql_database()](/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-sql-database-workspace--datastore-name--server-name--database-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--endpoint-none--overwrite-false--username-none--password-none--subscription-id-none--resource-group-none--grant-workspace-access-false----kwargs-) を使用して、Azure SQL データベース ストレージに接続するデータストアを登録します。
 
 次のコードでは、`credentialless_sqldb` データストアを作成して `ws` ワークスペースに登録し、それが変数 `sqldb_dstore` に割り当てられます。 このデータストアは、`myserver` SQL DB サーバーのデータベース `mydb` にアクセスします。  
 

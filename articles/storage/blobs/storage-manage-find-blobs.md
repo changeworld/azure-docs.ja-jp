@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: dfa77490b95f67e7c75e658211602fe5a27c1c57
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 636130113f7c8ce40e5abfd99ae2d18c43740c3c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441421"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719207"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する
 
@@ -183,7 +183,7 @@ BLOB インデックス タグを使用すると、BLOB データの分類、管
 
 BLOB インデックス一致をライフサイクル ルールのスタンドアロン フィルター セットとして設定して、タグ付きデータにアクションを適用することができます。 または、プレフィックスと BLOB インデックスの両方を組み合わせて、より具体的なデータ セットに一致させることができます。 ライフサイクル ルールで複数のフィルターを指定すると、論理 AND 演算が適用されます。 "*すべての*" フィルター条件に一致する場合にのみ、アクションが適用されます。
 
-次のライフサイクル管理ルールの例は、*videofiles* という名前のコンテナー内のブロック BLOB に適用されます。 データが `"Status" == 'Processed' AND "Source" == 'RAW'` の BLOB インデックス タグ条件と一致する場合にのみ、ルールにより BLOB はストレージをアーカイブするために階層化されます。
+次のライフサイクル管理ルールの例は、`videofiles` という名前のコンテナー内のブロック BLOB に適用されます。 データが `"Status" == 'Processed' AND "Source" == 'RAW'` の BLOB インデックス タグ条件と一致する場合にのみ、ルールにより BLOB はストレージをアーカイブするために階層化されます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -317,14 +317,14 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 
 ## <a name="feature-support"></a>機能サポート
 
-この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
-|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
-| Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> | SFTP <sup>1</sup> |
+|--|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
-<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+<sup>1</sup> Data Lake Storage Gen2、ネットワーク ファイル システム (NFS) 3.0 プロトコル、セキュア ファイル転送プロトコル (SFTP) のサポートでは、すべて階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="conditions-and-known-issues"></a>条件と既知の問題
 

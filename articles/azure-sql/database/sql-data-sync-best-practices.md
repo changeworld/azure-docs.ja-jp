@@ -11,12 +11,12 @@ author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
 ms.date: 12/20/2018
-ms.openlocfilehash: a85c3199f1307a6f7618aec4efdc0506f17598a0
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 7b18b7ddcb6c2f737263cdaa7dd3e51cbde3da52
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132494807"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715037"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL データ同期のベスト プラクティス 
 
@@ -54,7 +54,7 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 
 ### <a name="auditing"></a>監査
 
-同期グループ内のデータベース レベルで監査を有効にすることをお勧めします。 [Azure SQL データベースの監査を有効にする](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview)方法、または[SQL Server データベースの監査を有効にする](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15)方法について説明します。
+同期グループ内のデータベース レベルで監査を有効にすることをお勧めします。 [Azure SQL データベースの監査を有効にする](./auditing-overview.md)方法、または[SQL Server データベースの監査を有効にする](/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15)方法について説明します。
 
 ## <a name="setup"></a>セットアップ
 

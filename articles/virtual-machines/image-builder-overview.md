@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 07481838f5fca77d7e634003e04169a95d944117
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 702a4b624041a20c925bfc65d92542788f381800
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452074"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551314"
 ---
 # <a name="azure-image-builder-overview"></a>Azure Image Builder の概要
 
@@ -114,12 +114,12 @@ Azure Image Builder を使用してイメージの作成、構築、保存を行
 
 イメージ作成プロセス中に、ファイルがダウンロードされ、`IT_<DestinationResourceGroup>_<TemplateName>` リソース グループに格納されます。これにより、小額のストレージ コストが発生します。 これらを維持しない場合は、イメージの構築後に **イメージ テンプレート** を削除してください。
  
-Image Builder では、VM に必要な D1v2 VM サイズ、ストレージ、ネットワークを使用して VM を作成します。 これらのリソースは、構築プロセスの間は存続し、Image Builder のイメージ作成が終了すると削除されます。 
+イメージ ビルダーは、VM に必要なストレージ、ネットワークとともに、Gen1 イメージには既定の D1v2 VM サイズ、Gen2 イメージには D2ds V4 を使用して VM を作成します。 これらのリソースは、構築プロセスの間は存続し、Image Builder のイメージ作成が終了すると削除されます。 
  
 Azure Image Builder によって、選択したリージョンにイメージが配布されます。これにより、ネットワークのエグレス料金が発生する可能性があります。
 
 ## <a name="hyper-v-generation"></a>Hyper-V の世代
-現在 Image Builder のみが、Azure Compute Gallery 内で Hyper-V ジェネレーション (Gen1) 1 イメージの作成をネイティブ サポートしています。 
+現在 Image Builder は、Azure Compute Gallery 内で Hyper-V ジェネレーション 1 (Gen1) およびジェネレーション 2 (Gen2) のイメージの作成をサポートしています。 
  
 ## <a name="next-steps"></a>次のステップ 
  

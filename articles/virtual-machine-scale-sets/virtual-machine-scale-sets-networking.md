@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: ea17d86bb4e5e4a6b5c5106c7d831c6691018b12
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b68963217dce0dd3c67b6876319c0a56bffb2b82
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130214740"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715722"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -144,8 +144,13 @@ Azure テンプレートを使用してスケール セットを作成するに�
     }
 }
 ```
+インスタンスごとに複数のパブリック IP を持つ仮想マシン スケール セットが、前にロード バランサーを使用して作成される場合、インスタンス IP の SKU は Load Balancer (Basic または Standard など) の SKU によって決定されます。
 
-サンプル テンプレート: [vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-public-ip-linux)
+Basic Load Balancer を使用したテンプレートの例: [vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-public-ip-linux)
+
+または、[パブリック IP プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md) (Standard SKU パブリック IP の連続したブロック) を使用して、仮想マシン スケール セットにインスタンス レベルの IP を生成できます。 プレフィックスのゾーン プロパティは、出力に表示されませんが、インスタンスの IP に渡されます。
+
+パブリック IP プレフィックスを使用したテンプレートの例: [vmms-with-public-ip-prefix](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-with-public-ip-prefix)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>スケール セットに含まれた仮想マシンのパブリック IP アドレスの照会
 CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、**az vmss list-instance-public-ips** コマンドを使用します。

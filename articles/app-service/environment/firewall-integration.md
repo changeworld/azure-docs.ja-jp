@@ -7,19 +7,19 @@ ms.topic: article
 ms.date: 09/16/2021
 ms.author: madsd
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: d8896f9bbe7ee4429236eac7763d66b1efd4313c
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 6fbb79a06de67c7c493afe79e18968005c6b0bf0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132523716"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707004"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment をロックする
 
 > [!NOTE]
 > この記事は、Isolated App Service プランで使用される App Service Environment v2 に関するものです。
 
-App Service Environment (ASE) が適切に動作するには、アクセスする必要がある外部の依存関係が複数あります。 ASE は、お客様の Azure Virtual Network (VNet) 内にあります。 お客様は、ASE の依存トラフィックを許可する必要があります。これは、自社の VNet からのすべての送信をロックしたいお客様にとって問題です。
+App Service Environment (ASE) が適切に動作するには、アクセスする必要がある外部の依存関係が多数あります。 ASE は、お客様の Azure Virtual Network にあります。 お客様は、ASE の依存トラフィックを許可する必要があります。これは、自社の仮想ネットワークからのすべての送信をロックしたいお客様にとって問題となります。
 
 ASE の管理に使用される受信エンドポイントは多数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、「[App Service Environment の管理アドレス](./management-addresses.md)」ドキュメントで公開されています。 また、AppServiceManagement という名前のサービス タグもあります。これをネットワーク セキュリティ グループ (NSG) と共に使用して、受信トラフィックをセキュリティで保護することができます。
 
@@ -58,7 +58,7 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
    ![サービス エンドポイントの選択][2]
 
-1. ASE が存在する VNet に AzureFirewallSubnet という名前のサブネットを作成します。 「[Azure Firewall のドキュメント](../../firewall/index.yml)」の指示に従って Azure Firewall を作成します。
+1. ASE が存在する仮想ネットワークに AzureFirewallSubnet という名前のサブネットを作成します。 「[Azure Firewall のドキュメント](../../firewall/index.yml)」の指示に従って Azure Firewall を作成します。
 
 1. Azure Firewall UI の [ルール]、[アプリケーション ルール コレクション] から、[アプリケーション ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [FQDN タグ] セクションで、名前を指定し、[ソース アドレス] を「*」に設定して、FQDN タグとして App Service Environment と Windows Update を選択します。
 
@@ -82,7 +82,7 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
 ファイアウォールの内側に ASE をデプロイする手順は、Azure Firewall を使用して既存の ASE を構成する手順と同じです。ただし、例外として、ASE サブネットを作成してから前の手順に従う必要があります。 既存のサブネットに ASE を作成するには、[Resource Manager テンプレートを使用した ASE の作成](./create-from-template.md)に関するドキュメントで説明されているように、Resource Manager テンプレートを使用する必要があります。
 
-## <a name="application-traffic"></a>アプリケーション トラフィック
+### <a name="application-traffic"></a>アプリケーション トラフィック
 
 上記の手順で、ASE が問題なく動作するようになります。 ただし、実際のアプリケーションのニーズに合わせて構成する必要があります。 Azure Firewall を使用して構成された ASE 内のアプリケーションには 2 つの問題があります。  
 
@@ -95,7 +95,7 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
 この Application Gateway の使用は、システムの構成方法の一例にすぎません。 このパスに従わなかった場合は、ASE サブネット ルート テーブルへのルートの追加が必要になります。その結果、Application Gateway に送信された応答トラフィックはそこに直接送られます。
 
-## <a name="logging"></a>ログ記録
+### <a name="logging"></a>ログ記録
 
 Azure Firewall は、Azure Storage、Event Hub、または Azure Monitor ログにログを送信できます。 お使いのアプリをサポート対象の送信先と統合するには、Azure Firewall ポータルの [診断ログ] に移動し、目的の送信先のログを有効にします。 Azure Monitor ログと統合すると、Azure Firewall に送信されたすべてのトラフィックのログを確認できます。 拒否されているトラフィックを表示するには、Log Analytics ワークスペース ポータルの [ログ] を開き、次のようなクエリを入力します
 
@@ -105,14 +105,17 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に役立ちます。 Azure Monitor ログの詳細については、[Azure Monitor でのログ データの分析](../../azure-monitor/logs/log-query-overview.md)に関する記事をご覧ください。
 
-## <a name="dependencies"></a>依存関係
+<a name="dependencies"></a>
+## <a name="configuring-third-party-firewall-with-your-ase"></a>ASE を使用したサードパーティのファイアウォールの構成
 
-次の情報が必要なのは、Azure Firewall 以外のファイアウォール アプライアンスを構成する場合のみです。
+次の情報が必要なのは、Azure Firewall 以外のファイアウォール アプライアンスを構成する場合のみです。 Azure Firewall については、[上記のセクション](#configuring-azure-firewall-with-your-ase)を参照してください。
+
+ASE でサードパーティのファイアウォールをデプロイする場合は、次の依存関係を考慮してください。
 
 - サービス エンドポイント対応のサービスは、サービス エンドポイントを使用して構成する必要があります。
 - IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています
 - FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
-- ワイルドカード HTTP/HTTPS エンドポイントは、いくつかの修飾子に基づき、ASE によって異なる依存関係になります。
+- ワイルドカード HTTP/HTTPS エンドポイントは、多くの修飾子に基づき、ASE によって異なる依存関係になります。
 - Linux の依存関係は、ASE に Linux アプリをデプロイする場合にのみ考慮する必要があります。 Linux アプリを ASE に展開していない場合は、これらのアドレスをファイアウォールに追加する必要はありません。
 
 ### <a name="service-endpoint-capable-dependencies"></a>サービス エンドポイント対応の依存関係
@@ -237,7 +240,7 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 
 | エンドポイント |
 |----------|
-|gr-Prod-\*.cloudapp.net:443 |
+|gr-prod-\*.cloudapp.net:443 |
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
@@ -280,15 +283,15 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 |40.76.35.62:11371 |
 |104.215.95.108:11371 |
 
-## <a name="us-gov-dependencies"></a>US Gov の依存関係
+## <a name="configuring-a-firewall-with-ase-in-us-gov-regions"></a>US Gov リージョンの ASE を使用したファイアウォールの構成
 
 US Gov リージョンの ASE の場合は、このドキュメントの「[ASE に合わせて Azure Firewall を構成する](#configuring-azure-firewall-with-your-ase)」の手順に従って、ASE で Azure Firewall を構成します。
 
-US Gov で Azure Firewall 以外のデバイスを使用する場合:
+US Gov でサードパーティのファイアウォールを使用する場合は、次の依存関係を考慮する必要があります。
 
 - サービス エンドポイント対応のサービスは、サービス エンドポイントを使用して構成する必要があります。
 - FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
-- ワイルドカード HTTP/HTTPS エンドポイントは、いくつかの修飾子に基づき、ASE によって異なる依存関係になります。
+- ワイルドカード HTTP/HTTPS エンドポイントは、多くの修飾子に基づき、ASE によって異なる依存関係になります。
 
 Linux は US Gov リージョンでは利用できないため、オプションの構成として記載されていません。
 
@@ -315,13 +318,10 @@ Linux は US Gov リージョンでは利用できないため、オプション
 | 13.82.184.151:80 | ASE の問題の監視とアラート通知に必要 |
 | 13.82.184.151:443 | ASE の問題の監視とアラート通知に必要 |
 
-### <a name="dependencies"></a>依存関係
+### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS の依存関係
 
 | エンドポイント |
 |----------|
-| \*.ctldl.windowsupdate.com:80 |
-| \*.management.usgovcloudapi.net:80 |
-| \*.update.microsoft.com:80 |
 |admin.core.usgovcloudapi.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
@@ -376,10 +376,6 @@ Linux は US Gov リージョンでは利用できないため、オプション
 |www.microsoft.com:80 |
 |www.msftconnecttest.com:80 |
 |www.thawte.com:80 |
-|\*ctldl.windowsupdate.com:443 |
-|\*.management.usgovcloudapi.net:443 |
-|\*.update.microsoft.com:443 |
-|\*.prod.microsoftmetrics.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
@@ -441,6 +437,18 @@ Linux は US Gov リージョンでは利用できないため、オプション
 |www.msftconnecttest.com:443 |
 |www.thawte.com:443 |
 |global-dsms.dsms.core.usgovcloudapi.net:443 |
+
+### <a name="wildcard-httphttps-dependencies"></a>Wildcard HTTP/HTTPS dependencies
+
+| エンドポイント |
+|----------|
+|\*.ctldl.windowsupdate.com:80 |
+|\*.management.usgovcloudapi.net:80 |
+|\*.update.microsoft.com:80 |
+|\*ctldl.windowsupdate.com:443 |
+|\*.management.usgovcloudapi.net:443 |
+|\*.update.microsoft.com:443 |
+|\*.prod.microsoftmetrics.com:443 |
 
 <!--Image references-->
 [1]: ./media/firewall-integration/firewall-apprule.png

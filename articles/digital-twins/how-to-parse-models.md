@@ -8,12 +8,12 @@ ms.date: 9/2/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: e77fc64277cd0210a4741bc6828b5f1f72cf0e73
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bcedacdc52e2f8ef205893db481720920c98c4ef
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831003"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707279"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>DTDL パーサー ライブラリを使用してモデルを解析および検証する
 
@@ -25,11 +25,15 @@ Azure Digital Twins の[モデル](concepts-models.md)は、JSON-LD ベースの
 
 ## <a name="use-the-dtdl-validator-sample"></a>DTDL 検証ツール サンプルを使用する
 
-[DTDL 検証ツール](/samples/azure-samples/dtdl-validator/dtdl-validator)は、モデル ドキュメントを検証して DTDL が有効であることを確認できるサンプル プロジェクトです。 これは、.NET パーサー ライブラリに基づいて構築されており、言語に依存しません。 これは、サンプル リンクの *[ZIP のダウンロード]* ボタンで取得できます。
+[DTDL 検証ツール](/samples/azure-samples/dtdl-validator/dtdl-validator)は、モデル ドキュメントを検証して DTDL が有効であることを確認できるサンプル プロジェクトです。 これは、.NET パーサー ライブラリに基づいて構築されており、言語に依存しません。 
+
+サンプル リンクの **[コードの参照]** ボタンを選択すると GitHub 上でコードを表示でき、 **[コード]** ボタンの後に、 **[ZIP のダウンロード]** を選択すると GitHub からプロジェクトをダウンロードできます。
+
+:::image type="content" source="media/how-to-parse-models/download-repo-zip.png" alt-text="zip としてダウンロードする手順を強調表示した GitHub の DTDL - 検証ツール リポジトリを示すスクリーンショット。" lightbox="media/how-to-parse-models/download-repo-zip.png":::
 
 ソース コードには、パーサー ライブラリを使用する方法の例が示されています。 この検証ツール サンプルは、DTDL ファイルのディレクトリ ツリーを検証するコマンド ライン ユーティリティとして使用できます。 また、対話モードも用意されています。
 
-サンプルを自己完結型の実行可能ファイルにパッケージ化する方法については、DTDL 検証ツール サンプルのフォルダー内の *readme.md* ファイルを参照してください。
+サンプルを自己完結型の実行可能ファイルにパッケージ化する方法については、DTDL 検証ツール サンプルのフォルダー内の **readme.md** ファイルを参照してください。
 
 自己完結型のパッケージを作成し、実行可能ファイルをパスに追加したら、お使いのマシンのコンソールで次のコマンドを使用して、検証コントロールを実行できます。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 86cf5cfaf5d64c9aa1f1cda17df543b953a5ed17
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 9f52d0555e07a79956aed466e3f9a307946bbcf6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130066986"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724142"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB へのアクセスを認可する
 
@@ -105,14 +105,14 @@ Azure CLI と PowerShell では、Azure AD の資格情報を使ったサイン�
 
 ## <a name="feature-support"></a>機能サポート
 
-この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
-|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
-| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)| ![いいえ](../media/icons/no-icon.png) |
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> | SFTP <sup>1</sup> |
+|--|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)| ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
-<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+<sup>1</sup> Data Lake Storage Gen2、ネットワーク ファイル システム (NFS) 3.0 プロトコル、セキュア ファイル転送プロトコル (SFTP) のサポートでは、すべて階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

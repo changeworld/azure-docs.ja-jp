@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/12/2021
-ms.openlocfilehash: c95c92c1f592cc5f042975e832df66e585d99740
-ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+ms.openlocfilehash: 1082b63bc6f12531d502e75c1c096639b0eab00b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132402487"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719276"
 ---
 # <a name="set-up-an-appliance-for-servers-in-a-vmware-environment"></a>VMware 環境でサーバーのアプライアンスを設定する
 
@@ -64,7 +64,7 @@ OVA ファイルをデプロイする前に、ファイルが安全であるこ�
    
     例: `C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256`
 
-1. 上記のコマンドの結果と[こちら](/azure/migrate/tutorial-discover-vmware#verify-security)に記載されている値を比較して、最新のハッシュ値を確認します。
+1. 上記のコマンドの結果と[こちら](./tutorial-discover-vmware.md#verify-security)に記載されている値を比較して、最新のハッシュ値を確認します。
 
 #### <a name="create-the-appliance-server"></a>アプライアンス サーバーを作成する
 

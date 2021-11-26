@@ -4,17 +4,15 @@ description: この記事では、CEF キーを、Microsoft Sentinel 内の Comm
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: reference
 ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 710b20dcf4f1ac94816881c4851ddfafc0f84872
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 2da00d947a76872ee940a7fb9e700647b456acf6
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522101"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716090"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF および CommonSecurityLog フィールドのマッピング
 

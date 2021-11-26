@@ -6,8 +6,6 @@ documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2a6cdf796ee8fdb7302a7f7e00e517ce99004774
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 0a560103953aab15be807c4a51be034cdb8ff1b9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132518111"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716146"
 ---
 # <a name="collaborate-in-microsoft-teams-public-preview"></a>Microsoft Teams での共同作業 (パブリック プレビュー)
 

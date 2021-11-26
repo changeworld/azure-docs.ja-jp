@@ -6,12 +6,12 @@ ms.author: viseshag
 ms.service: purview
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: de0904275100f0d72dac8e401736ad276f1c928a
-ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+ms.openlocfilehash: c3cc01b4cc6863b2100a1948b66c811b32b6cb46
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132401491"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724674"
 ---
 # <a name="access-control-in-azure-purview"></a>Azure Purview でのアクセスの制御
 
@@ -60,6 +60,8 @@ Azure Purview アカウントが作成されると、Purview アカウント自�
 他のすべてのユーザーは、自分または自分が所属するグループに上記のロールのいずれかが与えられている場合にのみ、Azure Purview アカウント内の情報にアクセスできます。 つまり、作成者が[コレクション内の上記のロールの 1 つ以上に追加](how-to-create-and-manage-collections.md#add-role-assignments)されるまで、Azure Purview アカウントの作成時には、作成者のみがアカウントにアクセスしてその API を使用できます。
 
 ユーザーは、コレクション管理者またはアクセス許可の継承によってのみコレクションに追加できます。 親コレクションのアクセス許可は、そのサブコレクションによって自動的に継承されます。 ただし、任意のコレクションに対して[アクセス許可の継承を制限](how-to-create-and-manage-collections.md#restrict-inheritance)することができます。 これを行った場合、そのサブコレクションは親コレクションから権限を継承しなくなるため、直接追加する必要があります。ただし、親コレクションから自動的に継承されたコレクション管理は削除できません。
+
+Purview ロールは、purview アカウントのサブスクリプションに関連付けられている Azure Active Directory からユーザー、セキュリティ グループ、サービス プリンシパルに割り当てることができます。
 
 ## <a name="assign-permissions-to-your-users"></a>ユーザーにアクセス許可を割り当てる
 

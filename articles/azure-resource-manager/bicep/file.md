@@ -2,13 +2,13 @@
 title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 11/12/2021
-ms.openlocfilehash: 352ff708b9b36eff06be8f3a3dda10b28b02e37b
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.date: 11/17/2021
+ms.openlocfilehash: 7483335facd2123153be3e35516011e119252114
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132493985"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707599"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
@@ -145,7 +145,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
 
 詳細については、[Bicep の変数](./variables.md)に関する記事を参照してください。
 
-## <a name="resource"></a>リソース
+## <a name="resources"></a>リソース
 
 デプロイするリソースを定義するには `resource` キーワードを使用します。 リソース宣言には、リソースのシンボリック名が含まれます。 このシンボリック名を Bicep ファイルの他の部分で使用し、リソースから値を取得します。
 
@@ -166,6 +166,18 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 ```
 
 詳細については、[Bicep のリソース宣言](resource-declaration.md)に関する記事を参照してください。
+
+一部のリソースには親子関係があります。 子リソースは、親リソースの中にも外側にも定義できます。
+
+次の例では、親リソース内に子リソースを定義する方法を示します。 これには、ストレージ アカウント内に定義された子リソース (ファイル サービス) を持つストレージ アカウントが含まれます。 このファイル サービスには、その中に定義された子リソース (共有) もあります。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/child-resource-name-type/insidedeclaration.bicep" highlight="9,12":::
+
+次の例は、親リソースの外側の子リソースを定義する方法を示しています。 parent プロパティを使用して、親子関係を識別します。 同じ 3 つのリソースが定義されています。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/child-resource-name-type/outsidedeclaration.bicep" highlight="10,12,15,17":::
+
+詳細については、「[Bicep での子リソースの名前と種類の設定](child-resource-name-type.md)」を参照してください。
 
 ## <a name="modules"></a>モジュール
 

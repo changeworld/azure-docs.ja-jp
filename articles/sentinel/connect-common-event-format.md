@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 734ed8aaa1ad3557981c76f380227e7574861086
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: f13ef1ee30cb6e40db37228ca89eaacbda56814f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521892"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716184"
 ---
 # <a name="get-cef-formatted-logs-from-your-device-or-appliance-into-microsoft-sentinel"></a>デバイスまたはアプライアンスの CEF 形式のログを Microsoft Sentinel に取得する
 

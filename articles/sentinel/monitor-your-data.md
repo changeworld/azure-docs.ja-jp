@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 525f67a7c9284a9ac78c388e52041d7895032104
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 95bbc0f4accb885ce177aa78f37f3a72bd7ebe4a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522614"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713100"
 ---
 # <a name="use-azure-monitor-workbooks-to-visualize-and-monitor-your-data"></a>Azure Monitor ブックを使用して、データを視覚化および監視する
 

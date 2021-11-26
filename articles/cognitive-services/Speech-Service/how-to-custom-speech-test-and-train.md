@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 14cf969fa5aba3f3fddd6fedc63c2ccf19d71e08
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: 559081847ae83776bdf2d915cd194ccf6ffddb1f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132133500"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546388"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -49,7 +49,7 @@ ms.locfileid: "132133500"
 
 | データ型 | テストに使用 | 推奨数量 | トレーニングに使用 | 推奨数量 |
 |-----------|-----------------|----------|-------------------|----------|
-| [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
+| [オーディオのみ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-trainingtesting) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
 | [プレーンテキスト](#plain-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
 | [構造化テキスト](#structured-text-data-for-training-public-preview) (パブリック プレビュー) | いいえ | 該当なし | はい | 最大 4,000 の項目、最大 50,000 のトレーニング文を含む最大 10 個のクラス |

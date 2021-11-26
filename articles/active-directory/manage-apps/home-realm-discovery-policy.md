@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/20/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: ce71512e46f1b78ece832ec1fb1bad938edfcbf8
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 8ac93a42c4911a6694770ee320f84b88d6ea6aa5
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058844"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547448"
 ---
-# <a name="home-realm-discovery-for-an-application-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのホーム領域検出
+# <a name="home-realm-discovery-for-an-application"></a>アプリケーションのホーム領域検出
 
 ホーム領域検出 (HRD) は、ユーザーがサインイン時にどの ID プロバイダー ("IdP") に対して認証する必要があるかを Azure AD で決定できるようにするプロセスです。  ユーザーは、Azure AD テナントにサインインしてリソース (または Azure AD の共通サインイン ページ) にアクセスするとき、ユーザー名 (UPN) を入力します。 Azure AD はそれを使用して、ユーザーがどこにサインインする必要があるかを決定します。
 

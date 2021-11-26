@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 607cc8e3341e395fb7ef31c4af5c5c8b5fc75cec
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: ecc563cfc400fcf0e90320cb5c2436fe84cfa0d0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132484781"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704004"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -64,7 +64,7 @@ Azure Spring Cloud には、次の既知の制限があります。
 * Azure Spring Cloud には、2 つの価格レベルがあります。Basic と Standard です。 Basic レベルは、Dev/Test、および Azure Spring Cloud の試用を目的としています。 Standard レベルは、汎用の運用トラフィックを実行するために最適化されています。 制限と機能レベルの比較については、[Azure Spring Cloud の価格の詳細](https://azure.microsoft.com/pricing/details/spring-cloud/)に関する記事を参照してください。
 
 ### <a name="whats-the-difference-between-service-binding-and-service-connector"></a>サービスバインドと Service Connector の違いは何ですか?
-[Service Connector](/azure/service-connector/overview) という新しい Azure を優先するソリューションを使用して、サービスバインドの追加機能を積極的に開発していません。 一方、新しいソリューションでは、App Service のように、Azure 上のアプリホスティングサービス間に一貫性のある統合エクスペリエンスを提供します。 これに対して、MySQLやSQL DBやCosmos DB、Postgres DBやRedisやStorage など使用されている対象の Azure サービスのうち、最も多くのものを10⁺サポートすることから始めて、ニーズにも対応できます。 Service Connector は現在パブリックプレビュー中です。新しいエクスペリエンスをお試し頂き、どうぞよろしくお願いいたします。
+[Service Connector](../service-connector/overview.md) という新しい Azure を優先するソリューションを使用して、サービスバインドの追加機能を積極的に開発していません。 一方、新しいソリューションでは、App Service のように、Azure 上のアプリホスティングサービス間に一貫性のある統合エクスペリエンスを提供します。 これに対して、MySQLやSQL DBやCosmos DB、Postgres DBやRedisやStorage など使用されている対象の Azure サービスのうち、最も多くのものを10⁺サポートすることから始めて、ニーズにも対応できます。 Service Connector は現在パブリックプレビュー中です。新しいエクスペリエンスをお試し頂き、どうぞよろしくお願いいたします。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
@@ -221,7 +221,7 @@ Azure Spring Cloud は、お客様のアプリケーションのポート1025を
 
 ### <a name="whether-and-when-will-my-application-be-restarted"></a>アプリケーションを再起動するかどうかを指定します。
 
-正解です。 詳細について[Azure のアクティビティログと Azure Service Health を使用したアプリのライフサイクルイベントの監視](./monitor-app-lifecycle-events.md)を参照してください。
+はい。 詳細について[Azure のアクティビティログと Azure Service Health を使用したアプリのライフサイクルイベントの監視](./monitor-app-lifecycle-events.md)を参照してください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?

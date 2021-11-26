@@ -3,17 +3,15 @@ title: Microsoft Sentinel ウォッチリストのテンプレートのスキー
 description: Microsoft Sentinel の各組み込みウォッチリストのテンプレート内で使用されるスキーマについて説明します。
 author: batamig
 ms.author: bagold
-ms.service: microsoft-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
 ms.date: 11/09/2021
-ms.subservice: microsoft-sentinel
-ms.openlocfilehash: 0d322f7412e32de0c668c3dd82341da81eb12738
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 64c4ece5e98bbdb085a5512451422988f103a3f4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132516895"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711137"
 ---
 # <a name="microsoft-sentinel-built-in-watchlist-template-schemas-public-preview"></a>Microsoft Sentinel 組み込みウォッチリストのテンプレートのスキーマ (パブリック プレビュー)
 

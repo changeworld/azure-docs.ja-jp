@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
@@ -15,12 +13,12 @@ ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5b2ae955210a230353cdc6af54c8e17b56388192
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: a4518498edf3d2da14c09d396aff56542d61478f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132517503"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713013"
 ---
 # <a name="manage-multiple-tenants-in-microsoft-sentinel-as-an-mssp"></a>Microsoft Azure Sentinel で複数のテナントを MSSP として管理する
 
@@ -57,4 +55,4 @@ ms.locfileid: "132517503"
 
 このドキュメントでは、複数の Microsoft Azure Sentinel テナントをシームレスに管理する方法を学習しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Microsoft Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

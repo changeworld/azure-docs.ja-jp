@@ -5,17 +5,15 @@ services: sentinel
 author: yelevin
 ms.author: yelevin
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.date: 11/09/2021
-ms.openlocfilehash: 54fd6bb3b1d2c937364db4f1883f0919342e116d
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: fc1d361c3e46cfed012637e9717d2a12391bd2b3
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132522082"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132711345"
 ---
 # <a name="use-microsoft-sentinel-watchlists"></a>Microsoft Sentinel ウォッチリストを使用する
 

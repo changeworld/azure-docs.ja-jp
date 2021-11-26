@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c0bbc7bb40c292675374a3198fe0514b720adfca
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7b76f98d13e959529aab2c16776ed34cb0f1a906
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130226112"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706687"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -52,6 +52,8 @@ ms.locfileid: "130226112"
 親子関係を設定する手順では、子デバイスが IoT Hub に接続する場合と同様に親デバイスに接続することを承認します。
 
 親デバイスになれるのは IoT Edge デバイスのみですが、IoT Edge デバイスと IoT デバイスは両方とも子になることができます。 親は多数の子を持つことができますが、子は 1 つの親しか持つことができません。 ゲートウェイ階層は、あるデバイスの子が別のデバイスの親になるように親子セットを連結することで作成されます。
+
+既定では、親は最大 100 の子を持つことができます。 この制限を変更するには、親デバイスの edgeHub モジュールで **Maxconnectedclients** 環境変数を設定します。
 
 <!-- TODO: graphic of gateway hierarchy -->
 

@@ -9,19 +9,19 @@ ms.author: jeschult
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: dd5122f123dae93ea07cab65983183b1ffd8b463
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 5c1afa620fb3b81666aada950c257f38ff5d9a4f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132495185"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707716"
 ---
 # <a name="upgrade-indirect-mode-azure-arc-data-controller-using-the-cli"></a>CLI を使用した間接モードの Azure Arc データ コントローラーのアップグレード
 
 この記事では、Azure CLI (`az`) を使用して、間接的に接続された Azure Arc 対応データ コントローラーをアップグレードする方法について説明します。
 
 > [!IMPORTANT]
-> この記事は、直接接続された Azure Arc 対応データ コントローラーには適用されません。 直接接続されたデータ コントローラーをアップグレードする方法の最新情報については、[リリース ノート](/azure/azure-arc/data/release-notes#data-controller-upgrade)を参照してください。
+> この記事は、直接接続された Azure Arc 対応データ コントローラーには適用されません。 直接接続されたデータ コントローラーをアップグレードする方法の最新情報については、[リリース ノート](./release-notes.md#data-controller-upgrade)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,7 +65,7 @@ v1.0.0_2021-07-30
 > [!NOTE]
 > 一部のデータ サービス レベルとモードは一般提供段階であり、一部はプレビュー段階です。
 > 同じデータ コントローラーに GA サービスとプレビュー サービスをインストールしている場合、インプレース アップグレードはできません。
-> アップグレードするには、GA でないすべてのデータベース インスタンスを削除します。 一般公開されているサービスとプレビュー サービスの一覧は、[リリース ノート](/azure/azure-arc/data/release-notes)で確認できます。
+> アップグレードするには、GA でないすべてのデータベース インスタンスを削除します。 一般公開されているサービスとプレビュー サービスの一覧は、[リリース ノート](./release-notes.md)で確認できます。
 
 ### <a name="indirect-mode"></a>間接モード
 

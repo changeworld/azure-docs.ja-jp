@@ -12,12 +12,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: d313f521a13ae49f8701614d1b1331d34960ae77
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: a8a7e16579434ca741916c82fa03287c6955c9d2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619483"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551997"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>自動データベース バックアップを使用して復旧する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -212,6 +212,9 @@ Azure PowerShell または REST API を復旧に使用することもできま�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは SQL Database と SQL Managed Instance によって引き続きサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと Azure Resource Manager モジュールのコマンドの引数は、大部分が同じです。
+
+> [!NOTE]
+> 復元ポイントは、最も古い復元ポイントから最新のログ バックアップ ポイントまでの期間を表します。 最新の復元ポイントに関する情報は、現在 Azure PowerShell では使用できません。
 
 #### <a name="sql-database"></a>SQL Database
 

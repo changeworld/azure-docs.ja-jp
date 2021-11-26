@@ -11,12 +11,12 @@ ms.custom: references_regions, ignite-fall-2021
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/02/2021
-ms.openlocfilehash: 9af25cea1d0765aa088699421bb672ac05c3eed7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5b7d1adfca344444dd1db7040a487e1fec27601f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031368"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551959"
 ---
 # <a name="whats-new-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,6 +25,9 @@ ms.locfileid: "131031368"
 
 
 Azure SQL Database については、[新機能](../database/doc-changes-updates-release-notes-whats-new.md)に関するページを参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 
 ## <a name="preview"></a>プレビュー

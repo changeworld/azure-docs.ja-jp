@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma, emlisa
 ms.date: 09/24/2021
-ms.openlocfilehash: 0dc5dbec29cf8c1ac6a91777f0c67f0645e7a87d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 251a00fb5b64645cad5ec8bbdbed17fa229e61e4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057305"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554923"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,6 +34,9 @@ Azure では、パッチ適用、バックアップ、Windows および Azure SQ
 - データベース エンジン プロセスのクラスターに基づく **Premium 可用性モデル**。 利用可能なデータベース エンジン ノードのクォーラムが常にあるという事実に依存します。 このアーキテクチャでは、高い IO パフォーマンス、高いトランザクション レートを備えたミッション クリティカル なアプリケーションを対象とし、メンテナンス作業中のワークロードに対するパフォーマンスの影響を最小限に抑えることを保証します。
 
 SQL Database と SQL Managed Instance は、どちらも最新の安定したバージョンの SQL Server データベース エンジンおよび Windows オペレーティング システム上で実行されています。また、ほとんどのユーザーが認識することなく、アップグレードが継続的に実行されています。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="basic-standard-and-general-purpose-service-tier-locally-redundant-availability"></a>Basic、Standard、および General Purpose サービス レベルのローカル冗長可用性
 

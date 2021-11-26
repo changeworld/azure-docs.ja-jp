@@ -4,13 +4,13 @@ description: Bicep を使用して拡張リソースの種類を展開すると�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 2b1fb9960caf81a51c80dae312979d90f6eb5f4d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/16/2021
+ms.openlocfilehash: 8d91aa1109db4b1d884e90e3e0744611f9dbf4d8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733432"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549852"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>Bicep で拡張リソースのスコープを設定する
 
@@ -143,11 +143,13 @@ resource createStorageLock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
-
-スコープへのデプロイの詳細については、以下を参照してください。
+デプロイのターゲット スコープとは異なるスコープを対象とする場合、他のリソースと同じ要件が拡張機能リソースに適用されます。 複数のスコープへのデプロイについては、以下を参照してください。
 
 * [リソース グループのデプロイ](deploy-to-resource-group.md)
 * [サブスクリプションへのデプロイ](deploy-to-subscription.md)
 * [管理グループへのデプロイ](deploy-to-management-group.md)
 * [テナントへのデプロイ](deploy-to-tenant.md)
+
+## <a name="next-steps"></a>次のステップ
+
+拡張リソースの種類の完全な一覧については、「[他のリソースの機能を拡張するリソースの種類](../management/extension-resource-types.md)」を参照してください。

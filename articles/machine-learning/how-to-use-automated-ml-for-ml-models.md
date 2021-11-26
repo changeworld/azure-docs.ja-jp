@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 11/15/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: d4c4188a04db444a153577ead82d79f32c9b137d
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 145a87800ee1f6f72e629f9e8e6ceace06889316
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132518265"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717863"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>スタジオ UI を使用してコード不要の自動 ML トレーニングを設定する 
 
@@ -155,12 +155,12 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
     
         >[!IMPORTANT]
         > 生成されたモデルを評価するためのテスト データセットの提供は、プレビュー機能です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
-
-        1. テスト データは、推奨モデルのテストの実行結果に偏りが出ないように、トレーニングと検証とは別のものと見なされます。 [モデル検証中のバイアスの詳細について確認してください](concept-automated-ml.md#training-validation-and-test-data)。
-        1. 独自のテスト データセットを指定するか、トレーニング データセットの割合を使用することを選択できます。          
-        1. テスト データセットのスキーマは、トレーニング データセットと一致する必要があります。 ターゲット列は省略可能ですが、ターゲット列が示されていない場合、テスト メトリックは計算されません。
-        1. テスト データセットは、トレーニング データセットまたは検証データセットと同じにすべきではありません。
-        1. 予測実行では、トレーニングとテスト分割はサポートされていません。
+        
+        * テスト データは、推奨モデルのテストの実行結果に偏りが出ないように、トレーニングと検証とは別のものと見なされます。 [モデル検証中のバイアスの詳細について確認してください](concept-automated-ml.md#training-validation-and-test-data)。
+        * 独自のテスト データセットを指定するか、トレーニング データセットの割合を使用することを選択できます。 テスト データは [Azure Machine Learning TabularDataset](how-to-create-register-datasets.md#tabulardataset) 形式にする必要があります。         
+        * テスト データセットのスキーマは、トレーニング データセットと一致する必要があります。 ターゲット列は省略可能ですが、ターゲット列が示されていない場合、テスト メトリックは計算されません。
+        * テスト データセットは、トレーニング データセットまたは検証データセットと同じにすべきではありません。
+        * 予測実行では、トレーニングとテスト分割はサポートされていません。
         
         ![検証データとテスト データを選択するフォームを示すスクリーンショット](media/how-to-use-automated-ml-for-ml-models/validate-test-form.png)
         
@@ -217,6 +217,13 @@ Included | トレーニングに含める列を指定します。
 >[!IMPORTANT]
 > 生成されたモデルを評価するためにテスト データセットを使ってモデルをテストする機能はプレビュー段階です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
 
+> [!WARNING]
+> この機能は、次の自動 ML シナリオでは使用できません
+>  * [Computer Vision タスク (プレビュー)](how-to-auto-train-image-models.md)
+>  * [多数モデルおよび階層型時系列予測トレーニング (プレビュー)](how-to-auto-train-forecast.md)
+>  * [ディープ ラーニング ニューラル ネットワーク (DNN) が有効になっている予測タスク](how-to-auto-train-forecast.md#enable-deep-learning)
+>  * [ローカル コンピューティングまたは Azure Databricks クラスターからの自動 ML 実行](how-to-configure-auto-train.md#compute-to-run-experiment)
+
 推奨されるモデルのテストの実行メトリックを表示するには、次のようにします。
  
 1. **[モデル]** ページに移動し、最適なモデルを選択します。 
@@ -231,7 +238,19 @@ Included | トレーニングに含める列を指定します。
 
 または、予測ファイルを [出力とログ] タブから表示またはダウンロードすることもできます。Predictions フォルダーを展開して、predictions.csv ファイルを見つけます。
 
+モデル テストの実行では、predictions.csv ファイルが生成され、ワークスペースで作成された既定のデータストアに格納されます。 このデータストアは、同じサブスクリプションを持つすべてのユーザーに表示されます。 テストの実行は、テストの実行で使用または作成された情報を非公開にする必要があるシナリオにはお勧めできません。
+
 ## <a name="test-an-existing-automated-ml-model-preview"></a>既存の自動 ML モデルをテストする (プレビュー)
+
+>[!IMPORTANT]
+> 生成されたモデルを評価するためにテスト データセットを使ってモデルをテストする機能はプレビュー段階です。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+
+> [!WARNING]
+> この機能は、次の自動 ML シナリオでは使用できません
+>  * [Computer Vision タスク (プレビュー)](how-to-auto-train-image-models.md)
+>  * [多数モデルおよび階層型時系列予測トレーニング (プレビュー)](how-to-auto-train-forecast.md)
+>  * [ディープ ラーニング ニューラル ネットワーク (DNN) が有効になっている予測タスク](how-to-auto-train-forecast.md#enable-deep-learning)
+>  * [ローカル コンピューティングまたは Azure Databricks クラスターからの自動 ML 実行](how-to-configure-auto-train.md#compute-to-run-experiment)
 
 実験が完了したら、自動 ML によって自動的に生成されるモデルをテストできます。 推奨されるモデルではなく、別の 自動 ML 生成モデルをテストする場合は、次の手順を行います。 
 

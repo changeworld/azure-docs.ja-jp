@@ -12,12 +12,12 @@ ms.reviewer: mathoma
 ms.date: 05/18/2021
 ROBOTS: NOINDEX
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6c16e508aa2002aff07df5fc30e0af4c74bdd025
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 67e79d8b307de6327f3bacf2bfd57f95080b50d1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413708"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553194"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database および Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,9 @@ Azure SQL Database と Azure SQL Managed Instance で使用される仮想コア
 - Azure SQL Database の場合、仮想コア購入モデルは、DTU モデルよりも高いコンピューティング、メモリ、I/O、ストレージの制限が提供されます。
 
 仮想コア購入モデルか DTU 購入モデルかの選択の詳細については、[仮想コア購入モデルか DTU 購入モデルかの選択](purchasing-models.md)に関するページをご覧ください。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="service-tiers"></a>サービス階層
 

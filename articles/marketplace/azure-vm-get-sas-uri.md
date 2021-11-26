@@ -7,17 +7,17 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 06/23/2021
-ms.openlocfilehash: 4bebe0ea34f9f9cc62b0ed4e96fd6fb1c7615635
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 36565dd38b74e8e03d44625f3dab765a26207c7c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112913457"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132723040"
 ---
 # <a name="generate-a-sas-uri-for-a-vm-image"></a>VM イメージの SAS URI を生成する
 
 > [!NOTE]
-> VM を発行するために SAS URI は必要ありません。 単に、Parter Center でイメージを共有するだけです。 [承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページの手順を参照してください。
+> VM を発行するために SAS URI は必要ありません。 単に、パートナー センターでイメージを共有するだけです。 [承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-use-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-use-own-image.md)に関するページの手順を参照してください。
 
 VHD の SAS URI の生成には、次の要件があります。
 
@@ -175,4 +175,4 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
 - 問題が発生した場合は、[VM SAS のエラー メッセージ](azure-vm-sas-failure-messages.md)に関する記事を参照してください
 - [パートナー センターにサインインする](https://go.microsoft.com/fwlink/?linkid=2165935)
-- [Azure Marketplace で仮想マシン オファーを作成する](azure-vm-create.md)
+- [Azure Marketplace で仮想マシン オファーを作成する](azure-vm-offer-setup.md)

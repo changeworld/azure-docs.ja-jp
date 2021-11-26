@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 09/27/2021
-ms.openlocfilehash: eadbeee57960577f12f880b4582e820eddb63e3c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7b155c07edebf80ee45467829c57024d0ad2845f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234378"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552282"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations オファーの作成
 
@@ -77,15 +77,9 @@ ms.locfileid: "129234378"
 
 ## <a name="setup-details"></a>セットアップの詳細
 
-**[潜在顧客がこの登録オファーを利用する方法について選択してください。]** で、このオファーに使用するオプションを選択します。
+**潜在顧客がこの登録オファーを処理する方法** については、 **[お問い合わせ]** を選択してください。
 
-- **今すぐ入手する (無料)** – 無料のオファーの一覧を顧客に提示します。
-- **無料試用版 (一覧)** – 無料試用版へのリンクが付いたオファーの一覧を顧客に提示します。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。
-
-    > [!NOTE]
-    > 試用版リンクからアプリケーションが受信するトークンは、そのアプリのアカウント作成を自動化するためのユーザー情報を Azure Active Directory (Azure AD) を介して取得するためだけに使用できます。 このトークンを使用した認証には、Microsoft アカウントはサポートされません。
-
-- **連絡してください** – 顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、「[潜在顧客](#customer-leads)」を参照してください。
+顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、「[潜在顧客](#customer-leads)」を参照してください。
 
 ## <a name="test-drive"></a>体験版
 

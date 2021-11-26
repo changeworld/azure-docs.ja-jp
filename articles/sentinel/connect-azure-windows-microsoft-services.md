@@ -3,18 +3,16 @@ title: Microsoft Sentinel を Azure、Windows、および Microsoft サービス
 description: Microsoft Sentinel を Azure と Microsoft 365 クラウド サービス、および Windows Server イベント ログに接続する方法について学習します。
 author: yelevin
 manager: rkarlin
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: how-to
 ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 79007f7716a8a24350bbfa6083b9891c425c120e
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 4843f3bf4f5ccaf22446bb98a5e44fa6179d9946
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132523032"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724446"
 ---
 # <a name="connect-microsoft-sentinel-to-azure-windows-microsoft-and-amazon-services"></a>Microsoft Azure Sentinel を Azure、Windows、Microsoft、および Amazon サービスに接続する
 
@@ -35,7 +33,7 @@ Microsoft Sentinel では Azure 基盤を使用して、多くの Azure と Micr
 次の統合は、より固有なものでもあり、より一般的なものでもあります。これらは、それぞれの記事で個別に扱われます。
 
 - [Microsoft 365 Defender](connect-microsoft-365-defender.md)
-- [Microsoft Defender for Cloud](connect-azure-security-center.md)
+- [Microsoft Defender for Cloud](connect-defender-for-cloud.md)
 - [Azure Active Directory](connect-azure-active-directory.md)
 - [Windows セキュリティ イベント](connect-windows-security-events.md)
 - [アマゾン ウェブ サービス (AWS) CloudTrail](connect-aws.md)

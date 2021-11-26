@@ -6,8 +6,6 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
@@ -15,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 087ee5a8fd0b3f6337306532525c19db46a2c203
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 8d06268fd73008cafb67f3a53e56c3abf7333af9
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132524438"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713138"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-microsoft-sentinel-workbook"></a>この Microsoft Sentinel ブックを使用してデータ コネクタの正常性を監視する
 

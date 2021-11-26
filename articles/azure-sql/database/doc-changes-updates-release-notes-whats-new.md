@@ -11,12 +11,12 @@ ms.custom: sqldbrb=2, references_regions, ignite-fall-2021
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/21/2021
-ms.openlocfilehash: 077d022c5d996f5c495c38e4789a37bf234d093b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e57adde4df10a942baff7b7032706a991d46050c
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131006223"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556175"
 ---
 # <a name="whats-new-in-azure-sql-database"></a>Azure SQL Database の新機能
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "131006223"
 この記事は、[Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/) の最新リリースで導入された新機能と機能強化に関連するドキュメントの変更点をまとめたものです。 Azure SQL Database の詳細については、[概要](sql-database-paas-overview.md)に関する記事を参照してください。 
 
 Azure SQL Managed Instance については、「[新機能](../managed-instance/doc-changes-updates-release-notes-whats-new.md)」を参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 
 

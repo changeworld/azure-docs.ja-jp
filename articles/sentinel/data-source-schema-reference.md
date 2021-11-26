@@ -5,17 +5,15 @@ author: batamig
 ms.author: bagol
 manager: rkarlin
 ms.assetid: ''
-ms.service: microsoft-sentinel
-ms.subservice: microsoft-sentinel
 ms.topic: reference
 ms.custom: ignite-fall-2021
 ms.date: 11/09/2021
-ms.openlocfilehash: 5b2c03c90fc17d2226de9f364e5ff4d3e5447307
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: 0ea3809ec96d956e50d698c85cabbcf99420335d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132521685"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132724427"
 ---
 # <a name="data-source-schema-reference"></a>データ ソース スキーマ リファレンス
 

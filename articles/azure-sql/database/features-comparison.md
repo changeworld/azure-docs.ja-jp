@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, mathoma, danil
 ms.date: 09/21/2021
-ms.openlocfilehash: 505dbbed8dc0287d33e09d1db6471a4dedee6f6f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9406a8c0a54bac170c43a75f95842f2cf0dde171
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131476948"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548864"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -35,6 +35,9 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 違いについてさらに詳しく知りたい場合は、次の各ページで見つけることができます。
 - [Azure SQL Database とSQL Server との相違点](transact-sql-tsql-differences-sql-server.md)
 - [Azure SQL Managed Instance とSQL Server との相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance の機能
