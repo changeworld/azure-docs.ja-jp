@@ -1,37 +1,37 @@
 ---
-title: Azure Sentinel での Jupyter Notebook と MSTICPy の詳細な構成 | Microsoft Docs
-description: Azure Sentinel で作業するときに、Jupyter Notebook と MSTICPy で使用できる詳細な構成について説明します。
+title: Microsoft Sentinel での Jupyter Notebook と MSTICPy の詳細な構成 | Microsoft Docs
+description: Microsoft Sentinel で作業するときに、Jupyter Notebook と MSTICPy で使用できる詳細な構成について説明します。
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
-ms.date: 09/12/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 354db7af1198335247d97c31b44b3c40b59ed75d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 513f7c3c7e80f526f76e899a509de2b743fc9e7c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060708"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132516971"
 ---
-# <a name="advanced-configurations-for-jupyter-notebooks-and-msticpy-in-azure-sentinel"></a>Azure Sentinel での Jupyter Notebook と MSTICPy の詳細な構成
+# <a name="advanced-configurations-for-jupyter-notebooks-and-msticpy-in-microsoft-sentinel"></a>Microsoft Sentinel での Jupyter Notebook と MSTICPy の詳細な構成
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、Azure Sentinel で Jupyter Notebook と MSTICPy を操作するための詳細な構成について説明します。
+この記事では、Microsoft Sentinel で Jupyter Notebook と MSTICPy を操作するための詳細な構成について説明します。
 
-詳細については、「[Jupyter Notebook を使用してセキュリティの脅威を検出する](notebooks.md)」および「[チュートリアル: Azure Sentinel で Jupyter Notebook と MSTICPy の使用を開始する](notebook-get-started.md)」を参照してください。
+詳細については、「[Jupyter のノートブックを使用してセキュリティの脅威を検出する](notebooks.md)」および「[チュートリアル: Microsoft Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事は、「[チュートリアル: Azure Sentinel で Jupyter Notebook と MSTICPy の使用を開始する](notebook-get-started.md)」の続きです。 以下で説明する高度な手順に進む前に、このチュートリアルを実行することをお勧めします。
+この記事は、「[チュートリアル: Microsoft Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)」の続きです。 以下で説明する高度な手順に進む前に、このチュートリアルを実行することをお勧めします。
 
-## <a name="specify-authentication-parameters-for-azure-and-azure-sentinel-apis"></a>Azure および Azure Sentinel API の認証パラメーターを指定する
+## <a name="specify-authentication-parameters-for-azure-and-microsoft-sentinel-apis"></a>Azure および Microsoft Sentinel API の認証パラメーターを指定する
 
-この手順では、**msticpyconfig.yaml** ファイルで Azure Sentinel および他の Azure API リソースの認証パラメーターを構成する方法について説明します。
+この手順では、**msticpyconfig.yaml** ファイルで Microsoft Sentinel および他の Azure API リソースの認証パラメーターを構成する方法について説明します。
 
-**MSTICPy 設定エディターで Azure 認証と Azure Sentinel API の設定を追加するには**:
+**MSTICPy 設定エディターで Azure 認証と Microsoft Sentinel API の設定を追加するには**:
 
 1. 次のセルに進み、次のコードを入力して実行します。
 
@@ -67,14 +67,14 @@ ms.locfileid: "131060708"
 
 1. **[Autoload QueryProv]\(QueryProv の自動読み込み\)** タブ:
 
-   - Azure Sentinel プロバイダーの場合は、プロバイダー名と接続先のワークスペース名の両方を指定します。
+   - Microsoft Sentinel プロバイダーの場合は、プロバイダー名と接続先のワークスペース名の両方を指定します。
    - 他のクエリ プロバイダーの場合は、プロバイダー名だけを指定します。
 
    各プロバイダーには、次の省略可能な値もあります。
 
    - **Auto-connect:** このオプションは、既定で **True** として定義されており、MSTICPy は読み込み直後にプロバイダーに対して認証を試みます。 MSTICPy では、設定でプロバイダーの資格情報が構成済みであることを前提としています。
 
-   - **Alias:** MSTICPy では、プロバイダーを読み込むときに、プロバイダーを Python 変数名に割り当てます。 既定では、変数名は、Azure Sentinel プロバイダーの場合は **qryworkspace_name**、他のプロバイダーの場合は **qryprovider_name** になります。
+   - **Alias:** MSTICPy では、プロバイダーを読み込むときに、プロバイダーを Python 変数名に割り当てます。 既定では、変数名は、Microsoft Sentinel プロバイダーの場合は **qryworkspace_name**、他のプロバイダーの場合は **qryprovider_name** になります。
 
         たとえば、*ContosoSOC* ワークスペースのクエリ プロバイダーを読み込むと、ノートブック環境にこのクエリ プロバイダーが `qry_ContosoSOC` という名前で作成されます。 より短い名前や、入力しやすく覚えやすい名前を使用したい場合は、別名を追加します。 プロバイダー変数名は `qry_<alias>` になります。`<alias>` は指定した別名に置き換えられます。
 
@@ -95,8 +95,8 @@ ms.locfileid: "131060708"
 
 1. **TILookup:** [TI プロバイダー ライブラリ](notebook-get-started.md#add-threat-intelligence-provider-settings)
 1. **GeoIP:** 使用する [GeoIP プロバイダー](notebook-get-started.md#add-geoip-provider-settings)
-1. **AzureData:** [Azure リソース](#specify-authentication-parameters-for-azure-and-azure-sentinel-apis)の詳細のクエリに使用するモジュール
-1. **AzureSentinelAPI:** [Azure Sentinel API](#specify-authentication-parameters-for-azure-and-azure-sentinel-apis) のクエリに使用するモジュール
+1. **AzureData:** [Azure リソース](#specify-authentication-parameters-for-azure-and-microsoft-sentinel-apis)の詳細のクエリに使用するモジュール
+1. **AzureSentinelAPI:** [Microsoft Sentinel API](#specify-authentication-parameters-for-azure-and-microsoft-sentinel-apis) のクエリに使用するモジュール
 1. **Notebooklets:** [msticnb パッケージ](https://msticnb.readthedocs.io/en/latest/)の Notebooklets
 1. **Pivot:** ピボット関数
 
@@ -122,11 +122,11 @@ ms.locfileid: "131060708"
       - **auth_methods:** AzureCLI の既定の設定をオーバーライドし、選択した方法を使用して接続します。
       - **Auto-connect:** 接続せずに読み込むには、false に設定します。
 
-      詳細については、「[Azure および Azure Sentinel API の認証パラメーターを指定する](#specify-authentication-parameters-for-azure-and-azure-sentinel-apis)」を参照してください。
+      詳細については、「[Azure および Microsoft Sentinel API の認証パラメーターを指定する](#specify-authentication-parameters-for-azure-and-microsoft-sentinel-apis)」を参照してください。
 
    - **Notebooklets**。 **Notebooklets** コンポーネントには、**AzureSentinel** という単一のパラメーター ブロックがあります。
 
-      `workspace:\<workspace name>` 構文を使用して、Azure Sentinel ワークスペースを指定します。 ワークスペース名は、 **[Azure Sentinel]** タブで定義されているワークスペースのいずれかである必要があります。
+      `workspace:\<workspace name>` 構文を使用して、Microsoft Sentinel ワークスペースを指定します。 ワークスペース名は、 **[Microsoft Sentinel]** タブで定義されているワークスペースのいずれかである必要があります。
 
       `notebooklets init` 関数に送信するパラメーターをさらに追加する場合は、改行で区切って、キーと値のペアとして指定します。 次に例を示します。
 
@@ -140,7 +140,6 @@ ms.locfileid: "131060708"
     **TILookup** や **Pivot** など、一部のコンポーネントではパラメーターは不要です。
 
 1. **[Save Settings]\(設定の保存\)** を選択して変更を保存します。
-
 
 ## <a name="switch-between-python-36-and-38-kernels"></a>Python 3.6 カーネルと 3.8 カーネルを切り替える
 
@@ -168,7 +167,6 @@ Azure ML ノートブックにパッケージをインストールするとき�
 
   1. ターミナルを閉じ、カーネルを再起動します。
 
-
 ## <a name="set-an-environment-variable-for-your-msticpyconfigyaml-file"></a>msticpyconfig.yaml ファイルの環境変数を設定する
 
 Azure ML で実行していて、**msticpyconfig.yaml** ファイルがユーザー フォルダーのルートにある場合、MSTICPy によってこれらの設定が自動的に検出されます。 ただし、ノートブックを別の環境で実行している場合は、このセクションの手順に従って、構成ファイルの場所を参照する環境変数を設定します。
@@ -190,6 +188,7 @@ Azure ML で実行していて、**msticpyconfig.yaml** ファイルがユーザ
 1. その場所を参照するように **MSTICPYCONFIG** 環境変数を設定します。
 
 次のいずれかの手順を使用して、**MSTICPYCONFIG** 環境変数を定義します。
+
 # <a name="windows"></a>[Windows](#tab/windows)
 
 Windows システムで **MSTICPYCONFIG** 環境変数を設定する場合:
@@ -208,7 +207,7 @@ Windows システムで **MSTICPYCONFIG** 環境変数を設定する場合:
 
 1. 必要に応じて、**msticpyconfig.yaml** ファイルをコンピューティング インスタンスに移動します。
 
-1. Azure Sentinel の **Notesbooks** ページなどから、Azure ML ターミナルを開きます。
+1. Microsoft Sentinel の **Notesbooks** ページなどから、Azure ML ターミナルを開きます。
 
 1. **msticpyconfig.yaml** ファイルにアクセスできることを確認します。
 
@@ -247,6 +246,7 @@ Azure ML ユーザー フォルダー以外の場所に **msticpyconfig.yaml** �
 
     1. Azure ML ターミナルで、ユーザー フォルダー (ユーザー名が付けられたフォルダー) のルートに **nbuser_settings.py** ファイルを作成します。
     1. **nbuser_settings.py** ファイルに、次の行を追加します。
+
         ```python
           import os
           os.environ["MSTICPYCONFIG"] = "~/msticpyconfig.yaml"
@@ -256,53 +256,52 @@ Azure ML ユーザー フォルダー以外の場所に **msticpyconfig.yaml** �
 
 - **Python カーネルの *kernel.json* ファイル**。 ノートブックを手動で実行し、最初に `init_notebook` 関数を呼び出さない可能性がある場合は、この手順を使用します。
 
-    Python 3.6 と Python 3.8 のカーネルがあります。 両方のカーネルを使用する場合は、両方のファイルを編集します。
+  Python 3.6 と Python 3.8 のカーネルがあります。 両方のカーネルを使用する場合は、両方のファイルを編集します。
 
-    - **Python 3.8 の場所**: */usr/local/share/jupyter/kernels/python38-azureml/kernel.json*
-    - **Python 3.6 の場所**: */usr/local/share/jupyter/kernels/python3-azureml/kernel.json*
+  - **Python 3.8 の場所**: */usr/local/share/jupyter/kernels/python38-azureml/kernel.json*
+  - **Python 3.6 の場所**: */usr/local/share/jupyter/kernels/python3-azureml/kernel.json*
 
-    **kernel.json** ファイルで環境変数を設定するには:
+  **kernel.json** ファイルで環境変数を設定するには:
 
-    1. **kernel.json** ファイルのコピーを作成し、エディターで元のファイルを開きます。 `sudo` を使用して **kernel.json** ファイルを上書きすることが必要な場合があります。ファイルの内容は次の例のようになります。
+  1. **kernel.json** ファイルのコピーを作成し、エディターで元のファイルを開きます。 `sudo` を使用して **kernel.json** ファイルを上書きすることが必要な場合があります。ファイルの内容は次の例のようになります。
 
-         ```python
-         {
-             "argv": [
-             "/anaconda/envs/azureml_py38/bin/python",
-             "-m",
-             "ipykernel_launcher",
-             "-f",
-             "{connection_file}"
-             ],
-             "display_name": "Python 3.8 - AzureML",
-             "language": "python"
-         }
-         ```
+      ```python
+      {
+         "argv": [
+         "/anaconda/envs/azureml_py38/bin/python",
+         "-m",
+         "ipykernel_launcher",
+         "-f",
+         "{connection_file}"
+         ],
+         "display_name": "Python 3.8 - AzureML",
+         "language": "python"
+      }
+      ```
 
-    1. `"language"` 項目の後に、`"env": { "MSTICPYCONFIG": "~/msticpyconfig.yaml" }` 行を追加します。
+  1. `"language"` 項目の後に、`"env": { "MSTICPYCONFIG": "~/msticpyconfig.yaml" }` 行を追加します。
 
-        `"language": "python"` 行の末尾に必ずコンマを追加してください。 次に例を示します。
+      `"language": "python"` 行の末尾に必ずコンマを追加してください。 次に例を示します。
 
-         ```python
-         {
-             "argv": [
-             "/anaconda/envs/azureml_py38/bin/python",
-             "-m",
-             "ipykernel_launcher",
-             "-f",
-             "{connection_file}"
-             ],
-             "display_name": "Python 3.8 - AzureML",
-             "language": "python",
-             "env": { "MSTICPYCONFIG": "~/msticpyconfig.yaml" }
-         }
-         ```
+      ```python
+      {
+          "argv": [
+          "/anaconda/envs/azureml_py38/bin/python",
+          "-m",
+          "ipykernel_launcher",
+          "-f",
+          "{connection_file}"
+          ],
+          "display_name": "Python 3.8 - AzureML",
+          "language": "python",
+          "env": { "MSTICPYCONFIG": "~/msticpyconfig.yaml" }
+      }
+      ```
 
 ---
 
 > [!NOTE]
 > Linux および Windows オプションでは、定義した環境変数が選択されるように、Jupyter サーバーを再起動する必要があります。
->
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -311,5 +310,5 @@ Azure ML ユーザー フォルダー以外の場所に **msticpyconfig.yaml** �
 |サブジェクト  |その他の参考資料  |
 |---------|---------|
 |**MSTICPy**     |      - [MSTICPy パッケージ構成](https://msticpy.readthedocs.io/en/latest/getting_started/msticpyconfig.html)<br> - [MSTICPy 設定エディター](https://msticpy.readthedocs.io/en/latest/getting_started/SettingsEditor.html)<br>    - [ノートブック環境の構成](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/ConfiguringNotebookEnvironment.ipynb)<br>    - [MPSettingsEditor ノートブック](https://github.com/microsoft/msticpy/blob/master/docs/notebooks/MPSettingsEditor.ipynb) <br><br>**注**: Azure-Sentinel-Notebooks GitHub リポジトリには、コメントアウトされたセクションを含むテンプレート *msticpyconfig.yaml* ファイルも含まれており、設定を理解するのに役立ちます。      |
-|**Azure Sentinel および Jupyter Notebook**     |      - [Jupyter Notebook: 概要](https://realpython.com/jupyter-notebook-introduction/)<br>    - [MSTICPy のドキュメント](https://msticpy.readthedocs.io/)<br>    - [Azure Sentinel Notebook のドキュメント](notebooks.md)<br>    - [Infosec Jupyterbook](https://infosecjupyterbook.com/introduction.html)<br>    - [Linux Host Explorer Notebook のチュートリアル](https://techcommunity.microsoft.com/t5/azure-sentinel/explorer-notebook-series-the-linux-host-explorer/ba-p/1138273)<br>    - [セキュリティ調査に Jupyter を使用する理由](https://techcommunity.microsoft.com/t5/azure-sentinel/why-use-jupyter-for-security-investigations/ba-p/475729)<br>    - [Azure Sentinel と Notebooks を使用したセキュリティ調査](https://techcommunity.microsoft.com/t5/azure-sentinel/security-investigation-with-azure-sentinel-and-jupyter-notebooks/ba-p/432921)<br>    - [Pandas のドキュメント](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)<br>    - [Batch のドキュメント](https://docs.bokeh.org/en/latest/)       |
+|**Microsoft Sentinel と Jupyter Notebook**     |      - [Jupyter Notebook: 概要](https://realpython.com/jupyter-notebook-introduction/)<br>    - [MSTICPy のドキュメント](https://msticpy.readthedocs.io/)<br>    - [Microsoft Sentinel Notebooks のドキュメント](notebooks.md)<br>    - [Infosec Jupyterbook](https://infosecjupyterbook.com/introduction.html)<br>    - [Linux Host Explorer Notebook のチュートリアル](https://techcommunity.microsoft.com/t5/azure-sentinel/explorer-notebook-series-the-linux-host-explorer/ba-p/1138273)<br>    - [セキュリティ調査に Jupyter を使用する理由](https://techcommunity.microsoft.com/t5/azure-sentinel/why-use-jupyter-for-security-investigations/ba-p/475729)<br>    - [Microsoft Sentinel と Notebooks を使用したセキュリティ調査](https://techcommunity.microsoft.com/t5/azure-sentinel/security-investigation-with-azure-sentinel-and-jupyter-notebooks/ba-p/432921)<br>    - [Pandas のドキュメント](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)<br>    - [Batch のドキュメント](https://docs.bokeh.org/en/latest/)       |
 |     |         |

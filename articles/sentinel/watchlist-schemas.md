@@ -1,28 +1,28 @@
 ---
-title: Azure Sentinel ウォッチリストのテンプレートのスキーマ | Microsoft Docs
-description: Azure Sentinel の各組み込みウォッチリストのテンプレート内で使用されるスキーマについて説明します。
+title: Microsoft Sentinel ウォッチリストのテンプレートのスキーマ | Microsoft Docs
+description: Microsoft Sentinel の各組み込みウォッチリストのテンプレート内で使用されるスキーマについて説明します。
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
-ms.date: 08/04/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: f531b18dfe94027948f1411372ff72e68b01c933
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 0d322f7412e32de0c668c3dd82341da81eb12738
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131054972"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132516895"
 ---
-# <a name="azure-sentinel-built-in-watchlist-template-schemas-public-preview"></a>Azure Sentinel 組み込みウォッチリストのテンプレートのスキーマ (パブリック プレビュー)
+# <a name="microsoft-sentinel-built-in-watchlist-template-schemas-public-preview"></a>Microsoft Sentinel 組み込みウォッチリストのテンプレートのスキーマ (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、Azure Sentinel が提供する各組み込みウォッチリストのテンプレート内で使用されるスキーマについて詳しく説明します。 詳細については、[テンプレートを使用した新しいウォッチリストの作成](watchlists.md#create-a-new-watchlist-using-a-template-public-preview)に関するページをご覧ください。
+この記事では、Microsoft Sentinel が提供する各組み込みウォッチリストのテンプレート内で使用されるスキーマについて詳しく説明します。 詳細については、[テンプレートを使用した新しいウォッチリストの作成](watchlists.md#create-a-new-watchlist-using-a-template-public-preview)に関するページをご覧ください。
 
 > [!IMPORTANT]
-> Azure Sentinel ウォッチリストのテンプレートは、現在プレビューの段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+> Microsoft Sentinel ウォッチリストのテンプレートは、現在プレビューの段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 >
 
 
@@ -117,4 +117,4 @@ ID 相関関係ウォッチリストには、同じユーザーに属する関�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Azure Sentinel ウォッチリストを使用する](watchlists.md)」を参照してください。
+詳細については、「[Microsoft Azure Sentinel ウォッチリストを使用する](watchlists.md)」を参照してください。

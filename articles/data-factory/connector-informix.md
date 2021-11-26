@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 11/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 442bf95401f4816a192940191c3bee96aed4aa97
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d3ce22128b209a65d5f9036b0943f2425e2c5de3
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827335"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401252"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して IBM Informix との間で双方向にデータをコピーする
 
@@ -37,7 +37,7 @@ Informix ソースのデータをサポートされる任意のシンク デー�
 この Informix コネクタを使用するには、次の手順が必要です。
 
 - セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
-- データ ストア用の Informix ODBC ドライバーを Integration Runtime マシンにインストールする。 ドライバーのインストールとセットアップについては、IBM Knowledge Center の記事「[Informix ODBC ドライバー ガイド](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm)」で詳細を参照するか、IBM のサポート チームにドライバーのインストールのガイダンスを問い合わせてください。
+- 統合ランタイム マシン上にデータ ストア用の ODBC 接続を作成するために Informix 用 64 ビット クライアント SDK をダウンロードします。 SDK のダウンロードとセットアップについては、この[記事](https://www.ibm.com/support/pages/informix-client-software-development-kit-client-sdk-and-informix-connect-system-requirements)で詳細を参照するか、IBM サポート チームに連絡してドライバーのインストールのガイダンスを求めてください。
 
 ## <a name="getting-started"></a>作業の開始
 

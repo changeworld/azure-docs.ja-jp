@@ -1,28 +1,28 @@
 ---
-title: Azure Sentinel を Azure、Windows、および Microsoft サービスに接続する
-description: Azure Sentinel を Azure と Microsoft 365 クラウド サービス、および Windows Server イベント ログに接続する方法について学習します。
+title: Microsoft Sentinel を Azure、Windows、および Microsoft サービスに接続する
+description: Microsoft Sentinel を Azure と Microsoft 365 クラウド サービス、および Windows Server イベント ログに接続する方法について学習します。
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: how-to
-ms.date: 08/18/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: fab632ae17f71829ddfb36ced149253e124c9851
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 79007f7716a8a24350bbfa6083b9891c425c120e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456900"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523032"
 ---
-# <a name="connect-azure-sentinel-to-azure-windows-microsoft-and-amazon-services"></a>Azure Sentinel を Azure、Windows、Microsoft、および Amazon サービスに接続する
+# <a name="connect-microsoft-sentinel-to-azure-windows-microsoft-and-amazon-services"></a>Microsoft Azure Sentinel を Azure、Windows、Microsoft、および Amazon サービスに接続する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel では Azure 基盤を使用して、多くの Azure と Microsoft 365 サービス、アマゾン ウェブ サービス、およびさまざまな Windows Server サービスからのデータ インジェスト用の組み込みのサービス間サポートを提供します。 これらの接続を行ういくつかの異なる方法があります。この記事では、これらの接続を行う方法について説明します。
+Microsoft Sentinel では Azure 基盤を使用して、多くの Azure と Microsoft 365 サービス、アマゾン ウェブ サービス、およびさまざまな Windows Server サービスからのデータ インジェスト用の組み込みのサービス間サポートを提供します。 これらの接続を行ういくつかの異なる方法があります。この記事では、これらの接続を行う方法について説明します。
 
 この記事では、次の種類のコネクタについて説明します。
 
@@ -35,26 +35,25 @@ Azure Sentinel では Azure 基盤を使用して、多くの Azure と Microsof
 次の統合は、より固有なものでもあり、より一般的なものでもあります。これらは、それぞれの記事で個別に扱われます。
 
 - [Microsoft 365 Defender](connect-microsoft-365-defender.md)
-- [Azure Defender](connect-azure-security-center.md)
+- [Microsoft Defender for Cloud](connect-azure-security-center.md)
 - [Azure Active Directory](connect-azure-active-directory.md)
 - [Windows セキュリティ イベント](connect-windows-security-events.md)
 - [アマゾン ウェブ サービス (AWS) CloudTrail](connect-aws.md)
-
 
 ## <a name="api-based-connections"></a>API ベースの接続
 
 ### <a name="prerequisites"></a>前提条件
 
 - Log Analytics ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
-- Azure Sentinel ワークスペースのテナントに対するグローバル管理者またはセキュリティ管理者ロールが必要です。
+- Microsoft Sentinel ワークスペースのテナントに対するグローバル管理者またはセキュリティ管理者ロールが必要です。
 
-### <a name="instructions"></a>Instructions
+### <a name="instructions"></a>手順
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから、 **[データ コネクタ]** を選択します。
 
 1. データ コネクタ ギャラリーからご利用のサービスを選び、プレビュー ペインで **[コネクタ ページを開く]** を選択します。
 
-1. **[接続]** を選択して、サービスから Azure Sentinel にイベントやアラートのストリーミングを開始します。
+1. **[接続]** を選択して、サービスから Microsoft Sentinel へのイベントやアラートのストリーミングを開始します。
 
 1. コネクタ ページに **[Create incidents - recommended!]\(インシデントの作成 - 推奨\)** というタイトルのセクションがある状態で、アラートからインシデントを自動的に作成する場合は **[有効]** を選択します。
 
@@ -68,13 +67,13 @@ Azure Sentinel では Azure 基盤を使用して、多くの Azure と Microsof
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure Sentinel にデータを取り込むには
+Microsoft Sentinel にデータを取り込むには:
 
-- Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
+- Microsoft Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
-### <a name="instructions"></a>Instructions
+### <a name="instructions"></a>手順
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから、 **[データ コネクタ]** を選択します。
 
 1. データ コネクタ ギャラリーからリソースの種類を選び、プレビュー ペインで **[コネクタ ページを開く]** を選択します。
 
@@ -88,7 +87,7 @@ Azure Sentinel にデータを取り込むには
 
 1. **[診断設定]** 画面で、 **[診断設定の名前]** フィールドに名前を入力します。
 
-    **[Log Analytics への送信]** チェック ボックスにマークを付けます。 2 つの新しいフィールドが下に表示されます。 関連する **[サブスクリプション]** と **[Log Analytics ワークスペース]** (Azure Sentinel が存在する場所) を選択します。
+    **[Log Analytics への送信]** チェック ボックスにマークを付けます。 2 つの新しいフィールドが下に表示されます。 関連する **サブスクリプション** と **Log Analytics ワークスペース** (Microsoft Sentinel が存在する場所) を選択します。
 
 1. 収集するログとメトリックの種類のチェック ボックスをオンにします。 [データ コネクタのリファレンス](data-connectors-reference.md) ページで、リソースのコネクタのセクションにある各リソースの種類に推奨される選択肢を確認してください。
 
@@ -98,9 +97,9 @@ Azure Sentinel にデータを取り込むには
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure Sentinel にデータを取り込むには
+Microsoft Sentinel にデータを取り込むには:
 
-- Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
+- Microsoft Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
 - Azure Policy を使用してリソースにログ ストリーミング ポリシーを適用するには、ポリシー割り当てスコープの所有者ロールが必要です。
 
@@ -108,7 +107,7 @@ Azure Sentinel にデータを取り込むには
 
 この種類のコネクタでは Azure Policy を使用して、スコープとして定義された単一の種類のリソースのコレクションに、単一の診断設定構成を適用します。 特定のリソースの種類から取り込まれたログの種類は、そのリソースのコネクタ ページの左側にある **[データ型]** で確認できます。
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから、 **[データ コネクタ]** を選択します。
 
 1. データ コネクタ ギャラリーからリソースの種類を選び、プレビュー ペインで **[コネクタ ページを開く]** を選択します。
 
@@ -121,7 +120,7 @@ Azure Sentinel にデータを取り込むには
     1. **[パラメーター]** タブで、次の操作を行います。
        - **[Only show parameters that require input]\(入力が必要なパラメーターのみを表示する\)** チェック ボックスをオフにします。
        - **[効果]** と **[設定名]** のフィールドが表示されている場合は、そのままにしておきます。
-       - **[Log Analytics ワークスペース]** ドロップダウン リストからお使いの Azure Sentinel ワークスペースを選択します。
+       - **[Log Analytics ワークスペース]** ドロップダウン リストからお使いの Microsoft Sentinel ワークスペースを選択します。
        - 残りのドロップダウン フィールドは、使用可能な診断ログの種類を表します。 取り込み対象のすべてのログの種類を "True" とマークされたままにします。
 
     1. ポリシーは、今後追加されるリソースに適用されます。 ポリシーを既存のリソースにも適用するには、 **[修復]** タブを選択し、 **[修復タスクを作成する]** チェック ボックスにチェックを付けます。
@@ -154,19 +153,19 @@ Azure Sentinel にデータを取り込むには
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
+- Microsoft Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
 - Azure 仮想マシン以外からイベントを収集するには、Azure Monitor エージェントベースのコネクタを有効にする前に、システムに [**Azure Arc**](../azure-monitor/agents/azure-monitor-agent-install.md) をインストールし、有効にしておく必要があります。
 
-   これには次のものが含まれます
-   
-    - 物理マシンにインストールされている Windows サーバー
-    - オンプレミスの仮想マシンにインストールされている Windows サーバー
-    - Azure 以外のクラウドの仮想マシンにインストールされている Windows サーバー
+  これには次のものが含まれます
+
+  - 物理マシンにインストールされている Windows サーバー
+  - オンプレミスの仮想マシンにインストールされている Windows サーバー
+  - Azure 以外のクラウドの仮想マシンにインストールされている Windows サーバー
 
 ### <a name="instructions"></a>Instructions
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 一覧からコネクタを選び、詳細ペインの **[コネクタ ページを開く]** を選びます。 その後、 **[Instructions]\(手順\)** タブで画面の指示に従い、このセクションの残りの作業を行います。
+1. Microsoft Sentinel のナビゲーション メニューから、 **[データ コネクタ]** を選択します。 一覧からコネクタを選び、詳細ペインの **[コネクタ ページを開く]** を選びます。 その後、 **[Instructions]\(手順\)** タブで画面の指示に従い、このセクションの残りの作業を行います。
 
 1. コネクタ ページの **[前提条件]** セクションに記載された適切なアクセス許可があることを確認します。
 
@@ -181,6 +180,7 @@ Azure Sentinel にデータを取り込むには
     [データ収集ルール](../azure-monitor/agents/data-collection-rule-overview.md#create-a-dcr)の詳細については、Azure Monitoring のドキュメントを参照してください。
 
     > [!NOTE]
+    >
     > - Windows セキュリティ イベント コネクタには、収集できる他の 2 つの [**事前構築済みイベント セット**](windows-security-event-id-reference.md) (**Common** と **Minimal**) が用意されています。
     >
     > - Azure Monitor エージェントは、 **[XPath バージョン 1.0](/windows/win32/wes/consuming-events#xpath-10-limitations) のみ** の XPath クエリをサポートしています。
@@ -193,10 +193,12 @@ Azure Sentinel にデータを取り込むには
 
 > [!TIP]
 > XPath クエリの有効性をテストするには、 *-FilterXPath* パラメーターを指定した PowerShell コマンドレット **Get-WinEvent** を使用します。 次のスクリプトは、一例を示しています。
+>
 > ```powershell
 > $XPath = '*[System[EventID=1035]]'
 > Get-WinEvent -LogName 'Application' -FilterXPath $XPath
 > ```
+>
 > - イベントが返されたら、クエリは有効です。
 > - [No events were found that match the specified selection criteria]\(指定した選択条件に一致するイベントは見つかりませんでした\) というメッセージが表示された場合は、クエリはおそらく有効ですが、一致するイベントがローカル コンピューターにありません。
 > - [The specified query is invalid]\(指定したクエリは無効です\) というメッセージが表示された場合は、クエリ構文が無効です。
@@ -251,21 +253,19 @@ PUT https://management.azure.com/subscriptions/703362b3-f278-4e4b-9179-c76eaf41f
     }
 }
 ```
-Azure Monitor のドキュメントのこちらの[データ収集ルールの完全な説明](../azure-monitor/agents/data-collection-rule-overview.md)を参照してください。
 
+Azure Monitor のドキュメントのこちらの[データ収集ルールの完全な説明](../azure-monitor/agents/data-collection-rule-overview.md)を参照してください。
 
 # <a name="log-analytics-agent-legacy"></a>[Log Analytics エージェント (レガシ)](#tab/LAA)
 
 ### <a name="prerequisites"></a>前提条件
 
 - Log Analytics ワークスペースに対する読み取りと書き込みのアクセス許可と、ログの収集元となるマシンを含むワークスペースが必要です。
-- Azure Sentinel ロールに加えて、それらのワークスペースの SecurityInsights (Azure Sentinel) ソリューションに対する **Log Analytics 共同作成者** ロールが必要です。
+- Microsoft Sentinel ロールに加えて、それらのワークスペースの SecurityInsights (Microsoft Sentinel) ソリューションに対する **Log Analytics 共同作成者** ロールが必要です。
 
-### <a name="instructions"></a>Instructions
+### <a name="instructions"></a>手順
 
-#### <a name="install-the-agent"></a>エージェントをインストールする
-
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから、 **[データ コネクタ]** を選択します。
 
 1. ご利用のサービス ( **[DNS]** または **[Windows ファイアウォール]** ) を選んでから、 **[コネクタ ページを開く]** を選択します。
 
@@ -279,7 +279,7 @@ Azure Monitor のドキュメントのこちらの[データ収集ルールの�
 
 > [!NOTE]
 >
-> 必要なインターネット接続を備えていない Windows システムでも Azure Sentinel にイベントをストリーム配信できるようにする場合は、プロキシとして機能する **Log Analytics ゲートウェイ** を別のマシンにインストールします。それには、**[エージェントの管理]** ページの **[Log Analytics ゲートウェイのダウンロード]** リンクを使用します。  その場合でも、イベントを収集する個々の Windows システムに Log Analytics エージェントをインストールする必要があります。
+> 必要なインターネット接続を備えていない Windows システムでも Microsoft Sentinel にイベントをストリーム配信できるようにする場合は、プロキシとして機能する **Log Analytics ゲートウェイ** を別のマシンにインストールします。それには、 **[エージェントの管理]** ページの **[Log Analytics ゲートウェイのダウンロード]** リンクを使用します。  その場合でも、イベントを収集する個々の Windows システムに Log Analytics エージェントをインストールする必要があります。
 >
 > このシナリオの詳細については、[**Log Analytics ゲートウェイ** のドキュメント](../azure-monitor/agents/gateway.md)を参照してください。
 
@@ -296,8 +296,8 @@ Windows DNS サーバーと Windowsファイアウォール コネクタに対�
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、Azure、Microsoft、および Windows サービスと、アマゾン ウェブ サービスを Azure Sentinel に接続する方法について学習しました。 
-- 一般的な [Azure Sentinel データ コネクタ](connect-data-sources.md)について学習する。
-- [Azure Sentinel データ コネクタを見つける](data-connectors-reference.md)。
+このドキュメントでは、Azure、Microsoft、および Windows サービスと、アマゾン ウェブ サービスを Microsoft Sentinel に接続する方法について学習しました。 
+- 一般的な [Microsoft Sentinel データ コネクタ](connect-data-sources.md)について学習する。
+- [Microsoft Sentinel データ コネクタを見つける](data-connectors-reference.md)。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

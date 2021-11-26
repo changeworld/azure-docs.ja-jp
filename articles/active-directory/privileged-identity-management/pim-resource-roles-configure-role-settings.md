@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 11/12/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b3707fd3b9b56131d24274555761f616991600
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 4f7db8546310fe5a55fabceed5a5613f2bbd8a78
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508742"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490005"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
@@ -114,7 +114,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、Azure
 
 ## <a name="activation-maximum-duration"></a>アクティブ化の最大期間
 
-**[アクティブ化の最大期間]** スライダーを使用して、ロールの割り当ての有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
+**[アクティブ化の最大期間]** スライダーを使用して、ロールの割り当てのアクティブ化要求が、有効期限が切れるまでアクティブなままである最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
 
 ## <a name="require-justification"></a>理由を必須にする
 

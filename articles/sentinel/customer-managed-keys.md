@@ -1,38 +1,38 @@
 ---
-title: Azure Sentinel でカスタマー マネージド キーを設定する | Microsoft Docs
-description: Azure Sentinel でカスタマー マネージド キー (CMK) を設定する方法について説明します。
+title: Microsoft Sentinel でカスタマー マネージド キーを設定する | Microsoft Docs
+description: Microsoft Sentinel でカスタマー マネージド キー (CMK) を設定する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 17ff2b2910b81c29f88f70e9a3de31433f965668
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d0b172d2af5393c71acb9ea25e1b2d3df6091276
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064565"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522918"
 ---
-# <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
+# <a name="set-up-microsoft-sentinel-customer-managed-key"></a>Microsoft Sentinel のカスタマー マネージド キーの設定
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、Azure Sentinel 用の[カスタマー マネージド キー (CMK)](../azure-monitor/logs/customer-managed-keys.md) を構成するための背景情報と手順について説明します。 CMK では、Azure Sentinel に格納されているすべてのデータ (関連するすべてのストレージ リソースで Microsoft によって既に暗号化されている) をさらに保護することができます。このために使用する暗号化キーは、自ら作成して所有し、[Azure Key Vault](../key-vault/general/overview.md) に格納しておきます。
+この記事では、Microsoft Sentinel 用の[カスタマー マネージド キー (CMK)](../azure-monitor/logs/customer-managed-keys.md) を構成するための背景情報と手順について説明します。 CMK では、Microsoft Sentinel に格納されているすべてのデータ (関連するすべてのストレージ リソースで Microsoft によって既に暗号化されている) をさらに保護することができます。このために使用する暗号化キーは、自ら作成して所有し、[Azure Key Vault](../key-vault/general/overview.md) に格納しておきます。
 
 ## <a name="prerequisites"></a>前提条件
 
 - CMK 機能には、少なくとも 500 GB/日のコミットメント レベルを持つ Log Analytics 専用クラスターが必要です。 複数のワークスペースを同じ専用クラスターにリンクすることができ、それらが同じカスタマー マネージド キーを共有します。
 
-- このガイドの手順を完了した後、ワークスペースを使用する前に、オンボードの確認について [Azure Sentinel 製品グループ](mailto:azuresentinelCMK@microsoft.com)にお問い合わせください。
+- このガイドの手順を完了した後、ワークスペースを使用する前に、オンボードの確認について [Microsoft Sentinel 製品グループ](mailto:azuresentinelCMK@microsoft.com)にお問い合わせください。
 
 - [Log Analytics 専用クラスターの価格](../azure-monitor/logs/logs-dedicated-clusters.md#cluster-pricing-model)について学習します。
 
@@ -40,29 +40,29 @@ ms.locfileid: "131064565"
 
 - CMK ワークスペースを Sentinel にオンボードすることは、REST API 経由でのみサポートされており、Azure portal ではサポートされていません。 現在、Azure Resource Manager テンプレート (ARM テンプレート) は CMK オンボードではサポートされていません。
 
-- Azure Sentinel CMK 機能が提供されるのは、"*Azure Sentinel にまだオンボードされていない* *Log Analytics 専用クラスター内のワークスペース*" のみです。
+- Microsoft Sentinel CMK 機能が提供されるのは、"*Microsoft Sentinel にまだオンボードされていない* *Log Analytics 専用クラスター内のワークスペース*" のみです。
 
-- 次の CMK 関連の変更は、無効になるため "*サポートされません*" (Azure Sentinel データは、CMK ではなく、Microsoft が管理するキーによってのみ暗号化されます)。
+- 次の CMK 関連の変更は、無効になるため "*サポートされません*" (Microsoft Sentinel データは、CMK ではなく、Microsoft が管理するキーによってのみ暗号化されます)。
 
-  - Azure Sentinel に "*既にオンボードされた*" ワークスペースでの CMK の有効化。
+  - Microsoft Sentinel に "*既にオンボードされた*" ワークスペースでの CMK の有効化。
   - Sentinel にオンボードされたワークスペースを含むクラスター上での CMK の有効化。
   - Sentinel にオンボードされた非 CMK ワークスペースの CMK 対応クラスターへのリンク。
 
 - 次の CMK 関連の変更は、不明な動作や問題がある動作を引き起こす可能性があるため、"*サポートされません*"。
 
-  - Azure Sentinel に既にオンボードされたワークスペースでの CMK の無効化。
+  - Microsoft Sentinel に既にオンボードされたワークスペースでの CMK の無効化。
   - Sentinel にオンボードされた CMK 対応ワークスペースを、CMK 対応の専用クラスターとのリンクを解除することで、非 CMK ワークスペースとして設定すること。
   - CMK 対応 Log Analytics 専用クラスター上での CMK の無効化。
 
-- Azure Sentinel では、CMK 構成でシステム割り当て ID がサポートされています。 そのため、専用 Log Analytics クラスターの ID の種類は **[システム割り当て済]** である必要があります。 Log Analytics クラスターの作成時に自動的に割り当てられる ID を使用することをお勧めします。
+- Microsoft Sentinel では、CMK 構成でシステム割り当て ID がサポートされています。 そのため、専用 Log Analytics クラスターの ID の種類は **[システム割り当て済]** である必要があります。 Log Analytics クラスターの作成時に自動的に割り当てられる ID を使用することをお勧めします。
 
 - 現在、別の URI を使用して、カスタマー マネージド キーを別のキーに変更することは "*サポートされていません*"。 キーを変更するには[ローテーション](../azure-monitor/logs/customer-managed-keys.md#key-rotation)を行う必要があります。
 
-- 運用ワークスペースまたは Log Analytics クラスターに CMK の変更を加える前に、[Azure Sentinel 製品グループ](mailto:azuresentinelCMK@microsoft.com)にお問い合わせください。
+- 運用ワークスペースまたは Log Analytics クラスターに CMK の変更を加える前に、[Microsoft Sentinel 製品グループ](mailto:azuresentinelCMK@microsoft.com)にお問い合わせください。
 
 ## <a name="how-cmk-works"></a>CMK のしくみ 
 
-Azure Sentinel ソリューションでは、ログの収集と機能に複数のストレージ リソースが使用されます (Log Analytics 専用クラスターを含む)。 Azure Sentinel CMK 構成の一部として、関連する Log Analytics 専用クラスター上でも CMK 設定を構成する必要があります。 Azure Sentinel によって Log Analytics 以外のストレージ リソースに保存されたデータも、専用 Log Analytics クラスターに構成されたカスタマー マネージド キーを使用して暗号化されます。
+Microsoft Sentinel ソリューションでは、ログの収集と機能に複数のストレージ リソースが使用されます (Log Analytics 専用クラスターを含む)。 Microsoft Sentinel CMK 構成の一部として、関連する Log Analytics 専用クラスター上でも CMK 設定を構成する必要があります。 Microsoft Sentinel によって Log Analytics 以外のストレージ リソースに保存されたデータも、専用 Log Analytics クラスターに構成されたカスタマー マネージド キーを使用して暗号化されます。
 
 次のその他の関連ドキュメントを参照してください。
 - [Azure Monitor のカスタマー マネージド キー (CMK)](../azure-monitor/logs/customer-managed-keys.md)。
@@ -70,7 +70,7 @@ Azure Sentinel ソリューションでは、ログの収集と機能に複数�
 - [Log Analytics 専用クラスター](../azure-monitor/logs/logs-dedicated-clusters.md)。
 
 > [!NOTE]
-> Azure Sentinel で CMK を有効にすると、CMK をサポートしていないパブリック プレビュー機能は有効になりません。
+> Microsoft Sentinel で CMK を有効にすると、CMK をサポートしていないパブリック プレビュー機能は有効になりません。
 
 ## <a name="enable-cmk"></a>CMK を有効にする 
 
@@ -84,11 +84,12 @@ CMK をプロビジョニングするには、次の手順を実行します。
 
 4.  Azure Key Vault インスタンスにアクセス ポリシーを追加します。
 
-5.  [オンボード API](https://github.com/Azure/Azure-Sentinel/raw/master/docs/Azure%20Sentinel%20management.docx) を使用してワークスペースを Azure Sentinel にオンボードします。
+5.  [オンボード API](https://github.com/Azure/Azure-Sentinel/raw/master/docs/Azure%20Sentinel%20management.docx) を使用してワークスペースを Microsoft Sentinel にオンボードします。
 
 ### <a name="step-1-create-an-azure-key-vault-and-generate-or-import-a-key"></a>手順 1: Azure Key Vault を作成し、キーを生成またはインポートする
 
-1.  [Azure Key Vault リソースを作成](/azure-stack/user/azure-stack-key-vault-manage-portal)してから、データの暗号化に使用するキーを生成またはインポートします。
+1. [Azure Key Vault リソースを作成](/azure-stack/user/azure-stack-key-vault-manage-portal)してから、データの暗号化に使用するキーを生成またはインポートします。
+
     > [!NOTE]
     >  キーとアクセスを保護するため、Azure Key Vault を回復可能として構成する必要があります。
 
@@ -100,11 +101,11 @@ CMK をプロビジョニングするには、次の手順を実行します。
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>手順 2: Log Analytics ワークスペースで CMK を有効にする
 
-以降の手順で Azure Sentinel ワークスペースとして使用する CMK ワークスペースを作成するには、「[Azure Monitor のカスタマー マネージド キーの構成](../azure-monitor/logs/customer-managed-keys.md)」の手順に従います。
+以降の手順で Microsoft Sentinel ワークスペースとして使用する CMK ワークスペースを作成するには、[Azure Monitor のカスタマー マネージド キーの構成](../azure-monitor/logs/customer-managed-keys.md)に関するページの手順に従います。
 
 ### <a name="step-3-register-to-the-cosmos-db-resource-provider"></a>手順 3: Cosmos DB リソース プロバイダーに登録する
 
-Azure Sentinel では、追加のストレージ リソースとして Cosmos DB が使用されます。 必ず Cosmos DB リソース プロバイダーに登録します。
+Microsoft Sentinel では、追加のストレージ リソースとして Cosmos DB が使用されます。 必ず Cosmos DB リソース プロバイダーに登録します。
 
 Cosmos DB の指示に従って、ご利用の Azure サブスクリプションの [Azure Cosmos DB リソース プロバイダーに登録](../cosmos-db/how-to-setup-cmk.md#register-resource-provider)します。
 
@@ -112,17 +113,17 @@ Cosmos DB の指示に従って、ご利用の Azure サブスクリプション
 
 Cosmos DB からご使用の Azure Key Vault インスタンスに確実にアクセス権を追加します。 Cosmos DB の指示に従って、Azure Cosmos DB プリンシパルで[ご使用の Azure Key Vault インスタンスにアクセス ポリシーを追加](../cosmos-db/how-to-setup-cmk.md#add-access-policy)します。
 
-### <a name="step-5-onboard-the-workspace-to-azure-sentinel-via-the-onboarding-api"></a>手順 5: オンボード API を使用してワークスペースを Azure Sentinel にオンボードする
+### <a name="step-5-onboard-the-workspace-to-microsoft-sentinel-via-the-onboarding-api"></a>手順 5: オンボード API を使用してワークスペースを Microsoft Sentinel にオンボードする
 
-[オンボード API](https://github.com/Azure/Azure-Sentinel/raw/master/docs/Azure%20Sentinel%20management.docx) を使用してワークスペースを Azure Sentinel にオンボードします。
+[オンボード API](https://github.com/Azure/Azure-Sentinel/raw/master/docs/Azure%20Sentinel%20management.docx) を使用してワークスペースを Microsoft Sentinel にオンボードします。
 
 ## <a name="key-encryption-key-revocation-or-deletion"></a>キー暗号化キーの失効または削除
 
-ユーザーがキー暗号化キー (CMK) を削除するか、専用クラスターと Cosmos DB リソース プロバイダーのアクセス権を削除して、キー暗号化キーを取り消した場合、Azure Sentinel は、1 時間以内に変更を受け入れ、データが使用できなくなった場合と同様に動作します。 この時点で、データ インジェスト、永続的な構成の変更、インシデントの作成など、永続ストレージ リソースを使用する操作はすべて行えなくなります。 以前に格納されたデータは削除されませんが、アクセスできなくなります。 アクセスできないデータは、データ保持ポリシーによって管理され、そのポリシーに従って消去されます。
+ユーザーがキー暗号化キー (CMK) を削除するか、専用クラスターと Cosmos DB リソース プロバイダーのアクセス権を削除して、キー暗号化キーを取り消した場合、Microsoft Sentinel は、1 時間以内に変更を受け入れ、データが使用できなくなった場合と同様に動作します。 この時点で、データ インジェスト、永続的な構成の変更、インシデントの作成など、永続ストレージ リソースを使用する操作はすべて行えなくなります。 以前に格納されたデータは削除されませんが、アクセスできなくなります。 アクセスできないデータは、データ保持ポリシーによって管理され、そのポリシーに従って消去されます。
 
 暗号化キーが失効または削除されてから実行可能な操作は、アカウントの削除だけです。
 
-失効後にアクセスが復元されると、Azure Sentinel によって 1 時間以内にデータへのアクセスが復元されます。
+失効後にアクセスが復元されると、Microsoft Sentinel によって 1 時間以内にデータへのアクセスが復元されます。
 
 データへのアクセス権を取り消すには、専用 Log Analytics クラスターと Cosmos DB の両方について、キー コンテナーのカスタマー マネージド キーを無効にするか、キーのアクセス ポリシーを削除します。 アクセス権を取り消すために、専用 Log Analytics クラスターからキーを削除したり、専用 Log Analytics クラスターに関連付けられた ID を削除したりすることは、サポートされていません。
 
@@ -130,7 +131,7 @@ Azure Monitor でのこの動作の詳細については、[Azure Monitor の CM
 
 ## <a name="customer-managed-key-rotation"></a>カスタマー マネージド キーのローテーション
 
-Azure Sentinel と Log Analytics では、キーのローテーションがサポートされています。 ユーザーが Key Vault でキーのローテーションを実行すると、Azure Sentinel では 1 時間以内に新しいキーがサポートされます。
+Microsoft Sentinel と Log Analytics では、キーのローテーションがサポートされています。 ユーザーが Key Vault でキーのローテーションを実行すると、Microsoft Sentinel では 1 時間以内に新しいキーがサポートされます。
 
 Key Vault では、キーの新しいバージョンを作成することによってキーのローテーションを実行できます。
 
@@ -142,10 +143,10 @@ Key Vault では、キーの新しいバージョンを作成することによ�
 
 ## <a name="replacing-a-customer-managed-key"></a>カスタマー マネージド キーの置換
 
-Azure Sentinel では、カスタマー マネージド キーの置換はサポートされません。 代わりに[キー ローテーション機能](#customer-managed-key-rotation)を使用する必要があります。
+Microsoft Sentinel では、カスタマー マネージド キーの置換はサポートされません。 代わりに[キー ローテーション機能](#customer-managed-key-rotation)を使用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure Sentinel でカスタマー マネージド キーを設定する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Microsoft Sentinel でカスタマー マネージド キーを設定する方法について説明しました。 Microsoft Sentinel の詳細については、次の記事を参照してください。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
 - [ブックを使用](monitor-your-data.md)してデータを監視する。

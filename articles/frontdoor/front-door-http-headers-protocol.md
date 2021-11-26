@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: 807138187e37deef6f23121ce085e62f520ad335
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d102978b12c37033d2d52c7ee749c1e7f7878c7c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736666"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489059"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure Front Door での HTTP ヘッダー プロトコルのサポート
 この記事では、呼び出しパスの各部で Front Door がサポートするプロトコルの概要を示します (画像を参照)。 以下のセクションでは、Front Door がサポートする HTTP ヘッダーについて詳しく説明します。
@@ -27,7 +27,10 @@ ms.locfileid: "121736666"
 >この記事に記載されていない HTTP ヘッダーは、Front Door では認定されていません。
 
 ## <a name="client-to-front-door"></a>クライアントから Front Door
+
 Front Door では、受信した要求のほとんどのヘッダーが変更なしで受け入れられます。 X-FD-* プレフィックスの付いたヘッダーを含め、一部の予約済みヘッダーは、送信された場合、受信した要求から削除されます。
+
+デバッグ要求ヘッダー "X-Azure-DebugInfo" は、Front Door に関する追加のデバッグ情報を示します。 Front Door からクライアントに[オプションの応答ヘッダー](#optional-debug-response-headers)を受信するには、"X-Azure-DebugInfo: 1" 要求ヘッダーをクライアントから Front Door に送信する必要があります。 
 
 ## <a name="front-door-to-backend"></a>Front Door からバックエンド
 
@@ -55,6 +58,8 @@ Front Door では、制限により削除されない限り、受信した要求
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> これは Front Door によって処理される要求を識別する一意の参照文字列です。アクセス ログの検索に使用されるため、トラブルシューティングには非常に重要です。|
 | X-Cache | *X-Cache:* このヘッダーは、要求のキャッシュの状態を示します。 <br/> - *X-Cache: TCP_HIT*: 要求の先頭のバイトは、Front Door エッジでのキャッシュ ヒットです。 <br/> - *X-Cache: TCP_REMOTE_HIT*: 要求の先頭のバイトはリージョン キャッシュ (配信元シールド レイヤー) でのキャッシュ ヒットですが、エッジ キャッシュではミスです。 <br/> - *X-Cache: TCP_MISS*: 要求の先頭のバイトはキャッシュ ミスであり、コンテンツは配信元から提供されます。 <br/> - *X-Cache: PRIVATE_NOSTORE*: Cache-Control 応答ヘッダーが private または no-store のいずれかに設定されているため、要求をキャッシュできません。 <br/> - *X-Cache: CONFIG_NOCACHE*: 要求は Front Door プロファイルでキャッシュなしに構成されています。 |
+
+### <a name="optional-debug-response-headers"></a>省略可能なデバッグ応答ヘッダー
 
 "X-Azure-DebugInfo:1" 要求ヘッダーを送信して、次の省略可能な応答ヘッダーを有効にする必要があります。
 

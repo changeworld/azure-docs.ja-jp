@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 702b2fcd2c5cb88adf7c610287dbb9be7089268b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b796ddccbc561c81d08c0f967c866f7a2ddc65a9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258318"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484777"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud-deprecated"></a>Azure Spring Cloud で分散トレースを使用する (非推奨)
 > [!NOTE]
@@ -119,7 +119,7 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
 
    この変更が完了すると、Zipkin センダーは Web に送信できるようになります。
 
-1. [Azure Spring Cloud アプリケーションの準備ガイド](how-to-prepare-app-deployment.md)に従っている場合は、この手順をスキップします。 それ以外の場合は、ローカルの開発環境にアクセスし、次の Spring Cloud Sleuth 依存関係を含むように pom.xml ファイルを編集します。
+1. [Azure Spring Cloud のアプリケーションの準備ガイド](how-to-prepare-app-deployment.md)に従っている場合は、この手順をスキップします。 それ以外の場合は、ローカルの開発環境にアクセスし、次の Spring Cloud Sleuth 依存関係を含むように pom.xml ファイルを編集します。
 
     * Spring Boot バージョン 2.4.x 以前
 
@@ -215,4 +215,4 @@ Application Insights では、アプリケーション マップと検索機能�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 サービスをアプリケーションにバインドする方法については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](./how-to-bind-cosmos.md)に関する記事を参照してください。
+この記事では、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 アプリケーションへのサービスのバインドについては、[Azure Cosmos DB データベースを Azure Spring Cloud のアプリケーションにバインドする](./how-to-bind-cosmos.md)方法に関するページを参照してください。

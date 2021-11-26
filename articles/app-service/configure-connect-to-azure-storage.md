@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/02/2021
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: e485efa572dd1b786b714b74b4d6df49d7a44853
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 12f2cc667cc568132eb4e91a1f739f81b075fd80
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236452"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400093"
 ---
 # <a name="mount-azure-storage-as-a-local-share-in-a-container-app-in-app-service"></a>App Service のコンテナー アプリでローカル共有として Azure Storage をマウントする
 
@@ -26,7 +26,7 @@ ms.locfileid: "130236452"
 
 ::: zone pivot="container-linux"
 
-このガイドでは、App Service の組み込み Linux コンテナーまたはカスタム Linux コンテナーに、ネットワーク共有として Azure Storage をマウントする方法について説明します。 カスタムマウント ストレージの利点は次のとおりです。
+このガイドでは、App Service の組み込み Linux コンテナーまたはカスタム Linux コンテナーに、ネットワーク共有として Azure Storage をマウントする方法について説明します。 動画「[ローカル共有として Azure Storage をマウントする方法](https://www.youtube.com/watch?v=OJkvpWYr57Y)」をご覧ください。 カスタムマウント ストレージの利点は次のとおりです。
 
 ::: zone-end
 
@@ -99,6 +99,7 @@ Linux コンテナーでは、次の機能がサポートされています。
 - カスタムマウント ストレージへの FTP/FTPS アクセスはサポートされていません ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用してください)。
 - Azure CLI、Azure PowerShell、Azure SDK のサポートはプレビュー段階です。
 - カスタム マウント ストレージへの `/` または `/home` のマッピングはサポートされていません。
+- アプリの起動中にタイムアウトが発生する可能性があるため、カスタム ストレージのマウントを `/tmp` またはそのサブディレクトリにマップしないでください。
 - [デプロイ スロット](deploy-staging-slots.md)の作成中に、ストレージのマウントを複製設定オプションと共に使用することはできません。
 - ストレージのマウントは、[アプリをバックアップ](manage-backup.md)するときにバックアップされません。 必ずベスト プラクティスに従って Azure Storage アカウントをバックアップしてください。 
 
@@ -248,5 +249,6 @@ Azure Storage がアプリに対して正常にマウントされたことを検
 ::: zone pivot="container-linux"
 
 - [カスタム コンテナーを構成する](configure-custom-container.md?pivots=platform-linux)。
+- [動画:「ローカル共有として Azure Storage をマウントする方法」](https://www.youtube.com/watch?v=OJkvpWYr57Y)。
 
 ::: zone-end

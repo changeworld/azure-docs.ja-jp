@@ -1,65 +1,64 @@
 ---
-title: Azure Sentinel のプレイブックでトリガーとアクションを使用する | Microsoft Docs
-description: Azure Sentinel アラートとインシデント情報へのアクセス権をプレイブックに提供し、その情報を使用して対応アクションを実行する方法についての詳は、以下を参照してください。
+title: Microsoft Sentinel プレイブックでトリガーとアクションを使用する | Microsoft Docs
+description: プレイブックで Microsoft Sentinel のアラートやインシデントの情報にアクセスできるようにし、その情報を使用して修復アクションを実行する方法について詳細に説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 093db947b30444b4d7c3614126c83977fd45e3de
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 89b296d47f24391eb0c31b2292aa4add273d71f6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083956"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524400"
 ---
-# <a name="use-triggers-and-actions-in-azure-sentinel-playbooks"></a>Azure Sentinel のプレイブックでトリガーとアクションを使用する
+# <a name="use-triggers-and-actions-in-microsoft-sentinel-playbooks"></a>Microsoft Sentinel プレイブックでトリガーとアクションを使用する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-このドキュメントでは、[Logic Apps Azure Sentinel コネクタ](/connectors/azuresentinel/)のトリガーとアクションの種類について、プレイブックが Azure Sentinel とワークスペースのテーブルの情報をやり取りするために使用できることを説明しています。 さらに、必要となる可能性のある特定の種類の Microsoft Azure Sentinel 情報へのアクセス方法も示しています。
+このドキュメントでは、プレイブックで Microsoft Sentinel やワークスペースのテーブル内の情報を操作するために使用する [Logic Apps Microsoft Sentinel コネクタ](/connectors/azuresentinel/)のトリガーとアクションの種類について説明します。 さらに、必要になる可能性がある特定の種類の Microsoft Sentinel 情報にアクセスする方法についても説明します。
 
-このドキュメントは、[Azure Sentinel へのプレイブックの認証](authenticate-playbooks-to-sentinel.md)のガイドと、他のプレイブックのドキュメントである[チュートリアル: Azure Sentinelの自動化ルールでプレイブックを使う](tutorial-respond-threats-playbook.md)と関連しています。 これら 3 つのドキュメントは、互いを前後に参照します。
+このドキュメントは、「[Microsoft Sentinel へのプレイブックの認証](authenticate-playbooks-to-sentinel.md)」のガイドと共に、他のプレイブック ドキュメント「[チュートリアル: Microsoft Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)」と一体になっています。 これら 3 つのドキュメントは、互いを前後に参照します。
 
-プレイブックの概要については、[Azure Sentinel でプレイブックを使用して脅威の応答を自動化する](automate-responses-with-playbooks.md)を参照してください。
+プレイブックの概要については、「[Microsoft Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)」を参照してください。
 
-Azure Sentinel コネクタの完全な仕様については、[Azure Logic Apps のドキュメント](/connectors/azuresentinel/)を参照してください。
+Microsoft Sentinel コネクタの完全な仕様については、[Logic Apps コネクタのドキュメント](/connectors/azuresentinel/)を参照してください。
 
 ## <a name="permissions-required"></a>必要なアクセス許可
 
 | ロールまたはコネクタ コンポーネント | トリガー | "Get" アクション | インシデントの更新、<br>コメントの追加 |
 | ------------- | :-----------: | :------------: | :-----------: |
-| **[Azure Sentinel 閲覧者](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)** | &#10003; | &#10003; | &#10007; |
-| **Azure Sentinel [レスポンダー](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)/[共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)** | &#10003; | &#10003; | &#10003; |
+| **[Microsoft Sentinel 閲覧者](../role-based-access-control/built-in-roles.md#microsoft-sentinel-reader)** | &#10003; | &#10003; | &#10007; |
+| **Microsoft Sentinel [レスポンダー](../role-based-access-control/built-in-roles.md#microsoft-sentinel-responder)/[共同作成者](../role-based-access-control/built-in-roles.md#microsoft-sentinel-contributor)** | &#10003; | &#10003; | &#10003; |
 | 
 
-[Azure Sentinel のアクセス許可](./roles.md)を参照してください。
+[Microsoft Sentinel のアクセス許可の詳細を参照してください](./roles.md)。
 
-## <a name="azure-sentinel-triggers-summary"></a>Azure Sentinel トリガーの概要
+## <a name="microsoft-sentinel-triggers-summary"></a>Microsoft Sentinel トリガーの概要
 
-Azure Sentinel コネクタはさまざまな方法で使用できます。コネクタのコンポーネントは 2 つのフローに分割できますが、それぞれが異なる Azure Sentinel の発生によってトリガされます。
+Microsoft Sentinel コネクタはさまざまな方法で使用できますが、このコネクタのコンポーネントは、それぞれ別の Microsoft Sentinel の発生によってトリガーされる次の 2 つのフローに分けることができます。
 
 | トリガー | の完全なトリガー名<br>Logic Apps デザイナー | いつ使用するか | 既知の制限事項 
 | --------- | ------------ | -------------- | -------------- | 
-| **インシデント トリガー** | "Azure Sentinel インシデント作成ルールがトリガーされたとき (プレビュー)" | ほとんどのインシデント自動化シナリオに推奨されます。<br><br>プレイブックは、エンティティやアラートを含むインシデント オブジェクトを受け取ります。 このトリガーを使用すると、プレイブックを **自動化ルール** にアタッチすることができるので、Azure Sentinel でインシデントが作成されたときにトリガーされ、[自動化ルールのすべてのメリット](./automate-incident-handling-with-automation-rules.md)をインシデントに適用できます。 | このトリガーを持つプレイブックは、Azure Sentinel から手動で実行できません。<br><br>このトリガーを使用するプレイブックでは、アラートのグループ化はサポートされていません。つまり、各インシデントで送信された最初のアラートのみを受信します。
-| **アラート トリガー** | "Azure Sentinel アラートへの対応がトリガーされたとき" | Azure Sentinel ポータルから手動でアラートを実行する必要があるプレイブックや、アラートに対してインシデントを生成しない **スケジュールされた** 分析ルールの場合に推奨されます。 | このトリガーを使用して、**Microsoft セキュリティ** 分析ルールによって生成されたアラートの応答を自動化することはできません。<br><br>このトリガーを使用するプレイブックは、**自動化ルール** で呼び出すことはできません。 |
+| **インシデント トリガー** | [Microsoft Sentinel インシデント作成ルールがトリガーされたとき (プレビュー)] | ほとんどのインシデント自動化シナリオに推奨されます。<br><br>プレイブックは、エンティティやアラートを含むインシデント オブジェクトを受け取ります。 このトリガーを使用すると、プレイブックを **オートメーション ルール** にアタッチできるため、Microsoft Sentinel でインシデントが作成されたときにそれをトリガーでき、そのインシデントに[オートメーション ルールの利点](./automate-incident-handling-with-automation-rules.md)のすべてを適用できます。 | このトリガーを使用するプレイブックは、Microsoft Sentinel から手動で実行できません。<br><br>このトリガーを使用するプレイブックでは、アラートのグループ化はサポートされていません。つまり、各インシデントで送信された最初のアラートのみを受信します。
+| **アラート トリガー** | [Microsoft Sentinel アラートへの応答がトリガーされたとき] | アラートに対して Microsoft Sentinel ポータルから手動で実行する必要のあるプレイブック、またはアラートに対してインシデントを生成しない **スケジュールされた** 分析ルールに推奨されます。 | このトリガーを使用して、**Microsoft セキュリティ** 分析ルールによって生成されたアラートの応答を自動化することはできません。<br><br>このトリガーを使用するプレイブックは、**自動化ルール** で呼び出すことはできません。 |
 |
 
-これら 2 つのフローで使用されるスキーマは同一ではありません。
-推奨される方法は、ほとんどのシナリオに適用可能な **Azure Sentinel のインシデント トリガー** フローを使用することです。
+これら 2 つのフローで使用されるスキーマは同一ではありません。 推奨される方法は、ほとんどのシナリオに適用できる **Microsoft Sentinel インシデント トリガー** フローの使用です。
 
 ### <a name="incident-dynamic-fields"></a>インシデントの動的フィールド
 
-**Azure Sentinel インシデント作成ルールがトリガーされたとき** から受け取った **Incident** オブジェクトには、以下のダイナミック フィールドが含まれています。
+**[Microsoft Sentinel インシデント作成ルールがトリガーされたとき]** から受信された **Incident** オブジェクトには、次の動的フィールドが含まれています。
 
 - インシデントのプロパティ (「Incident: field name」として表示)
 
@@ -77,7 +76,7 @@ Azure Sentinel コネクタはさまざまな方法で使用できます。コ�
   - ワークスペース ID
   - リソース グループ名
 
-## <a name="azure-sentinel-actions-summary"></a>Azure Sentinel アクションの概要
+## <a name="microsoft-sentinel-actions-summary"></a>Microsoft Sentinel アクションの概要
 
 | コンポーネント | いつ使用するか |
 | --------- | -------------- |
@@ -91,8 +90,9 @@ Azure Sentinel コネクタはさまざまな方法で使用できます。コ�
 ## <a name="work-with-incidents---usage-examples"></a>インシデントの使用 - 使用例
 
 > [!TIP] 
-> アクション **インシデントの更新** と **インシデントへのコメントの追加** には、**インシデント ARM ID** が必要です。 <br>
-**Alert - Get Incident** アクションを使用して、事前に **インシデント ARM ID** を取得します。
+> アクション **インシデントの更新** と **インシデントへのコメントの追加** には、**インシデント ARM ID** が必要です。
+>
+> **Alert - Get Incident** アクションを使用して、事前に **インシデント ARM ID** を取得します。
 
 ### <a name="update-an-incident"></a>インシデントの更新
 -  **インシデントの作成時** にプレイブックがトリガーされる
@@ -193,5 +193,5 @@ Azure Sentinel コネクタはさまざまな方法で使用できます。コ�
     
 ## <a name="next-steps"></a>次のステップ
 
-このアーティクルでは、Azure Sentinel プレイブックでのトリガーとアクションを使用して脅威に対応する方法について詳しく説明しました。 
-- Azure Sentinel を使用して[脅威を予防的に検出する方法](hunting.md)をご覧ください。
+この記事では、脅威に対応するために Microsoft Sentinel プレイブックでトリガーとアクションを使用する方法について詳しく学習しました。 
+- Microsoft Sentinel を使用して[脅威を予防的に検出する方法](hunting.md)をご覧ください。

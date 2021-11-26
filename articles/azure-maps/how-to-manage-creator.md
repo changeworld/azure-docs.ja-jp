@@ -3,20 +3,20 @@ title: Microsoft Azure Maps Creator を管理する
 description: この記事では Microsoft Azure Maps Creator を管理する方法について説明します。
 author: stevemunk
 ms.author: v-munksteve
-ms.date: 10/08/2021
+ms.date: 11/11/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 09a70e55d796e0eb16d0806fb9a0726ff67ea812
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 124b75aa0a80f84299fd0e113f2d4d7f1a427213
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729769"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400208"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps Creator を管理する
 
-Azure Maps Creator を使用すると、プライベートな屋内マップ データを作成することができます。 Azure Maps API と Indoor Maps モジュールを使用して、対話型で動的な屋内マップ Web アプリケーションを開発できます。 価格情報については、「[Azure Maps での適切な価格レベルの選択](choose-pricing-tier.md)」を参照してください。
+Azure Maps Creator を使用すると、プライベートな屋内マップ データを作成することができます。 Azure Maps API と Indoor Maps モジュールを使用して、対話型で動的な屋内マップ Web アプリケーションを開発できます。 価格情報については、[「Azure Maps の価格」](https://aka.ms/CreatorPricing)の *Creator* セクションをご覧ください。
 
 この記事では、Azure Maps アカウントで Creator リソースを作成および削除する手順について説明します。
 
@@ -59,7 +59,7 @@ Creator リソースを削除するには:
 2. **[削除]** を選択します。
 
     >[!WARNING]
-    >Azure Maps アカウントの Creator リソースを削除すると、Creator サービスを使用して作成したコンバージョン、データセット、タイルセット、地物状態セットも削除されます。
+    >Azure Maps アカウントの Creator リソースを削除すると、Creator サービスを使用して作成したコンバージョン、データセット、タイルセット、地物状態セットも削除されます。 Creator リソースを削除すると、元に戻すことはできません。
 
      :::image type="content" source="./media/how-to-manage-creator/creator-delete.png" alt-text="削除ボタンがある Creator ページ":::
 

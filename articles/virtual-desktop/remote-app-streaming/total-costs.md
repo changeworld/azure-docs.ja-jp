@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 07/14/2021
+ms.date: 11/12/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 93383fa4b681dd7f0768f5ea30c24e64e9dcb2b9
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 3daabe070d0745c95bc16582262897da9f4c5aae
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123036593"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399506"
 ---
 # <a name="understanding-total-azure-virtual-desktop-deployment-costs"></a>Azure Virtual Desktop のデプロイ コストの合計について
 
@@ -114,3 +114,4 @@ Azure Virtual Desktop をデプロイした後、[Azure Cost Management](../../c
 
 - [ライセンスとユーザーごとのアクセス価格について](licensing.md)
 - [Azure Virtual Desktop のユーザーごとのアプリ ストリーミング料金の見積もり](streaming-costs.md)
+- [Azure Virtual Desktop リソースにタグを付けてコストを管理する](../tag-virtual-desktop-resources.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)

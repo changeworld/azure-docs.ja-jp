@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 228e0ac6243ae25463a81967c6d5cbcd903ad2ce
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eec377641eca7dd31ab04e9f6cdee949352d4a61
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824152"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491148"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps でロジック アプリのホストとアプリの設定を編集する
 
@@ -163,6 +163,15 @@ Visual Studio Code で、ロジック アプリ プロジェクトのルート �
 |---------|---------------|-------------|
 | `Runtime.FlowRetentionThreshold` | `90.00:00:00` <br>(90 日) | 実行の開始後、ワークフローの実行履歴を保持する時間。 |
 | `Runtime.Backend.FlowRunTimeout` | `90.00:00:00` <br>(90 日) | タイムアウトを強制するまでの、ワークフローの実行を継続できる時間。 <p><p>**重要**: この値は必ず `Runtime.FlowRetentionThreshold` の値と等しいかそれより小さくする必要があります。 そうしないと、関連付けられているジョブが完了する前に実行履歴が削除される可能性があります。 |
+||||
+   
+<a name="run-actions"></a>
+
+### <a name="run-actions"></a>実行アクション
+
+| 設定 | 既定値 | 説明 |
+|---------|---------------|-------------|
+| `Runtime.FlowRunRetryableActionJobCallback.ActionJobExecutionTimeout` | `00:10:00` <br>(10 分) | 実行するワークフロー アクション ジョブがタイムアウトして再試行するまでの時間を設定します。 |
 ||||
 
 <a name="inputs-outputs"></a>

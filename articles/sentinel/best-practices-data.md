@@ -1,44 +1,44 @@
 ---
-title: Azure Sentinel でのデータ収集のベスト プラクティス
-description: Azure Sentinel にデータ ソースを接続するときに使用するベスト プラクティスについて説明します。
+title: Microsoft Sentinel でのデータ収集のベスト プラクティス
+description: データ ソースを Microsoft Sentinel に接続するときに使用するベスト プラクティスについて説明します。
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0ba9d4d1452b0a3248e7df817561ec080c95ca93
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 17561127c040fc1aedac771093e0bfa6366c4d30
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131047613"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524780"
 ---
 #  <a name="data-collection-best-practices"></a>データ収集のベスト プラクティス
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-このセクションでは、Azure Sentinel データ コネクタを使用してデータを収集するためのベスト プラクティスについて説明します。 詳細については、「[データ ソースの接続](connect-data-sources.md)」、「[Azure Sentinel データ コネクタ リファレンス](data-connectors-reference.md)」、および「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。
+このセクションでは、Microsoft Sentinel データ コネクタを使用してデータを収集するためのベスト プラクティスについて確認します。 詳細については、[データ ソースの接続](connect-data-sources.md)に関するページ、[Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md)、[Microsoft Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)を参照してください。
 
 ## <a name="prioritize-your-data-connectors"></a>データ コネクタの優先順位を設定する
 
 どのデータ コネクタがお使いの環境に最適か不明な場合は、まずすべての[無料のデータ コネクタ](azure-sentinel-billing.md#free-data-sources)を有効にしてください。
 
-無料のデータ コネクタにより、Azure Sentinel の価値がすぐに実現されるようになります。その間に、他のデータ コネクタと予算の計画を引き続き行うことができます。
+無料のデータ コネクタにより、すぐに Microsoft Sentinel の価値が示されるようになり、その間に、引き続き他のデータ コネクタや予算についての計画を立てることができます。
 
 [パートナー](data-connectors-reference.md)および[カスタム](create-custom-connector.md)のデータ コネクタについては、[Syslog](connect-syslog.md) および [CEF](connect-common-event-format.md) コネクタの設定から開始し、Linux ベースのデバイスとともに、優先度の高いものから始めます。
 
 データ インジェストのコストが高くなるのが早すぎる場合は、[Azure Monitor エージェント](../azure-monitor/agents/azure-monitor-agent-overview.md)を使用して、転送されるログを停止するかフィルター処理します。
 
 > [!TIP]
-> カスタム データ コネクタを使用すると、エージェント経由、Logstash、API など、組み込み機能で現在サポートされていないデータ ソースから Azure Sentinel にデータを取り込むことができます。 詳細については、「[Azure Sentinel カスタム コネクタを作成するためのリソース](create-custom-connector.md)」を参照してください。
+> カスタム データ コネクタを使用すると、エージェント、Logstash、API 経由など、組み込み機能では現在サポートされていないデータ ソースから Microsoft Sentinel にデータを取り込むことができます。 詳細については、「[Microsoft Sentinel カスタム コネクタを作成するためのリソース](create-custom-connector.md)」を参照してください。
 >
 
 ## <a name="filter-your-logs-before-ingestion"></a>インジェストの前にログをフィルター処理する
 
-データを Azure Sentinel に取り込む前に、収集されたログやログの内容をフィルター処理することが必要な場合があります。 たとえば、セキュリティ操作に関係のないログや重要ではないログを除外したり、ログ メッセージから不要な情報を削除したりすることができます。 メッセージの内容のフィルター処理は、関係のない情報が多く含まれている Syslog、CEF、または Windows ベースのログを処理するときに、コストを削減するのに役立つこともあります。
+データが Microsoft Sentinel に取り込まれる前に、収集されたログや、場合によってはログ コンテンツをフィルター処理することもできます。 たとえば、セキュリティ操作に関係のないログや重要ではないログを除外したり、ログ メッセージから不要な情報を削除したりすることができます。 メッセージの内容のフィルター処理は、関係のない情報が多く含まれている Syslog、CEF、または Windows ベースのログを処理するときに、コストを削減するのに役立つこともあります。
 
 次のいずれかの方法を使用して、ログをフィルター処理します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "131047613"
 さまざまな課題により、データ収集の標準構成が組織に適さない場合もあります。 次の表には、一般的な課題や要件、および考えられる解決策と考慮事項が記載されています。
 
 > [!NOTE]
-> 以下に示す多くの解決策にはカスタム データ コネクタが必要です。 詳細については、「[Azure Sentinel カスタム コネクタを作成するためのリソース](create-custom-connector.md)」を参照してください。
+> 以下に示す多くの解決策にはカスタム データ コネクタが必要です。 詳細については、「[Microsoft Sentinel カスタム コネクタを作成するためのリソース](create-custom-connector.md)」を参照してください。
 >
 
 ### <a name="on-premises-windows-log-collection"></a>オンプレミスの Windows ログ収集
@@ -65,10 +65,10 @@ ms.locfileid: "131047613"
 
 |課題/要件  |考えられる解決策  |考慮事項  |
 |---------|---------|---------|
-|**ログのフィルター処理が必要**     | Logstash を使用する <br><br>Azure Functions の使用 <br><br> LogicApps を使用する <br><br> カスタム コード (.NET、Python) を使用する  |  フィルターはコスト節減につながり、必要なデータのみ取り込まれますが、[UEBA](identify-threats-with-entity-behavior-analytics.md)、[エンティティ ページ](identify-threats-with-entity-behavior-analytics.md#entity-pages)、[機械学習](bring-your-own-ml.md)、[Fusion](fusion.md) などの Azure Sentinel の一部の機能はサポートされていません。 <br><br>ログのフィルター処理を構成する場合は、脅威ハンティング クエリや分析ルールなどのリソースを更新する必要があります。     |
+|**ログのフィルター処理が必要**     | Logstash を使用する <br><br>Azure Functions の使用 <br><br> LogicApps を使用する <br><br> カスタム コード (.NET、Python) を使用する  |  フィルター処理はコスト削減につながる場合があり、必要なデータだけが取り込まれますが、[UEBA](identify-threats-with-entity-behavior-analytics.md)、[ エンティティ ページ ](identify-threats-with-entity-behavior-analytics.md#entity-pages)、[ 機械学習 ](bring-your-own-ml.md)、[Fusion](fusion.md) などの一部の Microsoft Sentinel 機能はサポートされていません。 <br><br>ログのフィルター処理を構成する場合は、脅威ハンティング クエリや分析ルールなどのリソースを更新する必要があります。     |
 |**エージェントをインストールできない**     |[Azure Monitor エージェント](connect-windows-security-events.md#connector-options)でサポートされている Windows イベント転送を使用する       |   Windows イベント転送を使用すると、Windows イベント コレクターからの 1 秒あたりの負荷分散イベントが 10,000 イベントから 500 ～ 1000 イベントに減少します。|
 |**サーバーをインターネットに接続できない**     | [Log Analytics ゲートウェイ](../azure-monitor/agents/gateway.md)を使用する        | エージェントへのプロキシを構成するには、ゲートウェイを機能させるための追加のファイアウォール規則が必要です。        |
-|**インジェスト時にタグ付けとエンリッチメントが必要**     |Logstash を使用して ResourceID を挿入する <br><br>ARM テンプレートを使用して、ResourceID をオンプレミスのマシンに挿入する <br><br>リソース ID を別のワークスペースに取り込む        | Log Analytics はカスタム テーブルの RBAC をサポートしていません <br><br>Azure Sentinel は行レベルの RBAC をサポートしていません <br><br>**ヒント**: Azure Sentinel 向けのワークスペースをまたいだ設計と機能を使用することをお勧めします。        |
+|**インジェスト時にタグ付けとエンリッチメントが必要**     |Logstash を使用して ResourceID を挿入する <br><br>ARM テンプレートを使用して、ResourceID をオンプレミスのマシンに挿入する <br><br>リソース ID を別のワークスペースに取り込む        | Log Analytics はカスタム テーブルの RBAC をサポートしていません <br><br>Microsoft Sentinel では、行レベルの RBAC をサポートしていません <br><br>**ヒント**: Microsoft Sentinel 向けのクロス ワークスペースの設計や機能を導入することもできます。        |
 |**操作とセキュリティのログの分割が必要**     | [Microsoft Monitoring Agent または Azure Monitor エージェント](connect-windows-security-events.md)のマルチホーム機能を使用する        |  マルチホーム機能では、エージェントのデプロイのオーバーヘッドが増加します。       |
 |**カスタム ログが必要**     |   特定のフォルダー パスからファイルを収集する <br><br>API インジェストを使用する <br><br>PowerShell の使用 <br><br>Logstash を使用する     |   ログのフィルター処理で問題が発生する可能性があります。 <br><br>カスタム メソッドはサポートされません。 <br><br>カスタム コネクタでは、開発者のスキルが必要になる場合があります。       |
 | | | |
@@ -77,7 +77,7 @@ ms.locfileid: "131047613"
 
 |課題/要件  |考えられる解決策  |考慮事項  |
 |---------|---------|---------|
-|**ログのフィルター処理が必要**     | Syslog-NG を使用する <br><br>Rsyslog を使用する <br><br>エージェントの FluentD 構成を使用する <br><br> Azure Monitor エージェントまたは Microsoft Monitoring Agent を使用する <br><br> Logstash を使用する  |  一部の Linux ディストリビューションは、エージェントでサポートされない可能性があります。 <br> <br>Syslog または FluentD を使用するには、開発者向けの知識が必要です。 <br><br>詳細については、「[セキュリティイベントを収集するために Windows サーバーに接続する](connect-windows-security-events.md)」および「[Azure Sentinel カスタム コネクタを作成するためのリソース](create-custom-connector.md)」を参照してください。      |
+|**ログのフィルター処理が必要**     | Syslog-NG を使用する <br><br>Rsyslog を使用する <br><br>エージェントの FluentD 構成を使用する <br><br> Azure Monitor エージェントまたは Microsoft Monitoring Agent を使用する <br><br> Logstash を使用する  |  一部の Linux ディストリビューションは、エージェントでサポートされない可能性があります。 <br> <br>Syslog または FluentD を使用するには、開発者向けの知識が必要です。 <br><br>詳細については、[セキュリティ イベントを収集するための Windows サーバーへの接続](connect-windows-security-events.md)に関するページおよび「[Microsoft Sentinel カスタム コネクタを作成するためのリソース](create-custom-connector.md)」を参照してください。      |
 |**エージェントをインストールできない**     |  syslog-ng や rsyslog などの Syslog フォワーダーを使用する。       |         |
 |**サーバーをインターネットに接続できない**       | [Log Analytics ゲートウェイ](../azure-monitor/agents/gateway.md)を使用する        | エージェントへのプロキシを構成するには、ゲートウェイを機能させるための追加のファイアウォール規則が必要です。          |
 |**インジェスト時にタグ付けとエンリッチメントが必要**      | エンリッチメント用の Logstash、または API や EventHubs などのカスタム メソッドを使用する。         | フィルター処理に追加の作業が必要になる場合があります。    |
@@ -104,7 +104,7 @@ EDR、その他のセキュリティ イベント、Sysmon などのエンドポ
 |---------|---------|---------|
 |**Teams、メッセージ トレース、フィッシング データなどから生データを収集する**     |    組み込みの [Office 365 コネクタ](./data-connectors-reference.md#microsoft-office-365)機能を使用し、次に、その他の生データ用のカスタム コネクタを作成する。  |  イベントを対応する recordID にマッピングすることが困難な場合があります。  |
 |**国や部門などを分割するための RBAC が必要**     | データにタグを追加し、必要な分離ごとに専用のワークスペースを作成することによって、データ収集をカスタマイズする。|   カスタム データ収集には余分なインジェスト コストがかかります。     |
-|**1 つのワークスペースに複数のテナントが必要**     |  Azure LightHouse と統合されたインシデント ビューを使用して、データ収集をカスタマイズする。|  カスタム データ収集には余分なインジェスト コストがかかります。  <br><br>詳細については、「[ワークスペースおよびテナント全体での Azure Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)」を参照してください。      |
+|**1 つのワークスペースに複数のテナントが必要**     |  Azure LightHouse と統合されたインシデント ビューを使用して、データ収集をカスタマイズする。|  カスタム データ収集には余分なインジェスト コストがかかります。  <br><br>詳細については、「[ワークスペースおよびテナント全体での Microsoft Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)」を参照してください。      |
 | | | |
 
 ### <a name="cloud-platform-data"></a>クラウド プラットフォーム データ
@@ -121,6 +121,6 @@ EDR、その他のセキュリティ イベント、Sysmon などのエンドポ
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel をデプロイするためのデプロイ前のアクティビティと前提条件](prerequisites.md)
-- [Azure Sentinel のベスト プラクティス](best-practices.md)
+- [Microsoft Sentinel のデプロイ前のアクティビティとデプロイの前提条件](prerequisites.md)
+- [Microsoft Sentinel のベスト プラクティス](best-practices.md)
 - [データ ソースの接続](connect-data-sources.md)

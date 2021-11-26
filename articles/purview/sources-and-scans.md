@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3a06bf01ec9afa62a656eb5590a7ae283063ec88
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b29896a9ca047b05c3313b716b2a4df1b0e72f6c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074230"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517180"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure Purview でサポートされているデータ ソースとファイルの種類
 
@@ -29,7 +29,8 @@ Purview では、[こちら](purview-connector-overview.md)に示すすべての
 
 - 拡張子でサポートされる構造化ファイル形式: AVRO、ORC、PARQUET、CSV、JSON、PSV、SSV、TSV、TXT、XML、GZIP
  > [!Note]
- > * ファイルの種類が AVRO、ORC、PARQUET の場合、Purview スキャナーでは、複雑なデータ型 (MAP、LIST、STRUCT など) のスキーマ抽出はサポートされていません。 
+ > * Purview スキャナーでは、上記の構造化ファイルの種類のスキーマ抽出のみがサポートされています。
+ > * ファイルの種類が AVRO、ORC、PARQUET の場合、Purview スキャナーでは、複合データ型 (MAP、LIST、STRUCT など) を含むファイルのスキーマ抽出はサポートされていません。 
  > * Purview スキャナーでは、スキーマの抽出と分類のために、スナップ圧縮された PARQUET 型のスキャンがサポートされています。 
  > * GZIP ファイルの種類の場合、GZIP は内部の 1 つの csv ファイルにマップする必要があります。 
  > Gzip ファイルは、システムおよびカスタムの分類ルールの対象となります。 現在、内部の複数のファイルにマップされた gzip ファイル、または csv 以外の任意のファイルの種類のスキャンはサポートされていません。 

@@ -1,37 +1,37 @@
 ---
-title: 正規化と Azure Sentinel 情報モデル (ASIM) | Microsoft Docs
-description: この記事では、Azure Sentinel が Azure Sentinel 情報モデル (ASIM) を使用してさまざまなソースからデータを正規化する方法について説明します
+title: 正規化と Advanced SIEM Information Model (ASIM) | Microsoft Docs
+description: この記事では、Microsoft Sentinel で Advanced SIEM Information Model (ASIM) を使用して、さまざまなソースからデータを正規化する方法について説明します
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9bb09b6a9b65e0e10b2d7d2d1b02e29dde3e85fc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f01526c598b0d890dc40f591f825e10e6060cf8c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009227"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522538"
 ---
-# <a name="normalization-and-the-azure-sentinel-information-model-asim-public-preview"></a>正規化と Azure Sentinel 情報モデル (ASIM) (パブリック プレビュー)
+# <a name="normalization-and-the-advanced-siem-information-model-asim-public-preview"></a>正規化と Advanced SIEM Information Model (ASIM) (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Sentinel は、多くのソースからデータを取り込みます。 さまざまなデータ型とテーブルを組み合わせて使用するには、それらを理解し、各型またはスキーマの分析ルール、ブック、ハンティング クエリに対して一意のデータ セットを記述し、使用する必要があります。
+Microsoft Sentinel は、多くのソースからデータを取り込みます。 さまざまなデータ型とテーブルを組み合わせて使用するには、それらを理解し、各型またはスキーマの分析ルール、ブック、ハンティング クエリに対して一意のデータ セットを記述し、使用する必要があります。
 
 
 データ型がファイアウォール デバイスなどの共通要素を共有している場合でも、個別のルール、ブック、クエリが必要な場合があります。 調査とハンティング中は、さまざまな種類のデータを関連付けるのも困難な場合があります。
 
-この記事では、Azure Sentinel 情報モデル (ASIM) の概要について説明します。これにより、複数の種類のデータを扱う際の課題に対処するためのソリューションが利用できます。
+この記事では、Advanced Security Information and Event Management (SIEM) Information Model (ASIM) の概要について説明します。これにより、複数の種類のデータを扱う際の課題に対処するためのソリューションが利用できます。
 
 > [!TIP]
 > また、[ASIM ウェビナー](https://www.youtube.com/watch?v=WoGD-JeC7ng)を視聴したり、[ウェビナーのスライド](https://1drv.ms/b/s!AnEPjr8tHcNmjDY1cro08Fk3KUj-?e=murYHG)を確認したりしてください。 詳細については、「[次のステップ](#next-steps)」を参照してください。
@@ -43,7 +43,7 @@ Azure Sentinel は、多くのソースからデータを取り込みます。 �
 
 ## <a name="common-asim-usage"></a>一般的な ASIM の使用
 
-Azure Sentinel 情報モデル (ASIM) は、次の機能に用意することで、様々なソースを統一された正規のビューで扱うためのシームレスなエクスペリエンスを提供します。
+Advanced SIEM Information Model (ASIM) は、次の機能に用意することで、さまざまなソースを統一された正規のビューで扱うためのシームレスなエクスペリエンスを提供します。
 
 - **クロス ソース検出**。 正規化された分析ルールが、ソース、オンプレミス、クラウドにわたって適用され、ブルート フォースや、Okta、AWS、Azure といったシステム間でのあり得ない移動などの攻撃が検出されます。
 
@@ -55,7 +55,7 @@ Azure Sentinel 情報モデル (ASIM) は、次の機能に用意することで
 
 ### <a name="asim-and-the-open-source-security-events-metadata"></a>ASIM と Open Source Security Events Metadata
 
-Azure Sentinel 情報モデルは、[Open Source Security Events Metadata (OSSEM)](https://ossemproject.com/intro.html) の共通情報モデルと連携して、正規化されたテーブル間での予測可能なエンティティの相関を実現します。
+Advanced SIEM Information Model は、[Open Source Security Events Metadata (OSSEM)](https://ossemproject.com/intro.html) の共通情報モデルと連携して、正規化されたテーブル間での予測可能なエンティティの相関を実現します。
 
 OSSEM は、多様なデータ ソースとオペレーティング システムからのセキュリティ イベント ログのドキュメントと標準化に主に重点を置いたコミュニティ主導のプロジェクトです。 さらに、このプロジェクトでは、データ エンジニアがデータの正規化手順時に使用できる Common Information Model (CIM) を提供しているため、セキュリティ アナリストが多様なデータソースで、データをクエリし、分析できます。
 
@@ -63,28 +63,28 @@ OSSEM は、多様なデータ ソースとオペレーティング システム
 
 ## <a name="asim-components"></a>ASIM コンポーネント
 
-次の図は、正規化されていないデータを正規化されたコンテンツに変換し、Azure Sentinel で使用する様子を示しています。 たとえば、カスタムの製品固有の正規化されていないテーブルから始め、パーサーと正規化スキーマを使用して、そのテーブルを正規化されたデータに変換できます。 Microsoft とカスタム分析、ルール、ブック、クエリの両方で正規化されたデータを使用します。
+次の図は、正規化されていないデータを正規化されたコンテンツに変換し、Microsoft Sentinel で使用するようすを示しています。 たとえば、カスタムの製品固有の正規化されていないテーブルから始め、パーサーと正規化スキーマを使用して、そのテーブルを正規化されたデータに変換できます。 Microsoft とカスタム分析、ルール、ブック、クエリの両方で正規化されたデータを使用します。
 
- :::image type="content" source="media/normalization/sentinel-information-model-components.png" alt-text="Azure Sentinel での非正規から正規へのデータ変換フローと使用方法":::
+ :::image type="content" source="media/normalization/sentinel-information-model-components.png" alt-text="非正規から正規へのデータ変換フローと Microsoft Sentinel での使用":::
 
-Azure Sentinel Information Model には、次のコンポーネントが含まれています。
+Advanced SIEM Information Model には、次のコンポーネントが含まれています。
 
 |コンポーネント  |説明  |
 |---------|---------|
-|**正規化されたスキーマ**     |   統合機能を構築する際に使用できる予測可能なイベント種類の標準セットについて説明します。 <br><br>各スキーマは、イベントを表すフィールド、正規化された列の名前付け規則と、フィールド値の標準形式を定義します。 <br><br> 現在、ASIM では次のスキーマが定義されています。<br> - [ネットワーク セッション](./network-normalization-schema.md)<br> - [DNS アクティビティ](dns-normalization-schema.md)<br> - [プロセス イベント](process-events-normalization-schema.md)<br> - [認証イベント](authentication-normalization-schema.md)<br> - [レジストリ イベント](registry-event-normalization-schema.md)<br> - [ファイル アクティビティ](file-event-normalization-schema.md)  <br><br>詳細については、「[Azure Sentinel 情報モデルのスキーマ](normalization-about-schemas.md)」を参照してください。  |
-|**パーサー**     |  [KQL 関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)を使用して、既存のデータを正規化されたスキーマにマップします。 <br><br>Microsoft が開発した正規化パーサーを、[Azure Sentinel GitHub パーサー フォルダー](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers) からデプロイします。 正規化されたパーサーは、**ASim*** で始まるサブフォルダーに存在します。  <br><br>詳細については、「[Azure Sentinel 情報モデルのパーサー](normalization-about-parsers.md)」を参照してください。     |
-|**正規化されたスキーマごとのコンテンツ**     |    これには、分析ルール、ブック、ハンティング クエリなどが含まれます。 正規化されたスキーマごとのコンテンツは、ソース固有のコンテンツを作成することなく、正規化されたデータに対して機能します。 <br><br>詳細については、「[Azure Sentinel 情報モデルのコンテンツ](normalization-content.md)」を参照してください。   |
+|**正規化されたスキーマ**     |   統合機能を構築する際に使用できる予測可能なイベント種類の標準セットについて説明します。 <br><br>各スキーマは、イベントを表すフィールド、正規化された列の名前付け規則と、フィールド値の標準形式を定義します。 <br><br> 現在、ASIM では次のスキーマが定義されています。<br> - [ネットワーク セッション](./network-normalization-schema.md)<br> - [DNS アクティビティ](dns-normalization-schema.md)<br> - [プロセス イベント](process-events-normalization-schema.md)<br> - [認証イベント](authentication-normalization-schema.md)<br> - [レジストリ イベント](registry-event-normalization-schema.md)<br> - [ファイル アクティビティ](file-event-normalization-schema.md)  <br><br>詳細については、[Advanced SIEM Information Model のスキーマ](normalization-about-schemas.md)に関するページを参照してください。  |
+|**パーサー**     |  [KQL 関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)を使用して、既存のデータを正規化されたスキーマにマップします。 <br><br>Microsoft が開発した正規化パーサーを、[Microsoft Sentinel GitHub リポジトリの `Parsers` フォルダー](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers)からデプロイします。 正規化されたパーサーは、**ASim*** で始まるサブフォルダーに存在します。  <br><br>詳細については、[Advanced SIEM Information Model のパーサー](normalization-about-parsers.md)に関するページを参照してください。     |
+|**正規化されたスキーマごとのコンテンツ**     |    これには、分析ルール、ブック、ハンティング クエリなどが含まれます。 正規化されたスキーマごとのコンテンツは、ソース固有のコンテンツを作成することなく、正規化されたデータに対して機能します。 <br><br>詳細については、[Advanced SIEM Information Model のコンテンツ](normalization-content.md)に関するページを参照してください。   |
 | | |
 
 ### <a name="asim-terminology"></a>ASIM の用語
 
-Azure Sentinel Information Model では、次の用語を使用します。
+Advanced SIEM Information Model では、次の用語を使用します。
 
-|用語  |説明  |
+|項目  |説明  |
 |---------|---------|
-|**レポート デバイス**     |   レコードを Azure Sentinel に送信するシステム。 このシステムは、送信されるレコードのサブジェクト システムではない可能性があります。      |
+|**レポート デバイス**     |   レコードを Microsoft Sentinel に送信するシステム。 このシステムは、送信されるレコードのサブジェクト システムではない可能性があります。      |
 |**レコード**     |レポート デバイスから送信されるデータの単位。 レコードは、`log`、`event`、`alert` と呼ばれることが多いですが、他の種類のデータであることもあります。         |
-|**コンテンツ**、または **コンテンツ項目**     |Azure Sentinel で使用可能な、異なる、カスタマイズ可能な、またはユーザーが作成した成果物です。 これらの成果物には、分析ルール、ハンティング クエリ、ブックなどが含まれます。 コンテンツ項目は、そのような成果物の 1 つです。|
+|**コンテンツ**、または **コンテンツ項目**     |Microsoft Sentinel で使用可能な、さまざまな、カスタマイズ可能な、またはユーザーが作成した成果物です。 これらの成果物には、分析ルール、ハンティング クエリ、ブックなどが含まれます。 コンテンツ項目は、そのような成果物の 1 つです。|
 | | |
 
 <br>
@@ -93,13 +93,13 @@ Azure Sentinel Information Model では、次の用語を使用します。
 
 ASIM の使用を開始するには:
 
-1. すべての ASIM パーサーを [Azure Sentinel GitHub リポジトリ](https://aka.ms/AzSentinelASim)からすばやくデプロイします。
+1. すべての ASIM パーサーを [Microsoft Sentinel GitHub リポジトリ](https://aka.ms/AzSentinelASim)からすばやくデプロイします。
 
-1. ASIM を使用する分析ルールのテンプレートをアクティブにします。 詳細については、「[Azure Sentinel 情報モデル (ASIM) のコンテンツ リスト](normalization-content.md#builtin)」を参照してください。
+1. ASIM を使用する分析ルールのテンプレートをアクティブにします。 詳細については、[Advanced SIEM Information Model (ASIM) のコンテンツの一覧](normalization-content.md#builtin)に関するセクションを参照してください。
 
 1. 次の方法を使用して、ワークスペースで ASIM を使用します。
 
-    - Azure Sentinel の **[ログ]** ページで KQL のログをクエリする場合は、Azure Sentinel GitHub リポジトリからの ASIM ハンティング クエリを使用します。 詳細については、「[Azure Sentinel 情報モデル (ASIM) のコンテンツ リスト](normalization-content.md#builtin)」を参照してください。
+    - Microsoft Sentinel の **[ログ]** ページで KQL のログに対するクエリを実行する場合は、Microsoft Sentinel GitHub リポジトリからの ASIM ハンティング クエリを使用します。 詳細については、[Advanced SIEM Information Model (ASIM) のコンテンツの一覧](normalization-content.md#builtin)に関するセクションを参照してください。
 
     - ASIM を使用して独自の分析ルールを作成するか、[既存のものを変換](normalization-content.md#builtin)します。
 
@@ -107,11 +107,11 @@ ASIM の使用を開始するには:
 
 ## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 
-この記事では、Azure Sentinel での正規化の概要と、Azure Sentinel 情報モデルについて説明しています。
+この記事では、Microsoft Sentinel での正規化の概要と、Advanced SIEM Information Model について説明しています。
 
 詳細については、次を参照してください。
 
 - [ASIM ウェビナー](https://www.youtube.com/watch?v=WoGD-JeC7ng)を視聴したり、[スライド](https://1drv.ms/b/s!AnEPjr8tHcNmjDY1cro08Fk3KUj-?e=murYHG)を確認したりしてください
-- [Azure Sentinel 情報モデルのスキーマ](normalization-about-schemas.md)
-- [Azure Sentinel 情報モデルのパーサー](normalization-about-parsers.md)
-- [Azure Sentinel 情報モデルのコンテンツ](normalization-content.md)
+- [Advanced SIEM Information Model のスキーマ](normalization-about-schemas.md)
+- [Advanced SIEM Information Model のパーサー](normalization-about-parsers.md)
+- [Advanced SIEM Information Model のコンテンツ](normalization-content.md)

@@ -7,13 +7,13 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 8aac6f90880775c5a1d7002048c79257b4e5ab85
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.date: 11/12/2021
+ms.openlocfilehash: a541eb900648fe33beb76207da956c1489f89cb5
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855899"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485106"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features"></a>Azure ネットワーク セキュリティ機能を使用したデータ ソースへのインデクサーのアクセス
 
@@ -63,20 +63,25 @@ Azure Cognitive Search インデクサーは、実行中にさまざまな Azure
 
 ## <a name="indexer-execution-environment"></a>インデクサー実行環境
 
-Azure Cognitive Search インデクサーは、データ ソースからコンテンツを効率的に抽出し、抽出されたコンテンツにエンリッチメントを追加でき、さらにオプションで、検索インデックスに結果を書き込む前にプロジェクションを生成できます。 インデクサーは、割り当てられている責任の数に応じて、次の 2 つの環境のいずれかで実行できます。
+Azure Cognitive Search インデクサーは、データ ソースからコンテンツを効率的に抽出し、抽出されたコンテンツにエンリッチメントを追加でき、さらにオプションで、検索インデックスに結果を書き込む前にプロジェクションを生成できます。
+
+最適な処理を行うために、操作をセットアップするための内部的な実行環境が検索サービスによって判断されます。 ユーザーが環境を制御したり構成したりすることはできませんが、IP ファイアウォール規則を設定する際にそれらを考慮できるよう、その存在を知っておくことは大切です。
+
+インデクサーは、割り当てられているタスクの数と種類に応じて、次の 2 つの環境のどちらかで実行されます。
 
 - 特定の検索サービス専用の環境。 このような環境で実行されるインデクサーは、他のワークロード (お客様が開始した他のインデックス作成やクエリ実行のワークロードなど) とリソースを共有します。 通常、この環境では、テキストベースのインデックス作成 (たとえば、スキルセットを使わない) インデクサーのみが実行されます。
 
 - スキルセットを使う場合など、リソースを集中的に使うインデクサーをホストするマルチテナント環境。 この環境は、大量のコンピューティング処理を要する処理の負荷を軽減して、サービス固有のリソースをルーチン処理に残しておくために使います。 このマルチテナント環境は、Microsoft によって管理および保護されており、お客様に追加コストはかかりません。
 
-指定されたインデクサーの実行に対して、Azure Cognitive Search により、そのインデクサーを実行するための最適な環境が決定されます。 IP ファイアウォールを使用して Azure リソースへのアクセスを制御している場合は、実行環境について理解しておくと、両方を含む IP 範囲を設定するのに役立ちます。
+指定されたインデクサーの実行に対して、Azure Cognitive Search により、そのインデクサーを実行するための最適な環境が決定されます。 IP ファイアウォールを使用して Azure リソースへのアクセスを制御している場合は、実行環境について理解しておくと、両方を含む IP 範囲を設定するのに役立ちます。次のセクションでは、この点について説明します。
 
 ## <a name="granting-access-to-indexer-ip-ranges"></a>インデクサーの IP 範囲へのアクセスを許可する
 
-インデクサーがアクセスしようとするリソースが特定の IP 範囲のセットにのみ制限される場合、インデクサー要求が発生する可能性のある IP 範囲を含むようにそのセットを拡張する必要があります。 前述のように、インデクサーが実行され、アクセス要求が発生する可能性がある環境が 2 つあります。 インデクサー アクセスを機能させるために、**両方** の環境の IP アドレスを追加する必要があります。
+インデクサーがデータをプルするリソースがファイアウォールの内側に存在する場合、インバウンド ルールの IP 範囲に、インデクサーの要求の送信元となるすべての IP を含める必要があります。 前述のように、インデクサーが実行され、アクセス要求が発生する可能性がある環境が 2 つあります。 インデクサー アクセスを機能させるために、**両方** の環境の IP アドレスを追加する必要があります。
 
-- 検索サービス固有のプライベート環境の IP アドレスを取得するには、検索サービスの完全修飾ドメイン名 (FQDN) を `nslookup` (または `ping`) します。 たとえば、パブリック クラウドの検索サービスの FQDN は、`<service-name>.search.windows.net` です。 この情報は、Azure portal で入手できます。
-- マルチテナント環境の IP アドレスは、`AzureCognitiveSearch` サービス タグを介して入手できます。 [Azure サービス タグ](../virtual-network/service-tags-overview.md)には、各サービスの公開された IP アドレスの範囲があり、これは [Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を介して入手できます。 どちらの場合も、IP 範囲はリージョンごとに分類されます。検索サービスがプロビジョニングされているリージョンに割り当てられた IP 範囲のみを選択できます。
+- 検索サービス固有のプライベート環境の IP アドレスを取得するには、検索サービスの完全修飾ドメイン名 (FQDN) に対して `nslookup` (または `ping`) を使用します。 たとえば、パブリック クラウドの検索サービスの FQDN は、`<service-name>.search.windows.net` です。 この情報は、Azure portal で入手できます。
+
+- インデクサーが実行される可能性のあるマルチテナント環境の IP アドレスを取得するには、`AzureCognitiveSearch` サービス タグを使用します。 [Azure サービス タグ](../virtual-network/service-tags-overview.md)には、サービスごとの公開された IP アドレス範囲が含まれています。 これらの IP は、[Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を使用して調べることができます。 どちらのケースも、IP 範囲はリージョンごとに分類されています。 検索サービスのプロビジョニング先リージョンに割り当てられた IP 範囲だけを指定する必要があります。
 
 特定のデータ ソースについては、IP 範囲の一覧を列挙する代わりに、サービス タグ自体を直接使用できます (検索サービスの IP アドレスは、引き続き明示的に使用する必要があります)。 これらのデータ ソースでは、[ネットワーク セキュリティ グループの規則](../virtual-network/network-security-groups-overview.md)を設定することでアクセスを制限します。これは、Azure Storage、Cosmos DB、Azure SQL などが提供する IP 規則とは異なり、サービス タグの追加をネイティブでサポートします。 検索サービスの IP アドレスに加えて、`AzureCognitiveSearch` サービス タグを直接使用する機能をサポートするデータ ソースを次に示します。
 
@@ -88,9 +93,9 @@ Azure Cognitive Search インデクサーは、データ ソースからコン�
 
 ## <a name="granting-access-via-private-endpoints"></a>プライベート エンドポイントを介してアクセスを許可する
 
-インデクサーは、[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用してリソースにアクセスできます (それへのアクセスは、仮想ネットワークを選択するためにロックダウンされているか、あるいはパブリック アクセスが有効になっていません)。
+ロック ダウンされているリソース (保護された仮想ネットワークで実行されている、または単にパブリック接続では利用できないなど) には、インデクサーは、接続の[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用してアクセスします。
 
-この機能は課金可能な検索サービスでのみ使用でき、作成されるプライベート エンドポイントの数には制限があります。 詳細については、[サービスの制限](search-limits-quotas-capacity.md#shared-private-link-resource-limits)に関する記事を参照してください。
+この機能は、課金対象の検索サービス (Basic 以降) でのみ利用でき、テキストベースのインデックス作成とスキルベースのインデックス作成に関して、作成できるプライベート エンドポイントの数にはレベルごとの制限が適用されます。 詳細については、サービスの制限に関するドキュメントの[「共有プライベート リンク リソースの制限」セクション](search-limits-quotas-capacity.md#shared-private-link-resource-limits)を参照してください。
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>手順 1:セキュリティで保護されたリソースへのプライベート エンドポイントを作成する
 
@@ -129,16 +134,6 @@ Azure Cognitive Search インデクサーは、データ ソースからコン�
 
 これらの手順の詳細については、[プライベート エンドポイントを使用したインデクサー接続](search-indexer-howto-access-private.md)に関する記事を参照してください。
 リソースに対して承認されたプライベート エンドポイントを使用すると、*private* に設定されているインデクサーは、プライベート エンドポイント接続を介してアクセスを取得しようとします。
-
-### <a name="limits"></a>制限
-
-検索サービスの最適なパフォーマンスと安定性を確保するために、次のディメンションに対して (検索サービス レベルによって) 制限が適用されます。
-
-- *private* に設定できるインデクサーの種類。
-- 作成できる共有プライベート リンク リソースの数。
-- 共有プライベート リンク リソースを作成できる個別のリソースの種類の数。
-
-これらの制限は、[サービスの制限](search-limits-quotas-capacity.md)に関する記事で文書化されています。
 
 ## <a name="next-steps"></a>次の手順
 

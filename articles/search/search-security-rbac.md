@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: 5318ee205c66757409b9e0ffd8de864bcb69689a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b26334c655332810ad1f67ae6799c3919fda4bb4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064983"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517819"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Azure Cognitive Search でロールベースの承認を使用する
 
@@ -64,16 +64,16 @@ Azure Cognitive Search で RBAC を使用する場合、リージョン、レベ
 
 サブスクリプションをプレビューに追加するには、次のようにします：
 
-1. [Azure portal](https://portal.azure.com/)の **[サブスクリプション]** ページに移動します。
-1. 使用するサブスクリプションを選択します。
-1. サブスクリプション ページの左側で、 **プレビュー機能** を選択します。
-1. 検索バーまたはフィルターを使用して **Search Service のロールベースの Access Control** を検索して選択する (プレビュー)
-1. **[登録]** を選択して、サブスクリプションに機能を追加します。
+1. [Azure portal](https://portal.azure.com/) で、検索サービスに移動します。
+1. ページの左側で **[キー]** を選択します。
+1. プレビューを示す青いバナーで、 **[登録]** を選択して、サブスクリプションに機能を追加します。
 
-![afec での rbac へのサインアップ](media/search-howto-aad/rbac-signup-afec.png)
+![ポータルで rbac プレビューにサインアップする方法のスクリーンショット](media/search-howto-aad/rbac-signup-portal.png)
 
-プレビュー機能の追加の詳細については、「 [Azure サブスクリプションでプレビュー機能を設定](../azure-resource-manager/management/preview-features.md?tabs=azure-portal)する」を参照してください。
+Azure Feature Exposure Control (AFEC) を使用してプレビューにサインアップし、*Search Service のロールベースのアクセス制御 (プレビュー)* を検索することもできます。 プレビュー機能の追加の詳細については、「 [Azure サブスクリプションでプレビュー機能を設定](../azure-resource-manager/management/preview-features.md?tabs=azure-portal)する」を参照してください。
 
+> [!NOTE]
+> サブスクリプションにプレビューを追加すると、サブスクリプション内のすべてのサービスがプレビューに永続的に登録されます。 特定のサービスで RBAC が必要ない場合は、次の手順に示すように、データ プレーン操作に RBAC を無効にすることができます。
 
 ## <a name="step-2-preview-configuration"></a>手順 2: プレビューの構成
 
@@ -85,7 +85,7 @@ Azure Cognitive Search で RBAC を使用する場合、リージョン、レベ
 
 ### <a name="azure-portal"></a>[**Azure portal**](#tab/config-svc-portal)
 
-1. 次の構文を使用してポータルを開きます: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true)。
+1. [Azure Portal](https://ms.portal.azure.com)を開きます。
 
 1. お使いの検索サービスに移動します。
 
@@ -148,10 +148,7 @@ Postman または別の Web テスト ツールを使用する場合は、要求
 
 ### <a name="azure-portal"></a>[**Azure portal**](#tab/roles-portal)
 
-1. プレビュー ロールの場合、構文[https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true) を使用してポータルを開きます。 URL に `feature.enableRbac=true` が表示されます。
-
-   > [!NOTE]
-   > プレビュー ロールに割り当てられるユーザーおよびグループの場合、インデックスやインデクサーなどのポータル コンテンツは、機能フラグを使用してポータルを開いた場合のみ表示されます。 
+1. [Azure Portal](https://ms.portal.azure.com)を開きます。
 
 1. お使いの検索サービスに移動します。
 
@@ -204,10 +201,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="azure-portal"></a>[**Azure portal**](#tab/test-portal)
 
-1. プレビュー ロールの場合、構文[https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true) を使用してポータルを開きます。 
-
-   > [!NOTE]
-   > プレビュー ロールに割り当てられるユーザーおよびグループの場合、インデックスやインデクサーなどのポータル コンテンツは、機能フラグを使用してポータルを開いた場合のみ表示されます。 
+1. [Azure Portal](https://ms.portal.azure.com)を開きます。
 
 1. お使いの検索サービスに移動します。
 

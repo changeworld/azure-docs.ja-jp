@@ -3,22 +3,30 @@ title: デバイス モデル リポジトリの概念の理解 | Microsoft Docs
 description: ソリューション開発者や IT プロフェッショナル向けに、デバイス モデル リポジトリの基本的な概念について説明します。
 author: rido-min
 ms.author: rmpablos
-ms.date: 11/17/2020
+ms.date: 11/12/2021
 ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 5a9a2126d8732a2923428efb7e58cc6ec45e9fa5
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 7b32983707f2c23ef6385fc974f4f1d50ac48e50
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406421"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399298"
 ---
 # <a name="device-models-repository"></a>デバイス モデル リポジトリ
 
 デバイス モデル リポジトリ (DMR) を使用すると、デバイス ビルダーは IoT プラグ アンド プレイ デバイス モデルを管理および共有できます。 デバイス モデルは、[Digital Twins モデリング言語 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を使用して定義された JSON LD ドキュメントです。
 
-DMR によって、デバイス ツイン モデル識別子 (DTMI) に基づいて DTDL インターフェイスをフォルダー構造に格納するパターンが定義されます。 DTMI を相対パスに変換することで、DMR 内のインターフェイスを特定できます。 たとえば、`dtmi:com:example:Thermostat;1` DTMI は `/dtmi/com/example/thermostat-1.json` に変換されます。
+DMR によって、デバイス ツイン モデル識別子 (DTMI) に基づいて DTDL インターフェイスをフォルダー構造に格納するパターンが定義されます。 DTMI を相対パスに変換することで、DMR 内のインターフェイスを特定できます。 たとえば、 `dtmi:com:example:Thermostat;1` DTMI は `/dtmi/com/example/thermostat-1.json` に変換され、URL [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.json) のパブリック ベース URL `devicemodels.azure.com` から取得でき ます。
+
+## <a name="index-expanded-and-metadata"></a>インデックス、展開済み、メタデータ
+
+DMR の規約には、ホストされるモデルの使用を簡略化するための追加のアーティファクトが含まれています。 これらの機能は、カスタムリポジトリまたはプライベートリポジトリでは _オプション_ となります。
+
+- _Index_。 使用可能なすべての DTMI は、一連の json ファイルによって構成される次のような *インデックス* を介して公開されます: [https://devicemodels.azure.com/index.page.2.json](https://devicemodels.azure.com/index.page.2.json)
+- _拡張済み_。 すべての依存関係を持つファイルは、各インターフェイスで使用できます。たとえば: [https://devicemodels.azure.com/dtmi/com/example/temperaturecontroller-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/temperaturecontroller-1.expanded.json)
+- _Metadata_。 このファイルは、リポジトリのキー属性を公開し、最新の公開済みモデル スナップショットで定期的に更新されます。 これには、モデル インデックスまたは拡張モデル ファイルが使用可能かどうかなど、リポジトリが実装する機能が含まれます。 [https://devicemodels.azure.com/metadata.json](https://devicemodels.azure.com/metadata.json) で DMR メタデータにアクセスできます。
 
 ## <a name="public-device-models-repository"></a>パブリック デバイス モデル リポジトリ
 
@@ -71,7 +79,6 @@ dtmi:azure:DeviceManagement:DeviceInformation;1
 
 - 無効。 指定されたインターフェイスだけを返します。依存関係はありません。
 - 有効にします。 依存関係チェーン内のすべてのインターフェイスを返します。
-- TryFromExpanded。 `.expanded.json` ファイルを使用して、事前に計算された依存関係を取得します。 
 
 > [!Tip] 
 > カスタム リポジトリで `.expanded.json` ファイルが公開されない場合があります。使用できない場合、クライアントはフォールバックして各依存関係をローカルに処理します。
@@ -82,12 +89,13 @@ dtmi:azure:DeviceManagement:DeviceInformation;1
 using AzureEventSourceListener listener = AzureEventSourceListener.CreateConsoleLogger();
 
 var client = new ModelsRepositoryClient(
-    new Uri("https://raw.githubusercontent.com/Azure/iot-plugandplay-models/main"),
-    new ModelsRepositoryClientOptions(dependencyResolution: ModelDependencyResolution.Enabled));
+    new Uri("https://raw.githubusercontent.com/Azure/iot-plugandplay-models/main"));
 
-IDictionary<string, string> models = client.GetModels("dtmi:com:example:TemperatureController;1");
+ModelResult model = await client.GetModelAsync(
+    "dtmi:com:example:TemperatureController;1", 
+    dependencyResolution: ModelDependencyResolution.Enabled);
 
-models.Keys.ToList().ForEach(k => Console.WriteLine(k));
+model.Content.Keys.ToList().ForEach(k => Console.WriteLine(k));
 ```
 
 Azure SDK GitHub リポジトリ ([Azure.Iot.ModelsRepository/samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/modelsrepository/Azure.IoT.ModelsRepository/samples)) のソース コード内で、さらに多くのサンプルを入手できます。
@@ -119,11 +127,7 @@ PR チェック中にモデルの検証に使用されるツールは、DTDL イ
 ### <a name="install-dmr-client"></a>`dmr-client` のインストール
 
 ```bash
-curl -L https://aka.ms/install-dmr-client-linux | bash
-```
-
-```powershell
-iwr https://aka.ms/install-dmr-client-windows -UseBasicParsing | iex
+dotnet tool install --global Microsoft.IoT.ModelsRepository.CommandLine --version 1.0.0-beta.5
 ```
 
 ### <a name="import-a-model-to-the-dtmi-folder"></a>`dtmi/` フォルダーへのモデルのインポート
@@ -172,6 +176,27 @@ JSON 配列を使用することで、モデルを特定リポジトリ (ロー�
 
 ```bash
 dmr-client export --dtmi "dtmi:com:example:TemperatureController;1" -o TemperatureController.expanded.json
+```
+
+### <a name="create-the-repository-index"></a>リポジトリを作成する `index`
+
+DMR には、公開時に使用可能なすべての DTMI のリストを持つ *インデックス* を含めることができます。 [DMR Tools Wiki](https://github.com/Azure/iot-plugandplay-models-tools/wiki/Model-Index) で説明されているように、このファイルは複数のファイルに分割できます。
+
+カスタム DMR またはプライベート DMR でインデックスを生成するには、index コマンドを使います:
+
+```bash
+dmr-client index -r . -o index.json
+```
+
+> [!NOTE]
+> パブリック DMR は、 https://devicemodels.azure.com/index.json で使用可能となる、更新されたインデックスを提供できるように構成されます:
+
+### <a name="create-expanded-files"></a>*拡張済み* ファイルを作る
+
+拡張済みファイルは、次のコマンドを使用して生成できます:
+
+```bash
+dmr-client expand -r .
 ```
 
 ## <a name="next-steps"></a>次のステップ

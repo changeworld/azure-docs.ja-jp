@@ -4,12 +4,12 @@ description: Azure リソースの更新または削除をユーザーに禁止�
 ms.topic: conceptual
 ms.date: 07/01/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 62581028b58001c51721b79149ad2c75dacc86a8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 324aed15446e83e0853f4b590c7d679a7f598abe
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642398"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491395"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -97,9 +97,9 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-### <a name="arm-template"></a>ARM テンプレート
+### <a name="template"></a>Template
 
-Azure Resource Manager テンプレート (ARM テンプレート) を使用してロックをデプロイする場合は、ロックのスコープとデプロイのスコープに注意する必要があります。 リソース グループやサブスクリプションのロックなど、デプロイ スコープでロックを適用する場合、スコープ プロパティを設定しないでください。 デプロイ スコープ内のリソースをロックする場合は、スコープ プロパティを設定します。
+Azure Resource Manager テンプレート (ARM テンプレート) または Bicep ファイルを使用してロックをデプロイする場合は、ロックのスコープとデプロイのスコープに注意する必要があります。 リソース グループやサブスクリプションのロックなど、デプロイ スコープでロックを適用する場合、スコープ プロパティを設定しないでください。 デプロイ スコープ内のリソースをロックする場合は、スコープ プロパティを設定します。
 
 次のテンプレートは、デプロイ先のリソース グループにロックを適用します。 ロックのスコープがデプロイのスコープと一致するため、ロック リソースにスコープ プロパティがないことに注意してください。 このテンプレートは、リソース グループ レベルでデプロイされます。
 

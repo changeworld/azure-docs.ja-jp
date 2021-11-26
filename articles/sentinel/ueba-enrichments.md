@@ -1,32 +1,32 @@
 ---
-title: Azure Sentinel UEBA エンリッチメント リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel のエンティティ行動分析によって生成されるエンティティ エンリッチメントを示します。
+title: Microsoft Sentinel UEBA エンリッチメント リファレンス | Microsoft Docs
+description: この記事では、Microsoft Sentinel のエンティティ行動分析によって生成されるエンティティ エンリッチメントを示します。
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: reference
-ms.date: 05/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 944c2b155a0cfa48d98876aa463c27cf5c47d40c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 345f34d2e0db508b831dca6d7f19b27436448de0
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083709"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519821"
 ---
-# <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA エンリッチメント リファレンス
+# <a name="microsoft-sentinel-ueba-enrichments-reference"></a>Microsoft Sentinel UEBA エンリッチメント リファレンス
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、 **[ログ]** 内にあり、[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)に言及される Azure Sentinel **BehaviorAnalytics** テーブルについて説明します。また、そのテーブル内のエンティティ エンリッチメント フィールドの詳細についても説明します。この内容を活用することにより、セキュリティ インシデントの調査の対象を絞って明確にすることができます。
+この記事では、 **[ログ]** 内にあり、[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)で言及される Microsoft Sentinel **BehaviorAnalytics** テーブルと、そのテーブル内のエンティティ エンリッチメント フィールドの詳細について説明します。この内容を活用することにより、セキュリティ インシデントの調査に焦点を当てて明確にすることができます。
 
 BehaviorAnalytics テーブルに含まれる以下の 3 つの動的フィールドについて、[下の表](#entity-enrichments-dynamic-fields)で説明します。
 
 [UsersInsights](#usersinsights-field) および [DevicesInsights](#devicesinsights-field) フィールドには、Active Directory または Azure AD および Microsoft 脅威インテリジェンス ソースのエンティティ情報が格納されます。
 
-[ActivityInsights](#activityinsights-field) フィールドには、Azure Sentinel のエンティティ行動分析によって作成される行動プロファイルに基づくエンティティ情報が格納されます。 
+[ActivityInsights](#activityinsights-field) フィールドには、Microsoft Sentinel のエンティティ行動分析によって作成される行動プロファイルに基づくエンティティ情報が格納されます。 
 
 <a name="baseline-explained"></a>ユーザー アクティビティは、使用されるたびに動的にコンパイルされるベースラインに対して分析されます。 各アクティビティには、この動的なベースラインの派生元であるルックバック期間が定義されています。 このルックバック期間は、この表の「[**ベースライン**](#activityinsights-field)」列で指定されています。
 
@@ -41,7 +41,7 @@ BehaviorAnalytics テーブルに含まれる以下の 3 つの動的フィー�
 >
 ## <a name="behavioranalytics-table"></a>BehaviorAnalytics テーブル
 
-次の表に、Azure Sentinel の各[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)に表示される行動分析データを示します。
+次の表に、Microsoft Sentinel の各[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)に表示される行動分析データを示します。
 
 | フィールド                     | 型 | 説明                                                  |
 |---------------------------|------|--------------------------------------------------------------|
@@ -208,7 +208,7 @@ BehaviorAnalytics テーブルに含まれる以下の 3 つの動的フィー�
 
 ## <a name="identityinfo-table-public-preview"></a>IdentityInfo テーブル (パブリック プレビュー)
 
-Azure Sentinel ワークスペースの [UEBA を有効](enable-entity-behavior-analytics.md)にした後、Azure Active Directory のデータが、Azure Sentinel で使用するために Log Analytics の **IdentityInfo** テーブルに同期されます。 Azuer AD から同期されたユーザー データを分析ルールに埋め込み、ユース ケースに合うように分析を強化して、擬陽性を減らすことができます。
+Microsoft Sentinel ワークスペースの [UEBA を有効](enable-entity-behavior-analytics.md)にした後、Azure Active Directory のデータが、Microsoft Sentinel で使用するために Log Analytics の **IdentityInfo** テーブルに同期されます。 Azuer AD から同期されたユーザー データを分析ルールに埋め込み、ユース ケースに合うように分析を強化して、擬陽性を減らすことができます。
 
 初期同期には数日かかる可能性がありますが、データは一度で完全に同期されます。
 
@@ -216,7 +216,7 @@ Azure Sentinel ワークスペースの [UEBA を有効](enable-entity-behavior-
 
 - グループとロールの情報は、**IdentityInfo** テーブルと Azure AD の間で毎日同期されます。
 
-- 古いレコードが完全に更新されるように、Azure Sentinel は 21 日ごとに Azure AD 全体と同期し直します。
+- 古いレコードが完全に更新されるように、Microsoft Sentinel では 21 日ごとに Azure AD 全体と同期し直します。
 
 - **IdentityInfo** テーブルの既定の保有期間は 30 日です。
 
@@ -268,7 +268,7 @@ Azure Sentinel ワークスペースの [UEBA を有効](enable-entity-behavior-
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、Azure Sentinel のエンティティ行動分析テーブルのスキーマについて説明しました。
+このドキュメントでは、Microsoft Sentinel のエンティティ行動分析テーブルのスキーマについて説明しました。
 
 - [エンティティ行動分析](identify-threats-with-entity-behavior-analytics.md)の詳細を確認する。
 - 調査で [UEBA を使用](investigate-with-ueba.md)する。

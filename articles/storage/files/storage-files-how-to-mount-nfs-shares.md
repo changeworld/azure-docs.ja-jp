@@ -1,23 +1,23 @@
 ---
-title: Azure NFS ファイル共有 (プレビュー) をマウントする - Azure Files
+title: Azure NFS ファイル共有をマウントする - Azure Files
 description: ネットワーク ファイル システム共有をマウントする方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/25/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 04d3174900ce5aa788f3793b39fa4d6c06222001
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: de0a4ef2530971ae2261f6a3e5ab2f1ef8acdc31
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036791"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523773"
 ---
-# <a name="how-to-mount-an-nfs-file-share-preview"></a>NFS ファイル共有 (プレビュー) をマウントする方法
+# <a name="how-to-mount-an-nfs-file-share"></a>NFS ファイル共有をマウントする方法
 
-[Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、サーバー メッセージ ブロック プロトコル (SMB) またはネットワーク ファイル システム (NFS) プロトコル (プレビュー) のいずれかを使用して Linux ディストリビューションにマウントできます。 この記事では、NFS を使用したマウントについて説明します。SMB を使用したマウントの詳細については、「[Linux で Azure Files を使用する](storage-how-to-use-files-linux.md)」を参照してください。 使用できる各プロトコルの詳細については、「[Azure ファイル共有プロトコル](storage-files-planning.md#available-protocols)」を参照してください。
+[Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、サーバー メッセージ ブロック プロトコル (SMB) またはネットワーク ファイル システム (NFS) プロトコルのいずれかを使用して Linux ディストリビューションにマウントできます。 この記事では、NFS を使用したマウントについて説明します。SMB を使用したマウントの詳細については、「[Linux で Azure Files を使用する](storage-how-to-use-files-linux.md)」を参照してください。 使用できる各プロトコルの詳細については、「[Azure ファイル共有プロトコル](storage-files-planning.md#available-protocols)」を参照してください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -30,10 +30,10 @@ ms.locfileid: "131036791"
 ## <a name="prerequisites"></a>前提条件
 
 - [NFS 共有を作成する](storage-files-how-to-create-nfs-shares.md)。
+- NFS 共有をマウントする任意のクライアントでポート 2049 を開きます。
 
     > [!IMPORTANT]
     > NFS 共有には、信頼されたネットワークからしかアクセスできません。 NFS 共有への接続は、次のいずれかのソースから行う必要があります。
-
 - 次のいずれかのネットワークソリューションを使用する。
     - [プライベート エンドポイントを作成する](storage-files-networking-endpoints.md#create-a-private-endpoint) (推奨) か、または[パブリック エンドポイントへのアクセスを制限](storage-files-networking-endpoints.md#restrict-public-endpoint-access)します。
     - [Azure Files で使用する Linux 上のポイント対サイト (P2S) VPN を構成](storage-files-configure-p2s-vpn-linux.md)します。

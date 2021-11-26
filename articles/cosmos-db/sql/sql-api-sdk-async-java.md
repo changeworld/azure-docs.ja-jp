@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 11/11/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: ecec077db8ca0b9b1a5285256eabb67791d461f2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 209fc857296556124cb5fa2003fb0c578dfe3317
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114142"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397568"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -46,7 +46,7 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 >
 
 > [!IMPORTANT]  
-> 2024 年 8 月 31 日に、Azure Cosmos DB Async Java SDK v2.x は廃止されます。この SDK およびこの SDK を使用しているすべてのアプリケーションは **引き続き機能します**。この SDK の保守およびサポートが、それ以降は Azure Cosmos DB では提供されなくなるだけです。
+> 2024 年 8 月 31 日に、Azure Cosmos DB Async Java SDK v2.x は廃止されます。この SDK と、SDK を使用しているすべてのアプリケーションは、**引き続き機能します**。Azure Cosmos DB は、この SDK の保守とサポートをさらに提供することを停止します。
 > 上記の手順に従って Azure Cosmos DB Java SDK v4 に移行することをお勧めします。
 >
 
@@ -60,6 +60,9 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 | **パフォーマンスに関するヒント**| [GitHub の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
 | **サポートされている最小ランタイム**|[JDK 8](/java/azure/jdk/) | 
 
+## <a name="release-history"></a>リリース履歴
+
+リリース履歴は Azure Cosmos DB Java SDK ソース リポジトリで保守管理されています。 機能リリースと各リリースで修正されたバグの詳細な一覧については、[SDK 変更ログのドキュメント](https://github.com/Azure/azure-cosmosdb-java/blob/master/changelog/README.md)を参照してください
 
 ## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]

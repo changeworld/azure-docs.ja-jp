@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 11/08/2021
-ms.openlocfilehash: 981160fe8d0778d122dd7dbd92c0c27c468ff34a
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 40904b087d58ee6a07ca7acecdd2b2927348799e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997896"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493250"
 ---
 #  <a name="azure-web-pubsub-trigger-and-bindings-for-azure-functions"></a>Azure Functions での Azure Web PubSub のトリガーとバインド
 
@@ -22,8 +22,8 @@ Web PubSub は、開発者がリアルタイムの機能と発行-サブスク�
 | アクション | Type |
 |---------|---------|
 | サービスからメッセージを受信したときに関数を実行する | [トリガー バインド](#trigger-binding) |
-| サービス エンドポイント URL とアクセス トークンを返す | [入力バインド](#input-binding)
-| Web PubSub メッセージを送信する |[出力バインド](#output-binding) |
+| ネゴシエーション要求とアップストリーム要求の HTTP トリガーでターゲット オブジェクトに要求をバインドする | [入力バインド](#input-binding)
+| サービスを呼び出してアクションを実行する | [出力バインド](#output-binding) |
 
 [ソース コード](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/webpubsub/) |
 [パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub) |
@@ -38,16 +38,18 @@ Web PubSub は、開発者がリアルタイムの機能と発行-サブスク�
 | 言語                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン プレリリースをインストールする | |
-| C# スクリプト、JavaScript、Python、PowerShell       | [拡張機能を明示的にインストールする]                    | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |
+| C# スクリプト、JavaScript、Python、PowerShell       | [拡張機能を明示的にインストールする]、[拡張機能バンドルを使用する] | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |
 | C# スクリプト (Azure portal ではオンラインのみ)         | バインディングを追加する                                   | 関数アプリを再発行せずにポータルで既存のバインディング拡張機能を更新するには、[拡張機能の更新]に関する記事を参照してください。 |
 
-指定したパッケージとバージョンの [NuGet](https://www.nuget.org/) からクライアント ライブラリをインストールします。
-
-```bash
-func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-```
+> [!NOTE]
+> 指定したパッケージとバージョンの [NuGet](https://www.nuget.org/) からクライアント ライブラリをインストールします。
+> 
+> ```bash
+> func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0
+> ```
 
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub
+[拡張機能バンドルを使用する]: ../azure-functions/functions-bindings-register.md#extension-bundles
 [拡張機能を明示的にインストールする]: ../azure-functions/functions-bindings-register.md#explicitly-install-extensions 
 [Azure Tools 拡張機能]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 [拡張機能の更新]: ../azure-functions/functions-bindings-register.md
@@ -58,7 +60,7 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 
 (1)-(2) クライアント接続を生成する HttpTrigger を使用した `WebPubSubConnection` 入力バインド。
 
-(3)-(4) サービス要求を処理する `WebPubSubTrigger` トリガー バインドまたは HttpTrigger を使用した `WebPubSubRequest` 入力バインド。
+(3)-(4) サービス要求を処理する `WebPubSubTrigger` トリガー バインドまたは HttpTrigger を使用した `WebPubSubContext` 入力バインド。
 
 (5)-(6) サービスに何らかの実行を要求する `WebPubSub` 出力バインド。
 
@@ -72,6 +74,8 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 <Function_App_Url>/runtime/webhooks/webpubsub?code=<API_KEY>
 ```
 
+:::image type="content" source="media/quickstart-serverless/func-keys.png" alt-text="関数のシステム キーを取得するスクリーンショット。":::
+
 ### <a name="example"></a>例
 
 
@@ -80,31 +84,33 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 ```cs
 [FunctionName("WebPubSubTrigger")]
 public static void Run(
-    [WebPubSubTrigger("<hub>", "message", EventType.User)] 
-    ConnectionContext context,
-    string message,
-    MessageDataType dataType)
+    [WebPubSubTrigger("<hub>", "message", EventType.User)]
+    UserEventRequest request,
+    WebPubSubConnectionContext context,
+    string data,
+    WebPubSubDataType dataType)
 {
     Console.WriteLine($"Request from: {context.userId}");
-    Console.WriteLine($"Request message: {message}");
-    Console.WriteLine($"Request message DataType: {dataType}");
+    Console.WriteLine($"Request message data: {data}");
+    Console.WriteLine($"Request message dataType: {dataType}");
 }
 ```
 
-`WebPubSubTrigger` バインディングでは、一部のシナリオで戻り値もサポートされています。たとえば、サーバーがクライアント要求を確認して拒否する場合、または要求クライアントに直接メッセージを送信する場合の、`Connect`、`Message` イベントなどです。 `Connect` イベントでは `ConnectResponse` および `ErrorResponse` が考慮され、`Message` イベントでは `MessageResponse` および `ErrorResponse` が考慮され、現在のシナリオと一致しない残りの型は無視されます。 さらに、`ErrorResponse` が返された場合、サービスによってクライアント接続が切断されます。
+`WebPubSubTrigger` バインドでは、同期シナリオの戻り値もサポートされています。たとえば、サーバーがクライアント要求を確認して拒否できる場合や、呼び出し元に直接メッセージを送信できる場合の、システム `Connect` イベントやユーザー イベントなどです。 `Connect` イベントでは `ConnectEventResponse` と `EventErrorResponse` が考慮され、ユーザー イベントでは `UserEventResponse` と `EventErrorResponse` が考慮されます。現在のシナリオと一致しない残りの型は無視されます。 さらに、`EventErrorResponse` が返された場合、サービスによってクライアント接続が切断されます。
 
 ```cs
 [FunctionName("WebPubSubTriggerReturnValue")]
 public static MessageResponse Run(
-    [WebPubSubTrigger("<hub>", "message", EventType.User)] 
+    [WebPubSubTrigger("<hub>", "message", EventType.User)]
+    UserEventRequest request,
     ConnectionContext context,
-    string message,
-    MessageDataType dataType)
+    string data,
+    WebPubSubDataType dataType)
 {
-    return new MessageResponse
+    return new UserEventResponse
     {
-        Message = BinaryData.FromString("ack"),
-        DataType = MessageDataType.Text
+        Data = BinaryData.FromString("ack"),
+        DataType = WebPubSubDataType.Text
     };
 }
 ```
@@ -120,7 +126,7 @@ public static MessageResponse Run(
     {
       "type": "webPubSubTrigger",
       "direction": "in",
-      "name": "message",
+      "name": "data",
       "hub": "<hub>",
       "eventName": "message",
       "eventType": "user"
@@ -132,19 +138,19 @@ public static MessageResponse Run(
 `index.js` で関数を定義します。
 
 ```js
-module.exports = function (context, message) {
-  console.log('Request from: ', context.userId);
-  console.log('Request message: ', message);
-  console.log('Request message dataType: ', context.bindingData.dataType);
+module.exports = function (context, data) {
+  console.log('Request from: ', context.bindingData.request.connectionContext.userId);
+  console.log('Request message data: ', data);
+  console.log('Request message dataType: ', context.bindingData.request.dataType);
 }
 ```
 
-`WebPubSubTrigger` バインディングでは、一部のシナリオで戻り値もサポートされています。たとえば、`Connect`、`Message` イベントなどです。 サーバーがクライアント要求を確認して拒否できるか、または要求クライアントに直接メッセージを送信できる場合。 JavaScript のタイプレス言語では、オブジェクト キーに関して逆シリアル化されます。 また `ErrorResponse` は、残りのオブジェクトと比較して最高の優先順位を持ちます。`code` が戻り値に含まれる場合、それは `ErrorResponse` に解析され、クライアント接続が切断されます。
+`WebPubSubTrigger` バインドでは、同期シナリオの戻り値もサポートされています。たとえば、サーバーがクライアント要求を確認して拒否できる場合や、要求クライアントに直接メッセージを送信できる場合の、システム `Connect` イベントやユーザー イベントなどです。 厳密に型指定されていない JavaScript 言語では、オブジェクト キーに関して逆シリアル化されます。 また `EventErrorResponse` は、残りのオブジェクトと比較して最高の優先順位を持ちます。`code` が戻り値に含まれる場合、それは `EventErrorResponse` に解析され、クライアント接続が切断されます。
 
 ```js
 module.exports = async function (context) {
   return { 
-    "message": "ack",
+    "data": "ack",
     "dataType" : "text"
   };
 }
@@ -161,8 +167,8 @@ module.exports = async function (context) {
 
 ```csharp
 [FunctionName("WebPubSubTrigger")]
-public static void Run([WebPubSubTrigger("<hub>", "<eventName>", <eventType>)] 
-ConnectionContext context, ILogger log)
+public static void Run([WebPubSubTrigger("<hub>", "<event-Name>", <WebPubSubEventType>)] 
+WebPubSubConnectionContext context, ILogger log)
 {
     ...
 }
@@ -181,35 +187,37 @@ ConnectionContext context, ILogger log)
 | **name** | 該当なし | 必須 - イベント データを受信するパラメーターの、関数コードで使われている変数名。 |
 | **hub** | ハブ | 必須 - この値は、トリガーされる関数の Web PubSub ハブの名前に設定する必要があります。 高い優先順位として属性への値の設定をサポートしていますが、またはグローバル値としてアプリ設定に設定することもできます。 |
 | **eventType** | EventType | 必須 - この値は、トリガーされる関数のメッセージのイベントの種類として設定する必要があります。 値は、`user` または `system` である必要があります。 |
-| **eventName** | EventName | 必須 - この値は、トリガーされる関数のメッセージのイベントとして設定する必要があります。 </br> `system` イベントの種類の場合、イベント名は `connect`、`connected`、`disconnect` である必要があります。 </br> システムでサポートされているサブプロトコル `json.webpubsub.azure.v1.` の場合、イベント名はユーザー定義のイベント名です。 </br> ユーザー定義のサブプロトコルの場合、イベント名は `message` です。 |
+| **eventName** | EventName | 必須 - この値は、トリガーされる関数のメッセージのイベントとして設定する必要があります。 </br> `system` イベントの種類の場合、イベント名は `connect`、`connected`、`disconnected` である必要があります。 </br> ユーザー定義のサブプロトコルの場合、イベント名は `message` です。 </br> システムでサポートされているサブプロトコル `json.webpubsub.azure.v1.` の場合、イベント名はユーザー定義のイベント名です。 |
+| **connection** | Connection | 省略可能 - アップストリームの Azure Web PubSub サービスを指定するアプリ設定または設定コレクションの名前。 値は署名の検証に使用されます。 また、値は既定でアプリ設定の "WebPubSubConnectionString" を使用して自動解決されます。 `null` は、検証が不要であり、常に成功することを意味します。 |
 
 ### <a name="usages"></a>使用法
 
-C# で `ConnectionContext` は、型が認識されたバインディング パラメーターであり、残りのパラメーターはパラメーター名によってバインドされます。 下の使用可能なパラメーターと型の表を確認してください。
+C# で `WebPubSubEventRequest` は、型が認識されたバインディング パラメーターであり、残りのパラメーターはパラメーター名によってバインドされます。 下の使用可能なパラメーターと型の表を確認してください。
 
-JavaScript のようなタイプレスの言語では、`function.json` の `name` を使用して、下のマッピング テーブルに関してトリガー オブジェクトがバインドされます。 さらに、トリガー入力のバインディング オブジェクトとして `name` が `message` に設定されている場合に、`function.json` の `dataType` が考慮され、それに応じてメッセージが変換されます。 すべてのパラメーターは `context.bindingData.<BindingName>` から読み取ることができ、`JObject` 変換されます。 
+JavaScript のような厳密に型指定されていない言語では、下のマッピング テーブルに関して、`function.json` の `name` を使用してトリガー オブジェクトがバインドされます。 さらに、トリガー入力のバインディング オブジェクトとして `name` が `data` に設定されている場合に、`function.json` の `dataType` が考慮され、それに応じてメッセージが変換されます。 すべてのパラメーターは `context.bindingData.<BindingName>` から読み取ることができ、`JObject` 変換されます。 
 
 | バインディング名 | バインドの種類 | 説明 | プロパティ |
 |---------|---------|---------|---------|
-|connectionContext|`ConnectionContext`|一般的な要求情報| EventType、EventName、Hub、ConnectionId、UserId、Headers、Signature |
-|message|`BinaryData`,`string`,`Stream`,`byte[]`| クライアントからの要求メッセージ | -|
-|dataType|`MessageDataType`| 要求メッセージのデータ型。`binary`、`text`、`json` がサポートされています | -|
-|claims|`IDictionary<string, string[]>`|`connect` 要求でのユーザー要求 | -|
-|query|`IDictionary<string, string[]>`|`connect` 要求でのユーザー クエリ | -|
-|subprotocols|`string[]`|`connect` 要求での使用可能なサブプロトコル | -|
-|clientCertificates|`ClientCertificate[]`|`connect` 要求でのクライアントからの証明書の拇印の一覧|-|
-|reason|`string`|切断要求での理由|-|
+|request|`WebPubSubEventRequest`|アップストリーム要求を記述します|派生クラス `ConnectEventRequest`、`ConnectedEventRequest`、`UserEventRequest`、`DisconnectedEventRequest` を含め、イベントの種類によってプロパティは異なります |
+|connectionContext|`WebPubSubConnectionContext`|一般的な要求情報| EventType、EventName、Hub、ConnectionId、UserId、Headers、Origin、Signature、States |
+|data|`BinaryData`,`string`,`Stream`,`byte[]`| ユーザー `message` イベントでのクライアントからの要求メッセージ データ | -|
+|dataType|`WebPubSubDataType`| 要求メッセージのデータ型。`binary`、`text`、`json` がサポートされています | -|
+|claims|`IDictionary<string, string[]>`|システム `connect` 要求でのユーザー要求 | -|
+|query|`IDictionary<string, string[]>`|システム `connect` 要求でのユーザー クエリ | -|
+|subprotocols|`IList<string>`|システム `connect` 要求での使用可能なサブプロトコル | -|
+|clientCertificates|`IList<ClientCertificate>`|システム `connect` 要求でのクライアントからの証明書の拇印のリスト|-|
+|reason|`string`|システム `disconnected` 要求での理由|-|
 
 ### <a name="return-response"></a> 応答を返す
 
-`WebPubSubTrigger` では、`connect` の同期イベントおよびユーザー イベント `message` に対して、顧客が返した応答が考慮されます。 一致した応答だけがサービスに返送されます。それ以外の場合は、無視されます。 
+`WebPubSubTrigger` では、`connect` およびユーザー イベントの同期イベントに対して、顧客から返された応答が考慮されます。 一致した応答だけがサービスに返送されます。それ以外の場合は、無視されます。 さらに、`WebPubSubTrigger` 戻りオブジェクトでは、接続のメタデータを管理するために、ユーザによる `SetState()` と `ClearStates()` がサポートされます。 また、拡張機能により、戻り値の結果が要求の `WebPubSubConnectionContext.States` の元の値とマージされます。 既存のキーの値が上書きされ、新しいキーの値が追加されます。
 
 | 戻り値の型 | 説明 | プロパティ |
 |---------|---------|---------|
-|`ConnectResponse`| `connect` イベントの応答 | Groups、Roles、UserId、Subprotocol |
-|`MessageResponse`| ユーザー イベントの応答 | DataType、Message |
-|`ErrorResponse`| 同期イベントのエラー応答 | Code、ErrorMessage |
-|`ServiceResponse`| 戻り値が不明な場合に使用される、サポートされている基本の応答の種類 | - |
+|`ConnectEventResponse`| `connect` イベントの応答 | Groups、Roles、UserId、Subprotocol |
+|`UserEventResponse`| ユーザー イベントの応答 | DataType、Data |
+|`EventErrorResponse`| 同期イベントのエラー応答 | Code、ErrorMessage |
+|`*WebPubSubEventResponse`| 戻り値が不明な場合に使用される、サポートされている基本の応答の種類 | - |
 
 ## <a name="input-binding"></a>入力バインド
 
@@ -219,14 +227,14 @@ JavaScript のようなタイプレスの言語では、`function.json` の `nam
 
   クライアントを Azure Web PubSub サービスに接続させるには、それがサービス エンドポイント URL と有効なアクセス トークンを認識している必要があります。 `WebPubSubConnection` 入力バインディングによって必要な情報が生成されるため、クライアントはこのトークン生成自体を処理する必要がありません。 トークンは時間制限があり、接続に対して特定のユーザーを認証するために使用できるため、トークンをキャッシュしたり、クライアント間で共有したりしないでください。 この入力バインドと連携する HTTP トリガーは、クライアントが接続情報を取得するために使用できます。
 
-- `WebPubSubRequest`
+- `WebPubSubContext`
 
-  Static Web Apps を使用している場合は、`HttpTrigger` がサポートされている唯一のトリガーであり、Web PubSub のシナリオでは、`WebPubSubRequest` 入力バインディングを提供し、ユーザーが Web PubSub プロトコルでサービス側からアップストリームの http 要求を逆シリアル化するのに役立ちます。 顧客は、関数で簡単に処理するために、`WebPubSubTrigger` と比較して、同様の結果を得ることができます。 下記の[例](#example---webpubsubrequest)を参照してください。
-  `HttpTrigger` と共に使用する場合、顧客は、HttpTrigger で公開されている url をアップストリームでそれに従って構成する必要があります。
+  Static Web Apps を使用している場合は、`HttpTrigger` がサポートされている唯一のトリガーであり、Web PubSub のシナリオでは、`WebPubSubContext` 入力バインディングを提供し、ユーザーが Web PubSub プロトコルでサービス側からアップストリームの http 要求を逆シリアル化するのに役立ちます。 顧客は、関数で簡単に処理するために、`WebPubSubTrigger` と比較して同様の結果を得ることができます。 下記の[例](#example---webpubsubcontext)を参照してください。
+  `HttpTrigger` と共に使用する場合、顧客は、HttpTrigger で公開されている URL をイベント ハンドラーで適宜構成する必要があります。
 
 ### <a name="example---webpubsubconnection"></a>例 - `WebPubSubConnection`
 
-次の例は、入力バインドを使用して Web PubSub 接続情報を取得し、HTTP 経由でそれを返す C# 関数を示しています。
+次の例は、入力バインドを使用して Web PubSub 接続情報を取得し、HTTP 経由でそれを返す C# 関数を示しています。 次の例では、`UserId` は、`?userid={User-A}` のようにクライアント要求のクエリ部分を使用して渡されます。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -301,26 +309,26 @@ public static WebPubSubConnection Run(
 }
 ```
 
-### <a name="example---webpubsubrequest"></a>例 - `WebPubSubRequest`
+### <a name="example---webpubsubcontext"></a>例 - `WebPubSubContext`
 
-次の例は、接続イベントの種類で入力バインドを使用して Web PubSub 要求情報を取得し、HTTP 経由でそれを返す C# 関数を示しています。
+次の例は、`connect` イベントの種類で入力バインドを使用して Web PubSub アップストリーム要求情報を取得し、HTTP 経由でそれを返す C# 関数を示しています。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
-[FunctionName("WebPubSubRequestInputBinding")]
+[FunctionName("WebPubSubContextInputBinding")]
 public static object Run(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req,
-    [WebPubSubRequest] WebPubSubRequest wpsReq)
+    [WebPubSubContext] WebPubSubContext wpsContext)
 {
-    if (wpsReq.Request.IsValidationRequest || !wpsReq.Request.Valid)
+    if (wpsContext.IsPreflight || !wpsContext.HasError)
     {
         return wpsReq.Response;
     }
     var request = wpsReq.Request as ConnectEventRequest;
-    var response = new ConnectResponse
+    var response = new ConnectEventResponse
     {
-        UserId = wpsReq.ConnectionContext.UserId
+        UserId = wpsContext.Request.ConnectionContext.UserId
     };
     return response;
 }
@@ -347,8 +355,8 @@ public static object Run(
       "name": "$return"
     },
     {
-      "type": "webPubSubRequest",
-      "name": "wpsReq",
+      "type": "webPubSubContext",
+      "name": "wpsContext",
       "direction": "in"
     }
   ]
@@ -358,14 +366,14 @@ public static object Run(
 `index.js` で関数を定義します。
 
 ```js
-module.exports = async function (context, req, wpsReq) {
-  if (!wpsReq.request.valid || wpsReq.request.isValidationRequest)
+module.exports = async function (context, req, wpsContext) {
+  if (!wpsContext.hasError || wpsContext.isPreflight)
   {
-    console.log(`invalid request: ${wpsReq.response.message}.`);
+    console.log(`invalid request: ${wpsContext.response.message}.`);
     return wpsReq.response;
   }
-  console.log(`user: ${context.bindings.wpsReq.connectionContext.userId} is connecting.`);
-  return { body: {"userId": context.bindings.wpsReq.connectionContext.userId} };
+  console.log(`user: ${wpsContext.connectionContext.userId} is connecting.`);
+  return { body: {"userId": wpsContext.connectionContext.userId} };
 };
 ```
 
@@ -382,62 +390,93 @@ module.exports = async function (context, req, wpsReq) {
 | **type** | 該当なし | `webPubSubConnection` に設定されている必要があります。 |
 | **direction** | 該当なし | `in` に設定されている必要があります。 |
 | **name** | 該当なし | 入力接続バインド オブジェクトの関数コードで使用される変数名。 |
-| **hub** | ハブ | この値は、トリガーされる関数の Web PubSub ハブの名前に設定する必要があります。 高い優先順位として属性への値の設定をサポートしていますが、またはグローバル値としてアプリ設定に設定することもできます。 |
+| **hub** | ハブ | 必須 - この値は、トリガーされる関数の Web PubSub ハブの名前に設定する必要があります。 高い優先順位として属性への値の設定をサポートしていますが、またはグローバル値としてアプリ設定に設定することもできます。 |
 | **userId** | UserId | 省略可能 - アクセス キー トークンに設定するユーザー識別子要求の値。 |
-| **connectionStringSetting** | ConnectionStringSetting | Web PubSub Service 接続文字列を含むアプリ設定の名前 (既定値は "WebPubSubConnectionString") |
+| **connection** | Connection | 必須 - Web PubSub Service 接続文字列を含むアプリ設定の名前 (既定値は "WebPubSubConnectionString")。 |
 
-#### <a name="webpubsubrequest"></a>WebPubSubRequest
+#### <a name="webpubsubcontext"></a>WebPubSubContext
 
-次の表は、functions.json ファイルと `WebPubSubRequest` 属性に設定したバインド構成のプロパティを説明しています。
+次の表は、functions.json ファイルと `WebPubSubContext` 属性に設定したバインド構成のプロパティを説明しています。
 
 | function.json のプロパティ | 属性のプロパティ | 説明 |
 |---------|---------|---------|
-| **type** | 該当なし | `webPubSubRequest` に設定されている必要があります。 |
-| **direction** | 該当なし | `in` に設定されている必要があります。 |
+| **type** | 該当なし | `webPubSubContext` に設定する必要があります。 |
+| **direction** | 該当なし | `in` に設定する必要があります。 |
 | **name** | 該当なし | 入力 Web PubSub 要求の関数コードで使用される変数名。 |
+| **connection** | Connection | 省略可能 - アップストリームの Azure Web PubSub サービスを指定するアプリ設定または設定コレクションの名前。 値は[不正使用防止](https://github.com/cloudevents/spec/blob/v1.0.1/http-webhook.md#4-abuse-protection)と署名検証に使用されます。 値は既定で "WebPubSubConnectionString" を使用して自動解決されます。 `null` は、検証が不要であり、常に成功することを意味します。 |
 
 ### <a name="usage"></a>使用法
 
 #### <a name="webpubsubconnection"></a>WebPubSubConnection
 
+# <a name="c"></a>[C#](#tab/csharp)
+
 `WebPubSubConnection` では以下のプロパティが提供されます。
 
-バインディング名 | バインドの種類 | 説明
----------|---------|---------
-BaseUrl | string | Web PubSub クライアント接続 url
-url | string | Web PubSub 接続の絶対 Uri。要求に基づいて生成された `AccessToken` が含まれます
-AccessToken | string | 要求の UserId とサービス情報に基づいて生成された `AccessToken`
+| バインディング名 | バインドの種類 | 説明 |
+|---------|---------|---------|
+| BaseUri | Uri | Web PubSub クライアント接続 URI。 |
+| Uri | Uri | Web PubSub 接続の絶対 URI。要求に基づいて生成された `AccessToken` が含まれます。 |
+| AccessToken | string | 要求の UserId とサービス情報に基づいて生成された `AccessToken`。 |
 
-#### <a name="webpubsubrequest"></a>WebPubSubRequest
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`WebPubSubRequest` では以下のプロパティが提供されます。
+`WebPubSubConnection` では以下のプロパティが提供されます。
 
-バインディング名 | バインドの種類 | 説明 | プロパティ
----------|---------|---------|---------
-connectionContext | `ConnectionContext` | 一般的な要求情報| EventType、EventName、Hub、ConnectionId、UserId、Headers、Signature
-request | `ServiceRequest` | クライアントからの要求。詳細については以下の表を参照してください | IsValidationRequest、Valid、Unauthorized、BadRequest、ErrorMessage、Name など
-応答 | `HttpResponseMessage` | 拡張機能によって、主に `AbuseProtection` とエラーケースに対する応答が作成されます | -
+| バインディング名 | 説明 |
+|---------|---------|
+| baseUrl | Web PubSub クライアント接続 URI。 |
+| url | Web PubSub 接続の絶対 URI。要求に基づいて生成された `AccessToken` が含まれます。 |
+| accessToken | 要求の UserId とサービス情報に基づいて生成された `AccessToken`。 |
 
-`ServiceRequest` の場合、要求シナリオに関するさまざまな情報を提供するさまざまなクラスに逆シリアル化されます。 `ValidationRequest` または `InvalidRequest` の場合、システムによって作成された応答 `WebPubSubRequest.Response` を直接返すか、または顧客が必要なエラーをログに記録できることが推奨されます。 さまざまなシナリオで、顧客は次のように要求のプロパティを読み取ることができます。
+---
 
-派生クラス | 説明 | プロパティ
---|--|--
-`ValidationRequest` | `IsValidationRequest` が **true** の場合に `AbuseProtection` で使用します | -
-`ConnectEventRequest` | `Connect` イベントの種類で使用します | Claims、Query、Subprotocols、ClientCertificates
-`ConnectedEventRequest` | `Connected` イベントの種類で使用します | -
-`MessageEventRequest` | ユーザー イベントの種類で使用します | Message、DataType
-`DisconnectedEventRequest` | `Disconnected` イベントの種類で使用します | 理由
-`InvalidRequest` | 要求が無効な場合に使用します | -
+#### <a name="webpubsubcontext"></a>WebPubSubContext
+
+`WebPubSubContext` では以下のプロパティが提供されます。
+
+| バインディング名 | バインドの種類 | 説明 | プロパティ |
+|---------|---------|---------|---------|
+| request | `WebPubSubEventRequest` | クライアントからの要求。詳細については、下の表を参照してください。 | 要求ヘッダーの `WebPubSubConnectionContext` と要求本文から逆シリアル化された他のプロパティでは要求を説明します (`DisconnectedEventRequest` の `Reason` など)。 |
+| 応答 | `HttpResponseMessage` | 拡張機能によって、主に `AbuseProtection` とエラー ケースに対する応答が作成されます。 | - |
+| errorMessage | string | アップストリーム要求を処理するときのエラーの詳細を説明します。 | - |
+| hasError | [bool] | 有効な Web PubSub アップストリーム要求かどうかを示すフラグ。 | - |
+| isPreflight | [bool] | `AbuseProtection` のプレフライト要求かどうかを示すフラグ。 | - |
+
+`WebPubSubEventRequest` の場合、要求シナリオに関するさまざまな情報を提供するさまざまなクラスに逆シリアル化されます。 `PreflightRequest` または無効なケースの場合、ユーザーは `IsPreflight` および `HasError` フラグを調べて確認できます。 システムによって作成された応答 `WebPubSubContext.Response` を直接返すことが推奨されます。または、顧客が必要に応じてエラーをログに記録することもできます。 さまざまなシナリオで、顧客は次のように要求のプロパティを読み取ることができます。
+
+| 派生クラス | 説明 | プロパティ |
+| -- | -- | -- |
+| `PreflightRequest` | `IsPreflight` が **true** の場合に `AbuseProtection` で使用します | - |
+| `ConnectEventRequest` | システム `Connect` イベントの種類で使用します | Claims、Query、Subprotocols、ClientCertificates |
+| `ConnectedEventRequest` | システム `Connected` イベントの種類で使用します | - |
+| `UserEventRequest` | ユーザー イベントの種類で使用します | Data、DataType |
+| `DisconnectedEventRequest` | システム `Disconnected` イベントの種類で使用します | 理由 |
+
+> [!NOTE]
+> `WebPubSubContext` は、`HttpTrigger` で `WebPubSubTrigger`と同様に要求を逆シリアル化できる入力バインドですが、マージ後の接続状態がサポートされていないなどの制限があります。 返される応答はサービス側で引き続き考慮されますが、ユーザーは自分で応答を作成する必要があります。 ユーザーがイベント応答を設定する必要がある場合は、`ConnectEventResponse` またはユーザー イベントのメッセージを含む `HttpResponseMessage` を **応答本文** として返し、`ce-connectionstate` キーを含む接続状態を **応答ヘッダー** に配置する必要があります。
 
 ## <a name="output-binding"></a>出力バインド
 
-Web PubSub 出力バインドを使用して、Azure Web PubSub Service で 1 つ以上のメッセージを送信します。 次の宛先にメッセージをブロードキャストできます。
+Web PubSub 出力バインドを使用して Azure Web PubSub サービスを呼び出し、なんらかの処理を実行します。 次の宛先にメッセージをブロードキャストできます。
 
 * 接続されているすべてのクライアント
 * 特定のユーザーに対して認証された接続されているクライアント
 * 特定のグループに参加している接続されているクライアント
+* 特定のクライアント接続
 
-出力バインドにより、グループを管理し、特定の connectionId を対象とするアクセス許可をグループに許可/取り消すこともできます。
+出力バインドを使用して、クライアントとグループを管理し、特定の connectionId を対象とするアクセス許可をグループに付与したり、取り消したりすることもできます。
+
+* グループに接続を追加する
+* ユーザーをグループに追加する
+* グループから接続を削除する
+* グループからユーザーを削除する
+* ユーザーをすべてのグループから削除する
+* すべてのクライアント接続を閉じる
+* 特定のクライアント接続を閉じる
+* グループ内の接続を閉じる
+* 接続のアクセス許可を付与する
+* 接続のアクセス許可を取り消す
 
 セットアップと構成の詳細については、概要を参照してください。
 
@@ -449,13 +488,9 @@ Web PubSub 出力バインドを使用して、Azure Web PubSub Service で 1 �
 [FunctionName("WebPubSubOutputBinding")]
 public static async Task RunAsync(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req,
-    [WebPubSub(Hub = "<hub>")] IAsyncCollector<WebPubSubOperation> operations)
+    [WebPubSub(Hub = "<hub>")] IAsyncCollector<WebPubSubAction> actions)
 {
-    await operations.AddAsync(new SendToAll
-    {
-        Message = BinaryData.FromString("Hello Web PubSub"),
-        DataType = MessageDataType.Text
-    });
+    await actions.AddAsync(WebPubSubAction.CreateSendToAllAction("Hello Web PubSub!", WebPubSubDataType.Text));
 }
 ```
 
@@ -469,7 +504,7 @@ public static async Task RunAsync(
   "bindings": [
     {
       "type": "webPubSub",
-      "name": "webPubSubOperation",
+      "name": "actions",
       "hub": "<hub>",
       "direction": "out"
     }
@@ -481,9 +516,9 @@ public static async Task RunAsync(
 
 ```js
 module.exports = async function (context) {
-  context.bindings.webPubSubOperation = {
-    "operationKind": "sendToAll",
-    "message": "hello",
+  context.bindings.actions = {
+    "actionName": "sendToAll",
+    "data": "hello",
     "dataType": "text"
   };
   context.done();
@@ -492,24 +527,58 @@ module.exports = async function (context) {
 
 ---
 
-### <a name="webpubsuboperation"></a>WebPubSubOperation 
+### <a name="webpubsubaction"></a>WebPubSubAction 
 
-`WebPubSubOperation` は、出力バインドの基本抽象型です。 派生型は、サーバーがサービスに呼び出させる操作を表します。 `javascript` などのタイプレスの言語では、`OperationKind` は型を解決するためのキー パラメーターです。 また、`csharp` のような厳密な型の言語では、ユーザーはターゲットの操作の種類を直接作成でき、顧客割り当ての `OperationKind` 値は無視されます。
+`WebPubSubAction` は、出力バインドの基本抽象型です。 派生型は、サーバーがサービスに呼び出させるアクションを表します。 
 
-派生クラス|プロパティ
---|--
-`SendToAll`|Message、DataType、Excluded
-`SendToGroup`|Group、Message、DataType、Excluded
-`SendToUser`|UserId、Message、DataType
-`SendToConnection`|ConnectionId、Message、DataType
-`AddUserToGroup`|UserId、Group
-`RemoveUserFromGroup`|UserId、Group
-`RemoveUserFromAllGroups`|UserId
-`AddConnectionToGroup`|ConnectionId、Group
-`RemoveConnectionFromGroup`|ConnectionId、Group
-`CloseClientConnection`|ConnectionId、Reason
-`GrantGroupPermission`|ConnectionId、Group、Permission、TargetName
-`RevokeGroupPermission`|ConnectionId、Group、Permission、TargetName
+# <a name="c"></a>[C#](#tab/csharp)
+
+C# 言語では、使用可能なアクションを検出できるように、`WebPubSubAction` に静的メソッドがいくつか用意されています。 たとえば、ユーザーは `WebPubSubAction.CreateSendToAllAction()` を呼び出して `SendToAllAction` を作成できます。
+
+| 派生クラス | プロパティ |
+| -- | -- |
+| `SendToAllAction`|Data、DataType、Excluded |
+| `SendToGroupAction`|Group、Data、DataType、Excluded |
+| `SendToUserAction`|UserId、Data、DataType |
+| `SendToConnectionAction`|ConnectionId、Data、DataType |
+| `AddUserToGroupAction`|UserId、Group |
+| `RemoveUserFromGroupAction`|UserId、Group |
+| `RemoveUserFromAllGroupsAction`|UserId |
+| `AddConnectionToGroupAction`|ConnectionId、Group |
+| `RemoveConnectionFromGroupAction`|ConnectionId、Group |
+| `CloseAllConnectionsAction`|Excluded、Reason |
+| `CloseClientConnectionAction`|ConnectionId、Reason |
+| `CloseGroupConnectionsAction`|Group、Excluded、Reason |
+| `GrantPermissionAction`|ConnectionId、Permission、TargetName |
+| `RevokePermissionAction`|ConnectionId、Permission、TargetName |
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+`javascript` のような厳密に型指定されていない言語では、 **`actionName`** は型を解決するためのキー パラメーターです。使用可能なアクションを次に示します。
+
+| ActionName | プロパティ |
+| -- | -- |
+| `SendToAll`|Data、DataType、Excluded |
+| `SendToGroup`|Group、Data、DataType、Excluded |
+| `SendToUser`|UserId、Data、DataType |
+| `SendToConnection`|ConnectionId、Data、DataType |
+| `AddUserToGroup`|UserId、Group |
+| `RemoveUserFromGroup`|UserId、Group |
+| `RemoveUserFromAllGroups`|UserId |
+| `AddConnectionToGroup`|ConnectionId、Group |
+| `RemoveConnectionFromGroup`|ConnectionId、Group |
+| `CloseAllConnections`|Excluded、Reason |
+| `CloseClientConnection`|ConnectionId、Reason |
+| `CloseGroupConnections`|Group、Excluded、Reason |
+| `GrantPermission`|ConnectionId、Permission、TargetName |
+| `RevokePermission`|ConnectionId、Permission、TargetName |
+
+> [!IMPORTANT]
+> データ変換のあいまいさを避けるために、データ型が `json` または `text` に設定されている場合、メッセージの送信に関連するアクションのメッセージ データ プロパティは `string` である必要があります。 `JSON.stringify()` を使用して、必要な JSON オブジェクトを変換してください。 これは、`WebPubSubTrigger` と連携する `UserEventResponse.Data` など、メッセージ プロパティを使用するあらゆる場所に適用されます。 
+> 
+> データ型が `binary` に設定されている場合は、`function.json` で `binary` として構成された `dataType` が自然にサポートされるバインドを利用できます。詳細については、「[トリガーとバインドの定義](/azure/azure-functions/functions-triggers-bindings?tabs=csharp#trigger-and-binding-definitions)」を参照してください。
+
+---
 
 ### <a name="configuration"></a>構成
 
@@ -523,7 +592,7 @@ module.exports = async function (context) {
 | **direction** | 該当なし | `out` に設定されている必要があります。 |
 | **name** | 該当なし | 出力バインド オブジェクトの関数コードで使用される変数名。 |
 | **hub** | ハブ | この値は、トリガーされる関数の Web PubSub ハブの名前に設定する必要があります。 高い優先順位として属性への値の設定をサポートしていますが、またはグローバル値としてアプリ設定に設定することもできます。 |
-| **connectionStringSetting** | ConnectionStringSetting | Web PubSub Service 接続文字列を含むアプリ設定の名前 (既定値は "WebPubSubConnectionString") |
+| **connection** | Connection | Web PubSub Service 接続文字列を含むアプリ設定の名前 (既定値は "WebPubSubConnectionString")。 |
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -533,6 +602,6 @@ module.exports = async function (context) {
 [azure_sub]: https://azure.microsoft.com/free/
 [samples_ref]: https://github.com/Azure/azure-webpubsub/tree/main/samples/functions
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [next step](includes/include-next-step.md)]

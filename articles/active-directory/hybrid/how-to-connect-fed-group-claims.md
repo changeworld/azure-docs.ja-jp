@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2021
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 0621cc58b5cf76505de5e1f914114ad601e7a9bf
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 3fa934ac2caf7ff02bd227f01e0ad490c822fbae
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123316185"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401366"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory を使ってアプリケーションに対するグループ要求を構成する
 

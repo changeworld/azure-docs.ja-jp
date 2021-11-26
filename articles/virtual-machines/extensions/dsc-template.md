@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: magoedte
-ms.openlocfilehash: 6d22e93fe8bd36e24520108bc310d5b08c25120c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 388afa5936b0cc84dcbee57302d48798d957a2bc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560023"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492021"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -27,6 +27,8 @@ ms.locfileid: "102560023"
 
 > [!NOTE]
 > スキーマの例に若干の違いがある可能性があります。 スキーマの変更は 2016 年 10 月 のリリースで発生しました。 詳しくは、[以前の形式からの更新](#update-from-a-previous-format)に関する記事をご覧ください。
+>
+> DSC 拡張機能を有効にする前に、[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)という名前の Azure Policy の機能によって管理された、新しいバージョンの DSC が現在プレビューで利用可能になっていることに注意してください。 ゲスト構成機能では、Desired State Configuration (DSC) 拡張機能ハンドラーや Azure Automation State Configuration の機能のほか、顧客のフィードバックで最も一般的に要求されている機能が組み合わされています。 ゲスト構成にはまた、[Arc 対応サーバー](../../azure-arc/servers/overview.md)によるハイブリッド マシンのサポートも含まれています。
 
 ## <a name="template-example-for-a-windows-vm"></a>Windows VM のテンプレートの例
 

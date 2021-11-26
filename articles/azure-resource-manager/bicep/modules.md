@@ -2,13 +2,13 @@
 title: Bicep モジュール
 description: Bicep ファイルでモジュールを定義する方法と、モジュールのスコープを使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/15/2021
-ms.openlocfilehash: a8a0b9c1eeeb56c12926774a78d45bb58e7d8437
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: b01b37d9adb605e1e3c2b257114a33f120e89ef9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087383"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491357"
 ---
 # <a name="bicep-modules"></a>Bicep モジュール
 
@@ -39,7 +39,7 @@ module <symbolic-name> '<path-to-file>' = {
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/local-file-definition.bicep" :::
 
-Bicep ファイルの別の部分にあるモジュールを参照するには、シンボリック名を使用します。 たとえば、シンボリック名を使用して、モジュールからの出力を取得できます。 シンボリック名には、a - z、A - Z、0 - 9、"_" を含めることができます。 名前の先頭を数字にすることはできません。 モジュールの名前を、パラメーター、変数、またはリソースと同じにすることはできません。
+Bicep ファイルの別の部分にあるモジュールを参照するには、シンボリック名を使用します。 たとえば、シンボリック名を使用して、モジュールからの出力を取得できます。 シンボリック名には、a - z、A - Z、0 - 9、アンダースコア (`_`) を含めることができます。 名前の先頭を数字にすることはできません。 モジュールの名前を、パラメーター、変数、またはリソースと同じにすることはできません。
 
 パスは、ローカル ファイルでもレジストリ内のファイルでもかまいません。 詳細については、「[モジュールへのパス](#path-to-module)」を参照してください。
 
@@ -53,7 +53,7 @@ Bicep ファイルの別の部分にあるモジュールを参照するには�
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/conditional-definition.bicep" highlight="2" :::
 
-モジュールの **複数のインスタンス** をデプロイするには、`for` 式を追加します。 詳細については [、「Bicep の反復ループ」を参照してください](loops.md)。
+モジュールの **複数のインスタンス** をデプロイするには、`for` 式を追加します。 `batchSize` デコレーターを使用して、インスタンスを順番にデプロイするか、または並列でデプロイするかを指定できます。 詳細については [、「Bicep の反復ループ」を参照してください](loops.md)。
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/iterative-definition.bicep" highlight="3" :::
 

@@ -10,15 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 11/12/2021
 ms.author: rolyon
 ms.custom: seohack1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3273285aeee7497c43fc4002b2bdabe0b6ef13de
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: e0ce4f4b0408b63c12c023ad56d473cc50a44027
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390066"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398309"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "129390066"
 Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 この制限には、サブスクリプション、リソース グループ、リソースのスコープでのロールの割り当てが含まれます。管理グループのスコープではありません。 エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、サブスクリプションのロールの割り当て数を減らしてみます。
 
 > [!NOTE]
-> **2,000** のサブスクリプション当たりのロール割り当ての制限は固定されており、増やすことはできません。
+> サブスクリプションごとのロールの割り当て制限は、2021 年 11 月以降、数か月掛けて **2000** から **4000** に増やされます。 制限に近づいているサブスクリプションが最優先となります。 その他のサブスクリプションについては、徐々に制限が増やされます。
 
 この制限に近づいている場合は、次の方法でロールの割り当ての数を減らすことができます。
 

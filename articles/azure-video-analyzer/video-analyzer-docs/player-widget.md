@@ -3,14 +3,14 @@ title: Video Analyzer プレーヤー ウィジェットの使用
 description: この記事では、Video Analyzer プレーヤー ウィジェットをアプリケーションに追加する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 11/04/2021
+ms.date: 11/12/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 44d14f7dc2977f39276e4c57a4d35d5e28b31a3d
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 8dbf85609196a930d7f51a713753f725b3016396
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131845455"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487481"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>Azure Video Analyzer プレーヤー ウィジェットを使用する
 
@@ -142,6 +142,10 @@ function getVideos()
    ```javascript
    zoneDrawer.load();
    ```
+1. ゾーン ドロワーを構成します。
+   ```javascript
+   zoneDrawer.configure();
+   ```
 1. ゾーンを作成して保存するには、ここでイベント リスナーを追加する必要があります。
    ```javascript
    zoneDrawer.addEventListener('ZONE_DRAWER_ADDED_ZONE', (event) => {
@@ -195,6 +199,7 @@ function getVideos()
     
         const zoneDrawer = document.getElementById("zoneDrawer");
         zoneDrawer.load();
+        zoneDrawer.configure();
 
         zoneDrawer.addEventListener('ZONE_DRAWER_ADDED_ZONE', (event) => {
             console.log(event);

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 8e5f4e1a50b25fc9022444c25a2c1e091c5496e3
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 607cc8e3341e395fb7ef31c4af5c5c8b5fc75cec
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997478"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484781"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -55,7 +55,7 @@ Azure Spring Cloud には、次の既知の制限があります。
 
 * `spring.application.name` が、各アプリケーションを作成するために使用されるアプリケーション名によって上書きされます。
 * `server.port` の既定のポートは 1025 です。 他の値が適用されている場合は上書きされます。 また、この設定を尊重するようにして、コードでサーバーのポートを指定しないでください。
-* Azure portal、Azure Resource Manager テンプレート、および Terraform は、アプリケーションパッケージのアップロードをサポートしていません。 アプリケーションパッケージをアップロードするには、Azure CLI、Azure DevOps、azure Spirng Cloud 用の Maven プラグイン、Azure Toolkit for IntelliJ、azure Spring cloud の Visual Studio Code 拡張機能を使用してアプリケーションをデプロイします。
+* Azure portal、Azure Resource Manager テンプレート、および Terraform は、アプリケーションパッケージのアップロードをサポートしていません。 アプリケーション パッケージをアップロードするには、Azure CLI、Azure DevOps、Azure Spring Cloud 用の Maven プラグイン、Azure Toolkit for IntelliJ、Azure Spring cloud の Visual Studio Code 拡張機能を使用してアプリケーションをデプロイします。
 
 ### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。
 
@@ -72,9 +72,9 @@ Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求
 
 ## <a name="development"></a>開発
 
-### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>私は Spring Cloud 開発者ですが、Azure は初めてです。 Azure Spring Cloud アプリケーションの開発方法を学習するための最もすばやい方法は何ですか?
+### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-application-in-azure-spring-cloud"></a>私は Spring Cloud 開発者ですが、Azure は初めてです。 Azure Spring Cloud におけるアプリケーションの開発方法を学習する最短の方法は何ですか?
 
-Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」の手順に従ってください。
+Azure Spring Cloud を最短で始める方法については、[Azure portal を使用して Azure Spring Cloud のアプリケーションを立ち上げる方法についてのクイックスタート](./quickstart.md)の手順に従ってください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud はどの Java ランタイムをサポートしていますか?
@@ -103,7 +103,7 @@ Microsoft は、Spring Boot 2.4 の問題を特定しました。現在、Spring
 
 [アプリの概要] タブと [[Azure Monitor]](../azure-monitor/essentials/data-platform-metrics.md#metrics-explorer) タブでメトリックを探してください。
 
-Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、EventHub、および [Log Analytics](../azure-monitor/logs/data-platform-logs.md) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
+Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、Event Hub、および [Log Analytics](../azure-monitor/logs/data-platform-logs.md) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud は分散トレースをサポートしていますか?
 

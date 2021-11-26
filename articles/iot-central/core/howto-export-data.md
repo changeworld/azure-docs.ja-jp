@@ -8,12 +8,12 @@ ms.date: 10/20/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 0a084e6bad7530c4d506728b17227de13f1f86a1
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: a4a941d114d233e723d853d12386cb42834d3e19
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579298"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493795"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
@@ -49,7 +49,13 @@ V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central 
 
 ### <a name="connection-options"></a>接続オプション
 
-Azure サービスの変換先では、接続 *文字列* または [マネージド id](../../active-directory/managed-identities-azure-resources/overview.md)を使用して接続を構成することができます。 マネージド ID を使用すると、宛先の資格情報をアプリケーションに格納する必要がなIoT Centralされます。 IoT Central は [、現在、システムによって割り当てられたマネージド id](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)を使用します。
+Azure サービスの変換先では、接続 *文字列* または [マネージド id](../../active-directory/managed-identities-azure-resources/overview.md)を使用して接続を構成することができます。 セキュリティは、マネージド ID の方が優れています。その理由は次のとおりです。
+
+- IoT Central アプリケーションの接続文字列にリソースの資格情報が格納されません。
+- 資格情報は、IoT Central アプリケーションの有効期間に自動的に関連付けられます。
+- マネージド ID では、セキュリティ キーの定期的なローテーションが自動的に行われます。
+
+IoT Central は [、現在、システムによって割り当てられたマネージド id](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)を使用します。
 
 管理対象 id を構成すると、その構成には *スコープ* と *ロール* が含まれます。
 

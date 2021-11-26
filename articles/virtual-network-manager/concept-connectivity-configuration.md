@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 3c1c6841f7ae25bad16640e11c67080833ac850b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: face052462909e755771f12ff19fed8139675183
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017186"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484599"
 ---
 # <a name="connectivity-configuration-in-azure-virtual-network-manager-preview"></a>Azure Virtual Network Manager の接続構成 (プレビュー)
 
@@ -39,7 +39,7 @@ ms.locfileid: "131017186"
 
 > [!NOTE]
 > * 2 つ以上の仮想ネットワークでサブネットが競合している場合、それらのサブネットのリソースは、同じメッシュ ネットワークに属していても相互に通信 *できません*。
-> * 仮想ネットワークは、最大で **5** つのメッシュ構成に属することができます。
+> * 仮想ネットワークは、最大で **2 つ** のメッシュ構成に属することができます。
 
 ## <a name="hub-and-spoke-topology"></a>ハブとスポークのトポロジ
 
@@ -60,7 +60,7 @@ ms.locfileid: "131017186"
 VM 上の有効なルートを確認すると、ハブ アンド スポーク仮想ネットワーク間のルートは、ネクスト ホップの種類が *VNetPeering* または *GlobalVNetPeering* となっています。 スポーク仮想ネットワーク間のルートは、*ConnectedGroup* のネクスト ホップの種類で表示されます。 上記の例では、*Production* ネットワーク グループのみが *直接接続* を有効にしているため、*ConnectedGroup* を持ちます。
 
 > [!NOTE]
-> *Transitivity* が **有効** な場合、*ConnectedGroup* にハブのネットワーク アドレス空間が追加されます。 そのため、ハブ アンド スポーク仮想ネットワークの間の仮想ネットワーク ピアリングが失敗した場合でも *ConnectedGroup* によって通信できます。
+> *直接接続* が **有効** である場合、*ConnectedGroup* にハブのネットワーク アドレス空間が追加されます。 そのため、ハブ アンド スポーク仮想ネットワークの間の仮想ネットワーク ピアリングが失敗した場合でも *ConnectedGroup* によって通信できます。
 
 #### <a name="use-cases"></a>ユース ケース
 

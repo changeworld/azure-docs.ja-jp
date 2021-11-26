@@ -5,12 +5,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 115402133ad33b9fa20eb3298db3e342ea2afbbd
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7341112e545e4fc0c74de8d32e9c2d54d3461057
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461686"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491923"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Video Analyzer for Media リリース ノート
 
@@ -30,6 +30,10 @@ ms.locfileid: "131461686"
 Azure Video Analyzer for Media では、Azure Resource Manager (ARM) ベースのアカウント管理のパブリック プレビューが導入されています。 ARM ベースの API を活用して、Azure portal からアカウントを作成、編集、削除することができます。
 
 詳細については、[Video Analyzer for Media アカウントの作成](https://techcommunity.microsoft.com/t5/azure-ai/azure-video-analyzer-for-media-is-now-available-as-an-azure/ba-p/2912422)に関する記事を参照してください。
+
+### <a name="peoples-clothing-detection"></a>人物の衣服の検出
+
+詳細なビデオ設定を使用してビデオにインデックスを付ける際に、新しい **人物の衣服の検出** 機能を表示できます。 メディア ファイルで人物が検出された場合、Media Player によって、それらの人物が来ている衣服の種類を表示できるようになりました。 
 
 ## <a name="october-2021"></a>2021 年 10 月
 

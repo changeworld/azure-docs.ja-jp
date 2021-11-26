@@ -1,42 +1,42 @@
 ---
-title: Azure Sentinel に対してプレイブックを認証する | Microsoft Docs
-description: プレイブックに Azure Sentinel へのアクセス権を付与して、是正措置を実行するための承認方法について説明します。
+title: Microsoft Sentinel に対してプレイブックを認証する | Microsoft Docs
+description: プレイブックに Microsoft Sentinel へのアクセス権を付与して、是正措置を実行するための認可を行う方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8ac52d1c861ec41600ae882a4e12becb56619595
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6cb45659ab0e31ed4d1259fc19c10b6f6bdfa015
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075488"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522177"
 ---
-# <a name="authenticate-playbooks-to-azure-sentinel"></a>Azure Sentinel に対してプレイブックを認証する
+# <a name="authenticate-playbooks-to-microsoft-sentinel"></a>Microsoft Sentinel へのプレイブックの認証
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Logic Apps の動作のしくみは、Azure Sentinel 自体を含めて、連携するすべての種類のすべてのリソースに対し、独立した接続を持ち、個別に認証する必要があります。 Azure Logic Apps は、この目的で、各リソースの種類に独自のコネクタを持つ[専用のコネクタ](/connectors/connector-reference/)を使用します。 このドキュメントでは、[Azure Logic Apps Azure Sentinel コネクタ](/connectors/azuresentinel/)での接続と認証の種類について説明します。これは、プレイブックがワークスペースのテーブル内の情報にアクセスするための Microsoft Azure Sentinel との対話に使用できます。
+Logic Apps の動作のしくみでは、Microsoft Sentinel 自体を含め、対話するすべての種類のすべてのリソースに対し別々に接続して、個別に認証する必要があります。 Azure Logic Apps は、この目的で、各リソースの種類に独自のコネクタを持つ[専用のコネクタ](/connectors/connector-reference/)を使用します。 このドキュメントでは、[Logic Apps Microsoft Sentinel コネクタ](/connectors/azuresentinel/)での接続と認証の種類について説明します。これは、プレイブックでワークスペースのテーブル内の情報にアクセスするための Microsoft Sentinel との対話に使用できます。
 
-このドキュメントは、[プレイブックのトリガーとアクションを使用する](playbook-triggers-actions.md)ためのガイドと共に、他のプレイブック ドキュメント「[チュートリアル: Azure Sentinel で Automation ルールを使用してプレイブックを使用する](tutorial-respond-threats-playbook.md)」と併せて使用するガイドです。
+これは、[プレイブックでのトリガーとアクションの使用](playbook-triggers-actions.md)に関するガイドと共に、他のプレイブック ドキュメント「[チュートリアル: Microsoft Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)」と併せて使用するドキュメントです。
 
-プレイブックの概要については、「[Azure Sentinel でプレイブックを使用して脅威の応答を自動化する](automate-responses-with-playbooks.md)」を参照してください。
+プレイブックの概要については、「[Microsoft Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)」を参照してください。
 
-Azure Sentinel コネクタの完全な仕様については、[Azure Logic Apps のドキュメント](/connectors/azuresentinel/)を参照してください。
+Microsoft Sentinel コネクタの完全な仕様については、[Logic Apps コネクタのドキュメント](/connectors/azuresentinel/)を参照してください。
 
 ## <a name="authentication"></a>認証
 
-Azure Logic Apps 内の Azure Sentinel コネクタとそのコンポーネントのトリガーとアクションは、関連するワークスペースで必要なアクセス許可 (読み取りおよび書き込み) を持つ任意の ID の代わり使用できます。 コネクタは、次の複数の ID の種類をサポートします。
+Logic Apps 内の Microsoft Sentinel コネクタとそのコンポーネントのトリガーとアクションは、関連するワークスペースで必要なアクセス許可 (読み取りおよび書き込み) を持つ任意の ID の代わりに使用できます。 コネクタは、次の複数の ID の種類をサポートします。
 
 - [マネージド ID (プレビュー)](#authenticate-with-managed-identity)
 - [Azure AD ユーザー](#authenticate-as-an-azure-ad-user)
@@ -48,21 +48,20 @@ Azure Logic Apps 内の Azure Sentinel コネクタとそのコンポーネン�
 
 | ロールまたはコネクタ コンポーネント | トリガー | "Get" アクション | インシデントの更新、<br>コメントの追加 |
 | ------------- | :-----------: | :------------: | :-----------: |
-| **[Azure Sentinel 閲覧者](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)** | &#10003; | &#10003; | &#10007; |
-| **Azure Sentinel [レスポンダー](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)/[共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)** | &#10003; | &#10003; | &#10003; |
+| **[Microsoft Sentinel 閲覧者](../role-based-access-control/built-in-roles.md#microsoft-sentinel-reader)** | &#10003; | &#10003; | &#10007; |
+| **Microsoft Sentinel [レスポンダー](../role-based-access-control/built-in-roles.md#microsoft-sentinel-responder)/[共同作成者](../role-based-access-control/built-in-roles.md#microsoft-sentinel-contributor)** | &#10003; | &#10003; | &#10003; |
 | 
 
-「[Azure Sentinel のアクセス許可](./roles.md)」を参照してください。
+[Microsoft Sentinel のアクセス許可の詳細を参照してください](./roles.md)。
 
 ### <a name="authenticate-with-managed-identity"></a>マネージド ID による認証
 
-この認証方法を使用すると、プレイブック (Azure Logic Apps ワークフロー リソース) にアクセス許可を直接付与できるため、プレイブックによって実行される Azure Sentinel コネクタのアクションは、Azure Sentinel に対する独自のアクセス許可を持つ独立したオブジェクトであるかのように、プレイブックに代わって動作します。 この方法を使用すると、管理する必要がある ID の数が減少します。 
+この認証方法を使用すると、プレイブック (Logic Apps ワークフロー リソース) にアクセス許可を直接付与できるため、プレイブックによって実行される Microsoft Sentinel コネクタのアクションは、Microsoft Sentinel に対する独自のアクセス許可を持つ独立したオブジェクトであるかのように、プレイブックに代わって動作します。 この方法を使用すると、管理する必要がある ID の数が減少します。 
 
 > [!NOTE]
-> マネージド ID に他のリソース (Azure Sentinel ワークスペースなど) へのアクセスを許可するには、サインインしているユーザーに、Azure Sentinel ワークスペースの所有者やユーザー アクセス管理者などのロールの割り当てを書き込むためのアクセス許可を持つロールが必要です。
+> マネージド ID に他のリソース (Microsoft Sentinel ワークスペースなど) へのアクセスを許可するには、サインインしているユーザーに、Microsoft Sentinel ワークスペースの所有者やユーザー アクセス管理者などのロールの割り当てを書き込むためのアクセス許可を持つロールが必要です。
 
 マネージド ID を使用して認証するには、次の手順を実行します。
-
 
 1. Azure Logic Apps ワークフロー リソースで[マネージド ID を有効](../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)にします。 まとめ
 
@@ -70,27 +69,26 @@ Azure Logic Apps 内の Azure Sentinel コネクタとそのコンポーネン�
 
     - これで、ロジック アプリでシステム割り当て ID を使用できるようになりました。これは Azure AD に登録され、オブジェクト ID で表されます。
 
-1. Azure Sentinel ワークスペースへのアクセス許可を、[その ID に付与](../logic-apps/create-managed-service-identity.md#give-identity-access-to-resources)します。 
-    1. Azure Sentinel のメニューで **[設定]** を選択します。
+1. Microsoft Sentinel ワークスペースへの[アクセス許可をその ID に付与](../logic-apps/create-managed-service-identity.md#give-identity-access-to-resources)します。
+    1. Microsoft Sentinel のメニューで **[設定]** を選択します。
     1. **[ワークスペースの設定]** タブを選択します。[ワークスペース] メニューで **[アクセス制御 (IAM)]** を選択します。
-   1. 上部のボタン バーから、 **[追加]** を選択し、 **[ロールの割り当ての追加]** を選択します。 **[ロールの割り当ての追加]** オプションが無効な場合は、ロールを割り当てるためのアクセス許可がありません。
+    1. 上部のボタン バーから、 **[追加]** を選択し、 **[ロールの割り当ての追加]** を選択します。 **[ロールの割り当ての追加]** オプションが無効な場合は、ロールを割り当てるためのアクセス許可がありません。
     1. 表示される新しいパネルで、適切なロールを割り当てます。
-    
+
         | Role | 状況 |
         | --- | --- |
-        | [**Azure Sentinel レスポンダー**](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) | プレイブックには、インシデントまたはウォッチリストを更新するための手順が記載されています |
-        | [**Azure Sentinel 閲覧者**](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) | プレイブックはインシデントのみを受け取ります |
+        | [**Microsoft Sentinel レスポンダー**](../role-based-access-control/built-in-roles.md#microsoft-sentinel-responder) | プレイブックには、インシデントまたはウォッチリストを更新するための手順が記載されています |
+        | [**Microsoft Sentinel 閲覧者**](../role-based-access-control/built-in-roles.md#microsoft-sentinel-reader) | プレイブックはインシデントのみを受け取ります |
         |
-        
-        [Azure Sentinel で利用可能なロール](./roles.md)の詳細について参照してください。
+
+        [Microsoft Sentinel で利用可能なロール](./roles.md)の詳細について参照してください。
     1. **[アクセスの割り当て先]** で **[ロジック アプリ]** を選択します。
     1. プレイブックが属しているサブスクリプションを選択し、プレイブック名を選択します。
     1. **[保存]** を選択します。
-    
-    
-1. Azure Sentinel Logic Apps コネクタで、マネージド ID の認証方法を有効にします。
 
-    1. Azure Logic Apps デザイナーで、Azure Sentinel Logic Apps コネクタの手順を追加します。 コネクタが既存の接続に対して既に有効になっている場合は、 **[接続の変更]** リンクをクリックします。
+1. Microsoft Sentinel Logic Apps コネクタで、マネージド ID の認証方法を有効にします。
+
+    1. Logic Apps デザイナーで、Microsoft Sentinel Logic Apps コネクタの手順を追加します。 コネクタが既存の接続に対して既に有効になっている場合は、 **[接続の変更]** リンクをクリックします。
 
         ![接続の変更](media/authenticate-playbooks-to-sentinel/change-connection.png)
 
@@ -112,7 +110,7 @@ Azure Logic Apps 内の Azure Sentinel コネクタとそのコンポーネン�
 
 サービス プリンシパルは、Azure Active Directory アプリケーションを登録することによって作成できます。 ユーザー アカウントを使用する代わりに、登録済みのアプリケーションをコネクタの ID として使用することを **お勧めします**。これは、アクセス許可を制御し、資格情報を管理し、コネクタの使用に関する特定の制限を有効にできるよりよい方法であるためです。
 
-Azure Sentinel コネクタで独自のアプリケーションを使用するには、次の手順を実行します。
+Microsoft Sentinel コネクタで独自のアプリケーションを使用するには、次の手順を実行します。
 
 1. Azure Active Directory にアプリケーションを登録し、サービス プリンシパルを作成します。 方法については、[こちら](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)をご覧ください。
 
@@ -123,15 +121,15 @@ Azure Sentinel コネクタで独自のアプリケーションを使用する�
     - **[クライアント ID]** : **[概要]** の下
     - **[クライアント シークレット]** : **[証明書とシークレット]** の下。
 
-1. Azure Sentinel ワークスペースに対するアクセス許可を付与します。
+1. Microsoft Sentinel ワークスペースに対するアクセス許可を付与します。
 
-    この手順では、アプリは Azure Sentinel ワークスペースを操作するためのアクセス許可を取得します。
+    この手順では、アプリによって Microsoft Sentinel ワークスペースを操作するためのアクセス許可が取得されます。
 
-    1. Azure Sentinel ワークスペースで、 **[設定]**  ->  **[ワークスペース設定]**  ->  **[アクセス制御 (IAM)]** に移動
+    1. Microsoft Sentinel ワークスペースで、 **[設定]**  ->  **[ワークスペース設定]**  ->  **[アクセス制御 (IAM)]** に移動します
 
     1. **[ロールの割り当ての追加]** を選択します。
 
-    1. アプリケーションに割り当てるロールを選択します。 たとえば、インシデントの更新など、Sentinel ワークスペースで変更を行うアクションをアプリケーションが実行できるようにするには、**Azure Sentinel 共同作成者** ロールを選択します。 データの読み取りのみを行うアクションの場合、**Azure Sentinel 閲覧者** ロールで十分です。 [Azure Sentinel で利用可能なロールの詳細について参照してください](./roles.md)。
+    1. アプリケーションに割り当てるロールを選択します。 たとえば、インシデントの更新など、Sentinel ワークスペースで変更を行うアクションをアプリケーションで実行できるようにするには、**Microsoft Sentinel 共同作成者** ロールを選択します。 データの読み取りのみを行うアクションの場合、**Microsoft Sentinel 閲覧者** ロールで十分です。 [Microsoft Sentinel で利用可能なロールの詳細について参照してください](./roles.md)。
 
     1. 必要なアプリケーションを見つけて保存します。 既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
 
@@ -152,7 +150,7 @@ Azure Sentinel コネクタで独自のアプリケーションを使用する�
 
 ### <a name="manage-your-api-connections"></a>API 接続を管理する
 
-認証が初めて作成されるたびに、種類が API 接続の新しい Azure リソースが作成されます。 同じ API 接続を、同じリソース グループ内のすべての Azure Sentinel のアクションとトリガーで使用できます。
+認証が初めて作成されるたびに、種類が API 接続の新しい Azure リソースが作成されます。 同じ API 接続を、同じリソース グループ内のすべての Microsoft Sentinel のアクションとトリガーで使用できます。
 
 すべての API 接続は、**API 接続** ブレード (Azure portal で *API 接続* を検索) で見つかります。
 
@@ -162,5 +160,6 @@ Azure Sentinel コネクタで独自のアプリケーションを使用する�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Sentinel に Azure Logic Apps ベースのプレイブックを認証するためのさまざまな方法について説明しました。
+この記事では、Microsoft Sentinel に Logic Apps ベースのプレイブックを認証するためのさまざまな方法について説明しました。
+
 - [プレイブックでのトリガーとアクションの使用](playbook-triggers-actions.md)方法の詳細について参照してください。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/15/2021
 ms.custom: devx-track-azurecli, ignite-fall-2021
-ms.openlocfilehash: a8ba281a1061643cc582e6de4fc75a8c43fae71c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9d7a263a17d117aea162b39682fa5bd9ec4c1fde
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447431"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485760"
 ---
 # <a name="dapr-extension-for-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) 用 Dapr 拡張機能 (プレビュー)
 
@@ -98,7 +98,7 @@ az k8s-extension create --cluster-type managedClusters \
 --cluster-name myAKSCluster \
 --resource-group myResourceGroup \
 --name myDaprExtension \
---extension-type Microsoft.Dapr \
+--extension-type Microsoft.Dapr
 ```
 
 `--auto-upgrade-minor-version` パラメーターを指定して値を `true` に設定することで、Dapr にマイナー バージョンの自動更新を許可することができます。
@@ -117,9 +117,9 @@ az k8s-extension create --cluster-type managedClusters \
 --resource-group myResourceGroup \
 --name myDaprExtension \
 --extension-type Microsoft.Dapr \
---auto-upgrade-minor-version true \  
+--auto-upgrade-minor-version true \
 --configuration-settings "global.ha.enabled=true" \
---configuration-settings "dapr_operator.replicaCount=2" \
+--configuration-settings "dapr_operator.replicaCount=2"
 ```
 
 > [!NOTE]
@@ -155,11 +155,27 @@ az k8s-extension create --cluster-type managedClusters \
 ```azure-cli-interactive
 az k8s-extension create --cluster-type managedClusters \
 --cluster-name myAKSCluster \
---resource-group myResourceGroup 
+--resource-group myResourceGroup \
 --name myDaprExtension \
 --extension-type Microsoft.Dapr \
 --auto-upgrade-minor-version false \
---version X.X.X \
+--version X.X.X
+```
+
+## <a name="limiting-the-extension-to-certain-nodes-nodeselector"></a>拡張機能を特定のノード (`nodeSelector`) に制限する
+
+一部の構成では、特定のノードでのみ Dapr を実行したい場合があります。 拡張機能の構成で `nodeSelector` を渡せばこれを実現できます。 求められる `nodeSelector` に `.` が含まれる場合は、シェルと拡張機能からエスケープする必要があります。 たとえば、次の構成では、`kubernetes.io/os=linux` を使用するノードにのみ Dapr がインストールされます:
+
+```azure-cli-interactive
+az k8s-extension create --cluster-type managedClusters \
+--cluster-name myAKSCluster \
+--resource-group myResourceGroup \
+--name myDaprExtension \
+--extension-type Microsoft.Dapr \
+--auto-upgrade-minor-version true \
+--configuration-settings "global.ha.enabled=true" \
+--configuration-settings "dapr_operator.replicaCount=2" \
+--configuration-settings "global.nodeSelector.kubernetes\.io/os=linux"
 ```
 
 ## <a name="show-current-configuration-settings"></a>現在の構成設定を表示する
@@ -204,9 +220,9 @@ az k8s-extension create --cluster-type managedClusters \
 --resource-group myResourceGroup \
 --name myDaprExtension \
 --extension-type Microsoft.Dapr \
---auto-upgrade-minor-version true \  
+--auto-upgrade-minor-version true \
 --configuration-settings "global.ha.enabled=true" \
---configuration-settings "dapr_operator.replicaCount=3" 
+--configuration-settings "dapr_operator.replicaCount=3"
 ```
 
 ## <a name="troubleshooting-extension-errors"></a>拡張機能のエラーのトラブルシューティング

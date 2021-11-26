@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 07/06/2021
 ms.topic: how-to
-ms.openlocfilehash: 2d8ab101b39412d9345fa470d3b6584036990581
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dc9611eebdce1e988e760fda3b000cb52d0ff95a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084969"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488276"
 ---
 # <a name="manage-and-monitor-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理して監視する
 
@@ -74,7 +74,13 @@ Azure IoT Central アプリケーションが既にある場合は、それを�
 
 ## <a name="configure-a-managed-identity"></a>マネージド ID の構成
 
-IoT Central アプリケーションでデータ エクスポートを構成する場合は、接続文字列またはマネージド ID を使用して、宛先への接続[を構成できます](../../active-directory/managed-identities-azure-resources/overview.md)。 マネージド ID を使用すると、宛先の資格情報をアプリケーションに格納する必要がなIoT Centralされます。 IoT Central は [、現在、システムによって割り当てられたマネージド id](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)を使用します。 アプリケーションのマネージド ID を作成するには、アプリケーションまたはアプリケーションのAzure portalを使用REST API。
+IoT Central アプリケーションでデータ エクスポートを構成する場合は、接続文字列またはマネージド ID を使用して、宛先への接続[を構成できます](../../active-directory/managed-identities-azure-resources/overview.md)。 セキュリティは、マネージド ID の方が優れています。その理由は次のとおりです。
+
+* IoT Central アプリケーションの接続文字列にリソースの資格情報が格納されません。
+* 資格情報は、IoT Central アプリケーションの有効期間に自動的に関連付けられます。
+* マネージド ID では、セキュリティ キーの定期的なローテーションが自動的に行われます。
+
+IoT Central は [、現在、システムによって割り当てられたマネージド id](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)を使用します。 アプリケーションのマネージド ID を作成するには、アプリケーションまたはアプリケーションのAzure portalを使用REST API。
 
 > [!NOTE]
 > マネージド ID は、リージョン内に作成IoT Centralアプリケーションにのみ追加できます。 すべての新しいアプリケーションがリージョンに作成されます。 詳細については、「更新プログラム」を [参照してください](https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-august-2021/)。

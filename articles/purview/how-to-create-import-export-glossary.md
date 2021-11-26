@@ -7,16 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: dfb522e5231072e427c14dfe1c8c16889dd3ff9e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e39641317cc02c12666adf622ccb931ef57d9339
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214183"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493687"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>用語集の用語を作成、インポート、エクスポートする方法
 
-この記事では、Azure Purview Data Catalog でビジネス用語集の用語を作成し、.csv ファイルを使用して用語集の用語をインポートおよびエクスポートする方法について説明します。
+この記事では、Azure Purview でビジネス用語集の作業を行う方法について説明します。 Azure Purview Data Catalog でビジネス用語集の用語を作成し、.csv ファイルを使用して用語集の用語をインポートおよびエクスポートする手順が記載されています。
 
 ## <a name="create-a-new-term"></a>新しい用語の作成
 
@@ -71,7 +71,7 @@ Azure Purview Data Catalog には、用語を用語集にインポートする�
 
    :::image type="content" source="media/how-to-create-import-export-glossary/select-term-template-for-import.png" alt-text="[用語集の用語] ページの、用語をインポートするボタンのスクリーンショット。":::
 
-3. csv テンプレートをダウンロードし、それを使用して追加する用語を入力します。
+3. csv テンプレートをダウンロードし、それを使用して追加する用語を入力します。 テンプレートの csv ファイルに名前を付ける際に使用できるのは、英字、数字、スペース、"_"、またはその他の非 ASCII Unicode 文字だけです。また、先頭文字は英字とする必要があります。 ファイル名に特殊文字を使用するとエラーが発生します。
 
    > [!Important]
    > システムでは、テンプレートで使用可能な列のインポートのみがポートされます。 [システムの既定値] テンプレートでは、すべての既定の属性が設定されます。
@@ -101,4 +101,4 @@ Azure Purview Data Catalog には、用語を用語集にインポートする�
 
 ## <a name="next-steps"></a>次のステップ
 
-次のチュートリアルを修了してください。[チュートリアル:用語集の用語の作成とインポート](tutorial-import-create-glossary-terms.md)
+* 用語集の用語について詳しくは、[用語集のリファレンス](reference-purview-glossary.md)を参照してください。

@@ -1,27 +1,27 @@
 ---
-title: Azure Files での NFS ファイル共有 (プレビュー)
+title: Azure Files での NFS ファイル共有
 description: ネットワーク ファイル システム (NFS) プロトコルを使用して Azure Files でホストされているファイル共有について説明します。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 0d0fefe0994b0d3d162b8a7d9f802c70ae7b0b3f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 31aec4e32178b2f0ca7905c6d584df298dd2059a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225438"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524343"
 ---
-# <a name="nfs-file-shares-in-azure-files-preview"></a>Azure Files での NFS ファイル共有 (プレビュー)
-Azure Files には、Azure ファイル共有のマウント用に、[サーバー メッセージ ブロック (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) プロトコルと[ネットワーク ファイル システム (NFS)](https://en.wikipedia.org/wiki/Network_File_System) プロトコル (プレビュー) の 2 つの業界標準プロトコルが用意されています。 Azure Files を使用すると、ワークロードに最適なファイル システム プロトコルを選択できます。 Azure ファイル共有では、SMB と NFS の両方のプロトコルを使用した個々の Azure ファイル共有へのアクセスはサポートされませんが、同じストレージ アカウント内に SMB と NFS のファイル共有を作成することはできます。 すべてのファイル共有に対し、Azure Files により、ストレージのニーズに合わせたスケールアップが可能で、数千ものクライアントによって同時にアクセスできる、エンタープライズ レベルのファイル共有が提供されます。
+# <a name="nfs-file-shares-in-azure-files"></a>Azure Files での NFS ファイル共有
+Azure Files には、Azure ファイル共有のマウント用に、[サーバー メッセージ ブロック (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) プロトコルと[ネットワーク ファイル システム (NFS)](https://en.wikipedia.org/wiki/Network_File_System) プロトコルの 2 つの業界標準プロトコルが用意されています。 Azure Files を使用すると、ワークロードに最適なファイル システム プロトコルを選択できます。 Azure ファイル共有では、SMB と NFS の両方のプロトコルを使用した個々の Azure ファイル共有へのアクセスはサポートされませんが、同じストレージ アカウント内に SMB と NFS のファイル共有を作成することはできます。 すべてのファイル共有に対し、Azure Files により、ストレージのニーズに合わせたスケールアップが可能で、数千ものクライアントによって同時にアクセスできる、エンタープライズ レベルのファイル共有が提供されます。
 
 この記事では、NFS Azure ファイル共有について説明します。 SMB の Azure ファイル共有の詳細については、「[Azure Files での SMB ファイル共有](files-smb-protocol.md)」を参照してください。
 
 > [!IMPORTANT]
-> プレビュー期間中は、運用環境に NFS を使用することはお勧めしません。 既知の問題の一覧については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」という記事を参照してください。
+>  運用環境で NFS ファイル共有を使用する前に、[Azure NFS ファイル共有のトラブルシューティング](storage-troubleshooting-files-nfs.md)に関する記事で既知の問題の一覧を参照してください。
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 NFS ファイル共有は、多くの場合、次のシナリオで使用されます。
@@ -83,8 +83,6 @@ Azure Files に格納されるすべてのデータは、Azure Storage Service E
 | 既存のストレージ アカウントで NFS 共有を作成*| ⛔ |
 | 16 個を超えるグループをサポート| ⛔ |
 
-\* NFS への登録前にストレージ アカウントが作成されていた場合は、それを NFS で使用することはできません。 NFS への登録後に作成されたストレージ アカウントのみを使用できます。
-
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
@@ -94,9 +92,9 @@ NFS Azure ファイル共有は、ソリッドステート ドライブ (SSD) �
 
 ## <a name="workloads"></a>ワークロード
 > [!IMPORTANT]
-> プレビュー期間中は、運用環境に NFS を使用することはお勧めしません。 既知の問題の一覧については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」という記事を参照してください。
+> 運用環境で NFS ファイル共有を使用する前に、[Azure NFS ファイル共有のトラブルシューティング](storage-troubleshooting-files-nfs.md)に関する記事で既知の問題の一覧を参照してください。
 
-NFS のプレビューは、汎用ファイル サーバーのホーム ディレクトリや、アプリケーション ワークロードのコンテンツ リポジトリといったワークロードで適切に動作するように検証されています。
+NFS は、SAP アプリケーション レイヤー、データベース バックアップ、データベース レプリケーション、メッセージング キュー、汎用ファイル サーバーのホーム ディレクトリ、アプリケーション ワークロードのコンテンツ リポジトリなどのワークロードで正常に動作することが検証されています。
 
 次のワークロードには既知の問題があります。 既知の問題の一覧については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」という記事を参照してください。
 - Oracle Database で、dNFS 機能との非互換性が生じる。

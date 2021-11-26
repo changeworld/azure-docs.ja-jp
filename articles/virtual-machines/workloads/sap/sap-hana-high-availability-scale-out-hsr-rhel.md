@@ -9,14 +9,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/26/2021
+ms.date: 11/12/2021
 ms.author: radeltch
-ms.openlocfilehash: d7e1a6391690461b11b5e13b6ea002b7e4629bae
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 74f9fef91149a34c189c696e1791ad6c035e963e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132322972"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493649"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP HANA スケールアウト システムの高可用性 
 
@@ -53,7 +53,41 @@ ms.locfileid: "132322972"
 
 構成例やインストール コマンドでは、HANA インスタンスは `03`、HANA システム ID は `HN1` です。 例は HANA 2.0 SP4 と Red Hat Enterprise Linux (RHEL) for SAP 7.6 に基づいています。 
 
-この記事のトピックに進む前に、さまざまな SAP Note やリソースをご覧になると参考になる場合があります。 これらのリソースは、この記事の末尾近くにある「その他のリソース」セクションにまとめられています。
+## <a name="prerequisites"></a>前提条件
+
+この記事のトピックに進む前に、さまざまな SAP Note やリソースをご覧になると参考になる場合があります。
+
+* SAP Note [1928533] には、次のものが含まれます。  
+  * SAP ソフトウェアのデプロイでサポートされる Azure VM サイズの一覧。
+  * Azure VM サイズの容量に関する重要な情報。
+  * サポートされる SAP ソフトウェア、およびオペレーティング システムとデータベースの組み合わせ。
+  * Microsoft Azure 上の Windows と Linux に必要な SAP カーネル バージョン。
+* SAP Note [2015553]: SAP でサポートされる Azure 上の SAP ソフトウェア デプロイの前提条件が記載されています。
+* SAP Note [2002167]: RHEL で推奨されるオペレーティング システム設定が記載されています。
+* SAP Note [2009879]: RHEL の SAP HANA ガイドラインが記載されています。
+* SAP Note [2178632]: Azure 上の SAP についてレポートされるすべての監視メトリックに関する詳細情報が記載されています。
+* SAP Note [2191498]: Azure 上の Linux に必要な SAP ホスト エージェントのバージョンが記載されています。
+* SAP Note [2243692]: Azure 上の Linux で動作する SAP のライセンスに関する情報が記載されています。
+* SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
+* SAP Note [1900823]: SAP HANA のストレージ要件に関する情報が記載されています。
+* [SAP Community Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note が掲載されています。
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]。
+* [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide]。
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]。
+* [SAP HANA のネットワーク要件](https://www.sap.com/documents/2016/08/1cd2c2fb-807c-0010-82c7-eda71af511fa.html)。
+* 一般的な RHEL ドキュメント:
+  * [高可用性アドオンの概要](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)。
+  * [高可用性アドオンの管理](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)。
+  * [高可用性アドオンのリファレンス](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)。
+  * [Red Hat Enterprise Linux ネットワーク ガイド](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)。
+  * [NFS 共有上の HANA ファイル システムを使用して、Pacemaker クラスターで SAP HANA スケールアウト システム レプリケーションを構成する方法](https://access.redhat.com/solutions/5423971)。
+  * [アクティブ/アクティブ (読み取り対応): SAP HANA のスケールアウトとシステム レプリケーションのための RHEL HA ソリューション](https://access.redhat.com/sites/default/files/attachments/v8_ha_solution_for_sap_hana_scale_out_system_replication_1.pdf)。
+* Azure 固有の RHEL ドキュメント:
+  * [Microsoft Azure で使用するために Red Hat Enterprise Linux に SAP HANA をインストールする](https://access.redhat.com/public-cloud/microsoft-azure)。
+  * [SAP HANA のスケールアウトとシステム レプリケーションのための Red Hat Enterprise Linux ソリューション](https://access.redhat.com/solutions/4386601)。
+* [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]。
+* [Azure NetApp Files のドキュメント][anf-azure-doc]。 
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)。
 
 ## <a name="overview"></a>概要
 
@@ -186,7 +220,8 @@ Standard Load Balancer を使用するのが最善です。 その方法は次�
    
 Standard Load Balancer を使用している場合は、次の制限に注意する必要があります。 パブリック IP アドレスのない VM を内部ロード バランサーのバックエンド プールに配置する場合、アウトバウンド インターネット接続はありません。 パブリック エンド ポイントへのルーティングを許可するには、追加の構成を行う必要があります。 詳細は、[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した仮想マシンのパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)を参照してください。  
 
-Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗します。 パラメーター `net.ipv4.tcp_timestamps` を `0` に設定します。 詳細については、「[Load Balancer の正常性プローブ](../../../load-balancer/load-balancer-custom-probe-overview.md)」および SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) を参照してください。  
+   > [!IMPORTANT]
+   > Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗します。 パラメーター `net.ipv4.tcp_timestamps` を `0` に設定します。 詳細については、「[Load Balancer の正常性プローブ](../../../load-balancer/load-balancer-custom-probe-overview.md)」および SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) を参照してください。  
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files インフラストラクチャを展開する 
 
@@ -450,13 +485,13 @@ Azure Load Balancer の背後に配置された Azure VM では TCP タイムス
     chmod 775 /hana/shared
     ```
 
-1. **[1]** **hana-s1-db2** および **hana-s1-db3** で、パスワードの入力を求められることなく、Secure Shell (SSH) 経由でログインできることを確認します。 そうでない場合は、[キーベースの認証の使用](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)に関するページに記載されているように、`ssh` キーを交換します。  
+1. **[1]** パスワードの入力を求められることなく、Secure Shell (SSH) 経由で **hana-s1-db2** および **hana-s1-db3** にサインインできることを確認します。 そうでない場合は、[キーベースの認証の使用](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)に関するページに記載されているように、`ssh` キーを交換します。  
     ```bash
     ssh root@hana-s1-db2
     ssh root@hana-s1-db3
     ```
 
-1. **[2]** **hana-s2-db2** および **hana-s2-db3** で、パスワードの入力を求められることなく SSH 経由でログインできることを確認します。 そうでない場合は、[キーベースの認証の使用](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)に関するページに記載されているように、`ssh` キーを交換します。  
+1. **[2]** パスワードの入力を求められることなく、SSH 経由で **hana-s2-db2** および **hana-s2-db3** にサインインできることを確認します。 そうでない場合は、[キーベースの認証の使用](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)に関するページに記載されているように、`ssh` キーを交換します。  
     ```bash
     ssh root@hana-s2-db2
     ssh root@hana-s2-db3
@@ -963,7 +998,7 @@ Azure Load Balancer の背後に配置された Azure VM では TCP タイムス
        meta master-max="1" clone-node-max=1 interleave=true
       ```
       > [!IMPORTANT]
-      > フェールオーバー テストの実行中に `AUTOMATED_REGISTER` を `false` に設定して、失敗したプライマリ インスタンスが自動的にセカンダリとして登録されないようにすることをお勧めします。 ベスト プラクティスとして、テストが終わったら `AUTOMATED_REGISTER` を `*true` に設定し、引き継ぎ後にシステム レプリケーションが自動的に再開できるようにします。 
+      > フェールオーバー テストの実行中に `AUTOMATED_REGISTER` を `false` に設定して、失敗したプライマリ インスタンスが自動的にセカンダリとして登録されないようにすることをお勧めします。 ベスト プラクティスとして、テストが終わったら `AUTOMATED_REGISTER` を `true` に設定し、引き継ぎ後にシステム レプリケーションが自動的に再開できるようにします。 
 
    1. 仮想 IP と関連するリソースを作成します。  
       ```bash
@@ -1283,42 +1318,6 @@ pcs property set maintenance-mode=false
 
 
 [RHEL 上の Azure VM における SAP HANA の高可用性](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)に関するページに記載されているテストも行い、SAP HANA クラスター構成を十分にテストすることをお勧めします。
-
-## <a name="additional-resources"></a>その他のリソース
-
-この記事で取り上げた資料に関するその他の背景情報が必要になる可能性がある読者に役立つように、次のリソースを集めました。
-
-* SAP Note [1928533] には、次のものが含まれます。  
-  * SAP ソフトウェアのデプロイでサポートされる Azure VM サイズの一覧。
-  * Azure VM サイズの容量に関する重要な情報。
-  * サポートされる SAP ソフトウェア、およびオペレーティング システムとデータベースの組み合わせ。
-  * Microsoft Azure 上の Windows と Linux に必要な SAP カーネル バージョン。
-* SAP Note [2015553]: SAP でサポートされる Azure 上の SAP ソフトウェア デプロイの前提条件が記載されています。
-* SAP Note [2002167]: RHEL で推奨されるオペレーティング システム設定が記載されています。
-* SAP Note [2009879]: RHEL の SAP HANA ガイドラインが記載されています。
-* SAP Note [2178632]: Azure 上の SAP についてレポートされるすべての監視メトリックに関する詳細情報が記載されています。
-* SAP Note [2191498]: Azure 上の Linux に必要な SAP ホスト エージェントのバージョンが記載されています。
-* SAP Note [2243692]: Azure 上の Linux で動作する SAP のライセンスに関する情報が記載されています。
-* SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
-* SAP Note [1900823]: SAP HANA のストレージ要件に関する情報が記載されています。
-* [SAP Community Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note が掲載されています。
-* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]。
-* [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide]。
-* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]。
-* [SAP HANA のネットワーク要件](https://www.sap.com/documents/2016/08/1cd2c2fb-807c-0010-82c7-eda71af511fa.html)。
-* 一般的な RHEL ドキュメント:
-  * [高可用性アドオンの概要](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)。
-  * [高可用性アドオンの管理](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)。
-  * [高可用性アドオンのリファレンス](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)。
-  * [Red Hat Enterprise Linux ネットワーク ガイド](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)。
-  * [NFS 共有上の HANA ファイル システムを使用して、Pacemaker クラスターで SAP HANA スケールアウト システム レプリケーションを構成する方法](https://access.redhat.com/solutions/5423971)。
-  * [アクティブ/アクティブ (読み取り対応): SAP HANA のスケールアウトとシステム レプリケーションのための RHEL HA ソリューション](https://access.redhat.com/sites/default/files/attachments/v8_ha_solution_for_sap_hana_scale_out_system_replication_1.pdf)。
-* Azure 固有の RHEL ドキュメント:
-  * [Microsoft Azure で使用するために Red Hat Enterprise Linux に SAP HANA をインストールする](https://access.redhat.com/public-cloud/microsoft-azure)。
-  * [SAP HANA のスケールアウトとシステム レプリケーションのための Red Hat Enterprise Linux ソリューション](https://access.redhat.com/solutions/4386601)。
-* [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]。
-* [Azure NetApp Files のドキュメント][anf-azure-doc]。 
-* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

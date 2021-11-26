@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする
-description: Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする方法について説明します
+title: Azure Cosmos DB を Azure Spring Cloud のアプリケーションにバインドする
+description: Azure Cosmos DB を Azure Spring Cloud のアプリケーションにバインドする方法について説明します
 author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 387d526002411395e8bebc0fa59925bfa383e598
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 6d9a5007ba4b5bf2c5138ab584e774d81f23bd03
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861332"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493630"
 ---
-# <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする
+# <a name="bind-an-azure-cosmos-db-database-to-your-application-in-azure-spring-cloud"></a>Azure Cosmos DB データベースを Azure Spring Cloud のアプリケーションにバインドする
 
 **この記事の適用対象:** ✔️ Java
 
@@ -27,7 +27,7 @@ Spring Boot アプリケーションを手動で構成するのではなく、Az
 
 ## <a name="prepare-your-java-project"></a>Java プロジェクトを準備する
 
-1. 次の依存関係のいずれかを Azure Spring Cloud アプリケーションの pom.xml ファイルに追加します。 API の種類に適した依存関係を選択します。
+1. 次の依存関係のいずれかをアプリケーションの pom.xml ファイルに追加します。 API の種類に適した依存関係を選択します。
 
     * API の種類: コア (SQL)
 
@@ -180,4 +180,4 @@ resource "azurerm_spring_cloud_active_deployment" "example" {
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Spring Cloud アプリケーションを Azure Cosmos DB データベースにバインドする方法について学習しました。 サービスをアプリケーションにバインドする方法については、[Azure Cache for Redis キャッシュへのバインド](./how-to-bind-redis.md)に関するページを参照してください。
+この記事では、Azure Spring Cloud のアプリケーションを Azure Cosmos DB データベースにバインドする方法について説明しました。 サービスをアプリケーションにバインドする方法については、[Azure Cache for Redis キャッシュへのバインド](./how-to-bind-redis.md)に関するページを参照してください。

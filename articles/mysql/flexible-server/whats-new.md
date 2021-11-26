@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 33a62307ad42f27b347b7c48930f0046520f411b
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 8333f0086a7d2778fcda1efec64ebca6de94a002
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132315352"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398005"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Azure Database for MySQL - フレキシブル サーバーの新機能
 
@@ -39,7 +39,9 @@ ms.locfileid: "132315352"
 
   [バックアップと復元] ブレードには、最も頻繁に寄せられた質問とその回答を一覧表示する専用のセクションもあります。 これを見れば、Azure portal から直接行うバックアップに関するほとんどの質問に対する回答を確認できるはずです。 また、上部メニューの FAQ を表す疑問符アイコンを選択すると、さらに関連する詳細にもアクセスすることができます。
 
-- **削除されたフレキシブル サーバーを復元する** このサービスを使用すると、削除された MySQL フレキシブル サーバー リソースを、サーバーの削除の時点から 5 日以内であれば復旧することができます。 削除されたサーバーを復元する方法の詳細なガイドについては、[文書化されている手順](../flexible-server/how-to-restore-dropped-server.md)を参照してください。 デプロイ後のサーバー リソースを誤削除または予期せぬ変更から保護するために、管理者には[管理ロック](../../azure-resource-manager/management/lock-resources.md)の活用をお勧めしています。
+- **削除されたフレキシブル サーバーを復元する**
+    
+  このサービスを使用すると、削除された MySQL フレキシブル サーバー リソースを、サーバーの削除の時点から 5 日以内であれば復旧することができます。 削除されたサーバーを復元する方法の詳細なガイドについては、[文書化されている手順](../flexible-server/how-to-restore-dropped-server.md)を参照してください。 デプロイ後のサーバー リソースを誤削除または予期せぬ変更から保護するために、管理者には[管理ロック](../../azure-resource-manager/management/lock-resources.md)の活用をお勧めしています。
 
 - **既知の問題**
 

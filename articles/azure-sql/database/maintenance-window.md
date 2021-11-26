@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 10/15/2021
-ms.openlocfilehash: c73ee217fd802a839b565cd1174c94f8da288a0e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: cea06c5731fd17b05987e2c070264588f5428345
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131026053"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491376"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -38,7 +38,7 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>メンテナンス期間の予測可能性を高める
 
-既定では、Azure SQL のメンテナンス ポリシーは、一般的な営業時間のピーク時の中断を回避するために、**毎日現地時刻で午前 8 時から午後 5 時まで** の間、影響のある更新をブロックします。 現地時刻は、リソースをホストする [Azure リージョン](https://azure.microsoft.com/global-infrastructure/geographies/)の場所によって決定され、ローカル タイム ゾーンの定義に従って夏時間が適用される場合があります。 
+既定では、Azure SQL のメンテナンス ポリシーは、一般的な営業時間のピーク時の中断を回避するために、**毎日現地時刻で午前 8 時から午後 5 時まで** の間、最も影響のある更新をブロックします。 現地時刻は、リソースをホストする [Azure リージョン](https://azure.microsoft.com/global-infrastructure/geographies/)の場所によって決定され、ローカル タイム ゾーンの定義に従って夏時間が適用される場合があります。 
 
 次の 2 つの追加メンテナンス期間スロットから選択することにより、メンテナンスの更新を Azure SQL リソースに適した時間に調整できます。
  

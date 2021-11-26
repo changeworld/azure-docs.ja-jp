@@ -4,16 +4,19 @@ description: この記事では、Azure Video Analyzer での監視とログ記�
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 557f463b3cf2cbc46818f83d9cd41ddbfac38fb7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ed86a5de4fd5d65ec3e5a3b8112cb96c95f01811
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552774"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399941"
 ---
 # <a name="monitor-and-log-on-iot-edge"></a>IoT Edge の監視とログオン
 
-[!INCLUDE [header](includes/edge-env.md)]
+![Edge アイコン](media/env-icon/edge.png)  
+または、[サービスでの監視とログ](../cloud/monitor-log-cloud.md)に関する記事を参照してください。
+
+---
 
 この記事では、リモート監視のために Azure Video Analyzer on IoT Edge モジュールからイベントを受け取る方法について説明します。 
 

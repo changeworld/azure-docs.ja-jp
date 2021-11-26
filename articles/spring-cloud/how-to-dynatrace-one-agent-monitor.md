@@ -1,22 +1,23 @@
 ---
 title: Dynatrace Java OneAgent で Spring Boot アプリを監視する方法
-description: Dynatrace Java OneAgent を使用して、Azure Spring Cloud で実行している Spring Boot アプリケーションを監視する方法
+description: Dynatrace Java OneAgent を使って Azure Spring Cloud の Spring Boot アプリを監視する方法
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/31/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 20625461d27108c201f44458eff3f96d77f81132
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 4e84cb9d33e850ed3148c41cff25c3fe17a93ae8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225531"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486253"
 ---
 # <a name="how-to-monitor-spring-boot-apps-with-dynatrace-java-oneagent"></a>Dynatrace Java OneAgent で Spring Boot アプリを監視する方法
 
-この記事では、Dynatrace OneAgent を使用して、Azure Spring Cloud で実行している Spring Boot アプリケーションを監視する方法を説明します。
+この記事では Dynatrace Java OneAgent を使って Azure Spring Cloud の Spring Boot アプリを監視する方法について説明します。
+
 
 Dynatrace OneAgent を使用すると、次のことができます。
 
@@ -197,6 +198,6 @@ Azure Spring Cloud の VNet インジェクション インスタンスの場合
 
 アプリケーション専用モードで Dynatrace OneAgent をデプロイするときの制限事項については、[OneAgent のプラットフォームと機能のサポートのマトリックス](https://www.dynatrace.com/support/help/technology-support/oneagent-platform-and-capability-support-matrix)の[クラウド アプリケーションのプラットフォーム](https://www.dynatrace.com/support/help/technology-support/oneagent-platform-and-capability-support-matrix/#cloud-application-platforms)に関するセクションを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Spring Cloud で分散トレースを使用する](how-to-distributed-tracing.md)

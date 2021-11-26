@@ -1,36 +1,35 @@
 ---
-title: セキュリティで保護されたネットワーク通信 (SNC) を使用して Azure Sentinel SAP データ コネクタを展開する | Microsoft Docs
-description: NetWeaver/ABAP インターフェイス ベースのログのために、SNC でセキュリティ保護された接続を使用して、SAP 環境用の Azure Sentinel データ コネクタを展開する方法について説明します。
+title: Secure Network Communications (SNC) を使用して Microsoft Sentinel SAP データ コネクタをデプロイする | Microsoft Docs
+description: NetWeaver/ABAP インターフェイス ベースのログのために、SNC を介してセキュリティで保護された接続を使用して、SAP 環境用の Microsoft Sentinel データ コネクタをデプロイする方法について説明します。
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
-ms.date: 08/01/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: fcc46884c470b2baa282bf00b8b9e735d8a0db41
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: cc3c58743fc1cfca90ff8a2f20e5450895accc75
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019687"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519878"
 ---
-# <a name="deploy-the-azure-sentinel-sap-data-connector-with-snc"></a>SNC を使用して Azure Sentinel SAP データ コネクタを展開する
+# <a name="deploy-the-microsoft-sentinel-sap-data-connector-with-snc"></a>SNC を使用して Microsoft Sentinel SAP データ コネクタをデプロイする
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、NetWeaver/ABAP インターフェイス ベースのログのための、セキュリティで保護されたネットワーク通信 (SNC) を介した SAP への安全な接続がある場合に、Azure Sentinel SAP データ コネクタを展開する方法について説明します。
+この記事では、NetWeaver/ABAP インターフェイス ベースのログのために、Secure Network Communications (SNC) を介して SAP へのセキュリティで保護された接続がある場合に、Microsoft Sentinel SAP データ コネクタをデプロイする方法について説明します。
 
 > [!NOTE]
-> Azure Sentinel SAP データ コネクタにアプリケーションを展開する、既定かつ最も推奨されるプロセスは、[Azure VM を使用する](sap-deploy-solution.md)ことです。 この記事は、上級ユーザーを対象にしています。
+> Microsoft Sentinel SAP データ コネクタをデプロイするための、既定かつ最も推奨されるプロセスは、[Azure VM を使用する](sap-deploy-solution.md)ことです。 この記事は、上級ユーザーを対象にしています。
 
 > [!IMPORTANT]
-> Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
->
+> Microsoft Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Sentinel SAP データ コネクタを展開するための基本的な前提条件は、展開方法に関係なく同じです。
+Microsoft Sentinel SAP データ コネクタをデプロイするための基本的な前提条件は、デプロイ方法に関係なく同じです。
 
 始める前に、メインの [SAP データ コネクタ展開手順](sap-deploy-solution.md#prerequisites)に記載されている前提条件にシステムが準拠していることを確認してください。
 
@@ -40,11 +39,11 @@ SNC を使用するためのその他の前提条件は次のとおりです。
 
 - **SAPCAR ユーティリティ**。SAP Service Marketplace からダウンロードします。 詳細については、[SAP インストール ガイド](https://help.sap.com/viewer/d1d04c0d65964a9b91589ae7afc1bd45/5.0.4/en-US/467291d0dc104d19bba073a0380dc6b4.html)のページを参照してください
 
-詳細については、[Azure Sentinel SAP ソリューションの SAP 要件 (パブリック プレビュー)](sap-solution-detailed-requirements.md) に関するページを参照してください。
+詳細については、「[Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)](sap-solution-detailed-requirements.md)」を参照してください。
 
 ## <a name="create-your-azure-key-vault"></a>Azure キー コンテナーを作成する
 
-Azure Sentinel SAP データ コネクタ専用の Azure キー コンテナーを作成します。
+Microsoft Sentinel SAP データ コネクタ専用の Azure キー コンテナーを作成します。
 
 次のコマンドを実行して、Azure キー コンテナーを作成し、Azure サービス プリンシパルにアクセスを許可します。
 
@@ -110,7 +109,7 @@ az keyvault secret set \
 
 1. わかりやすい名前で新しいフォルダーを作成し、SDK の ZIP ファイルを新しいフォルダーにコピーします。
 
-1. データ コネクタの VM に Azure Sentinel ソリューションの GitHub リポジトリをクローンし、Azure Sentinel SAP ソリューションの **systemconfig.ini** ファイルをその新しいフォルダーにコピーします。
+1. データ コネクタ VM に Microsoft Sentinel ソリューションの GitHub リポジトリをクローンし、Microsoft Sentinel SAP ソリューションの **systemconfig.ini** ファイルをその新しいフォルダーにコピーします。
 
     次に例を示します。
 
@@ -125,9 +124,9 @@ az keyvault secret set \
 
     キー コンテナーのシークレット以外のすべての構成を編集する必要があります。 詳細については、「[SAP データ コネクタを手動で構成する](sap-solution-deploy-alternate.md#manually-configure-the-sap-data-connector)」を参照してください。
 
-1. **systemconfig.ini** ファイルの指示に従って、Azure Sentinel に取り込むログを定義します。 
+1. **systemconfig.ini** ファイルの指示を使用して、Microsoft Sentinel に取り込むログを定義します。
 
-    例については、「[Azure Sentinel に送信される SAP ログを定義する](sap-solution-deploy-alternate.md#define-the-sap-logs-that-are-sent-to-azure-sentinel)」を参照してください。
+    例については、「[Microsoft Sentinel に送信される SAP ログを定義する](sap-solution-deploy-alternate.md#define-the-sap-logs-that-are-sent-to-microsoft-sentinel)」を参照してください。
 
     > [!NOTE]
     > SNC 通信の関連ログは、NetWeaver/ABAP インターフェイス経由で取得されるログだけです。 SAP コントロールと HANA のログは、SNC の対象外です。
@@ -144,13 +143,12 @@ az keyvault secret set \
 
 1. 更新した **systemconfig.ini** ファイルを、VM の **sapcon** ディレクトリに保存します。
 
-1. SAP データ コネクタがインストールされた、定義済みの Docker イメージをダウンロードして実行します。  次を実行します。
+1. SAP データ コネクタがインストールされた、定義済みの Docker イメージをダウンロードして実行します。 次を実行します。
 
     ```bash
     docker pull docker pull mcr.microsoft.com/azure-sentinel/solutions/sapcon:latest-preview
     docker create -v $(pwd):/sapcon-app/sapcon/config/system -v /home/azureuser /sap/sec:/sapcon-app/sec --env SCUDIR=/sapcon-app/sec --name sapcon-snc mcr.microsoft.com/azure-sentinel/solutions/sapcon:latest-preview
     ```
-
 
 ## <a name="post-deployment-sap-system-procedures"></a>展開後の SAP システムでの手順
 
@@ -201,7 +199,6 @@ SAP データ コネクタを展開した後、SAP システムで次の手順�
     ```
 
     詳細については、SAP ドキュメントの「[Exchanging the Public-Key Certificates](https://help.sap.com/viewer/4773a9ae1296411a9d5c24873a8d418c/8.0/en-US/7bbf90b29c694e6080e968559170fbcd.html)」(公開キー証明書の交換) を参照してください。
-
 
 ## <a name="edit-the-sap-data-connector-configuration"></a>SAP データ コネクタの構成を編集する
 
@@ -285,16 +282,16 @@ SNC がデータコネクタ VM で有効になります。
 
 たとえば、**systemconfig.ini** ファイルやお使いの Azure キー コンテナーの構成に誤りがある場合や、SNC でセキュリティ保護された接続を作成する手順の一部が正常に実行されなかった場合に、問題が発生する可能性があります。
 
-上記の手順をもう一度実行し、SNC でセキュリティ保護された接続を構成してみてください。 詳細については、「[Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)」も参照してください。
+上記の手順をもう一度実行し、SNC でセキュリティ保護された接続を構成してみてください。 詳細については、[Microsoft Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)に関するページも参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-SAP データ コネクタがアクティブになったら、**Azure Sentinel - Continuous Threat Monitoring for SAP** ソリューションを展開することで続行します。 詳細については、「[SAP セキュリティ コンテンツをデプロイする](sap-deploy-solution.md#deploy-sap-security-content)」を参照してください。
+SAP データ コネクタがアクティブになったら、**Microsoft Sentinel - Continuous Threat Monitoring for SAP** ソリューションをデプロイして続行します。 詳細については、「[SAP セキュリティ コンテンツをデプロイする](sap-deploy-solution.md#deploy-sap-security-content)」を参照してください。
 
-ソリューションを展開すると、SAP データ コネクタが Azure Sentinel に表示されるようになり、SAP ブックと分析ルールが展開されます。 完了したら、SAP ウォッチリストを手動で追加してカスタマイズします。
+ソリューションをデプロイすると、SAP データ コネクタが Microsoft Sentinel に表示されるようになり、SAP ブックと分析ルールがデプロイされます。 完了したら、SAP ウォッチリストを手動で追加してカスタマイズします。
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
-- [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
-- [Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス](sap-solution-security-content.md)
+- [Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
+- [Microsoft Sentinel SAP ソリューションのログ リファレンス](sap-solution-log-reference.md)
+- [Microsoft Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス](sap-solution-security-content.md)

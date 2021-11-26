@@ -5,22 +5,18 @@ author: msftradford
 ms.author: parkerra
 manager: MehranAzimi-msft
 ms.service: azure-spatial-anchors
-ms.date: 2/4/2021
+ms.date: 11/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6d49864b371599901e8cf5f9945ceae972fe991
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0df8bf579feedf7659c5302e9be82b45335f8af
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669605"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490388"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Unity での Azure Spatial Anchors を使用した構築
 
-開発者は、Azure Spatial Anchors を使用する複合現実アプリケーションの作成およびデプロイ用に Unity を選択できます。
-
-[!INCLUDE [Unity Project Requirements](../../includes/spatial-anchors-unity-project-requirements.md)]
-
-次のプラットフォームがサポートされています。
+開発者は、Azure Spatial Anchors を使用する複合現実アプリケーションの作成およびデプロイ用に Unity を選択できます。 独自のプロジェクトを作成する場合は、[Unity プロジェクトのセットアップ ガイド](./how-tos/setup-unity-project.md)に従ってください。 それ以外の場合は、次のいずれかのクイックスタートを使用してすぐに開始できます。
 
 **Unity for HoloLens**
 

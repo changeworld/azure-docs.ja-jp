@@ -1,21 +1,21 @@
 ---
-title: Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング | Microsoft Docs
-description: Azure Sentinel SAP ソリューションのデプロイで発生する可能性がある、特定の問題のトラブルシューティングについて説明します。
+title: Microsoft Sentinel SAP ソリューションのデプロイのトラブルシューティング | Microsoft Docs
+description: Microsoft Sentinel SAP ソリューションのデプロイで発生する可能性がある、特定の問題のトラブルシューティングを行う方法について説明します。
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: troubleshooting
 ms.custom: mvc, ignite-fall-2021
-ms.date: 08/09/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: d514ceee8f81943efd6024abcde510e910b6cc5f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 7eee4c9fdd3de93017c15556646fa9e6ece8b22c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131013937"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520011"
 ---
-# <a name="troubleshooting-your-azure-sentinel-sap-solution-deployment"></a>Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング
+# <a name="troubleshooting-your-microsoft-sentinel-sap-solution-deployment"></a>Microsoft Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -69,7 +69,7 @@ docker restart sapcon-[SID]
 
 ## <a name="view-all-docker-execution-logs"></a>すべての Docker 実行ログを表示する
 
-Azure Sentinel SAP データ コネクタのデプロイのすべての Docker 実行ログを表示するには、次のいずれかのコマンドを実行します。
+Microsoft Sentinel SAP データ コネクタのデプロイのすべての Docker 実行ログを表示するには、次のいずれかのコマンドを実行します。
 
 ```bash
 docker exec -it sapcon-[SID] bash && cd /sapcon-app/sapcon/logs
@@ -97,7 +97,7 @@ total 508
 -rw-r--r-- 1 root root    525 Mar 12 16:01  ABAPSpoolOutputLog.log
 -rw-r--r-- 1 root root      0 Mar 12 15:51  ABAPTableDataLog.log
 -rw-r--r-- 1 root root    495 Mar 12 16:01  ABAPWorkflowLog.log
--rw-r--r-- 1 root root 465311 Mar 14 06:54  API.log # view this log to see submits of data into Azure Sentinel
+-rw-r--r-- 1 root root 465311 Mar 14 06:54  API.log # view this log to see submits of data into Microsoft Sentinel
 -rw-r--r-- 1 root root      0 Mar 12 15:51  LogsDeltaManager.log
 -rw-r--r-- 1 root root      0 Mar 12 15:51  PersistenceManager.log
 -rw-r--r-- 1 root root   4830 Mar 12 16:01  RFC.log
@@ -195,9 +195,9 @@ Docker cp SDK by running docker cp nwrfc750P_8-70002752.zip /sapcon-app/inst/
 1. コネクタ ログに特別なエラーが表示されずに、SAP **SM20** または **RSAU_READ_LOG** にメッセージが到着し、存在していることを確認します。
 
 
-### <a name="incorrect-azure-sentinel-workspace-id-or-key"></a>Azure Sentinel ワークスペース ID またはキーが正しくない
+### <a name="incorrect-microsoft-sentinel-workspace-id-or-key"></a>Microsoft Sentinel ワークスペース ID またはキーが正しくない
 
-[デプロイ スクリプト](sap-deploy-solution.md#create-key-vault-for-your-sap-credentials)に間違ったワークスペース ID またはキーを入力した場合は、Azure Key Vault に格納されている資格情報を更新します。
+[デプロイ スクリプト](sap-deploy-solution.md#create-a-key-vault-for-your-sap-credentials)に間違ったワークスペース ID またはキーを入力した場合は、Azure Key Vault に格納されている資格情報を更新します。
 
 Azure KeyVault で資格情報を確認した後、コンテナーを再起動します。
 
@@ -234,7 +234,7 @@ docker restart sapcon-[SID]
 
 ### <a name="missing-data-in-your-workbooks-or-alerts"></a>ブックまたはアラートにデータが見つからない
 
-Azure Sentinel ブックまたはアラートにデータがない場合は、**監査ログ** ポリシーが SAP 側で正しく有効になっており、ログ ファイルにエラーがないことを確認します。 
+Microsoft Sentinel ブックまたはアラートにデータがない場合は、**Auditlog** ポリシーが SAP 側で正しく有効になっており、ログ ファイルにエラーがないことを確認します。 
 
 この手順には、**RSAU_CONFIG_LOG** トランザクションを使用します。
 
@@ -247,7 +247,13 @@ Azure Sentinel ブックまたはアラートにデータがない場合は、**
 
 ### <a name="network-connectivity-issues"></a>ネットワーク接続の問題
 
-SAP 環境または Azure Sentinel へのネットワーク接続の問題が発生している場合は、ネットワーク接続を確認し、データが予想通り流れているか確認します。
+SAP 環境または Microsoft Sentinel へのネットワーク接続の問題が発生している場合は、ネットワーク接続を確認し、データが予想どおり流れていることを確認します。
+
+次のような一般的な問題があります。
+
+- Docker コンテナーと SAP ホストの間のファイアウォールによってトラフィックがブロックされている可能性があります。 SAP ホストでは、開いている必要がある **32xx**、**5xx13**、**33xx** (**xx** は SAP インスタンス番号) の TCP ポートを介して通信を受信します。
+
+- SAP ホストから Microsoft Container Registry または Azure への送信通信にはプロキシ構成が必要です。 これは通常、インストールに影響を与え、`HTTP_PROXY` および `HTTPS_PROXY` 環境変数を構成する必要があります。 Docker `create` / `run` コマンドに `-e` フラグを追加して、コンテナーの作成時に環境変数を Docker コンテナーに取り込むこともできます。
 
 ### <a name="other-unexpected-issues"></a>その他の予期せぬ問題
 
@@ -300,7 +306,7 @@ SAPCONTROL または JAVA サブシステムが、「**SAP サーバー 'Etc/NZS
 
 ### <a name="audit-log-data-not-ingested-past-initial-load"></a>初期読み込み後に監査ログ データが取り込まれない
 
-**RSAU_READ_LOAD** または **SM200** トランザクションに表示される SAP 監査ログ データが、初期読み込み後に Azure Sentinel に取り込まれない場合は、SAP システムと SAP ホスト オペレーティング システムの構成が間違っている可能性があります。
+**RSAU_READ_LOAD** または **SM200** のいずれかのトランザクションに表示される SAP 監査ログ データが、初期読み込み後に Microsoft Sentinel に取り込まれない場合は、SAP システムと SAP ホスト オペレーティング システムの構成が間違っている可能性があります。
 
 - 初期読み込みは、SAP データ コネクタの新規インストール後、または **metadata.db** ファイルが削除された後に取り込まれます。
 - 誤った構成の例として、**STZAC** トランザクション内で SAP システムのタイムゾーンが **CET** に設定されているのに、SAP ホスト オペレーティング システムのタイム ゾーンが **UTC** に設定されている場合があります。
@@ -332,8 +338,8 @@ SAPCONTROL または JAVA サブシステムが、「**SAP サーバー 'Etc/NZS
 詳細については、次を参照してください。
 
 - [SAP の継続的な脅威監視をデプロイする (パブリック プレビュー)](sap-deploy-solution.md)
-- [Azure Sentinel SAP ソリューションのログ リファレンス (パブリック プレビュー)](sap-solution-log-reference.md)
-- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
+- [Microsoft Sentinel SAP ソリューションのログ リファレンス (パブリック プレビュー)](sap-solution-log-reference.md)
+- [SNC を使用して Microsoft Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
 - [エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
-- [Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス (パブリック プレビュー)](sap-solution-security-content.md)
-- [Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)](sap-solution-detailed-requirements.md)
+- [Microsoft Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス (パブリック プレビュー)](sap-solution-security-content.md)
+- [Microsoft Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)](sap-solution-detailed-requirements.md)

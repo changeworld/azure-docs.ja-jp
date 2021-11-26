@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud におけるブルーグリーン デプロイ戦略
 description: このトピックでは、Azure Spring Cloud におけるブルーグリーン デプロイへの 2 つのアプローチについて説明します。
-author: barbkess
-ms.author: barbkess
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 11/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 194529a03a493ec22d22260576a678ab07401f4c
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 8b019c5cc8e7e7a8ed132cc6adbf0d4c7d0495a4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056570"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486268"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Azure Spring Cloud におけるブルーグリーン デプロイ戦略
 
@@ -95,7 +95,7 @@ Azure Spring Cloud でブルーグリーン デプロイを実装する最も簡
 
 #### <a name="deployment-pipeline-failures"></a>デプロイ パイプラインのエラー
 
-デプロイが開始され、ステージング環境のデプロイが削除されるまでの間に、別のデプロイ パイプラインの実行が試みられると、失敗します。 パイプラインによって新しいデプロイの作成が試みられますが、それにより、エラーが発生します。これは、Azure Spring Cloud アプリケーションごとに許可されるデプロイが 2 つのみだからです。
+デプロイが開始され、ステージング環境のデプロイが削除されるまでの間に、別のデプロイ パイプラインの実行が試みられると、失敗します。 パイプラインは新しいデプロイの作成を試みますが、それにより、エラーが発生します。これは、Azure Spring Cloud アプリケーションごとに許可されるデプロイが 2 つのみであるためです。
 
 そのため、デプロイ オーケストレーションには、失敗したデプロイ プロセスを後で再試行する手段、または、以前のすべてのバージョンでフローが完了するまで、各バージョンのデプロイ フローをキューに残す手段を持たせる必要があります。
 

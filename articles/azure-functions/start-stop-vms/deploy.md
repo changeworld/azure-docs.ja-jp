@@ -5,19 +5,16 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 51488a6694b843821110127640281a2da9986862
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 878bead652cf9962febc7622ef98ade0abc6cce5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744762"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399695"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Start/Stop VMs v2 (プレビュー) のデプロイ
 
 Start/Stop VMs v2 (プレビュー) 機能をインストールするには、このトピックの手順を順番に実行します。 セットアップ プロセスが完了したら、要件に合わせてカスタマイズするスケジュールを構成します。
-
-> [!NOTE]
-> デプロイ中に問題が発生した場合、Start/Stop VMs v2 (プレビュー) を使用しているときに問題が発生します。または、関連する質問がある場合、[GitHub](https://github.com/microsoft/startstopv2-deployments/issues) で問題を送信できます。 このプレビュー バージョンでは、[Azure サポート サイト](https://azure.microsoft.com/support/options/)から Azure サポート インシデントを提出することはできません。 
 
 ## <a name="permissions-considerations"></a>アクセス許可に関する考慮事項
 デプロイの前および最中に、次の点に留意してください。
@@ -199,7 +196,7 @@ VM を起動するだけのロジック アプリの構成はサポートされ�
 
 ## <a name="sequenced-start-and-stop-scenario"></a>シーケンス処理された起動と停止のシナリオ
 
-分散アプリケーション アーキテクチャ内の複数の Azure Resource Manager VM に 2 つ以上のコンポーネントを含む環境では、コンポーネントの起動および停止順序を指定できることが重要です。
+分散アプリケーション アーキテクチャ内の複数の Azure Resource Manager VM に 2 つ以上のコンポーネントを含む環境では、コンポーネントの起動および停止順序を指定できることが重要です。 このシナリオを構成する前に、[概要ページ](../../azure-functions/start-stop-vms/overview.md#overview)で説明されているように、**sequencestart** タグと **Sequencestart** タグをターゲット VM に適用していることを確認してください。
 
 1. シーケンス処理された起動を構成する場合、ロジック アプリの一覧から **[ststv2_vms_Sequenced_start]** を選択します。 シーケンス処理された停止を構成する場合は、 **[ststv2_vms_Sequenced_stop]** を選択します。
 

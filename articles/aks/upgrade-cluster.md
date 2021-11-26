@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターをアップグレー
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 0f4e364cd3de9093b84e3ae02c4337361985959a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8c5a395833cb19e4f5ce78f08ee37c2eb022169b
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350985"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397340"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -133,34 +133,6 @@ myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded       
 
 クラスターの自動アップグレードは、クラスターの手動アップグレードを同じプロセスに従います。 詳細については、「[AKS クラスターのアップグレード][upgrade-cluster]」を参照してください。
 
-AKS クラスターのクラスター自動アップグレードはプレビュー機能です。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-`az cli` の場合、次の拡張機能を追加します。
-
-```azurecli-interactive
-az extension add --name aks-preview
-```
-
-`AutoUpgradePreview` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
-```
-
-状態が "*登録済み*" と表示されるまでに数分かかることがあります。 登録が完了するまで待ってください。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
 クラスターの作成時に自動アップグレード チャネルを設定するには、次の例のように、*auto-upgrade-channel* パラメーターを使用します。
 
 ```azurecli-interactive
@@ -179,7 +151,7 @@ az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrad
 
 ## <a name="special-considerations-for-node-pools-that-span-multiple-availability-zones"></a>複数の Availability Zones にまたがるノード プールに関する特別な考慮事項
 
-AKS では、ノード グループでのベストエフォート ゾーン バランシングが使用されます。 サージ アップグレード中、VMSS のサージ ノードのゾーンは事前には不明です。 これにより、アップグレード中に一時的に不均衡なゾーン構成が発生する可能性があります。 ただし、アップグレードが完了し、元のゾーン バランスが維持されると、AKS によりサージ ノードが削除されます。 アップグレード中にゾーン バランスを維持する場合は、サージをノード数の 3 の倍数に増やします。 その後、VMSS により、ベストエフォートのゾーン バランシングを使用して、Availability Zones 間でノードのバランスが調整されます。
+AKS では、ノード グループでのベストエフォート ゾーン バランシングが使用されます。 アップグレード中は、仮想マシン スケール セット内のサージ ノードのゾーンは事前にはわかりません。 これにより、アップグレード中に一時的に不均衡なゾーン構成が発生する可能性があります。 ただし、アップグレードが完了し、元のゾーン バランスが維持されると、AKS によりサージ ノードが削除されます。 アップグレード中にゾーン バランスを維持する場合は、サージをノード数の 3 の倍数に増やします。 すると、仮想マシンのスケールセットは、ベストエフォート ゾーン バランシングによって Availability Zones 間でノードのバランスを取ります。
 
 Azure LRS ディスクで PVC を使用している場合、それらは特定のゾーンにバインドされ、サージ ノードが PVC のゾーンと一致しない場合はすぐに復旧できない可能性があります。 このため、アップグレード操作によってノードのドレインが続行されても、PV がゾーンにバインドされていると、アプリケーションのダウンタイムが発生する可能性があります。 このケースを処理し、高可用性を維持するには、アプリケーションで[ポッド中断バジェット](https://kubernetes.io/docs/tasks/run-application/configure-pdb/)を構成します。 これにより、アップグレードのドレイン操作中に Kubernetes で可用性の要件を遵守するようにできます。 
 

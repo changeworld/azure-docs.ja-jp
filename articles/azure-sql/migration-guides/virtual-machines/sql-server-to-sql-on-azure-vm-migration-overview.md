@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: chadam
 ms.date: 09/07/2021
-ms.openlocfilehash: afca22d3a0775e470becfbd31a2f67d99552938d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 163fb5cba55248fcc478e219a6b7c014fedbb689
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541702"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397796"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>移行の概要: SQL Server から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -73,7 +73,7 @@ VM 上の SQL Server の適切なインストールと構成にも考慮する�
 次の表では、SQL Server データベースを Azure VM 上の SQL Server に移行する **リフト アンド シフト** 移行戦略で使用できる方法について詳しく説明します。
 <br />
 
-|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** |  **メモ** |
+|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** |  **ノート** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM ストレージの制限](../../../index.yml) |  既存の SQL Server がそのまま、Azure VM 上の SQL Server のインスタンスに移動されます。 移行のワークロードは最大 35,000 VM にスケーリングできます。 <br /><br /> サーバー データの同期中、ソース サーバーがオンラインのままで要求に対応するので、ダウンタイムが最小限に抑えられます。 <br /><br /> **自動化とスクリプト**:[Azure Site Recovery のスクリプト](../../../migrate/how-to-migrate-at-scale.md)と [ Azure のスケーリングされた移行と計画の例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
@@ -119,13 +119,45 @@ SQL Server データベースを Azure VM 上の SQL Server のインスタン�
 
 ## <a name="business-intelligence"></a>ビジネス インテリジェンス 
 
-ユーザー データベースの移行の範囲に含まれていない SQL Server Business Intelligence サービスを移行する場合は、追加の考慮事項がある可能性があります。 
+データベースの移行の範囲外の SQL Server Business Intelligence サービスを移行する場合は、付加的に考慮すべきことが生じる可能性があります。 
 
-次のようなサービスがあります。
+### <a name="sql-server-integration-services"></a>SQL Server Integration Services
 
-- [**SQL Server Integration Services (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
-- [**SQL Server Reporting Services (SSRS)**](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
-- [**SQL Server Analysis Services (SSAS)**](/sql/database-engine/install-windows/upgrade-analysis-services)
+以下の 2 つの方法のいずれかによって、SSISDB の SQL Server Integration Services (SSIS) パッケージとプロジェクトを Azure VM 上の SQL Server に移行できます。 
+
+- ソース SQL Server インスタンスから SSISDB をバックアップして SQL Server Azure VM 上の SQL Server に復元します。 これにより、SSISDB 内のパッケージが、[Azure VM 上のターゲット SQL Server の Integration Services カタログ](/sql/integration-services/catalog/ssis-catalog)に復元されます。
+- [デプロイ オプション](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages)のいずれか 1 つを使って SSIS パッケージを Azure VM 上のターゲット SQL Server に再デプロイします。
+
+SSIS パッケージをパッケージ配置モデルとしてデプロイしている場合は、移行する前に変換できます。 詳細については、[プロジェクト変換のチュートリアル](/sql/integration-services/lesson-6-2-converting-the-project-to-the-project-deployment-model)に関する記事を参照してください。 
+
+
+### <a name="sql-server-reporting-services"></a>SQL Server Reporting Services
+Azure VM 上の SQL Server Reporting Services (SSRS) レポートをターゲット SQL Server に移行するには、「[Reporting Services インストールを移行する](/sql/reporting-services/install-windows/migrate-a-reporting-services-installation-native-mode)」をご覧ください。
+
+代替方法として、SSRS レポートを Power BI 内のページ付けられたレポートに移行することもできます。  [RDL 移行ツール](https://github.com/microsoft/RdlMigration)を使用すると、レポートの準備と移行に役立ちます。 Microsoft では、ユーザーがレポート定義言語 (RDL) レポートを SSRS サーバーから Power BI に移行できるようにするために、このツールを開発しました。 GitHub から入手でき、移行シナリオのエンドツーエンドのチュートリアルが付属しています。 
+
+### <a name="sql-server-analysis-services"></a>SQL Server Analysis Services
+SQL Server Analysis Services データベース (多次元モデルまたは表形式モデル) は、次のいずれかのオプションを使って、ソース SQL Server から Azure VM 上の SQL Server に移行できます:
+
+-   SSMS の対話的使用
+-   分析管理オブジェクト (AMO) のプログラム的使用
+-   スクリプトによる XMLA (XML for Analysis) の使用
+
+詳細については「[Analysis Services データベースを移行する](/analysis-services/multidimensional-models/move-an-analysis-services-database?view=asallproducts-allversions)」をご覧ください。
+
+代替方法として、新しい XMLA 読み取り/書き込みエンドポイントを使ってオンプレミスの Analysis Services テーブル モデルを [Azure Analysis Services](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/) または [Power BI Premium](/power-bi/admin/service-premium-connect-tools) に移行することも検討できます。 
+
+## <a name="server-objects"></a>サーバー オブジェクト
+
+ソース SQL Server での設定によっては、SQL Server Management Studio を使って Transact-SQL (T-SQL) でスクリプトを生成し、さらにそのスクリプトを Azure VM 上のターゲット SQL Server 上で実行するという、Azure VM 上の SQL Server への移行を行うための手動による介入を必要とする、付加的な SQL Server の機能が存在する場合があります。 一般的に使用される機能の一部を次に示します:
+
+- ログインとロール
+- リンク サーバー
+- 外部データ ソース
+- エージェント ジョブ
+- 警告
+- データベース メール
+- レプリケーション
 
 ## <a name="supported-versions"></a>サポートされているバージョン
 

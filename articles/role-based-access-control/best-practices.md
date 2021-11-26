@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 11/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 8f42a384c0ef8605de42243fcbb232d3ff615583
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 947645848fd60a6d2864a1715ddc32424a683ce8
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132301345"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524837"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC のベスト プラクティス
 
@@ -44,7 +44,18 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 ## <a name="assign-roles-to-groups-not-users"></a>ユーザーではなくグループにロールを割り当てる
 
-ロール割り当てをより管理しやすくするために、ロールをユーザーに直接割り当てないようにします。 代わりに、グループにロールを割り当ててください。 ロールの割り当て数には[サブスクリプションあたり 2,000 までという制限](troubleshooting.md#azure-role-assignments-limit)がありますが、ロールをユーザーでなくグループに割り当てることで、この割り当て数を最小限に抑えることもできます。 
+ロール割り当てをより管理しやすくするために、ロールをユーザーに直接割り当てないようにします。 代わりに、グループにロールを割り当ててください。 [サブスクリプションあたりのロール割り当て数の制限](troubleshooting.md#azure-role-assignments-limit)がありますが、ロールをユーザーでなくグループに割り当てることで、この割り当て数を最小限に抑えることもできます。
+
+## <a name="assign-roles-using-the-unique-role-id-instead-of-the-role-name"></a>ロール名の代わりに一意のロール ID を使用してロールを割り当てる
+
+ロール名が変更されるときがあります。たとえば次のような場合です。
+
+- 独自のカスタム ロールを使用していて、名前を変更することにした場合。
+- 名前に **(プレビュー)** が含まれるプレビュー ロールを使用している場合。 ロールがリリースされると、ロールの名前が変更されます。
+
+ロールの名前が変更される場合でも、ロールの ID は変わりません。 スクリプトまたはオートメーションを使用してロールの割り当てを作成する場合は、ロール名ではなく一意のロール ID を使用するのがベスト プラクティスです。 そうすれば、ロールの名前が変更されても、スクリプトが動作する可能性が高くなります。
+
+詳細については、[一意のロール ID および Azure PowerShell を使用したロールの割り当て](role-assignments-powershell.md#assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope)および[一意のロール ID および Azure CLI を使用したロールの割り当て](role-assignments-cli.md#assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

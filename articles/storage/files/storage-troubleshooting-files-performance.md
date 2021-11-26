@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c18e242694d5f4d02ce9111d852a66bf49e48bcd
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 44cbae10fc83ddbacf9abc8fd6510667c1f27e00
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275489"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524381"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "129275489"
 |-|:-:|:-:|
 | Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 | Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
-| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高待機時間、低スループット、および全般的なパフォーマンスの問題
 
@@ -81,7 +81,7 @@ ms.locfileid: "129275489"
 #### <a name="workaround"></a>回避策
 
 - メタデータ操作の数を減らすようにアプリケーションを変更できるかどうかを確認します。
-- ファイル共有に仮想ハード ディスク (VHD) を追加し、クライアントから SMB を介して VHD をマウントして、データに対するファイル操作を実行します。 このアプローチは、単一のライター/リーダーのシナリオ、またはリーダーが複数でライターが存在しないシナリオで機能します。 ファイル システムは Azure Files ではなくクライアントが所有するため、これによってメタデータ操作をローカルにすることができます。 セットアップすると、ローカルに直接アタッチされているストレージの場合と同様のパフォーマンスが実現されます。
+- ファイル共有に仮想ハード ディスク (VHD) を追加し、クライアントから VHD をマウントして、データに対するファイル操作を実行します。 このアプローチは、単一のライター/リーダーのシナリオ、またはリーダーが複数でライターが存在しないシナリオで機能します。 ファイル システムは Azure Files ではなくクライアントが所有するため、これによってメタデータ操作をローカルにすることができます。 セットアップすると、ローカルに直接アタッチされているストレージの場合と同様のパフォーマンスが実現されます。
     -   Windows クライアントに VHD をマウントするには、[Mount-DiskImage](/powershell/module/storage/mount-diskimage) PowerShell コマンドレットを使用します。
     -   Linux に VHD をマウントするには、Linux ディストリビューションのドキュメントを参照してください。     
 
@@ -124,6 +124,7 @@ SMB MultiChannel の使用時、チャンネル数が 4 を超える場合、パ
 - より大きなコアの VM を取得すれば、スループットの向上に役立つ可能性があります。
 - 複数の VM からクライアント アプリケーションを実行すると、スループットが向上します。
 - 可能な場合は、REST API を使用します。
+- NFS ファイル共有の場合は、nconnect をプレビューで使用できます。 運用ワークロードにはお勧めできません。
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-than-that-of-windows-clients"></a>Linux クライアントでのスループットは、Windows クライアントよりも大幅に低下します。
 
@@ -219,7 +220,7 @@ I/O 集中型ワークロードのために、Azure ファイル共有へのア�
 
 ### <a name="cause"></a>原因  
 
-ファイル共有に関するファイル変更通知の数が多くなると、待機時間が大幅に長くなる可能性があります。 一般に、この問題は、ディレクトリ構造が深い入れ子になっているファイル共有でホストされている Web サイトで発生します。 一般的なシナリオは、IIS でホストされている Web アプリケーションです。既定の構成では、ファイル変更通知はディレクトリごとにセットアップされます。 SMB クライアントが登録されている共有で変更 ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) が行われるたびに、ファイル サービスからクライアントに変更通知がプッシュされます。そのため、システム リソースが消費され、変更の数に伴い問題が悪化します。 これにより、共有のスロットリングが発生し、クライアント側の待機時間が長くなります。 
+ファイル共有に関するファイル変更通知の数が多くなると、待機時間が大幅に長くなる可能性があります。 一般に、この問題は、ディレクトリ構造が深い入れ子になっているファイル共有でホストされている Web サイトで発生します。 一般的なシナリオは、IIS でホストされている Web アプリケーションです。既定の構成では、ファイル変更通知はディレクトリごとにセットアップされます。 クライアントが登録されている共有で変更 ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) が発生するたびに、ファイル サービスからクライアントに変更通知がプッシュされるため、システム リソースが消費され、変更の数と共に問題が悪化します。 これにより、共有のスロットリングが発生し、クライアント側の待機時間が長くなります。 
 
 確認するには、ポータルで Azure メトリックを使用します。 
 
@@ -227,7 +228,7 @@ I/O 集中型ワークロードのために、Azure ファイル共有へのア�
 1. 左側のメニューの [監視] で [メトリック] を選択します。 
 1. ストレージ アカウント スコープのメトリック名前空間として、[ファイル] を選択します。 
 1. メトリックとして [トランザクション] を選択します。 
-1. ResponseType のフィルターを追加し、要求に SuccessWithThrottling (SMB の場合) または ClientThrottlingError (REST の場合) の応答コードがあるかどうかを確認します。
+1. ResponseType 用のフィルターを追加し、いずれかの要求に SuccessWithThrottling (SMB または NFS の場合) か ClientThrottlingError (REST の場合) の応答コードが含まれているかどうかを確認します。
 
 ### <a name="solution"></a>解決策 
 

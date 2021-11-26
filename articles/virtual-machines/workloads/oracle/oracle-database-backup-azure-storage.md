@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: f30a7fcbc99f6a47574d101e3792d992dc2c1af8
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2c9128f6e03f039ddc6e56ec9672a7a0a18f9889
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260044"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520429"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-files"></a>Azure Files を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップおよび回復する
 
@@ -175,7 +175,7 @@ Azure Files にバックアップするには、これらの手順を実行し�
 
 ### <a name="set-up-azure-files"></a>Azure Files を設定する
 
-この手順では、Oracle Recovery Manager (RMAN) を使用して Azure Files に Oracle データベースをバックアップします。 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 これらはサーバー メッセージ ブロック (SMB) プロトコルまたはネットワーク ファイル システム (NFS) プロトコルのどちらかを使用してアクセスできます。 この手順では、SMB プロトコルを使用して VM にマウントするファイル共有の作成について説明します。 NFS を使用してマウントする方法の詳細については、[NFS 3.0 プロトコルを使用した Blob Storage のマウント](../../../storage/blobs/network-file-system-protocol-support-how-to.md)に関する記事を参照してください。
+この手順では、Oracle Recovery Manager (RMAN) を使用して Azure Files に Oracle データベースをバックアップします。 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 これらはサーバー メッセージ ブロック (SMB) プロトコルまたはネットワーク ファイル システム (NFS) プロトコルのどちらかを使用してアクセスできます。 この手順では、SMB プロトコルを使用して VM にマウントするファイル共有の作成について説明します。 NFS を使用してマウントする方法については、「[NFS 共有を作成する方法](../../../storage/files/storage-files-how-to-create-nfs-shares.md)」を参照してください。
 
 Azure Files をマウントする場合は、`cache=none` を使用してファイル共有データのキャッシュを無効にします。 また、共有に作成されたファイルが oracle ユーザーによって所有されるようにするには、`uid=oracle` オプションと `gid=oinstall` オプションも設定します。 
 

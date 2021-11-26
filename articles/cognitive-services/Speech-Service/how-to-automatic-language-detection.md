@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2021
 ms.author: eur
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 6d5d88ba1629dce89acb0345d727896c49680cbe
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 94b3056f6766be37451a5d309243592eb31256dd
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505008"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488432"
 ---
 # <a name="how-to-use-language-identification"></a>言語識別の使用方法
 
@@ -32,18 +32,18 @@ ms.locfileid: "131505008"
 
 ## <a name="language-identification-with-speech-to-text"></a>音声テキスト変換を使用した言語識別
 
-現在、言語識別は、単発認識の場合 **4 言語**、継続認識の場合 **10 言語** までに制限されています。 `AutoDetectSourceLanguageConfig` オブジェクトを構築するとき、この上限を念頭に置いてください。 次のサンプルでは、`AutoDetectSourceLanguageConfig` を使用して、識別する言語の候補となる言語一覧を定義し、音声認識を実行するときにそれらの言語を参照します。
+現在、言語識別は、開始時の認識の場合 **4 言語**、継続認識の場合 **10 言語** までに制限されています。 `AutoDetectSourceLanguageConfig` オブジェクトを構築するとき、この上限を念頭に置いてください。 次のサンプルでは、`AutoDetectSourceLanguageConfig` を使用して、識別する言語の候補となる言語一覧を定義し、音声認識を実行するときにそれらの言語を参照します。
 
 > [!IMPORTANT]
 > 継続的な言語識別は、C#、C++、Python でのみサポートされています。
 
 ::: zone pivot="programming-language-csharp"
 
-次の例では、`Latency` を優先して単発認識を実行します。 このプロパティは、ユースケースの優先順位に応じて、`Accuracy` に設定することもできます。 `Latency` は、待機時間の短い結果が必要なのに (ライブ ストリーミング シナリオなど)、オーディオ サンプルの言語がわからない場合に最適なオプションです。 
+次の例では、`Latency` を優先して開始時の認識を実行します。 このプロパティは、ユースケースの優先順位に応じて、`Accuracy` に設定することもできます。 `Latency` は、待機時間の短い結果が必要なのに (ライブ ストリーミング シナリオなど)、オーディオ サンプルの言語がわからない場合に最適なオプションです。 
 
 `Accuracy` は、オーディオ品質が低い可能性があるものの、長い待機時間を許容できるシナリオで使用する必要があります。 たとえば、ボイスメールに背景ノイズがある、または先頭に一定の無音があるが、エンジンでの処理時間を長くすると認識結果が向上するといったケースです。
 
-どちらの場合も、次に示すような単発認識は、同じオーディオ サンプル内で言語が変更される可能性があるシナリオには **使用できません**。 これらタイプのシナリオに適した継続認識については、以下を参照してください。
+どちらの場合も、次に示すような開始時の認識は、同じオーディオ サンプル内で言語が変更される可能性があるシナリオには **使用できません**。 これらタイプのシナリオに適した継続認識については、以下を参照してください。
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -163,11 +163,11 @@ using (var audioInput = AudioConfig.FromWavFileInput(@"path-to-your-audio-file.w
 
 ::: zone pivot="programming-language-cpp"
 
-次の例では、`Latency` を優先して単発認識を実行します。 このプロパティは、ユースケースの優先順位に応じて、`Accuracy` に設定することもできます。 `Latency` は、待機時間の短い結果が必要なのに (ライブ ストリーミングのケースなど)、オーディオ サンプルの言語がわからない場合に最適なオプションです。 
+次の例では、`Latency` を優先して開始時の認識を実行します。 このプロパティは、ユースケースの優先順位に応じて、`Accuracy` に設定することもできます。 `Latency` は、待機時間の短い結果が必要なのに (ライブ ストリーミングのケースなど)、オーディオ サンプルの言語がわからない場合に最適なオプションです。 
 
 `Accuracy` は、オーディオ品質が低い可能性があるものの、長い待機時間を許容できるシナリオで使用する必要があります。 たとえば、ボイスメールに背景ノイズがある、または先頭に一定の無音があるが、エンジンでの処理時間を長くすると認識結果が向上するといったケースです。
 
-どちらの場合も、次に示すような単発認識は、同じオーディオ サンプル内で言語が変更される可能性があるシナリオには **使用できません**。 これらタイプのシナリオに適した継続認識については、以下を参照してください。
+どちらの場合も、次に示すような開始時の認識は、同じオーディオ サンプル内で言語が変更される可能性があるシナリオには **使用できません**。 これらタイプのシナリオに適した継続認識については、以下を参照してください。
 
 ```cpp
 using namespace std;

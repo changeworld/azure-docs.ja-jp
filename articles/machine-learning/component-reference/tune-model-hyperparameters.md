@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
-ms.openlocfilehash: e1efc37e8bb824a6111987a789b48e805aeb1785
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f11800c1501c0efad6dec18542ecaa912527689a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565725"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491661"
 ---
 # <a name="tune-model-hyperparameters"></a>モデルのハイパーパラメーターの調整
 
@@ -69,7 +69,7 @@ ms.locfileid: "131565725"
 
     ただし、選択したメトリックによって、モデルの順位付け方法が決まります。 スコアリングに使用するトレーニング済みモデルとして出力されるのは、選択したメトリックによって順位付けされた最上位モデルだけです。
 
-8.  **[Random seed]/(ランダム シード/)** に、パラメーター スイープの開始時に使用する数値を入力します。 
+8.  定義済みの範囲からパラメーター値をランダムに選択するために使用される乱数ジェネレーターの擬似的な状態として、 **[Random seed]\(ランダム シード\)** に整数値を入力します。 このパラメーターが有効なのは、 **[Parameter sweeping mode]\(パラメーターのスイープ モード\)** が **[Random sweep]\(ランダム スイープ\)** の場合のみです。
 
 9. パイプラインを送信します。
 
@@ -151,4 +151,4 @@ Azure Machine Learning のほとんどすべての学習器は、統合された
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使える一連のコンポーネント](component-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のコンポーネント](component-reference.md)を参照してください。 

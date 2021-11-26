@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 10/1/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 954b206d0256a62940a4c2561cd18a69298afa9a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: b2c-support
+ms.openlocfilehash: ab1dfac449bd37fb88f533a824d35eb52e83ccb0
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131036221"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517598"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のトークンの概要
 
@@ -137,6 +138,8 @@ https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.w
 ```
 
 トークンを署名するために使用されたポリシー (およびメタデータを要求できる場所) を判断するには、2 つの方法があります。 1 つめは、ポリシー名がトークンの `tfp` 要求 (既定値) または `acr` 要求 (構成のとおり) に含まれています。 本文を Base 64 でデコードし、結果の JSON 文字列を逆シリアル化することによって、JWT の本文から要求を解析できます。 `tfp` 要求または `acr` 要求は、トークンの発行に使用されたポリシーの名前です。 もう 1 つの方法では、要求を発行するときに `state` パラメーターの値にポリシーをエンコードし、使用されたポリシーを判断するときにデコードします。 どちらの方法も有効です。
+
+Azure AD B2C では、[RFC 3447](https://www.rfc-editor.org/rfc/rfc3447#section-3.1) 仕様に基づいた RS256 アルゴリズムが使用されます。 公開キーは、RSA の剰余 (`n`) と RSA の公開指数 (`e`) の 2 つのコンポーネントで構成されます。 トークン検証のために、`n` と `e` の値を証明書形式にプログラムで変換できます。
 
 署名の検証を実行する方法については、このドキュメントでは説明していません。 トークンの検証を支援する多くのオープンソース ライブラリを利用できます。
 

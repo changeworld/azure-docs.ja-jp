@@ -1,46 +1,45 @@
 ---
-title: デバイスまたはアプライアンスの CEF 形式のログを Azure Sentinel に取得する | Microsoft Docs
-description: Linux ベースのログ フォワーダーにインストールされている Log Analytics エージェントを使用して、Syslog で Common Event Format (CEF) で送信されたログを Azure Sentinel ワークスペースに取り込みます。
+title: デバイスまたはアプライアンスの CEF 形式のログを Microsoft Sentinel に取得する | Microsoft Docs
+description: Linux ベースのログ フォワーダーにインストールされている Log Analytics エージェントを使用して、Syslog を介して Common Event Format (CEF) で送信されたログを Microsoft Sentinel ワークスペースに取り込みます。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1b51f68127a571165d7e427aae0950daeab51146
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 734ed8aaa1ad3557981c76f380227e7574861086
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023483"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521892"
 ---
-# <a name="get-cef-formatted-logs-from-your-device-or-appliance-into-azure-sentinel"></a>デバイスまたはアプライアンスの CEF 形式のログを Azure Sentinel に取得する
+# <a name="get-cef-formatted-logs-from-your-device-or-appliance-into-microsoft-sentinel"></a>デバイスまたはアプライアンスの CEF 形式のログを Microsoft Sentinel に取得する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-ネットワークとセキュリティに関する多くのデバイスおよびアプライアンスは、システム ログを Common Event Format (CEF) として知られる特殊な形式で Syslog を介して送信します。 この形式には標準の Syslog 形式よりも多くの情報が含まれ、解析されたキーと値の配置で情報が示されます。 Log Analytics エージェントは CEF ログを受け入れ、特に Azure Sentinel で使用するためにそれらのログの形式を設定してから、Azure Sentinel ワークスペースに転送します。
+ネットワークとセキュリティに関する多くのデバイスおよびアプライアンスは、システム ログを Common Event Format (CEF) として知られる特殊な形式で Syslog を介して送信します。 この形式には標準の Syslog 形式よりも多くの情報が含まれ、解析されたキーと値の配置で情報が示されます。 Log Analytics エージェントでは CEF ログを受け入れ、特に Microsoft Sentinel で使用するためにそれらのログの形式を設定してから、Microsoft Sentinel ワークスペースに転送します。
 
-この記事では、CEF 形式のログを使用してデータ ソースを接続するプロセスについて説明します。 この方法を使用するデータ コネクタの詳細については、[Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md)を参照してください。
+この記事では、CEF 形式のログを使用してデータ ソースを接続するプロセスについて説明します。 この方法を使用するデータ コネクタの詳細については、[Microsoft Sentinel データ コネクタのリファレンス](data-connectors-reference.md)に関するページを参照してください。
 
 この接続の作成には、次の 2 つの手順が必要になります。これらについては後ほど詳しく説明します。
 
-- Linux マシンまたは VM を専用のログ フォワーダーとして指定し、それに Log Analytics エージェントをインストールし、ログを Azure Sentinel ワークスペースに転送するようにエージェントを構成する。
-エージェントのインストールと構成は、配置スクリプトによって処理されます。
+- Linux マシンまたは VM を専用のログ フォワーダーとして指定し、それに Log Analytics エージェントをインストールし、ログを Microsoft Sentinel ワークスペースに転送するようにエージェントを構成する。 エージェントのインストールと構成は、配置スクリプトによって処理されます。
 
 - Syslog サーバーに対して CEF 形式でログを送信するようにデバイスを構成する。
 
 > [!NOTE]
-> データは、Azure Sentinel を実行しているワークスペースの地域に保存されます。
+> データは、Microsoft Sentinel を実行しているワークスペースの地理的な場所に格納されます。
 
 ## <a name="supported-architectures"></a>サポートされているアーキテクチャ
 
@@ -54,7 +53,7 @@ ms.locfileid: "131023483"
 
 ## <a name="prerequisites"></a>前提条件
 
-CEF データを Log Analytics に取り込むためには、Azure Sentinel ワークスペースが必要です。
+Log Analytics に CEF データを取り込むためには、Microsoft Sentinel ワークスペースが必要です。
 
 - このワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
@@ -62,7 +61,7 @@ CEF データを Log Analytics に取り込むためには、Azure Sentinel ワ�
 
 ## <a name="designate-a-log-forwarder-and-install-the-log-analytics-agent"></a>ログ フォワーダーを指定し、Log Analytics エージェントをインストールする
 
-このセクションでは、使用しているデバイスから Azure Sentinel ワークスペースにログを転送する Linux マシンを指定および構成する方法について説明します。
+このセクションでは、使用しているデバイスから Microsoft Sentinel ワークスペースにログを転送する Linux マシンを指定および構成する方法について説明します。
 
 Linux マシンは、オンプレミス環境の物理マシンや仮想マシン、Azure VM のほか、別のクラウドの VM でもかまいません。
 
@@ -70,13 +69,13 @@ Linux マシンは、オンプレミス環境の物理マシンや仮想マシ�
 
 - **Linux 用 Log Analytics エージェント** ("OMS エージェント" ともいいます) をインストールし、次の用途に構成します。
     - 組み込みの Linux Syslog デーモンからの CEF メッセージを TCP ポート 25226 でリッスンする
-    - メッセージの解析とエンリッチが行われる Azure Sentinel ワークスペースに対し、TLS で安全にメッセージを送信する
+    - メッセージの解析とエンリッチが行われる Microsoft Sentinel ワークスペースに対し、TLS で安全にメッセージを送信する
 
 - **組み込みの Linux Syslog デーモン** (rsyslog.d/syslog-ng) を次の用途に構成します。
     - セキュリティ ソリューションからの Syslog メッセージを TCP ポート 514 でリッスンする
     - CEF として識別したメッセージだけを localhost の Log Analytics エージェントに TCP ポート 25226 を使用して転送する
 
-詳細については、「[ログ フォワーダーをデプロイして Syslog および CEF ログを Azure Sentinel に取り込む](connect-log-forwarder.md)」を参照してください。
+詳細については、「[ログ フォワーダーをデプロイして Syslog および CEF ログを Microsoft Sentinel に取り込む](connect-log-forwarder.md)」を参照してください。
 
 ### <a name="security-considerations"></a>セキュリティに関する考慮事項
 
@@ -95,7 +94,7 @@ Linux マシンは、オンプレミス環境の物理マシンや仮想マシ�
 
 ログを CEF 形式で SIEM またはログ サーバーに送信するための、デバイス ベンダーが提供している構成手順を見つけてそれに従います。 
 
-データ コネクタ ギャラリーに製品が表示されている場合は、[Azure Sentinel データ コネクタ リファレンス](data-connectors-reference.md)を参照できます。以下のリストの設定を含む構成手順が記載されています。
+データ コネクタ ギャラリーに製品が表示されている場合は、詳細について [Microsoft Sentinel データ コネクタ リファレンス](data-connectors-reference.md)に関するページを参照できます。以下のリストの設定を含む構成手順が記載されています。
 
    - プロトコル = TCP
    - ポート = 514
@@ -114,17 +113,17 @@ Linux マシンは、オンプレミス環境の物理マシンや仮想マシ�
 
 Log Analytics で CEF イベントを検索するには、クエリ ウィンドウで `CommonSecurityLog` テーブルに対してクエリを実行します。
 
-データ コネクタ ギャラリーに表示される一部の製品では、最適な結果を得るには追加のパーサーを使用する必要があります。 これらのパーサーは、Kusto 関数を使用することによって実装されます。 詳細については、[Azure Sentinel データ コネクタ リファレンス](data-connectors-reference.md) ページで、お使いの製品に関するセクションを参照してください。
+データ コネクタ ギャラリーに表示される一部の製品では、最適な結果を得るには追加のパーサーを使用する必要があります。 これらのパーサーは、Kusto 関数を使用することによって実装されます。 詳細については、[Microsoft Sentinel データ コネクタ リファレンス](data-connectors-reference.md)に関するページで、お使いの製品に関するセクションを参照してください。
 
 これらの製品の CEF イベントを検索するには、"CommonSecurityLog" ではなく、Kusto 関数の名前をクエリ サブジェクトとして入力します。
 
-Azure Sentinel ポータルにある、お使いの製品のデータ コネクタ ページの **[Next steps]\(次のステップ\)** タブで、特にその製品用に作成された便利なサンプル クエリ、ブック、および分析ルール テンプレートを見つけることができます。
+Microsoft Sentinel ポータルにある、お使いの製品のデータ コネクタ ページの **[次のステップ]** タブで、特にその製品用に作成された便利なサンプル クエリ、ブック、分析ルール テンプレートを見つけることができます。
 
 データが何も表示されない場合は、[CEF のトラブルシューティング](./troubleshooting-cef-syslog.md)に関するページを参照してください。
 
 ### <a name="changing-the-source-of-the-timegenerated-field"></a>TimeGenerated フィールドのソースの変更
 
-既定では、Log Analytics エージェントでは、エージェントが Syslog デーモンからイベントを受信した時刻がスキーマの *TimeGenerated* フィールドに設定されます。 その結果、ソース システムでイベントが生成された時刻は Azure Sentinel に記録されません。
+既定では、Log Analytics エージェントでは、エージェントが Syslog デーモンからイベントを受信した時刻がスキーマの *TimeGenerated* フィールドに設定されます。 そのため、ソース システムでイベントが生成された時刻は Microsoft Sentinel に記録されません。
 
 ただし、次のコマンドを実行すると、 `TimeGenerated.py` スクリプトをダウンロードして実行できます。 このスクリプトにより、エージェントによる受信時刻ではなくソース システムの元の時刻を *TimeGenerated* フィールドに設定するように、Log Analytics エージェントが構成されます。
 
@@ -134,14 +133,14 @@ wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Sentinel がデバイスやアプライアンスから CEF ログを収集する方法について学習しました。 製品を Azure Sentinel に接続する方法の詳細については、次の記事を参照してください。
+このドキュメントでは、Microsoft Sentinel によってデバイスやアプライアンスから CEF ログを収集する方法について学習しました。 製品を Microsoft Sentinel に接続する方法の詳細については、次の記事を参照してください。
 
 - [Syslog/CEF フォワーダーのデプロイ](connect-log-forwarder.md)
-- [Azure Sentinel データ コネクタ リファレンス](data-connectors-reference.md)
+- [Microsoft Sentinel データ コネクタ リファレンス](data-connectors-reference.md)
 - [ログ フォワーダーの接続に関するトラブルシューティング](troubleshooting-cef-syslog.md#validate-cef-connectivity)
 
-Azure Sentinel で収集したデータの処理に関する詳細については、次の記事を参照してください。
+Microsoft Sentinel で収集したデータの処理に関する詳細については、次の記事を参照してください。
 
 - [CEF および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [Microsoft Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

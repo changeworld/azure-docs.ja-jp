@@ -1,32 +1,32 @@
 ---
-title: Microsoft Teams で Azure Sentinel インシデント チームを使用して共同作業を行う | Microsoft Docs
-description: Azure Sentinel から Microsoft Teams に接続して、Azure Sentinel データを使用してチームの他のメンバーと共同作業する方法について説明します。
+title: Microsoft Teams で Microsoft Azure Sentinel インシデント チームを使用して共同作業を行う | Microsoft Docs
+description: Microsoft Azure Sentinel から Microsoft Teams に接続して、Microsoft Azure Sentinel データを使用してチームで他のメンバーと共同作業する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 20bc5a35aa9afc3aced8818809a701f2080c245c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2a6cdf796ee8fdb7302a7f7e00e517ce99004774
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075450"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518111"
 ---
 # <a name="collaborate-in-microsoft-teams-public-preview"></a>Microsoft Teams での共同作業 (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Sentinel では、[Microsoft Teams](/microsoftteams/) との直接統合がサポートされているため、特定のインシデントでの共同作業に直接参加することができます。
+Microsoft Azure Sentinel では、[Microsoft Teams](/microsoftteams/) との直接統合がサポートされているため、特定のインシデントに対するチームワークに直接参加することができます。
 
 
 > [!IMPORTANT]
@@ -34,23 +34,23 @@ Azure Sentinel では、[Microsoft Teams](/microsoftteams/) との直接統合�
 
 ## <a name="overview"></a>概要
 
-Azure Sentinel から直接 Microsoft Teams と統合することで、チームが組織全体で、また外部の利害関係者とシームレスに共同作業を行うことができます。
+Microsoft Azure Sentinel から直接 Microsoft Teams と統合することで、チームが組織全体で、また外部の利害関係者とシームレスに共同作業を行うことができます。
 
-Microsoft Teams と Azure Sentinel "*インシデント チーム*" を使用して、関係者間のコミュニケーションと調整を一元化します。 インシデント チームは、重要度が高い進行中のインシデントに対する専用のカンファレンス ブリッジとして使用すると特に役立ちます。
+Microsoft Teams と Microsoft Azure Sentinel *インシデント チーム* を使用して、関係者間のコミュニケーションと調整を一元化します。 インシデント チームの能力が特に発揮されるのは、重要度が高い進行中のインシデントに特化した会議ブリッジとしての役割を担うときです。
 
-コミュニケーションとコラボレーションに Microsoft Teams を既に使用している組織は、Azure Sentinel の統合を使用して、会話や日常業務に直接セキュリティ データを取り入れることができます。 
+コミュニケーションとコラボレーションに Microsoft Teams を既に使用している組織は、Microsoft Azure Sentinel の統合を使用して、会話や日常業務に直接セキュリティ データを取り入れることができます。 
 
-Azure Sentinel インシデント チームには、お客様のチームが最も関連性の高いデータを手元に置いておけるように、Azure Sentinel からの最新のデータが常に保持されています。
+Microsoft Azure Sentinel インシデント チームには、お客様のチームが最も関連性の高いデータを手元に置いておけるように、Microsoft Azure Sentinel からの最新のデータが常に保持されています。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
-Azure Sentinel からチームを作成するには:
+Microsoft Azure Sentinel からチームを作成するには:
 
-- チームを作成するユーザーには、Azure Sentinel のインシデントの書き込みアクセス許可が必要です。 たとえば、[Azure Sentinel レスポンダー](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) ロールは、この特権に最適な最小ロールです。
+- チームを作成するユーザーには、Microsoft Azure Sentinel のインシデントの書き込みアクセス許可が必要です。 たとえば、[Microsoft Azure Sentinel レスポンダー](../role-based-access-control/built-in-roles.md#microsoft-sentinel-responder) ロールは、この特権に最適な最小ロールです。
 
 - チームを作成するユーザーには、Microsoft Teams でチームを作成するためのアクセス許可も必要です。
 
-- [閲覧者](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)、[レスポンダー](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)、[共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)のロールを持つユーザーを含む、すべての Azure Sentinel ユーザーは、アクセスを要求して、作成されたチームにアクセスできます。
+- [閲覧者](../role-based-access-control/built-in-roles.md#microsoft-sentinel-reader)、[レスポンダー](../role-based-access-control/built-in-roles.md#microsoft-sentinel-responder)、[共同作成者](../role-based-access-control/built-in-roles.md#microsoft-sentinel-contributor)のロールを持つユーザーを含む、すべての Microsoft Azure Sentinel ユーザーは、アクセスを要求して、作成されたチームにアクセスできます。
 
 ## <a name="use-an-incident-team-to-investigate"></a>インシデント チームを使用して調査する
 
@@ -58,7 +58,7 @@ Azure Sentinel からチームを作成するには:
 
 **インシデント チームを作成するには**:
 
-1. Azure Sentinel の **[脅威の管理]**  >  **[インシデント]** グリッドで、現在調査しているインシデントを選択します。
+1. Microsoft Azure Sentinel の **[脅威の管理]**  >  **[インシデント]** グリッドで、現在調査しているインシデントを選択します。
 
 1. 右側に表示されるインシデント ウィンドウの下部で **[アクション]**  >  **[チームの作成]** を選択します。
 
@@ -99,5 +99,5 @@ Azure Sentinel からチームを作成するには:
 
 詳細については、次を参照してください。
 
-- [チュートリアル:Azure Sentinel でインシデントを調査する](investigate-cases.md)
+- [チュートリアル: Microsoft Azure Sentinel でインシデントを調査する](investigate-cases.md)
 - [Microsoft Teams のチームとチャネルの概要](/microsoftteams/teams-channels-overview/)

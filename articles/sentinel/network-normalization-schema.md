@@ -1,34 +1,34 @@
 ---
-title: Azure Sentinel ネットワーク セッション正規化スキーマ リファレンス (パブリック プレビュー) | Microsoft Docs
-description: この記事では、Azure Sentinel のネットワーク セッション正規化スキーマを示します。
+title: Microsoft Sentinel ネットワーク セッション正規化スキーマ リファレンス (パブリック プレビュー) | Microsoft Docs
+description: この記事では、Microsoft Sentinel ネットワーク セッション正規化スキーマを示します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/17/2021
+ms.date: 11/09/2021
 ms.author: ofshezaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bca951ee50a503aa91a0dec680a787a5c2f95ad8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: df994e2be047e2829ea56423b85eee32e63c0154
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083871"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520420"
 ---
-# <a name="azure-sentinel-network-session-normalization-schema-reference-public-preview"></a>Azure Sentinel ネットワーク セッション正規化スキーマ リファレンス (パブリック プレビュー)
+# <a name="microsoft-sentinel-network-session-normalization-schema-reference-public-preview"></a>Microsoft Sentinel ネットワーク セッション正規化スキーマ リファレンス (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ネットワーク セッション正規化スキーマは、IP ネットワークのアクティビティを記述するために使用されます。 これには、ネットワーク接続とネットワーク セッションが含まれます。 そのようなイベントは、オペレーティング システム、ルーター、ファイアウォール、侵入防止システム、Web セキュリティ ゲートウェイなどによって報告されます。
 
-Azure Sentinel での正規化の詳細については、「[正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
+Microsoft Sentinel での正規化の詳細については、「[正規化と Advanced SIEM Information Model (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > この記事では、ネットワーク正規化スキーマのバージョン 0.2 について説明します。[バージョン 0.1](normalization-schema-v1.md) は、ASIM を利用できるようになる前にリリースされたため、ASIM と整合していない部分がいくつかあります。 詳細については、[ネットワーク正規化スキーマのバージョン間の相違点](normalization-schema-v1.md#changes)に関するページを参照してください。 
@@ -105,19 +105,19 @@ Azure Sentinel での正規化の詳細については、「[正規化と Azure 
 - **imWebSession** は、通常であれば Web サーバー、Web プロキシ、Web セキュリティ ゲートウェイによって報告される、HTTP セッションの場合
 - **inNetworkNotables** は、通常であれば疑わしいものとして、検出エンジンによって検出されるセッションの場合。 注目すべきイベントは、通常、侵入防止システム、ファイアウォール、Web セキュリティ ゲートウェイによって報告されます。
 
-[Azure Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelNetworkSession)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
+[Microsoft Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelNetworkSession)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
 
 ### <a name="built-in-source-specific-parsers"></a>組み込みのソース固有パーサー
 
-Azure Sentinel には、以下に示す組み込みの製品固有のネットワーク セッション パーサーが用意されています。
+Microsoft Sentinel には、以下に示す組み込みの製品固有のネットワーク セッション パーサーが用意されています。
 
 - ソース固有のパーサー:
-  - **Microsoft 365 Defender for Endpoints** - vimNetworkSessionMicrosoft365Defender
+  - **Microsoft 365 Defender for Endpoint** - vimNetworkSessionMicrosoft365Defender
   - **Microsoft Defender for IoT - エンドポイント (MD4IoT)** - vimNetworkSessionMD4IoT
   - **Microsoft Sysmon for Linux** - vimNetworkSessionSysmonLinux
   - **Windows イベント ファイアウォール** - Windows Events 515x と Log Analytics エージェントまたは Azure Monitor エージェントを使用して、Event または WindowsEvent テーブルの vimNetworkSessionMicrosoftWindowsEventFirewall に収集された Windows ファイアウォール アクティビティ 
 
-パーサーは、[Azure Sentinel GitHub リポジトリ](https://aka.ms/AzSentinelNetworkSession)からデプロイできます。
+パーサーは、[Microsoft Sentinel GitHub リポジトリ](https://aka.ms/AzSentinelNetworkSession)からデプロイできます。
 
 ### <a name="add-your-own-normalized-parsers"></a>独自の正規化されたパーサーを追加する
 
@@ -352,9 +352,9 @@ HTTP セッションは、HTTP プロトコルを使用するネットワーク 
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel での正規化](normalization.md)
-- [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
-- [Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
-- [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Azure Sentinel プロセス イベント正規化スキーマ リファレンス](process-events-normalization-schema.md)
-- [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)
+- [Microsoft Sentinel での正規化](normalization.md)
+- [Microsoft Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
+- [Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
+- [Microsoft Sentinel の DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
+- [Microsoft Sentinel プロセス イベント正規化スキーマ リファレンス](process-events-normalization-schema.md)
+- [Microsoft Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)

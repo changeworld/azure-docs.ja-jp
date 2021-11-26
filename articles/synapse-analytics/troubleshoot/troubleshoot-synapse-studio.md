@@ -8,12 +8,12 @@ ms.subservice: troubleshooting
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 16608f77971c3c19836d8f956512f28f945d3667
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: fd560856ab087727d73317eaef5de01950281db9
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809060"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399479"
 ---
 # <a name="synapse-studio-troubleshooting"></a>Synapse Studio のトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "109809060"
 ![現象 2](media/troubleshooting-synapse-studio/symptom2.png)
  
 
-## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
+### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
 > [!NOTE] 
 >    次のトラブルシューティング手順は、Chromium Edge と Chrome を対象としています。 同じトラブルシューティング手順を他のブラウザー (FireFox など) に使用することもできますが、[開発者ツール] ウィンドウは、この TSG のスクリーンショットとは異なるレイアウトになる場合があります。 可能であれば、トラブルシューティングにクラシック Edge は使用しないでください (特定の状況で不正確な情報が表示される可能性があるため)。
@@ -100,6 +100,47 @@ URL 列が次のパターンに一致する項目を探します。
 ![開発者ツールのコンソール設定](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
 ![タイムスタンプの表示](media/troubleshooting-synapse-studio/show-time-stamp.png)
+
+## <a name="notebook-websocket-connection-issue"></a>ノートブック Websocket 接続における問題
+
+### <a name="symptom"></a>症状
+エラー メッセージが表示される: ノートブック接続が予期せず閉じられました。 接続を再確立するには、ノートブックを再度実行してください。 診断情報: websocket_close_error (関連付け ID) 
+
+![ノートブック Websocket 接続における問題](media/troubleshooting-synapse-studio/notebook-websocket-connection-issue.png)
+
+### <a name="root-cause"></a>根本原因: 
+ノートブックの実行は、次の URL への WebSocket 接続の確立に依存します: 
+``` 
+wss://{workspace}.dev.azuresynapse.net/jupyterApi/versions/1/sparkPools/{spark-pool}/api/kernels/{kernel-id}/channels 
+``` 
+
++ **{workspace}** は Synapse ワークスペースの名前です。 
++ **{spark-pool}** は、現在作業している Spark プールの名前です。 
++ **{kernel-id}** は、ノートブック セッションを区別するために使われる GUID です。 
+
+WebSocket 接続を設定するとき、Synapse Studio は WebSocket 要求の Sec-WebSocket-Protocol ヘッダーにアクセス トークン (JWT ベアラー トークン) を含めます。 
+
+WebSocket 要求がブロックされる場合や、要求ヘッダー内の JWT トークンがネットワーク環境で編集される場合があります。 これにより、Synapse Notebook はサーバーへの接続を確立できず、ノートブックを実行できなくなります。 
+
+### <a name="action"></a>アクション: 
+
+可能であれば、corpnet の内部か/外部かを変える、または別のワークステーションで Synapse Notebook にアクセスするなど、ネットワーク環境を切り替えてみてください。 
+
++ 別のネットワーク環境で、同じワークステーションでノートブックを実行できる場合は、ネットワーク管理者と連携して、WebSocket 接続がブロックされているかどうかを確認してください。 
+
++ 同じネットワーク環境で、別のワークステーションでノートブックを実行できる場合は、WebSocket 要求をブロックする可能性があるブラウザー プラグインをインストールしていないことを確認してください。 
+
+それ以外には、ネットワーク管理者に問い合わせて、次の URL パターンを持つ送信用 WebSocket 要求が許可されており、その要求ヘッダーが編集されていないことを確認してください: 
+
+``` 
+wss://{workspace}.dev.azuresynapse.net/{path} 
+``` 
++ **{workspace}** は Synapse ワークスペースの名前です。 
+
++ **{path}** は URI 内の任意のサブパス (つまり、スラッシュ文字が含まれる) を示します。 
+
+この URL パターンは、潜在的な接続の問題が将来的に発生することなく WebSocket に依存する新しい機能を Synapse に追加することを許可するため、「根本原因」セクションに示されているパターンほど固定されていません。 
+
 
 ## <a name="next-steps"></a>次のステップ
 前の手順で問題が解決しない場合は、[サポート チケットを作成](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)してください

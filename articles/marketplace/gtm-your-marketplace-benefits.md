@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - 商用マーケットプレースのベネフィット、Azure Marketplace
-description: Go-To-Market Services - このセクションでは、公開元が使用できる Microsoft リソースについて説明します。
+title: Go-To-Market サービス - 商用マーケットプレースのベネフィット、Azure Marketplace
+description: Go-To-Market サービス - 発行元が使用できる Microsoft のリソースについて説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/23/2021
+ms.date: 11/05/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 9d957adf84bf6f9cf9b48c5d5554d27206d8c382
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 667ca5c0b273aaf022d6e256626e7f51eef1f95c
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708381"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402572"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 

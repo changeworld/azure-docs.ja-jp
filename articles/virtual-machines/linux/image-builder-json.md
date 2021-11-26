@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f2581033d0ffefa6d5014478e7eee68f786f49e
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d4e8832222cb1fc0a4ec431f1eeedcdcda0c5a11
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132057520"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400967"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Azure Image Builder テンプレートを作成する 
 
@@ -34,7 +34,6 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
       "<name>": "<value>"
     },
     "identity": {},          
-    "dependsOn": [], 
     "properties": { 
       "buildTimeoutInMinutes": <minutes>, 
       "vmProfile": {
@@ -93,7 +92,7 @@ Azure VM Image Builder サービスでは、顧客が単一リージョンのデ
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
-既定では、Image Builder では "Standard_D1_v2" ビルド VM が使用されます。これは、`source` で指定したイメージから構築されます。 これはオーバーライド可能で、次の理由から行う場合があります:
+既定では、"Standard_D1_v2" ビルド VM (Gen1 イメージの場合) および "Standard_D2ds_v4" ビルド VM (Gen2 イメージの場合) が使用されます。これは、`source` で指定したイメージから構築されます。 これはオーバーライド可能で、次の理由から行う場合があります:
 1. より大きなメモリや CPU、および大きなファイル (GB) の処理が必要なカスタマイズの実行。
 2. Windows ビルドの実行。"Standard_D2_v2" または同等の VM サイズを使用する必要があります。
 3. [VM の分離](../isolation.md)が必要。
@@ -124,16 +123,6 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
 ## <a name="tags"></a>Tags
 
 これらは、生成されるイメージに対して指定できるキー/値ペアです。
-
-## <a name="depends-on-optional"></a>依存関係 (省略可能)
-
-この省略可能なセクションを使って、先に進む前に、依存関係が揃っていることを確認できます。 
-
-```json
-    "dependsOn": [],
-```
-
-詳しくは、「[リソースの依存関係を定義する](../../azure-resource-manager/templates/resource-dependency.md#dependson)」をご覧ください。
 
 ## <a name="identity"></a>ID
 

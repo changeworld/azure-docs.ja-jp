@@ -7,15 +7,15 @@ ms.date: 11/5/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 79cb958616bc709ddd2dd866283eed0bd90d5610
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 636fd6e0ee1a259d132c84a55cae078a3fbaa0c5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866729"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524362"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
-[Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
+[Azure Files](storage-files-introduction.md) は、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System)経由でアクセスできる、クラウド内のフル マネージドのファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
 
 この記事では、Azure Files での Azure File Sync の使用を含め、Azure Files の機能についてよく寄せられる質問にお答えします。 ご質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
 
@@ -350,12 +350,12 @@ ms.locfileid: "131866729"
 * <a id="when-to-use-nfs"></a>
 **Azure Files NFS を使用するタイミングは?**
 
-    [NFS 共有 (プレビュー)](files-nfs-protocol.md) を参照してください。
+    [NFS 共有](files-nfs-protocol.md)に関するページを参照してください。
 
 * <a id="backup-nfs-data"></a>
 **NFS 共有に格納されているデータをバックアップする方法は?**
 
-    NFS 共有上のデータのバックアップは、rsync などの使い慣れたツールや、サードパーティのバックアップ パートナーの製品などを使用するように計画できます。 初期プレビューの一部には、[Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、[Veeam](https://www.veeam.com/blog/?p=123438)、[Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) などの複数のバックアップ パートナーが含まれています。これらのソリューションは、Azure Files の SMB 3.x と NFS 4.1 の両方で動作するように拡張されました。
+    NFS 共有上のデータのバックアップは、rsync などの使い慣れたツールや、サードパーティのバックアップ パートナーの製品などを使用するように計画できます。 [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、[Veeam](https://www.veeam.com/blog/?p=123438)、[Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) を含む複数のバックアップ パートナーが、自社のソリューションを Azure Files の SMB 3.x と NFS 4.1 の両方で動作するように拡張しています。
 
 * <a id="migrate-nfs-data"></a>
 **既存のデータを NFS 共有に移行することはできますか?**

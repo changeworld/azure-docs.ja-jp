@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/11/2021
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: fae859e0b762a36378819d48325dda0077407628
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 677703e455d985b91f77a71acce3f7809525b368
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012380"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519574"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
@@ -21,18 +21,18 @@ ms.locfileid: "131012380"
 > この記事は、Isolated App Service プランで使用される App Service Environment v2 と App Service Environment v3 に関するものです
 > 
 
-Azure App Service Environment (ASE) は、インターネットでアクセス可能なエンドポイントまたは Azure Virtual Network (VNet) の内部アドレスのエンドポイントを使用して作成できます。 内部エンドポイントを使用して作成すると、内部ロード バランサー (ILB) と呼ばれる Azure コンポーネントによってそのエンドポイントが提供されます。 内部 IP アドレスの ASE は、ILB ASE と呼ばれます。 パブリック エンドポイントを持つ ASE は、外部 ASE と呼ばれます。 
+Azure App Service Environment (ASE) は、インターネットにアクセス可能なエンドポイントまたは Azure Virtual Network 内の内部アドレスのエンドポイントを使用して作成できます。 内部エンドポイントを使用して作成すると、内部ロード バランサー (ILB) と呼ばれる Azure コンポーネントによってそのエンドポイントが提供されます。 内部 IP アドレスの ASE は、ILB ASE と呼ばれます。 パブリック エンドポイントを持つ ASE は、外部 ASE と呼ばれます。 
 
 ASE は、Azure Portal または Azure Resource Manager テンプレートを使用して作成できます。 この記事では、Resource Manager テンプレートを使用して外部 ASE または ILB ASE を作成するために必要な手順と構文について説明します。 Azure portal で ASEv2 を作成する方法については、[外部 ASE の作成][MakeExternalASE]に関するページ、または [ILB ASE の作成][MakeILBASE]に関するページを参照してください。
 Azure portal で ASEv3 を作成する方法については、「[ASEv3 を作成する][Create ASEv3]」を参照してください。
 
-Azure Portal で ASE を作成するときに、同時に VNet を作成するか、既存の VNet にデプロイするかを選択できます。 
+Azure portal で ASE を作成する場合は、同時に仮想ネットワークを作成するか、またはデプロイする既存の仮想ネットワークを選択できます。 
 
 テンプレートから ASE を作成するときは、以下が必要です。 
 
-* Resource Manager VNet。
-* その VNet のサブネット。 推奨される ASE のサブネット サイズは、将来的な規模の拡大およびスケーリングのニーズに対応できる、256 のアドレスを持つ `/24` です。 ASE を作成した後は、サイズ変更はできません。
-* 既存の VNet とサブネットに ASE を作成する場合は、既存のリソース グループ名、仮想ネットワーク名、サブネット名が必要です。
+* Azure Virtual Network。
+* その仮想ネットワーク内のサブネット。 推奨される ASE のサブネット サイズは、将来的な規模の拡大およびスケーリングのニーズに対応できる、256 のアドレスを持つ `/24` です。 ASE を作成した後は、サイズ変更はできません。
+* 既存の仮想ネットワークとサブネットに ASE を作成する場合は、既存のリソース グループ名、仮想ネットワーク名、サブネット名が必要です。
 * デプロイ先のサブスクリプション。
 * デプロイ先の場所。
 
@@ -52,17 +52,17 @@ ASE を作成する場合は、これらの Resource Manager テンプレート�
 * *internalLoadBalancingMode*: 必須。 ほとんどの場合、これは 3 に設定します。これは、ポート 80/443 での HTTP と HTTPS の両方のトラフィックを意味します。 このプロパティを 0 に設定すると、HTTP/HTTPS トラフィックでは、パブリック VIP が引き続き使用されます。
 * *zoneRedundant*: 必須。 ほとんどの場合、これは false に設定します。これにより、ASE は可用性ゾーン (AZ) にデプロイされません。 ゾーン ASE は一部のリージョンでデプロイできます。[こちら][AZ Support for ASEv3]を参照してください。
 * *dedicatedHostCount*: 必須。 ほとんどの場合、これは 0 に設定します。これにより、専用ホストをデプロイせずに ASE が通常通りデプロイされます。
-* *useExistingVnetandSubnet*: 必須。 既存の VNet とサブネットを使用する場合は true に設定します。 
-* *vNetResourceGroupName*: 既存の VNet とサブネットを使用する場合は必須。 このパラメーターでは、ASE を配置する既存の VNet とサブネットのリソース グループ名を定義します。
-* *virtualNetworkName*: 既存の VNet とサブネットを使用する場合は必須。 このパラメーターでは、ASE を配置する既存の VNet とサブネットの仮想ネットワーク名を定義します。
-* *subnetName*: 既存の VNet とサブネットを使用する場合は必須。 このパラメーターでは、ASE を配置する既存の VNet とサブネットのサブネット名を定義します。
+* *useExistingVnetandSubnet*: 必須。 既存の仮想ネットワークとサブネットを使用する場合は、true に設定します。 
+* *vNetResourceGroupName*: 既存の仮想ネットワークとサブネットを使用している場合は必須です。 このパラメーターでは、ASE を配置する既存の仮想ネットワークとサブネットのリソース グループ名を定義します。
+* *virtualNetworkName*: 既存の仮想ネットワークとサブネットを使用している場合は必須です。 このパラメーターでは、ASE を配置する既存の仮想ネットワークとサブネットの仮想ネットワーク名を定義します。
+* *subnetName*: 既存の仮想ネットワークとサブネットを使用している場合は必須です。 このパラメーターでは、ASE を配置する既存の仮想ネットワークとサブネットのサブネット名を定義します。
 * *createPrivateDNS*: ASEv3 の作成後にプライベート DNS ゾーンを作成する場合は true に設定します。 ILB ASE の場合、このパラメーターを true に設定すると、*appserviceenvironment.net* DNS サフィックスが付加された ASE 名としてプライベート DNS ゾーンが作成されます。 
 ### <a name="asev2-parameters"></a>ASEv2 のパラメーター
 * *aseName*: このパラメーターでは、一意の ASE 名を定義します。
 * *location*: このパラメーターでは、App Service Environment の場所を定義します。
-* *existingVirtualNetworkName*: このパラメーターでは、ASE を配置する既存の VNet とサブネットの仮想ネットワーク名を定義します。
-* *existingVirtualNetworkResourceGroup*: このパラメーターでは、ASE を配置する既存の VNet とサブネットのリソース グループ名を定義します。
-* *subnetName*: このパラメーターでは、ASE を配置する既存の VNet とサブネットのサブネット名を定義します。
+* *existingVirtualNetworkName*: このパラメーターでは、ASE を配置する既存の仮想ネットワークとサブネットの仮想ネットワーク名を定義します。
+* *existingVirtualNetworkResourceGroup*: このパラメーターでは、ASE を配置する既存の仮想ネットワークとサブネットのリソース グループ名を定義します。
+* *subnetName*: このパラメーターでは、ASE を配置する既存の仮想ネットワークとサブネットのサブネット名を定義します。
 * *internalLoadBalancingMode*:ほとんどの場合、これは 3 に設定します。この設定により、ポート 80/443 の HTTP/HTTPS トラフィックと、ASE 上の FTP サービスによってリッスンされているコントロール/データ チャネル ポートは、ILB が割り当てられた仮想ネットワークの内部アドレスにバインドされます。 このプロパティを 2 に設定すると、FTP サービスに関連するポート (コントロール チャネルとデータ チャネルの両方) のみが ILB アドレスにバインドされます。 このプロパティを 0 に設定すると、HTTP/HTTPS トラフィックでは、パブリック VIP が引き続き使用されます。
 * *dnsSuffix*:このパラメーターでは、ASE に割り当てられる既定のルート ドメインを定義します。 Azure App Service のパブリック版では、すべての Web アプリの既定のルート ドメインは *azurewebsites.net* です。 ILB ASE はユーザーの仮想ネットワークの内部にあるため、パブリック サービスの既定のルート ドメインを使用しても意味がありません。 ILB ASE には、会社の内部仮想ネットワーク内での使用に適した既定のルート ドメインを用意する必要があります。 たとえば、Contoso Corporation では、Contoso の仮想ネットワーク内でのみ解決およびアクセス可能になるよう設計されたアプリに対して、*internal-contoso.com* という既定のルート ドメインを使用できます。 
 * *ipSslAddressCount*:ILB ASE には単一の ILB アドレスしかないため、このパラメーターは、*azuredeploy.json* ファイル内で自動的に既定値の 0 に設定されます。 ILB ASE 向けの明示的な IP SSL アドレスはありません。 そのため、ILB ASE の IP SSL アドレス プールは、0 に設定する必要があります。 それ以外の場合、プロビジョニングのエラーが発生します。

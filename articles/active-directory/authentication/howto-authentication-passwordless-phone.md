@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 10/29/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19e4a99967e8fdc64eb7d10c66649cac59db048a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 11e8af7f7e955e960644f2748087a86e1aa5b61f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456253"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484623"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリでパスワードなしのサインインを有効にする 
 
@@ -61,7 +61,10 @@ Azure AD では、サインイン プロセス中に使用できる認証方法�
 1. 追加された各グループまたはユーザーは既定で、パスワードレスとプッシュ通知の両方のモード ("任意" モード) で Microsoft Authenticator が使用できるようになっています。 これを変更するには、各行に対して次のことを行います。
    1. **[...]**  >  **[構成]** の順に移動します。
    1. **認証モード** - **[任意]** または **[パスワードレス]** を選択します。 **［プッシュ］** を選択すると、パスワードレスの電話サインイン情報が使用できなくなります。 
-1. 新しいポリシーを適用するには、 **[保存]** を選択します。
+1. 新しいポリシーを適用するには、 **[保存]** をクリックします。 
+
+   >[!NOTE]
+   >保存しようとしたときにエラーが表示される場合は、追加されているユーザーまたはグループの数が原因である可能性があります。 回避策として、追加しようとしているユーザーとグループを 1 つのグループに置き換え、同じ操作で、もう一度 **[保存]** をクリックします。
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Microsoft Authenticator のユーザー登録と管理
 

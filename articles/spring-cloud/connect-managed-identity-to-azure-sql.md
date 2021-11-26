@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 1a87a2f0d52895b97efdbe79ba3a53082efeccb2
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: e950667e1132c8eba350a5ffcada5e5d667a1288
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860308"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485643"
 ---
 # <a name="use-a-managed-identity-to-connect-azure-sql-database-to-an-azure-spring-cloud-app"></a>マネージド ID を使用して Azure SQL Database を Azure Spring Cloud アプリに接続する
 
@@ -60,6 +60,6 @@ spring.datasource.url=jdbc:sqlserver://$AZ_DATABASE_NAME.database.windows.net:14
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Spring Cloud でマネージド ID を使用して Storage Blob にアクセスする方法](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](./how-to-enable-system-assigned-managed-identity.md)
+* [Azure Spring Cloud のアプリケーションのシステム割り当てマネージド ID を有効にする方法](./how-to-enable-system-assigned-managed-identity.md)
 * [Azure リソース用マネージド ID の詳細](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する](./github-actions-key-vault.md)

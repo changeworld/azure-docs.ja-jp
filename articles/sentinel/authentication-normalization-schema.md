@@ -1,38 +1,38 @@
 ---
-title: Azure Sentinel 認証正規化スキーマ リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel 認証正規化スキーマについて説明します。
+title: Microsoft Azure Sentinel 認証正規化スキーマ リファレンス | Microsoft Docs
+description: この記事では、Microsoft Azure Sentinel 認証正規化スキーマについて説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/22/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9b692046f0e812b903570ecd6e788ba83db6b96b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 62bf35c4638433cc4e9820f8d0bb7e2592bcebf5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075416"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517579"
 ---
-# <a name="azure-sentinel-authentication-normalization-schema-reference-public-preview"></a>Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)
+# <a name="microsoft-sentinel-authentication-normalization-schema-reference-public-preview"></a>Microsoft Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 認証情報モデルは、ユーザー認証、サインイン、サインアウトに関連するイベントを記述するために使用されます。認証イベントは数多くのレポート デバイスによって、通常はイベント ストリームの一部として、他のイベントと共に送信されます。
 
-たとえば、Windows は、いくつかの認証イベントを、他の OS アクティビティ イベントと共に送信します。 その結果、ほとんどの場合、認証イベントは異なる Azure Sentinel テーブルに格納され、KQL 関数を使用して正規化され、さらに関連する認証イベントのみがフィルター処理されます。
+たとえば、Windows は、いくつかの認証イベントを、他の OS アクティビティ イベントと共に送信します。 その結果、ほとんどの場合、認証イベントは異なる Microsoft Azure Sentinel テーブルに格納され、KQL 関数を使用して正規化され、さらに関連する認証イベントのみがフィルター処理されます。
 
 認証イベントには、VPN ゲートウェイやドメイン コントローラーなどの認証に重点を置いたシステムからのイベントと、コンピューターやファイアウォールなどのエンド システムへの直接認証の両方が含まれます。
 
-Azure Sentinel での正規化の詳細については、「[正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
+Microsoft Azure Sentinel での正規化の詳細については、「[正規化と Advanced SIEM 情報モデル (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > 現在、認証正規化スキーマはプレビュー段階です。 この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。
@@ -42,7 +42,7 @@ Azure Sentinel での正規化の詳細については、「[正規化と Azure 
 
 ## <a name="parsers"></a>パーサー
 
-Azure Sentinel には、次の組み込みの製品固有の認証イベント パーサーが用意されています。 
+Microsoft Azure Sentinel には、次の組み込みの製品固有の認証イベント パーサーが用意されています。 
 
 - セキュリティ イベント (4624、4625、4634、4647) として報告される **Windows サインイン**。Log Analytics エージェントまたは Azure Monitor エージェントを使用して収集されます。
 - Microsoft 365 Defender for Endpoint によって報告される **Windows サインイン**。Microsoft 365 Defender コネクタを使用して収集されます。
@@ -52,13 +52,13 @@ Azure Sentinel には、次の組み込みの製品固有の認証イベント �
 
 一覧表示されたすべてのパーサーを統一する、ソースに依存しないパーサーを使用して、構成済みのソース全体で確実にデータを分析するには、クエリで **imAuthentication** をテーブル名として使用します。
 
-[Azure Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelAuth)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
+[Microsoft Azure Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelAuth)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
 
 
 
 ## <a name="normalized-content"></a>正規化されたコンテンツ
 
-認証 ASIM スキーマのサポートには、正規化された認証パーサーを使用した次の組み込み分析規則のサポートも含まれています。 Azure Sentinel GitHub リポジトリへのリンクは以下で参照として示されていますが、これらのルールは [Azure Sentinel Analytics ルール ギャラリー](detect-threats-built-in.md)でも見つけることができます。 リンクされた GitHub ページを使用して、一覧のルールに関連するハンティング クエリをコピーします。
+認証 ASIM スキーマのサポートには、正規化された認証パーサーを使用した次の組み込み分析規則のサポートも含まれています。 Microsoft Sentinel GitHub リポジトリへのリンクは下に参照として掲載していますが、これらのルールは [Microsoft Sentinel Analytics ルール ギャラリー](detect-threats-built-in.md)でも見つけることができます。 リンクされた GitHub ページを使用して、一覧のルールに関連するハンティング クエリをコピーします。
 
 - [Potential Password Spray Attack (Uses Authentication Normalization) (潜在的なパスワード スプレー攻撃 (認証正規化を使用))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthPasswordSpray.yaml)
  - [Brute force attack against user credentials (Uses Authentication Normalization) (ユーザー資格情報に対するブルート フォース攻撃 (認証正規化を使用))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthBruteForce.yaml)
@@ -66,7 +66,7 @@ Azure Sentinel には、次の組み込みの製品固有の認証イベント �
  - [Sign-ins from IPs that attempt sign-ins to disabled accounts (Uses Authentication Normalization) (無効なアカウントへのサインインを試行する IP からのサインイン (認証正規化を使用))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imSigninAttemptsByIPviaDisabledAccounts.yaml)
 
 
-正規化された認証分析規則は、複数のソースにまたがる攻撃を検出する点において、独特です。 そのため、たとえば、ユーザーが別の国から、関連性のない異なるシステムにログインした場合、Azure Sentinel はこの脅威を検出するようになります。
+正規化された認証分析規則は、複数のソースにまたがる攻撃を検出する点において、独特です。 そのため、たとえば、ユーザーが別の国から、関連性のない異なるシステムにログインした場合、Microsoft Azure Sentinel によってこの脅威が検出されるようになります。
 
 ## <a name="schema-details"></a>スキーマの詳細
 
@@ -192,8 +192,8 @@ Azure Sentinel には、次の組み込みの製品固有の認証イベント �
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel での正規化](normalization.md)
-- [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
-- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
-- [Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)](process-events-normalization-schema.md)
+- [Microsoft Azure Sentinel での正規化](normalization.md)
+- [Microsoft Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
+- [Microsoft Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
+- [Microsoft Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
+- [Microsoft Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)](process-events-normalization-schema.md)

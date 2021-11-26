@@ -1,34 +1,34 @@
 ---
-title: Azure Sentinel ファイル イベント正規化スキーマ リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel ファイル イベント正規化スキーマについて説明します。
+title: Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス | Microsoft Docs
+description: この記事では、Microsoft Sentinel ファイル イベント正規化スキーマについて説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/22/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ba1dd4cd4b3552466db55723432f5e9c79593070
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1e5e0752459362dbb3cea63b9adb5f453f40d2fd
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055188"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524476"
 ---
-# <a name="azure-sentinel-file-event-normalization-schema-reference-public-preview"></a>Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)
+# <a name="microsoft-sentinel-file-event-normalization-schema-reference-public-preview"></a>Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ファイル イベント正規化スキーマは、ファイルまたはドキュメントの作成、変更、削除などのファイル アクティビティを記述するために使用されます。 このようなイベントは、オペレーティング システム、Azure Files などのファイル ストレージ システム、Microsoft SharePoint などのドキュメント管理システムによって報告されます。
 
-Azure Sentinel での正規化の詳細については、「[正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
+Microsoft Sentinel での正規化の詳細については、「[正規化と Advanced SIEM Information Model (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > 現在、ファイル イベント正規化スキーマはプレビュー段階です。 この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。
@@ -38,7 +38,7 @@ Azure Sentinel での正規化の詳細については、「[正規化と Azure 
 
 ## <a name="parsers"></a>パーサー
 
-Azure Sentinel には、次の組み込みの製品固有のファイル イベント パーサーが用意されています。
+Microsoft Sentinel には、次の組み込みの製品固有のファイル イベント パーサーが用意されています。
 
 - **Sysmon ファイル アクティビティ イベント** (イベント 11、23、26)。Log Analytics エージェントまたは Azure Monitor エージェントを使用して収集されます。
 - **Microsoft Office 365 SharePoint と OneDrive のイベント**。Office アクティビティ コネクタを使用して収集されます。
@@ -47,7 +47,7 @@ Azure Sentinel には、次の組み込みの製品固有のファイル イベ�
 
 組み込みのすべてのパーサーを 1 つにまとめる、ソースに依存しないパーサーを使用して、構成済みのソース全体にわたって分析が実行されるようにするには、クエリでテーブル名として imFileEvent を使用します。
 
-[Azure Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelFileEvent)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
+[Microsoft Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelFileEvent)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
 
 ## <a name="add-your-own-normalized-parsers"></a>独自の正規化されたパーサーを追加する
 
@@ -58,7 +58,7 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 
 ## <a name="normalized-content-for-file-activity-data"></a>ファイル アクティビティ データの正規化されたコンテンツ
 
-ファイル アクティビティ ASIM スキーマのサポートには、正規化されたファイル アクティビティ パーサーを使用した次の組み込み分析規則のサポートも含まれています。 Azure Sentinel GitHub リポジトリへのリンクは以下で参照として示されていますが、これらのルールは [Azure Sentinel Analytics ルール ギャラリー](detect-threats-built-in.md)でも見つけることができます。 リンクされた GitHub ページを使用して、一覧のルールに関連するハンティング クエリをコピーします。
+ファイル アクティビティ ASIM スキーマのサポートには、正規化されたファイル アクティビティ パーサーを使用した次の組み込み分析規則のサポートも含まれています。 Microsoft Sentinel GitHub リポジトリへのリンクは下に参照として掲載していますが、これらのルールは [Microsoft Sentinel Analytics ルール ギャラリー](detect-threats-built-in.md)でも見つけることができます。 リンクされた GitHub ページを使用して、一覧のルールに関連するハンティング クエリをコピーします。
 
 
 - [SUNBURST and SUPERNOVA backdoor hashes (Normalized File Events) (SUNBURST と SUPERNOVA のバックドア ハッシュ (正規化されたファイル イベント))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimFileEvent/imFileESolarWindsSunburstSupernova.yaml)
@@ -203,9 +203,9 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel での正規化](normalization.md)
-- [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
-- [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
-- [Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)](process-events-normalization-schema.md)
-- [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)
+- [Microsoft Sentinel での正規化](normalization.md)
+- [Microsoft Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
+- [Microsoft Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
+- [Microsoft Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
+- [Microsoft Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)](process-events-normalization-schema.md)
+- [Microsoft Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)

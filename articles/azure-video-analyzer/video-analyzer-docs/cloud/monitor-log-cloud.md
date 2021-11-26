@@ -4,16 +4,19 @@ description: この記事では、Azure Video Analyzer サービスでの監視�
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 370904873a3f86ebee1cd530f349c55306588d08
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d4a2a6b37c02aad5779085514bc5854df4d8a823
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564007"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400544"
 ---
 # <a name="monitor-and-log"></a>監視とログ記録
 
-[!INCLUDE [header](includes/cloud-env.md)]
+![クラウドのアイコン](media/env-icon/cloud.png)  
+または、[エッジでの監視とログ](../edge/monitor-log-edge.md)に関する記事を参照してください。
+
+---
 
 この記事では、Azure Video Analyzer サービスによって生成されるイベントとログについて説明します。 また、サービスによって生成されるログを使用する方法と、サービス イベントを監視する方法についても説明します。
 

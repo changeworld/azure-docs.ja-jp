@@ -1,28 +1,28 @@
 ---
-title: Azure Sentinel でアラートの詳細をカスタマイズする | Microsoft Docs
+title: Microsoft Sentinel でアラートの詳細をカスタマイズする | Microsoft Docs
 description: アラートの内容に基づいて、アラートの名前と説明を指定する方法を、その重大度と割り当てられた戦術と共にカスタマイズします。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b6cdd8bcc9bf3a472cda990a2b4013bdb7a709f4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6ce94549c4e58e0a19fff40e944ece22f948f953
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060746"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521722"
 ---
-# <a name="customize-alert-details-in-azure-sentinel"></a>Azure Sentinel でアラートの詳細をカスタマイズする 
+# <a name="customize-alert-details-in-microsoft-sentinel"></a>Microsoft Sentinel でアラートの詳細をカスタマイズする 
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -40,7 +40,7 @@ ms.locfileid: "131060746"
 
 ## <a name="how-to-customize-alert-details"></a>アラートの詳細をカスタマイズする方法
 
-1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+1. Microsoft Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
 1. スケジュールされたクエリ ルールを選択し、 **[編集]** をクリックします。 または、画面の上部にある **[作成] > [スケジュール済みクエリ ルール]** をクリックして新しいルールを作成します。
 
@@ -65,6 +65,6 @@ ms.locfileid: "131060746"
 1. アラートの詳細のカスタマイズが完了したら、ウィザードの次のタブに進みます。 既存のルールを編集する場合は、 **[確認と作成]** タブをクリックします。ルールの確認が正常に完了したら、 **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure Sentinel 分析ルールでアラートの詳細をカスタマイズする方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Microsoft Sentinel 分析ルールでアラートの詳細をカスタマイズする方法について学習しました。 Microsoft Sentinel の詳細については、次の記事を参照してください。
 - [スケジュールされたクエリ分析ルール](detect-threats-custom.md)の完全な画像を取得します。
-- [Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)について詳しく確認します。
+- [Microsoft Sentinel のエンティティ](entities-in-azure-sentinel.md)の詳細を確認します。

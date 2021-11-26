@@ -3,14 +3,14 @@ title: Azure Video Analyzer for Media (旧称 Video Indexer) を使用してビ�
 description: このトピックでは、Azure Video Analyzer for Media (旧称 Video Indexer) で API を使用して、ビデオのアップロードとインデックスの作成を行う方法を示します。
 ms.service: azure-video-analyzer
 ms.topic: article
-ms.date: 05/12/2021
+ms.date: 11/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 507e92a83f2c8f9f0a21368808b57b1fadc1b64d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f2a9aa291937afcb55739cfdb4532d0a59f2bc9f
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071688"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519593"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -317,13 +317,13 @@ public class AccountContractSlim
 
 ### <a name="arm-account"></a>[ARM アカウント](#tab/with-arm-account-account/)
 
-この C# プロジェクトを開発プラットフォームにコピーした後、次を実行する必要があります。 
+この C# プロジェクトを開発プラットフォームにコピーした後、次のことを実行する必要があります。 
 1. Program.cs に移動し、```SubscriptionId``` にサブスクリプション ID を入力します。
 2. Program.cs に移動し、```ResourceGroup``` にリソース グループを入力します。
 3. Program.cs に移動し、```AccountName``` にアカウント名を入力します。
 4. Program.cs に移動し、```VideoUrl``` にビデオ URL を入力します。
-5. dotnet 6.0 がインストールされていることを確認します。 そうでない場合、インストールするには[ここ](https://dotnet.microsoft.com/download/dotnet/6.0)をクリックします。
-6. Azure CLI がインストールされていることを確認します。 そうでない場合、インストールするには[ここ](/cli/azure/install-azure-cli)をクリックします。
+5. dotnet 6.0 がインストールされていることを確認します。 インストールされていない場合は、[インストールします](https://dotnet.microsoft.com/download/dotnet/6.0)。
+6. Azure CLI がインストールされていることを確認します。 インストールされていない場合は、[インストールします](/cli/azure/install-azure-cli)。
 7. ターミナルを開き、VideoIndexerArm フォルダーに移動します。
 8. Azure にログインします。```az login --use-device```
 9. プロジェクトをビルドします。```dotnet build```

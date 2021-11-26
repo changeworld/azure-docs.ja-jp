@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 82de5cc623193163aef3243c9c47a205bbbcffd7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5da75fba68e285ea4b01feee514bd38f6ceae036
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091202"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493602"
 ---
 # <a name="what-is-a-network-group-in-azure-virtual-network-manager-preview"></a>Azure Virtual Network Manager (プレビュー) のネットワーク グループとは
 
@@ -37,7 +37,7 @@ ms.locfileid: "131091202"
 
 ## <a name="network-group-and-azure-policy"></a>ネットワーク グループと Azure ポリシー
 
-ネットワーク グループを作成するときには、仮想ネットワークのメンバーシップに加えられた変更について Azure Virtual Network Manager に通知されるように Azure ポリシーが作成されます。 定義されたこれらのポリシーは、ユーザーが参照できるようになります。 定義されているポリシーは参照できますが、現在のところ、ユーザーが編集することはできません。 ネットワーク グループ用の Azure ポリシーの定義や割り当てを作成、変更、削除することは、現在のところ、Azure ネットワーク マネージャーからのみ可能です。 
+ネットワーク グループを作成するときには、仮想ネットワークのメンバーシップに加えられた変更について Azure Virtual Network Manager に通知されるように Azure ポリシーが作成されます。 定義されているポリシーは参照できますが、現在のところ、ユーザーが編集することはできません。 ネットワーク グループ用の Azure ポリシーの定義や割り当てを作成、変更、削除することは、現在のところ、Azure ネットワーク マネージャーからのみ可能です。 
 
 Azure ネットワーク マネージャー リソース用の Azure ポリシー イニシアチブの定義や割り当てを作成するには、必要な構成を持つネットワーク グループを作成してデプロイします。 既存の Azure ポリシー イニシアチブの定義や対応する割り当てを更新するには、Azure Virtual Network Manager リソース内のネットワーク グループに変更を加えてデプロイする必要があります。 Azure ポリシー イニシアチブの定義と割り当てを削除するには、ポリシーに関連付けられている Azure Virtual Network Manager リソースのデプロイ解除と削除を行う必要があります。 これには、構成のデプロイ解除、構成の削除、ネットワーク グループの削除が含まれる場合があります。 削除の詳細については、Azure Virtual Network Manager の、[コンポーネント削除のためのチェックリスト](concept-remove-components-checklist.md)を参照してください。  
 

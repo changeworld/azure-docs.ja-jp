@@ -4,13 +4,13 @@ description: Bicep ファイルでパラメーターを定義する方法につ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: b90fb108df58c41578bf9472390574b4bc174111
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 11/12/2021
+ms.openlocfilehash: 4345269d9c1191545a28998a38aeedb14b37e0bc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363500"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486611"
 ---
 # <a name="parameters-in-bicep"></a>Bicep のパラメーター
 
@@ -26,7 +26,15 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
 
 ## <a name="declaration"></a>宣言
 
-各パラメーターには名前と型が必要です。 パラメーターに、同じスコープ内の変数、リソース、出力、またはその他のパラメーターと同じ名前を付けることはできません。
+それぞれのパラメーターには、名前と[データ型](data-types.md)があります。 パラメーターには、必要に応じて既定値を指定できます。
+
+```bicep
+param <parameter-name> <parameter-data-type> = <default-value>
+```
+
+パラメーターに、同じスコープ内の変数、リソース、出力、またはその他のパラメーターと同じ名前を付けることはできません。
+
+次に示したのは、基本的なパラメーター宣言の例です。
 
 ```bicep
 param demoString string
@@ -67,6 +75,19 @@ param demoPassword string
 @description('Must be at least Standard_A3 to support 2 NICs.')
 param virtualMachineSize string = 'Standard_DS1_v2'
 ```
+
+次の表では、使用できるデコレーターとそれらの使用方法について説明します。
+
+| デコレーター | [適用対象] | 引数 | 説明 |
+| --------- | ---- | ----------- | ------- |
+| [[許可]](#allowed-values) | all | array | パラメーターに使用できる値。 このデコレーターを使用して、ユーザーが正しい値を指定するようにします。 |
+| [description](#description) | all | string | パラメーターの使用方法を説明するテキスト。 説明は、ポータルを通じてユーザーに表示されます。 |
+| [maxLength](#length-constraints) | array、string | INT | 文字列および配列のパラメーターの最大長。 この値は包含値です。 |
+| [maxValue](#integer-constraints) | INT | INT | 整数パラメーターの最大値。 この値は包含値です。 |
+| metadata | all | object | パラメーターに適用するカスタム プロパティ。 description デコレーターに相当する description プロパティを含めることができます。 |
+| [minLength](#length-constraints) | array、string | INT | 文字列および配列のパラメーターの最小長。 この値は包含値です。 |
+| [minValue](#integer-constraints) | INT | INT | 整数パラメーターの最小値。 この値は包含値です。 |
+| [secure](#secure-parameters) | string、object | なし | パラメーターを、セキュリティで保護されているとしてマークします。 セキュリティで保護されたパラメーターの値はデプロイ履歴に保存されず、ログに記録されません。 詳細については、「[セキュリティで保護された文字列とオブジェクト](data-types.md#secure-strings-and-objects)」を参照してください。 |
 
 デコレーターは、[sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「`sys`」を付けます。 たとえば、Bicep ファイルに `description` という名前のパラメーターが含まれている場合、**description** デコレーターを使用するときに、sys 名前空間を追加する必要があります。
 

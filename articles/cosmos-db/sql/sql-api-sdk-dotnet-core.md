@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 06/15/2021
+ms.date: 11/11/2021
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c0b7d5fdfb38e5e3ac4f0c104fe39a4c10bda85d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 60715fd9f3aaebec07e14350107ad2b3037d0171
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113906"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487673"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB .NET Core SDK v2:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -50,8 +50,23 @@ ms.locfileid: "123113906"
 > [!NOTE]
 > .NET Core を使用している場合は、.NET Standard をターゲットとする [.NET SDK](sql-api-sdk-dotnet-standard.md) の最新バージョン 3.x を参照してください。
 
-.NET SDK の次のサブ バージョンは 2.x.x バージョン以下で利用できます。
+## <a name="release-history"></a><a name="release-history"></a> リリース履歴
 
+リリース履歴は Azure Cosmos DB .NET SDK ソース リポジトリで保守管理されています。 機能リリースと各リリースで修正されたバグの詳細な一覧については、[SDK 変更ログのドキュメント](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)を参照してください
+
+Azure Cosmos DB .NET SDK のバージョン 3 には更新された機能とパフォーマンスの向上が含まれるため、この SDK の 2.x は 2024 年 8 月 31 日に廃止される予定です。その日付までに SDK をバージョン 3 に更新する必要があります。 手順に従って Azure Cosmos DB .NET SDK バージョン 3 に移行することが推奨されます。
+
+## <a name="recommended-version"></a><a name="recommended-version"></a> 推奨されるバージョン
+
+.NET SDK のさまざまなサブ バージョンは 2.x.x バージョン以下で利用できます。 **推奨される最小バージョンは 2.16.2 です**。
+
+## <a name="known-issues"></a><a name="known-issues"></a> 既知の問題
+
+[推奨される最小バージョン](#recommended-version)に影響を与える既知の問題の一覧を次に示します。
+
+| 問題 | 影響 | 対応策 | 追跡リンク |
+| --- | --- | --- | --- |
+| 複数の書き込み場所があるアカウントで直接モードを使用している場合、リージョンがアカウントに追加されたときに、SDK によって検出されないことがあります。 [アカウント情報を更新する](troubleshoot-sdk-availability.md#adding-a-region-to-an-account)バックグラウンド プロセスが起動に失敗します。 |現在のリージョンよりも上位の順番で PreferredLocations の一部である新しいリージョンがアカウントに追加された場合、SDK によって新しい利用可能なリージョンが検出されません。 |アプリケーションを再起動します |https://github.com/Azure/azure-cosmos-dotnet-v2/issues/852 |
 
 ## <a name="see-also"></a>参照
 

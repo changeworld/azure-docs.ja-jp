@@ -4,16 +4,19 @@ description: この記事では、Azure Video Analyzer サービスのトラブ�
 ms.topic: troubleshooting
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 26d4675274d05500b54bbc43ecb84838b114f0c9
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3760b17d71dc3526d9a16283084095174d7bb724
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554699"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398404"
 ---
 # <a name="troubleshoot-azure-video-analyzer-service"></a>Azure Video Analyzer サービスのトラブルシューティング
 
-[!INCLUDE [header](includes/cloud-env.md)]
+![クラウドのアイコン](media/env-icon/cloud.png)  
+または、[エッジでのトラブルシューティング](../edge/troubleshoot.md)に関する記事を参照してください。
+
+---
 
 この記事では、サービスの使用中に発生する可能性のある一般的なエラー シナリオのトラブルシューティング ステップについて説明します。
 

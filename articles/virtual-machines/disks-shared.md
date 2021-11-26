@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f66c1528058fd2d03098c00a54928fb0fbbd4057
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 244261c8b0ba1c5b99ea5add4124c92d1b5c3ae4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225156"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486228"
 ---
 # <a name="share-an-azure-managed-disk"></a>Azure マネージド ディスクの共有
 
@@ -50,8 +50,8 @@ WSFC で実行される一般的なアプリケーションには、次のよう
 
 - [Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
     - [共有ディスクを使用して Azure VM 上の SQL Server にフェールオーバー クラスター インスタンスを移行する](../azure-sql/migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)
-- スケールアウト ファイル サーバー (SoFS) [テンプレート] (https://aka.ms/azure-shared-disk-sofs-template)
-- SAP ASCS/SCS [テンプレート] (https://aka.ms/azure-shared-disk-sapacs-template)
+- スケールアウト ファイル サーバー (SoFS) [テンプレート](https://aka.ms/azure-shared-disk-sofs-template)
+- SAP ASCS/SCS (SoFS) [テンプレート](https://aka.ms/azure-shared-disk-sapacs-template)
 - 汎用のファイル サーバー (IW ワークロード)
 - リモート デスクトップ サーバー ユーザー プロファイル ディスク (RDS UPD)
 
@@ -152,44 +152,6 @@ Ultra ディスクには、変更可能な属性を公開して変更を許可�
 #### <a name="ultra-pricing"></a>Ultra の価格
 
 Ultra 共有ディスクは、プロビジョニング済みの容量、プロビジョニング済みの IOPS の合計 (diskIOPSReadWrite + diskIOPSReadOnly) とプロビジョニング済みのスループット MBps の合計 (diskMBpsReadWrite + diskMBpsReadOnly) に基づいて課金されます。 追加の VM マウントごとに追加料金は発生しません。 たとえば、次の構成の Ultra 共有ディスク (diskSizeGB:1024、DiskIOPSReadWrite:10000、DiskMBpsReadWrite:600、DiskIOPSReadOnly:100、DiskMBpsReadOnly:1) は、2 台の VM にマウントされているか、5台の VM にマウントされているかに関係なく、1024 GiB、10100 IOPS、および 601 MBps で課金されます。
-
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-**Q: アンマネージド ディスクまたはページ BLOB では、共有ディスク機能はサポートされていますか?**
-
-**A:** いいえ。 この機能がサポートされているのは Ultra Disks と Premium SSD マネージド ディスクのみです。
-
-**Q: 共有ディスクはどのリージョンでサポートされていますか?**
-
-**A:** リージョンごとの情報については、[概念に関する記事]()を参照してください。
-
-**Q: 共有ディスクを OS ディスクとして使用できますか?**
-
-**A:** いいえ。 共有ディスクはデータ ディスクでのみサポートされています。
-
-**Q: どのディスク サイズで共有ディスクがサポートされますか?**
-
-**A:** サポートされているサイズについては、[概念に関する記事]()を参照してください。
-
-**Q: 既存のディスクがある場合、そこで共有ディスクを有効にできますか?**
-
-**A:** API バージョン 2019-07-01 以降で作成されたあらゆるマネージド ディスクで共有ディスクを有効にできます。 このためには、接続されているすべての VM からディスクをマウント解除する必要があります。 次に、ディスクの maxShares プロパティを編集します。
-
-**Q: ディスクを共有モードで使用する必要がなくなったら、どのようにして無効にできますか?**
-
-**A:** 接続されているすべての VM からディスクをマウント解除します。 次に、ディスクの maxShare プロパティを **1** に変更します。
-
-**Q: 共有ディスクをサイズ変更できますか?**
-
-**A:** はい。
-
-**Q: 共有ディスクが有効になっているディスクで書き込みアクセラレータも有効にできますか?**
-
-**A:** いいえ。 共有ディスクが有効になっているディスクで書き込みアクセラレータも有効にすることはできません。
-
-**Q: 共有ディスクが有効になっているディスクでホスト キャッシュを有効にできますか?**
-
-**A:** 唯一サポートされるホスト キャッシュのオプションは **None** です。
 
 ## <a name="next-steps"></a>次のステップ
 

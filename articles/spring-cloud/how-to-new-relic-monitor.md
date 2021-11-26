@@ -8,23 +8,23 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 740193a9526bf19efb0e98f937c6f77c30b50b61
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7c0a659effc973737647f3868154be1e5154afba
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258299"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493706"
 ---
 # <a name="how-to-monitor-spring-boot-apps-using-new-relic-java-agent-preview"></a>New Relic Java エージェントを使用して Spring Boot アプリを監視する方法 (プレビュー)
 
-この機能を使用すると、Azure Spring Cloud で実行されている Spring Boot アプリケーションを New Relic Java エージェントによって監視できます。
+この機能を使用すると、Azure Spring Cloud の Spring Boot アプリケーションを New Relic Java エージェントによって監視できます。
 
 New Relic Java エージェントによって、以下を行えます。
 * New Relic Java エージェントを使用する。
 * 環境変数を使用して New Relic Java エージェントを構成する。
 * New Relic ダッシュボードからすべての監視データを確認する。
 
-次のビデオでは、New Relic One を使用して Azure Spring Cloud で実行されている Spring Boot アプリケーションをアクティブにして監視する方法について説明します。
+次のビデオでは、New Relic One を使用して Azure Spring Cloud の Spring Boot アプリケーションをアクティブにして監視する方法について説明します。
 
 <br>
 
@@ -103,7 +103,7 @@ Azure Spring Cloud では、 */opt/agents/newrelic/java/newrelic-agent.jar* に 
 
 Terraform または Azure Resource Manager テンプレート (ARM テンプレート) を使用して、プロビジョニング自動化パイプラインを実行することもできます。 このパイプラインでは、作成およびデプロイする新しいアプリケーションをインストルメント化して監視するための完全なハンズオン エクスペリエンスが提供されます。
 
-### <a name="automate-provisioning-using-terraform"></a>Terraform を使用してプロビジョニングを自動化する
+### <a name="automate-provisioning-using-terraform"></a>Terraform でプロビジョニングを自動化する
 
 Terraform テンプレートで環境変数を構成するには、次のコードをテンプレートに追加し、 *\<...>* プレースホルダーを実際の値に置き換えます。 詳細については、「[Azure Spring Cloud のアクティブなデプロイを管理する](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/spring_cloud_active_deployment)」を参照してください。
 
@@ -119,7 +119,7 @@ resource "azurerm_spring_cloud_java_deployment" "example" {
 }
 ```
 
-### <a name="automate-provisioning-using-an-arm-template"></a>ARM テンプレートを使用してプロビジョニングを自動化する
+### <a name="automate-provisioning-using-an-arm-template"></a>ARM テンプレートでプロビジョニングを自動化する
 
 ARM テンプレートで環境変数を構成するには、次のコードをテンプレートに追加し、 *\<...>* プレースホルダーを実際の値に置き換えます。 詳細については、[Microsoft.AppPlatform Spring/apps/deployments](/azure/templates/microsoft.appplatform/spring/apps/deployments?tabs=json) を参照してください。
 

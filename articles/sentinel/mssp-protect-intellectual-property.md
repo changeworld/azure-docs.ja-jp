@@ -1,33 +1,33 @@
 ---
-title: Azure Sentinel でのマネージド セキュリティ サービス プロバイダー (MSSP) の知的財産権の保護 | Microsoft Docs
-description: マネージド セキュリティ サービス プロバイダー (MSSP) が、Azure Sentinel で作成した知的財産権を保護する方法について説明します。
+title: Microsoft Sentinel でのマネージド セキュリティ サービス プロバイダー (MSSP) の知的財産権の保護 | Microsoft Docs
+description: マネージド セキュリティ サービス プロバイダー (MSSP) が、Microsoft Sentinel で作成した知的財産を保護する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: b21bb010755e8f618cba2ae40db14d12aa3b28df
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 11ee855d2606376ab893d581a091afeca3dd6713
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023027"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518871"
 ---
-# <a name="protecting-mssp-intellectual-property-in-azure-sentinel"></a>Azure Sentinel で MSSP の知的財産権を保護する
+# <a name="protecting-mssp-intellectual-property-in-microsoft-sentinel"></a>Microsoft Sentinel で MSSP の知的財産権を保護する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、マネージド セキュリティ サービス プロバイダー (MSSP) が、Azure Sentinel で開発した知的財産 (Azure Sentinel の分析ルール、ハンティング クエリ、プレイブック、ブックなど) を保護するために使用できる方法について説明します。
+この記事では、マネージド セキュリティ サービス プロバイダー (MSSP) が、Microsoft Sentinel で開発した知的財産 (Microsoft Sentinel の分析ルール、ハンティング クエリ、プレイブック、ブックなど) を保護するために使用できる方法について説明します。
 
 どの方法を選択するかは、顧客がどのように Azure を購入するか、自分が[クラウド ソリューション プロバイダー (CSP)](#cloud-solutions-providers-csp) かどうか、または顧客が [Enterprise Agreement (EA) や従量課金制 (PAYG)](#enterprise-agreements-ea--pay-as-you-go-payg) アカウントを持っているかどうかによって変わります。 以下のセクションでは、これらの方法を個別に説明します。
 
@@ -41,21 +41,21 @@ Admin Agents グループに属さない他の MSSP テナントのユーザー�
 
 次に例を示します。
 
-- 顧客に、アプリケーションが配置されている複数のリソース グループへのアクセス権を付与する場合、Azure Sentinel ワークスペースはそれらとは別のリソース グループに保持して、顧客がアクセスできないようにします。
+- アプリケーションが配置されている複数のリソース グループへのアクセス権を顧客に付与する場合、Microsoft Sentinel ワークスペースは顧客がアクセスできない別のリソース グループに保持します。
 
 - この方法を使用すると、顧客は、自身のリソース グループに含まれる別個のリソースとして、選択したブックやプレイブックを表示できます。
 
-リソース グループ レベルでアクセス権を付与しても、顧客は、アクセスが許可されているリソースのログ データ (VM からのログなど) には引き続きアクセスできます。これは Azure Sentinel へのアクセス権がなくても可能です。 詳細については、「[リソースによる Azure Sentinel データへのアクセスを管理する](resource-context-rbac.md)」を参照してください。
+リソース グループ レベルでアクセス権を付与しても、顧客は、アクセスが許可されているリソースのログ データ (VM のログなど) には引き続きアクセスできます。これは Microsoft Sentinel へのアクセス権がなくても可能です。 詳細については、「[リソースによる Microsoft Sentinel データへのアクセスを管理する](resource-context-rbac.md)」を参照してください。
 
 > [!TIP]
 > 顧客にサブスクリプション全体へのアクセスを提供する必要がある場合は、[Enterprise Agreement (EA)/従量課金制 (PAYG)](#enterprise-agreements-ea--pay-as-you-go-payg) のガイダンスを参照してください。
 >
 
-### <a name="sample-azure-sentinel-csp-architecture"></a>Azure Sentinel CSP アーキテクチャの例
+### <a name="sample-microsoft-sentinel-csp-architecture"></a>Microsoft Sentinel CSP アーキテクチャの例
 
 次の図は、CSP の顧客にアクセス権を提供する際に、[前のセクション](#cloud-solutions-providers-csp)で説明したアクセス許可がどのように機能するかを示しています。
 
-:::image type="content" source="media/mssp-protect-intellectual-property/csp-customers.png" alt-text="CSP の顧客について Azure Sentinel の知的財産権を保護します。":::
+:::image type="content" source="media/mssp-protect-intellectual-property/csp-customers.png" alt-text="CSP の顧客について Microsoft Sentinel の知的財産権を保護します。":::
 
 この画像の内容:
 
@@ -63,7 +63,7 @@ Admin Agents グループに属さない他の MSSP テナントのユーザー�
 - MSSP の他のグループは、Azure Lighthouse を介して顧客の環境にアクセスできます。
 - 顧客による Azure リソースへのアクセスは、リソース グループ レベルで Azure RBAC によって管理されます。
 
-    これにより、MSSP は必要に応じて Azure Sentinel コンポーネント (分析ルールやハンティング クエリなど) を非表示にすることができます。
+    これにより、MSSP は必要に応じて Microsoft Sentinel コンポーネント (分析ルールやハンティング クエリなど) を非表示にすることができます。
 
 詳細については、[Azure Lighthouse のドキュメント](../lighthouse/concepts/cloud-solution-provider.md)を参照してください。
 
@@ -71,15 +71,15 @@ Admin Agents グループに属さない他の MSSP テナントのユーザー�
 
 Microsoft から直接購入した顧客は既に Azure 環境へのフル アクセスを持っているため、Azure サブスクリプションに含まれるものを顧客から見えないようにすることはできません。
 
-代わりに、Azure Sentinel で開発した知的財産を、保護が必要なリソースの種類に応じて次のように保護します。
+代わりに、保護する必要があるリソースの種類に応じて、Microsoft Sentinel で開発した知的財産を次のように保護します。
 
 ### <a name="analytics-rules-and-hunting-queries"></a>分析ルールおよびハンティング クエリ
 
-分析ルールとハンティング クエリはどちらも Azure Sentinel 内に含まれているため、Azure Sentinel ワークスペースから引き離すことはできません。
+分析ルールとハンティング クエリはどちらも Microsoft Sentinel 内に含まれているため、Microsoft Sentinel ワークスペースから切り離すことはできません。
 
-ユーザーは、Azure Sentinel リーダーのアクセス許可しか持っていなくてもクエリを表示できます。 この場合は、顧客のテナントではなく、独自の MSSP テナントで、分析ルールとハンティング クエリをホストすることをお勧めします。
+ユーザーは、Microsoft Sentinel 閲覧者のアクセス許可しか持っていなくてもクエリを表示できます。 この場合は、顧客のテナントではなく、独自の MSSP テナントで、分析ルールとハンティング クエリをホストすることをお勧めします。
 
-これを行うには、Azure Sentinel が有効になっている独自のテナントにワークスペースが必要です。また、[Azure Lighthouse](multiple-tenants-service-providers.md) を使用して顧客のワークスペースを確認する必要もあります。
+これを行うには、Microsoft Sentinel が有効になっている独自のテナントにワークスペースが必要です。また、[Azure Lighthouse](multiple-tenants-service-providers.md) を使用して顧客のワークスペースを確認する必要があります。
 
 MSSP テナントで、顧客テナントのデータを参照する分析ルールやハンティング クエリを作成するには、`workspace` ステートメントを次のように使用する必要があります。
 
@@ -94,7 +94,7 @@ workspace('<customer-workspace>').SecurityEvent
 
 - **顧客ごとに個別のアラートを作成します**。 この方法を使用する場合は、顧客ごと、および検出ごとに個別のアラート ルールを使用することもお勧めします。各ケースで workspace ステートメントが異なるためです。
 
-    アラート ルール名に顧客名を追加すると、アラートの発生源となっている顧客を簡単に識別できます。 個別にアラートを発行すると大量のルールが生成される可能性がありますが、これは、スクリプトまたは[コードとしての Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) を使用して管理できます。
+    アラート ルール名に顧客名を追加すると、アラートの発生源となっている顧客を簡単に識別できます。 個別にアラートを発行すると大量のルールが生成される可能性がありますが、これは、スクリプトまたは[コードとしての Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) を使用して管理できます。
 
     次に例を示します。
 
@@ -114,7 +114,7 @@ workspace('<customer-workspace>').SecurityEvent
 
 ### <a name="workbooks"></a>ブック
 
-顧客によるコピーを禁止したい Azure Sentinel ブックを開発した場合は、独自の MSSP テナントでブックをホストします。 Azure Lighthouse を介して顧客のワークスペースにアクセスできることを確認してから、それらの顧客のワークスペースを使用するようにブックを変更してください。
+顧客によるコピーを禁止したい Microsoft Sentinel ブックを開発した場合は、独自の MSSP テナントでブックをホストします。 Azure Lighthouse を介して顧客のワークスペースにアクセスできることを確認してから、それらの顧客のワークスペースを使用するようにブックを変更してください。
 
 次に例を示します。
 
@@ -160,8 +160,8 @@ Power BI へのブックのエクスポート:
 
 詳細については、次を参照してください。
 
-- [MSSP 用 Azure Sentinel テクニカル プレイブック](https://cloudpartners.transform.microsoft.com/download?assetname=assets/Azure-Sentinel-Technical-Playbook-for-MSSPs.pdf&download=1)
-- [Azure Sentinel で複数のテナントを MSSP として管理する](multiple-tenants-service-providers.md)
-- [ワークスペースおよびテナント全体での Azure Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)
+- [MSSP 用 Microsoft Sentinel テクニカル プレイブック](https://cloudpartners.transform.microsoft.com/download?assetname=assets/Azure-Sentinel-Technical-Playbook-for-MSSPs.pdf&download=1)
+- [Microsoft Sentinel で複数のテナントを MSSP として管理する](multiple-tenants-service-providers.md)
+- [ワークスペースおよびテナント全体での Microsoft Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)
 - [ データの視覚化と監視](monitor-your-data.md)
-- [チュートリアル:Azure Sentinel で脅威への自動対応を設定する](tutorial-respond-threats-playbook.md)
+- [チュートリアル: Microsoft Sentinel で脅威への自動対応を設定する](tutorial-respond-threats-playbook.md)

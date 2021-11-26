@@ -3,16 +3,17 @@ title: Functions の Azure SQL 入力バインド
 description: Azure Functions の Azure SQL 入力バインドを使用する方法について説明します。
 author: dzsquared
 ms.topic: reference
-ms.date: 11/9/2021
+ms.date: 11/12/2021
 ms.author: drskwier
-ms.openlocfilehash: 45afc0cc6ccf42711b878d3fccd7912d2bdc750d
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.reviewer: cachai
+ms.openlocfilehash: 3c910ab85d3689eadfdf4ba32cc2702ce03ace65
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132349858"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491091"
 ---
-# <a name="azure-sql-input-binding-for-azure-functions"></a>Azure Functions の Azure SQL 入力バインド
+# <a name="azure-sql-input-binding-for-azure-functions-preview"></a>Azure Functions の Azure SQL 入力バインド (プレビュー)
 
 Azure SQL 入力バインドにより、データベースからデータが取得され、関数の入力パラメーターに渡されます。
 
@@ -27,7 +28,7 @@ Azure SQL 入力バインドにより、データベースからデータが取�
 * [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-c)
 * [HTTP トリガー、ルート データからの複数のドキュメントの取得](#http-trigger-get-multiple-items-from-route-data-c)
 
-次の例では `ToDoItem` 型とそれに対応するデータベース テーブルを参照します。
+この例では `ToDoItem` 型とそれに対応するデータベース テーブルを参照します。
 
 ```cs
 namespace AzureSQLSamples
@@ -122,11 +123,11 @@ namespace AzureSQLSamples
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Azure Functions の Azure SQL バインドでは現在、JavaScript はサポートされていません。
+Azure Functions の Azure SQL では現在のところ、JavaScript に対応していません。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Functions の Azure SQL バインドでは現在、Python はサポートされていません。
+Azure Functions の Azure SQL では現在のところ、Python に対応していません。
 
  ---
 
@@ -136,7 +137,7 @@ Azure Functions の Azure SQL バインドでは現在、Python はサポート�
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[Sql](https://github.com/Azure/azure-functions-sql-extension/blob/main/src/SqlAttribute.cs) 属性を使用します。
 
-この属性のコンストラクターは、SQL コマンド テキスト、コマンドの種類、パラメーター、接続文字列設定名を受け取ります。 コマンドは、コマンドの種類 `System.Data.CommandType.Text` を指定した Transact-SQL (T-SQL) クエリ、またはコマンドの種類 `System.Data.CommandType.StoredProcedure` を指定したストアド プロシージャ名にすることができます。 接続文字列設定名は、Azure SQL または SQL Server インスタンスに対する[接続文字列](/dotnet/api/microsoft.data.sqlclient.sqlconnection.connectionstring?view=sqlclient-dotnet-core-3.0&preserve-view=true#Microsoft_Data_SqlClient_SqlConnection_ConnectionString)を含むアプリケーション設定 (ローカル開発の場合は `local.settings.json` にあります) に合致します。
+この属性のコンストラクターは、SQL コマンド テキスト、コマンドの種類、パラメーター、接続文字列設定名を受け取ります。 コマンドは、コマンドの種類 `System.Data.CommandType.Text` を指定した Transact-SQL (T-SQL) クエリ、またはコマンドの種類 `System.Data.CommandType.StoredProcedure` を指定したストアド プロシージャ名にすることができます。 接続文字列設定名は、Azure SQL または SQL Server インスタンスへの接続の[接続文字列](/dotnet/api/microsoft.data.sqlclient.sqlconnection.connectionstring?view=sqlclient-dotnet-core-3.0&preserve-view=true#Microsoft_Data_SqlClient_SqlConnection_ConnectionString)が含まれるアプリケーション設定 (ローカル開発の場合は `local.settings.json` の) に合致します。
 
 メソッド シグネチャでの `Sql` 属性の例を次に示します。
 
@@ -157,11 +158,11 @@ Azure Functions の Azure SQL バインドでは現在、Python はサポート�
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Azure Functions の Azure SQL バインドでは現在、JavaScript はサポートされていません。
+Azure Functions の Azure SQL では現在のところ、JavaScript に対応していません。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Functions の Azure SQL バインドでは現在、Python はサポートされていません。
+Azure Functions の Azure SQL では現在のところ、Python に対応していません。
 
 
 ---
@@ -171,6 +172,6 @@ Azure Functions の Azure SQL バインドでは現在、Python はサポート�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [データベースにデータを保存する (出力バインド)](./functions-bindings-azure-sql-output.md)

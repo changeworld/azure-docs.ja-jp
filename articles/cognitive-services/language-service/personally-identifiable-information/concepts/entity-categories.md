@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-service
 ms.topic: article
-ms.date: 11/02/2021
+ms.date: 11/15/2021
 ms.author: aahi
 ms.custom: language-service-pii, ignite-fall-2021
-ms.openlocfilehash: 49db4778dcdb2f4cbe3bff2ac07fc16ece2883f8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 099926359944c1f9e9a673f3c754019c761e6220
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089943"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519536"
 ---
 # <a name="supported-personally-identifiable-information-pii-entity-categories"></a>サポートされている個人を特定できる情報 (PII) エンティティのカテゴリ
 
@@ -47,7 +47,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
     :::column span="2":::
         **詳細**
 
-        人の名前。 `domain=phi` でも返されます。
+        人の名前。 PII と PHI の両方として返されます。
 
         このエンティティ カテゴリを取得するには、`Person` を `pii-categories` パラメーターに追加します。 検出されると、`Person` が API 応答で返されます。
       
@@ -104,7 +104,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
     :::column span="2":::
         **詳細**
 
-        電話番号 (米国および EU の電話番号のみ)。 `domain=phi` でも返されます。
+        電話番号 (米国および EU の電話番号のみ)。 PII と PHI の両方として返されます。
 
         このエンティティ カテゴリを取得するには、`PhoneNumber` を `pii-categories` パラメーターに追加します。 検出されると、`PhoneNumber` が API 応答で返されます。
       
@@ -134,7 +134,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
     :::column span="2":::
         **詳細**
 
-        企業、政治団体、音楽バンド、スポーツ クラブ、政府機関、および公的機関。 国籍と宗教は、このエンティティ型には含まれていません。 `domain=phi` でも返されます。
+        企業、政治団体、音楽バンド、スポーツ クラブ、政府機関、および公的機関。 国籍と宗教は、このエンティティ型には含まれていません。 PII と PHI の両方として返されます。
 
         このエンティティ カテゴリを取得するには、`Organization` を `pii-categories` パラメーターに追加します。 検出されると、`Organization` が API 応答で返されます。
       
@@ -235,7 +235,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
     :::column span="2":::
         **詳細**
 
-        完全な郵送先住所。 `domain=phi` でも返されます。
+        完全な郵送先住所。 PII と PHI の両方として返されます。
 
         このエンティティ カテゴリを取得するには、`Address` を `pii-categories` パラメーターに追加します。 検出されると、`Address` が API 応答で返されます。
       
@@ -264,7 +264,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
     :::column span="2":::
         **詳細**
 
-        メール アドレス。 `domain=phi` でも返されます。
+        メール アドレス。 PII と PHI の両方として返されます。
       
         このエンティティ カテゴリを取得するには、`Email` を `pii-categories` パラメーターに追加します。 検出されると、`Email` が API 応答で返されます。
 
@@ -292,7 +292,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
     :::column span="2":::
         **詳細**
 
-        Web サイトへの URL。 `domain=phi` でも返されます。
+        Web サイトへの URL。 PII と PHI の両方として返されます。
 
         このエンティティ カテゴリを取得するには、`URL` を `pii-categories` パラメーターに追加します。 検出されると、`URL` が API 応答で返されます。
       
@@ -321,7 +321,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
     :::column span="2":::
         **詳細**
 
-        ネットワーク IP アドレス。 `domain=phi` でも返されます。
+        ネットワーク IP アドレス。 PII と PHI の両方として返されます。
 
         このエンティティ カテゴリを取得するには、`IP` を `pii-categories` パラメーターに追加します。 検出されると、`IP` が API 応答で返されます。
       
@@ -376,7 +376,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
     :::column span="2":::
         **詳細**
 
-        カレンダーの日付。 `domain=phi` でも返されます。
+        カレンダーの日付。 PII と PHI の両方として返されます。
 
         このエンティティ カテゴリを取得するには、`Date` を `pii-categories` パラメーターに追加します。 検出されると、`Date` が API 応答で返されます。
       
@@ -445,7 +445,7 @@ API 要求の PII 機能を送信すると、次のエンティティ カテゴ�
 
 ### <a name="azure-information"></a>Azure の情報
 
-これらのエンティティ カテゴリには、認証情報や接続文字列などの特定可能な Azure 情報が含まれます。 `domain=phi` パラメーターで返されません。
+これらのエンティティ カテゴリには、認証情報や接続文字列などの特定可能な Azure 情報が含まれます。 PHI としては返されません。
 
 :::row:::
     :::column span="":::

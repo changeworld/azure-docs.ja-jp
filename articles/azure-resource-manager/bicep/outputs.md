@@ -2,13 +2,13 @@
 title: Bicep の出力
 description: Bicep の出力値を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/19/2021
-ms.openlocfilehash: c9b8e0bb4bfb4533b66170c60c8da7b1073a0853
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/12/2021
+ms.openlocfilehash: 4ed640cd639b7a1b69cd07ae8ac50a4ddff436fb
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236078"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491319"
 ---
 # <a name="outputs-in-bicep"></a>Bicep の出力
 
@@ -22,7 +22,7 @@ ms.locfileid: "130236078"
 output <name> <data-type> = <value>
 ```
 
-各出力値は、いずれかの[データ型](data-types.md)に解決される必要があります。
+出力の名前を、パラメーター、変数、モジュール、またはリソースと同じにすることはできません。 各出力値は、いずれかの[データ型](data-types.md)に解決される必要があります。
 
 次の例は、デプロイされたリソースからプロパティを返す方法を示しています。 この例では、`publicIP` は Bicep ファイルにデプロイされているパブリック IP アドレスのシンボリック名です。 出力値には、パブリック IP アドレスの完全修飾ドメイン名が取得されます。
 
@@ -44,23 +44,15 @@ var user = {
 output stringOutput string = user['user-name']
 ```
 
-返す値がデプロイの状態によって異なる場合は、`?` 演算子を使用します。 詳しくは、「[条件付き出力](#conditional-output)」をご覧ください。
+## <a name="conditional-output"></a>条件付き出力
+
+返す値がデプロイの状態によって異なる場合は、`?` 演算子を使用します。
 
 ```bicep
 output <name> <data-type> = <condition> ? <true-value> : <false-value>
 ```
 
-出力値の複数のインスタンスを返すには、`for` 式を使用します。 詳しくは、「[動的な出力の数](#dynamic-number-of-outputs)」をご覧ください。
-
-```bicep
-output <name> <data-type> = [for <item> in <collection>: {
-  ...
-}]
-```
-
-## <a name="conditional-output"></a>条件付き出力
-
-値を条件付きで返すことができます。 通常、リソースを[条件付きでデプロイ](conditional-resource-deployment.md)した場合に条件付き出力を使用します。 次の例は、新しくデプロイされたかどうかに基づいて、パブリック IP アドレスのリソース ID を条件付きで返す方法を示しています。
+通常、リソースを[条件付きでデプロイ](conditional-resource-deployment.md)した場合に条件付き出力を使用します。 次の例は、新しくデプロイされたかどうかに基づいて、パブリック IP アドレスのリソース ID を条件付きで返す方法を示しています。
 
 Bicep で条件付き出力を指定するには、`?` 演算子を使用します。 次の例では、条件に応じて、エンドポイントの URL または空の文字列を返します。
 
@@ -87,9 +79,15 @@ output endpoint string = deployStorage ? myStorageAccount.properties.primaryEndp
 
 ## <a name="dynamic-number-of-outputs"></a>動的な出力の数
 
-場合により、テンプレートの作成時に、返す必要がある値のインスタンスの数が不明なシナリオもあります。 反復出力を使用すると、可変数の値を返すことができます。
+場合により、テンプレートの作成時に、返す必要がある値のインスタンスの数が不明なシナリオもあります。 `for` 要素を使用することで、可変数の値を返すことができます。
 
-Bicep で、動的出力の条件を定義する `for` 式を追加します。 次の例では、配列を反復処理します。
+```bicep
+output <name> <data-type> = [for <item> in <collection>: {
+  ...
+}]
+```
+
+次の例では、配列を反復処理します。
 
 ```bicep
 param nsgLocation string = resourceGroup().location

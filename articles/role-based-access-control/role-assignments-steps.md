@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/14/2021
+ms.date: 11/12/2021
 ms.author: rolyon
-ms.openlocfilehash: 1f1b8f627a60a6e9f9b866ffb48324ecd146ffbe
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 19f7459debe48bfd689e0ccff93b7957bacd7d52
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362084"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398366"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 
@@ -83,7 +83,9 @@ ms.locfileid: "129362084"
 
 ## <a name="step-5-assign-role"></a>手順 5. ロールを割り当てる
 
-セキュリティ プリンシパル、ロール、およびスコープについて理解できたら、ロールを割り当てることができます。 ロールは Azure portal、Azure PowerShell、Azure CLI、Azure SDK、または REST API を使用して割り当てることができます。 各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 各管理グループには、最大 **500** 個のロールの割り当てを保持できます。
+セキュリティ プリンシパル、ロール、およびスコープについて理解できたら、ロールを割り当てることができます。 ロールは Azure portal、Azure PowerShell、Azure CLI、Azure SDK、または REST API を使用して割り当てることができます。
+
+各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 各管理グループには、最大 **500** 個のロールの割り当てを保持できます。 1 つのサブスクリプションへのロール割り当ての上限数は現在増やされつつあります。 詳細については、「[Azure RBAC のトラブルシューティング](troubleshooting.md#azure-role-assignments-limit)」を参照してください。
 
 ロールを割り当てる方法の詳細な手順については、次の記事をご覧ください。
 

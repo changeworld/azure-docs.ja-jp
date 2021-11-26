@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 814ed1001c39b48a5aa93162cb54ec520050eb66
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 7d56a9747627bd81e9bc0cc72fce804a64af91e4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457565"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398081"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -149,10 +149,9 @@ deviceClient.sendEvent(message, (err, res) => {
 > [!NOTE] 
 > これは、JavaScript の本文のエンコードを処理する方法を示しています。 C# のサンプルを確認するには、[Azure IoT C# のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)をダウンロードしてください。 master.zip ファイルを解凍します。 Visual Studio ソリューション *SimulatedDevice* の Program.cs ファイルは、メッセージをエンコードして IoT Hub に送信する方法を示しています。 これは、[メッセージ ルーティングのチュートリアル](tutorial-routing.md)で説明されているように、メッセージ ルーティングのテストに使用されているものと同じサンプルです。 Program.cs の末尾には、エンコードされたファイルの 1 つを読み込んでデコードし、読み取ることができるように ASCII 形式で書き戻すメソッドもあります。 
 
-
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ本文に基づくクエリには、前に `$body` を付ける必要があります。 クエリ式では、本文の参照、本文配列の参照、または複数の本文の参照を使用できます。 さらにクエリ式では、本文の参照を、メッセージ システム プロパティおよびメッセージ アプリケーション プロパティの参照と組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。 
+メッセージ本文に基づくクエリには、前に `$body` を付ける必要があります。 クエリ式では、本文の参照、本文配列の参照、または複数の本文の参照を使用できます。 さらにクエリ式では、本文の参照を、メッセージ システム プロパティおよびメッセージ アプリケーション プロパティの参照と組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -170,9 +169,16 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
-> [!NOTE] 
+> [!NOTE]
+> ツイン通知のペイロードを変更内容に基づいてフィルター処理するには、メッセージ本文に対して次のクエリを実行します。
+>
+> ```sql
+> $body.properties.desired.telemetryConfig.sendFrequency
+> ```
+
+> [!NOTE]
 > クエリおよび関数は、本文参照のプロパティでのみ実行できます。 本文参照全体でクエリまたは関数を実行することはできません。 たとえば、次のクエリはサポートされて "*おらず*"、`undefined` が返されます。
-> 
+>
 > ```sql
 > $body[0] = 'Feb'
 > ```

@@ -1,46 +1,46 @@
 ---
-title: Azure Sentinel SAP データ コネクタ エキスパートの構成オプション、オンプレミスのデプロイ、および SAPControl ログ ソース | Microsoft Docs
-description: エキスパートの構成オプションとオンプレミスのマシンを使用して、SAP 環境用の Azure Sentinel データ コネクタをデプロイする方法について説明します。 SAPControl ログ ソースの詳細も確認してください。
+title: Microsoft Sentinel SAP データ コネクタ エキスパートの構成オプション、オンプレミスのデプロイ、SAPControl ログ ソース | Microsoft Docs
+description: エキスパートの構成オプションとオンプレミスのマシンを使用して、SAP 環境用の Microsoft Sentinel データ コネクタをデプロイする方法について説明します。 SAPControl ログ ソースの詳細も確認してください。
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
-ms.date: 05/19/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: 870106b7f3494ac818af90b6b919603e39a0a598
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 56176315a6d4d56c419f15a4472aa4f6b739a227
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075165"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520030"
 ---
 # <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、Azure Sentinel SAP データ コネクタをエキスパートまたはカスタム プロセスに展開する方法について説明します。これには、オンプレミスのマシンと Azure Key Vault を使用して資格情報を格納する方法などが含まれます。
+この記事では、Microsoft Sentinel SAP データ コネクタをエキスパートまたはカスタム プロセスにデプロイする方法について説明します。これには、オンプレミスのマシンと Azure Key Vault を使用した資格情報の格納などが含まれます。
 
 > [!NOTE]
-> Azure Sentinel SAP データ コネクタにアプリケーションを展開する、既定かつ最も推奨されるプロセスは、[Azure VM を使用する](sap-deploy-solution.md)ことです。 この記事は、上級ユーザーを対象にしています。
+> Microsoft Sentinel SAP データ コネクタをデプロイするための、既定かつ最も推奨されるプロセスは、[Azure VM を使用する](sap-deploy-solution.md)ことです。 この記事は、上級ユーザーを対象にしています。
 
 > [!IMPORTANT]
-> Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+> Microsoft Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 >
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Sentinel SAP データ コネクタを展開するための基本的な前提条件は、展開方法に関係なく同じです。
+Microsoft Sentinel SAP データ コネクタをデプロイするための基本的な前提条件は、デプロイ方法に関係なく同じです。
 
 始める前に、メインの [SAP データ コネクタ展開手順](sap-deploy-solution.md#prerequisites)に記載されている前提条件にシステムが準拠していることを確認してください。
 
-詳細については、[Azure Sentinel SAP ソリューションの SAP 要件 (パブリック プレビュー)](sap-solution-detailed-requirements.md) に関するページを参照してください。
+詳細については、「[Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)](sap-solution-detailed-requirements.md)」を参照してください。
 
 ## <a name="create-your-azure-key-vault"></a>Azure キー コンテナーを作成する
 
-Azure Sentinel SAP データ コネクタ専用の Azure キー コンテナーを作成します。
+Microsoft Sentinel SAP データ コネクタ専用の Azure キー コンテナーを作成します。
 
-次のコマンドを実行して、Azure キー コンテナーを作成し、Azure サービス プリンシパルにアクセスを許可します。 
+次のコマンドを実行して、Azure キー コンテナーを作成し、Azure サービス プリンシパルにアクセスを許可します。
 
 ``` azurecli
 kvgp=<KVResourceGroup>
@@ -124,7 +124,7 @@ az keyvault secret set \
 
 ## <a name="perform-an-expert--custom-installation"></a>エキスパートまたはカスタム インストールを実行する
 
-この手順では、オンプレミスでのインストール時など、エキスパートまたはカスタム インストールを使用して SAP データ コネクタを展開する方法について説明します。 
+この手順では、オンプレミスでのインストール時など、エキスパートまたはカスタム インストールを使用して SAP データ コネクタを展開する方法について説明します。
 
 SAP 資格情報を使用してキー コンテナーを準備した後に、この手順を実行することをお勧めします。
 
@@ -139,7 +139,7 @@ SAP 資格情報を使用してキー コンテナーを準備した後に、こ
 
 1. オンプレミスのマシン上にわかりやすい名前の新しいフォルダーを作成し、SDK の zip ファイルを新しいフォルダーにコピーします。
 
-1. オンプレミスのマシンに Azure Sentinel ソリューション GitHub リポジトリを複製し、Azure Sentinel SAP ソリューション **systemconfig.ini** ファイルをその新しいフォルダーにコピーします。
+1. オンプレミスのマシンに Microsoft Sentinel ソリューションの GitHub リポジトリをクローンし、Microsoft Sentinel SAP ソリューションの **systemconfig.ini** ファイルをその新しいフォルダーにコピーします。
 
     次に例を示します。
 
@@ -154,7 +154,7 @@ SAP 資格情報を使用してキー コンテナーを準備した後に、こ
 
     構成をテストするために、ユーザーとパスワードを **systemconfig.ini** 構成ファイルに直接追加したい場合があるかもしれません。 認証情報の保存には [Azure Key Vault](#add-azure-key-vault-secrets) を使用することをお勧めしますが、**env.list** ファイルや [Docker Secrets](#manually-configure-the-sap-data-connector) を使用することもできますし、**systemconfig.ini** ファイルに直接認証情報を追加することもできます。
 
-1. **systemconfig.ini** ファイルの指示に従って、Azure Sentinel に取り込むログを定義します。 例については、「[Azure Sentinel に送信される SAP ログを定義する](#define-the-sap-logs-that-are-sent-to-azure-sentinel)」を参照してください。
+1. **systemconfig.ini** ファイルの指示を使用して、Microsoft Sentinel に取り込むログを定義します。 例については、「[Microsoft Sentinel に送信される SAP ログを定義する](#define-the-sap-logs-that-are-sent-to-microsoft-sentinel)」を参照してください。
 
 1. **systemconfig.ini** ファイルの指示に従って、次の構成を定義します。
 
@@ -177,6 +177,7 @@ SAP 資格情報を使用してキー コンテナーを準備した後に、こ
 
     ```bash
     ##############################################################
+    # Include the following section if you're using user authentication
     ##############################################################
     # env.list template for Credentials
     SAPADMUSER=<SET_SAPCONTROL_USER>
@@ -186,10 +187,12 @@ SAP 資格情報を使用してキー コンテナーを準備した後に、こ
     JAVAUSER=<SET_JAVA_OS_USER>
     JAVAPASS=<SET_JAVA_OS_USER>
     ##############################################################
+    # Include the following section if you are using Azure Keyvault
     ##############################################################
     # env.list template for AZ Cli when MI is not enabled
     AZURE_TENANT_ID=<your tenant id>
     AZURE_CLIENT_ID=<your client/app id>
+    AZURE_CLIENT_SECRET=<your password/secret for the service principal>
     ##############################################################
     ```
 
@@ -207,19 +210,19 @@ SAP 資格情報を使用してキー コンテナーを準備した後に、こ
     docker logs –f sapcon-[SID]
     ```
 
-1. **Azure Sentinel - Continuous Threat Monitoring for SAP** ソリューションの展開を続行します。
+1. **Microsoft Sentinel - Continuous Threat Monitoring for SAP** ソリューションのデプロイを続行します。
 
-    ソリューションを展開すると、SAP データ コネクタが Azure Sentinel に表示されるようになり、SAP ブックと分析ルールが展開されます。 完了したら、SAP ウォッチリストを手動で追加してカスタマイズします。
+    ソリューションをデプロイすると、SAP データ コネクタが Microsoft Sentinel に表示されるようになり、SAP ブックと分析ルールがデプロイされます。 完了したら、SAP ウォッチリストを手動で追加してカスタマイズします。
 
     詳細については、「[SAP セキュリティ コンテンツをデプロイする](sap-deploy-solution.md#deploy-sap-security-content)」を参照してください。
 
 ## <a name="manually-configure-the-sap-data-connector"></a>SAP データ コネクタを手動で構成する
 
-Azure Sentinel の SAP ソリューション データ コネクターは、[展開手順](#perform-an-expert--custom-installation)の一部として SAP データ コネクター マシンにクローンした **systemconfig.ini** ファイルで構成します。
+Microsoft Sentinel の SAP ソリューション データ コネクタは、[デプロイ手順](#perform-an-expert--custom-installation)の一部として SAP データ コネクタ マシンにクローンした **systemconfig.ini** ファイルで構成されます。
 
 次のコードは、**systemconfig.ini** ファイルのサンプルを示しています。
 
-```Python
+```python
 [Secrets Source]
 secrets = '<DOCKER_RUNTIME/AZURE_KEY_VAULT/DOCKER_SECRETS/DOCKER_FIXED>'
 keyvault = '<SET_YOUR_AZURE_KEYVAULT>'
@@ -274,15 +277,15 @@ javaseverity = <SET_JAVA_SEVERITY  0 = All logs ; 1 = Warning ; 2 = Error>
 javatz = <SET_JAVA_TZ --Use ONLY GMT FORMAT-- example - For OS Timezone = NZST use javatz = GMT+12>
 ```
 
-### <a name="define-the-sap-logs-that-are-sent-to-azure-sentinel"></a>Azure Sentinel に送信される SAP ログを定義する
+### <a name="define-the-sap-logs-that-are-sent-to-microsoft-sentinel"></a>Microsoft Sentinel に送信される SAP ログを定義する
 
-次のコードを Azure Sentinel SAP ソリューション **systemconfig.ini** ファイルに追加して、Azure Sentinel に送信されるログを定義します。
+次のコードを Microsoft Sentinel SAP ソリューション **systemconfig.ini** ファイルに追加して、Microsoft Sentinel に送信されるログを定義します。
 
-詳細については、「[Azure Sentinel SAP ソリューション ログ リファレンス (パブリック プレビュー)](sap-solution-log-reference.md)」を参照してください。
+詳細については、[Microsoft Sentinel SAP ソリューションのログ リファレンス (パブリック プレビュー)](sap-solution-log-reference.md) に関するページを参照してください。
 
-```Python
+```python
 ##############################################################
-# Enter True OR False for each log to send those logs to Azure Sentinel
+# Enter True OR False for each log to send those logs to Microsoft Sentinel
 [Logs Activation Status]
 ABAPAuditLog = True
 ABAPJobLog = True
@@ -306,12 +309,11 @@ JAVAFilesLogs = False
 
 ### <a name="sal-logs-connector-settings"></a>SAL ログ コネクタの設定
 
-次のコードを Azure Sentinel SAP データ コネクタ **systemconfig.ini** ファイルに追加して、Azure Sentinel に取り込む SAP ログの他の設定を定義します。
+次のコードを Microsoft Sentinel SAP データ コネクタの **systemconfig.ini** ファイルに追加して、Microsoft Sentinel に取り込まれる SAP ログの他の設定を定義します。
 
 詳細については、[エキスパートまたはカスタムの SAP データ コネクタのインストールを実行する](#perform-an-expert--custom-installation)方法に関するセクションを参照してください。
 
-
-```Python
+```python
 ##############################################################
 [Connector Configuration]
 extractuseremail = True
@@ -335,26 +337,25 @@ timechunk = 60
 
 ### <a name="configuring-an-abap-sap-control-instance"></a>ABAP SAP Control インスタンスを構成する
 
-NW RFC と SAP Control Web サービスベースのログの両方を含む、すべての ABAP ログを Azure Sentinel に取り込むには、次の ABAP SAP Control の詳細を構成します。
+NW RFC と SAP Control Web サービスベースのログの両方を含む、すべての ABAP ログを Microsoft Sentinel に取り込むには、次の ABAP SAP Control の詳細を構成します。
 
 |設定  |説明  |
 |---------|---------|
 |**javaappserver**     |ご使用の SAP Control ABAP サーバー ホストを入力します。 <br>例: `contoso-erp.appserver.com`         |
 |**javainstance**     |ご使用の SAP Control ABAP インスタンス番号を入力します。 <br>例: `00`         |
 |**abaptz**     |ご使用の SAP Control ABAP サーバーで設定されているタイム ゾーンを GMT 形式で入力します。 <br>例: `GMT+3`         |
-|**abapseverity**     |ABAP ログを Azure Sentinel に取り込む最小限の包括的な重大度レベルを入力します。  次の値が含まれます。 <br><br>- **0** = すべてのログ <br>- **1** = 警告 <br>- **2** = エラー     |
-
+|**abapseverity**     |ABAP ログを Microsoft Sentinel に取り込む最小限の包括的な重大度レベルを入力します。  次の値が含まれます。 <br><br>- **0** = すべてのログ <br>- **1** = 警告 <br>- **2** = エラー     |
 
 ### <a name="configuring-a-java-sap-control-instance"></a>Java SAP Control インスタンスを構成する
 
-SAP Control Web サービス ログを Azure Sentinel に取り込むには、次の JAVA SAP Control インスタンスの詳細を構成します。
+SAP Control Web サービス ログを Microsoft Sentinel に取り込むには、次の JAVA SAP Control インスタンスの詳細を構成します。
 
 |パラメーター  |説明  |
 |---------|---------|
 |**javaappserver**     |ご使用の SAP Control Java サーバー ホストを入力します。 <br>例: `contoso-java.server.com`         |
 |**javainstance**     |ご使用の SAP Control ABAP インスタンス番号を入力します。 <br>例: `10`         |
 |**javatz**     |ご使用の SAP Control Java サーバーで設定されているタイム ゾーンを GMT 形式で入力します。 <br>例: `GMT+3`         |
-|**javaseverity**     |Web サービス ログを Azure Sentinel に取り込む最小限の包括的な重大度レベルを入力します。  次の値が含まれます。 <br><br>- **0** = すべてのログ <br>- **1** = 警告 <br>- **2** = エラー     |
+|**javaseverity**     |Web サービス ログを Microsoft Sentinel に取り込む最小限の包括的な重大度レベルを入力します。  次の値が含まれます。 <br><br>- **0** = すべてのログ <br>- **1** = 警告 <br>- **2** = エラー     |
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -364,8 +365,8 @@ SAP データ コネクタをインストールしたら、SAP 関連のセキ�
 
 詳細については、次を参照してください。
 
-- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
-- [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
-- [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
-- [Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス](sap-solution-security-content.md)
-- [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)
+- [SNC を使用して Microsoft Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
+- [Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
+- [Microsoft Sentinel SAP ソリューションのログ リファレンス](sap-solution-log-reference.md)
+- [Microsoft Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス](sap-solution-security-content.md)
+- [Microsoft Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 90d1233a1374d4ad65410c818ab6e42b36a4e6f9
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: bf3aae99eb62a76885040589560c505ba2a8a2c3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579652"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487936"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>仮想 WAN ハブ内で Azure Firewall を構成する
 
@@ -67,6 +67,9 @@ ms.locfileid: "110579652"
 ハブの **[概要]** ページに戻るには、次の図の矢印で示されているようなパスをクリックします。
 
 :::image type="content" source="./media/howto-firewall/arrow.png" alt-text="概要ページに戻る方法を示すスクリーンショット。" lightbox="./media/howto-firewall/arrow.png":::
+
+## <a name="upgrade-to-azure-firewall-premium"></a>Azure Firewall Premium へのアップグレード
+Azure Firewall Standard は、こちらの[手順](https://docs.microsoft.com/azure/firewall/premium-migrate#migrate-a-secure-hub-firewall)に従って、いつでも Premium にアップグレードできます。 この操作では、ごく短いもののダウンタイムが発生するため、メンテナンス期間が必要となります。 
 
 ## <a name="next-steps"></a>次のステップ
 

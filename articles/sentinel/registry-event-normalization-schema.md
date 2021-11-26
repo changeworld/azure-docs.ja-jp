@@ -1,28 +1,28 @@
 ---
-title: Azure Sentinel レジストリ イベント正規化スキーマ リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel レジストリ イベント正規化スキーマについて説明します。
+title: Microsoft Sentinel レジストリ イベント正規化スキーマ リファレンス | Microsoft Docs
+description: この記事では、Microsoft Sentinel レジストリ イベント正規化スキーマについて説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 07/01/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dd1a6b99c65d92b1a6a96a25790a8b780d73565f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4a22c8b2f207d8d6d2019f417bfcb025dcca9fa1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055197"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523925"
 ---
-# <a name="azure-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)
+# <a name="microsoft-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Microsoft Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "131055197"
 
 レジストリ イベントは、Windows システムに固有のものですが、Windows を監視するさまざまなシステム (EDR (エンドポイント検出と応答) システム、Sysmon、Windows 自体など) によってレポートされます。
 
-Azure Sentinel での正規化の詳細については、「[正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
+Microsoft Sentinel での正規化の詳細については、「[正規化と Advanced SIEM Information Model (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > レジストリ イベント正規化スキーマは、現在プレビュー中です。 この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。
@@ -40,7 +40,7 @@ Azure Sentinel での正規化の詳細については、「[正規化と Azure 
 
 ## <a name="parsers"></a>パーサー
 
-Azure Sentinel には、次の組み込みの製品固有のレジストリ イベント パーサーが用意されています。
+Microsoft Sentinel には、次の組み込みの製品固有のレジストリ イベント パーサーが用意されています。
 
 - **セキュリティ イベント レジストリの更新 (イベント 4657)** 。Log Analytics エージェントまたは Azure Monitor エージェントを使用して収集されます
 - **Sysmon レジストリ監視イベント (イベント 12、13、および 14)** 。Log Analytics エージェントまたは Azure Monitor エージェントを使用して収集されます
@@ -48,7 +48,7 @@ Azure Sentinel には、次の組み込みの製品固有のレジストリ イ�
 
 組み込みのすべてのパーサーを 1 つにまとめる、ソースに依存しないパーサーを使用して、構成済みのソース全体にわたって分析が実行されるようにするには、クエリでテーブル名として **imRegistry** を使用します。
 
-[Azure Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelRegistry)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
+[Microsoft Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelRegistry)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
 
 ### <a name="add-your-own-normalized-parsers"></a>独自の正規化されたパーサーを追加する
 
@@ -58,9 +58,9 @@ KQL 関数をソースに依存しないパーサー `imRegistry` に追加し�
 
 ## <a name="normalized-content"></a>正規化されたコンテンツ
 
-Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://github.com/Azure/Azure-Sentinel/blob/master/Hunting%20Queries/MultipleDataSources/PersistViaIFEORegistryKey.yaml)のハンティング クエリを提供しています。 このクエリは、Azure Sentinel 情報モデルを使用して正規化されたすべてのレジストリ アクティビティ データに対して機能します。
+Microsoft Sentinel には、[[IFEO レジストリ キーを使用した永続化]](https://github.com/Azure/Azure-Sentinel/blob/master/Hunting%20Queries/MultipleDataSources/PersistViaIFEORegistryKey.yaml) ハンティング クエリが用意されています。 このクエリは、Advanced SIEM Information Model を使用して正規化された任意のレジストリ アクティビティ データに対して機能します。
 
-詳細については、「[Azure Sentinel で脅威を検出する](hunting.md)」を参照してください。
+詳細については、「[Microsoft Azure Sentinel で脅威を検出する](hunting.md)」を参照してください。
 
 ## <a name="schema-details"></a>スキーマの詳細
 
@@ -174,8 +174,8 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel での正規化](normalization.md)
-- [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
-- [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
-- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
+- [Microsoft Sentinel での正規化](normalization.md)
+- [Microsoft Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
+- [Microsoft Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
+- [Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
+- [Microsoft Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)

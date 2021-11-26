@@ -8,18 +8,21 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
-ms.openlocfilehash: a782d94b40be7fb07009f46cc69883cc529d91c6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9bd77230e742f4874fde81fa0ab1e4c1a83ba6d5
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081516"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488793"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
 ## <a name="overview"></a>概要
 
 Windows 用の PowerShell DSC 拡張機能は､Microsoft から公開､サポートされています｡ この拡張機能は Azure VM に PowerShell DSC 構成をアップロード､適用します｡ DSC 拡張機能は、PowerShell DSC を呼び出して、受け取った DSC 構成を VM に適用します。 このドキュメントでは、Windows 用の DSC 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
+
+> [!NOTE]
+> DSC 拡張機能を有効にする前に、[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)という名前の Azure Policy の機能によって管理された、新しいバージョンの DSC が現在プレビューで利用可能になっていることに注意してください。 ゲスト構成機能では、Desired State Configuration (DSC) 拡張機能ハンドラーや Azure Automation State Configuration の機能のほか、顧客のフィードバックで最も一般的に要求されている機能が組み合わされています。 ゲスト構成にはまた、[Arc 対応サーバー](../../azure-arc/servers/overview.md)によるハイブリッド マシンのサポートも含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 

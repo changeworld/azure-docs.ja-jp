@@ -1,28 +1,28 @@
 ---
-title: Azure Sentinel プロセス イベント正規化スキーマ リファレンス | Microsoft Docs
-description: この記事では、Azure Sentinel プロセス イベント正規化スキーマについて説明します。
+title: Microsoft Sentinel プロセス イベント正規化スキーマ リファレンス | Microsoft Docs
+description: この記事では、Microsoft Sentinel プロセス イベント正規化スキーマについて説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/22/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6525b6821c7107aa100c6ce79d606c2832f04b97
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cff85330635a5c6f9501f6064d36fa623159df22
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036924"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522823"
 ---
-# <a name="azure-sentinel-process-event-normalization-schema-reference-public-preview"></a>Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)
+# <a name="microsoft-sentinel-process-event-normalization-schema-reference-public-preview"></a>Microsoft Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "131036924"
 
 OSSEM で定義されているプロセスは、プログラムの実行中のインスタンスを表す包含および管理オブジェクトです。 プロセス自体は実行されませんが、コードを実行するスレッドを管理します。
 
-Azure Sentinel での正規化の詳細については、「[正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)」を参照してください。
+Microsoft Sentinel での正規化の詳細については、「[正規化と Advanced SIEM Information Model (ASIM)](normalization.md)」を参照してください。
 
 > [!IMPORTANT]
 > プロセス イベント正規化スキーマは、現在プレビュー中です。 この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。
@@ -40,13 +40,13 @@ Azure Sentinel での正規化の詳細については、「[正規化と Azure 
 
 ## <a name="parsers"></a>パーサー
 
-Azure Sentinel には、次の組み込みの製品固有のプロセス イベント パーサーが用意されています。
+Microsoft Sentinel には、次の組み込みの製品固有のプロセス イベント パーサーが用意されています。
 
 - **セキュリティ イベント プロセスの作成 (イベント 4688)** 。Log Analytics エージェントまたは Azure Monitor エージェントを使用して収集されます
 - **セキュリティ イベント プロセスの終了 (イベント 4689)** 。Log Analytics エージェントまたは Azure Monitor エージェントを使用して収集されます
 - **Sysmon プロセスの作成 (イベント 1)** 。Log Analytics エージェントまたは Azure Monitor エージェントを使用して収集されます
 - **Sysmon プロセスの終了 (イベント 5)** 。Log Analytics エージェントまたは Azure Monitor エージェントを使用して収集されます
-- **Microsoft 365 Defender for Endpoints プロセスの作成**
+- **Microsoft 365 Defender for Endpoint プロセスの作成**
 
 一覧表示されたすべてのパーサーを統一し、構成済みのソース全体で必ず分析する、ソースに依存しないパーサーを使用するには、クエリで次のテーブル名を使用します。
 
@@ -54,7 +54,7 @@ Azure Sentinel には、次の組み込みの製品固有のプロセス イベ�
 - プロセス終了情報を必要とするクエリでは **imProcessTerminate**。
 - プロセス作成と終了の両方の情報を必要とするクエリでは **imProcessEvents**。 このような場合、`EventType` フィールドを使用するとイベントを区別できます。それぞれ `ProcessCreate` または `ProcessTerminate` に設定されます。 プロセス終了イベントには、通常、プロセス作成イベントよりもはるかに少ない情報が含まれます。
 
-[Azure Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelProcessEvents)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
+[Microsoft Sentinel の GitHub リポジトリ](https://aka.ms/AzSentinelProcessEvents)から、[ソースに依存しないパーサーとソース固有のパーサー](normalization-about-parsers.md)をデプロイします。
 
 ## <a name="add-your-own-normalized-parsers"></a>独自の正規化されたパーサーを追加する
 
@@ -64,7 +64,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 
 ## <a name="normalized-content-for-process-activity-data"></a>プロセス アクティビティ データの正規化されたコンテンツ
 
-次の Azure Sentinel のコンテンツは、Azure Sentinel 情報モデルを使用して正規化されたあらゆるプロセス アクティビティで機能します。
+次の Microsoft Sentinel のコンテンツは、Advanced SIEM Information Model を使用して正規化されたあらゆるプロセス アクティビティで機能します。
 
 - **分析ルール**:
 
@@ -96,7 +96,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
     - [コマンドラインでの Unicode の難読化](https://github.com/Azure/Azure-Sentinel/blob/master/Hunting%20Queries/MultipleDataSources/UnicodeObfuscationInCommandLine.yaml)
 
 
-    詳細については、「[Azure Sentinel で脅威を検出する](hunting.md)」を参照してください。
+    詳細については、「[Microsoft Sentinel を使用して脅威を追求する](hunting.md)」を参照してください。
 
 ## <a name="schema-details"></a>スキーマの詳細
 
@@ -242,9 +242,9 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel での正規化](normalization.md)
-- [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
-- [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
-- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
-- [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)
+- [Microsoft Sentinel での正規化](normalization.md)
+- [Microsoft Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
+- [Microsoft Sentinel の DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
+- [Microsoft Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
+- [Microsoft Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
+- [Microsoft Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)

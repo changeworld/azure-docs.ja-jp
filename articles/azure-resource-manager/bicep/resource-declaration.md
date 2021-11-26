@@ -4,13 +4,13 @@ description: デプロイするリソースを Bicep で宣言する方法につ
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/25/2021
-ms.openlocfilehash: 28f61a3fb3a40cb4db0a06f3c59fe6b07ec7d5bc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: 1398215116307cf810d259ac52c30f6588e612ab
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074215"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494005"
 ---
 # <a name="resource-declaration-in-bicep"></a>リソースの Bicep を使った宣言
 
@@ -34,7 +34,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 }
 ```
 
-シンボリック名は大文字と小文字が区別されます。  文字、数字、および _ を含めることができますが、数字で始めることはできません。
+シンボリック名は大文字と小文字が区別されます。 それらには、英字、数字、アンダー スコア (`_`) を含めることができます。 数字で始めることはできません。 リソースの名前を、パラメーター、変数またはモジュールと同じにすることはできません。
 
 使用可能なリソースの種類とバージョンについては [、Bicep リソース リファレンスに関するページを参照してください](/azure/templates/)。 Bicep では、[Azure Resource Manager テンプレート (ARM テンプレート) JSON](../templates/syntax.md) で利用できる `apiProfile` はサポートされていません。
 
@@ -46,9 +46,10 @@ resource <symbolic-name> '<full-type-name>@<api-version>' = if (condition) {
 }
 ```
 
-リソースの複数のインスタンスをデプロイするには、 構文を使用 `for` します。 詳細については [、「Bicep の反復ループ」を参照してください](loops.md)。
+リソースの複数のインスタンスをデプロイするには、 構文を使用 `for` します。 `batchSize` デコレーターを使用して、インスタンスを順番にデプロイするか、または並列でデプロイするかを指定できます。 詳細については [、「Bicep の反復ループ」を参照してください](loops.md)。
 
 ```bicep
+@batchSize(int) // optional decorator for serial deployment
 resource <symbolic-name> '<full-type-name>@<api-version>' = [for <item> in <collection>: {
   <properties-to-repeat>
 }]

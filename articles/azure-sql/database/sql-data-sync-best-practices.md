@@ -11,12 +11,12 @@ author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
 ms.date: 12/20/2018
-ms.openlocfilehash: e4a08dca9fe30b632b2653270ff6a41c6c081b41
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a85c3199f1307a6f7618aec4efdc0506f17598a0
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689756"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494807"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL データ同期のベスト プラクティス 
 
@@ -54,7 +54,7 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 
 ### <a name="auditing"></a>監査
 
-同期グループ内のデータベース レベルで監査を有効にすることをお勧めします。 
+同期グループ内のデータベース レベルで監査を有効にすることをお勧めします。 [Azure SQL データベースの監査を有効にする](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview)方法、または[SQL Server データベースの監査を有効にする](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15)方法について説明します。
 
 ## <a name="setup"></a>セットアップ
 

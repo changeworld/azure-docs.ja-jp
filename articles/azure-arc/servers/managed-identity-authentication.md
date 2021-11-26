@@ -3,16 +3,16 @@ title: Azure Arc 対応サーバーでの Azure リソースに対して認証�
 description: このアーティクルでは、Azure Instance Metadata Service での Azure Arc 対応サーバーのサポートと、シークレットを使用して Azure リソースおよびローカルに対して認証する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/08/2021
-ms.openlocfilehash: 7fc08c304a7a3b13e639ebf1e6bd1ce92922f712
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: d73f4d1e7d10af8f270f77fcb11219d8481c848f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132134742"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400169"
 ---
 # <a name="authenticate-against-azure-resources-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーでの Azure リソースに対して認証を行う
 
-Azure Arc 対応サーバーで直接実行されるアプリケーションやプロセスは、マネージド ID を利用して、Azure Active Directory ベースの認証をサポートしている他の Azure リソースにアクセスできます。 アプリケーションはその ID を表す[アクセス トークン](../../active-directory/develop/developer-glossary.md#access-token) (Azure Arc 対応サーバーに対してシステムが割り当てる) を取得し、それをベアラー トークンとして使用して、別のサービスに対してそれ自体を認証できます。
+Azure Arc 対応サーバーで直接実行されるアプリケーションやプロセスは、マネージド ID を使用して、Azure Active Directory ベースの認証をサポートしている他の Azure リソースにアクセスできます。 アプリケーションはその ID を表す[アクセス トークン](../../active-directory/develop/developer-glossary.md#access-token) (Azure Arc 対応サーバーに対してシステムが割り当てる) を取得し、それをベアラー トークンとして使用して、別のサービスに対してそれ自体を認証できます。
 
 マネージド ID の詳細な説明、およびシステム割り当ての ID とユーザー割り当ての ID の違いについては、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するドキュメントを参照してください。
 
@@ -45,7 +45,7 @@ Azure Arc 対応サーバーで直接実行されるアプリケーションや�
 - Linux では、**himds** グループのメンバーである必要があります。
 - Azure Arc 対応サーバーに接続され、登録されているサーバー。
 - 必要なリソース作成とロール管理の手順を実行するための、サブスクリプションまたはリソース グループの[所有者グループ](../../role-based-access-control/built-in-roles.md#owner)のメンバーであること。
-- 資格情報を格納および取得するための Azure Key Vault。 Azure Arc ID アクセスを KeyVault に割り当てます。
+- 資格情報を格納したり取得したりするための Azure Key Vault。Azure Arc ID に Key Vault へのアクセス権を割り当てます。
 
     - Key Vault が作成されていない場合は、「[Key Vault の作成](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md#create-a-key-vault-)」を参照してください。
     - サーバーが使用するマネージド ID でアクセスを構成する方法については、[Linux の場合のアクセス権の付与](../../active-directory/managed-identities-azure-resources/tutorial-linux-vm-access-nonaad.md#grant-access)、または [Windows の場合のアクセス権の付与](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md#grant-access)に関する記事を参照してください。 手順 5 では、Azure Arc 対応サーバーの名前を入力します。 PowerShell を使用してこれを行う方法については、[PowerShell を使用してアクセス ポリシーを割り当てる](../../key-vault/general/assign-access-policy-powershell.md)方法に関する記事を参照してください。

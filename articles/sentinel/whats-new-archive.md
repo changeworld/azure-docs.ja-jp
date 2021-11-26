@@ -4,23 +4,23 @@ description: 6 か月前以前の、Azure Sentinel の新機能と変更点の�
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
-ms.date: 09/02/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 603b4a083de5a71a29456fc1128b7a53a40c8782
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9a4203f053fc295c2dfeac2a5ad40184dcd9c3b6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064090"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522443"
 ---
 # <a name="archive-for-whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報のアーカイブ
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-「[Azure Sentinel の新着情報](whats-new.md)」という主要リリース ノート ページには、過去 6 か月間の更新情報が含まれていますが、このページにはそれ以前の項目が含まれています。
+「[Sentinel の新着情報](whats-new.md)」という主要リリース ノート ページには、過去 6 か月間の更新情報が含まれていますが、このページにはそれ以前の項目が含まれています。
 
 以前に提供された機能については、[Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog/label-name/What's%20New)を参照してください。
 

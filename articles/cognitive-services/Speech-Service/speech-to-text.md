@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: 02e9a0d78aa8d904be2c9ade4ba419ea4fefd40f
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: bf0d8c7ffdff3c936804583f03b42dbe1c5e2392
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131989434"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488394"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 
@@ -43,7 +43,7 @@ ms.locfileid: "131989434"
 
 ## <a name="sample-code"></a>サンプル コード
 
-Speech SDK のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と単発の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。
+Speech SDK のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、継続的な認識と開始時の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。
 
 - [音声変換のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [バッチ文字起こしのサンプル (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)

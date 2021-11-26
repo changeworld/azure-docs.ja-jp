@@ -2,39 +2,55 @@
 title: 概念 - Azure Kubernetes Service (AKS) におけるセキュリティ
 description: Azure Kubernetes Service (AKS) におけるセキュリティ (マスターとノードの通信、ネットワーク ポリシー、Kubernetes シークレットなど) について説明します。
 services: container-service
-author: georgewallace
+author: miwithro
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.author: gwallace
-ms.openlocfilehash: 8fb1e35055bae35fa850bec638f07877e6d75cb3
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.date: 11/11/2021
+ms.author: miwithro
+ms.openlocfilehash: b29d7f245ce809745665bbeb4ea5cb858014e23b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132058639"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490764"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
-クラスターのセキュリティは、Azure Kubernetes Service (AKS) でアプリケーションのワークロードを実行する際に顧客データを保護します。 
+コンテナーのセキュリティは、ビルドから Azure Kubernetes Service (AKS) で実行されているアプリケーション ワークロードまでのエンドツーエンドのパイプライン全体を保護します。
 
-Kubernetes には、*ネットワーク ポリシー* や *シークレット* などのセキュリティ コンポーネントが含まれています。 一方、Azure には、ネットワーク セキュリティ グループや調整されたクラスターのアップグレードなどのコンポーネントが含まれています。 AKS は、これらのセキュリティ コンポーネントを組み合わせて以下を実現します。
+セキュリティで保護されたサプライ チェーンには、ビルド環境とレジストリが含まれます。
+
+Kubernetes には、*ポッド セキュリティ標準* や *シークレット* などのセキュリティ コンポーネントが含まれています。 一方、Azure には、Active Directory、Microsoft Defender for Cloud、Azure Policy、Azure Key Vault、ネットワーク セキュリティ グループ、調整されたクラスター アップグレードなどのコンポーネントが含まれています。 AKS は、これらのセキュリティ コンポーネントを組み合わせて以下を実現します。
+* 完全な認証と認可のストーリーを提供します。
+* AKS 組み込み Azure Policy を利用して、アプリケーションをセキュリティで保護します。
+* Microsoft Defender for Containers によるビルドからアプリケーションへのエンドツーエンドの分析情報。
 * AKS クラスターで常に最新の OS セキュリティ更新プログラムと Kubernetes リリースが実行されるようにします。
 * セキュリティで保護されたポッド トラフィックと、機密性の高い資格情報へのアクセスを提供します。
 
 この記事では、AKS 内でアプリケーションをセキュリティで保護する主要な概念について説明します。
 
 - [Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
-  - [マスターのセキュリティ](#master-security)
+  - [セキュリティを構築する](#build-security)
+  - [レジストリのセキュリティ](#registry-security)
+  - [クラスターのセキュリティ](#cluster-security)
   - [ノードのセキュリティ](#node-security)
     - [コンピューティングの分離](#compute-isolation)
   - [クラスターのアップグレード](#cluster-upgrades)
     - [切断およびドレイン](#cordon-and-drain)
   - [ネットワークのセキュリティ](#network-security)
     - [Azure ネットワーク セキュリティ グループ](#azure-network-security-groups)
+  - [アプリケーション セキュリティ](#application-security)
   - [Kubernetes シークレット](#kubernetes-secrets)
   - [次の手順](#next-steps)
 
-## <a name="master-security"></a>マスターのセキュリティ
+## <a name="build-security"></a>ビルドのセキュリティ
+
+サプライ チェーンのエントリ ポイントとして、イメージ ビルドをパイプラインで昇格させる前に、その静的分析を実行することが重要です。 これには、脆弱性とコンプライアンスの評価が含まれます。  それは、大きな脆弱性があるために、ビルドを不合格にすることではなく (それは開発を中断することになるため)、開発チームによって対応可能な脆弱性に基づいてセグメント化するために "ベンダーの状態" を調べることです。  また、開発者に特定された問題を修復するための時間を与える "猶予期間" も利用します。 
+
+## <a name="registry-security"></a>レジストリのセキュリティ
+
+レジストリ内のイメージの脆弱性の状態を評価することで、ドリフトが検出され、ビルド環境からのものではないイメージもキャッチされます。 [Notary V2](https://github.com/notaryproject/notaryproject) を使用してイメージにシグネチャを添付し、デプロイが信頼できる場所からのものであることを確認します。
+
+## <a name="cluster-security"></a>クラスターのセキュリティ
 
 AKS の場合、Kubernetes マスター コンポーネントは、Microsoft が提供、管理、および保守するマネージド サービスの一部です。 各 AKS クラスターには、API サーバーやスケジューラなどを提供する独自シングル テナントの専用 Kubernetes マスターがあります。
 
@@ -117,6 +133,11 @@ Azure には、AKS クラスターとコンポーネントのアップグレー�
 
 クラスター内のポッド間のネットワーク トラフィックを制限するために、AKS では、[Kubernetes ネットワーク ポリシー][network-policy]のサポートを提供しています。 ネットワーク ポリシーを使用すると、名前空間とラベル セレクターに基づいて、クラスター内の特定のネットワーク パスを許可または拒否できます。
 
+## <a name="application-security"></a>アプリケーション セキュリティ
+
+AKS で実行されているポッドを保護するには、[Microsoft Defender for Kubernetes][azure-defender-for-kubernetes] を利用して、ポッドで実行されているアプリケーションに対するサイバー攻撃を検出して制限します。  継続的なスキャンを実行して、アプリケーションの脆弱性状態のドリフトを検出し、"ブルー/グリーン/カナリア" プロセスを実装して、脆弱なイメージに修正プログラムを適用して置き換えます。 
+
+
 ## <a name="kubernetes-secrets"></a>Kubernetes シークレット
 
 Kubernetes *シークレット* を使用すると、アクセス資格情報やキーなどの機密データをポッドに挿入できます。 
@@ -155,6 +176,7 @@ AKS クラスターのセキュリティでの保護を開始するには「[AKS
 [encryption-atrest]: ../security/fundamentals/encryption-atrest.md
 
 <!-- LINKS - Internal -->
+[azure-defender-for-kubernetes]: ../defender-for-cloud/container-security.md
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
 [aks-aad]: ./managed-aad.md

@@ -1,31 +1,31 @@
 ---
 title: Common Event Format (CEF) キーおよび CommonSecurityLog フィールドのマッピング
-description: この記事では、CEF キーを、Azure Sentinel 内の CommonSecurityLog の対応するフィールド名にマップします。
+description: この記事では、CEF キーを、Microsoft Sentinel 内の CommonSecurityLog の対応するフィールド名にマップします。
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: reference
-ms.date: 07/26/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ee4aec218ba3969b54531f6f025b84b4909f6b85
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 710b20dcf4f1ac94816881c4851ddfafc0f84872
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064546"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522101"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF および CommonSecurityLog フィールドのマッピング
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-下記の表では、Common Event Format (CEF) のフィールド名を、Azure Sentinel の CommonSecurityLog で使用する名前にマップしています。これらの表は、Azure Sentinel で CEF データ ソースを操作するときに役立つ場合があります。
+下記の表では、Common Event Format (CEF) のフィールド名を、Microsoft Sentinel の CommonSecurityLog で使用する名前にマップしています。これらの表は、Microsoft Sentinel で CEF データ ソースを操作するときに役立つ場合があります。
 
 詳細については、「[Common Event Format を使用して外部ソリューションを接続する](connect-common-event-format.md)」を参照してください。
 
 > [!NOTE]
-> Log Analytics に [CEF データを取り込む](connect-common-event-format.md#prerequisites)ためには、Azure Sentinel ワークスペースが必要です。
+> Log Analytics に [CEF データを取り込む](connect-common-event-format.md#prerequisites)ためには、Microsoft Sentinel ワークスペースが必要です。
 >
 
 ## <a name="a---c"></a>A から C
@@ -239,7 +239,7 @@ ms.locfileid: "131064546"
 
 ## <a name="enrichment-fields"></a>エンリッチメント フィールド
 
-次の **CommonSecurityLog** フィールドは、ソース デバイスから受信した元のイベントをエンリッチするために Azure Sentinel によって追加されています。CEF キーのマッピングはありません。
+次の **CommonSecurityLog** フィールドは、ソース デバイスから受信した元のイベントをエンリッチするために Microsoft Sentinel によって追加されています。CEF キーのマッピングはありません。
 
 ### <a name="threat-intelligence-fields"></a>脅威インテリジェンス フィールド
 

@@ -1,35 +1,35 @@
 ---
-title: Azure Sentinel Information Model (ASIM) パーサー |Microsoft Docs
-description: この記事では、KQL 関数をクエリ時パーサーとして使用して、Azure Sentinel Information Model (ASIM) を実装する方法について説明します。
+title: Advanced SIEM Information Model (ASIM) パーサー | Microsoft Docs
+description: この記事では、KQL 関数をクエリ時パーサーとして使用して、Advanced SIEM Information Model (ASIM) を実装する方法について説明します
 services: sentinel
 cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2021
+ms.date: 11/09/2021
 ms.author: ofshezaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 12f26ca7567387cd6a9edfcde0ef1229e9635f69
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 43ec5162b0dc1bfd9def8afea6a36c7899483a55
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064470"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520296"
 ---
-# <a name="azure-sentinel-information-model-asim-parsers-public-preview"></a>Azure Sentinel Information Model (ASIM) パーサー (パブリック プレビュー)
+# <a name="advanced-siem-information-model-asim-parsers-public-preview"></a>Advanced SIEM Information Model (ASIM) パーサー (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Sentinel では、解析と[正規化](normalization.md)はクエリ時に行われます。 パーサーは [KQL ユーザー定義関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)として構築され、**CommonSecurityLog**、カスタム ログテーブル、Syslog などの既存のテーブルのデータを正規化されたスキーマに変換します。 パーサーをワークスペース関数として保存すると、すべての Azure Sentinel テーブルと同じように使用できます。
+Microsoft Sentinel では、解析と[正規化](normalization.md)はクエリ時に行われます。 パーサーは [KQL ユーザー定義関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)として構築され、**CommonSecurityLog**、カスタム ログテーブル、Syslog などの既存のテーブルのデータを正規化されたスキーマに変換します。 パーサーをワークスペース関数として保存すると、すべての Microsoft Sentinel テーブルと同じように使用できます。
 
 > [!TIP]
-> また、[Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[スライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)を確認してください。 詳細については、「[次のステップ](#next-steps)」を参照してください。
+> また、Microsoft Sentinel の正規化パーサーと正規化されたコンテンツに関する詳しいウェビナーを[こちら](https://www.youtube.com/watch?v=zaqblyjQW6k)でご視聴いただけます。スライドは[こちら](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)でご確認いただけます。 詳細については、「[次のステップ](#next-steps)」を参照してください。
 >
 
 > [!IMPORTANT]
@@ -285,11 +285,11 @@ let DnsGeneric=(starttime:datetime=datetime(null), endtime:datetime=datetime(nul
 
 ## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 
-この記事では、Azure Sentinel Information Model (ASIM) のパーサーについて説明します。
+この記事では、Advanced SIEM Information Model (ASIM) パーサーについて説明します。
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[スライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)を確認してください。
-- [Azure Sentinel 情報モデルの概要](normalization.md)
-- [Azure Sentinel Information Model のスキーマ](normalization-about-schemas.md)
-- [Azure Sentinel Information Model のコンテンツ](normalization-content.md)
+- Microsoft Sentinel の正規化パーサーと正規化されたコンテンツに関する詳しいウェビナーを[こちら](https://www.youtube.com/watch?v=zaqblyjQW6k)でご視聴いただけます。スライドは[こちら](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)でご確認いただけます。
+- [Advanced SIEM Information Model の概要](normalization.md)
+- [Advanced SIEM Information Model のスキーマ](normalization-about-schemas.md)
+- [Advanced SIEM Information Model のコンテンツ](normalization-content.md)

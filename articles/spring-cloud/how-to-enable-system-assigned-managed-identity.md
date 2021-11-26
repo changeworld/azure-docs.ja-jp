@@ -1,5 +1,5 @@
 ---
-title: Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする
+title: Azure Spring Cloud のアプリケーションのシステム割り当てマネージド ID を有効にする
 description: アプリケーションのシステム割り当てマネージド ID を有効にする方法。
 author: karlerickson
 ms.author: karler
@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6e600a4634bf2aff23301fe2eb1f9084e181a416
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: da455b6ad4d68d94654c66d073c8a5a0ba093da9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014821"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490423"
 ---
-# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法
+# <a name="how-to-enable-system-assigned-managed-identity-for-applications-in-azure-spring-cloud"></a>Azure Spring Cloud のアプリケーションのシステム割り当てマネージド ID を有効にする方法
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
-Azure リソースのマネージド ID では、Azure Active Directory で自動的に管理される ID が、Azure Spring Cloud アプリケーションなどの Azure リソースに提供されます。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。
+Azure リソースのマネージド ID では、Azure Active Directory で自動的に管理される ID が、Azure Spring Cloud のアプリケーションなどの Azure リソースに提供されます。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。
 
 この記事では、Azure portal と CLI (バージョン0.2.4 から利用可能) を使用して、Azure Spring Cloud アプリのシステム割り当てマネージド ID を有効または無効にする方法を示します。
 

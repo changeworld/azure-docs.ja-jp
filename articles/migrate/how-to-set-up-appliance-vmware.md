@@ -5,13 +5,13 @@ author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 07/27/2021
-ms.openlocfilehash: b2bdd5ee189d4fe350171d37e51d0f88b3e3ac20
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/12/2021
+ms.openlocfilehash: c95c92c1f592cc5f042975e832df66e585d99740
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747194"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402487"
 ---
 # <a name="set-up-an-appliance-for-servers-in-a-vmware-environment"></a>VMware 環境でサーバーのアプライアンスを設定する
 
@@ -64,11 +64,7 @@ OVA ファイルをデプロイする前に、ファイルが安全であるこ�
    
     例: `C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256`
 
-1. Azure パブリック クラウドの最新のアプライアンス バージョンとハッシュ値を確認します。
-    
-    **アルゴリズム** | **ダウンロード** | **SHA256**
-    --- | --- | ---
-    VMware (11.9 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+1. 上記のコマンドの結果と[こちら](/azure/migrate/tutorial-discover-vmware#verify-security)に記載されている値を比較して、最新のハッシュ値を確認します。
 
 #### <a name="create-the-appliance-server"></a>アプライアンス サーバーを作成する
 

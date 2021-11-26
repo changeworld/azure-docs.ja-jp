@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 102b6e24c0d945cfd8e9bef8b7ae3a9c1992087e
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 7ca093294cb1782da5adeb02888696b38f57de4c
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132335368"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400112"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Azure Synapse Analytics Apache Spark プールの自動スケーリング
 
@@ -60,6 +60,26 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
     * ノードの **最大** 数。
 
 ノードの初期数は最小値になります。 この値によって、インスタンスが作成されるときのその初期サイズが定義されます。 ノードの最小数を 3 より小さくすることはできません。
+
+Spark ジョブのステージ間で Executor の要件が大きく異なるシナリオや、処理されるデータ量が時間と共に変動するシナリオでは、必要に応じて、Executor の動的割り当てを有効にできます。 Executor の動的割り当てを有効にすることで、必要に応じてキャパシティを活用することができます。
+
+Spark プールの作成中、Executor の動的割り当てを有効にする際に、使用可能なノード数の上限を前提に、最小ノード数と最大ノード数を設定できます。 プール内に作成される新しいセッションごとに、これらの値が既定で設定されます。
+
+Apache Spark では、次のコードを使用して、Executor の動的割り当てを構成できます。
+
+```
+    %%configure -f
+    {
+        "conf" : {
+            "spark.dynamicAllocation.maxExecutors" : "6",
+            "spark.dynamicAllocation.enable": "true",
+            "spark.dynamicAllocation.minExecutors": "2"
+     }
+    }
+```
+コードで指定した既定値の方が、ユーザー インターフェイスで設定した値よりも優先されます。
+
+動的割り当てを有効にすると、Executor が、その使用率に応じてスケールアップまたはスケールダウンされます。 実行中のジョブのニーズに従って Executor を確実にプロビジョニングすることができます。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Maps Creator で屋内マップを操作する
 description: この記事では、Azure Maps Creator サービスに適用される概念について説明します
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/26/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 11/11/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 646045df9a6586d80969ec3e80081d45d4dcd249
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0e4f25e140c9b7d2693c94ead25b375e2298adbc
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725618"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400017"
 ---
 # <a name="creator-for-indoor-maps"></a>屋内マップ用の Creator
 
@@ -29,7 +29,10 @@ Creator を使用すると、フロア ガイド データに基づくマップ�
 
 ## <a name="create-azure-maps-creator"></a>Azure Maps Creator を作成する
 
-Creator サービスを使用するには、Azure Maps アカウントで Azure Maps Creator を作成する必要があります。 Azure Maps で Azure Maps Creator を作成する方法の詳細については、「[Azure Maps Creator を管理する](how-to-manage-creator.md)」を参照してください。
+Creator services を使用するためには、Gen 2 価格レベルの Azure Maps アカウントで Azure Maps Creator を作成する必要があります。 Azure Maps で Azure Maps Creator を作成する方法の詳細については、「[Azure Maps Creator を管理する](how-to-manage-creator.md)」を参照してください。
+
+> [!TIP]
+> 価格情報については、「[Azure Maps の価格](https://aka.ms/CreatorPricing)」の *Creator* セクションをご覧ください。
 
 ## <a name="creator-authentication"></a>Creator の認証
 

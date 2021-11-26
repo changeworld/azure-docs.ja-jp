@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: eric-urban
 ms.custom: devx-track-js
-ms.openlocfilehash: 42e0db662c9eaae08351c12a03e1954372b628d6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 7e129d8d7a38b2ba143f89ab4407453f62c75b93
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506901"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530155"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
 
@@ -114,7 +114,7 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 Speech SDK for JavaScript の [TranslationRecognizer クラス](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer)では、音声翻訳に使用できるいくつかの手法が公開されています。
 
-* 単発の翻訳 (非同期) - 非ブロッキング (非同期) モードで翻訳を実行します。 これにより、1 つの発話が翻訳されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
+* 開始時の翻訳 (非同期) - 非ブロッキング (非同期) モードで翻訳を実行します。 これにより、1 つの発話が翻訳されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
 * 継続的翻訳 (非同期) - 継続的な翻訳操作を非同期に開始します。 ユーザーはイベントに登録し、さまざまなアプリケーションの状態を処理します。 非同期の継続的翻訳を停止するには、[`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) を呼び出します。
 
 > [!NOTE]
@@ -129,9 +129,9 @@ speechTranslationConfig.speechRecognitionLanguage = "en-US";
 speechTranslationConfig.addTargetLanguage("de");
 ```
 
-### <a name="single-shot-recognition"></a>単発の認識
+### <a name="at-start-recognition"></a>開始時の認識
 
-[`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync) を使用した非同期の単発翻訳の例を次に示します。
+[`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync) を使用した非同期の開始時の翻訳の例を次に示します。
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -178,7 +178,7 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>継続的翻訳
 
-継続的翻訳は、単発の認識よりも少し複雑です。 この場合は、認識結果を取得するために、`recognizing`、`recognized`、`canceled` の各イベントをサブスクライブする必要があります。 翻訳を停止するには、[`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的翻訳を実行する方法の例を次に示します。
+継続的翻訳は、開始時の認識より少し複雑です。 この場合は、認識結果を取得するために、`recognizing`、`recognized`、`canceled` の各イベントをサブスクライブする必要があります。 翻訳を停止するには、[`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的翻訳を実行する方法の例を次に示します。
 
 入力を定義し、[`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) を初期化することから始めましょう。
 

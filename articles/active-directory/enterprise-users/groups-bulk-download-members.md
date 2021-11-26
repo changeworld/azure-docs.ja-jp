@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: KarenH444
-ms.date: 09/01/2021
+ms.date: 10/26/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea46c1f419835948c27e72e1d1b77d2fd6a3592d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 0d27f1182f7e7308a58b97705ef20d5f2a726eb7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986741"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400150"
 ---
 # <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>Azure Active Directory でグループのメンバーを一括ダウンロードする
 
-Azure Active Directory (Azure AD) ポータルを利用し、組織のグループ メンバーをコンマ区切り値 (CSV) ファイルに一括ダウンロードできます。
+Azure Active Directory (Azure AD) ポータルを利用し、組織のグループ メンバーをコンマ区切り値 (CSV) ファイルに一括ダウンロードできます。 グループ メンバーシップ リストは、管理者とそれ以外のユーザー全員がダウンロードできます。
 
 ## <a name="to-bulk-download-group-membership"></a>グループ メンバーを一括ダウンロードするには
 
-1. 組織のユーザー管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。 グループの所有者は、所有しているグループのメンバーを一括ダウンロードすることもできます。
+1. 組織のアカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure AD で、 **[グループ]**  >  **[すべてのグループ]** の順に選択します。
 1. メンバーシップをダウンロードするグループを開き、 **[メンバー]** を選択します。
 1. **[メンバー]** ページで **[メンバーのダウンロード]** を選択し、グループ メンバーの一覧を含む CSV ファイルをダウンロードします。

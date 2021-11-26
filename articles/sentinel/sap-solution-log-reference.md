@@ -1,40 +1,40 @@
 ---
-title: Azure Sentinel SAP ソリューション - 利用可能なログのリファレンス | Microsoft Docs
-description: Azure Sentinel SAP ソリューションから利用できる SAP ログについて説明します。
+title: Microsoft Azure Sentinel SAP ソリューション - 利用可能なログのリファレンス | Microsoft Docs
+description: Microsoft Azure Sentinel SAP ソリューションから利用できる SAP ログについて説明します。
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
-ms.date: 07/21/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: 15f057dbbc402ba42f5cdf15342827f14eb3895d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 5d02b40794e226238896b7327a47d9cfb2acbe0e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064242"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517997"
 ---
-# <a name="azure-sentinel-sap-solution-logs-reference-public-preview"></a>Azure Sentinel SAP ソリューションのログ リファレンス (パブリック プレビュー)
+# <a name="microsoft-sentinel-sap-solution-logs-reference-public-preview"></a>Microsoft Azure Sentinel SAP ソリューションのログ リファレンス (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この記事では、Azure Sentinel SAP データ コネクタから利用できる SAP ログについて説明します。Azure Sentinel におけるテーブル名やログの目的、詳細なログ スキーマについても取り上げます。 スキーマのフィールドの説明は、関連 [SAP ドキュメント](https://help.sap.com/)におけるフィールドの説明に準じています。
+この記事では、Microsoft Azure Sentinel SAP データ コネクタから利用できる SAP ログについて説明します。Microsoft Azure Sentinel におけるテーブル名やログの目的、詳細なログ スキーマについても取り上げます。 スキーマのフィールドの説明は、関連 [SAP ドキュメント](https://help.sap.com/)におけるフィールドの説明に準じています。
 
 この記事は、上級 SAP ユーザーを対象にしています。
 
 > [!NOTE]
-> XBP 3.0 インターフェイスの使用時は、"*リリースされていない*" サービスが Azure Sentinel SAP ソリューションによって使用されます。 これらのサービスは、バックエンド システムやコネクタの動作には影響しません。
+> XBP 3.0 インターフェイスの使用時は、*リリースされていない* サービスが Azure Sentinel SAP ソリューションによって使用されます。 これらのサービスは、バックエンド システムやコネクタの動作には影響しません。
 >
 > これらのサービスを "リリース" するには、[SAP Note 2910263 (リリースされていない XBP 機能)](https://launchpad.support.sap.com/#/notes/2910263) を実装してください。
 
 > [!IMPORTANT]
-> Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+> Microsoft Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 >
 
 ## <a name="abap-application-log"></a>ABAP アプリケーション ログ
 
-- **Azure Sentinel における名前**: `ABAPAppLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPAppLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcc9f36611d3a6510000e835363f.html)
 
@@ -82,7 +82,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-change-documents-log"></a>ABAP 変更文書ログ
 
-- **Azure Sentinel における名前**: `ABAPChangeDocsLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPChangeDocsLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/6f51f5216c4b10149358d088a0b7029c/7.01.22/en-US/b8686150ed102f1ae10000000a44176f.html)
 
@@ -130,7 +130,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-cr-log"></a>ABAP CR ログ
 
-- **Azure Sentinel における名前**: `ABAPCRLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPCRLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcd5f36611d3a6510000e835363f.html)
 
@@ -166,7 +166,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-db-table-data-log"></a>ABAP DB テーブルデータ ログ
 
-- **Azure Sentinel における名前**: `ABAPTableDataLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPTableDataLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcd2f36611d3a6510000e835363f.html)
 
@@ -198,7 +198,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-gateway-log"></a>ABAP ゲートウェイ ログ
 
-- **Azure Sentinel における名前**: `ABAPOS_GW_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPOS_GW_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/62b4de4187cb43668d15dac48fc00732/7.5.7/en-US/48b2a710ca1c3079e10000000a42189b.html)
 
@@ -218,7 +218,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-icm-log"></a>ABAP ICM ログ
 
-- **Azure Sentinel における名前**: `ABAPOS_ICM_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPOS_ICM_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/683d6a1797a34730a6e005d1e8de6f22/7.52.4/en-US/a10ec40d01e740b58d0a5231736c434e.html)
 
@@ -240,7 +240,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-job-log"></a>ABAP ジョブ ログ
 
-- **Azure Sentinel における名前**: `ABAPJobLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPJobLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/b07e7195f03f438b8e7ed273099d74f3/7.31.19/en-US/4b2bc0974c594ba2e10000000a42189c.html)
 
@@ -284,7 +284,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-security-audit-log"></a>ABAP セキュリティ監査ログ
 
-- **Azure Sentinel における名前**: `ABAPAuditLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPAuditLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/280f016edb8049e998237fcbd80558e7/7.5.7/en-US/4d41bec4aa601c86e10000000a42189b.html)
 
@@ -334,7 +334,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-spool-log"></a>ABAP スプール ログ
 
-- **Azure Sentinel における名前**: `ABAPSpoolLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPSpoolLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/290ce8983cbc4848a9d7b6f5e77491b9/7.52.1/en-US/4eae791c40f72045e10000000a421937.html)
 
@@ -393,7 +393,7 @@ ms.locfileid: "131064242"
 
 ## <a name="apab-spool-output-log"></a>APAB スプール出力ログ
 
-- **Azure Sentinel における名前**: `ABAPSpoolOutputLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPSpoolOutputLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/290ce8983cbc4848a9d7b6f5e77491b9/7.52.1/en-US/4eae779e40f72045e10000000a421937.html)
 
@@ -444,7 +444,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-syslog"></a>ABAP SysLog
 
-- **Azure Sentinel における名前**: `ABAPOS_Syslog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPOS_Syslog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcbaf36611d3a6510000e835363f.html)
 
@@ -473,7 +473,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-workflow-log"></a>ABAP Workflow ログ
 
-- **Azure Sentinel における名前**: `ABAPWorkflowLog_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPWorkflowLog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcccf36611d3a6510000e835363f.html)
 
@@ -528,7 +528,7 @@ ms.locfileid: "131064242"
 
 ## <a name="abap-workprocess-log"></a>ABAP WorkProcess ログ
 
-- **Azure Sentinel における名前**: `ABAPOS_WP_CL`
+- **Microsoft Azure Sentinel での名前**: `ABAPOS_WP_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/d0739d980ecf42ae9f3b4c19e21a4b6e/7.3.15/en-US/46fb763b6d4c5515e10000000a1553f6.html)
 
@@ -553,7 +553,7 @@ ms.locfileid: "131064242"
 
 ## <a name="hana-db-audit-trail"></a>HANA DB 監査証跡
 
-- **Azure Sentinel における名前**: `Syslog`
+- **Microsoft Azure Sentinel での名前**: `Syslog`
 
 - **関連する SAP ドキュメント**: [全般](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/48fd6586304c4f859bf92d64d0cd8b08.html) |  [監査証跡](https://help.sap.com/viewer/b3ee5778bc2e4a089d3299b82ec762a7/2.0.03/en-US/0a57444d217649bf94a19c0b68b470cc.html)
 
@@ -577,7 +577,7 @@ ms.locfileid: "131064242"
 
 ## <a name="java-files"></a>JAVA ファイル
 
-- **Azure Sentinel における名前**: `JavaFilesLogsCL`
+- **Microsoft Azure Sentinel での名前**: `JavaFilesLogsCL`
 
 - **関連する SAP ドキュメント**: [全般](https://help.sap.com/viewer/2f8b1599655d4544a3d9c6d1a9b6546b/7.5.9/en-US/485059dfe31672d4e10000000a42189c.html) | [Java セキュリティ監査ログ](https://help.sap.com/viewer/1531c8a1792f45ab95a4c49ba16dc50b/7.5.9/en-US/4b6013583840584ae10000000a42189c.html)
 
@@ -620,9 +620,9 @@ ms.locfileid: "131064242"
 
 詳細については、次を参照してください。
 
-- [SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
-- [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
-- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
+- [SAP 用 Microsoft Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
+- [Microsoft Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
+- [SNC を使用して Microsoft Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
 - [エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
-- [Azure Sentinel SAP ソリューション: 組み込みのセキュリティ コンテンツ](sap-solution-security-content.md)
-- [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)
+- [Microsoft Azure Sentinel SAP ソリューション: 組み込みのセキュリティ コンテンツ](sap-solution-security-content.md)
+- [Microsoft Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

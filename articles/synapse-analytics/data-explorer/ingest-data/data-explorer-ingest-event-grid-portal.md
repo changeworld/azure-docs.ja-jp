@@ -9,12 +9,12 @@ ms.reviewer: tzgitlin
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
-ms.openlocfilehash: f6fc9858589e1a5ee940a8fc44e3eb462a30ce7c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2c472ae5950bc035612987c35e76291dc5c23f49
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477920"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485657"
 ---
 # <a name="ingest-blobs-into-azure-synapse-data-explorer-by-subscribing-to-event-grid-notifications-preview"></a>Event Grid の通知をサブスクライブすることで Azure Synapse Data Explorer に BLOB を取り込む (プレビュー)
 
@@ -39,7 +39,7 @@ Event Grid から Data Explorer への取り込みに関する一般的な情報
     1. Synapse Studio の左側のウィンドウで、 **[開発]** を選択します。
     1. **[KQL スクリプト]** で、 **&plus;** (新しいリソースの追加) > **[KQL スクリプト]** を選択します。 右側のウィンドウで、スクリプト名を指定できます。
     1. **[接続先]** メニューで、[*contosodataexplorer*] を選択します。
-    1. **[データベースの使用]** メニューで、[*TestDatabase*] を選択します。
+    1. **[データベースの使用]** メニューで、 *[TestDatabase]* を選択します。
     1. 次のコマンドを貼り付け、 **[実行]** を選択してテーブルを作成します。
 
         ```Kusto
@@ -47,7 +47,7 @@ Event Grid から Data Explorer への取り込みに関する一般的な情報
         ```
 
         > [!TIP]
-        > テーブルが正常に作成されたことを確認します。 左側のウィンドウで、 **[データ]** を選択し、*contosodataexplorer* のその他のメニューを選択してから、 **[最新の情報に更新]** を選択します。 [*contosodataexplorer*] で **[テーブル]** を展開し、*TestTable* テーブルが一覧に表示されていることを確認します。
+        > テーブルが正常に作成されたことを確認します。 左側のペインで、 **[データ]** を選択し、*contosodataexplorer* の [その他] メニューを選択し、 **[最新の情報に更新]** を選択します。 *[contosodataexplorer]* で **[テーブル]** を展開し、*TestTable* テーブルが一覧に表示されていることを確認します。
 
     1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
 
@@ -103,7 +103,7 @@ Event Grid から Data Explorer への取り込みに関する一般的な情報
 1. **[Next:Ingest properties]\(次へ: 取り込みのプロパティ\)** を選択します。
 
 > [!NOTE]
-> マネージド ID を使用するオプションが使用可能になったら、すぐにストレージ アカウントを更新してそれを使用することをお勧めします。
+> ご使用のクラスターで、マネージド ID を使用してストレージ アカウントにアクセスするためのオプションが利用できるようになったらすぐに、そのようにデータ接続を更新することをお勧めします。
 
 #### <a name="data-connection---ingest-properties-tab"></a>データ接続 - [Ingest properties]\(取り込みのプロパティ\) タブ
 

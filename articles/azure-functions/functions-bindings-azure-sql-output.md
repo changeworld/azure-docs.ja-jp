@@ -3,16 +3,17 @@ title: Functions の Azure SQL 出力バインド
 description: Azure Functions の Azure SQL 出力バインドを使用する方法について説明します。
 author: dzsquared
 ms.topic: reference
-ms.date: 11/9/2021
+ms.date: 11/12/2021
 ms.author: drskwier
-ms.openlocfilehash: f2909917f7cdab501fd3667a452c835c9cb8f915
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.reviewer: cachai
+ms.openlocfilehash: 37a9601f30c64108b079ec8573553a05088c8629
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132350063"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493269"
 ---
-# <a name="azure-sql-output-binding-for-azure-functions"></a>Azure Functions の Azure SQL 出力バインド
+# <a name="azure-sql-output-binding-for-azure-functions-preview"></a>Azure Functions の Azure SQL 出力バインド (プレビュー)
 
 Azure SQL 出力バインドでは、データベースに書き込みできます。
 

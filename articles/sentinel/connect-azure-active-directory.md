@@ -1,29 +1,29 @@
 ---
-title: Azure Sentinel に Azure Active Directory のデータを接続する | Microsoft Docs
-description: Microsoft Azure Active Directory Domain Services からデータを収集し、Azure AD のサインイン ログ、監査ログ、プロビジョニング ログを Azure Sentinel にストリーミングする方法について説明します。
+title: Microsoft Azure Sentinel に Azure Active Directory のデータを接続する | Microsoft Docs
+description: Microsoft Azure Active Directory Domain Services からデータを収集し、Azure AD のサインイン ログ、監査ログ、プロビジョニング ログを Microsoft Azure Sentinel にストリーミングする方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 0a8f4a58-e96a-4883-adf3-6b8b49208e6a
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/21/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3d0c19fe728f42940502f2cab3496d999ecbb349
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fa4673a573138ac3ccbac533e980f36eb148c6f6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060727"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518073"
 ---
-# <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Azure Active Directory (Azure AD) データを Azure Sentinel に接続する
+# <a name="connect-azure-active-directory-azure-ad-data-to-microsoft-sentinel"></a>Azure Active Directory (Azure AD) データを Microsoft Azure Sentinel に接続する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "131060727"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel の組み込みコネクタを使用して、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) からデータを収集し、それを Azure Sentinel にストリーミングできます。 コネクタを使用すると、次の種類のログをストリーミングできます。
+Microsoft Azure Sentinel の組み込みコネクタを使用して、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) からデータを収集し、それを Microsoft Azure Sentinel にストリーミングできます。 コネクタを使用すると、次の種類のログをストリーミングできます。
 
 - [**サインイン ログ**](../active-directory/reports-monitoring/concept-all-sign-ins.md)には、ユーザーが認証要素を提供する対話型ユーザー サインインに関する情報が含まれています。
 
@@ -51,9 +51,9 @@ Azure Sentinel の組み込みコネクタを使用して、[Azure Active Direct
 
 ## <a name="prerequisites"></a>前提条件
 
-- サインイン ログを Azure Sentinel に取り込むには、Azure Active Directory P1 または P2 ライセンスが必要です。 他の種類のログを取り込む場合、任意の Azure AD ライセンス (Free/O365/P1/P2) で十分です。 Azure Monitor (Log Analytics) と Azure Sentinel には、追加のギガバイト単位の料金が適用される場合があります。
+- サインイン ログを Microsoft Azure Sentinel に取り込むには、Azure Active Directory P1 または P2 ライセンスが必要です。 他の種類のログを取り込む場合、任意の Azure AD ライセンス (Free/O365/P1/P2) で十分です。 Azure Monitor (Log Analytics) と Microsoft Azure Sentinel には、追加のギガバイト単位の料金が適用される場合があります。
 
-- ユーザーには、ワークスペースの Azure Sentinel 共同作成者ロールを割り当てる必要があります。
+- ユーザーには、ワークスペースの Microsoft Azure Sentinel 共同作成者ロールを割り当てる必要があります。
 
 - ユーザーには、ログをストリーミングするテナントの全体管理者またはセキュリティ管理者のロールを割り当てる必要があります。
 
@@ -61,11 +61,11 @@ Azure Sentinel の組み込みコネクタを使用して、[Azure Active Direct
 
 ## <a name="connect-to-azure-active-directory"></a>Azure Active Directory に接続する
 
-1. Azure Sentinel で、ナビゲーション メニューから **[Data connectors]\(データ コネクタ\)** を選択します。
+1. Microsoft Azure Sentinel で、ナビゲーション メニューから **[データ コネクタ]** を選択します。
 
 1. データ コネクタ ギャラリーで、 **[Azure Active Directory]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
-1. Azure Sentinel にストリーミングする種類のログの隣のチェック ボックス (上記を参照) をオンにして、 **[接続]** を選択します。
+1. Microsoft Azure Sentinel にストリーミングするログの種類の隣のチェック ボックス (上記を参照) をオンにして、 **[接続]** を選択します。
 
 ## <a name="find-your-data"></a>データの検索
 
@@ -81,6 +81,6 @@ Azure Sentinel の組み込みコネクタを使用して、[Azure Active Direct
 Azure AD ログを照会するには、クエ リ ウィンドウの上部に関連テーブル名を入力します。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure Active Directory を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Azure Active Directory を Microsoft Azure Sentinel に接続する方法について説明しました。 Microsoft Azure Sentinel の詳細については、次の記事を参照してください。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [Microsoft Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

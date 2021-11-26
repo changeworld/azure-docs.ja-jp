@@ -4,12 +4,12 @@ description: この記事では、Azure Video Analyzer を Azure Stack Edge に�
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b03935028fec1cce2ea5794abf95ecfa70ea2921
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 023d6500a16d5b808bbb2e249076eae9b53741f8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554585"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487625"
 ---
 # <a name="deploy-azure-video-analyzer-on-azure-stack-edge"></a>Azure Video Analyzer を Azure Stack Edge にデプロイする
 
@@ -182,7 +182,7 @@ Azure portal で配置マニフェストを作成し、IoT Edge デバイスに�
 1. **[モジュールの設定]** タブを選択し、モジュール名を入力して、コンテナー イメージ URI を指定します。 次に例を示します。   
     
     * **IoT Edge モジュールの名前**: rtspsim  
-    * **イメージ URI**: mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2 
+    * **イメージ URI**: mcr.microsoft.com/ava-utilities/rtspsim-live555:1.2 
 
 1. **[コンテナーの作成オプション]** タブを選択し、ボックス内に次の JSON コードを貼り付けます。
     

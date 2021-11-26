@@ -1,34 +1,34 @@
 ---
-title: Azure Sentinel で Azure Monitor ブックを使用してデータを視覚化する | Microsoft Docs
-description: Azure Sentinel でブックを使用してデータを視覚化する方法について説明します。
+title: Microsoft Sentinel で Azure Monitor ブックを使用してデータを視覚化する | Microsoft Docs
+description: Microsoft Sentinel でブックを使用してデータを視覚化する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ef77535810671c0f442aa90eade688778c381750
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 525f67a7c9284a9ac78c388e52041d7895032104
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064489"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522614"
 ---
 # <a name="use-azure-monitor-workbooks-to-visualize-and-monitor-your-data"></a>Azure Monitor ブックを使用して、データを視覚化および監視する
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)した後、Azure Sentinel による Azure Monitor ブックの適用を使用して、データを視覚化および監視できます。これにより、多用途のカスタム ダッシュボードを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/visualize/workbooks-overview.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
+Microsoft Sentinel に[データ ソースを接続](quickstart-onboard.md)した後、Microsoft Sentinel による Azure Monitor ブックの適用を使用して、データを視覚化および監視できます。これにより、多用途のカスタム ダッシュボードを作成できます。 ブックの表示は Microsoft Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/visualize/workbooks-overview.md)方法を確認すると役立つ場合があります。 Microsoft Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
 
-この記事では、Azure Sentinel でデータを視覚化する方法について説明します。
+この記事では、Microsoft Sentinel でデータを視覚化する方法について説明します。
 
 > [!div class="checklist"]
 > * 組み込みのブックを使用する
@@ -36,16 +36,16 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)した後
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Sentinel ワークスペースのリソース グループに対して、少なくとも **ブックの閲覧者** または **ブックの共同作成者** のアクセス許可が必要です。
+Microsoft Sentinel ワークスペースのリソース グループに対して、少なくとも **ブックの閲覧者** または **ブックの共同作成者** のアクセス許可が必要です。
 
 > [!NOTE]
-> Azure Sentinel で表示されるブックは、Azure Sentinel ワークスペースのリソース グループ内に保存され、作成されたワークスペースごとにタグ付けされます。
+> Microsoft Sentinel で表示できるブックは、Microsoft Sentinel ワークスペースのリソース グループ内に保存され、作成されたワークスペースごとにタグ付けされます。
 
 ## <a name="use-built-in-workbooks"></a>組み込みのブックを使用する
 
-1. **[ブック]** にアクセスし、 **[テンプレート]** を選択して、Azure Sentinel の組み込みのブックの完全な一覧を表示します。 
+1. **[ブック]** にアクセスし、 **[テンプレート]** を選択して、Microsoft Sentinel の組み込みのブックの完全な一覧を表示します。 
 
-    どれが接続しているデータ型と関連しているかを確認する場合、Azure Sentinel に関連データが既にストリーミングされている場合には各ブックの **[Required data types]\(必要なデータ型\)** フィールドでそのデータ型の隣に緑色のチェックマークが表示されます。
+    どれが接続しているデータ型と関連しているかを確認するには、Microsoft Sentinel に関連データが既にストリーミングされている場合は、各ブックの **[必要なデータ型]** フィールドでそのデータ型の隣に緑色のチェック マークが表示されます。
 
     [ ![ブックに移動](media/tutorial-monitor-data/access-workbooks.png) ](media/tutorial-monitor-data/access-workbooks.png#lightbox)
 
@@ -79,7 +79,7 @@ Azure Sentinel ワークスペースのリソース グループに対して、�
 
 1. クエリを作成するときに、 **[データ ソース]** が **[ログ]** に設定され、 **[リソース タイプ]** が **[Log Analytics]** に設定されていることを確認してから、関連するワークスペースを選択します。 
 
-1. ブックを作成したら、Azure Sentinel ワークスペースのサブスクリプションとリソース グループの下にブックを保存します。
+1. ブックを作成したら、Microsoft Sentinel ワークスペースのサブスクリプションとリソース グループの下にブックを保存します。
 
 1. 組織内の他のユーザーがブックを使用できるようにする場合は、 **[保存先]** で **[共有レポート]** を選択します。 このブックを自分だけが使用できるようにする場合は、 **[個人用レポート]** を選択します。
 
@@ -127,8 +127,8 @@ Azure Sentinel ワークスペースのリソース グループに対して、�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure ブックを使用して、Azure Sentinel でデータを視覚化する方法を説明しました。
+この記事では、Azure ブックを使用して、Microsoft Sentinel でデータを視覚化する方法を説明しました。
 
-脅威への対応を自動化する方法については、「[Azure Sentinel で脅威への自動対応を設定する](tutorial-respond-threats-playbook.md)」を参照してください。
+脅威への対応を自動化する方法については、[Microsoft Sentinel で脅威への自動対応を設定する](tutorial-respond-threats-playbook.md)に関するページを参照してください。
 
-一般的な組み込みブックの詳細については、「[一般的に使用される Azure Sentinel ブック](top-workbooks.md)」を参照してください。 
+一般的な組み込みブックの詳細については、[一般的に使用される Microsoft Sentinel ブック](top-workbooks.md)に関するページを参照してください。 

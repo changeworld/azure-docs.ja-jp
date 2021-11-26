@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
-ms.openlocfilehash: e71f6b6dde1ae12a68f425dcb372cca73456de73
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 7edd651e5c6a52f707cfebd87310e0a104fef0d4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858133"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401209"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>Start/Stop VMs v2 (プレビュー) の概要
 
@@ -49,9 +49,9 @@ Start/Stop VMs v2 (プレビュー) は再設計されており、[以前のバ�
 
 - **Sequenced** - 開始と停止のアクションは、事前に定義されたシーケンス処理タグの付いた VM を対象とするスケジュールに基づきます。 サポートされているのは、**sequencestart** および **sequencestop** の 2 つの名前付きタグのみです。 **ststv2_vms_Sequenced_start** と **ststv2_vms_Sequenced_stop** により、シーケンスされた開始と停止が構成されます。 
 
-    シーケンス機能を使用するための適切な方法として、順番に開始する各 VM で **sequencestart** という名前のタグを作成します。 このタグの値は、対応するスコープ内の各 VM に対して 1 から N までの整数である必要があります。 このタグは省略可能であり、存在しない場合、その VM は単純にシーケンス処理に参加しません。 停止する VM にも同じ条件が適用されますが、タグ名だけが異なり、この場合は **sequencestop** を使用します。 開始と停止のアクションを使用するには、各 VM で両方のタグを構成する必要があります。
+    シーケンス機能を使用するための適切な方法として、順番に開始する各 VM で **sequencestart** という名前のタグを作成します。 このタグの値は、対応するスコープ内の各 VM に対して 1 から N までの整数である必要があります。 このタグは省略可能であり、存在しない場合、その VM は単純にシーケンス処理に参加しません。 停止する VM にも同じ条件が適用されますが、タグ名だけが異なり、この場合は **sequencestop** を使用します。 開始と停止のアクションを使用するには、各 VM で両方のタグを構成する必要があります。 複数の VM が同じタグ値を共有している場合、それらの VM は同時に開始または停止されます。
 
-    たとえば、次の表は、逆のシーケンスを持つ 2 つの VM が最終的には同じ順序で実行されるようすを示しています。
+    たとえば次の表を見ると、開始アクションと停止アクションがどちらも、タグの値の昇順で処理されることがわかります。
 
     :::image type="content" source="media/overview/sequence-settings-table.png" alt-text="シーケンス設定のタグの例を示す表":::
 

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで、自動的に TL
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: 722545698c888a53f41ec23b0cfa863b2da64a9e
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: bd436a02d64887abf74a6ffedfef6dac3c90d52c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131577261"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519802"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "131577261"
 
 また、この記事では、[カスタム ドメイン][custom-domain]の [DNS ゾーン][dns-zone]が、お使いの AKS クラスターと同じリソース グループにあることも前提としています。
 
-この記事では [Helm 3][helm] を使用して、[サポートされているバージョンの Kubernetes][aks-supported versions] に NGINX イングレス コントローラーをインストールします。 最新リリースの Helm を使用しており、*ingress-nginx* および *jetstack* の Helm リポジトリにアクセスできることを確認します。 この記事に記載されている手順は、以前のバージョンの Helm グラフ、NGINX イングレス コントローラー、または Kubernetes と互換性がない可能性があります。
+この記事では [Helm 3][helm] を使用して、[サポートされているバージョンの Kubernetes][aks-supported versions] に NGINX イングレス コントローラーをインストールします。 最新リリースの Helm を使用しており、`ingress-nginx` および `jetstack` Helm リポジトリにアクセスできることを確認します。 この記事に記載されている手順は、以前のバージョンの Helm グラフ、NGINX イングレス コントローラー、または Kubernetes と互換性がない可能性があります。
 
 Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。 アップグレード手順については、「[Helm のインストール ドキュメント」を参照してください。Helm の構成と使用について詳しくは、「Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール」を参照してください。][helm-install]
 
@@ -48,15 +48,15 @@ Helm の構成および使用方法の詳細については、「[Azure Kubernet
 REGISTRY_NAME=<REGISTRY_NAME>
 CONTROLLER_REGISTRY=k8s.gcr.io
 CONTROLLER_IMAGE=ingress-nginx/controller
-CONTROLLER_TAG=v0.48.1
+CONTROLLER_TAG=v1.0.4
 PATCH_REGISTRY=docker.io
 PATCH_IMAGE=jettech/kube-webhook-certgen
-PATCH_TAG=v1.5.1
+PATCH_TAG=v1.5.2
 DEFAULTBACKEND_REGISTRY=k8s.gcr.io
 DEFAULTBACKEND_IMAGE=defaultbackend-amd64
 DEFAULTBACKEND_TAG=1.5
 CERT_MANAGER_REGISTRY=quay.io
-CERT_MANAGER_TAG=v1.3.1
+CERT_MANAGER_TAG=v1.5.4
 CERT_MANAGER_IMAGE_CONTROLLER=jetstack/cert-manager-controller
 CERT_MANAGER_IMAGE_WEBHOOK=jetstack/cert-manager-webhook
 CERT_MANAGER_IMAGE_CAINJECTOR=jetstack/cert-manager-cainjector
@@ -85,9 +85,6 @@ az acr import --name $REGISTRY_NAME --source $CERT_MANAGER_REGISTRY/$CERT_MANAGE
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、TLS パススルーは機能しません。
 
 ```console
-# Create a namespace for your ingress resources
-kubectl create namespace ingress-basic
-
 # Add the ingress-nginx repository
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
@@ -96,7 +93,7 @@ ACR_URL=<REGISTRY_URL>
 
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress ingress-nginx/ingress-nginx \
-    --namespace ingress-basic \
+    --namespace ingress-basic --create-namespace \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."kubernetes\.io/os"=linux \
     --set controller.image.registry=$ACR_URL \
@@ -107,10 +104,12 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.admissionWebhooks.patch.image.registry=$ACR_URL \
     --set controller.admissionWebhooks.patch.image.image=$PATCH_IMAGE \
     --set controller.admissionWebhooks.patch.image.tag=$PATCH_TAG \
+    --set controller.admissionWebhooks.patch.image.digest="" \
     --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux \
     --set defaultBackend.image.registry=$ACR_URL \
     --set defaultBackend.image.image=$DEFAULTBACKEND_IMAGE \
-    --set defaultBackend.image.tag=$DEFAULTBACKEND_TAG
+    --set defaultBackend.image.tag=$DEFAULTBACKEND_TAG \
+    --set defaultBackend.image.digest=""
 ```
 
 インストールの間に、Azure パブリック IP アドレスがイングレス コントローラーに対して作成されます。 このパブリック IP アドレスは、イングレス コントローラーが存続している間は静的です。 イングレス コントローラーを削除すると、パブリック IP アドレスの割り当てが失われます。 続いてさらに別のイングレス コントローラーを作成すると、新しいパブリック IP アドレスが割り当てられます。 パブリック IP アドレスを使用し続けることを望む場合は、代わりに[静的パブリック IP アドレス][aks-ingress-static-tls]を使用してイングレス コントローラーを作成できます。
@@ -516,7 +515,7 @@ kubectl delete namespace ingress-basic
 [helm-cli]: ./kubernetes-helm.md
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.io/docs/concepts/certificate/
-[ingress-shim]: https://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html
+[ingress-shim]: https://cert-manager.io/docs/usage/ingress/
 [cert-manager-cluster-issuer]: https://cert-manager.io/docs/concepts/issuer/
 [cert-manager-issuer]: https://cert-manager.io/docs/concepts/issuer/
 [lets-encrypt]: https://letsencrypt.org/
