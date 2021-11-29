@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/26/2021
-ms.openlocfilehash: 2f8aa4612d386995f39fccceebdaee67e4afe9dd
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 56b2ce9b8b392a25c50ff4ea2d47da0237363a53
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131848346"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719246"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>仮想マシン オファーの計画
 
@@ -58,7 +58,7 @@ VM には、次の 2 つのコンポーネントが含まれています。
     > [!NOTE]
     > 使用するオペレーティング システムに関係なく、ソリューションに必要な最小数のデータ ディスクのみを追加します。 お客様はデプロイ時にイメージの一部であるディスクを削除することはできませんが、デプロイ中またはデプロイ後にいつでもディスクを追加できます。
 
-技術資産を準備する手順の詳細については、[承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページを参照してください。
+技術資産を準備する手順の詳細については、[承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-use-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-use-own-image.md)に関するページを参照してください。
 
 ## <a name="preview-audience"></a>プレビュー対象ユーザー
 
@@ -102,13 +102,13 @@ VM オファーで使用可能なライセンス オプションは次のとお�
 
 ## <a name="test-drive"></a>体験版
 
-VM の体験版を有効にすることを選択できます。 体験版を使用すると、顧客は、一定期間、構成済み環境にアクセスできます。 どの公開オプションでも体験版を有効にできますが、この機能には追加の要件があります。 体験版の詳細については、「[体験版とは](what-is-test-drive.md)」を参照してください。 さまざまな種類の体験版の構成については、「[体験版の技術的な構成](test-drive-technical-configuration.md)」を参照してください。
-
 [!INCLUDE [Test drives section](includes/test-drives.md)]
+
+今すぐ VM オファーの体験版について詳しく知りたい場合は、「[VM 体験版の構成](azure-vm-test-drive.md)」を参照してください。
 
 ## <a name="customer-leads"></a>潜在顧客
 
-[!INCLUDE [Customer leads section](includes/customer-leads.md)]
+パートナー センターを使用してオファーをコマーシャル マーケットプレースに発行する場合、それを顧客関係管理 (CRM) システムに接続します。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。 体験版を有効にする場合 (前のセクションを参照してください)、CRM への接続は必須です。 そうでない場合は、CRM への接続は任意です。
 
 ## <a name="legal-contracts"></a>法的契約
 
@@ -124,6 +124,6 @@ VM の体験版を有効にすることを選択できます。 体験版を使�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Marketplace で仮想マシン オファーを作成する](azure-vm-create.md)
-- [承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)
+- [Azure Marketplace で仮想マシン オファーを作成する](azure-vm-offer-setup.md)
+- [承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-use-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-use-own-image.md)
 - [オファーの掲載のベスト プラクティス](gtm-offer-listing-best-practices.md)

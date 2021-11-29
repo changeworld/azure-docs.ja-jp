@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 11/02/2021
-ms.openlocfilehash: 716c425958a457b45736835029b90567c090d4a9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/15/2021
+ms.openlocfilehash: 0192b9ce0e0d32b53ce8b99e9e8d16ce104c0056
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446982"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705343"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database と Azure SQL Managed Instance のサービス レベル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -46,9 +46,9 @@ Azure SQL Database では、Hyperscale サービス レベルも提供されま�
 | | SQL Managed Instance のプール | 2、4、8、16、24、32、40、64、80 の仮想コア | 該当なし | 該当なし |
 | **ストレージの種類** | All | リモート ストレージ | 階層化されたリモートおよびローカル SSD ストレージ | ローカル SSD ストレージ |
 | **データベースのサイズ** | SQL Database | 1 GB – 4 TB | 40 GB - 100 TB | 1 GB – 4 TB |
-| | SQL Managed Instance  | 32 GB – 8 TB </br> コア数に応じて 16 TB (プレビュー)、Gen5 のみ| 該当なし | 32 GB – 4 TB |
+| | SQL Managed Instance  | 32 GB – 16 TB| 該当なし | 32 GB – 16 TB |
 | **ストレージ サイズ** | SQL Database | 1 GB – 4 TB | 40 GB - 100 TB | 1 GB – 4 TB |
-| | SQL Managed Instance  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
+| | SQL Managed Instance  | 32 GB – 16 TB | 該当なし | 32 GB – 16 TB |
 | **TempDB のサイズ** | SQL Database | [仮想コアあたり 32 GB](resource-limits-vcore-single-databases.md) | [仮想コアあたり 32 GB](resource-limits-vcore-single-databases.md) | [仮想コアあたり 32 GB](resource-limits-vcore-single-databases.md) |
 | | SQL Managed Instance  | [仮想コアあたり 24 GB](../managed-instance/resource-limits.md#service-tier-characteristics) | 該当なし | 最大 4 TB - [ストレージ サイズによる制限](../managed-instance/resource-limits.md#service-tier-characteristics) |
 | **ログ書き込みスループット** | SQL Database | 単一データベース: [仮想コアあたり 4.5 MB/秒 (最大 50 MB/秒)](resource-limits-vcore-single-databases.md) <br> エラスティック プール: [仮想コアあたり 6 MB/秒 (最大 62.5 MB/秒)](resource-limits-vcore-elastic-pools.md)| 100 MB/秒 | 単一データベース: [仮想コアあたり 12 MB/秒 (最大 96 MB/秒)](resource-limits-vcore-single-databases.md) <br> エラスティック プール: [仮想コアあたり 15 MB/秒 (最大 120 MB/秒)](resource-limits-vcore-elastic-pools.md)|
@@ -71,7 +71,7 @@ Azure SQL Database では、Hyperscale サービス レベルも提供されま�
 
  - [Azure SQL Database (仮想コア)](resource-limits-vcore-single-databases.md)
  - [単一の Azure SQL データベース (DTU)](resource-limits-dtu-single-databases.md)
- - [プールされた Azure SQL データベース (DTU)](resource-limits-dtu-single-databases.md)
+ - [プールされた Azure SQL データベース (DTU)](resource-limits-dtu-elastic-pools.md)
  - [Azure SQL Managed Instance](../managed-instance/resource-limits.md)
 
 ## <a name="data-and-log-storage"></a>データとログのストレージ

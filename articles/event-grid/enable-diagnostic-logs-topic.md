@@ -1,103 +1,104 @@
 ---
-title: Azure Event Grid - トピックまたはドメインの診断ログを有効にする
-description: この記事では、Azure Event Grid トピックの診断ログを有効にする手順について説明します。
+title: Azure Event Grid - Event Grid リソースについての診断ログを有効にする
+description: この記事では、Event Grid リソースについての診断ログを有効にする方法に関する詳しい手順を示します。
 ms.topic: how-to
-ms.date: 06/25/2021
-ms.openlocfilehash: 7ae1900c08b78ac5d84f4d36ef48319cd42ebce2
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.date: 11/11/2021
+ms.openlocfilehash: 06999716c884dc1c18ce41be288ebfba2b2298e6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112969853"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556287"
 ---
-#  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインの診断ログを有効にする
-この記事では、Event Grid のトピックまたはドメインの診断設定を有効にする手順について説明します。  これらの設定を行うと、**発行エラーと配信エラー** のログをキャプチャして表示することができます。 
+# <a name="enable-diagnostic-logs-for-event-grid-resources"></a>Event Grid リソースについての診断ログを有効にする
+
+この記事では、Event Grid リソースについての診断設定を有効にする詳しい手順を示します。
+
+これらの設定を使用すると、情報をキャプチャして表示できます。次の表に、Event Grid のリソース全体にわたる設定の互換性を示します。
+
+| 診断設定 | 説明 | Event Grid トピック | Event Grid システム トピック | Event Grid ドメイン |
+| ------------- | ------------- | --------- | ----------- | ----------- |
+| DeliveryFailures | 配信エラー | はい | はい | はい |
+| PublishFailures | 発行エラー | はい | いいえ | はい |
+| DataPlaneRequests| データ プレーン要求 | はい | いいえ | はい |
 
 > [!IMPORTANT]
-> 診断ログのスキーマについては、[診断ログ](diagnostic-logs.md)に関する記事を参照してください。 
-
+> 診断ログのスキーマについては、[診断ログ](diagnostic-logs.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- プロビジョニングされた Event Grid トピック
-- 診断ログのキャプチャに使用するプロビジョニングされた宛先。 Event Grid トピックと同じ場所に、次のいずれかの送信先を指定できます。
-    - Azure ストレージ アカウント
-    - イベント ハブ
-    - Log Analytics ワークスペース
+- プロビジョニングされた Event Grid リソース
+- 診断ログのキャプチャに使用するプロビジョニングされた宛先。
+  - Log Analytics ワークスペース
+  - ストレージ アカウント
+  - イベント ハブ
+  - パートナー ソリューション
 
-## <a name="enable-diagnostic-logs-for-a-custom-topic"></a>カスタム トピックの診断ログを有効にする
+## <a name="enable-diagnostic-logs-for-event-grid-topics-and-event-grid-domains"></a>Event Grid トピックと Event Grid ドメインの診断ログを有効にする
 
 > [!NOTE]
-> 次の手順では、トピックの診断ログを有効にする手順について説明します。 ドメインの診断ログを有効にする手順もよく似ています。 手順 2 で、Azure portal 内の Event Grid **ドメイン** に移動します。  
+> 下の手順では、Event Grid トピックの診断ログを有効にする詳しい手順を示しています。 ドメインの診断ログを有効にする手順もよく似ています。 手順 2 では、Azure portal 内の Event Grid **ドメイン** に移動します。  
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 診断ログ設定を有効にするイベント グリッド トピックに移動します。 
-    1. 上部の検索バーで、「**Event Grid Topics (Event Grid トピック)** 」を検索します。 
-    
+2. 診断ログ設定を有効にする Event Grid トピックに移動します。
+    1. 上部の検索バーで、"**Event Grid トピック**" を検索します。
         ![カスタム トピックを検索する](./media/enable-diagnostic-logs-topic/search-custom-topics.png)
-    1. 診断設定を構成するリストから、 **[トピック]** を選択します。 
-1. 左側のメニューの **[監視]** の下にある **[診断設定]** を選択します。
-1. **[診断設定]** ページで、 **[Add New Diagnostic Setting]\(新しい診断設定の追加\)** を選択します。 
-    
+    2. 診断設定を構成するリストから、 **[トピック]** を選択します。
+3. 左側のメニューの **[監視]** の下にある **[診断設定]** を選択します。
+4. **[診断設定]** ページで、 **[Add New Diagnostic Setting]\(新しい診断設定の追加\)** を選択します。
     ![[診断設定を追加する] ボタン](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
-5. 診断設定の **[名前]** を指定します。 
-6. **[ログ]** セクションの **[DeliveryFailures]** および **[PublishFailures]** オプションを選択します。 
+5. 診断設定の **[名前]** を指定します。
+6. **[ログ]** セクションで **[allLogs]** オプションを選択します。
     ![エラーを選択する](./media/enable-diagnostic-logs-topic/log-failures.png)
-7. ログの 1 つまたは複数のキャプチャ先を有効にしてから、前に作成したキャプチャ リソースを選択して構成します。 
-    - **[ストレージ アカウントへのアーカイブ]** を選択した場合は、 **[ストレージ アカウント - 構成]** を選択してから、Azure サブスクリプションのストレージ アカウントを選択します。 
-
+7. ログの 1 つまたは複数のキャプチャ先を有効にしてから、前に作成したキャプチャ リソースを選択して構成します。
+    - **[ストレージ アカウントへのアーカイブ]** を選択した場合は、 **[ストレージ アカウント - 構成]** を選択してから、Azure サブスクリプションのストレージ アカウントを選択します。
         ![[Azure ストレージ アカウントにアーカイブする] チェックボックスがオンになっており、ストレージ アカウントが選択されている [診断設定] ページ示すスクリーンショット。](./media/enable-diagnostic-logs-topic/archive-storage.png)
-    - **[イベント ハブへのストリーム]** を選択した場合は、 **[イベント ハブ - 構成]** を選択してから、Event Hubs 名前空間、イベント ハブ、およびアクセス ポリシーを選択します。 
+    - **[イベント ハブへのストリーム]** を選択した場合は、 **[イベント ハブ - 構成]** を選択してから、Event Hubs 名前空間、イベント ハブ、アクセス ポリシーを選択します。
         ![[イベント ハブへのストリーム] チェックボックスがオンになっている [診断設定] ページを示すスクリーンショット。](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - **[Log Analytics への送信]** を選択した場合は、Log Analytics ワークスペースを選択します。
         ![[Log Analytics への送信] チェックボックスがオンになっている [診断設定] ページを示すスクリーンショット。](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-8. **[保存]** を選択します。 次に、右上隅にある **[X]** を選択して、ページを閉じます。 
-9. 次に **[診断設定]** ページに戻り、 **[診断設定]** テーブルに新しいエントリが表示されていることを確認します。 
+8. **[保存]** を選択します。 次に、右上隅にある **[X]** を選択して、ページを閉じます。
+9. 次に **[診断設定]** ページに戻り、 **[診断設定]** テーブルに新しいエントリが表示されていることを確認します。
     ![[診断設定] テーブルの新しいエントリが強調表示されている [診断設定] ページを示すスクリーンショット。](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
-     また、トピックのすべてのメトリックの収集を有効にすることもできます。 
+また、トピックのすべてのメトリックの収集を有効にすることもできます。
 
-## <a name="enable-diagnostic-logs-for-a-system-topic"></a>システム トピックの診断ログを有効にする
+## <a name="enable-diagnostic-logs-for-event-grid-system-topics"></a>Event Grid システム トピックについての診断ログを有効にする
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 診断ログ設定を有効にするイベント グリッド トピックに移動します。 
-    1. 上部の検索バーで、「**Event Grid System Topics (Event Grid システム トピック)** 」を検索します。 
-    
+2. 診断ログ設定を有効にするイベント グリッド トピックに移動します。
+    1. 上部の検索バーで、"**Event Grid システム トピック**" を検索します。
         ![システム トピックの検索](./media/enable-diagnostic-logs-topic/search-system-topics.png)
-    1. 診断設定を構成する **[システム トピック]** を選択します。 
-    
+    1. 診断設定を構成する **[システム トピック]** を選択します。
         ![システム トピックを選択する](./media/enable-diagnostic-logs-topic/select-system-topic.png)
-3. 左側のペインで **[監視]** の下の **[診断設定]** を選択してから、 **[Add diagnostic setting]\(診断設定の追加\)** を選択します。 
-
+3. 左側のペインで **[監視]** の下の **[診断設定]** を選択してから、 **[Add diagnostic setting]\(診断設定の追加\)** を選択します。
     ![診断設定の追加 - ボタン](./media/enable-diagnostic-logs-topic/system-topic-add-diagnostic-settings-button.png)
-4. 診断設定の **[名前]** を指定します。 
-7. **[ログ]** セクションで、 **[DeliveryFailures]\(配信エラー\)** を選択します。 
+4. 診断設定の **[名前]** を指定します。
+5. **[ログ]** セクションで **[allLogs]** オプションを選択します。
     ![配信エラーを選択する](./media/enable-diagnostic-logs-topic/system-topic-select-delivery-failures.png)
-6. ログの 1 つまたは複数のキャプチャ先を有効にしてから、前に作成したキャプチャ リソースを選択して構成します。 
+6. ログの 1 つまたは複数のキャプチャ先を有効にしてから、前に作成したキャプチャ リソースを選択して構成します。
     - **[Log Analytics への送信]** を選択した場合は、Log Analytics ワークスペースを選択します。
-        ![Log Analytics への送信](./media/enable-diagnostic-logs-topic/system-topic-select-log-workspace.png) 
-    - **[ストレージ アカウントへのアーカイブ]** を選択した場合は、 **[ストレージ アカウント - 構成]** を選択してから、Azure サブスクリプションのストレージ アカウントを選択します。 
-
+        ![Log Analytics への送信](./media/enable-diagnostic-logs-topic/system-topic-select-log-workspace.png)
+    - **[ストレージ アカウントへのアーカイブ]** を選択した場合は、 **[ストレージ アカウント - 構成]** を選択してから、Azure サブスクリプションのストレージ アカウントを選択します。
         ![Azure ストレージ アカウントにアーカイブする](./media/enable-diagnostic-logs-topic/system-topic-select-storage-account.png)
-    - **[イベント ハブへのストリーム]** を選択した場合は、 **[イベント ハブ - 構成]** を選択してから、Event Hubs 名前空間、イベント ハブ、およびアクセス ポリシーを選択します。 
+    - **[イベント ハブへのストリーム]** を選択した場合は、 **[イベント ハブ - 構成]** を選択してから、Event Hubs 名前空間、イベント ハブ、アクセス ポリシーを選択します。
         ![イベント ハブへのストリーム](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
-8. **[保存]** を選択します。 次に、右上隅にある **[X]** を選択して、ページを閉じます。 
-9. 次に **[診断設定]** ページに戻り、 **[診断設定]** テーブルに新しいエントリが表示されていることを確認します。 
+7. **[保存]** を選択します。 次に、右上隅にある **[X]** を選択して、ページを閉じます。
+8. 次に **[診断設定]** ページに戻り、 **[診断設定]** テーブルに新しいエントリが表示されていることを確認します。
     ![一覧の診断設定](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
 
-     また、システム トピックのすべての **メトリック** の収集を有効にすることもできます。
-
+また、システム トピックのすべての **メトリック** の収集を有効にすることもできます。
     ![システム トピック - すべてのメトリックを有効にする](./media/enable-diagnostic-logs-topic/system-topics-metrics.png)
 
-## <a name="view-diagnostic-logs-in-azure-storage"></a>Azure Storage アカウントの診断ログの表示 
+## <a name="view-diagnostic-logs-in-azure-storage"></a>Azure Storage アカウントの診断ログの表示
 
-1. キャプチャ先としてストレージ アカウントを有効にすると、Event Grid が診断ログの出力を開始します。 ストレージ アカウントで、**insights-logs-deliveryfailures** および **insights-logs-publishfailures** という名前の新しいコンテナーが表示されます。 
+1. キャプチャ先としてストレージ アカウントを有効にすると、Event Grid が診断ログの出力を開始します。 ストレージ アカウントで、**insights-logs-deliveryfailures** および **insights-logs-publishfailures** という名前の新しいコンテナーが表示されます。
 
     ![ストレージ - 診断ログ用のコンテナー](./media/enable-diagnostic-logs-topic/storage-containers.png)
-2. いずれかのコンテナー内を移動すると、JSON 形式の BLOB が見つかります。 このファイルには、配信エラーまたは発行エラーのログ エントリが含まれています。 ナビゲーション パスは、Event Grid トピックの **ResourceId** と、ログ エントリが生成されたときのタイムスタンプ (分単位) を表します。 ダウンロード可能な BloB/JSON ファイルは、最終的に次のセクションで説明するスキーマに準拠しています。 
+2. いずれかのコンテナー内を移動すると、JSON 形式の BLOB が見つかります。 このファイルには、配信エラーまたは発行エラーのログ エントリが含まれています。 ナビゲーション パスは、Event Grid トピックの **ResourceId** と、ログ エントリが生成されたときのタイムスタンプ (分単位) を表します。 ダウンロード可能な BloB/JSON ファイルは、最終的に次のセクションで説明するスキーマに準拠しています。
 
-    [ ![ストレージ内の JSON ファイル](./media/enable-diagnostic-logs-topic/select-json.png) ](./media/enable-diagnostic-logs-topic/select-json.png)
-3. 次の例のようなコンテンツが JSON ファイルで確認できます。 
+    ![ストレージ内の JSON ファイル](./media/enable-diagnostic-logs-topic/select-json.png)(./media/enable-diagnostic-logs-topic/select-json.png)
+3. 次の例のようなコンテンツが JSON ファイルで確認できます。
 
     ```json
     {
@@ -111,12 +112,13 @@ ms.locfileid: "112969853"
     ```
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+
 イベント グリッド トピックの診断設定を有効にする Azure Resource Manager テンプレートの例を次に示します。 このサンプル テンプレートをデプロイすると、次のリソースが作成されます。
 
 - イベント グリッド トピック
 - Log Analytics ワークスペース
 
-次に、診断設定がトピック上に作成され、診断情報が Log Analytics ワークスペースに送信されます。 
+次に、診断設定がトピック上に作成され、診断情報が Log Analytics ワークスペースに送信されます。
 
 ```json
 {
@@ -138,8 +140,8 @@ ms.locfileid: "112969853"
         "sku": {
             "defaultValue": "Free",
             "type": "String"
-        }               
-    },  
+        }
+    },
     "variables": {},
     "resources": [
         {
@@ -177,7 +179,7 @@ ms.locfileid: "112969853"
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventGrid/topics', parameters('topic_name'))]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('log_analytics_workspace_name'))]"          
+                "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('log_analytics_workspace_name'))]"
             ],
             "properties": {
                 "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('log_analytics_workspace_name'))]",
@@ -203,5 +205,14 @@ ms.locfileid: "112969853"
 }
 ```
 
+## <a name="enable-diagnostic-logs-for-audit-traces"></a>監査トレースについての診断ログを有効にする
+
+Event Grid では、カテゴリ グループ **[監査]** を選択するか、 **[ログ]** のカテゴリ **[DataPlaneRequests]** を選択すると、データ プレーン操作のための監査トレースを公開できます。監査トレースを使用すると確実に、承認された目的でのみデータ アクセスを許可し、リソース名、操作の種類、ネットワーク アクセス、レベル、リージョンなどのセキュリティ制御に関する情報を収集することができます。 診断設定を有効にする方法の詳細については、[Event Grid トピックと Event Grid ドメインにおける診断ログ](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-topics-and-event-grid-domains)に関するページを参照してください。
+![監査トレースを選択する](./media/enable-diagnostic-logs-topic/enable-audit-logs.png)
+
+> [!IMPORTANT]
+> `DataPlaneRequests` スキーマの詳細については、[診断ログ](diagnostic-logs.md)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
+
 ログ スキーマと、トピックまたはドメインの診断ログに関するその他の概念情報については、「[診断ログ](diagnostic-logs.md)」を参照してください。

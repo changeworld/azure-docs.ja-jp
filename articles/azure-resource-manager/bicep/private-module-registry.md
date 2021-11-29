@@ -3,12 +3,12 @@ title: Bicep モジュール用のプライベート レジストリを作成す
 description: プライベート Bicep モジュール用に Azure コンテナー レジストリを設定する方法について説明します
 ms.topic: conceptual
 ms.date: 10/22/2021
-ms.openlocfilehash: f09b4d65c43cbd0f73543322488e56985a16aa9e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b667a80a155355ea206c4804d6eb98200491e3f8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470321"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551370"
 ---
 # <a name="create-private-registry-for-bicep-modules-preview"></a>Bicep モジュール用のプライベート レジストリを作成する (プレビュー)
 
@@ -42,7 +42,7 @@ Bicep レジストリは [Azure Container Registry (ACR)](../../container-regist
 
 - レジストリにモジュールを公開するには、イメージを **プッシュする** アクセス許可が必要です。 レジストリからモジュールをデプロイするには、イメージを **プルする** アクセス許可が必要です。 適切なアクセス権を付与するロールの詳細については、「[Azure Container Registry のロールとアクセス許可](../../container-registry/container-registry-roles.md)」を参照してください。
 
-- モジュールのデプロイに使用するアカウントの種類によっては、どの資格情報を使用するかのカスタマイズが必要な場合があります。 これらの資格情報は、レジストリからモジュールを取得するために必要です。 既定では、資格情報は Azure CLI または Azure PowerShell から取得されまし。 **bicepconfig.json** ファイルで資格情報を取得するための優先順位をカスタマイズできます。 詳細については、「[モジュールを復元するための資格情報](bicep-config.md#credentials-for-restoring-modules)」を参照してください。
+- モジュールのデプロイに使用するアカウントの種類によっては、どの資格情報を使用するかのカスタマイズが必要な場合があります。 これらの資格情報は、レジストリからモジュールを取得するために必要です。 既定では、資格情報は Azure CLI または Azure PowerShell から取得されまし。 **bicepconfig.json** ファイルで資格情報を取得するための優先順位をカスタマイズできます。 詳細については、「[モジュールを復元するための資格情報](bicep-config-modules.md#credentials-for-restoring-modules)」を参照してください。
 
 - セキュリティを強化するために、プライベート エンドポイント経由のアクセスを要求することができます。 詳細については、「[Azure Private Link を使用して Azure Container Registry にプライベートで接続する](../../container-registry/container-registry-private-link.md)」を参照してください。
 
@@ -73,5 +73,5 @@ az bicep publish storage.bicep --target br:exampleregistry.azurecr.io/bicep/modu
 ## <a name="next-steps"></a>次のステップ
 
 * モジュールの詳細については、「[Bicep モジュール](modules.md)」を参照してください。
-* モジュール レジストリのエイリアスを構成するには、「[Bicep 構成ファイルにカスタム設定を追加する](bicep-config.md)」を参照してください。
+* モジュール レジストリのエイリアスを構成するには、「[Bicep 構成ファイルにモジュールの設定を追加する](bicep-config-modules.md)」を参照してください。
 * モジュールの公開と復元の詳細については、「[Bicep CLI コマンド](bicep-cli.md)」を参照してください。

@@ -9,21 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 11/05/2020
+ms.date: 11/16/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1b237e8347a6a9238dfef505993410413537324
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1a426859cd0450b54d71e277b54f64f41f14ecf5
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057193"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714924"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
 この記事では、Azure Active Directory (Azure AD) で最小特権ロールを割り当てることによってユーザーの管理者アクセス許可を制限するうえで必要な情報を取り上げます。 機能領域ごとの管理者タスクと、各タスクを実行するために必要な最小特権ロールのほか、そのタスクを実行できる非グローバル管理者ロールも別途記載しています。
+
+より小さなスコープでロールを割り当てるか、独自のカスタム ロールを作成することで、アクセス許可をさらに制限できます。 詳細については、「[Azure AD ロールを異なるスコープで割り当てる](assign-roles-different-scopes.md)」または「[カスタム ロールの作成と割り当て](custom-create.md)」を参照してください。
 
 ## <a name="application-proxy"></a>アプリケーション プロキシ
 
@@ -101,17 +103,17 @@ ms.locfileid: "131057193"
 > | タスク | 最小特権ロール | その他のロール |
 > | ---- | --------------------- | ---------------- |
 > | サービスを追加または削除する | 所有者 ([ドキュメントを参照](../hybrid/how-to-connect-health-operations.md)) |  |
-> | 同期エラーに対する修正プログラムを適用する | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 所有者 |
-> | 通知の構成 | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 所有者 |
+> | 同期エラーに対する修正プログラムを適用する | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 所有者 |
+> | 通知の構成 | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 所有者 |
 > | 設定の構成 | 所有者 ([ドキュメントを参照](../hybrid/how-to-connect-health-operations.md)) |  |
-> | 同期の通知を構成する | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 所有者 |
+> | 同期の通知を構成する | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 所有者 |
 > | ADFS セキュリティ レポートを読み取る | セキュリティ閲覧者 | Contributor<br/>所有者
-> | すべての構成を読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Contributor<br/>所有者 |
-> | 同期エラーを読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Contributor<br/>所有者 |
-> | 同期サービスを読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Contributor<br/>所有者 |
-> | メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Contributor<br/>所有者 |
-> | メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Contributor<br/>所有者 |
-> | 同期サービスのメトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Contributor<br/>所有者 |
+> | すべての構成を読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | Contributor<br/>所有者 |
+> | 同期エラーを読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | Contributor<br/>所有者 |
+> | 同期サービスを読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | Contributor<br/>所有者 |
+> | メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | Contributor<br/>所有者 |
+> | メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | Contributor<br/>所有者 |
+> | 同期サービスのメトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | Contributor<br/>所有者 |
 
 ## <a name="custom-domain-names"></a>カスタム ドメイン名
 
@@ -392,5 +394,7 @@ ms.locfileid: "131057193"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure AD 管理者ロールの割り当てと削除の方法](manage-roles-portal.md)
-* [Azure AD の組み込みロール](permissions-reference.md)
+- <bpt id="p1">[</bpt>Azure AD ロールをユーザーに割り当てる<ept id="p1">](manage-roles-portal.md)</ept>
+- [Azure AD ロールを異なるスコープで割り当てる](assign-roles-different-scopes.md)
+- [Azure Active Directory でカスタム ロールを作成して割り当てる](custom-create.md)
+- [Azure AD の組み込みロール](permissions-reference.md)

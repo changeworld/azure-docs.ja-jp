@@ -6,12 +6,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 9faa9ff9c0635c84ebc5c56a343db0426873f945
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7714b743c29d0fe48a8d2b62e2e5176fdf7b63ba
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735837"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714943"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer"></a>Azure Data Explorer を使用して Azure Monitor のデータのクエリを実行する
 
@@ -29,15 +29,18 @@ Azure Data Explorer のクロス サービス クエリのフローは次のと�
 
 2. **[クラスターの追加]** ウィンドウで、LA または AI クラスターの URL を追加します。
 
-    * LA の場合: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
-    * AI の場合: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
+    * LA の場合: `https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+    * AI の場合: `https://adx.monitor.azure.com//subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
     * **[追加]** を選択します。
 
 :::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="クラスターを追加する":::
  
 >[!NOTE]
->複数の Log Analytics/Application insights ワークスペースに接続を追加する場合は、それぞれに異なる名前を付けます。 そうしないと、左側のウィンドウですべてが同じ名前になります。
+>* 次のエンドポイントは異なります。
+>* Azure Government- `adx.monitor.azure.us/`
+>*  Azure China- `adx.monitor.azure.cn/`
+>* 複数の Log Analytics/Application insights ワークスペースに接続を追加する場合は、それぞれに異なる名前を付けます。 そうしないと、左側のウィンドウですべてが同じ名前になります。
 
  接続が確立されると、Log Analytics または Application Insights のワークスペースが、ネイティブの Azure Data Explorer クラスターとともに左側のペインに表示されます。
 
@@ -74,12 +77,12 @@ Perf | take 10 // Demonstrate cross service query on the Log Analytics workspace
 クロス クラスター サービス クエリを実行する場合は、左側のペインで Azure Data Explorer ネイティブ クラスターが選択されていることを確認してください。 次の例では、[union](/azure/data-explorer/kusto/query/unionoperator) と Log Analytics ワークスペースを使用して、Azure Data Explorer クラスター テーブルを結合する方法を示します。
 
 ```kusto
-union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
+union StormEvents, cluster('https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
 | take 10
 ```
 
 ```kusto
-let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>';
+let CL1 = 'https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>';
 union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
@@ -99,7 +102,7 @@ Azure Data Explorer リソースがテナント 'A' にあり、Log Analytics �
 2. [Lighthouse](../../lighthouse/index.yml) を使用して、Azure Monitor リソースをテナント 'A' に射影します。
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>さまざまなテナントから Azure Data Explorer クラスターに接続する
 
-Kusto Explorer では、ユーザー アカウントが最初に属しているテナントに自動的にサインインされます。 同じユーザー アカウントを使用して他のテナントのリソースにアクセスするには、接続文字列に `tenantId` を明示的に指定する必要があります: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=`**TenantId**
+Kusto Explorer では、ユーザー アカウントが最初に属しているテナントに自動的にサインインされます。 同じユーザー アカウントを使用して他のテナントのリソースにアクセスするには、接続文字列に `tenantId` を明示的に指定する必要があります: `Data Source=https://adx.monitor.azure.com/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=`**TenantId**
 
 ## <a name="function-supportability"></a>関数のサポート
 
@@ -122,12 +125,15 @@ Log Analytics または Application Insights のクラスターを呼び出す�
 
 |構文の説明  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| このサブスクリプションで定義されているリソースのみを含むクラスター内のデータベース (**クロス クラスター クエリの場合に推奨**) |   cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
-| このサブスクリプション内のすべてのアプリ/ワークスペースを含むクラスター    |     cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
-|サブスクリプション内のすべてのアプリ/ワークスペースを含み、このリソース グループのメンバーであるクラスター    |   cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
-|このサブスクリプションで定義されているリソースのみを含むクラスター      |    cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
+| このサブスクリプションで定義されているリソースのみを含むクラスター内のデータベース (**クロス クラスター クエリの場合に推奨**) |   cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
+| このサブスクリプション内のすべてのアプリ/ワークスペースを含むクラスター    |     cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>`)    |    cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>`)     |
+|サブスクリプション内のすべてのアプリ/ワークスペースを含み、このリソース グループのメンバーであるクラスター    |   cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
+|このサブスクリプションで定義されているリソースのみを含むクラスター      |    cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
+|UsGov のエンドポイントの場合      |    cluster(`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)|
+ |China 21Vianet のエンドポイントの場合      |    cluster(`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`) |
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Log Analytics ワークスペースと Application Insights のデータ構造](data-platform-logs.md)の詳細をご覧ください。
 - [Azure Data Explorer のクエリの記述](/azure/data-explorer/write-queries)に関するページをご覧ください。
+- 

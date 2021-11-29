@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: 9c6b0c520fbde3f028e933d7eec05d390cb209e8
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: ef06bd1bc74b8065cb1f7d12cd6a21584feecbba
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997649"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706914"
 ---
 # <a name="authorize-request-to-web-pubsub-resources-with-azure-ad-from-azure-applications"></a>Azure アプリケーションからの Web PubSub リソースへの要求を Azure AD を使用して承認する
 
@@ -111,55 +111,14 @@ Azure ロールの割り当てを割り当てて管理する方法の詳細に�
 - [Azure CLI を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-cli.md)
 - [Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](../role-based-access-control/role-assignments-template.md)
 
-## <a name="configure-your-server"></a>サーバーを構成する
+## <a name="sample-codes"></a>サンプル コード
 
-環境変数に ID と資格情報を構成することをお勧めします。
+正式にサポートされているのは 4 つのプログラミング言語です。
 
-| 変数  | 説明 |
-|------|------
-| `AZURE_TENANT_ID` | Azure Active Directory のテナント (ディレクトリ) ID。 |
-| `AZURE_CLIENT_ID` | テナント内のアプリの登録のクライアント (アプリケーション) ID。 |
-| `AZURE_CLIENT_SECRET` | アプリの登録で生成されたクライアント シークレット。 |
-| `AZURE_CLIENT_CERTIFICATE_PATH` | PEM または PFX 形式の証明書と秘密キーのペアへのパス。これにより、アプリの登録を認証できます。 |
-| `AZURE_USERNAME`  | Azure Active Directory ユーザー アカウントのユーザー名。upn とも呼ばれます。 |
-| `AZURE_PASSWORD`  | Azure Active Directory ユーザー アカウントのパスワード。 MFA が有効になっているアカウントはサポートされないことにご注意ください。 |
-
-これにより、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) または [EnvironmentCredential](/dotnet/api/azure.identity.environmentcredential) のいずれかを使用して、Web PubSub エンドポイントを構成できます。
-
-### <a name="sample-codes"></a>サンプル コード
-
-これらは C# 用のサンプル コードです。 その他のサポートされる言語については、JavaScript/Python/Java をご覧ください。
-
-```C#
-var endpoint = new Uri("https://<resource1>.webpubsub.azure.com");
-var client = new WebPubSubServiceClient(endpoint, "hub", new DefaultAzureCredential());
-```
-
-`DefaultAzureCredential` の動作方法の詳細については、「[DefaultAzureCredential クラス](/dotnet/api/azure.identity.defaultazurecredential)」を参照してください。
-
-```C#
-var endpoint = new Uri("https://<resource1>.webpubsub.azure.com");
-var client = new WebPubSubServiceClient(endpoint, "hub", new EnvironmentCredential());
-```
-
-必要に応じて、[ClientSecretCredential](/dotnet/api/azure.identity.clientsecretcredential) または [ClientCertificateCredential](/dotnet/api/azure.identity.clientcertificatecredential) を直接使用することもできます。
-
-```C#
-var endpoint = new Uri("https://<resource1>.webpubsub.azure.com");
-var credential = new ClientSecretCredential("tenantId", "clientId", "clientSecret");
-var client = new WebPubSubServiceClient(endpoint, "hub", credential);
-```
-```C#
-var endpoint = new Uri("https://<resource1>.webpubsub.azure.com");
-var credential = new ClientCertificateCredential("tenantId", "clientId", "pathToCert");
-var client = new WebPubSubServiceClient(endpoint, "hub", credential);
-```
-
-Azure AD 承認用の `TokenCredential` の作成について詳しくは、これらの記事をご覧ください。
-
-- [DefaultAzureCredential クラス](/dotnet/api/azure.identity.defaultazurecredential)
-- [ClientSecretCredential コンストラクター](/dotnet/api/azure.identity.clientsecretcredential.-ctor)
-- [ClientCertificateCredential コンストラクター](/dotnet/api/azure.identity.clientcertificatecredential.-ctor)
+- [C#](./howto-create-serviceclient-with-net-and-azure-identity.md)
+- [Python](./howto-create-serviceclient-with-python-and-azure-identity.md)
+- [Java](./howto-create-serviceclient-with-java-and-azure-identity.md)
+- [JavaScript](./howto-create-serviceclient-with-javascript-and-azure-identity.md)
 
 ## <a name="next-steps"></a>次のステップ
 

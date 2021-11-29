@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/18/2021
+ms.date: 11/16/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 911db718fd7c88501006f89a549a371cd12adef4
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 678dd934bfdece9a957595bbfb16a4e7c8e8d3de
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178184"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720399"
 ---
 # <a name="authorize-access-to-data-in-azure-storage"></a>Azure Storage 内のデータへのアクセスを承認する
 
@@ -26,13 +26,13 @@ ms.locfileid: "130178184"
 |--|--|--|--|--|--|
 | Azure BLOB | [サポートされています](/rest/api/storageservices/authorize-with-shared-key/) | [サポートされています](storage-sas-overview.md) | [サポートされています](../blobs/authorize-access-azure-active-directory.md) | サポートされていません | [サポートされています](../blobs/anonymous-read-access-configure.md) |
 | Azure Files (SMB) | [サポートされています](/rest/api/storageservices/authorize-with-shared-key/) | サポートされていません | [AAD ドメイン サービスでのみサポートされています](../files/storage-files-active-directory-overview.md) | [サポートされています。資格情報を Azure AD と同期する必要があります](../files/storage-files-active-directory-overview.md) | サポートされていません |
-| Azure Files (REST) | [サポートされています](/rest/api/storageservices/authorize-with-shared-key/) | [サポートされています](storage-sas-overview.md) | サポートされていません | サポートされていません | サポートされていません |
+| Azure Files (REST) | [サポートされています](/rest/api/storageservices/authorize-with-shared-key/) | [サポートされています](storage-sas-overview.md) | サポートされていません | サポートされていません。 | サポートされていません。 |
 | Azure キュー | [サポートされています](/rest/api/storageservices/authorize-with-shared-key/) | [サポートされています](storage-sas-overview.md) | [サポートされています](../queues/authorize-access-azure-active-directory.md) | サポートされていません | サポートされていません |
 | Azure テーブル | [サポートされています](/rest/api/storageservices/authorize-with-shared-key/) | [サポートされています](storage-sas-overview.md) | [サポートされています](../tables/authorize-access-azure-active-directory.md) (プレビュー) | サポートされていません | サポートされていません |
 
 ここでは、各認証オプションについて簡単に説明します。
 
-- **BLOB、キュー、テーブル リソースへの要求を承認するための Azure Active Directory (Azure AD) 統合。** セキュリティと使いやすさを最適化するために、可能な場合は Azure AD 資格情報を使用して要求を承認することをお勧めします。 Azure AD の統合の詳細については、「[Azure Storage でデータへのアクセスを承認する](authorize-data-access.md)」を参照してください。
+- **BLOB、キュー、テーブル リソースへの要求を承認するための Azure Active Directory (Azure AD) 統合。** セキュリティと使いやすさを最適化するために、可能な場合は Azure AD 資格情報を使用して要求を承認することをお勧めします。 Azure AD 統合の詳細については、[BLOB](../blobs/authorize-access-azure-active-directory.md)、[キュー](../queues/authorize-access-azure-active-directory.md)、または[テーブル](../tables/authorize-access-azure-active-directory.md) リソースに関する記事を参照してください。
 
     Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ストレージ アカウント内の BLOB、キュー、テーブル リソースへのセキュリティ プリンシパルのアクセス許可を管理できます。 また、Azure の属性ベースのアクセス制御 (ABAC) を使用して、BLOB リソースの Azure ロールの割り当てに条件を追加することもできます。 RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。 ABAC の詳細については、「[Azure の属性ベースのアクセス制御 (Azure ABAC) とは (プレビュー)](../../role-based-access-control/conditions-overview.md)」を参照してください。
 
@@ -52,7 +52,7 @@ ms.locfileid: "130178184"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Storage 内のデータへのアクセスを承認する](authorize-data-access.md)
+- Azure Active Directory を使用して、[BLOB](../blobs/authorize-access-azure-active-directory.md)、[キュー](../queues/authorize-access-azure-active-directory.md)、または[テーブル](../tables/authorize-access-azure-active-directory.md) リソースへのアクセスを認可します。
 - [共有キーを使用して承認する](/rest/api/storageservices/authorize-with-shared-key/)
 - [共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](storage-sas-overview.md)
         

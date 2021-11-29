@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 41610bb956273fa69119d6b87a016072a5e4faa2
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f0447d886906bc1632f51ecaf1769de2d5679bd5
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749881"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704925"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
 
@@ -60,7 +60,7 @@ IoT Edge 以外のデバイスのみを子デバイスとして追加できま�
 
 ## <a name="set-up-parent-and-child-devices"></a>親デバイスと子デバイスを設定する
 
-親デバイスには複数の子デバイスを設定できますが、子デバイスの親は 1 つだけ設定できます。
+既定では、親デバイスは最大 100 の子を持つことができます。 edgeHub モジュールで **MaxConnectedClients** 環境変数を設定すると、この制限を変更できます。 子デバイスが持つ親は 1 つだけです。
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"

@@ -3,17 +3,17 @@ title: Azure ハイブリッド特典用に SQL Server ライセンス割り当�
 description: この記事では、Azure ハイブリッド特典用に SQL Server ライセンス割り当てを作成する方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2021
+ms.date: 11/11/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisri
-ms.openlocfilehash: e97c4a51366dbfd2c9016de4684129a91df0cbe9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: e9ac5023807f435c20ddeceb097e5dce43316eae
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130218941"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132708488"
 ---
 # <a name="create-sql-server-license-assignments-for-azure-hybrid-benefit"></a>Azure ハイブリッド特典用に SQL Server ライセンス割り当てを作成する
 
@@ -50,33 +50,34 @@ SQL Server ライセンス割り当てを作成するには、次の前提条件
 
 1. Azure portal にサインインし、 **[コストの管理と請求]** に移動します。  
     :::image type="content" source="./media/create-sql-license-assignments/select-cost-management.png" alt-text="Azure portal での [コストの管理と請求] への移動を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/select-cost-management.png" :::
- 2. Enterprise Agreement を結んでいる場合は、課金スコープを選択します。  
-    :::image type="content" source="./media/create-sql-license-assignments/select-billing-scope.png" alt-text="EA 課金スコープの選択を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/select-billing-scope.png" :::
- 3. Microsoft 顧客契約を結んでいる場合は、課金プロファイルを選択します。  
-    :::image type="content" source="./media/create-sql-license-assignments/select-billing-profile.png" alt-text="課金プロファイルの選択を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/select-billing-profile.png" :::
- 4. 左側のメニューで **[予約とハイブリッド特典]** を選択します。  
+1. 契約の種類に応じて、以下に示す 2 つの手順のいずれかを使用します。
+    - Enterprise Agreement を結んでいる場合は、課金スコープを選択します。  
+        :::image type="content" source="./media/create-sql-license-assignments/select-billing-scope.png" alt-text="EA 課金スコープの選択を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/select-billing-scope.png" :::
+    - Microsoft 顧客契約を結んでいる場合は、課金プロファイルを選択します。  
+        :::image type="content" source="./media/create-sql-license-assignments/select-billing-profile.png" alt-text="課金プロファイルの選択を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/select-billing-profile.png" :::
+1. 左側のメニューで **[予約とハイブリッド特典]** を選択します。  
     :::image type="content" source="./media/create-sql-license-assignments/select-reservations.png" alt-text="[予約とハイブリッド特典] の選択を示すスクリーンショット。"  :::
- 5. **[追加]** を選択し、一覧で **[Azure ハイブリッド特典 (プレビュー)]** を選択します。  
+1. **[追加]** を選択し、一覧で **[Azure ハイブリッド特典 (プレビュー)]** を選択します。  
     :::image type="content" source="./media/create-sql-license-assignments/select-azure-hybrid-benefit.png" alt-text="Azure ハイブリッド特典の選択を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/select-azure-hybrid-benefit.png" :::
- 6. 次の画面で、 **[ライセンス割り当ての開始]** を選択します。  
+1. 次の画面で、 **[ライセンス割り当ての開始]** を選択します。  
     :::image type="content" source="./media/create-sql-license-assignments/get-started-centralized.png" alt-text="[SQL ハイブリッド特典の追加] の選択を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/get-started-centralized.png" :::
- 7. スコープを選択し、各 SQL Server エディションに使用するライセンス数を入力します。 特定のエディションに割り当てるライセンスがない場合は、「0」を入力します。  
+1. スコープを選択し、各 SQL Server エディションに使用するライセンス数を入力します。 特定のエディションに割り当てるライセンスがない場合は、「0」を入力します。  
     > [!NOTE]
     > この手順を実行する場合は、スコープ レベルのマネージド ライセンス エクスペリエンスに入力したエントリが正確であり、ライセンスの義務を満たすことを判断する責任があります。 ライセンス割り当てを行う際は、それに役立つライセンス使用状況情報が表示されます。 ただし、さまざまな要因により、表示される情報が不完全または不正確である可能性があります。
     >
     > 入力したライセンス数が、現在使用している数より少ない場合は、"_このスコープで Azure ハイブリッド特典 に現在使用しているライセンスよりも少ない数が入力されました。このスコープの請求金額が増加します。_ "という警告メッセージが表示されます。  
     
     :::image type="content" source="./media/create-sql-license-assignments/select-assignment-scope-edition.png" alt-text="スコープの選択とライセンス数を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/select-assignment-scope-edition.png" :::
- 8. 必要に応じて、 **[使用状況の詳細]** タブを選択して、リソース スコープで有効になっている、現在の Azure ハイブリッド特典使用状況を表示します。  
+1. 必要に応じて、 **[使用状況の詳細]** タブを選択して、リソース スコープで有効になっている、現在の Azure ハイブリッド特典使用状況を表示します。  
     :::image type="content" source="./media/create-sql-license-assignments/select-assignment-scope-edition-usage.png" alt-text="[使用状況の詳細] タブを示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/select-assignment-scope-edition-usage.png" :::
- 9. **[追加]** を選択します。
-10. 必要に応じて、既定のライセンス割り当て名を変更します。 レビュー日は、1 年後の日付に自動的に設定され、変更することはできません。 その目的は、ライセンス割り当てを定期的に確認するよう促すことです。  
+1. **[追加]** を選択します。
+1. 必要に応じて、既定のライセンス割り当て名を変更します。 レビュー日は、1 年後の日付に自動的に設定され、変更することはできません。 その目的は、ライセンス割り当てを定期的に確認するよう促すことです。  
     :::image type="content" source="./media/create-sql-license-assignments/license-assignment-commit.png" alt-text="既定のライセンス割り当て名を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/license-assignment-commit.png" :::
-11. 選択内容を確認した後に **[次へ: 確認 と適用]** を選択します。
-12. **[&quot;適用&quot; の選択]** 構成証明オプションを選択して、Azure ハイブリッド特典 と十分な SQL Server ライセンスを適用する権限があることと、割り当てられている限りライセンスを維持することを確定します。  
+1. 選択内容を確認した後に **[次へ: 確認 と適用]** を選択します。
+1. **[&quot;適用&quot; の選択]** 構成証明オプションを選択して、Azure ハイブリッド特典 と十分な SQL Server ライセンスを適用する権限があることと、割り当てられている限りライセンスを維持することを確定します。  
     :::image type="content" source="./media/create-sql-license-assignments/confirm-apply-attestation.png" alt-text="構成証明オプションを示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/confirm-apply-attestation.png" :::
-13. **[適用]** を選択し、次に **[はい]** を選択します。
-14. 割り当てられたライセンスの一覧が表示されます。  
+1. **[適用]** を選択し、次に **[はい]** を選択します。
+1. 割り当てられたライセンスの一覧が表示されます。  
     :::image type="content" source="./media/create-sql-license-assignments/assigned-licenses.png" alt-text="割り当てられたライセンスの一覧を示すスクリーンショット。" lightbox="./media/create-sql-license-assignments/assigned-licenses.png" ::: 
 
 ## <a name="track-assigned-license-use"></a>割り当てられたライセンスの使用状況を追跡する

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.author: danlep
 ms.date: 06/10/2021
 ms.custom: devx-track-azurepowershell,contperf-fy21q4
-ms.openlocfilehash: 05767ffb0487964780ab25ec56fd586451066ac3
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 793216ac8c411fbde6db5d044d345f1de98af17a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615355"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710346"
 ---
 # <a name="integrate-api-management-in-an-internal-virtual-network-with-application-gateway"></a>内部仮想ネットワーク内の API Management を Application Gateway と統合する
 
@@ -438,6 +438,8 @@ $managementRule = New-AzApplicationGatewayRequestRoutingRule -Name "managementru
 
 Application Gateway のインスタンス数とサイズを構成します。 この例では、API Management リソースのセキュリティを強化するために、[WAF_v2 SKU](../web-application-firewall/ag/ag-overview.md) を使用しています。
 
+運用環境のワークロードには少なくとも 2 つのインスタンス (_Capacity_) を使用することをお勧めします。 ただし、非運用環境シナリオまたは一般的な実験には、1 つのインスタンスのみを使用することをお勧めします。 詳しくは、「[Azure Application Gateway の価格](../application-gateway/understanding-pricing.md#instance-count)」を参照してください。
+
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_v2" -Tier "WAF_v2" -Capacity 2
 ```
@@ -448,6 +450,14 @@ WAF を "Prevention" モードに構成します。
 
 ```powershell
 $config = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
+```
+
+### <a name="step-13"></a>手順 13.
+
+現在、TLS 1.0 が既定値であるため、最新の [TLS1.2 ポリシー](../application-gateway/application-gateway-ssl-policy-overview.md#appgwsslpolicy20170401s)を使用するようにアプリケーション ゲートウェイを設定することをお勧めします。
+
+```powershell
+$policy = New-AzApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName AppGwSslPolicy20170401S
 ```
 
 ## <a name="create-application-gateway"></a>Application Gateway の作成
@@ -463,7 +473,8 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
   -HttpListeners $gatewayListener,$portalListener,$managementListener `
   -RequestRoutingRules $gatewayRule,$portalRule,$managementRule `
   -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $certGateway,$certPortal,$certManagement `
-  -TrustedRootCertificate $trustedRootCert -Probes $apimGatewayProbe,$apimPortalProbe,$apimManagementProbe
+  -TrustedRootCertificate $trustedRootCert -Probes $apimGatewayProbe,$apimPortalProbe,$apimManagementProbe `
+  -SslPolicy $policy
 ```
 
 アプリケーション ゲートウェイのデプロイが完了したら、API Management バックエンドの正常性状態をポータルで確認、または次のコマンドを実行します。

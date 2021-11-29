@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: 7f0b5cff34b74953970672d0d48c4f027f4811b0
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: bb27176e33d94db0c1bb6e0770ae45f765b0429a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997744"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714221"
 ---
 # <a name="authorize-request-to-web-pubsub-resources-with-azure-ad-from-managed-identities"></a>マネージド ID からの Azure AD を使用した Web PubSub リソースへの要求を承認する
 Azure Web PubSub サービスでは、[Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) からの Azure Active Directory (Azure AD) 承認要求がサポートされています。 
@@ -65,7 +65,7 @@ Azure Web PubSub サービスでは、[Azure リソース用マネージド ID](
 
 1. **[追加] > [ロールの割り当ての追加]** をクリックします。
 
-1. **[ロール]** タブで `Web PubSub Service Owner` を選択します。
+1. **[ロール]** タブで `Web PubSub Service Owner` を選びます。
 
 1. **[次へ]** をクリックします。
 
@@ -85,52 +85,25 @@ Azure Web PubSub サービスでは、[Azure リソース用マネージド ID](
 
    ![マネージド ID にロールを割り当てるスクリーンショット](./media/aad-authorization/assign-role-to-managed-identities.png)
 
-3. **[レビューと割り当て]** をクリックして変更を確定します。
+3. **[レビューと割り当て]** をクリックして変更内容を確認します。
 
 > [!IMPORTANT]
 > Azure ロールの割り当ての反映には最大で 30 分かかる可能性があります。
-Azure ロールを割り当てる方法および割り当てを管理する方法の詳細については、これらの記事を参照してください。
+Azure ロールの割り当てを割り当てて管理する方法の詳細については、次の記事を参照してください。
 - [Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)
 - [REST API を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-rest.md)
 - [Azure PowerShell を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-powershell.md)
 - [Azure CLI を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-cli.md)
 - [Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](../role-based-access-control/role-assignments-template.md)
 
-## <a name="sample-codes-while-configuring-your-server"></a>サーバーの構成中のサンプル コード
+## <a name="sample-codes"></a>サンプル コード
 
-### <a name="using-system-assigned-identity"></a>システム割り当て ID を使用する
+正式にサポートされているのは 4 つのプログラミング言語です。
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) または [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) のいずれかを使用して、システム割り当て ID を使用しているときに Web PubSub エンドポイントを構成できます。
-
-ただし、ベスト プラクティスは、`ManagedIdentityCredential` を直接使用する方法です。
-
-既定ではシステム割り当てマネージド ID が使用されますが、`DefaultAzureCredential` を使用している場合は、[EnvironmentCredential](/dotnet/api/azure.identity.environmentcredential) によって保持される **環境変数が構成されていないことを確認してください**。 そうでないと、`EnvironmentCredential` を使用して要求を行うようにフォールバックし、ほとんどの場合、`401 Unauthorized` 応答が返される結果になります。
-
-C# のサンプル コードを示します。
-
-```C#
-var endpoint = new Uri("https://<resource1>.webpubsub.azure.com");
-var client = new WebPubSubServiceClient(endpoint, "hub", new ManagedIdentityCredential());
-```
-
-サポートされている他の言語のサンプルもあります ([Java]()、[JavaScript]()、[Python]() に関する記事を参照してください)。
-
-### <a name="using-user-assigned-identity"></a>ユーザー割り当て ID を使用する
-
-`ManagedIdentityCredential` オブジェクトの作成中に、`ClientId` を指定するだけです。
-
-> [!IMPORTANT]
-> 似ているように見えても、オブジェクト (プリンシパル) ID ではなく、**クライアント ID** を使用してください。
-
-C# のサンプル コードを示します。
-
-```C#
-var endpoint = new Uri("https://<resource1>.webpubsub.azure.com");
-var clientId = "<your user-assigned identity client id>";
-var client = new WebPubSubServiceClient(endpoint, "hub", new ManagedIdentityCredential(clientId));
-```
-
-サポートされている他の言語のサンプルもあります ([Java]()、[JavaScript]()、[Python]() に関する記事を参照してください)。
+- [C#](./howto-create-serviceclient-with-net-and-azure-identity.md)
+- [Python](./howto-create-serviceclient-with-python-and-azure-identity.md)
+- [Java](./howto-create-serviceclient-with-java-and-azure-identity.md)
+- [JavaScript](./howto-create-serviceclient-with-javascript-and-azure-identity.md)
 
 ## <a name="next-steps"></a>次のステップ
 

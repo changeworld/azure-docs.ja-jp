@@ -1,14 +1,14 @@
 ---
 title: Defender for IoT の API を操作する
 description: 外部 REST API を使用してセンサーおよび管理コンソールによって検出されたデータにアクセスし、そのデータに対してアクションを実行します。
-ms.date: 11/09/2021
+ms.date: 11/17/2021
 ms.topic: reference
-ms.openlocfilehash: 3d7fdf855e33c84ce966bbe89e564434b2a8a748
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: f9e5e380f6659cd9a884b4de57db430fc39fea2b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132325298"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704906"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
 
@@ -54,6 +54,16 @@ Defender for IoT API は、[Microsoft API ライセンスと利用規約](/legal
 
 このセクションでは、次の Sensor API について説明します。
 
+### <a name="no-version"></a>バージョンなし
+
+- [ユーザーの資格情報を検証する - /api/external/authentication/validation](#validate-user-credentials---apiexternalauthenticationvalidation)
+
+- [パスワードを変更する - /external/authentication/set_password](#change-password---externalauthenticationset_password)
+
+- [システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
+
+### <a name="version-1"></a>Version 1
+
 - [デバイス情報を取得する - /api/v1/devices](#retrieve-device-information---apiv1devices)
 
 - [デバイスの接続情報を取得する - /api/v1/devices/connections](#retrieve-device-connection-information---apiv1devicesconnections)
@@ -70,33 +80,45 @@ Defender for IoT API は、[Microsoft API ライセンスと利用規約](/legal
 
 - [動作の脆弱性を取得する - /api/v1/reports/vulnerabilities/operational](#retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational)
 
-- [ユーザーの資格情報を検証する - /api/external/authentication/validation](#validate-user-credentials---apiexternalauthenticationvalidation)
-
-- [パスワードを変更する - /external/authentication/set_password](#change-password---externalauthenticationset_password)
-
-- [システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
+### <a name="version-2"></a>Version 2
 
 - [アラート PCAP を取得する - /api/v2/alerts/pcap](#retrieve-alert-pcap---apiv2alertspcap)
 
-### <a name="retrieve-device-information---apiv1devices"></a>デバイス情報を取得する - /api/v1/devices
+### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>ユーザーの資格情報を検証する - /api/external/authentication/validation
 
-Defender for IoT センサーによって検出されたすべてのデバイスの一覧を要求するには、この API を使用します。
+Defender for IoT のユーザー名とパスワードを検証するには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。
+
+この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
 
 #### <a name="method"></a>メソッド
 
-- **GET**
+- **POST**
 
-Defender for IoT センサーによって検出されたすべてのデバイスの一覧を要求します。
+#### <a name="request-type"></a>要求の種類
+
+- **JSON**
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 
-- **authorized**:承認されたデバイスのみ、または承認されていないデバイスのみをフィルター処理します。
+| **名前** | **Type** | **NULL 値の使用** |
+|--|--|--|
+| **username** | String | いいえ |
+| **password** | String | いいえ |
 
-  **例**:
+#### <a name="request-example"></a>要求の例
 
-  `/api/v1/devices?authorized=true`
+```rest
+request:
 
-  `/api/v1/devices?authorized=false`
+{
+
+    "username": "test",
+    
+    "password": "Test12345\!"
+
+}
+
+```
 
 #### <a name="response-type"></a>応答の種類
 
@@ -104,184 +126,182 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 
 #### <a name="response-content"></a>応答コンテンツ
 
-デバイスを表す JSON オブジェクトの配列。
+動作状態の詳細を含むメッセージ文字列:
 
-#### <a name="device-fields"></a>デバイス フィールド
+- **成功 - msg**:Authentication succeeded (認証に成功しました)
 
-| 名前 | Type | Nullable | ［値の一覧］ |
-|--|--|--|--|
-| **id** | 数値 | いいえ | - |
-| **ipAddresses** | JSON 配列 | はい | IP アドレス (インターネット アドレスまたはデュアル NIC を搭載したデバイスの場合は、複数のアドレスを指定できます) |
-| **name** | String | いいえ | - |
-| **type** | String | いいえ | Unknown、Engineering Station、PLC、HMI、Historian、Domain Controller、DB Server、Wireless Access Point、Router、Switch、Server、Workstation、IP Camera、Printer、Firewall、Terminal station、VPN Gateway、Internet、または Multicast and Broadcast |
-| **macAddresses** | JSON 配列 | はい | MAC アドレス (デュアル NIC を搭載したデバイスの場合は、複数のアドレスを指定できます) |
-| **operatingSystem** | String | はい | - |
-| **engineeringStation** | ブール型 | いいえ | ｔrue または false |
-| **scanner** | ブール型 | いいえ | ｔrue または false |
-| **承認済み** | ブール型 | いいえ | ｔrue または false |
-| **vendor** | String | はい | - |
-| **protocols** | JSON 配列 | はい | プロトコル オブジェクト |
-| **firmware** | JSON 配列 | はい | ファームウェア オブジェクト |
-
-#### <a name="protocol-fields"></a>プロトコル フィールド
-
-| 名前 | Type | Nullable | ［値の一覧］ |
-|--|--|--|--|
-| **名前** | String | いいえ |  |
-| **アドレス** | JSON 配列 | はい | マスター、または数値 |
-
-#### <a name="firmware-fields"></a>ファームウェアのフィールド
-
-| 名前 | Type | Nullable | ［値の一覧］ |
-|--|--|--|--|
-| **serial** | String | いいえ | N/A、または実際の値 |
-| **model** | String | いいえ | N/A、または実際の値 |
-| **firmwareVersion** | Double | いいえ | N/A、または実際の値 |
-| **additionalData** | String | いいえ | N/A、または実際の値 |
-| **moduleAddress** | String | いいえ | N/A、または実際の値 |
-| **rack** | String | いいえ | N/A、または実際の値 |
-| **slot** | String | いいえ | N/A、または実際の値 |
-| **address** | String | いいえ | N/A、または実際の値 |
+- **失敗 - error**:Credentials Validation Failed (資格情報の検証に失敗しました)
 
 #### <a name="response-example"></a>応答の例
 
 ```rest
-[
+response:
 
-    {
-    
-    "vendor": null,
-    
-    "name": "10.4.14.102",
-    
-    "firmware": [
-    
-        {
-        
-            "slot": "N/A",
-            
-            "additionalData": "N/A",
-            
-            "moduleAddress": "Network: Local network (0), Node: 0, Unit: CPU (0x0)",
-            
-            "rack": "N/A",
-            
-            "address": "10.4.14.102",
-            
-            "model": "AAAAAAAAAA",
-            
-            "serial": "N/A",
-            
-            "firmwareVersion": "20.55"
-        
-        },
-    
-        {
-        
-            "slot": "N/A",
-            
-            "additionalData": "N/A",
-            
-            "moduleAddress": "Network: Local network (0), Node: 0, Unit: Unknown (0x3)",
-            
-            "rack": "N/A",
-            
-            "address": "10.4.14.102",
-            
-            "model": "AAAAAAAAAAAAAAAAAAAA",
-            
-            "serial": "N/A",
-            
-            "firmwareVersion": "20.55"
-        
-        },
-    
-        {
-        
-            "slot": "N/A",
-            
-            "additionalData": "N/A",
-            
-            "moduleAddress": "Network: Local network (0), Node: 3, Unit: CPU (0x0)",
-            
-            "rack": "N/A",
-            
-            "address": "10.4.14.102",
-            
-            "model": "AAAAAAAAAAAAAAAAAAAA",
-            
-            "serial": "N/A",
-            
-            "firmwareVersion": "20.55"
-        
-        },
-    
-        {
-        
-            "slot": "N/A",
-            
-            "additionalData": "N/A",
-            
-            "moduleAddress": "Network: 3, Node: 0, Unit: CPU (0x0)",
-            
-            "rack": "N/A",
-            
-            "address": "10.4.14.102",
-            
-            "model": "AAAAAAAAAAAAAAAAAAAA",
-            
-            "serial": "N/A",
-            
-            "firmwareVersion": "20.55"
-        
-        }
-    
-    ],
-    
-    "id": 79,
-    
-    "macAddresses": null,
-    
-    "authorized": true,
-    
-    "ipAddresses": [
-    
-        "10.4.14.102"
-    
-    ],
-    
-    "engineeringStation": false,
-    
-    "type": "PLC",
-    
-    "operatingSystem": null,
-    
-    "protocols": [
-    
-        {
-        
-            "addresses": [],
-            
-            "id": 62,
-            
-            "name": "Omron FINS"
-        
-        }
-    
-    ],
-    
-    "scanner": false
-    
+{
+
+    "msg": "Authentication succeeded."
+
 }
-
-]
 ```
 
 #### <a name="curl-command"></a>Curl コマンド
 
 | Type | API | 例 |
 |--|--|--|
-| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/devices?authorized=true` |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/external/authentication/validation` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/external/authentication/validation` |
+
+### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
+
+ユーザーが自分のパスワードを変更できるようにするには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
+
+#### <a name="method"></a>メソッド
+
+- **POST**
+
+#### <a name="request-type"></a>要求の種類
+
+- **JSON**
+
+#### <a name="request-example"></a>要求の例
+
+```rest
+request:
+
+{
+
+    "username": "test",
+    
+    "password": "Test12345\!",
+    
+    "new_password": "Test54321\!"
+
+}
+```
+
+#### <a name="response-type"></a>応答の種類
+
+- **JSON**
+
+#### <a name="response-content"></a>応答コンテンツ
+
+動作状態の詳細を含むメッセージ文字列:
+
+- **成功 – msg**:Password has been replaced (パスワードが置き換えられました)
+
+- **失敗 – error**:User authentication failure (ユーザー認証エラー)
+
+- **失敗 – error**:Password does not match security policy (パスワードがセキュリティ ポリシーと一致しません)
+
+#### <a name="response-example"></a>応答の例
+
+```rest
+response:
+
+{
+
+    "error": {
+    
+        "userDisplayErrorMessage": "User authentication failure"
+    
+    }
+
+}
+```
+
+#### <a name="device-fields"></a>デバイス フィールド
+
+| **名前** | **Type** | **NULL 値の使用** |
+|--|--|--|
+| **username** | String | いいえ |
+| **password** | String | いいえ |
+| **new_password** | String | いいえ |
+
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| POST | `curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password` | `curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/api/external/authentication/set_password` |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
+
+システム管理者が指定されたユーザーのパスワードを変更できるようにするには、この API を使用します。 Defender for IoT 管理者ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
+
+#### <a name="method"></a>メソッド
+
+- **POST**
+
+#### <a name="request-type"></a>要求の種類
+
+- **JSON**
+
+#### <a name="request-example"></a>要求の例
+
+```rest
+request:
+
+{
+
+    "username": "test",
+    
+    "password": "Test12345\!",
+    
+    "new_password": "Test54321\!"
+
+}
+```
+
+#### <a name="response-type"></a>応答の種類
+
+- **JSON**
+
+#### <a name="response-content"></a>応答コンテンツ
+
+動作状態の詳細を含むメッセージ文字列:
+
+- **成功 – msg**:Password has been replaced (パスワードが置き換えられました)
+
+- **失敗 – error**:User authentication failure (ユーザー認証エラー)
+
+- **失敗 – error**:User does not exist (ユーザーが存在しません)
+
+- **失敗 – error**:Password doesn't match security policy (パスワードがセキュリティ ポリシーと一致しません)
+
+- **失敗 – error**:User does not have the permissions to change password (ユーザーにパスワードを変更する権限がありません)
+
+#### <a name="response-example"></a>応答の例
+
+```rest
+response:
+
+{
+
+    "error": {
+    
+        "userDisplayErrorMessage": "The user 'test_user' doesn't exist",
+        
+        "internalSystemErrorMessage": "The user 'yoavfe' doesn't exist"
+    
+    }
+
+}
+
+```
+
+#### <a name="device-fields"></a>デバイス フィールド
+
+| **名前** | **Type** | **NULL 値の使用** |
+|--|--|--|
+| **admin_username** | String | いいえ |
+| **admin_password** | String | いいえ |
+| **username** | String | いいえ |
+| **new_password** | String | いいえ |
+
+#### <a name="curl-command"></a>Curl コマンド
+
+> [!div class="mx-tdBreakAll"]
+> | Type | API | 例 |
+> |--|--|--|
+> | POST | `curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password_by_admin` | `curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/api/external/authentication/set_password_by_admin` |
 
 ### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>デバイスの接続情報を取得する - /api/v1/devices/connections
 
@@ -633,7 +653,7 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 次の情報には /api/v2/ が必要であることにご注意ください。
 
-- sourceDeviceAddress 
+- sourceDeviceAddress
 - destinationDeviceAddress
 - remediationSteps
 
@@ -883,7 +903,7 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 | **latestVersion** | String | はい | - |
 
 #### <a name="vulnerabilities-fields"></a>脆弱性フィールド
- 
+
 | 名前 | Type | Nullable | ［値の一覧］ |
 |--|--|--|--|
 | **antiViruses** | JSON 配列 | はい | ウイルス対策の名前 |
@@ -1530,41 +1550,21 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 |--|--|--|
 | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/operational` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/reports/vulnerabilities/operational` |
 
-### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>ユーザーの資格情報を検証する - /api/external/authentication/validation
+### <a name="retrieve-alert-pcap---apiv2alertspcap"></a>アラート PCAP を取得する - /api/v2/alerts/pcap
 
-Defender for IoT のユーザー名とパスワードを検証するには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。
+この API を使用して、アラートに関連する PCAP ファイルを取得します。
 
-この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
+このエンドポイントには、承認に通常のアクセス トークンが使用されません。 代わりに、CM 上の `/external/v2/alerts/pcap` API エンドポイントによって作成された特別なトークンが必要です。
 
 #### <a name="method"></a>メソッド
 
-- **POST**
-
-#### <a name="request-type"></a>要求の種類
-
-- **JSON**
+- **GET**
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 
-| **名前** | **Type** | **NULL 値の使用** |
-|--|--|--|
-| **username** | String | いいえ |
-| **password** | String | いいえ |
-
-#### <a name="request-example"></a>要求の例
-
-```rest
-request:
-
-{
-
-    "username": "test",
-    
-    "password": "Test12345\!"
-
-}
-
-```
+- id: Xsense アラート ID  
+例:  
+`/api/v2/alerts/pcap/<id>`
 
 #### <a name="response-type"></a>応答の種類
 
@@ -1572,29 +1572,76 @@ request:
 
 #### <a name="response-content"></a>応答コンテンツ
 
-動作状態の詳細を含むメッセージ文字列:
-
-- **成功 - msg**:Authentication succeeded (認証に成功しました)
-
-- **失敗 - error**:Credentials Validation Failed (資格情報の検証に失敗しました)
+- **成功**: PCAP データを含むバイナリ ファイル
+- **失敗**: エラー メッセージを含む JSON オブジェクト
 
 #### <a name="response-example"></a>応答の例
 
-```rest
-response:
+#### <a name="error"></a>エラー
 
+```json
 {
-
-    "msg": "Authentication succeeded."
-
+  "error": "PCAP file is not available"
 }
 ```
 
 #### <a name="curl-command"></a>Curl コマンド
 
-| Type | API | 例 |
-|--|--|--|
-| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/external/authentication/validation` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/external/authentication/validation` |
+|Type|API|例|
+|-|-|-|
+|GET|`curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v2/alerts/pcap/<ID>'`|`curl -k -H "Authorization: d2791f58-2a88-34fd-ae5c-2651fe30a63c" 'https://10.1.0.2/api/v2/alerts/pcap/1'`|
+
+## <a name="on-premises-management-console-api-specifications"></a>オンプレミス管理コンソール API の仕様
+
+このセクションでは、次のオンプレミス管理コンソール API について説明します。
+
+### <a name="no-version"></a>バージョンなし
+
+- [アラートの除外](#alert-exclusions)
+
+- [パスワードを変更する - /external/authentication/set_password](#change-password---externalauthenticationset_password-1)
+
+- [システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
+
+- [QRadar アラート](#qradar-alerts)
+
+- [ユーザーの資格情報を認証する - /external/authentication/validation](#authenticate-user-credentials---externalauthenticationvalidation)
+
+### <a name="version-1"></a>Version 1
+
+- [デバイス情報を取得する - /api/v1/devices](#retrieve-device-information---apiv1devices)
+
+- [デバイス情報を取得する - /external/v1/devices](#retrieve-device-information---externalv1devices)
+
+- [アラート情報を取得する - /external/v1/alerts](#retrieve-alert-information---externalv1alerts)
+
+- [アラートの除外 (メンテナンス期間) - /external/v1/maintenanceWindow](#alert-exclusions-maintenance-window---externalv1maintenancewindow)
+
+### <a name="version-2"></a>Version 2
+
+- [アラート PCAP を要求する - /external/v2/alerts/pcap](#request-alert-pcap---externalv2alertspcap)
+
+### <a name="version-3"></a>バージョン 3
+
+- [Service Now Integration API - "/external/v3/integration/](#service-now-integration-api---externalv3integration)
+
+### <a name="alert-exclusions"></a>アラートの除外
+
+アラートを送信しない条件を定義します。 たとえば、停止時刻と開始時刻、アラートをトリガーするときに除外するデバイスまたはサブネット、または除外する必要がある Defender for IoT エンジンを定義して更新します。 たとえば、メンテナンス期間中は、重要なデバイスのマルウェア アラートを除き、すべてのアラートの配信を停止したいとします。 ここで定義した項目は、オンプレミスの管理コンソールの [アラートの除外] ウィンドウに読み取り専用の除外ルールとして表示されます。
+
+#### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
+
+- **/external/authentication/validation**
+
+- **応答の例**
+
+- **応答:**
+
+```rest
+{
+    "msg": "Authentication succeeded."
+}
+```
 
 ### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
 
@@ -1602,7 +1649,7 @@ response:
 
 #### <a name="method"></a>メソッド
 
-- **POST**
+**POST**
 
 #### <a name="request-type"></a>要求の種類
 
@@ -1622,6 +1669,7 @@ request:
     "new_password": "Test54321\!"
 
 }
+
 ```
 
 #### <a name="response-type"></a>応答の種類
@@ -1652,6 +1700,7 @@ response:
     }
 
 }
+
 ```
 
 #### <a name="device-fields"></a>デバイス フィールド
@@ -1666,7 +1715,7 @@ response:
 
 | Type | API | 例 |
 |--|--|--|
-| POST | `curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password` | `curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/api/external/authentication/set_password` |
+| POST | `curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password` | `curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/external/authentication/set_password` |
 
 ### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
 
@@ -1747,23 +1796,49 @@ response:
 > [!div class="mx-tdBreakAll"]
 > | Type | API | 例 |
 > |--|--|--|
-> | POST | `curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password_by_admin` | `curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/api/external/authentication/set_password_by_admin` |
+> | POST | `curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password_by_admin` | `curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/external/authentication/set_password_by_admin` |
 
-### <a name="retrieve-alert-pcap---apiv2alertspcap"></a>アラート PCAP を取得する - /api/v2/alerts/pcap
+### <a name="qradar-alerts"></a>QRadar アラート
 
-この API を使用して、アラートに関連する PCAP ファイルを取得します
+Defender for IoT への QRadar の統合は、Defender for IoT によって生成されたアラートを識別し、これらのアラートに対してアクションを実行する上で役立ちます。 データは Defender for IoT から QRadar へ送信された後、パブリック API のオンプレミス管理コンソール コンポーネントに接続されます。
 
-このエンドポイントには、承認に通常のアクセス トークンが使用されません。 代わりに、CM 上の `/external/v2/alerts/pcap` API エンドポイントによって作成された特別なトークンが必要です。
+Defender for IoT によって検出されたデータを QRadar に送信するには、Defender for IoT システムで転送ルールを定義し、 **[Remote support alert handling]\(アラート処理のリモート サポート\)** オプションを選択します。
+
+:::image type="content" source="media/references-work-with-defender-for-iot-apis/edit-forwarding-rules.png" alt-text="必要に応じて、転送ルールを編集します。":::
+
+転送ルールを構成するプロセス中にこのオプションを選択すると、QRadar に次の追加フィールドが表示されます。
+
+- **UUID**:一意のアラート識別子 (1-1555245116250 など)。
+
+- **サイト**:アラートが検出されたサイト。
+
+- **Zone**:アラートが検出されたゾーン。
+
+QRadar に送信されるペイロードの例を次に示します。
+
+```
+<9>May 5 12:29:23 sensor_Agent LEEF:1.0|CyberX|CyberX platform|2.5.0|CyberX platform Alert|devTime=May 05 2019 15:28:54 devTimeFormat=MMM dd yyyy HH:mm:ss sev=2 cat=XSense Alerts title=Device is Suspected to be Disconnected (Unresponsive) score=81 reporter=192.168.219.50 rta=0 alertId=6 engine=Operational senderName=sensor Agent UUID=5-1557059334000 site=Site zone=Zone actions=handle dst=192.168.2.2 dstName=192.168.2.2 msg=Device 192.168.2.2 is suspected to be disconnected (unresponsive).
+```
+
+### <a name="retrieve-device-information---apiv1devices"></a>デバイス情報を取得する - /api/v1/devices
+
+Defender for IoT センサーによって検出されたすべてのデバイスの一覧を要求するには、この API を使用します。
 
 #### <a name="method"></a>メソッド
 
 - **GET**
 
+Defender for IoT センサーによって検出されたすべてのデバイスの一覧を要求します。
+
 #### <a name="query-parameters"></a>クエリ パラメーター
 
-- id: Xsense アラート ID  
-例:  
-`/api/v2/alerts/pcap/<id>`
+- **authorized**:承認されたデバイスのみ、または承認されていないデバイスのみをフィルター処理します。
+
+  **例**:
+
+  `/api/v1/devices?authorized=true`
+
+  `/api/v1/devices?authorized=false`
 
 #### <a name="response-type"></a>応答の種類
 
@@ -1771,62 +1846,247 @@ response:
 
 #### <a name="response-content"></a>応答コンテンツ
 
-- **成功**: PCAP データを含むバイナリ ファイル
-- **失敗**: エラー メッセージを含む JSON オブジェクト
+デバイスを表す JSON オブジェクトの配列。
+
+#### <a name="device-fields"></a>デバイス フィールド
+
+| 名前 | Type | Nullable | ［値の一覧］ |
+|--|--|--|--|
+| **id** | 数値 | いいえ | - |
+| **ipAddresses** | JSON 配列 | はい | IP アドレス (インターネット アドレスまたはデュアル NIC を搭載したデバイスの場合は、複数のアドレスを指定できます) |
+| **name** | String | いいえ | - |
+| **type** | String | いいえ | Unknown、Engineering Station、PLC、HMI、Historian、Domain Controller、DB Server、Wireless Access Point、Router、Switch、Server、Workstation、IP Camera、Printer、Firewall、Terminal station、VPN Gateway、Internet、または Multicast and Broadcast |
+| **macAddresses** | JSON 配列 | はい | MAC アドレス (デュアル NIC を搭載したデバイスの場合は、複数のアドレスを指定できます) |
+| **operatingSystem** | String | はい | - |
+| **engineeringStation** | ブール型 | いいえ | ｔrue または false |
+| **scanner** | ブール型 | いいえ | ｔrue または false |
+| **承認済み** | ブール型 | いいえ | ｔrue または false |
+| **vendor** | String | はい | - |
+| **protocols** | JSON 配列 | はい | プロトコル オブジェクト |
+| **firmware** | JSON 配列 | はい | ファームウェア オブジェクト |
+
+#### <a name="protocol-fields"></a>プロトコル フィールド
+
+| 名前 | Type | Nullable | ［値の一覧］ |
+|--|--|--|--|
+| **名前** | String | いいえ |  |
+| **アドレス** | JSON 配列 | はい | マスター、または数値 |
+
+#### <a name="firmware-fields"></a>ファームウェアのフィールド
+
+| 名前 | Type | Nullable | ［値の一覧］ |
+|--|--|--|--|
+| **serial** | String | いいえ | N/A、または実際の値 |
+| **model** | String | いいえ | N/A、または実際の値 |
+| **firmwareVersion** | Double | いいえ | N/A、または実際の値 |
+| **additionalData** | String | いいえ | N/A、または実際の値 |
+| **moduleAddress** | String | いいえ | N/A、または実際の値 |
+| **rack** | String | いいえ | N/A、または実際の値 |
+| **slot** | String | いいえ | N/A、または実際の値 |
+| **address** | String | いいえ | N/A、または実際の値 |
 
 #### <a name="response-example"></a>応答の例
 
-#### <a name="error"></a>エラー
+```rest
+[
 
-```json
+    {
+    
+    "vendor": null,
+    
+    "name": "10.4.14.102",
+    
+    "firmware": [
+    
+        {
+        
+            "slot": "N/A",
+            
+            "additionalData": "N/A",
+            
+            "moduleAddress": "Network: Local network (0), Node: 0, Unit: CPU (0x0)",
+            
+            "rack": "N/A",
+            
+            "address": "10.4.14.102",
+            
+            "model": "AAAAAAAAAA",
+            
+            "serial": "N/A",
+            
+            "firmwareVersion": "20.55"
+        
+        },
+    
+        {
+        
+            "slot": "N/A",
+            
+            "additionalData": "N/A",
+            
+            "moduleAddress": "Network: Local network (0), Node: 0, Unit: Unknown (0x3)",
+            
+            "rack": "N/A",
+            
+            "address": "10.4.14.102",
+            
+            "model": "AAAAAAAAAAAAAAAAAAAA",
+            
+            "serial": "N/A",
+            
+            "firmwareVersion": "20.55"
+        
+        },
+    
+        {
+        
+            "slot": "N/A",
+            
+            "additionalData": "N/A",
+            
+            "moduleAddress": "Network: Local network (0), Node: 3, Unit: CPU (0x0)",
+            
+            "rack": "N/A",
+            
+            "address": "10.4.14.102",
+            
+            "model": "AAAAAAAAAAAAAAAAAAAA",
+            
+            "serial": "N/A",
+            
+            "firmwareVersion": "20.55"
+        
+        },
+    
+        {
+        
+            "slot": "N/A",
+            
+            "additionalData": "N/A",
+            
+            "moduleAddress": "Network: 3, Node: 0, Unit: CPU (0x0)",
+            
+            "rack": "N/A",
+            
+            "address": "10.4.14.102",
+            
+            "model": "AAAAAAAAAAAAAAAAAAAA",
+            
+            "serial": "N/A",
+            
+            "firmwareVersion": "20.55"
+        
+        }
+    
+    ],
+    
+    "id": 79,
+    
+    "macAddresses": null,
+    
+    "authorized": true,
+    
+    "ipAddresses": [
+    
+        "10.4.14.102"
+    
+    ],
+    
+    "engineeringStation": false,
+    
+    "type": "PLC",
+    
+    "operatingSystem": null,
+    
+    "protocols": [
+    
+        {
+        
+            "addresses": [],
+            
+            "id": 62,
+            
+            "name": "Omron FINS"
+        
+        }
+    
+    ],
+    
+    "scanner": false
+    
+}
+
+]
+```
+
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/devices?authorized=true` |
+
+### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>ユーザーの資格情報を認証する - /external/authentication/validation
+
+ユーザーの資格情報を検証するには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
+
+#### <a name="method"></a>メソッド
+
+**POST**
+
+#### <a name="request-type"></a>要求の種類
+
+- **JSON**
+
+#### <a name="request-example"></a>要求の例
+
+```rest
+request:
+
 {
-  "error": "PCAP file is not available"
+
+    "username": "test",
+
+    "password": "Test12345\!"
+
+}
+```
+
+#### <a name="response-type"></a>応答の種類
+
+- **JSON**
+
+#### <a name="response-content"></a>応答コンテンツ
+
+動作状態の詳細を含むメッセージ文字列:
+
+- **成功 – msg**:Authentication succeeded (認証に成功しました)
+
+- **失敗 – error**:Credentials Validation Failed (資格情報の検証に失敗しました)
+
+#### <a name="device-fields"></a>デバイス フィールド
+
+| **名前** | **Type** | **NULL 値の使用** |
+|--|--|--|
+| **username** | String | いいえ |
+| **password** | String | いいえ |
+
+#### <a name="response-example"></a>応答の例
+
+```rest
+response:
+
+{
+
+    "msg": "Authentication succeeded."
+
 }
 ```
 
 #### <a name="curl-command"></a>Curl コマンド
 
-|Type|API|例|
-|-|-|-|
-|GET|`curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v2/alerts/pcap/<ID>'`|`curl -k -H "Authorization: d2791f58-2a88-34fd-ae5c-2651fe30a63c" 'https://10.1.0.2/api/v2/alerts/pcap/1'`|
-
-## <a name="on-premises-management-console-api-specifications"></a>オンプレミス管理コンソール API の仕様
-
-このセクションでは、次のオンプレミス管理コンソール API について説明します。
-
-- [アラートの除外](#alert-exclusions)
-
-- [デバイス情報を取得する - /external/v1/devices](#retrieve-device-information---externalv1devices)
-
-- [アラート情報を取得する - /external/v1/alerts](#retrieve-alert-information---externalv1alerts)
-
-- [QRadar アラート](#qradar-alerts)
-
-- [アラートの除外 (メンテナンス期間) - /external/v1/maintenanceWindow](#alert-exclusions-maintenance-window---externalv1maintenancewindow)
-
-- [パスワードを変更する - /external/authentication/set_password (1)](#change-password---externalauthenticationset_password-1)
-
-- [システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
-
-- [アラート PCAP を要求する - /external/v2/alerts/pcap](#request-alert-pcap---externalv2alertspcap)
-
-### <a name="alert-exclusions"></a>アラートの除外
-
-アラートを送信しない条件を定義します。 たとえば、停止時刻と開始時刻、アラートをトリガーするときに除外するデバイスまたはサブネット、または除外する必要がある Defender for IoT エンジンを定義して更新します。 たとえば、メンテナンス期間中は、重要なデバイスのマルウェア アラートを除き、すべてのアラートの配信を停止したいとします。 ここで定義した項目は、オンプレミスの管理コンソールの [アラートの除外] ウィンドウに読み取り専用の除外ルールとして表示されます。
-
-#### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
-
-- **/external/authentication/validation**
-
-- **応答の例**
-
-- **応答:**
-
-```rest
-{
-    "msg": "Authentication succeeded."
-}
-```
+| Type | API | 例 |
+|--|--|--|
+| POST | `curl -k -d '{"username":"<USER_NAME>","password":"PASSWORD"}' 'https://<IP_ADDRESS>/external/authentication/validation'` | `curl -k -d '{"username":"myUser","password":"1234@abcd"}' 'https://127.0.0.1/external/authentication/validation'` |
 
 ### <a name="retrieve-device-information---externalv1devices"></a>デバイス情報を取得する - /external/v1/devices
 
@@ -2182,28 +2442,6 @@ response:
 > |--|--|--|
 > | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/alerts?state=&zoneId=&fromTime=&toTime=&siteId=&sensor='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://127.0.0.1/external/v1/alerts?state=unhandled&zoneId=1&fromTime=0&toTime=1594551777000&siteId=1&sensor=1'` |
 
-### <a name="qradar-alerts"></a>QRadar アラート
-
-Defender for IoT への QRadar の統合は、Defender for IoT によって生成されたアラートを識別し、これらのアラートに対してアクションを実行する上で役立ちます。 データは Defender for IoT から QRadar へ送信された後、パブリック API のオンプレミス管理コンソール コンポーネントに接続されます。
-
-Defender for IoT によって検出されたデータを QRadar に送信するには、Defender for IoT システムで転送ルールを定義し、 **[Remote support alert handling]\(アラート処理のリモート サポート\)** オプションを選択します。
-
-:::image type="content" source="media/references-work-with-defender-for-iot-apis/edit-forwarding-rules.png" alt-text="必要に応じて、転送ルールを編集します。":::
-
-転送ルールを構成するプロセス中にこのオプションを選択すると、QRadar に次の追加フィールドが表示されます。
-
-- **UUID**:一意のアラート識別子 (1-1555245116250 など)。
-
-- **サイト**:アラートが検出されたサイト。
-
-- **Zone**:アラートが検出されたゾーン。
-
-QRadar に送信されるペイロードの例を次に示します。
-
-```
-<9>May 5 12:29:23 sensor_Agent LEEF:1.0|CyberX|CyberX platform|2.5.0|CyberX platform Alert|devTime=May 05 2019 15:28:54 devTimeFormat=MMM dd yyyy HH:mm:ss sev=2 cat=XSense Alerts title=Device is Suspected to be Disconnected (Unresponsive) score=81 reporter=192.168.219.50 rta=0 alertId=6 engine=Operational senderName=sensor Agent UUID=5-1557059334000 site=Site zone=Zone actions=handle dst=192.168.2.2 dstName=192.168.2.2 msg=Device 192.168.2.2 is suspected to be disconnected (unresponsive).
-```
-
 #### <a name="externalv1alertsltuuidgt"></a>/external/v1/alerts/&lt;UUID&gt;
 
 #### <a name="method"></a>メソッド
@@ -2440,224 +2678,6 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 | DELETE | `curl -k -X DELETE -d '{"ticketId": "<TICKET_ID>"}' -H "Authorization: <AUTH_TOKEN>" https://127.0.0.1/external/v1/maintenanceWindow` | `curl -k -X DELETE -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/external/v1/maintenanceWindow` |
 | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/external/v1/maintenanceWindow?fromDate=&toDate=&ticketId=&tokenName='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://127.0.0.1/external/v1/maintenanceWindow?fromDate=2020-01-01&toDate=2020-07-14&ticketId=a5fe99c-d914-4bda-9332-307384fe40bf&tokenName=a'` |
 
-### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>ユーザーの資格情報を認証する - /external/authentication/validation
-
-ユーザーの資格情報を検証するには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="method"></a>メソッド
-
-**POST**
-
-#### <a name="request-type"></a>要求の種類
-
-- **JSON**
-
-#### <a name="request-example"></a>要求の例
-
-```rest
-request:
-
-{
-
-    "username": "test",
-
-    "password": "Test12345\!"
-
-}
-```
-
-#### <a name="response-type"></a>応答の種類
-
-- **JSON**
-
-#### <a name="response-content"></a>応答コンテンツ
-
-動作状態の詳細を含むメッセージ文字列:
-
-- **成功 – msg**:Authentication succeeded (認証に成功しました)
-
-- **失敗 – error**:Credentials Validation Failed (資格情報の検証に失敗しました)
-
-#### <a name="device-fields"></a>デバイス フィールド
-
-| **名前** | **Type** | **NULL 値の使用** |
-|--|--|--|
-| **username** | String | いいえ |
-| **password** | String | いいえ |
-
-#### <a name="response-example"></a>応答の例
-
-```rest
-response:
-
-{
-
-    "msg": "Authentication succeeded."
-
-}
-```
-
-#### <a name="curl-command"></a>Curl コマンド
-
-| Type | API | 例 |
-|--|--|--|
-| POST | `curl -k -d '{"username":"<USER_NAME>","password":"PASSWORD"}' 'https://<IP_ADDRESS>/external/authentication/validation'` | `curl -k -d '{"username":"myUser","password":"1234@abcd"}' 'https://127.0.0.1/external/authentication/validation'` |
-
-### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
-
-ユーザーが自分のパスワードを変更できるようにするには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="method"></a>メソッド
-
-**POST**
-
-#### <a name="request-type"></a>要求の種類
-
-- **JSON**
-
-#### <a name="request-example"></a>要求の例
-
-```rest
-request:
-
-{
-
-    "username": "test",
-    
-    "password": "Test12345\!",
-    
-    "new_password": "Test54321\!"
-
-}
-
-```
-
-#### <a name="response-type"></a>応答の種類
-
-- **JSON**
-
-#### <a name="response-content"></a>応答コンテンツ
-
-動作状態の詳細を含むメッセージ文字列:
-
-- **成功 – msg**:Password has been replaced (パスワードが置き換えられました)
-
-- **失敗 – error**:User authentication failure (ユーザー認証エラー)
-
-- **失敗 – error**:Password does not match security policy (パスワードがセキュリティ ポリシーと一致しません)
-
-#### <a name="response-example"></a>応答の例
-
-```rest
-response:
-
-{
-
-    "error": {
-    
-        "userDisplayErrorMessage": "User authentication failure"
-    
-    }
-
-}
-
-```
-
-#### <a name="device-fields"></a>デバイス フィールド
-
-| **名前** | **Type** | **NULL 値の使用** |
-|--|--|--|
-| **username** | String | いいえ |
-| **password** | String | いいえ |
-| **new_password** | String | いいえ |
-
-#### <a name="curl-command"></a>Curl コマンド
-
-| Type | API | 例 |
-|--|--|--|
-| POST | `curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password` | `curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/external/authentication/set_password` |
-
-### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
-
-システム管理者が指定されたユーザーのパスワードを変更できるようにするには、この API を使用します。 Defender for IoT 管理者ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="method"></a>メソッド
-
-- **POST**
-
-#### <a name="request-type"></a>要求の種類
-
-- **JSON**
-
-#### <a name="request-example"></a>要求の例
-
-```rest
-request:
-
-{
-
-    "username": "test",
-    
-    "password": "Test12345\!",
-    
-    "new_password": "Test54321\!"
-
-}
-```
-
-#### <a name="response-type"></a>応答の種類
-
-- **JSON**
-
-#### <a name="response-content"></a>応答コンテンツ
-
-動作状態の詳細を含むメッセージ文字列:
-
-- **成功 – msg**:Password has been replaced (パスワードが置き換えられました)
-
-- **失敗 – error**:User authentication failure (ユーザー認証エラー)
-
-- **失敗 – error**:User does not exist (ユーザーが存在しません)
-
-- **失敗 – error**:Password doesn't match security policy (パスワードがセキュリティ ポリシーと一致しません)
-
-- **失敗 – error**:User does not have the permissions to change password (ユーザーにパスワードを変更する権限がありません)
-
-#### <a name="response-example"></a>応答の例
-
-```rest
-response:
-
-{
-
-    "error": {
-    
-        "userDisplayErrorMessage": "The user 'test_user' doesn't exist",
-        
-        "internalSystemErrorMessage": "The user 'yoavfe' doesn't exist"
-    
-    }
-
-}
-
-```
-
-#### <a name="device-fields"></a>デバイス フィールド
-
-| **名前** | **Type** | **NULL 値の使用** |
-|--|--|--|
-| **admin_username** | String | いいえ |
-| **admin_password** | String | いいえ |
-| **username** | String | いいえ |
-| **new_password** | String | いいえ |
-
-#### <a name="curl-command"></a>Curl コマンド
-
-> [!div class="mx-tdBreakAll"]
-> | Type | API | 例 |
-> |--|--|--|
-> | POST | `curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password_by_admin` | `curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/external/authentication/set_password_by_admin` |
-
 ### <a name="request-alert-pcap---externalv2alertspcap"></a>アラート PCAP を要求する - /external/v2/alerts/pcap
 
 この API を使用して、アラートに関連する PCAP ファイルを要求します
@@ -2718,6 +2738,208 @@ response:
 |Type|API|例|
 |-|-|-|
 |GET|`curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/external/v2/alerts/pcap/<ID>'`|`curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://10.1.0.1/external/v2/alerts/pcap/1'`
+
+### <a name="service-now-integration-api---externalv3integration"></a>Service Now Integration API - "/external/v3/integration/
+
+以下の API は、ServiceNow の Defender for IoT 用 Service Graph Connector を介して ServiceNow 統合と共に使用できます。
+
+### <a name="create-and-update-devices"></a>デバイスを作成して更新する
+
+#### <a name="request"></a>要求
+
+- パス: "/devices/{timestamp}"
+- メソッド型: GET
+- パス パラメーター:
+    - "**timestamp**" - それ以降の更新が必要な時刻。その後の更新だけが返されます。
+
+- クエリ パラメーター:
+    - "**sensorId**" - このパラメーターを使用して、特定のセンサーによって認識されるデバイスのみを取得します。 ID は Sensors API の結果から取得する必要があります。
+    - "**notificationType**" - 次のマッピングに従った数値である必要があります。
+        - 0 - 更新されたデバイスと新規デバイスの両方 (既定値)。
+        - 1 - 新規デバイスのみ。
+        - 2 - 更新されたデバイスのみ。
+    - "**page**" - 結果セットのページ番号 (最初のページが 0、既定値は 0)
+    - "**size**" - ページ サイズ (既定値は 50)
+
+#### <a name="response"></a>Response
+
+- 型: JSON
+- 構造体:
+    - "**u_count**" - すべてのページを含む完全な結果セット内のオブジェクトの量。
+    - "**u_devices**" - デバイス オブジェクトの配列 (特定のデバイス API での定義に従う)。
+
+### <a name="connections"></a>接続
+
+#### <a name="request"></a>要求
+
+- パス: "/connections/{timestamp}"
+- メソッド型: GET
+- パス パラメーター:
+    - "**timestamp**" - それ以降の更新が必要な時刻。その後の更新だけが返されます。
+- クエリ パラメーター:
+    - "**page**" - 結果セットのページ番号 (既定値は 1)
+    - "**size**" - ページ サイズ (既定値は 50)
+
+#### <a name="response"></a>Response
+
+- 型: JSON
+- 構造体: 
+    - "**u_count**" - すべてのページを含む完全な結果セット内のオブジェクトの量。
+    - "**u_connections**" - 以下から成る配列
+        - "**u_src_device_id**" - ソース デバイスの ID。
+        - "**u_dest_device_id**" - 宛先デバイスの ID。
+        - "**u_connection_type**" - 以下のいずれか。
+            - "**One Way**"
+            - "**Two Way**"
+            - "**Multicast**"
+
+### <a name="specific-device"></a>特定のデバイス
+
+#### <a name="request"></a>要求
+
+- パス: "/device/{deviceId}"
+- メソッド型: GET
+- パス パラメーター:
+    - "**deviceId**" - 要求されたデバイスの ID。
+
+#### <a name="response"></a>Response
+
+- 型: JSON
+- 構造体:
+    - "**u_id**" - デバイスの内部 ID。
+    - "**u_vendor**" - ベンダーの名前。
+    - "**u_mac_address_objects**" - 以下から成る配列
+        - "**u_mac_address**" - デバイスの MAC アドレス。
+    - "**u_ip_address_objects**" - 以下から成る配列
+        - "**ip_address**" - デバイスの IP アドレス。
+        - "**u_guessed_mac_addresses**" - 以下から成る配列
+            - "**u_mac_address**" - 推測された mac アドレス。
+    - "**u_name**" - デバイスの名前。
+    - "**u_last_activity**" - デバイスがアクティブであった最後の時刻のタイムスタンプ。
+    - "**u_first_discovered**" - デバイスの検出時刻のタイムスタンプ。
+    - "**u_last_update**" - デバイスの最後の更新時刻のタイムスタンプ。
+    - "**u_vlans**" - 以下から成る配列
+        - "**u_vlan**" - デバイスが含まれている VLAN。
+    - "**u_device_type**" -
+        - "**u_name**" - デバイスの種類
+        - "**u_purdue_layer**" - このデバイスの種類の既定の Purdue レイヤー。
+        - "**u_category**" - 以下のいずれか。
+            - "**IT**"
+            - "**ICS**"
+            - "**IoT**"
+            - "**Network**"
+    - "**u_operating_system**" - デバイスのオペレーティング システム。
+    - "**u_protocol_objects**" - 以下から成る配列
+        - "**u_protocol**" - デバイスで使用される接続プロトコル。
+    - "**u_purdue_layer**" - ユーザーが手動で設定した Purdue レイヤー。
+    - "**u_sensor_ids**" - 以下から成る配列
+        - "**u_sensor_id**"-デバイスを認識したセンサーの ID。
+    - "**u_device_urls**" - 以下から成る配列
+        - "**u_device_url**" - センサー内のデバイスを表示するための URL。
+    - "**u_firmwares**" - 以下から成る配列
+        - "**u_address**"
+        - "**u_module_address**"
+        - "**u_serial**"
+        - "**u_model**"
+        - "**u_version**"
+        - "**u_additional_data**"
+
+### <a name="deleted-devices"></a>削除されたデバイス
+
+#### <a name="request"></a>要求
+
+- パス: "/deleteddevices/{timestamp}"
+- メソッド型: GET
+- パス パラメーター:
+    - "**timestamp**" - それ以降の更新が必要な時刻。その後の更新だけが返されます。
+
+#### <a name="response"></a>Response
+
+- 型: JSON
+- 構造体:
+    - 以下から成る配列
+        - "**u_id**" - 削除されたデバイスの ID.
+
+### <a name="sensors"></a>Sensors
+
+#### <a name="request"></a>要求
+
+- パス: "/sensors"
+- メソッド型: GET
+
+#### <a name="response"></a>Response
+
+- 型: JSON
+- 構造体:
+    - 以下から成る配列
+        - "**u_id**" - デバイス API で使用される内部センサー ID。
+        - "**u_name**" - アプライアンスの名前。
+        - "**u_connection_state**"-CM 状態との接続。 次のいずれか:
+            - "**SYNCED**" - 接続に成功しました。
+            - "**OUT_OF_SYNC**" - 管理コンソールでは、センサーから受信したデータを処理できません。"
+            - "**TIME_DIFF_OFFSET**"-時間のずれが検出されました。 管理コンソールはセンサーから切断されています。
+            - "**DISCONNECTED**" - センサーが管理コンソールと通信していません。 ネットワーク接続を確認します。
+        - "**u_interface_address**" - アプライアンスのネットワーク アドレス。
+        - "**u_version**"-センサーのバージョンの文字列表現。
+        - "**u_alert_count**" - センサーによって検出されたアラートの数。
+        - "**u_device_count**" - センサーによって検出されたデバイスの数。
+        - "**u_unhandled_alert_count**" - センサーで処理されなかったアラートの数。
+        - "**u_is_activated**" - アラートがアクティブ化されているか。
+        - "**u_data_intelligence_version**" - センサーにインストールされているデータ インテリジェンスの文字列表現。
+        - "**u_remote_upgrade_stage**" - リモート アップグレードの状態。 次のいずれか:
+            - "**UPLOADING**"
+            - "**PREPARE_TO_INSTALL**"
+            - "**STOPPING_PROCESSES**"
+            - "**BACKING_UP_DATA**"
+            - "**TAKING_SNAPSHOT**"
+            - "**UPDATING_CONFIGURATION**"
+            - "**UPDATING_DEPENDENCIES**"
+            - "**UPDATING_LIBRARIES**"
+            - "**PATCHING_DATABASES**"
+            - "**STARTING_PROCESSES**"
+            - "**VALIDATING_SYSTEM_SANITY**"
+            - "**VALIDATION_SUCCEEDED_REBOOTING**"
+            - "**SUCCESS**"
+            - "**FAILURE**"
+            - "**UPGRADE_STARTED**"
+            - "**STARTING_INSTALLATION**"
+            - "**INSTALLING_OPERATING_SYSTEM**"
+        - "**u_uid**" - センサーのグローバル一意識別子。
+
+### <a name="device-cves"></a>デバイスの CVE
+
+#### <a name="request"></a>要求
+
+- パス: "/devicecves/{timestamp}"
+- メソッド型: GET
+- パス パラメーター:
+    - "**timestamp**" - それ以降の更新が必要な時刻。その後の更新だけが返されます。
+- クエリ パラメーター:
+    - "**sensorId**" - このパラメーターを使用して、特定のセンサーによって認識されるデバイスのみを取得します。 ID は Sensors API の結果から取得する必要があります。
+    - "**page**" - 結果セットのページ番号 (最初のページが 0、既定値は 0)
+    - "**size**" - ページ サイズ (既定値は 50)
+
+#### <a name="response"></a>Response
+
+- 型: JSON
+- 構造体:
+    - "**u_count**" - すべてのページを含む完全な結果セット内のオブジェクトの量。
+    - "**u_devices**" - 以下から成る配列
+    - "**u_id**" - 特定のデバイス API の場合と同じ。
+    - "**u_name**" - 特定のデバイス API の場合と同じ。
+    - "**u_ip_address_objects**" - 特定のデバイス API の場合と同じ。
+    - "**u_mac_address_objects**" - 特定のデバイス API の場合と同じ。
+    - "**u_last_activity**" - 特定のデバイス API の場合と同じ。
+    - "**u_last_update**" - 特定のデバイス API の場合と同じ。
+    - "**u_cves**" - CVE の配列。
+        - "**u_ip_address**"-CVE が検出された特定のファームウェアを持つ特定のインターフェイスの IP アドレス。
+        - "**u_cve_id**" - CVE のID
+        - "**u_score**" - CVE のリスク スコア
+        - "**u_attack_vector**" - 以下のいずれか。
+            - "**ADJACENT_NETWORK**"
+            - "**LOCAL**"
+            - "**NETWORK**"
+        - "**u_description**" - CVE に関する説明。
 
 ## <a name="next-steps"></a>次のステップ
 

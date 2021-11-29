@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する | Microsoft Docs
-description: Azure NetApp Files で NFSv4.1 を使用するように NFS クライアントを構成する方法について説明します。
+title: Azure NetApp Files 用に NFSv4.1 ドメインを構成する | Microsoft Docs
+description: Azure NetApp Files で NFSv4.1 を使用するように NFSv4.1 ドメインを構成する方法について説明します。
 documentationcenter: ''
 author: b-juche
 manager: ''
@@ -11,16 +11,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 11/11/2021
 ms.author: b-juche
-ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebf6d8e51e3e0c46ae8bd4086afdb4cb28700d6e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92072154"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714278"
 ---
-# <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する
+# <a name="configure-nfsv41-domain-for-azure-netapp-files"></a>Azure NetApp Files 用に NFSv4.1 ドメインを構成する
 
 NFSv4 では、認証ドメインの概念が導入されています。 Azure NetApp Files は、現在、サービスから NFS クライアントへのルート専用ユーザー マッピングをサポートしています。 Azure NetApp Files で NFSv4.1 機能を使用するには、NFS クライアントを更新する必要があります。
 
@@ -32,18 +32,56 @@ NFSv4 ドメインは既定では `localdomain` に設定されているため�
 
 上の例に示ように、`file1` のユーザーは `root` であるべきですが、既定では `nobody` にマップされています。  この記事では、`idmap Domain` 設定を `defaultv4iddomain.com` に変更することによって、`file1` ユーザーを `root` に設定する方法について説明します。  
 
-## <a name="steps"></a>手順 
+## <a name="configure-nfsv41-domain"></a>NFSv4.1 ドメインを構成する  
 
 1. NFS クライアントで `/etc/idmapd.conf` ファイルを編集します。   
-    行 `#Domain` をコメント解除し (つまり、行から `#` を削除する)、値 `localdomain` を `defaultv4iddomain.com` に変更します。 
+    行 `#Domain` をコメント解除し (つまり、行から `#` を削除する)、値 `localdomain` を次のように変更します。
 
-    初期構成: 
-    
-    ![NFSv4.1 の初期構成](../media/azure-netapp-files/azure-netapp-files-nfsv41-initial-config.png)
+    * ボリュームが LDAP に対して有効になっていない場合は、`Domain = defaultv4iddomain.com` を設定します。
+    * ボリュームで [LDAP が有効になっている](configure-ldap-extended-groups.md)場合は、`Domain` を NetApp アカウントの Active Directory 接続で構成されているドメインに設定します。
+        たとえば、`contoso.com` が NetApp アカウントで構成されているドメインの場合は、`Domain = contoso.com` を設定します。
 
-    更新された構成:
+    次の例は、変更前の `/etc/idmapd.conf` の初期構成を示しています。
+
+    ```
+    [General]
+    Verbosity = O 
+    Pipefs—Directory = /run/rpc_pipefs 
+    # set your own domain here, if it differs from FQDN minus hostname 
+    # Domain = localdomain 
+     
+    [Mapping] 
+    Nobody-User = nobody 
+    Nobody-Group = nogroup 
+    ```
+
+    次の例は、*非 LDAP* NFSv4.1 ボリュームの更新された構成を示しています。
+
+    ```
+    [General]
+    Verbosity = O 
+    Pipefs—Directory = /run/rpc_pipefs 
+    # set your own domain here, if it differs from FQDN minus hostname 
+    Domain = defaultv4iddomain.com 
+ 
+    [Mapping] 
+    Nobody-User = nobody 
+    Nobody-Group = nogroup 
+    ```
+
+    次の例は、*LDAP 対応* の NFSv4.1 ボリュームの更新された構成を示しています。 この例では、`contoso.com` は NetApp アカウントで構成されているドメインです。
+
+    ```
+    [General]
+    Verbosity = O 
+    Pipefs—Directory = /run/rpc_pipefs 
+    # set your own domain here, if it differs from FQDN minus hostname 
+    Domain = contoso.com
     
-    ![NFSv4.1 の更新された構成](../media/azure-netapp-files/azure-netapp-files-nfsv41-updated-config.png)
+    [Mapping] 
+    Nobody-User = nobody 
+    Nobody-Group = nogroup 
+    ```
 
 2. 現在マウントされている NFS ボリュームをマウント解除します。
 3. `/etc/idmapd.conf` ファイルを更新します。
@@ -72,5 +110,6 @@ Azure NetApp Files は、NFSv4.1 ボリューム内のファイルまたはフ�
 
 ## <a name="next-step"></a>次のステップ 
 
-[Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する](configure-ldap-extended-groups.md)
 

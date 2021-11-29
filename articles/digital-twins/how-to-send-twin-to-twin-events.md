@@ -4,23 +4,22 @@ titleSuffix: Azure Digital Twins
 description: ツイン グラフを介してイベントを伝達するために Azure で関数を作成する方法を確認します。
 author: baanders
 ms.author: baanders
-ms.date: 8/13/2021
+ms.date: 11/16/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 68229c648968711bf65c0870c2fb38903376b1d6
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.custom: contperf-fy22q2
+ms.openlocfilehash: cda3a254f72167e4d561974e10334ec7a8e9951a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252583"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718280"
 ---
-# <a name="set-up-twin-to-twin-event-handling-with-azure-functions"></a>Azure Functions を使用してツインからツインへのイベント処理を設定する
+# <a name="set-up-twin-to-twin-event-handling"></a>ツインからツインへのイベント処理を設定する
 
 完全に接続された Azure Digital Twins グラフは、イベントの伝達によって駆動されます。 データは IoT Hub などの外部ソースから Azure Digital Twins に届いてから、Azure Digital Twins グラフを介して伝達され、必要に応じて関連するツインが更新されます。
 
-たとえば、建物のフロアとルームを表す図について考えます。各フロアには複数のルームがあります。 ルーム ツインの気温プロパティが更新されるたびに、同じフロアのすべてのルームについて新しい平均気温が計算され、フロア ツインの気温プロパティが、そこに含まれるすべてのルーム (更新されたものも含む) の新しい平均気温を反映するように更新されるように、ツインからツインへのデータ フローを設定する必要があります。 
-
-この記事では、ツインからツインにイベントを送信して、グラフ内の別のツインでのプロパティの変更やその他のデータに応じてツインを更新する方法について説明します。 現在、ツインからツインへの更新は、グラフの他の領域に影響するツインのライフサイクル イベントを監視し、それに応じて他のツインに変更を加える [Azure 関数](../azure-functions/functions-overview.md)を設定して処理します。
+この記事では、**イベントをツインからツインに送信する** 方法を示します。これにより、グラフ内の関連するツインからのプロパティの変更やその他のデータに応じてツインを更新できます。 これを行うには、ツイン ライフ サイクル イベントを監視する [Azure 関数](../azure-functions/functions-overview.md)を設定します。 この関数は、グラフ内の他のツインに影響を与えるイベントを認識し、イベント データを使用して、影響を受けるツインをそれぞれ更新します。
 
 ## <a name="prerequisites"></a>前提条件
 

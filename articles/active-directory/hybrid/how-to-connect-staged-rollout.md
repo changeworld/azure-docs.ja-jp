@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35dcb1125451e378d79aa7bab4c4e066ccab9acb
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2ce298acdd7da89ce682148e043a5ce19afeaf38
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130044310"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132717690"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>段階的なロールアウトを使用してクラウド認証に移行する
 
@@ -68,6 +68,8 @@ ms.locfileid: "130044310"
 
 - Windows 10 バージョン 1903 以降の、フェデレーション サーバーへの通信経路を使用しない Windows 10 ハイブリッド参加または Azure AD 参加のプライマリ更新トークンの取得 (ユーザーの UPN がルーティング可能であり、ドメイン サフィックスが Azure AD で検証されている場合)。
 
+- オートパイロットの登録は、Windows 10 バージョン 1909 以降の段階的ロールアウトでサポートされています。 
+
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
 次のシナリオは、段階的なロールアウトではサポートされていません：
@@ -96,8 +98,6 @@ ms.locfileid: "130044310"
 - Windows 10 バージョン 1903 以降で非永続的な VDI を設定している場合は、フェデレーション ドメインにとどまる必要があります。 非永続的な VDI では、マネージド ドメインへの移行はサポートされていません。 詳細については、[「デバイス ID とデスクトップの仮想化」](../devices/howto-device-identity-virtual-desktop-infrastructure.md)を参照してください。
 
 - 登録機関またはスマートカード ユーザーとして機能するフェデレーション サーバーを介して発行された証明書と共に Windows Hello for Business のハイブリッド証明書を信頼している場合、このシナリオは段階的なロールアウトではサポートされません。 
-
-- オートパイロットの登録は、段階的ロールアウトではサポートされていません。 段階的ロールアウトを有効にしたユーザーは、オートパイロット登録時にフェデレーション認証を引き続き使用します。 お使いのデバイスが Windows 10 バージョン 1903 以降の場合、オートパイロットによる登録後、すべての認証要求は段階的ロールアウトになります。 
 
   >[!NOTE]
   >それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的ロールアウトによって、ドメインがフェデレーションからマネージドに切り替えられることはありません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](./migrate-from-federation-to-cloud-authentication.md)方法および[フェデレーションからパススルー認証に移行する](./migrate-from-federation-to-cloud-authentication.md)方法に関する記事を参照してください。

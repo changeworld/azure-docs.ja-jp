@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4900e66afa994b97a479e377e300c13ff29ae8e4
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 7860384cdf905f481b9f003affa3eec4c3e38243
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555117"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706632"
 ---
 # <a name="mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning
 
@@ -55,12 +55,13 @@ MLflow Tracking では、MLflow 実験のバックエンドとして Azure Machi
 
 詳細については、「[MLflow と Azure Machine Learning を使用して ML モデルを追跡する](how-to-use-mlflow.md)」を参照してください。 
 
-## <a name="train-mlflow-projects"></a>MLflow プロジェクトをトレーニングする
+## <a name="train-mlflow-projects-preview"></a>MLflow プロジェクトをトレーニングする (プレビュー)
+
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 MLflow の追跡 URI とログ API (まとめて MLflow Tracking と呼ばれます) を使用して、トレーニング ジョブを [MLflow プロジェクト](https://www.mlflow.org/docs/latest/projects.html)と Azure Machine Learning バックエンド サポート (プレビュー) に送信できます。 Azure Machine Learning 追跡を使用してローカルにジョブを送信することも、[Azure Machine Learning コンピューティング](./how-to-create-attach-compute-cluster.md)を介するなどして実行をクラウドに移行することもできます。
 
-詳細については、「[MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする](how-to-train-mlflow-projects.md)」を参照してください。
-
+詳細については、「[MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする (プレビュー)](how-to-train-mlflow-projects.md)」を参照してください。
 
 ## <a name="deploy-mlflow-experiments"></a>MLflow 実験をデプロイする
 
@@ -68,7 +69,7 @@ MLflow の追跡 URI とログ API (まとめて MLflow Tracking と呼ばれま
 
 ## <a name="next-steps"></a>次のステップ
 * [MLflow と Azure Machine Learning を使用して ML モデルを追跡する](how-to-use-mlflow.md)。 
-* [MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする](how-to-train-mlflow-projects.md)。
+* [MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする (プレビュー)](how-to-train-mlflow-projects.md)。
 * [MLflow を使用して Azure Databricks 実行を追跡する](how-to-use-mlflow-azure-databricks.md)。
 * [MLflow を使用してモデルをデプロイします](how-to-deploy-mlflow-models.md)。
 

@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/02/2021
+ms.date: 11/16/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c8d53392a48c821cb126e729f8e29bf7c686b3d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 73e1f58073c92ba8a0631d4ee7136de3bac5e114
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441079"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549548"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -80,7 +80,7 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 このセクションでは、SAP データ ソースへの Microsoft Power BI の統合と、SAP BW への Azure Data Factory の統合に関するドキュメントを紹介します。
 
 ## <a name="change-log"></a>変更履歴
-- 
+- 2021 年 11 月 16 日: Azure Files の NFS を使用する SAP ASCS/ERS[Azure Files の NFS を使用する SLES 上の SAP NW 用 HA](./high-availability-guide-suse-nfs-azure-files.md)、[Azure Files の NFS を使用する RHEL 上の SAP NW 用 HA](./high-availability-guide-rhel-nfs-azure-files.md) に向けた高可用性ガイドをリリースしました。 
 - 2021 年 11 月 2 日:「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」と「[SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sapase.md)」を変更し、Azure NetApp Files で NFS に対する SAP ASE サポートを宣言しました。
 - 2021 年 11 月 2 日:「[Azure Availability Zones での SAP ワークロードの構成](./sap-ha-availability-zones.md)」を変更し、シンガポール南東部をアクティブ/アクティブ構成のリージョンに移しました
 - 2021 年 11 月 2 日:「[Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)」を変更し、HANA スケールアップアクティブ/アクティブ (読み取り有効) 構成の手順を更新しました。

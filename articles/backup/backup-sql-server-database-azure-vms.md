@@ -6,12 +6,12 @@ ms.date: 11/02/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 970c352bcb7f04d04cddaaa24769eb4a26896605
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9cb45718d9e54e54d1154de5d3b19daeb707c52f
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131431799"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714506"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Recovery Services コンテナーから複数の SQL Server VM をバックアップする
 
@@ -49,7 +49,7 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 次の表に、接続の確立に使用できるさまざまな選択肢を示します。
 
-| **オプション**                        | **長所**                                               | <bpt id="p1">**</bpt>短所<ept id="p1">**</ept>                                            |
+| **オプション**                        | **長所**                                               | **短所**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | プライベート エンドポイント                 | 仮想ネットワーク内のプライベート IP 経由でのバックアップを可能にする  <br><br>   ネットワークとコンテナーの側で詳細な制御を提供する | 標準のプライベート エンドポイント <bpt id="p1">[</bpt>コスト<ept id="p1">](https://azure.microsoft.com/pricing/details/private-link/)</ept>が発生する |
 | NSG サービス タグ                  | 範囲の変更が自動的にマージされるため管理しやすい   <br><br>   追加のコストが発生しない | NSG でのみ使用可能  <br><br>    サービス全体へのアクセスを提供する |
@@ -89,7 +89,7 @@ Azure Firewall を使用している場合は、<bpt id="p1">*</bpt>AzureBackup<
 
 次の FQDN を使用することで、サーバーから必要なサービスへのアクセスを許可することもできます。
 
-| サービス    | アクセスするドメイン名                             | Port
+| サービス    | アクセスするドメイン名                             | ポート
 | -------------- | ------------------------------------------------------------ | ---
 | Azure Backup  | `*.backup.windowsazure.com`                             | 443
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` | 443
@@ -98,6 +98,9 @@ Azure Firewall を使用している場合は、<bpt id="p1">*</bpt>AzureBackup<
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する
 
 Azure VM 上の SQL Server データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 必要なサービスへのアクセスを許可するには、上記で説明した IP と FQDN の一覧を使用します。 認証済みプロキシ サーバーはサポートされません。
+
+> [!NOTE]
+> VM 内の localhost 通信のプロキシを無効にします。 プロキシは、SQL VM からの送信方向の通信に使用されます。
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure Backup のためのデータベースの命名に関するガイドライン
 

@@ -7,15 +7,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/27/2021
+ms.date: 11/16/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 83b6e19a1e67e2e7e018aaa43ba4cf6149940ed7
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: f63aaf34e616c6863c2a9aa1e6d5f1daabae4d01
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132292682"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709009"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory で属性マッピングの式を記述するためのリファレンス
 
@@ -37,7 +37,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 ## <a name="list-of-functions"></a>関数の一覧
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [PCase](#pcase) &nbsp;&nbsp;&nbsp;&nbsp; [RandomString](#randomstring) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [PCase](#pcase) &nbsp;&nbsp;&nbsp;&nbsp; [RandomString](#randomstring) &nbsp;&nbsp;&nbsp;&nbsp; [Redact](#redact) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -111,7 +111,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **[式]** |必須 | expression | 任意の有効な式 |
 
@@ -129,7 +129,7 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は�
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **[式]** |必須 | Expression | 日付/時刻を表す任意の有効な文字列。 サポートされている形式については、「[.NET カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 |
 
@@ -415,7 +415,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **[式]** | 必須 | Expression | 評価の対象となる式 |
 
@@ -477,7 +477,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **[式]** |必須 |Expression |評価の対象となる式 |
 
@@ -495,7 +495,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **[式]** |必須 |Expression |評価の対象となる式 |
 
@@ -512,7 +512,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **[式]** |必須 |Expression |評価の対象となる式 |
 
@@ -527,7 +527,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **[式]** |必須 |Expression |評価の対象となる式 |
 
@@ -737,7 +737,7 @@ Now 関数は、**M/d/yyyy h:mm:ss tt** の形式で現在の UTC DateTime を�
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **Length** |必須 |数値 |ランダムな文字列の合計文字数。 MinimumNumbers、MinimumSpecialCharacters、MinimumCapital の合計と同じか、それ以上であることが必要です。 最大 256 文字です。|
 | **MinimumNumbers** |必須 |数値 |ランダムな文字列に含まれる数字の最小文字数。|
@@ -754,7 +754,27 @@ Now 関数は、**M/d/yyyy h:mm:ss tt** の形式で現在の UTC DateTime を�
 10 文字のランダムな文字列を生成します。 この文字列には、少なくとも数字が 2 つ、特殊文字が 2 つ、大文字が 2 つ、小文字が 1 つ含まれており、"?" 文字と "," 文字は除外されます (1@!2BaRg53)。
 
 ---
+### <a name="redact"></a>Redact
+**関数:** Redact()
 
+**説明:** Redact 関数は、プロビジョニング ログで、属性値を文字列リテラル "[Redact]" に置き換えます。 
+
+**パラメーター:** 
+
+| 名前 | 必須/繰り返し | Type | Notes |
+| --- | --- | --- | --- |
+| **attribute/value** |必須 |String|ログで編集する属性または定数/文字列を指定します。|
+
+**例 1:** 属性を編集します: `Redact([userPrincipalName])`
+プロビジョニング ログから userPrincipalName を削除します。
+
+**例 2:** 文字列を編集します: `Redact("StringToBeRedacted")`
+プロビジョニング ログから定数文字列を削除します。
+
+**例 3:** ランダムな文字列を編集します: `Redact(RandomString(6,3,0,0,3))`
+プロビジョニング ログからランダムな文字列を削除します。
+
+---
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **関数:** RemoveDuplicates(attribute)
 

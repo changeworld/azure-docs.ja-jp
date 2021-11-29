@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: cde36aaa5946519533d4e68eb31da48af08be689
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 3ab6ce9f955829cb3faf774c5b85c205f5841474
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546294"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551351"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -209,7 +209,7 @@ az provider register --namespace Microsoft.ContainerService
 
 この機能を使用すると、計画が大幅に簡単になります。 ノードとポッドは独立してスケーリングされるため、アドレス空間も個別に計画することができます。 ポッド サブネットはノード プールの粒度に合わせて構成できるので、ユーザーはノード プールを追加する際、常に新しいサブネットを追加できます。 クラスター/ノード プール内のシステム ポッドはポッド サブネットからも IP を受信するので、この動作については把握をしておく必要があります。
 
-K8S サービスと Docker ブリッジの IP の計画については、変更はありません。
+Kubernetes サービスと Docker ブリッジの IP の計画に、変更はありません。
 
 ### <a name="maximum-pods-per-node-in-a-cluster-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>クラスター内のノードあたりの最大ポッド数 (動的 IP 割り当てと拡張サブネット サポートを利用する場合)
 

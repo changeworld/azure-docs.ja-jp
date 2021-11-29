@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 11/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f20eb91d18c85b21bd9623fec2129fbbde787764
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 09510a64fdee1525ca18ee4985206faa18263b85
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128568290"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132706895"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件付きアクセス:場所ごとにアクセスをブロックする
 
@@ -55,8 +55,10 @@ ms.locfileid: "128568290"
    1. 組織に対して作成したブロック対象の場所を選択します。
    1. **[選択]** をクリックします。
 1. **[アクセス制御]** で、 **[アクセスのブロック]** を選択し、さらに **[選択]** を選択します。
-1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
-1. **[作成]** を選択して、条件付きアクセス ポリシーを作成します。
+1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
+1. **[作成]** を選択して、ポリシーを作成および有効化します。
+
+管理者は、[レポート専用モード](howto-conditional-access-insights-reporting.md)を使用して設定を確認したら、 **[ポリシーの有効化]** トグルを **[レポートのみ]** から **[オン]** に移動できます。
 
 ## <a name="next-steps"></a>次のステップ
 

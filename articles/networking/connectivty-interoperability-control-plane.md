@@ -11,16 +11,16 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7a777208563e13945bd0bdd0aac43560143d0a49
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8afa833549f840f30e52cf58eda0ff05f37d840c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005064"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714677"
 ---
 # <a name="interoperability-in-azure--control-plane-analysis"></a>Azure での相互運用性: コントロール プレーンの分析
 
-この記事では、[テストセットアップ][Setup] のコントロールプレーン分析について説明します。 [テスト セットアップの構成][Configuration] とテスト セットアップの[データ プレーン分析][Data-Analysis] についてもご覧ください。
+この記事では、[テストセットアップ][Setup] のコントロールプレーン分析について説明します。 [テスト セットアップの構成][Configuration] とテスト セットアップの [データ プレーン分析][Data-Analysis] についてもご覧ください。
 
 基本的に､コントロール プレーン分析では､1 つのトポロジ内の各ネットワーク間で交換されるルートを調べます。 コントロール プレーン分析は､ネットワークからのトポロジの見え方の違いを理解するのに役立ちます。
 
@@ -86,7 +86,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 ## <a name="next-steps"></a>次のステップ
 
-テスト セットアップの[データ プレーン分析][Data-Analysis]と Azure ネットワーク監視機能のビューを確認します。
+テスト セットアップの [データ プレーン分析][Data-Analysis] および Azure ネットワーク監視機能のビューについて学習する。
 
 「[ExpressRoute の FAQ][ExR-FAQ]」を参照して以下を行います。
 -   ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数について学習する。
@@ -108,7 +108,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 [VPN]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
 [Configuration]: ./connectivty-interoperability-configuration.md
-[Control-Analysis]: /azure/networking/connectivty-interoperability-control-plane
+[Control-Analysis]: 
 [Data-Analysis]: ./connectivty-interoperability-data-plane.md
 [ExR-FAQ]: ../expressroute/expressroute-faqs.md
 [S2S-Over-ExR]: ../expressroute/site-to-site-vpn-over-microsoft-peering.md

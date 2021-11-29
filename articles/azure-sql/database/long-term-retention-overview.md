@@ -12,12 +12,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma
 ms.date: 07/13/2021
-ms.openlocfilehash: e5e980878091145770f98cff952374e76f08180d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 703a6daa7edc5b8a8ef8cf7963b0ee720041ab4c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775647"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710484"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>長期リテンション - Azure SQL Database と Azure SQL Managed Instance
 
@@ -56,13 +56,13 @@ LTR ポリシーの例:
 
    毎週、完全バックアップが 12 週間保持されます。
 
-- W=6、M=12、Y=10、WeekOfYear=16
+- W=6、M=12、Y=10、WeekOfYear=20
 
-   毎週、完全バックアップが 6 週間保持されます。 ただし、各月の最初の完全バックアップについては、12 か月間保持されます。 また、各年の第 16 週に作成された完全バックアップについては、10 年間保持されます。 
+   毎週、完全バックアップが 6 週間保持されます。 ただし、各月の最初の完全バックアップについては、12 か月間保持されます。 また、各年の第 20 週に作成された完全バックアップについては、10 年間保持されます。 
 
 以下の表は、次のポリシーの長期バックアップの周期と有効期限を示しています。
 
-W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear=15 (4 月 15 日の週)
+W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear=20 (5 月 13 日の週)
 
    ![LTR の例](./media/long-term-retention-overview/ltr-example.png)
 

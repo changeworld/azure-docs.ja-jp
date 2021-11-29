@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: a12f5717d927e8358a503a50f314c6b80f577952
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 76c45ca0287a943235197a6316e7e371faf37af2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129584968"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132590697"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-android.md)]
 
@@ -20,10 +20,10 @@ ms.locfileid: "129584968"
 > [!NOTE]
 > この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling Android SDK の "ベータ" リリースを使用してください
 
-通話記録は、コア `Call` API の拡張機能です。 まず、記録機能 API オブジェクトを取得する必要があります。
+通話レコーディングは、コア `Call` オブジェクトの拡張機能です。 まず、レコーディング機能オブジェクトを取得する必要があります。
 
 ```java
-RecordingCallFeature callRecordingFeature = call.api(Features.RECORDING);
+RecordingCallFeature callRecordingFeature = call.feature(Features.RECORDING);
 ```
 
 次に、通話が記録されているかどうかを確認するために、`callRecordingFeature` の `isRecordingActive` プロパティを調べます。 `boolean` を返します。

@@ -9,12 +9,12 @@ ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d2737f58fa95d1aa45d9952e8b501c1b9be4d1b0
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 51c7be1a2ce16b4725bc5aa8e294f8b91a71fa0a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600354"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722660"
 ---
 # <a name="coarse-relocalization"></a>粗い再局在化
 
@@ -66,7 +66,7 @@ ms.locfileid: "107600354"
 | **BLE ビーコン** | はい<sup>6</sup> | はい<sup>6</sup> | はい<sup>6</sup>|
 
 
-<sup>1</sup> 外部 GPS デバイスを HoloLens に関連付けることができます。 GPS トラッカーで HoloLens を使用する場合は、[サポート](../spatial-anchor-support.md)にお問い合わせください。<br/>
+<sup>1</sup> 外部 GPS デバイスを HoloLens に関連付けることができます。 外部 GPS トラッカーで HoloLens を使用している場合は、[UpdatedSensorFingerprintRequired](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updatedsensorfingerprintrequired) イベントを処理して [GeoLocation](/dotnet/api/microsoft.azure.spatialanchors.geolocation) の読み取りを送信します。<br/>
 <sup>2</sup> [LocationManager][3] API (GPS とネットワークの両方) でサポートされます。<br/>
 <sup>3</sup> [CLLocationManager][4] API でサポートされます。<br/>
 <sup>4</sup> 3 秒ごとに約 1 回のスキャンの割合でサポートされます。 <br/>

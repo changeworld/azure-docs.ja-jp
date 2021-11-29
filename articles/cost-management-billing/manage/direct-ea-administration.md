@@ -3,17 +3,17 @@ title: Azure portal での直接 Enterprise Agreement の管理
 description: この記事では、直接エンタープライズ管理者が Azure portal で行う一般的なタスクについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/11/2021
+ms.date: 11/16/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: sapnakeshari
-ms.openlocfilehash: d958ea620e16dbf7ab4e9181d05508246b832907
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 0cd07afa3b5bb63d017443ee4bc9de5e21f652ff
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007037"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718566"
 ---
 # <a name="azure-portal-administration-for-direct-enterprise-agreements"></a>Azure portal での直接 Enterprise Agreement の管理
 
@@ -28,6 +28,10 @@ ms.locfileid: "130007037"
 自分がエンタープライズ管理者としてセットアップされている場合は、Azure portal にアクセスし、職場、学校、または Microsoft アカウントのメール アドレスとパスワードを使用してサインインします。
 
 複数の課金アカウントがある場合は、課金スコープのメニューから課金アカウントを選択します。 課金アカウントのプロパティとポリシーは、左側のメニューから表示できます。
+
+「[EA 管理者が登録を管理する](https://www.youtube.com/watch?v=NUlRrJFF1_U)」ビデオをご覧ください。 これは、[Azure portal でのダイレクト Enterprise のお客様の請求エクスペリエンス](https://www.youtube.com/playlist?list=PLeZrVF6SXmsoHSnAgrDDzL0W5j8KevFIm) シリーズ ビデオの一部です。
+
+>[!VIDEO https://www.youtube.com/embed/NUlRrJFF1_U]
 
 ## <a name="select-a-billing-scope"></a>課金スコープを選択する
 
@@ -108,6 +112,10 @@ EA 管理者と部署管理者は部署を使用して、エンタープライ�
 
 部門管理者は、部門に新しいアカウントを追加できます。 部署からアカウントを削除することもできますが、登録からは削除できません。
 
+「[EA 管理者が部署を管理する](https://www.youtube.com/watch?v=NUlRrJFF1_U)」ビデオをご覧ください。 これは、[Azure portal でのダイレクト Enterprise のお客様の請求エクスペリエンス](https://www.youtube.com/playlist?list=PLeZrVF6SXmsoHSnAgrDDzL0W5j8KevFIm) シリーズ ビデオの一部です。
+
+>[!VIDEO https://www.youtube.com/embed/cxAtOSSE6UI]
+
 ### <a name="to-create-a-department"></a>部署を作成するには
 
 1. [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/AllBillingScopes) にサインインします。
@@ -163,6 +171,10 @@ EA 管理者は、部門管理者に読み取り専用アクセス権を付与�
 アカウントとサブスクリプションの構造は、管理方法と、請求書やレポートでの表示方法に影響します。 一般的な組織の構造の例としては、事業部、機能チーム、地理的な場所などがあります。
 
 新しいアカウントが登録に追加された後、所有権の確認に使用されるアカウント所有権メールがアカウント オーナーに送信されます。
+
+「[EA 管理者がアカウントを管理する](https://www.youtube.com/watch?v=VKWAEx6qfPc)」ビデオをご覧ください。 これは、[Azure portal でのダイレクト Enterprise のお客様の請求エクスペリエンス](https://www.youtube.com/playlist?list=PLeZrVF6SXmsoHSnAgrDDzL0W5j8KevFIm) シリーズ ビデオの一部です。
+
+>[!VIDEO https://www.youtube.com/embed/VKWAEx6qfPc]
 
 ### <a name="to-add-an-account-and-account-owner"></a>アカウントとアカウント オーナーを追加するには
 
@@ -356,6 +368,10 @@ EA 管理者は、組織のアカウント オーナーによる EA Dev/Test プ
 - また、サブスクリプションごとに異なるサービス管理者アカウントを割り当てることもできます。
 - サブスクリプションを任意の数のサービスに関連付けることができます。
 - アカウント所有者は、サブスクリプションを作成し、アカウント内の各サブスクリプションにサービス管理者アカウントを割り当てます。
+
+「[EA 管理者がサブスクリプションを管理する](https://www.youtube.com/watch?v=KFfcg2eqPo8)」ビデオをご覧ください。 これは、[Azure portal でのダイレクト Enterprise のお客様の請求エクスペリエンス](https://www.youtube.com/playlist?list=PLeZrVF6SXmsoHSnAgrDDzL0W5j8KevFIm) シリーズ ビデオの一部です。
+
+>[!VIDEO https://www.youtube.com/embed/KFfcg2eqPo8]
 
 ## <a name="add-a-subscription"></a>サブスクリプションの追加
 

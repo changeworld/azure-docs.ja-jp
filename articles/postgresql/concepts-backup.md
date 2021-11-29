@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/29/2021
-ms.openlocfilehash: 585a2cf1a3dcbc1c45ae40b728b28ece505efee3
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 11/08/2021
+ms.openlocfilehash: 7c4508b8fc0ca1a62d550058ca7ff3a1616ec2db
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788368"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132713499"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元
 
@@ -110,7 +110,8 @@ geo リストア中に変更できるサーバー構成は、コンピューテ�
 
 いずれかの復旧メカニズムで復元した後、ユーザーとアプリケーションを元に戻して実行するには、次のタスクを実行する必要があります。
 
-- 元のサーバーを新しいサーバーで置き換える場合は、クライアントとクライアント アプリケーションを新しいサーバーにリダイレクトします。 また、ユーザー名を `username@new-restored-server-name` に変更します。
+- 復元されたサーバーにアクセスするには、元のサーバーとは名前が異なるため、接続文字列で、サーバー名を復元されたサーバー名に、ユーザー名を `username@new-restored-server-name` に変更してください。
+- 元のサーバーを新しいサーバーで置き換える場合は、クライアントとクライアント アプリケーションを新しいサーバーにリダイレクトする。 
 - ユーザーが接続できるように、適切なサーバー レベルのファイアウォールと VNet ルールが適用されていることを確認します。 これらのルールは配信元のサーバーからはコピーされません。
 - 適切なログインとデータベース レベルのアクセス許可が適切に指定されていることを確認する
 - 必要に応じて、アラートを構成する

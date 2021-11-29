@@ -7,12 +7,12 @@ ms.service: chaos-studio
 ms.topic: how-to
 ms.date: 11/10/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 7366cf2a8452b40830a9b73f314caeaf63368c64
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: e6f1f215a96b6f651e344087c98a3a7d9be278db
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132373427"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718528"
 ---
 # <a name="create-a-chaos-experiment-that-uses-a-service-direct-fault-with-the-azure-cli"></a>Azure CLI でサービスダイレクト障害を使うカオス実験を作成する
 
@@ -34,9 +34,12 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
+> [!NOTE]
+> これらの手順では、Azure Cloud Shell で Bash ターミナルを使用します。 CLI をローカルまたは PowerShell ターミナルで実行している場合、一部のコマンドは説明のように機能しない場合があります。
+
 ## <a name="enable-chaos-studio-on-your-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントで Chaos Studio を有効化する
 
-Chaos Studio では、最初にリソースが Chaos Studio にオンボードされていない限り、リソースに対して障害を挿入することはできません。 リソースを Chaos Studio にオンボードするには、リソースに[ターゲットと機能](chaos-studio-targets-capabilities.md)を作成します。 Azure Cosmos DB アカウントには 1 つのターゲットの種類 (サービスダイレクト) と 1 つの機能 (フェールオーバー) のみがありますが、その他のリソースには最大 2 つのターゲットの種類 (サービスダイレクト障害とエージェントベースの障害に各 1 つ) と多くの機能を含めることができます。
+Chaos Studio では、最初にリソースが Chaos Studio にオンボードされていない限り、リソースに対してフォールトを挿入することはできません。 リソースに[ターゲットと機能](chaos-studio-targets-capabilities.md)を作成することによって、リソースを Chaos Studio にオンボードします。 Azure Cosmos DB アカウントには 1 つのターゲットの種類 (サービスダイレクト) と 1 つの機能 (フェールオーバー) のみがありますが、その他のリソースには最大 2 つのターゲットの種類 (サービスダイレクト障害とエージェントベースの障害に各 1 つ) と多くの機能を含めることができます。
 
 1. `$RESOURCE_ID` をオンボードするリソースのリソース ID に、`$TARGET_TYPE` を[オンボードするターゲットの種類](chaos-studio-fault-providers.md)に置き換えて、ターゲットを作成します。
 

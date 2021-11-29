@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 10/20/2021
+ms.date: 11/16/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 731e311cc36c71c4a9b26e3aeb913ec67e342b37
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bf238f43bca00a4f797f2acc65dc05a7e44030d4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130270065"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718509"
 ---
 # <a name="get-started-with-the-azure-portal-for-direct-enterprise-agreement-customers"></a>ダイレクト Enterprise Agreement のお客様向けの Azure portal の概要
 
@@ -24,6 +24,12 @@ ms.locfileid: "130270065"
 - Azure portal で Enterprise 課金アカウントを管理するために使用されるロール。
 - サブスクリプションの作成。
 - Azure portal でのコスト分析。
+
+ダイレクト Enterprise Agreement の Azure portal の概要について説明するビデオがいくつか用意されています。 [Azure portal でのダイレクト Enterprise のお客様の請求エクスペリエンス](https://www.youtube.com/playlist?list=PLeZrVF6SXmsoHSnAgrDDzL0W5j8KevFIm) シリーズをご覧ください。
+
+最初のビデオを次に示します。
+
+>[!VIDEO https://www.youtube.com/embed/sfJyTZZ6RxQ]
 
 ## <a name="understanding-ea-user-roles-and-introduction-to-user-hierarchy"></a>EA のユーザー ロールとユーザー階層の概要
 

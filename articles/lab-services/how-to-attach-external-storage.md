@@ -5,12 +5,12 @@ author: emaher
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: f7c92e4369491a5b371c2f99fbcbdc4609b376f7
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: b77f478e604366a455b4f7f3d3173dbc62eeba68
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130180972"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132722603"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>Lab Services で 外部ファイル ストレージを使用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "130180972"
 | [パブリック エンドポイントを使用した Azure Files 共有](#azure-files-share) | <ul><li>すべてのユーザーに読み取り/書き込みアクセス権があります。</li><li>仮想ネットワークのピアリングは必要ありません。</li><li>ラボ VM だけでなく、すべての VM からアクセスできます。</li><li>Linux を使用している場合、学生はストレージ アカウント キーにアクセスできます。</li></ul> |
 | [プライベート エンドポイントを使用した Azure Files 共有](#azure-files-share) | <ul><li>すべてのユーザーに読み取り/書き込みアクセス権があります。</li><li>仮想ネットワークのピアリングが必要です。</li><li>ストレージ アカウントと同じネットワーク (またはピアリングされたネットワーク) 上の VM にのみアクセスできます。</li><li>Linux を使用している場合、学生はストレージ アカウント キーにアクセスできます。</li></ul> |
 | [ID ベースの承認を使用した Azure Files](#azure-files-with-identity-based-authorization) | <ul><li>フォルダーまたはファイルに対して、読み取りまたは読み取り/書き込みアクセス許可を設定できます。</li><li>仮想ネットワークのピアリングが必要です。</li><li>ストレージ アカウントは Active Directory に接続されている必要があります。</li><li>ラボ VM はドメインに参加している必要があります。</li><li>学生がファイル共有に接続するためにストレージ アカウント キーは使用されません。</li></ul> |
-| [NFS ボリュームを含む NetApp Files](#netapp-files-with-nfs-volumes) | <ul><li>ボリュームに対して読み取りまたは読み取り/書き込みのいずれかのアクセス権を設定できます。</li><li>アクセス許可は、学生用 VM の IP アドレスを使用して設定されます。</li><li>仮想ネットワークのピアリングが必要です。</li><li>NetApp Files サービスを使用するために登録が必要な場合があります。</li><li>Linux のみ。</li></ul>
+| [NFS ボリュームを含む Azure NetApp Files](#azure-netapp-files-with-nfs-volumes) | <ul><li>ボリュームに対して読み取りまたは読み取り/書き込みのいずれかのアクセス権を設定できます。</li><li>アクセス許可は、学生用 VM の IP アドレスを使用して設定されます。</li><li>仮想ネットワークのピアリングが必要です。</li><li>Azure NetApp Files サービスを使用するために登録が必要な場合があります。</li><li>Linux のみ。</li></ul>
 
 外部ストレージの使用コストは、Azure Lab Services を使用するコストに含まれていません。  価格の詳細については、「[Azure Files の料金](https://azure.microsoft.com/pricing/details/storage/files/)」と「[Azure NetApp Files の価格](https://azure.microsoft.com/pricing/details/netapp/)」を参照してください。
 
@@ -176,7 +176,7 @@ Active Directory 認証に対して有効になっている Azure Files を作�
     > テンプレート マシンはドメインに参加していません。 共有上のファイルを確認するには、インストラクターが学生用 VM を自分で使用する必要があります。
 11. Windows を使用している学生は、ファイル共有へのパスが与えられたら、自分の資格情報で[エクスプローラー](../storage/files/storage-how-to-use-files-windows.md)を使用して、Azure Files 共有に接続できます。 または、学生は、前のスクリプトを実行して、ネットワーク ドライブに接続することもできます。 Linux を使用している学生の場合は、前のスクリプトを実行します。
 
-## <a name="netapp-files-with-nfs-volumes"></a>NFS ボリュームを含む NetApp Files
+## <a name="azure-netapp-files-with-nfs-volumes"></a>NFS ボリュームを含む Azure NetApp Files
 
 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) は、エンタープライズ クラスでハイパフォーマンスの従量制課金ファイル ストレージ サービスです。
 
@@ -188,8 +188,8 @@ Active Directory 認証に対して有効になっている Azure Files を作�
 
 Azure Lab Services で Azure NetApp Files 共有を使用するには、次の操作を行います。
 
-1. NetApp Files 容量プールと 1 つまたは複数の NFS ボリュームを作成するには、「[Azure NetApp Files を設定し、NFS ボリュームを作成する](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)」を参照してください。 サービス レベルの詳細については、「[Azure NetApp Files のサービス レベル](../azure-netapp-files/azure-netapp-files-service-levels.md)」を参照してください。
-2. NetApp Files 容量プールの[仮想ネットワーク](how-to-connect-peer-virtual-network.md)をラボ アカウントにピアリングします。
+1. Azure NetApp Files 容量プールと 1 つまたは複数の NFS ボリュームを作成するには、「[Azure NetApp Files を設定し、NFS ボリュームを作成する](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)」を参照してください。 サービス レベルの詳細については、「[Azure NetApp Files のサービス レベル](../azure-netapp-files/azure-netapp-files-service-levels.md)」を参照してください。
+2. Azure NetApp Files 容量プールの[仮想ネットワーク](how-to-connect-peer-virtual-network.md)をラボ アカウントにピアリングします。
 3. [クラスルーム ラボを作成します](how-to-manage-classroom-labs.md)。
 4. テンプレート VM で、NFS ファイル共有を使用するために必要なコンポーネントをインストールします。
     - Ubuntu:
@@ -205,7 +205,7 @@ Azure Lab Services で Azure NetApp Files 共有を使用するには、次の�
         sudo yum install nfs-utils
         ```
 
-5. テンプレート VM で、次のスクリプトを `mount_fileshare.sh` として保存して、[NetApp Files 共有をマウントします](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。 `capacity_pool_ipaddress` 変数に容量プールのマウント ターゲット IP アドレスを割り当てます。 ボリュームのマウント命令を取得して、適切な値を見つけます。 このスクリプトには、NetApp Files ボリュームのパス名が必要です。 ユーザーがスクリプトを実行できるようにするには、`chmod u+x mount_fileshare.sh` を実行します。
+5. テンプレート VM で、次のスクリプトを `mount_fileshare.sh` として保存して、[Azure NetApp Files 共有をマウントします](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。 `capacity_pool_ipaddress` 変数に容量プールのマウント ターゲット IP アドレスを割り当てます。 ボリュームのマウント命令を取得して、適切な値を見つけます。 このスクリプトには、Azure NetApp Files ボリュームのパス名が必要です。 ユーザーがスクリプトを実行できるようにするには、`chmod u+x mount_fileshare.sh` を実行します。
 
     ```bash
     #!/bin/bash
@@ -229,7 +229,7 @@ Azure Lab Services で Azure NetApp Files 共有を使用するには、次の�
     sudo bash -c "echo ""$capacity_pool_ipaddress:/$volume_name /$mount_directory/$volume_name nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0"" >> /etc/fstab"
     ```
 
-6. すべての学生が同じ NetApp Files ボリュームへのアクセスを共有している場合は、発行の前にテンプレート マシンで `mount_fileshare.sh` スクリプトを実行できます。 学生がそれぞれ独自のボリュームを取得する場合は、スクリプトを保存して、後で学生が実行できるようにします。
+6. すべての学生が同じ Azure NetApp Files ボリュームへのアクセスを共有している場合は、発行の前にテンプレート マシンで `mount_fileshare.sh` スクリプトを実行できます。 学生がそれぞれ独自のボリュームを取得する場合は、スクリプトを保存して、後で学生が実行できるようにします。
 7. テンプレート VM を[発行](how-to-create-manage-template.md#publish-the-template-vm)します。
 8. ファイル共有の[ポリシーを構成](../azure-netapp-files/azure-netapp-files-configure-export-policy.md)します。 エクスポート ポリシーでは、単一の VM または複数の VM がボリュームにアクセスすることを許可できます。 読み取り専用または読み取り/書き込みアクセス権を付与できます。
 9. 学生は VM を起動し、スクリプトを実行してファイル共有をマウントする必要があります。 スクリプトを実行する必要があるのは 1 回だけです。 コマンドは次のようになります: `./mount_fileshare.sh myvolumename`。

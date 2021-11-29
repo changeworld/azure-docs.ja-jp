@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 10/18/2021
 ms.author: denisgun
-ms.openlocfilehash: 43f4a8a1f467637f3a3703704361db525912f750
-ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
+ms.openlocfilehash: b6f41f52b224603d32586ca6e260eaae54466f80
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132179231"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709325"
 ---
 # <a name="azure-virtual-desktop-rdp-shortpath-for-managed-networks"></a>Azure Virtual Desktop マネージド ネットワーク用 RDP Shortpath
 
@@ -93,7 +93,7 @@ RDP Shortpath の受信ネットワーク トラフィックを許可するに�
 2. ナビゲーション ウィンドウで、 **[受信規則]** をクリックします。
 3. **[操作]** 、 **[新しい規則]** の順に選択します。
 4. 新規の受信の規則ウィザードの **[規則の種類]** ページで、 **[カスタム]** 、 **[次へ]** の順に選択します。
-5. **[プログラム]** ページで、 **[このプログラムのパス]** を選択し、「%SystemRoot%\system32\svchost.exe」と入力して、 **[次へ]** を選択します。
+5. **[プログラム]** ページで、 **[このプログラムのパス]** を選択し、「%SystemRoot%\system32\svchost.exe」と入力してから、 **[次へ]** を選択します。
 6. **[プロトコルおよびポート]** ページで、UDP プロトコルの種類を選択します。 **[ローカル ポート]** で、[特定のポート] を選択し、構成済みの UDP ポートを入力します。 既定の設定のままにした場合、ポート番号は 3390 になります。
 7. [**スコープ**] ページでは、このページで入力した IP アドレスに対する送受信ネットワーク トラフィックにのみ規則が適用されるよう指定できます。 設計に適した構成を行い、 **[次へ]** を選択します。
 8. **[操作]** ページで、 **[接続を許可する]** を選択し、 **[次へ]** を選択します。

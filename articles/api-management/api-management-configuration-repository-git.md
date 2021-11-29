@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: danlep
-ms.openlocfilehash: d04a5882a1c386cf84121cda794092275a4ba2ac
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3ba9d70860e79ab10c929c06e5f8204b398dcb7
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601142"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715589"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -42,6 +42,9 @@ Git を使用して API Management サービス インスタンスを管理す�
 5. リポジトリからサービス構成データベースに変更をデプロイする
 
 この記事では、Git を有効にして使用し、サービス構成を管理する方法について説明します。また、Git リポジトリ内のファイルとフォルダーに関するリファレンス情報も提供します。
+
+> [!IMPORTANT]
+> この機能は、小規模/中規模の構成を持つ API Management サービスと連携するように設計されています。 多数の構成要素 (API、操作、スキーマなど) を持つサービスでは、Git コマンドの処理時に予期しないエラーが発生する可能性があります。 このような障害が発生した場合は、サービス構成のサイズを縮小して、再試行してください。 問題が生じた場合は、サポートにお問い合わせください。 
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

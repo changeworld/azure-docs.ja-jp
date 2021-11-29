@@ -11,18 +11,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, wiassaf, danil
 ms.date: 08/28/2021
-ms.openlocfilehash: 8eb49e4d17de5c546278f78e50454db02ee2cfbd
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f93c03b6e3106ccd359493d8bae450dc0dadc100
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458876"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718350"
 ---
 # <a name="automated-backups---azure-sql-database--azure-sql-managed-instance"></a>自動バックアップ - Azure SQL Database および Azure SQL Managed Instance
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+> [!div class="nextstepaction"]
+> [Azure SQL を改善するためのアンケート](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="what-is-a-database-backup"></a>データベースのバックアップとは
 
@@ -50,7 +53,7 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 > ゾーン冗長ストレージは現在、[特定のリージョン](../../storage/common/storage-redundancy.md#zone-redundant-storage)でのみ利用できます。 
 
 > [!NOTE]
-> Configurable Backup Storage Redundancy for Azure SQL Database は、現在すべての Azure リージョンでパブレック プレビュー版を利用でき、東南アジア Azure リージョンでのみ一般提供しています。 
+> SQL Database と Hyperscale のバックアップ ストレージの冗長性は現在プレビュー中です。 
 
 ### <a name="backup-usage"></a>バックアップの用途
 
@@ -77,7 +80,7 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 | **目標復旧時間 (RTO)** | 復元には通常、最大 12 時間かかりますが、サイズとアクティビティによってはさらに時間が長くなる可能性があります。 [復元](recovery-using-backups.md#recovery-time)に関する記事を参照してください。 | 復元には通常、最大 12 時間かかりますが、サイズとアクティビティによってはさらに時間が長くなる可能性があります。 [復元](recovery-using-backups.md#recovery-time)に関する記事を参照してください。 | 復元には通常、最大 12 時間かかりますが、サイズとアクティビティによってはさらに時間が長くなる可能性があります。 [復元](recovery-using-backups.md#recovery-time)に関する記事を参照してください。 | 
 | **保持** | 既定では 7 日、最大 35 日 |  ソースと同じく、既定で有効になっています。\*\* | 既定では有効になっていません。リテンション期間は最大 10 年です。 |     
 | **Azure Storage**  | 既定では geo 冗長です。 必要に応じて、ゾーンまたはローカル冗長ストレージを構成できます。 | PITR バックアップ ストレージの冗長性が geo 冗長に設定されている場合に使用できます。 PITR バックアップ ストアがゾーンまたはローカル冗長ストレージの場合は使用できません。 | 既定では geo 冗長です。 ゾーンまたはローカル冗長ストレージを構成できます。 | 
-| **同じリージョンに新しいデータベースを作成するために使用** | サポートされています | サポートされています | サポートされています |
+| **同じリージョンに新しいデータベースを作成するために使用** | サポートされています | サポート | サポートされています |
 | **別のリージョンに新しいデータベースを作成するために使用** | サポートされていません | 任意の Azure リージョンでサポートされています | 任意の Azure リージョンでサポートされています |
 | **別のサブスクリプションに新しいデータベースを作成するために使用** |  サポートされていません  |  サポートされていません\*\*\* | サポートされていません\*\*\*  | 
 | **Azure portal を使用した復元**|はい|はい|はい|
@@ -225,7 +228,10 @@ SQL Database と SQL Managed Instance では、課金対象の合計バックア
 バックアップ ストレージの価格の詳細については、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)」と「[Azure SQL Managed Instance の価格](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)」を参照してください。
 
 > [!IMPORTANT]
-> 構成可能なバックアップ ストレージの冗長性は、SQL Managed Instance についてはすべての Azure リージョンで利用でき、SQL Database については、現在は、東南アジア Azure リージョンでのみ利用できます。 Managed Instance については、マネージド インスタンス作成プロセスの間にのみ指定できます。 リソースがプロビジョニングされた後に、バックアップ ストレージ冗長性オプションを変更することはできません。
+> Hyperscale と SQL Managed Instance のバックアップ ストレージの冗長性は、データベースの作成時にのみ設定できます。 この設定は、リソースがプロビジョニングされた後は変更できません。 [データベースのコピー](database-copy.md) プロセスを使用して、既存の Hyperscale データベースのバックアップ ストレージの冗長性設定を更新できます。 
+
+> [!NOTE]
+> SQL Database と Hyperscale のバックアップ ストレージの冗長性は現在プレビュー中です。 
 
 ### <a name="monitor-costs"></a>コストを監視する
 
@@ -474,10 +480,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ## <a name="configure-backup-storage-redundancy"></a>バックアップ ストレージの冗長性を構成する
 
-> [!NOTE]
-> SQL Managed Instance のバックアップに対する構成可能なストレージの冗長性は、マネージド インスタンス作成プロセスの間にのみ指定できます。 リソースがプロビジョニングされた後に、バックアップ ストレージ冗長性オプションを変更することはできません。 SQL Database では、現在すべての Azure リージョンでこの機能のパブリック プレビュー版を利用でき、東南アジア Azure リージョンでは一般提供しています。 
-
-マネージド インスタンスのバックアップ ストレージに対する冗長性を設定できるのは、インスタンスの作成時のみです。 SQL Database については、データベースを作成するときに設定するか、または既存のデータベースに対して更新することができます。 既定値は geo 冗長ストレージです。 ローカル冗長、ゾーン冗長、geo 冗長の各バックアップ ストレージ間の価格の違いについては、[マネージド インスタンスの価格のページ](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)を参照してください。
+SQL Database の構成可能なストレージの冗長性は、データベースの作成時に構成することも、既存のデータベースに対して更新することもできます。既存のデータベースに対する変更は、それ以降のバックアップにのみ適用されます。 SQL Managed Instance および HyperScale の場合、バックアップ ストレージの冗長性は、作成プロセス中にのみ指定できます。 リソースがプロビジョニングされた後に、バックアップ ストレージ冗長性オプションを変更することはできません。 既定値は geo 冗長ストレージです。 ローカル冗長、ゾーン冗長、geo 冗長の各バックアップ ストレージ間の価格の違いについては、[マネージド インスタンスの価格のページ](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)を参照してください。
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Azure portal を使用してバックアップ ストレージの冗長性を構成する
 

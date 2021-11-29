@@ -3,12 +3,12 @@ title: セキュリティ エージェントの認証 (プレビュー)
 description: 2 つの方法を使用して、マイクロ エージェント認証を実行します。
 ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2323a833d819a45eb3956cb89d155184b34ef058
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: ab7d624ef206120751d273781384d440cea5802d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132290003"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709538"
 ---
 # <a name="micro-agent-authentication-methods-preview"></a>マイクロ エージェントの認証方法 (プレビュー)
 

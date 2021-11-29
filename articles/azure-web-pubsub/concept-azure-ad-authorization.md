@@ -3,15 +3,15 @@ title: Azure Active Directory を使用して Azure Web PubSub のアクセス�
 description: この記事では、Azure Active Directory を使用して Azure Web PubSub サービス リソースへのアクセスを認可する方法について説明します。
 author: terencefan
 ms.author: tefa
-ms.date: 09/06/2021
+ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: be8c2aa41f8680df9156d7b86dd8eb2bf24ca514
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6682328d948d66085799ffe8f6df93adf732c04d
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477944"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132710427"
 ---
 # <a name="authorize-access-to-web-pubsub-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Web PubSub リソースへのアクセスを認可する
 Azure Web PubSub サービスでは、Azure Active Directory (Azure AD) を使用して Web PubSub リソースへの要求を認可することがサポートされています。 Azure AD を使用することで、ロールベースのアクセス制御 (RBAC) を使用してセキュリティ プリンシパルにアクセス許可を付与することができます<sup>[<a href="#security-principal">1</a>]</sup>。 セキュリティ プリンシパルは、OAuth 2.0 トークンを返す Azure AD によって認証されます。 その後、Web PubSub リソースに対する要求を認可するためにそのトークンを使用できます。
@@ -30,7 +30,7 @@ Azure AD を使用して Web PubSub に対する要求を認可すると、ア�
 
 ### <a name="client-side-authentication-while-using-azure-ad"></a>Azure AD 使用時のクライアント側認証
 
-アクセス キーを使用する場合、キーはネゴシエーション サーバー (または関数アプリ) と Web PubSub リソースの間で共有されます。つまり、Web PubSub サービスでは共有キーを使用してクライアント接続要求を認証できます。 ただし、Azure AD を使用して認可する場合は、共有キーがありません。 
+アクセス キーを使用する場合、キーはネゴシエーション サーバー (または関数アプリ) と Web PubSub リソースの間で共有されます。つまり、Web PubSub サービスでは共有キーを使用してクライアント接続要求を認証できます。 ただし、Azure AD を使用して認可する場合は、アクセス キーがありません。 
 
 この問題を解決するために、Azure Web PubSub サービスへの接続に使用できるクライアント トークンを生成するための REST API を提供しています。
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセ
 
 ### <a name="resource-scope"></a>リソースのスコープ
 
-セキュリティ プリンシパルに Azure RBAC ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定しなければならない場合があります。 できる限り狭いスコープにのみ付与することをお勧めします。 より広い範囲で定義されている Azure RBAC ロールは、その下のリソースによって継承されます。
+セキュリティ プリンシパルに Azure RBAC ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定しなければならない場合があります。 その場合はできるだけ狭いスコープでのみ付与することが推薦されます。 より広い範囲で定義されている Azure RBAC ロールは、その下のリソースによって継承されます。
 
 Azure SignalR リソースへのアクセスのスコープは、次のレベルで指定できます (最も狭いスコープから順に示します)。
 
@@ -80,7 +80,7 @@ Azure SignalR リソースへのアクセスのスコープは、次のレベル
 
     これは通常、Web PubSub データプレーンの **読み取り専用** REST API **のみ** を呼び出す管理ツールを作成する場合に使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure アプリケーションを作成し、AAD 認証を使用する方法については、以下を参照してください
 - [Azure アプリケーションからの Web PubSub リソースへの要求を Azure AD を使用して認可する](howto-authorize-from-application.md)

@@ -6,14 +6,14 @@ ms.author: vlrodrig
 ms.service: purview
 ms.subservice: purview-data-policies
 ms.topic: how-to
-ms.date: 11/09/2021
+ms.date: 11/15/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 0a20f0a420387fe70ccc41481c29fa698920ec25
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: eab2c720aafe2cfd5a1ca46f2549b42d6f644b25
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132324705"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555719"
 ---
 # <a name="dataset-provisioning-by-data-owner-for-azure-storage"></a>Azure Storage のデータ所有者によるデータセットのプロビジョニング
 
@@ -90,10 +90,13 @@ Azure Purview でアクセス ポリシーを管理するには、次のすべ�
 [Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)
 
 #### <a name="configure-permissions-for-policy-management-actions"></a>ポリシー管理アクションのアクセス許可を構成する
--   ポリシーの作成または管理アクションを実行するためには、ユーザーが、ルート コレクション レベルで Purview ポリシー作成者ロールの一部である必要があります。
--   ポリシーを発行するためには、ユーザーが、ルート コレクション レベルで Purview データ ソース管理者ロールの一部である必要があります。
+- データ使用ガバナンスのためのソースを登録するには、ユーザーがデータソースの所有者で、なおかつ Purview データ ソース管理者である必要があります。 ただし、これらのロールのどれでも単独で、データ使用ガバナンスのためソースの登録を解除できます。
+- ポリシーの作成または管理アクションを実行するためには、ユーザーが、ルート コレクション レベルで Purview ポリシー作成者ロールの一員である必要があります。
+- ポリシーを発行するためには、ユーザーが、ルート コレクション レベルで Purview データ ソース管理者ロールの一員である必要があります。
 
 このガイドのロールの割り当ての管理に関するセクションを参照してください。[コレクションを作成および管理する方法](how-to-create-and-manage-collections.md)
+
+これらに加えて、このドキュメントの下方にある「既知の問題」セクションを参照してください。
 
 #### <a name="register-and-scan-data-sources-in-purview"></a>Purview でデータ ソースを登録してスキャンする
 Purview に各データ ソースを登録してスキャンし、後でアクセス ポリシーを定義します。 Purview 登録ガイドに従って、ストレージ アカウントを登録します。
@@ -195,23 +198,28 @@ Purview で新しいポリシーを作成する手順は次のとおりです。
 
 このセクションでは、Azure Purview データ ポリシーのアクションが、Azure Storage データ ポリシー内の特定のアクションにどのようにマップされるのかについてのリファレンスを含みます。
 
-| **Purview ポリシー アクション** | **データ ソース固有のアクション**                                                                |
-|---------------------------|-------------------------------------------------------------------------------------------------|
+| **Purview ポリシー アクション** | **データ ソース固有のアクション**                                                        |
+|---------------------------|-----------------------------------------------------------------------------------------|
 |||
-| *読み取り*                      |<sub>Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read                        |
-|                           |<sub>Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery                      |
-|                           |<sub>Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed                    |
-|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                            |
+| *読み取り*                    |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/read                      |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                |
 |||
-| *Modify*                    |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                            |
-|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write                           |
-|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action                      |
-|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action                     |
-|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete                          |
+| *Modify*                  |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write               |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action          |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action         |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete              |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/read                      |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/write                     |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/delete                    |
 |||
+
+## <a name="known-issues"></a>既知の問題
+以下に、現在のリリースでの既知の問題を示します
+1. ユーザーは、データ所有者ポリシーを作成するには、ポリシー作成者ロールに加えて Azure Active Directory (AAD) でのディレクトリ閲覧者アクセス許可を持っている必要があります。
+1. ポリシーを作成するには、ポリシー作成者ロールでは十分ではありません。 Purview データ ソース管理者ロールも必要になります。
 
 ## <a name="next-steps"></a>次の手順
-
 この攻略ガイドで説明されている機能に関連するブログとデモをご確認ください
 
 * [Microsoft Ignite 2021 で紹介された Azure Purview の新機能](https://techcommunity.microsoft.com/t5/azure-purview/what-s-new-in-azure-purview-at-microsoft-ignite-2021/ba-p/2915954)

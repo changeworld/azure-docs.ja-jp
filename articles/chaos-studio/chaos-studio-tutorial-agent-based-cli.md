@@ -7,12 +7,12 @@ ms.date: 11/10/2021
 ms.author: johnkem
 ms.service: chaos-studio
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: e2f605e06cd7d57acbe9fe421f4c1b883cc4d193
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: dfb75ea984017a4df298f74210788bd79b6b04e4
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132373253"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714240"
 ---
 # <a name="create-a-chaos-experiment-that-uses-an-agent-based-fault-on-a-virtual-machine-or-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用して仮想マシンまたは仮想マシン スケール セットでエージェントベースの障害を使用するカオス実験を作成する
 
@@ -35,6 +35,9 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、 **[入力]** を選択して実行します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+
+> [!NOTE]
+> これらの手順では、Azure Cloud Shell で Bash ターミナルを使用します。 CLI をローカルまたは PowerShell ターミナルで実行している場合、一部のコマンドは説明のように機能しない場合があります。
 
 ## <a name="assign-managed-identity-to-the-virtual-machine"></a>仮想マシンにマネージド ID を割り当てる
 

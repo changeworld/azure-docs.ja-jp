@@ -5,17 +5,17 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/09/2021
+ms.date: 11/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ffa380ec55dfcf96368782a3345ce3d13fe5f4f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f033ad2482977a32c197eb6e172bc0a043f71abc
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131474839"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720456"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -595,12 +595,16 @@ az storage account network-rule list \
 | サービス                        | リソース プロバイダー名                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | ポリシーを使用して、API Management サービスが、ファイアウォールの背後にあるストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy)。 |
+| Azure Cache for Redis | Microsoft.Cache/Redis | Azure Cache for Redis からのストレージ アカウントへのアクセスを許可します。 | 
 | Azure Cognitive Search         | Microsoft.Search/searchServices        | インデックス作成、処理、およびクエリのために、Cognitive Search サービスがストレージ アカウントにアクセスできるようになります。 |
 | Azure Cognitive Services       | Microsoft.CognitiveService/accounts    | Cognitive Services がストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../..//cognitive-services/cognitive-services-virtual-networks.md)。|
 | Azure Container Registry タスク | Microsoft.ContainerRegistry/registries | ACR タスクは、コンテナー イメージを作成するときにストレージアカウントにアクセスできます。 |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | ADF ランタイムを使用してストレージ アカウントへのアクセスを許可します。 |
 | Azure Data Share               | Microsoft.DataShare/accounts           | Data Share を使用してストレージ アカウントにアクセスできるようになります。 |
 | Azure DevTest Labs             | Microsoft.DevTestLab/labs              | DevTest Labs からのストレージ アカウントへのアクセスを許可します。 |
+| Azure Event Grid  | Microsoft.EventGrid/topics | Azure Event Grid を使用してストレージ アカウントへのアクセスを許可します。 |
+| Azure Healthcare APIs | Microsoft.HealthcareApis/services | Azure Healthcare APIs からのストレージ アカウントへのアクセスを許可します。 |
+| Azure IoT Central アプリケーション | Microsoft.IoTCentral/IoTApps | Azure IoT Central アプリケーションからのストレージ アカウントへのアクセスを許可します。 |
 | Azure IoT Hub                  | Microsoft.Devices/IotHubs              | IoT ハブからのデータを BLOB ストレージに書き込むことができます。 [詳細情報](../../iot-hub/virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources) |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning サービス | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースでは、BLOB ストレージに実験の出力、モデル、およびログを書き込み、データを読み取ります。 [詳細については、こちらを参照してください](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources)。 |

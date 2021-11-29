@@ -6,12 +6,12 @@ ms.date: 11/02/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 5c92daa02a98e87f440bc76c114f5b6839eadd08
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4a903db39405ff930dd3433cb6188e6d5d2aa69e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131439630"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714449"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -40,7 +40,7 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 
 次の表に、接続の確立に使用できるさまざまな選択肢を示します。
 
-| **オプション**                        | **長所**                                               | <bpt id="p1">**</bpt>短所<ept id="p1">**</ept>                                            |
+| **オプション**                        | **長所**                                               | **短所**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | プライベート エンドポイント                 | 仮想ネットワーク内のプライベート IP 経由でのバックアップを可能にする  <br><br>   ネットワークとコンテナーの側で詳細な制御を提供する | 標準のプライベート エンドポイント <bpt id="p1">[</bpt>コスト<ept id="p1">](https://azure.microsoft.com/pricing/details/private-link/)</ept>が発生する |
 | NSG サービス タグ                  | 範囲の変更が自動的にマージされるため管理しやすい   <br><br>   追加のコストが発生しない | NSG でのみ使用可能  <br><br>    サービス全体へのアクセスを提供する |
@@ -90,10 +90,8 @@ Azure Firewall を使用している場合は、<bpt id="p1">*</bpt>AzureBackup<
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する
 
-Azure VM で実行されている SAP HANA データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 必要なサービスへのアクセスを許可するには、上記で説明した IP と FQDN の一覧を使用します。 認証済みプロキシ サーバーはサポートされません。
-
 > [!NOTE]
-> サービス レベルのプロキシはサポートされていません。 つまり、少数または選択されたサービス (Azure Backup サービス) からのプロキシ経由のトラフィックはサポートされていません。 データ全体またはトラフィック全体をプロキシによってルーティングするか、しないことはできます。
+> 現時点では、SAP HANA のプロキシはサポートされていません。 HANA VM の Azure バックアップを使用したデータベース バックアップの送信接続要件を取り除くには、プライベート エンド ポイントなどの他のオプションを検討してください。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -198,7 +196,7 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 
     ![増分バックアップ ポリシー](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
-1. <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> を選択してポリシーを保存し、 <bpt id="p2">**</bpt>[バックアップ ポリシー]<ept id="p2">**</ept> のメイン メニューに戻ります。
+1. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 1. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
     * <bpt id="p1">**</bpt>[ログ バックアップ]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[有効化]<ept id="p2">**</ept> を選択します。  すべてのログ バックアップは SAP HANA で管理されるため、これを無効にすることはできません。
     * 頻度とリテンション期間の制御を設定します。

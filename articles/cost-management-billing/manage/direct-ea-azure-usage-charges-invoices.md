@@ -3,21 +3,25 @@ title: Azure の使用状況の概要の詳細を表示し、直接 EA 加入契
 description: この記事では、直接 Enterprise Agreement (EA) 加入契約のエンタープライズ管理者が、その使用状況データ、使用された Azure 前払い、その他の使用状況に関連した料金の概要を Azure portal に表示する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/12/2021
+ms.date: 11/16/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: sapnakeshari
-ms.openlocfilehash: 005f2c16e463bd01c7e453548ddb29c50e2f937b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: be9040fea81a1a8980874ebd5ec125f170b1bf42
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007160"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132718547"
 ---
 # <a name="view-your-usage-summary-details-and-download-reports-for-direct-ea-enrollments"></a>使用状況の概要の詳細を表示し、直接 EA 加入契約に関するレポートをダウンロードする
 
 この記事では、直接 Enterprise Agreement (EA) 加入契約のエンタープライズ管理者が、その使用状況データ、使用された Azure 前払い、その他の使用状況に関連した料金の概要を Azure portal に表示する方法について説明します。 料金は、加入契約のすべてのアカウントとサブスクリプションにわたって概要レベルで表示されます。
+
+「[EA 管理者が使用量と請求書を管理する](https://www.youtube.com/watch?v=bO8V9eLfQHY)」ビデオをご覧ください。 これは、[Azure portal でのダイレクト Enterprise のお客様の請求エクスペリエンス](https://www.youtube.com/playlist?list=PLeZrVF6SXmsoHSnAgrDDzL0W5j8KevFIm) シリーズ ビデオの一部です。
+
+>[!VIDEO https://www.youtube.com/embed/bO8V9eLfQHY]
 
 ## <a name="prerequisites"></a>前提条件
 

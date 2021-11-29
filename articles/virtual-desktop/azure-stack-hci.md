@@ -7,12 +7,12 @@ ms.date: 11/02/2021
 ms.author: helohr
 manager: femila
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d91722247e44016695154912277a0e1e2370fed6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ce89ec45e9c4f59107b205f04ce2c3d83afc8ce2
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452131"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132704023"
 ---
 # <a name="set-up-azure-virtual-desktop-for-azure-stack-hci-preview"></a>Azure Stack HCI 用 Azure Virtual Desktop (プレビュー) をセットアップする
 
@@ -33,6 +33,8 @@ Azure Stack HCI 用 Azure Virtual Desktop を使うには、次のものが必�
 - [Azure Active Directory と同期されたオンプレミスの Active Directory (AD)](/azure/architecture/reference-architectures/identity/azure-ad)。
 
 - オンプレミス ネットワークから Azure への安定した接続。
+
+- お使いのオンプレミス ネットワークから、Azure Virtual Desktop の、仮想マシンに[必要な URL の一覧](safe-url-list.md)に記載されているすべての必須 URL へのアクセス。
 
 ## <a name="configure-azure-virtual-desktop-for-azure-stack-hci"></a>Azure Stack HCI 用 Azure Virtual Desktop を構成する
 

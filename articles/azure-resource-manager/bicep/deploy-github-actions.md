@@ -1,59 +1,54 @@
 ---
 title: GitHub Actions を使用したBicep ファイルのデプロイ
-description: GitHub Actions を使用して Bicep ファイルをデプロイする方法を説明します。
+description: このクイックスタートでは、GitHub Actions を使用して Bicep ファイルをデプロイする方法について説明します。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/02/2021
+ms.date: 11/16/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: 20830623514d98bd7dc1e0606cf0cf79bb0e86b4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 548688e2359043485df7b60eb51cdaea243c3540
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087402"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716870"
 ---
-# <a name="deploy-bicep-files-by-using-github-actions"></a>GitHub Actions を使用したBicep ファイルのデプロイ
+# <a name="quickstart-deploy-bicep-files-by-using-github-actions"></a>クイックスタート: GitHub Actions を使用した Bicep ファイルのデプロイ
 
 [GitHub Actions](https://docs.github.com/en/actions) は、ソフトウェア開発ワークフローを自動化する一連の GitHub 機能です。
 
-[Azure Resource Manager デプロイの GitHub アクション](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)を使って、Bicep ファイルの Azure へのデプロイを自動化します。
+このクイックスタートでは、[Azure Resource Manager デプロイの GitHub アクション](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)を使って、Bicep ファイルの Azure へのデプロイを自動化します。
+
+GitHub Actions と Bicep ファイルの概要を簡単に示します。 GitHub Actions とプロジェクトの設定に関する詳細な手順が必要な場合は、「[ラーニングパス: Bicep と GitHub Actions を使用して Azure リソースをデプロイする](/learn/paths/bicep-github-actions)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub アカウント。 お持ちでない場合は、[無料](https://github.com/join)でサインアップしてください。
+- Bicep ファイルとワークフロー ファイルを保存するための GitHub リポジトリ。 リポジトリを作成するには、[新しいリポジトリの作成](https://docs.github.com/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)に関するページをご覧ください。
 
-  - Bicep ファイルとワークフロー ファイルを保存するための GitHub リポジトリ。 リポジトリを作成するには、[新しいリポジトリの作成](https://docs.github.com/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)に関するページをご覧ください。
+## <a name="create-resource-group"></a>リソース グループの作成
 
-## <a name="workflow-file-overview"></a>ワークフロー ファイルの概要
+リソース グループを作成する。 このクイックスタートの後半で、このリソース グループに Bicep ファイルをデプロイします。
 
-ワークフローは、お使いのリポジトリの `/.github/workflows/` パスの YAML (.yml) ファイルに定義されます。 この定義には、ワークフローを構成するさまざまな手順とパラメーターが含まれます。
-
-このファイルには 2 つのセクションがあります。
-
-|Section  |タスク  |
-|---------|---------|
-|**認証** | 1.サービス プリンシパルを定義します。 <br /> 2.GitHub シークレットを作成します。 |
-|**デプロイする** | 1. Bicep ファイルをデプロイします。 |
+```azurecli-interactive
+az group create -n exampleRG -l westus
+```
 
 ## <a name="generate-deployment-credentials"></a>デプロイ資格情報を生成する
 
-[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)は、[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) コマンドを使用して作成できます。 このコマンドは、Azure portal で [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行します。
+GitHub アクションは ID の下で実行されます。 サービス プリンシパルを作成するには、[az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) コマンドを使用して、ID の[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成します。
 
-リソース グループがない場合は、作成します。
-
-```azurecli-interactive
-az group create -n {MyResourceGroup} -l {location}
-```
-
-`myApp` のプレースホルダーはアプリケーションの名前に置き換えます。
+`myApp` のプレースホルダーはアプリケーションの名前に置き換えます。 `{subscription-id}` は、サブスクリプション ID で置き換えてください。
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
+az ad sp create-for-rbac --name myApp --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/exampleRG --sdk-auth
 ```
 
-上記の例で、プレースホルダーを実際のサブスクリプション ID とリソース グループ名に置き換えます。 これにより、以下のようなご自分の App Service アプリにアクセスするためのロールの割り当て資格情報を含む JSON オブジェクトが出力されます。 この JSON オブジェクトを後のためにコピーします。 必要なのは、`clientId`、`clientSecret`、`subscriptionId`、`tenantId` の値を持つセクションだけです。
+> [!IMPORTANT]
+> 前の例のスコープは、リソース グループに限定されています。 最低限必要なアクセス権を付与することをお勧めします。
+
+これにより、以下のようなご自分の App Service アプリにアクセスするためのロールの割り当て資格情報を含む JSON オブジェクトが出力されます。 この JSON オブジェクトを後のためにコピーします。 必要なのは、`clientId`、`clientSecret`、`subscriptionId`、`tenantId` の値を持つセクションだけです。
 
 ```output
   {
@@ -65,20 +60,17 @@ az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptio
   }
 ```
 
-> [!IMPORTANT]
-> 常に最小限のアクセス権を付与することをお勧めします。 前の例のスコープは、リソース グループに限定されています。
-
 ## <a name="configure-the-github-secrets"></a>GitHub シークレットを構成する
 
-Azure の資格情報、リソース グループ、およびサブスクリプションのシークレットを作成する必要があります。
+Azure の資格情報、リソース グループ、およびサブスクリプションのシークレットを作成します。
 
-1. [GitHub](https://github.com/) でリポジトリを参照します。
+1. [GitHub](https://github.com/) で、自分のリポジトリに移動します。
 
 1. **[Settings]\(設定\) > [Secrets]\(シークレット\) > [New secret]\(新しいシークレット\)** の順に選択します。
 
 1. Azure CLI コマンドからの JSON 出力全体をシークレットの値フィールドに貼り付けます。 シークレットに `AZURE_CREDENTIALS` という名前を付けます。
 
-1. `AZURE_RG` という名前の別のシークレットを作成します。 リソース グループの名前をシークレットの値フィールドに追加します (例: `myResourceGroup`)。
+1. `AZURE_RG` という名前の別のシークレットを作成します。 リソース グループの名前をシークレットの値フィールドに追加します (`exampleRG`)。
 
 1. `AZURE_SUBSCRIPTION` という名前の別のシークレットを作成します。 シークレットの値フィールドにサブスクリプション ID を追加します (例: `90fd3f9d-4c61-432d-99ba-1273f236afa2`)。
 
@@ -90,11 +82,13 @@ GitHub リポジトリに Bicep ファイルを追加します。 次の Bicep �
 
 Bicep ファイルでは **storagePrefix** と呼ばれる 1 つのパラメーターが 3 文字から 11 文字で必要です。
 
-ファイルは、リポジトリ内のどこに置いてもかまいません。 次のセクションのワークフロー サンプルでは、Bicep ファイル名が **azuredeploy.bicep** であり、リポジトリのルートに保存されていることを想定しています。
+ファイルは、リポジトリ内のどこに置いてもかまいません。 次のセクションのワークフロー サンプルでは、Bicep ファイル名が **main.bicep** であり、リポジトリのルートに保存されていることを想定しています。
 
 ## <a name="create-workflow"></a>ワークフローを作成する
 
-ワークフロー ファイルは、リポジトリのルートにある **.github/workflows** フォルダーに保存する必要があります。 ワークフロー ファイルの拡張子には、 **.yml** または **.yaml** を指定できます。
+ワークフローでは、トリガーされた場合に実行するステップを定義します。 これは、お使いのリポジトリの **/.github/workflows/** パスの YAML (.yml) ファイルです。 ワークフロー ファイルの拡張子には、 **.yml** または **.yaml** を指定できます。
+
+ワークフローを作成するには、次の手順を実行します。
 
 1. GitHub リポジトリの上部のメニューで、 **[Actions]\(アクション\)** を選択します。
 1. **[New workflow]\(新しいワークフロー\)** を選択します。
@@ -124,7 +118,7 @@ Bicep ファイルでは **storagePrefix** と呼ばれる 1 つのパラメー�
           with:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
-            template: ./azuredeploy.bicep
+            template: ./main.bicep
             parameters: storagePrefix=mystore
             failOnStdErr: false
     ```
@@ -137,7 +131,7 @@ Bicep ファイルでは **storagePrefix** と呼ばれる 1 つのパラメー�
     ワークフロー ファイルの最初のセクションには次のものが含まれます。
 
     - **name**:ワークフローの名前。
-    - **on**: ワークフローをトリガーする GitHub イベントの名前。 メイン ブランチでプッシュ イベントが発生し、指定された 2 つのファイルの少なくとも 1 つが変更されると、ワークフローがトリガーされます。 この 2 つのファイルは、ワークフロー ファイルと Bicep ファイルです。
+    - **on**: ワークフローをトリガーする GitHub イベントの名前。 ワークフローは、メイン ブランチにプッシュ イベントがある場合にトリガーされます。
 
 1. **[Start commit]\(コミットの開始\)** を選択します。
 1. **[Commit directly to the main branch]\(メイン ブランチに直接コミットする\)** を選択します。
@@ -155,7 +149,21 @@ Bicep ファイルでは **storagePrefix** と呼ばれる 1 つのパラメー�
 
 リソース グループとリポジトリが不要になったら、リソース グループと GitHub リポジトリを削除して、デプロイしたリソースをクリーンアップします。
 
-## <a name="next-steps"></a>次の手順
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+az group delete --name exampleRG
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name exampleRG
+```
+
+---
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ラーニングパス: Bicep と GitHub アクションを使用して Azure リソースをデプロイする](/learn/paths/bicep-github-actions)
+> [Bicep ファイルの構造と構文](file.md)

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 79bd8ca1855391365bfc33c7a259d1a984ce139c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1619ca5932e9be06261a273d640139b1a9c499be
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447058"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709806"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する
 
@@ -97,11 +97,17 @@ ms.locfileid: "131447058"
 
 5. LDAP 統合 NFSv4.1 Linux クライアントを構成する場合は、「[Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md)」をご覧ください。
 
-6.  「[Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)」の手順に従って、NFS ボリュームを作成します。 ボリュームの作成処理中に、 **[プロトコル]** タブで **[LDAP]** オプションを有効にします。   
+6. LDAP 対応ボリュームで NFSv4.1 を使用する場合は、「[NFSv4.1 ドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md#configure-nfsv41-domain)」の手順に従って `/etc/idmapd.conf` ファイルを構成します。
+
+    `/etc/idmapd.conf` 内の `Domain` は、NetApp アカウントの Active Directory 接続で構成されているドメインに設定する必要があります。 たとえば、`contoso.com` が NetApp アカウントで構成されているドメインの場合は、`Domain = contoso.com` を設定します。
+
+    その後、ホストで `rpcbind` サービスを再起動するか、ホストを再起動します。 
+
+7.  「[Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)」の手順に従って、NFS ボリュームを作成します。 ボリュームの作成処理中に、 **[プロトコル]** タブで **[LDAP]** オプションを有効にします。   
 
     ![[LDAP オプションを使用してボリューム ページを作成する] を示すスクリーンショット。](../media/azure-netapp-files/create-nfs-ldap.png)  
 
-7. 省略可能 - Windows LDAP サーバー上に存在しないローカル NFS クライアント ユーザーが、拡張グループが有効になっている LDAP を持つ NFS ボリュームにアクセスできるようにすることができます。 これを行うには、次のように、 **[LDAP を使用するローカル NFS ユーザーを許可する]** オプションを有効にします。
+8. 省略可能 - Windows LDAP サーバー上に存在しないローカル NFS クライアント ユーザーが、拡張グループが有効になっている LDAP を持つ NFS ボリュームにアクセスできるようにすることができます。 これを行うには、次のように、 **[LDAP を使用するローカル NFS ユーザーを許可する]** オプションを有効にします。
     1. **[Active Directory 接続]** をクリックします。  既存の Active Directory 接続で、コンテキスト メニュー (3 つのドット `…`) をクリックし、 **[編集]** を選択します。  
     2. 表示される **[Active Directory 設定の編集]** ウィンドウで、 **[LDAP を使用するローカル NFS ユーザーを許可する]** オプションを選択します。  
 
@@ -111,4 +117,5 @@ ms.locfileid: "131447058"
 
 * [Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Active Directory 接続の作成と管理](create-active-directory-connections.md)
+* [NFSv4.1 ドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md#configure-nfsv41-domain)
 * [Azure NetApp Files のボリュームに関するエラーをトラブルシューティングする](troubleshoot-volumes.md)

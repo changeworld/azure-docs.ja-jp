@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 05/20/2021
 ms.author: allensu
-ms.openlocfilehash: eba531dd0fa0c2b417119e059f174e2807b3b341
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b2daa54bb17c5eb455be739062c251ed14a0ad13
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224989"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132707868"
 ---
 # <a name="public-ip-address-prefix"></a>パブリック IP アドレス プレフィックス
 
@@ -53,7 +53,7 @@ ms.locfileid: "130224989"
 
 リソース|シナリオ|手順|
 |---|---|---|
-|仮想マシン スケール セット | パブリック IP アドレス プレフィックスを使用して、仮想マシン スケール セット内でインスタンス レベルの IP を生成できます。ただし、個々のパブリック IP リソースは作成されません。 | スケール セットの作成の一環として、パブリック IP 構成にこのプレフィックスを使用する手順が記載された[テンプレート](https://azure.microsoft.com/resources/templates/vmms-with-public-ip-prefix/)を使用します。 |
+|仮想マシン スケール セット | パブリック IP アドレス プレフィックスを使用して、仮想マシン スケール セット内でインスタンス レベルの IP を生成できます。ただし、個々のパブリック IP リソースは作成されません。 | スケール セットの作成の一環として、パブリック IP 構成にこのプレフィックスを使用する手順が記載された[テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-with-public-ip-prefix)を使用します。 (プレフィックスのゾーン プロパティは、出力には表示されませんがインスタンスの IP に渡されます。詳細については、[仮想マシン スケール セットのネットワーク](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)に関するページを参照してください。) |
 | 標準ロード バランサー | パブリック IP アドレス プレフィックスを使用して、[送信接続の範囲内のすべての IP を使用](../../load-balancer/outbound-rules.md#scale)してロード バランサーをスケーリングできます。 | プレフィックスをロード バランサーに関連付けるには: </br> 1.[プレフィックスを作成します。](manage-public-ip-address-prefix.md) </br> 2. ロード バランサーを作成するときに、IP プレフィックスを選択してロード バランサーのフロントエンドとして関連付けます。 |
 | NAT Gateway | パブリック IP プレフィックスを使用して、送信接続のプレフィックスに含まれるパブリック IP を使用して NAT Gateway をスケーリングできます。 | プレフィックスを NAT Gateway に関連付けるには: </br> 1.[プレフィックスを作成します。](manage-public-ip-address-prefix.md) </br> 2. NAT Gateway を作成するときに、送信 IP として IP プレフィックスを選択します。 |
 | VPN Gateway (AZ SKU) または Application Gateway v2 | ゾーン冗長 VPN または Application Gateway v2 に対してプレフィックスのパブリック IP を使用できます。 | プレフィックスの IP をゲートウェイに関連付けるには: </br> 1.[プレフィックスを作成します。](manage-public-ip-address-prefix.md) </br> 2.[プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) </br> 3. [VPN Gateway](../../vpn-gateway/tutorial-create-gateway-portal.md) または [Application Gateway](../../application-gateway/quick-create-portal.md#create-an-application-gateway) をデプロイするときに、前にプレフィックスから指定した IP アドレスを選択します。|

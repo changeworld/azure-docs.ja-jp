@@ -5,12 +5,12 @@ author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
 ms.date: 11/02/2021
-ms.openlocfilehash: 65f55208f0a2e09db39cedc8e5074b622b232834
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d9639e3aab33df9fdc6e27ed3650f252d5dc1789
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132057672"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716889"
 ---
 # <a name="best-practices-for-bicep"></a>Bicep に関するベスト プラクティス
 
@@ -98,7 +98,7 @@ Bicep 変数の詳細については、「[Bicep の変数](variables.md)」を�
 
 * 機密データについては出力を作成しないでください。 出力値は、デプロイ履歴にアクセスできるユーザーであれば誰でもアクセスできます。 こういったものは、シークレットの処理には適していません。
 
-* 出力を介してプロパティ値を渡すのではなく、`[existing` キーワード](resource-declaration.md#existing-resources)を使用して、既存のリソースのプロパティを検索します。 出力を介してキーを渡すのではなく、この方法で他のリソースからキーを参照するのがベスト プラクティスです。 常に最新のデータが取得されます。
+* 出力を介してプロパティ値を渡すのではなく、[既存のキーワード](resource-declaration.md#existing-resources)を使用して、既存のリソースのプロパティを検索します。 出力を介してキーを渡すのではなく、この方法で他のリソースからキーを参照するのがベスト プラクティスです。 常に最新のデータが取得されます。
 
 Bicep の出力の詳細については、「[Bicep の出力](outputs.md)」を参照してください。
 

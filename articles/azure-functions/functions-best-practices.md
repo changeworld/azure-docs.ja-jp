@@ -4,12 +4,12 @@ description: Azure で実行される効率的な関数コードを設計、デ�
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: f2efa490a9788f0e52b4dfb19b4359f247a671e9
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 620d3c27ae9f1df0b927119143a42e7f83730962
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057721"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132715418"
 ---
 # <a name="best-practices-for-reliable-azure-functions"></a>信頼性の高い Azure Functions のためのベスト プラクティス
 
@@ -106,6 +106,8 @@ Linux で実行する場合は、ファイル共有をマウントすること�
 + [継続的配置](functions-continuous-deployment.md)を使用して、デプロイをソース管理ソリューションに接続することを検討します。 継続的配置を使用すると、デプロイ パッケージから実行することもできます。
 
 + [Premium プランのホスティング](functions-premium-plan.md)の場合は、ウォームアップ トリガーを追加して、新しいインスタンスが追加されるときの待機時間を短縮することを検討します。 詳細については、「[Azure Functions のウォームアップ トリガー](functions-bindings-warmup.md)」を参照してください。 
+
++ デプロイのダウンタイムを最小限に抑え、デプロイをロールバックするには、デプロイ スロットの使用を検討してください。 詳細については、「[Azure Functions デプロイ スロット](functions-deployment-slots.md)」を参照してください。
 
 ## <a name="write-robust-functions"></a>堅牢な関数を記述する
 
