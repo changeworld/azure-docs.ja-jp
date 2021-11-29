@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2021
+ms.date: 11/16/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee25c39514146ddf9e7489868c24b656211115a6
-ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+ms.openlocfilehash: 232302ade2276ce12e1d4198d2955265b1d5ab6a
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132398423"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714411"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -68,7 +68,7 @@ Azure portal では、構成するアプリケーションの [API のアクセ�
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** エンド ユーザー エクスペリエンス
  
-ホームとリソースのテナント間に信頼関係がない場合、ゲスト ユーザーは以前にデバイスの再登録を求められています。これによって以前の登録が破損します。 ただし、ホーム テナント デバイスの登録だけがサポートされているために、ユーザーは登録のループに陥ることになりました。 この特定のシナリオでは、このループの代わりとなる新しい条件付きアクセス ブロック ページを作成しました。 このページではエンド ユーザーに、ゲスト ユーザーとしては条件付きアクセスで保護されたリソースにアクセスできないことが伝えられます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-quickstart-add-guest-users-portal#prerequisites)。
+ホームとリソースのテナント間に信頼関係がない場合、ゲスト ユーザーは以前にデバイスの再登録を求められています。これによって以前の登録が破損します。 ただし、ホーム テナント デバイスの登録だけがサポートされているために、ユーザーは登録のループに陥ることになりました。 この特定のシナリオでは、このループの代わりとなる新しい条件付きアクセス ブロック ページを作成しました。 このページではエンド ユーザーに、ゲスト ユーザーとしては条件付きアクセスで保護されたリソースにアクセスできないことが伝えられます。 [詳細については、こちらを参照してください](../external-identities/b2b-quickstart-add-guest-users-portal.md#prerequisites)。
  
 ---
 
@@ -116,7 +116,7 @@ Azure AD では、ユーザーが、ユーザー割り当てを必要とする�
 **サービス カテゴリ:** デバイスの登録と管理  
 **製品の機能:** デバイスのライフサイクル管理
  
-新しいデバイスの概要機能では、テナント内のデバイスに関するアクション可能な分析情報が提供されます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal)。
+新しいデバイスの概要機能では、テナント内のデバイスに関するアクション可能な分析情報が提供されます。 [詳細については、こちらを参照してください](../devices/device-management-azure-portal.md)。
  
 ---
 
@@ -175,7 +175,7 @@ Firefox バージョン 91 以降の、Windows 10 および Windows Server 2019 
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** エンド ユーザー エクスペリエンス
  
-ユーザーに最近割り当てられたアプリは、"新規" インジケーターで、目立つように表示されます。 アプリが起動されるか、ページが更新されると、このインジケーターは表示されなくなります。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
+ユーザーに最近割り当てられたアプリは、"新規" インジケーターで、目立つように表示されます。 アプリが起動されるか、ページが更新されると、このインジケーターは表示されなくなります。 [詳細については、こちらを参照してください](/azure/active-directory/user-help/my-apps-portal-end-user-access)。
  
 ---
 
@@ -185,7 +185,7 @@ Firefox バージョン 91 以降の、Windows 10 および Windows Server 2019 
 **サービス カテゴリ:** B2C - コンシューマー ID 管理  
 **製品の機能:** B2B/B2C
  
-Azure AD B2C のお客様は、カスタム ドメインを有効にして、エンド ユーザーが認証のためにカスタム URL ドメインにリダイレクトされるようにすることが可能になりました。 これは、Azure Front Door のカスタム ドメイン機能との統合を介して行われます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow)。
+Azure AD B2C のお客様は、カスタム ドメインを有効にして、エンド ユーザーが認証のためにカスタム URL ドメインにリダイレクトされるようにすることが可能になりました。 これは、Azure Front Door のカスタム ドメイン機能との統合を介して行われます。 [詳細については、こちらを参照してください](../../active-directory-b2c/custom-domain.md?pivots=b2c-user-flow)。
  
 ---
 
@@ -196,7 +196,7 @@ Azure AD B2C のお客様は、カスタム ドメインを有効にして、エ
 **製品の機能:** アクセス制御
  
 
-このロールのユーザーは、Microsoft Edge で Internet Explorer モードに必要なエンタープライズ サイト リストを作成および管理できます。 このロールには、サイト リストを作成、編集、発行するアクセス許可が付与され、さらにサポート チケットを管理するためのアクセスが許可されます。 [詳細情報](https://docs.microsoft.com/deployedge/edge-ie-mode-cloud-site-list-mgmt)
+このロールのユーザーは、Microsoft Edge で Internet Explorer モードに必要なエンタープライズ サイト リストを作成および管理できます。 このロールには、サイト リストを作成、編集、発行するアクセス許可が付与され、さらにサポート チケットを管理するためのアクセスが許可されます。 [詳細情報](/deployedge/edge-ie-mode-cloud-site-list-mgmt)
  
 ---
 
@@ -655,15 +655,15 @@ MS Graph のアプリケーション認証方法のポリシーを使用する�
  
 ---
 
-### <a name="public-preview----authentication-methods-nudge-to-download-microsoft-authenticator"></a>パブリック プレビュー - Authentication Methods により Microsoft Authenticator をダウンロードするよう促される
+### <a name="public-preview----authentication-methods-registration-campaign-to-download-microsoft-authenticator"></a>パブリック プレビュー - Microsoft Authenticator のダウンロードを促す認証方法登録キャンペーン
 
 **種類:** 新機能  
 **サービスカテゴリ:** Microsoft Authenticator アプリ  
 **製品の機能:** ユーザー認証
  
-Authenticator のナッジ ポリシーは、ユーザーに Microsoft Authenticator アプリの導入を促すことで、管理者が組織をより安全なセキュリティ体制に移行させるのに役立ちます。 この機能が導入される前は、管理者がユーザーに Authenticator アプリを設定するよう促す方法はありませんでした。 
+Authenticator の登録キャンペーンは、ユーザーに Microsoft Authenticator アプリの導入を促すことで、管理者が組織をより安全なセキュリティ体制に移行させるのに役立ちます。 この機能が導入される前は、管理者がユーザーに Authenticator アプリを設定するよう促す方法はありませんでした。 
 
-組織全体にスムーズに導入できるよう、ナッジには、管理者がナッジする対象としてユーザーやグループを含めたり除外することで、対象をスコープする機能があります。 [詳細情報](../authentication/how-to-nudge-authenticator-app.md)
+組織全体にスムーズに導入できるよう、登録キャンペーンには、管理者が登録キャンペーの対象としてユーザーやグループを含めたり除外することで、対象をスコープする機能があります。 [詳細情報](../authentication/how-to-mfa-registration-campaign.md)
  
 ---
 
@@ -1273,4 +1273,3 @@ Azure リソース ロールと Azure AD ロールの PIM API の更新版がリ
 新しいロール Identity Governance 管理者が最近導入されました。 このロールは、Azure AD エンタイトルメント管理でカタログやアクセス パッケージを管理する際に、ユーザー管理者ロールの代わりとなります。 Azure AD エンタイトルメント管理でアクセス パッケージを管理するために、管理者をユーザー管理者ロールに割り当てたり、このロールを有効にしてもらっている場合は、代わりに Identity Governance 管理者ロールに切り替えてください。 ユーザー管理者ロールには、カタログやアクセス パッケージに対する管理者権限が付与されなくなります。 [詳細については、こちらを参照してください](../governance/identity-governance-overview.md#appendix---least-privileged-roles-for-managing-in-identity-governance-features)。
 
 ---
-

@@ -126,21 +126,26 @@
       href: samples-rest.md
 - name: 概念
   items:
-    - name: インデックスの検索
-      href: search-what-is-an-index.md
-    - name: フルテキスト検索
-      href: search-lucene-query-architecture.md
-    - name: アナライザー
-      href: search-analyzers.md
-    - name: セマンティック検索
-      href: semantic-search-overview.md
-    - name: 関連性のスコアリング
-      href: index-similarity-and-scoring.md
-    - name: インデクサー
-      href: search-indexer-overview.md
-    - name: AI エンリッチメント
-      href: cognitive-search-concept-intro.md
+    - name: 検索
       items:
+        - name: フルテキスト検索
+          href: search-lucene-query-architecture.md
+        - name: セマンティック検索
+          href: semantic-search-overview.md
+        - name: 関連性のスコアリング
+          href: index-similarity-and-scoring.md
+    - name: インデックス作成
+      items:
+        - name: インデックスの検索
+          href: search-what-is-an-index.md
+        - name: アナライザー
+          href: search-analyzers.md
+        - name: インデクサー
+          href: search-indexer-overview.md
+    - name: エンリッチメント
+      items:
+        - name: エンリッチメントの概要
+          href: cognitive-search-concept-intro.md
         - name: スキルセット
           href: cognitive-search-working-with-skillsets.md
         - name: デバッグ セッション
@@ -476,12 +481,10 @@
           href: performance-benchmarks.md
         - name: パフォーマンス向上のヒント
           href: search-performance-tips.md
-        - name: 診断ログ
-          href: search-monitor-logs.md
+        - name: Cognitive Search の監視
+          href: monitor-azure-cognitive-search.md
         - name: 診断ログの視覚化
           href: search-monitor-logs-powerbi.md
-        - name: 監視の概要
-          href: search-monitor-usage.md
         - name: クエリを監視する
           href: search-monitor-queries.md
         - name: インデクサーベースのインデックス作成を監視する
@@ -490,12 +493,6 @@
           href: search-traffic-analytics.md
 - name: リファレンス
   items:
-    - name: Azure CLI
-      href: /cli/azure/search
-    - name: Azure PowerShell
-      href: /powershell/module/az.search
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
         - name: Search API
@@ -526,6 +523,17 @@
           href: /python/api/overview/azure/search-documents-readme
         - name: 管理 API
           href: /python/api/overview/azure/search/management
+    - name: Azure CLI
+      href: /cli/azure/search
+    - name: Azure PowerShell
+      href: /powershell/module/az.search
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.search/searchservices
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
+    - name: 監視データのリファレンス
+      href: monitor-azure-cognitive-search-data-reference.md
     - name: OData 言語のリファレンス
       items:
         - name: 概要
@@ -603,9 +611,6 @@
               href: cognitive-search-skill-entity-recognition.md
             - name: センチメント
               href: cognitive-search-skill-sentiment.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure コミュニティ サポート

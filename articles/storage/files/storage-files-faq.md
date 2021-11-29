@@ -7,12 +7,12 @@ ms.date: 11/5/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 636fd6e0ee1a259d132c84a55cae078a3fbaa0c5
-ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+ms.openlocfilehash: ae679f5f5f70b684a7b587babc3d1492170267c9
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/16/2021
-ms.locfileid: "132524362"
+ms.locfileid: "132554524"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) は、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System)経由でアクセスできる、クラウド内のフル マネージドのファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -361,6 +361,17 @@ ms.locfileid: "132524362"
 **既存のデータを NFS 共有に移行することはできますか?**
 
     同じリージョン内であれば、scp、rsync、SSHFS などの標準ツールを使用してデータを移動できます。 Azure Files NFS は複数のコンピューティング インスタンスから同時にアクセスできるため、並列アップロードによってコピー速度を向上させることができます。 リージョンの外部からデータを取り込む場合は、VPN または Expressroute を使用して、オンプレミスのデータ センターからファイル システムにマウントします。
+    
+* <a id=nfs-ibm-mq-support></a>
+**Azure Files NFS で IBM MQ (マルチインスタンスを含む) を実行できますか?**
+    * Azure Files NFS v4.1 ファイル共有は、IBM MQ によって設定されている 3 つの要件を満たしています
+       - https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-requirements-shared-file-systems
+          + データ書き込み整合性
+          + ファイルに対する排他的アクセスの保証
+          + 障害時のロック解除
+    * 次のテストケースが正常に実行されます
+        1. https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-verifying-shared-file-system-behavior
+        2. https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-running-amqsfhac-test-message-integrity
 
 ## <a name="on-premises-access"></a>オンプレミスのアクセス
 

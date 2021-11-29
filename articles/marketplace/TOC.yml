@@ -243,7 +243,7 @@
       items:
         - name: オファーを計画する
           href: marketplace-dynamics-365.md
-        - name: Customer Engagement & Power Apps オファーを作成する
+        - name: Customer Engagement と PowerApps のオファーを作成する
           items:
             - name: オファーを作成する
               href: dynamics-365-customer-engage-offer-setup.md

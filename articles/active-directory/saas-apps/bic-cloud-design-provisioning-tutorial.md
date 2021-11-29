@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2021
 ms.author: Thwimmer
-ms.openlocfilehash: 12bdfb49c490593ecf348688477797045ed9b8f7
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: 7f8f7a7be94df02e85c46c868255f666fa4373ef
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132495193"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132720475"
 ---
 # <a name="tutorial-configure-bic-cloud-design-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように BIC Cloud Design を構成する
 
-このチュートリアルでは、自動ユーザー プロビジョニングを構成するために BIC Cloud Design と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD で Azure AD プロビジョニング サービスを使用して、[BIC Cloud Design](https://www.gbtec.de/) へのユーザーとグループのプロビジョニングとプロビジョニング解除が自動的に実行されます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために BIC Cloud Design と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD で Azure AD プロビジョニング サービスを使用して、[BIC Cloud Design](https://www.gbtec.com/) へのユーザーとグループのプロビジョニングとプロビジョニング解除が自動的に実行されます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
 
 ## <a name="capabilities-supported"></a>サポートされる機能
@@ -41,7 +41,7 @@ ms.locfileid: "132495193"
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。 
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
-
+* BIC Cloud Design User Management API が有効なサブスクリプション。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
@@ -77,7 +77,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 1. アプリケーションの一覧で **[BIC Cloud Design]** を選択します。
 
-    ![アプリケーション一覧の Contoso のリンク](common/all-applications.png)
+    ![アプリケーションの一覧の [BIC Cloud Design] リンク](common/all-applications.png)
 
 1. **[プロビジョニング]** タブを選択します。
 
@@ -101,7 +101,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 1. **[属性マッピング]** セクションで、Azure AD から BIC Cloud Design に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新操作で BIC Cloud Design のユーザー アカウントとの照合に使用されます。 [照合する対象の属性](../app-provisioning/customize-application-attributes.md)を変更する場合は、その属性に基づいたユーザーのフィルター処理が BIC Cloud Design API でサポートされていることを確認する必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |属性|Type|フィルター処理のサポート|Real Links で必須|
+   |属性|Type|フィルター処理のサポート|BIC Cloud Design で必要|
    |---|---|---|---|
     |userName|String|&check;|&check;
     |emails[type eq "work"].value|String|&check;|&check;
@@ -114,7 +114,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 1. **[属性マッピング]** セクションで、Azure AD から BIC Cloud Design に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新操作で BIC Cloud Design のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |属性|Type|フィルター処理のサポート|Real Links で必須|
+   |属性|Type|フィルター処理のサポート|BIC Cloud Design で必要|
    |---|---|---|---|
       |displayName|String|&check;|&check;
       |externalId|String||&check;

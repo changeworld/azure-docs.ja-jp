@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2021
 ms.author: eur
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 94b3056f6766be37451a5d309243592eb31256dd
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: fc011db6e36ab3d9f6ae2c3e7dff0e08b6048172
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132488432"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132716597"
 ---
 # <a name="how-to-use-language-identification"></a>言語識別の使用方法
 
@@ -342,7 +342,7 @@ speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) 
 ::: zone-end
 
 
-## <a name="use-a-custom-model-for-language-identification"></a>言語識別にカスタム モデルを使用する
+## <a name="use-language-detection-with-a-custom-speech-to-text-model"></a>カスタム音声テキスト変換モデルで言語検出を使用する
 
 Speech サービスのベース モデルを利用した言語識別に加え、認識を強化するためのカスタム モデルも指定できます。 カスタム モデルが指定されていない場合、このサービスでは既定の言語モデルが使用されます。
 
