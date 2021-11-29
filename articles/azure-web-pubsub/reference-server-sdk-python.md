@@ -6,20 +6,20 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 11/08/2021
-ms.openlocfilehash: aa968196653b5975b4182ac224e12f121eac14a0
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 1345eec1d0868e602ba90624cd6dcc6c8635f68c
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132332062"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132705135"
 ---
 # <a name="azure-web-pubsub-service-client-library-for-python"></a>Python 用 Azure Web PubSub サービス クライアント ライブラリ
 
-[Azure Web PubSub サービス](https://aka.ms/awps/doc)は、開発者がリアルタイムの機能とパブリッシュ-サブスクライブ パターンを使って Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。 サーバーとクライアント間、またはクライアント間で、リアルタイムのパブリッシュ-サブスクライブ メッセージングを必要とするあらゆるシナリオに、Azure Web PubSub サービスを使用できます。 従来のリアルタイム機能は、多くの場合、サーバーからのポーリングや HTTP 要求の送信を必要としますが、そのようなリアルタイム機能にも Azure Web PubSub サービスを使用できます。
+[Azure Web PubSub サービス](./index.yml)は、開発者がリアルタイムの機能とパブリッシュ-サブスクライブ パターンを使って Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。 サーバーとクライアント間、またはクライアント間で、リアルタイムのパブリッシュ-サブスクライブ メッセージングを必要とするあらゆるシナリオに、Azure Web PubSub サービスを使用できます。 従来のリアルタイム機能は、多くの場合、サーバーからのポーリングや HTTP 要求の送信を必要としますが、そのようなリアルタイム機能にも Azure Web PubSub サービスを使用できます。
 
 次の図に示すように、このライブラリをアプリ サーバー側で使用して、WebSocket クライアント接続を管理できます。
 
-![オーバーフロー](https://user-images.githubusercontent.com/668244/140014067-25a00959-04dc-47e8-ac25-6957bd0a71ce.png)
+![このオーバーフロー図は、サービス クライアント ライブラリを使用したオーバーフローを示しています。](media/sdk-reference/service-client-overflow.png)
 
 このライブラリは次のことに使うことができます。
 - ハブとグループにメッセージを送信します。
@@ -32,7 +32,7 @@ ms.locfileid: "132332062"
 
 ## <a name="_disclaimer_"></a>_免責事項_
 
-"Azure SDK Python パッケージによる Python 2.7 のサポートは、2022 年 1 月 1 日に終了します。詳しい情報やご質問については、https://github.com/Azure/azure-sdk-for-python/issues/20691 をご覧ください。"
+"Azure SDK Python パッケージによる Python 2.7 のサポートは、2022 年 1 月 1 日に終了します。詳しい情報やご質問については、 https://github.com/Azure/azure-sdk-for-python/issues/20691 をご覧ください。"
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -186,7 +186,7 @@ pull request を送信すると、CLA を提供して PR (ラベル、コメン�
 このプロジェクトでは、[Microsoft オープン ソースの倫理規定][code_of_conduct]を採用しています。 詳細については、「倫理規定の FAQ」をご覧ください。追加の質問やコメントがある場合は opencode@microsoft.com にお問い合わせください。
 
 <!-- LINKS -->
-[webpubsubservice_docs]: https://aka.ms/awps/doc
+[webpubsubservice_docs]: ./index.yml
 [azure_cli]: /cli/azure
 [azure_sub]: https://azure.microsoft.com/free/
 [package]: https://pypi.org/project/azure-messaging-webpubsubservice/

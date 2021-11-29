@@ -7,17 +7,17 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: 0dcc729ea622c42592d1f118f58a831d3a637aea
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d4053d64b8a35bf13b10a47a685b838d89a64dc3
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056188"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518151"
 ---
 # <a name="authorize-search-requests-using-azure-ad-preview"></a>Azure AD を使用して検索要求を承認する (プレビュー)
 
 > [!IMPORTANT]
-> インデックスの作成やインデックスのクエリなどのデータ プレーン操作のためのロールベースのアクセス制御は、現在、パブリック プレビュー段階であり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で使用できます。 この機能はパブリック クラウドでのみ使用でき、機能がプレビュー段階の間は、操作の待機時間に影響を与える可能性があります。 
+> データ プレーン操作 (インデックスの作成やインデックスへのクエリ実行など) のロールベースのアクセス制御は現在、パブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で使用できます。 この機能はパブリック クラウド リージョンでのみ使用でき、プレビュー段階にある間は操作の待ち時間に影響を与える可能性があります。
 
 Azure Active Directory (Azure AD) では、ロールベースのアクセス制御 (RBAC) を使用して、Azure Cognitive Search サービスへのアクセス権を付与できます。 Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Cognitive Search への要求を承認できます。 アプリケーションで Azure AD を使用する利点の詳細については、[Azure Active Directory との統合](../active-directory/develop/active-directory-how-to-integrate.md#benefits-of-integration)に関する記事を参照してください。
 
@@ -33,28 +33,28 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 
 サブスクリプションをプレビューに追加するには、次のようにします。
 
-1. [Azure portal](https://portal.azure.com/)の **[サブスクリプション]** ページに移動します。
-1. 使用するサブスクリプションを選択します。
-1. サブスクリプション ページの左側で、 **プレビュー機能** を選択します。
-1. 検索バーまたはフィルターを使用して **Search Service のロールベースの Access Control** を検索して選択する (プレビュー)
-1. **[登録]** を選択して、サブスクリプションに機能を追加します。
+1. [Azure portal](https://portal.azure.com/) で検索サービスに移動します。
+1. ページの左側で、 **[キー]** を選択します。
+1. プレビューを示す青いバナーで、 **[登録]** を選択して、この機能をサブスクリプションに追加します。
 
-![afec での rbac へのサインアップ](media/search-howto-aad/rbac-signup-afec.png)
+![ポータルで rbac プレビューにサインアップする方法のスクリーンショット](media/search-howto-aad/rbac-signup-portal.png)
 
-プレビュー機能の追加の詳細については、「 [Azure サブスクリプションでプレビュー機能を設定](../azure-resource-manager/management/preview-features.md?tabs=azure-portal)する」を参照してください。
+Azure Feature Exposure Control (AFEC) を使用してプレビューにサインアップし、"検索サービスのロールベースのアクセス制御 (プレビュー)" を検索することもできます。 プレビュー機能の追加の詳細については、「 [Azure サブスクリプションでプレビュー機能を設定](../azure-resource-manager/management/preview-features.md?tabs=azure-portal)する」を参照してください。
 
+> [!NOTE]
+> プレビューをサブスクリプションに追加すると、そのサブスクリプション内のすべてのサービスがプレビューに永続的に登録されます。 特定のサービスで RBAC を使用したくない場合は、次の手順に示すように、データ プレーン操作の RBAC を無効にすることができます。
 
 ### <a name="enable-rbac-for-data-plane-operations"></a>データ プレーン操作で RBAC を有効にする
 
-サブスクリプションがプレビューにオンボードされたら、Azure AD 認証を使用できるように、データ プレーン操作で RBAC を有効にする必要があります。 Azure Cognitive Search では、データ プレーン操作にキーベースの認証が既定で使用されますが、ロールベースのアクセス制御を許可するように設定を変更することができます。 
+サブスクリプションがプレビューに追加されたら、Azure AD 認証を使用できるように、引き続きデータ プレーン操作の RBAC を有効にする必要があります。 Azure Cognitive Search では、データ プレーン操作にキーベースの認証が既定で使用されますが、ロールベースのアクセス制御を許可するように設定を変更することができます。 
 
 ロールベースのアクセス制御を有効にするには:
 
-1. 次のプレビュー リンクを使用して、Azure portal に移動します: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true)。 
+1. [Azure portal](https://portal.azure.com/) で検索サービスに移動します。
 1. 左側のナビゲーション ウィンドウで、 **[キー]** を選択します
 1. キーベースとロールベースの両方のアクセス制御を許可するか、またはロールベースのアクセス制御のみを許可するかを決定します。
 
-![ポータルでの Azure Cognitive Search に対する認証オプション](media/search-howto-aad/portal-api-access-control.png)
+![ポータルでの Azure Cognitive Search の認証オプションのスクリーンショット](media/search-howto-aad/portal-api-access-control.png)
 
 [Azure Cognitive Search の RBAC のドキュメント](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-2-preview-configuration)で説明されているように、これらの設定をプログラムで変更することもできます。
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 1. **[新規登録]** を選択します。
 1. アプリケーションの名前を指定し、サポートされているアカウントの種類を選択します。これにより、アプリケーションを使用できるユーザーが決まります。 次に、 **[登録]** を選択します。
 
-![アプリケーション登録ウィザード](media/search-howto-aad/register-app.png)
+![アプリケーションの登録ウィザードのスクリーンショット](media/search-howto-aad/register-app.png)
 
 ここまでで、Azure AD アプリケーションとサービス プリンシパルが作成されました。 アプリの登録の概要ページで、テナント (またはディレクトリ) ID とクライアント (またはアプリケーション) ID を記録しておきます。 それらの値は、後のステップで必要になります。
 
@@ -78,12 +78,12 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 
 アプリケーションでトークンを要求するときは、ID を提供するためのクライアント シークレットまたは証明書も必要になります。 このドキュメントでは、クライアント シークレットの使用方法について説明します。
 
-1. 作成したアプリの登録に移動します
+1. 作成したアプリの登録に移動します。
 1. **[証明書とシークレット]** を選択します。
-1. **[クライアント シークレット]** で、 **[新しいクライアント シークレット]** をクリックします。
+1. **[クライアント シークレット]** で、 **[新しいクライアント シークレット]** を選択します。
 1. シークレットの説明を入力し、適切な有効期限を選択します。
 
-![クライアント シークレットの作成ウィザード](media/search-howto-aad/create-secret.png)
+![クライアント シークレットの作成ウィザードのスクリーンショット](media/search-howto-aad/create-secret.png)
 
 シークレットの値に再度アクセスすることはできないため、この値を安全な場所に保存してください。 
 
@@ -98,11 +98,11 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 1. Azure portal を開き、検索サービスに移動します。
 1. 左側のナビゲーション ペインで **[アクセス制御 (IAM)]** を選択します。
 1. 右側の **[Grant access to this resource]\(このリソースへのアクセスを許可する\)** で、**[ロールの割り当てを追加]** を選択します。
-1. 使用するロールを選択して、**[次へ]** をクリックします。
-1. 次のページで、**[メンバーの選択]** をクリックして、前に作成したアプリケーションを検索します。 
-1. 最後に、 **[確認 + 割り当て]** をクリックします。
+1. 使用するロールを選択してから、 **[次へ]** を選択します。
+1. 次のページで、 **[メンバーの選択]** を選択し、前に作成したアプリケーションを見つけます。 
+1. 最後に、 **[レビューと割り当て]** を選択します。
 
-![Azure portal の [ロールの割り当てを追加]](media/search-howto-aad/role-assignment.png)
+![Azure portal でロールの割り当てを追加する方法のスクリーンショット](media/search-howto-aad/role-assignment.png)
 
 [PowerShell を使用してロールを割り当てる](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-3-assign-roles)こともできます。
 

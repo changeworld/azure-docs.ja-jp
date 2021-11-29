@@ -565,6 +565,14 @@ items:
             href: question-answering/tutorials/multiple-languages.md
           - name: 複数のドメイン
             href: question-answering/tutorials/multiple-domains.md
+      - name: リファレンス
+        items:
+          - name: REST API
+            items:
+              - name: 回答 API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering'
+              - name: オーサリング API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering-projects'
   - name: 感情分析とオピニオン マイニング
     items:
       - name: 概要

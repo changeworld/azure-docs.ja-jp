@@ -6,16 +6,16 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 11/01/2021
-ms.openlocfilehash: e004e32235330509051d635774b0ff685fb2eb4d
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: f0e1017cacf2d556ed9b61a90a9881653a7ca336
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132493062"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132714791"
 ---
 # <a name="azure-web-pubsub-service-client-library-for-java"></a>Java 用 Azure Web PubSub サービス クライアント ライブラリ
 
-[Azure Web PubSub](https://aka.ms/awps/doc) サービスは、開発者がリアルタイムの機能と発行-サブスクライブ パターンを利用して Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。 サーバーとクライアント間、またはクライアント間で、リアルタイムのパブリッシュ-サブスクライブ メッセージングを必要とするあらゆるシナリオに、Azure Web PubSub サービスを使用できます。 従来のリアルタイム機能は、多くの場合、サーバーからのポーリングや HTTP 要求の送信を必要としますが、そのようなリアルタイム機能にも Azure Web PubSub サービスを使用できます。
+[Azure Web PubSub](./index.yml) サービスは、開発者がリアルタイムの機能と発行-サブスクライブ パターンを利用して Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。 サーバーとクライアント間、またはクライアント間で、リアルタイムのパブリッシュ-サブスクライブ メッセージングを必要とするあらゆるシナリオに、Azure Web PubSub サービスを使用できます。 従来のリアルタイム機能は、多くの場合、サーバーからのポーリングや HTTP 要求の送信を必要としますが、そのようなリアルタイム機能にも Azure Web PubSub サービスを使用できます。
 
 次の図に示すように、このライブラリをアプリ サーバー側で使用して、WebSocket クライアント接続を管理できます。
 
@@ -157,7 +157,7 @@ webPubSubServiceClient.sendToUser("Andy", "Hello Andy!", WebPubSubContentType.TE
 [azure_subscription]: https://azure.microsoft.com/free
 [jdk_link]: /java/azure/jdk
 [source_code]: https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/webpubsub/azure-messaging-webpubsub/src
-[product_documentation]: https://aka.ms/awps/doc
+[product_documentation]: ./index.yml
 [samples_readme]: https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/webpubsub/azure-messaging-webpubsub/src/samples/README.md
 [log_levels]: https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/core/azure-core/src/main/java/com/azure/core/util/logging/ClientLogger.java
 [performance_tuning]: https://github.com/Azure/azure-sdk-for-java/wiki/Performance-Tuning
@@ -165,4 +165,4 @@ webPubSubServiceClient.sendToUser("Andy", "Hello Andy!", WebPubSubContentType.TE
 [coc]: https://opensource.microsoft.com/codeofconduct/
 [coc_faq]: https://opensource.microsoft.com/codeofconduct/faq/
 [coc_contact]: mailto:opencode@microsoft.com
-[api]: https://aka.ms/awps/sdk/java
+[api]::

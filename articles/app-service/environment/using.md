@@ -1,18 +1,16 @@
 ---
 title: App Service 環境の使用
 description: App Service Environment を使用して、独立したアプリケーションをホストする方法について説明します。
-author: ccompy
-ms.assetid: 377fce0b-7dea-474a-b64b-7fbe78380554
+author: madsd
 ms.topic: article
 ms.date: 07/06/2021
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 01d554c5b34796b54fc67877149a116500c41823
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.author: madsd
+ms.openlocfilehash: 6a01e1c746579ea7d51a0b30fd554d2e2e6bb66b
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216753"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519643"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Environment の使用
 
@@ -35,13 +33,13 @@ ASE 内にアプリを作成するには:
 1. **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web アプリ]** を選択します。
 1. サブスクリプションを選択します。
 1. 新しいリソース グループの名前を指定するか、 **[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
-1. アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に ASE のドメイン名が反映されます。![ASE 内にアプリを作成する][1]
+1. アプリの名前を入力します。 ASE 内で App Service プランが既に選択されている場合、アプリのドメイン名に ASE のドメイン名が反映されます。
 1. 発行の種類、スタック、オペレーティング システムを選択します。
-1. リージョンを選択します。 ここでは、既存の App Service Environment v3 を選択する必要があります。  アプリの作成時に ASEv3 を作成することはできません 
-1. お使いの ASE 内の既存の App Service プランを選択するか、新しいものを作成します。 新しいアプリを作成する場合は、App Service プラン用のサイズを選択します。 アプリ用に選択できる SKU は、Isolated v2 価格 SKU のみです。 通常、新しい App Service プランの作成に要する時間は 20 分未満です。 
+1. リージョンを選択します。 ここでは、既存の App Service Environment v3 を選択する必要があります。 アプリの作成時に ASEv3 を作成することはできません。![ASE でアプリを作成する][1]
+1. お使いの ASE 内の既存の App Service プランを選択するか、新しいものを作成します。 新しいアプリを作成する場合は、App Service プラン用のサイズを選択します。 アプリ用に選択できる SKU は、Isolated v2 価格 SKU のみです。 通常、新しい App Service プランの作成に要する時間は 20 分未満です。
 ![Isolated v2 価格レベル][2]
-1. **Next:監視** を選択します。お使いのアプリで App Insights を有効にする場合は、作成フロー中のここで、それを行うことができます。 
-1.  **Next:タグ** を選択します。アプリに必要なすべのタグを追加します  
+1. **Next:監視** を選択します。お使いのアプリで App Insights を有効にする場合は、作成フロー中のここで、それを行うことができます。
+1.  **Next:タグ** を選択します。アプリに必要なすべのタグを追加します
 1. **[確認および作成]** を選択し、情報が正しいことを確認して、 **[作成]** を選択します。
 
 Windows アプリと Linux アプリは同じ ASE 内に配置できますが、同じ App Service プランに含めることはできません。
@@ -50,9 +48,9 @@ Windows アプリと Linux アプリは同じ ASE 内に配置できますが、
 
 すべての App Service アプリは、App Service プランで実行されます。 App Service Environment に App Service プランが存在し、App Service プランにアプリが存在します。 アプリをスケールするときは、App Service プラン、および同じプラン内のすべてのアプリをスケールすることになります。
 
-App Service プランをスケールすると、必要なインフラストラクチャが自動的に追加されます。 インフラストラクチャが追加されるまでの間、スケール操作に時間差が生じます。 App Service プランをスケーリングするときには、同じ OS とサイズに関して要求されたその他のスケール操作はすべて、最初の操作が完了するまで待機することになります。 ブロックしているスケール操作が完了すると、キューにあるすべての要求が同時に処理されます。 1 つのサイズと OS に関するスケール操作では、サイズと OS の他の組み合わせのスケーリングはブロックされません。 たとえば Windows I2v2 App Service プランをスケーリングした場合は、それが完了するまで、その ASE で Windows I2v2 をスケーリングするその他の要求はすべてキューに入れられます。 通常、スケーリングに要する時間は 20 分未満です。 
+App Service プランをスケールすると、必要なインフラストラクチャが自動的に追加されます。 インフラストラクチャが追加されるまでの間、スケール操作に時間差が生じます。 App Service プランをスケーリングするときに、同じ OS とサイズの別のスケール操作が実行されている場合、要求されたスケールが開始されるまで数分のわずかな遅延が発生することがあります。 あるサイズと OS に対するスケール操作は、サイズと OS の他の組み合わせのスケーリングには影響しません。 たとえば、Windows I2v2 App Service プランをスケーリングする場合、Windows I2v2 をスケーリングする他の要求は少し遅延する可能性がありますが、Windows I3v2 App Service プランのスケール操作はすぐに開始されます。 通常、スケーリングに要する時間は 20 分未満です。
 
-マルチテナントの App Service では、スケーリングが即座に行われます。それへの対応としてすぐに利用できるリソースのプールが存在するためです。 ASE にはそのようなバッファーが存在せず、リソースは必要に応じて割り当てられます。
+マルチテナントの App Service では、"共有" リソースのプールですぐに対応できるため、スケーリングが即座に実行されます。 ASE はシングルテナント サービスであるため、共有バッファーはありません。リソースは必要に応じて割り当てられます。
 
 ## <a name="app-access"></a>アプリのアクセス
 
@@ -184,16 +182,6 @@ ASE を削除するには、次の手順に従います。
 ![ASE の削除][3]
 1. **[OK]** を選択します。
 
-## <a name="pricing"></a>価格 
-
-ASEv3 では、ASE のデプロイの種類に応じて価格モデルが異なります。 価格モデルには次の 3 つがあります。 
-
-- **ASEv3**: ASE が空の場合には、1 つの ASP に Windows I1v2 のインスタンスが 1 件あるものとして料金が発生します。 このインスタンス 1 件分の料金は、ASE が空の場合にのみ適用されるもので、そうでない場合に追加で発生することはありません。
-- **可用性ゾーン ASEv3**: Windows I1v2 インスタンス 9 件分の料金が最低限発生します。 App Service プランのインスタンスが 9 件以上ある場合でも、可用性ゾーンのサポートのための追加料金は発生しません。 また、AZ ASEv3 のすべての App Service プランでは、各可用性ゾーンにインスタンスが存在するように、最小インスタンス数が 3 になっています。 プランがスケールアウトされると、可用性ゾーン全体に分散されます。 
-- **専用ホスト ASEv3**: 専用ホストのデプロイでは、ASEv3 の作成時に Microsoft の価格設定に従って専用ホスト 2 つ分の料金が発生したうえで、その後はスケーリング時に Isolated V2 の 1 コアあたりの料金の数 % が発生します。
-
-Isolated v2 の予約インスタンスの料金が利用可能です。詳細は、[Azure App Service に予約割引を適用する方法][reservedinstances]に関するページで説明されています。 料金については、予約インスタンスの料金と共に、「[App Service の料金][pricing]」の **Isolated v2 プラン** で確認できます。 
-
 <!--Image references-->
 
 [1]: ./media/using/using-appcreate.png
@@ -220,5 +208,3 @@ Isolated v2 の予約インスタンスの料金が利用可能です。詳細�
 [ASEWAF]: ./integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
-[reservedinstances]: ../../cost-management-billing/reservations/reservation-discount-app-service.md#how-reservation-discounts-apply-to-isolated-v2-instances
-[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/
