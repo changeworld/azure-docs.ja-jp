@@ -8,12 +8,12 @@ ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/16/2021
-ms.openlocfilehash: 0a63e0f346fedac9b7178f25a19177a9908bc6a4
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: cf523879cd4bf5279d7c07d094ef6f24069c2c0b
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223009"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709066"
 ---
 # <a name="create-a-snapshot-of-a-virtual-hard-disk"></a>仮想ハード ディスクのスナップショットを作成する
 
@@ -74,7 +74,7 @@ Azure portal を使用してスナップショットを作成するには、こ�
        -CreateOption copy
    ```
 
-   ゾーン回復性のあるストレージにスナップショットを格納する場合は、[availability zones](/azure/availability-zones/az-overview) をサポートするリージョンにスナップショットを作成し、`-SkuName Standard_ZRS` パラメーターを含める必要があります。 Availability Zones をサポートするリージョンのリストについては、「[Azure のリージョンと Availability Zones](../availability-zones/az-region.md#azure-regions-with-availability-zones)」をご覧ください。
+   ゾーン回復性のあるストレージにスナップショットを格納する場合は、[availability zones](../availability-zones/az-overview.md) をサポートしているリージョン内にスナップショットを作成し、`-SkuName Standard_ZRS` パラメーターを含める必要があります。 Availability Zones をサポートするリージョンのリストについては、「[Azure のリージョンと Availability Zones](../availability-zones/az-region.md#azure-regions-with-availability-zones)」をご覧ください。
 
 1. スナップショットを取得する。
 

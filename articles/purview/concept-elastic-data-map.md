@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 00b6429e14dcb04a76abbc1a8d49a29b220c7c06
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fd667abab0802d6d11fc855a620bf51f8419b978
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607077"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555766"
 ---
 # <a name="elastic-data-map-in-azure-purview"></a>Azure Purview のエラスティック データ マップ
 
@@ -117,6 +117,38 @@ Claudia は、Azure Monitor のメトリック ページで、データ マッ�
 :::image type="content" source="./media/concept-elastic-data-map/increase-limit.png" alt-text="サポート ケースの作成を示す画面。上限の引き上げオプションが選択されている。":::
 
 [説明] に、使用している環境と要求する追加の容量に関する情報をできるだけ詳しく入力します。
+
+## <a name="monitoring-the-elastic-data-map"></a>エラスティック データ マップの監視
+
+データ資産のサイズと課金について理解するために、"データ マップの容量ユニット" と "データ マップのストレージ サイズ" のメトリックを監視できます。
+
+1. [Azure portal](https://portal.azure.com) にアクセスし、 **[Purview アカウント]** ページに移動して、自分の _Purview アカウント_ をクリックします
+
+2. **[概要]** をクリックして下にスクロールし、 **[監視]** セクションで、さまざまな期間にわたって [データ マップの容量ユニット] と [データ マップのストレージ サイズ] のメトリックを観察します。
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-metrics.png" alt-text="エラスティック データ マップのメトリックの概要ページが表示されているメニューのスクリーンショット。":::
+
+3. 追加の設定については、 **[監視] --> [メトリック]** と移動して、 **[データ マップの容量ユニット]** と **[データ マップのストレージ サイズ]** を観察します。
+
+    :::image type="content" source="./media/concept-elastic-data-map/elastic-data-map-metrics.png" alt-text="メトリックが表示されているメニューのスクリーンショット。":::
+
+4. **[データマップの容量ユニット]** をクリックすると、過去 24 時間のデータ マップの容量ユニットの使用率が表示されます。 折れ線グラフ上にマウス ポインターを置くと、特定の日の特定の時刻に消費されたデータ マップの容量ユニットが示されます。
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-default.png" alt-text="24 時間にわたって消費されたデータ マップ容量ユニットが表示されているメニューのスクリーンショット。":::
+
+5. 画面右上の **[ローカル時刻: 過去 24 時間 (自動 - 1 時間)]** をクリックして、グラフに表示される時間の範囲を変更します。
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-custom.png" alt-text="カスタムの時間の範囲にわたって消費されたデータ マップ容量ユニットが表示されているメニューのスクリーンショット。":::
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-time-range.png" alt-text="3 日間の時間の範囲にわたって消費されたデータ マップ容量ユニットが表示されているメニューのスクリーンショット。":::
+
+6. 次に示すように、オプションをクリックしてグラフの種類をカスタマイズします。
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-graph-type.png" alt-text="グラフの種類を変更するオプションが表示されているメニューのスクリーンショット。":::
+
+7. **[新しいグラフ]** をクリックして、データ マップのストレージ サイズのグラフを追加します。
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-storage-size.png" alt-text="使用されているデータ マップのストレージ サイズが表示されているメニューのスクリーンショット。":::
 
 ## <a name="summary"></a>まとめ
 
