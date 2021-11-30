@@ -132,6 +132,8 @@
           href: search-lucene-query-architecture.md
         - name: セマンティック検索
           href: semantic-search-overview.md
+        - name: クエリの種類と構成
+          href: search-query-overview.md
         - name: 関連性のスコアリング
           href: index-similarity-and-scoring.md
     - name: インデックス作成
@@ -427,8 +429,8 @@
           href: semantic-answers.md
         - name: クエリにスペル チェックを追加する
           href: speller-how-to-add.md
-        - name: クエリの種類と構成
-          href: search-query-overview.md
+        - name: 検索結果のページングと書式設定
+          href: search-pagination-page-layout.md
         - name: 単純な構文の使用 (例)
           href: search-query-simple-examples.md
         - name: 完全な Lucene の使用 (例)
@@ -443,16 +445,6 @@
               href: index-add-suggesters.md
             - name: オートコンプリートと検索候補の追加
               href: search-add-autocomplete-suggestions.md
-        - name: ページングとカウント
-          href: search-pagination-page-layout.md
-        - name: 構文リファレンス
-          items:
-            - name: 単純なクエリ構文
-              href: query-simple-syntax.md
-            - name: Full Lucene クエリ構文
-              href: query-lucene-syntax.md
-            - name: moreLikeThis (プレビュー)
-              href: search-more-like-this.md
     - name: フィルタ
       items:
         - name: フィルターの概要
@@ -527,7 +519,7 @@
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: Resource Manager テンプレート
+    - name: Azure Resource Manager テンプレート
       href: /azure/templates/microsoft.search/searchservices
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
@@ -560,6 +552,14 @@
           href: search-query-odata-search-score-function.md
         - name: OData 言語の文法
           href: search-query-odata-syntax-reference.md
+    - name: クエリ構文リファレンス
+      items:
+        - name: 単純なクエリ構文
+          href: query-simple-syntax.md
+        - name: Full Lucene クエリ構文
+          href: query-lucene-syntax.md
+        - name: moreLikeThis (プレビュー)
+          href: search-more-like-this.md
     - name: スキルのリファレンス
       items:
         - name: 組み込みのスキル

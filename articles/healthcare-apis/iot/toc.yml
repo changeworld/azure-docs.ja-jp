@@ -9,6 +9,8 @@ items:
   - name: クイックスタート
     expanded: true
     items:
+      - name: IoT コネクタを使ってみる
+        href: get-started-with-iot.md
       - name: IoT コネクタのデプロイ
         expanded: true
         items:
@@ -19,31 +21,31 @@ items:
     items:
       - name: IoT コネクタのデータ フロー
         href: iot-data-flow.md
-      - name: IoT コネクタと Azure Machine Learning Service
+      - name: IoT コネクタと Azure Machine Learning サービス
         href: iot-connector-machine-learning.md
       - name: IoT コネクタと Microsoft Power BI
         href: iot-connector-power-bi.md
-      - name: IoT コネクタとMicrosoft Teams通知
+      - name: IoT コネクタと Microsoft Teams 通知
         href: iot-connector-teams.md
   - name: 操作方法ガイド
     expanded: true
     items:
       - name: Azure IoT Hub を通じてデバイス データを受信する
         href: device-data-through-iot-hub.md
-      - name: デバイス マッピングを使用する
+      - name: デバイスマッピングを使用する
         expanded: true
         items:
           - name: デバイス マッピング
             href: how-to-use-device-mappings.md
-          - name: JsonPathContentTemplate マッピング
+          - name: JsonPathContentTemplate のマッピング
             href: how-to-use-jsonpath-content-mappings.md
           - name: 計算関数のマッピング
             href: how-to-use-calculated-functions-mappings.md
-          - name: CollectionContentTemplate マッピング
+          - name: CollectionContentTemplate のマッピング
             href: how-to-use-collection-content-mappings.md
-          - name: IotJsonPathContentTemplate マッピング
+          - name: IotJsonPathContentTemplate のマッピング
             href: how-to-use-iot-jsonpath-content-mappings.md
-          - name: IotCentralJsonContentTemplate マッピング
+          - name: IotCentralJsonContentTemplate のマッピング
             href: how-to-use-iot-central-json-content-mappings.md
       - name: カスタム関数を使用する
         href: how-to-use-custom-functions.md

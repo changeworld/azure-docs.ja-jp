@@ -9,6 +9,8 @@ items:
   - name: クイックスタート
     expanded: true
     items:
+      - name: DICOM サービスを使ってみる
+        href: get-started-with-dicom.md
       - name: Azure portal を使用して DICOM サービスをデプロイする
         href: deploy-dicom-services-in-azure.md
   - name: チュートリアル

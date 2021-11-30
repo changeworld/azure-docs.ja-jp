@@ -381,9 +381,12 @@
           href: howto-deploy-java-liberty-app.md
         - name: Azure API Management の使用
           href: ../api-management/api-management-kubernetes.md
-        - name: Dapr を使用する (プレビュー)
-          href: dapr.md
-          maintainContext: true
+        - name: Dapr を使用する
+          items:
+            - name: Dapr の概要
+              href: dapr-overview.md
+            - name: Dapr を使用する方法 (プレビュー)
+              href: dapr.md
     - name: Open Service Mesh AKS アドオンをデプロイする
       items:
         - name: Open Service Mesh について

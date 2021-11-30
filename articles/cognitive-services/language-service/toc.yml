@@ -570,7 +570,9 @@ items:
           - name: REST API
             items:
               - name: 回答 API
-                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering'
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering/get-answers'
+              - name: 事前構築済み API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering/get-answers-from-text'
               - name: オーサリング API
                 href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering-projects'
   - name: 感情分析とオピニオン マイニング

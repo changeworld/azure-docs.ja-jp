@@ -67,6 +67,12 @@
               href: azure-netapp-files-smb-performance.md
             - name: Azure 仮想マシン SKU のベスト プラクティス
               href: performance-virtual-machine-sku.md
+    - name: アプリケーション ボリューム グループ
+      items:
+        - name: アプリケーション のアプリケーション ボリューム グループについてSAP HANA
+          href: application-volume-group-introduction.md
+        - name: アプリケーション ボリューム グループの要件と考慮事項SAP HANA
+          href: application-volume-group-considerations.md
     - name: データ保護
       items:
         - name: Azure NetApp Files のスナップショットのしくみ
@@ -115,6 +121,8 @@
           href: faq-application-resilience.md
         - name: データの移行と保護に関する FAQ
           href: faq-data-migration-protection.md
+        - name: アプリケーション ボリューム グループに関する FAQ
+          href: faq-application-volume-group.md
         - name: Azure NetApp Files のバックアップに関する FAQ
           href: faq-backup.md
         - name: セキュリティに関する FAQ
@@ -191,6 +199,20 @@
               href: azure-netapp-files-resize-capacity-pools-or-volumes.md
             - name: ボリュームのサービス レベルを動的に変更する
               href: dynamic-change-volume-service-level.md
+    - name: アプリケーションボリュームグループの管理
+      items:
+        - name: 最初の SAP HANA ホストを展開する
+          href: application-volume-group-deploy-first-host.md
+        - name: 複数ホスト SAP HANA システムにホストを追加する
+          href: application-volume-group-add-hosts.md
+        - name: HSR のセカンダリデータベースとして SAP HANA システムのボリュームを追加する
+          href: application-volume-group-add-volume-secondary.md
+        - name: SAP HANA システムのボリュームを DR システムとして追加する
+          href: application-volume-group-disaster-recovery.md
+        - name: アプリケーションボリュームグループ内のボリュームを管理する
+          href: application-volume-group-manage-volumes.md
+        - name: アプリケーションボリュームグループを削除する
+          href: application-volume-group-delete.md
     - name: データ保護を管理する
       items:
         - name: ボリューム スナップショットを管理する
@@ -251,6 +273,8 @@
           href: troubleshoot-capacity-pools.md
         - name: ボリュームのエラーのトラブルシューティング
           href: troubleshoot-volumes.md
+        - name: アプリケーションボリュームグループエラーのトラブルシューティング
+          href: troubleshoot-application-volume-groups.md
         - name: スナップショット ポリシーのエラーのトラブルシューティング
           href: troubleshoot-snapshot-policies.md
         - name: リージョン間レプリケーションのエラーのトラブルシューティング

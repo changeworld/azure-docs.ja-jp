@@ -1,22 +1,22 @@
 ### YamlMime:Landing
-title: フレキシブル サーバー (プレビュー) のドキュメント
-summary: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) は、フル マネージドのサービスとしての PostgreSQL データベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for PostgreSQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 クイックスタート、チュートリアル、およびサンプルを使用して、フレキシブル サーバーの使用方法を学習してください。
+title: フレキシブル サーバーのドキュメント
+summary: Azure Database for PostgreSQL 柔軟なサーバーは、予測可能なパフォーマンスと動的なスケーラビリティを備えたミッションクリティカルなワークロードを処理できるサービスとしての完全に管理された PostgreSQL データベースです。 Azure Database for PostgreSQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 クイックスタート、チュートリアル、およびサンプルを使用して、フレキシブル サーバーの使用方法を学習してください。
 metadata:
-  title: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー)
-  description: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) は、PostgreSQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
+  title: Azure Database for PostgreSQL - フレキシブル サーバー
+  description: Azure Database for PostgreSQL 柔軟なサーバーは、Microsoft cloud のリレーショナルデータベースサービスであり、開発者向けに構築され、PostgreSQL community edition を搭載しています。
   author: sunilagarwal
   ms.author: sunila
-  ms.date: 09/22/2020
+  ms.date: 11/30/2021
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: bb3b8d336eb79991c3c4eb1b379e5d3b60b315cd
-  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
+  ms.openlocfilehash: a9f0d9faf5ff1f1d9a6db416363f86c779c64ae5
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/18/2021
-  ms.locfileid: "132754540"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133268660"
 landingContent:
-- title: フレキシブル サーバー (プレビュー) について
+- title: フレキシブル サーバーについて
   linkLists:
   - linkListType: overview
     links:

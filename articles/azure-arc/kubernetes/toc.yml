@@ -80,6 +80,8 @@
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Azure Arc 対応 Open Service Mesh をデプロイする
           href: tutorial-arc-enabled-open-service-mesh.md
+        - name: Azure Key Vault からシークレットにアクセスする
+          href: tutorial-akv-secrets-provider.md
     - name: Azure Arc 対応サービスをデプロイする
       items:
         - name: カスタムの場所を作成する

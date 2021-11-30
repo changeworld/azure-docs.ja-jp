@@ -8,6 +8,8 @@ items:
   - name: クイックスタート
     expanded: true
     items:
+      - name: 概要 FHIR サービスを使用する
+        href: get-started-with-fhir.md
       - name: FHIR サービスをデプロイする
         expanded: true
         items:
@@ -36,7 +38,7 @@ items:
     items:
       - name: Postman を使用したアクセス
         href: ../use-postman.md
-      - name: CURL を使用したアクセス
+      - name: cURL を使用したアクセス
         href: ../using-curl.md
       - name: REST クライアントを使用したアクセス
         href: ../using-rest-client.md
@@ -72,7 +74,7 @@ items:
             href: fhir-service-diagnostic-logs.md
   - name: 概念
     items:
-      - name: FHIR サービスの自動スケール
+      - name: FHIR サービスの自動スケーリング
         href: fhir-service-autoscale.md
       - name: FHIR Rest API の機能
         href: fhir-rest-api-capabilities.md

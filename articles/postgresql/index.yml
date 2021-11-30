@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/21/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 801cbe5871390a0f19a25ed606857bbbf7e09aba
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: f3c84d7f25cf6714ac8012b5f2f938b0018e4cd8
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122779950"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133269315"
 landingContent:
 - title: Azure Database for PostgreSQL について
   linkLists:
@@ -53,7 +53,7 @@ landingContent:
       url: ../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
     - text: サーバーを監視して調整する
       url: tutorial-monitor-and-tune.md
-- title: フレキシブル サーバー (プレビュー)
+- title: フレキシブル サーバー
   linkLists:
   - linkListType: overview
     links:

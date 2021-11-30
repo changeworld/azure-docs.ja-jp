@@ -33,7 +33,7 @@ groups:
   - id: postgres-single-server
     title: シングル サーバー
   - id: postgres-flexible-server
-    title: フレキシブル サーバー (プレビュー)
+    title: フレキシブル サーバー
 - id: programming-languages-set-one
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -1417,9 +1417,9 @@ groups:
   - id: iot-toolset-mcuxpresso
     title: MCUXpresso
 metadata:
-  ms.openlocfilehash: 51f29806ed58662a6d2c8a037013d772ee4991dd
-  ms.sourcegitcommit: 6f30424a4ab8dffc4e690086e898ab52bc4da777
+  ms.openlocfilehash: ba085bfaa2acbd523c039bf91f02b3d1c88e92a8
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/22/2021
-  ms.locfileid: "132902630"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133265388"

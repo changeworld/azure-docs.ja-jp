@@ -409,7 +409,7 @@
               href: howto-migrate-using-dump-and-restore.md
             - name: pg_dump と psql を使用してデータをアップグレードまたは移行する
               href: howto-migrate-using-export-and-import.md
-- name: フレキシブル サーバー (プレビュー)
+- name: フレキシブル サーバー
   expanded: true
   items:
     - name: フレキシブル サーバーのドキュメント

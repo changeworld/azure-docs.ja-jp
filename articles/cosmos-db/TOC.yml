@@ -1030,6 +1030,8 @@
               href: cassandra/oracle-migrate-cosmos-db-blitzz.md
             - name: 移行 - Blitzz を使用して Apache Cassandra から Cassandra API へ
               href: cassandra/migrate-data-blitzz.md
+            - name: デュアル書き込みプロキシを使用して Apache Cassandra を Cassandra API に移行する
+              href: cassandra/migrate-data-dual-write-proxy.md
             - name: 移行 - Databricks を使用して Apache Cassandra から Cassandra API へ
               href: cassandra/migrate-data-databricks.md
             - name: 移行 - Apache Kafka を使用して PostgreSQL から Cassandra API へ
@@ -1089,6 +1091,8 @@
           href: cassandra/glowroot-cassandra.md
         - name: エラー コードの定義
           href: cassandra/error-codes-solution.md
+        - name: Cassandra API の軽量トランザクション
+          href: cassandra/lwt-cassandra-api.md
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー
