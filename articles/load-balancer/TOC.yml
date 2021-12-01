@@ -73,18 +73,18 @@
   items:
     - name: ポータルの設定
       href: manage.md
-    - name: リージョン間のロード バランサー
-      href: cross-region-overview.md
-    - name: ゲートウェイ ロード バランサー
-      href: gateway-overview.md
     - name: 新機能
       href: whats-new.md
     - name: コンポーネント
       href: components.md
     - name: 負荷分散アルゴリズム
       href: concepts.md
+    - name: 分散モード
+      href: distribution-mode-concepts.md
     - name: SKU
       href: skus.md
+    - name: フローティング IP 構成
+      href: load-balancer-floating-ip.md
     - name: 正常性の監視
       items:
         - name: ロード バランサーを監視する
@@ -109,12 +109,12 @@
       href: outbound-rules.md
     - name: アイドル タイムアウトの TCP リセット
       href: load-balancer-tcp-reset.md
-    - name: Standard Load Balancer と可用性ゾーン
+    - name: 可用性ゾーン
       href: load-balancer-standard-availability-zones.md
-    - name: フローティング IP 構成
-      href: load-balancer-floating-ip.md
-    - name: 分散モード
-      href: distribution-mode-concepts.md
+    - name: リージョン間のロード バランサー
+      href: cross-region-overview.md
+    - name: ゲートウェイ ロード バランサー
+      href: gateway-overview.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン

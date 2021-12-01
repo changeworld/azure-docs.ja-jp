@@ -184,18 +184,28 @@
       items:
         - name: 概要
           href: backup-azure-sql-database.md
-        - name: バックアップ
+        - name: Azure portal から
           items:
-            - name: コンテナーから複数の SQL Server VM をバックアップする
-              href: backup-sql-server-database-azure-vms.md
-            - name: SQL Server 可用性グループをバックアップする
-              href: backup-sql-server-on-availability-groups.md
-            - name: VM ウィンドウから SQL Server VM をバックアップする
-              href: backup-sql-server-vm-from-vm-pane.md
-        - name: 復元
-          href: restore-sql-database-azure-vm.md
-        - name: 管理する
-          href: manage-monitor-sql-database-backup.md
+            - name: バックアップ
+              items:
+                - name: コンテナーから複数の SQL Server VM をバックアップする
+                  href: backup-sql-server-database-azure-vms.md
+                - name: SQL Server 可用性グループをバックアップする
+                  href: backup-sql-server-on-availability-groups.md
+                - name: VM ウィンドウから SQL Server VM をバックアップする
+                  href: backup-sql-server-vm-from-vm-pane.md
+            - name: 復元
+              href: restore-sql-database-azure-vm.md
+            - name: 管理する
+              href: manage-monitor-sql-database-backup.md
+        - name: REST API を使用する
+          items:
+            - name: バックアップ
+              href: backup-azure-sql-vm-rest-api.md
+            - name: 復元
+              href: restore-azure-sql-vm-rest-api.md
+            - name: 管理する
+              href: manage-azure-sql-vm-rest-api.md
     - name: Azure Database for PostgreSQL のバックアップ
       items:
         - name: 概要
