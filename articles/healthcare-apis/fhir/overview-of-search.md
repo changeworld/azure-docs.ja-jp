@@ -1,18 +1,18 @@
 ---
-title: Azure Healthcare API での FHIR 検索の概要
-description: この記事では、Azure Healthcare API に実装されている FHIR 検索の概要について説明します
+title: Azure の医療 Api における FHIR 検索の概要
+description: この記事では、Azure の医療 Api で実装される FHIR 検索の概要について説明します。
 author: CaitlinV39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 10/25/2021
+ms.date: 11/24/2021
 ms.author: cavoeg
-ms.openlocfilehash: c95123adc8962df5fdd20b766ffe72f5aec72ca0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dfdde4bb53624777d4e11cbd6652f749a6f3a394
+ms.sourcegitcommit: 66b6e640e2a294a7fbbdb3309b4829df526d863d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040455"
+ms.lasthandoff: 12/01/2021
+ms.locfileid: "133368846"
 ---
 # <a name="overview-of-fhir-search"></a>FHIR 検索の概要
 
@@ -31,7 +31,7 @@ GET {{FHIR_URL}}/Patient
 
 検索要求が成功すると、`searchset` 型の FHIR バンドル応答が返されます。 検索に失敗した場合は、`OperationOutcome` にエラーの詳細が表示され、検索が失敗した理由を理解するのに役立ちます。
 
-次のセクションでは、検索に関連するさまざまな側面について説明します。 これらの詳細を確認したら、Azure Healthcare API[](search-samples.md)の FHIR サービスで実行できる検索の例を含むサンプル ページを参照してください。
+次のセクションでは、検索に関連するさまざまな側面について説明します。 これらの詳細を確認したら、Azure の医療 Api で FHIR サービスに対して行うことができる検索の例が記載された [サンプルページ](search-samples.md) を参照してください。
 
 ## <a name="search-parameters"></a>検索パラメーター
 
@@ -54,7 +54,7 @@ GET {{FHIR_URL}}/Patient
 
 ### <a name="common-search-parameters"></a>一般的な検索パラメーター
 
-すべてのリソースに適用される[一般的な検索パラメーター](https://www.hl7.org/fhir/search.html#all)があります。 以下に、サポートと共に次の一覧を示します。
+すべてのリソースに適用される[一般的な検索パラメーター](https://www.hl7.org/fhir/search.html#all)があります。 次に、そのサポートと共に一覧を示します。
 
 | **一般的な検索パラメーター** | **Azure API for FHIR** | **Azure Healthcare API の FHIR サービス** | **解説**|
 | -------------------------  | -------------------- | ------------------------- | ------------|
@@ -64,7 +64,7 @@ GET {{FHIR_URL}}/Patient
 | _type                       | はい                  | はい                       |
 | _security                   | はい                  | はい                       |
 | _profile                    | はい                  | はい                       |
-| _has                        | 正解です。                 | はい                       |  |
+| _has                        | はい。                 | はい                       |  |
 | _query                      | いいえ                   | いいえ                        |
 | _filter                     | いいえ                   | いいえ                        |
 | _list                       | いいえ                   | いいえ                        |
@@ -139,15 +139,15 @@ Azure Healthcare API の FHIR サービスでは、次の検索パラメータ�
 | _revinclude                   | はい                  | はい                       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS の _revinclude には、:iterate のサポートが含まれません [(#2137)](https://github.com/microsoft/fhir-server/issues/2137)。 また、不適切な要求に対する正しくない状態コードがあります [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
 | _summary                      | はい             | はい                   |
 | _total                        | 部分的              | 部分的                   | _total=none および _total=accurate                               |
-| _sort                         | 部分的              | Partial                   | sort=_lastUpdatedは、Azure API for FHIR FHIR サービスでサポートされています。 FHIR サービスと OSS SQL DB FHIR サーバーでは、文字列と dateTime フィールドによる並べ替えがサポートされています。 2021 Azure API for FHIR 2021 年 4 月 20 日より後に作成された Cosmos および OSS データベースの場合、並べ替えは名、および臨床日でサポートされます。             |
+| _sort                         | 部分的              | Partial                   | sort = _lastUpdated は、Azure API for FHIR および FHIR サービスでサポートされています。 fhir サービスと OSS SQL DB fhir サーバーでは、文字列と dateTime フィールドによる並べ替えがサポートされています。 2021年4月20日より後に作成された Azure API for fhir および OSS Cosmos DB データベースでは、first name、last name、誕生日、および臨床日に対して sort がサポートされています。             |
 | _contained                    | いいえ                   | いいえ                        |
 | _containedType                | いいえ                   | いいえ                        |
 | _score                        | いいえ                   | いいえ                        |
 
 > [!NOTE]
-> 既定では、 `_sort` レコードは昇順に並べ替えます。 プレフィックスを使用して `'-'` 、降順で並べ替えを行います。 さらに、FHIR サービスと Azure API for FHIRでは、一度に 1 つのフィールドでのみ並べ替えを行える必要があります。
+> 既定で `_sort` は、レコードは昇順で並べ替えられます。 プレフィックスを使用して、降順に並べ替えることができ `'-'` ます。 さらに、FHIR サービスと Azure API for FHIR では、一度に1つのフィールドでのみ並べ替えを行うことができます。
 
-既定では、Azure Healthcare API の FHIR サービスは、充実した処理に設定されています。 これは、サーバーが不明なパラメーターまたはサポートされていないパラメーターを無視することを意味します。 厳密な処理を使用する場合は、**Prefer** ヘッダーを使用して `handling=strict` を設定できます。
+既定では、Azure の医療 Api の FHIR サービスは、厳密な処理に設定されています。 これは、サーバーが不明なパラメーターまたはサポートされていないパラメーターを無視することを意味します。 厳密な処理を使用する場合は、**Prefer** ヘッダーを使用して `handling=strict` を設定できます。
 
  ## <a name="chained--reverse-chained-searching"></a>チェーンおよびリバース チェーン検索
 
@@ -162,7 +162,7 @@ Azure Healthcare API の FHIR サービスでは、次の検索パラメータ�
 
 前述のように、検索の結果はページを使ったバンドルになります。 既定では、検索では 1 ページあたり 10 件の結果が返されますが、`_count` を指定することでこれを増やしたり減らしたりできます。 バンドル内には、検索の現在の結果を含む自己リンクがあります。 追加の一致がある場合、バンドルには次へのリンクが含まれます。 次へのリンクを引き続き使用して、結果の後続のページを取得できます。 `_count` は 1,000 項目以下に制限されます。 
 
-現在、Azure Healthcare API の FHIR サービスはバンドル内の次のリンクのみをサポートし、最初、最後、または前のリンクはサポートされていません。
+現時点では、Azure の医療 Api の FHIR サービスは、バンドル内の次のリンクのみをサポートしており、最初、最後、または前のリンクをサポートしていません。
 
 ## <a name="next-steps"></a>次のステップ
 

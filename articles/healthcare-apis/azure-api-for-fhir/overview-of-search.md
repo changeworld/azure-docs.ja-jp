@@ -5,14 +5,14 @@ author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 11/12/2021
+ms.date: 11/29/2021
 ms.author: cavoeg
-ms.openlocfilehash: a1bb41b9e3272297cb49f42ee3a6e20137a57d46
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.openlocfilehash: b8fc847edc18e9103534961051d550340dac9e98
+ms.sourcegitcommit: 66b6e640e2a294a7fbbdb3309b4829df526d863d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132491717"
+ms.lasthandoff: 12/01/2021
+ms.locfileid: "133366027"
 ---
 # <a name="overview-of-search-in-azure-api-for-fhir"></a>Azure API for FHIR での検索の概要
 
@@ -37,7 +37,7 @@ GET {{FHIR_URL}}/Patient
 各検索パラメーターには、定義済みの[データ型](https://www.hl7.org/fhir/search.html#ptypes)があります。 さまざまなデータ型のサポートの概要を次に示します。
 
 > [!WARNING]
-> 現在、チェーン検索を使用して FHIR 用の Azure API で _sort を使用しているときに問題が発生しています。 詳細については、「オープンソースの問題 [#2344](https://github.com/microsoft/fhir-server/issues/2344)」を参照してください。 これは、2021年12月のリリースで解決されます。 
+> 現在、チェーン検索を使用して_sortを使用Azure API for FHIR問題が発生しています。 詳細については、「オープンソースの問題 [#2344 」を参照してください](https://github.com/microsoft/fhir-server/issues/2344)。 これは、2021 年 12 月のリリース中に解決される予定です。 
 
 | **検索パラメーターの種類**  | **Azure API for FHIR** | **Azure Healthcare API の FHIR サービス** | **解説**|
 | -------------------------  | -------------------- | ------------------------- | ------------|
@@ -138,7 +138,7 @@ Azure API for FHIRでは、次の検索パラメーター型のペアがサポ�
 | _revinclude                   | はい                  | はい                       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS の _revinclude には、:iterate のサポートが含まれません [(#2137)](https://github.com/microsoft/fhir-server/issues/2137)。  また、不適切な要求に対する正しくない状態コードがあります [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
 | _summary                      | はい             | はい                   |
 | _total                        | 部分的              | 部分的                   | _total=none および _total=accurate                               |
-| _sort                         | 部分的              | 部分的                   | sort=_lastUpdatedは、Azure API for FHIR FHIR サービスでサポートされています。 2021 Azure API for FHIR 2021 年 4 月 20 日より後に作成された Cosmos および OSS データベースの場合、並べ替えは名、名、生年月日、および臨床日でサポートされます。 オープン ソースの問題 [#2344](https://github.com/microsoft/fhir-server/issues/2344)に記載されているチェーン検索_sortを使用したオープンな問題があります。          |
+| _sort                         | 部分的              | Partial                   | sort=_lastUpdatedは、Azure API for FHIR FHIR サービスでサポートされています。 2021 Azure API for FHIR 2021 年 4 月 20 日より後に作成された Cosmos および OSS DB データベースの場合、並べ替えは名、生年月日、および臨床日でサポートされます。 オープン ソースの問題 [#2344](https://github.com/microsoft/fhir-server/issues/2344)に記載されているチェーン検索_sortを使用したオープンな問題があります。         |
 | _contained                    | いいえ                   | いいえ                        |
 | _containedType                | いいえ                   | いいえ                        |
 | _score                        | いいえ                   | いいえ                        |
@@ -157,7 +157,7 @@ Azure API for FHIRでは、次の検索パラメーター型のペアがサポ�
 同様に、リバース チェーン検索を実行できます。 これにより、リソースを参照する他のリソースの条件を指定して、リソースを取得できます。 チェーン検索とリバース チェーン検索のその他の例については、[FHIR 検索の例](search-samples.md)に関するページを参照してください。 
 
 > [!NOTE]
-> Azure API for FHIR と Cosmos DB によってサポートされるオープン ソースでは、チェーン検索とリバース チェーン検索に必要な各サブクエリで返される項目が 100 項目のみになるという制限があります。 見つかった項目が 100 を超える場合は、次のエラー メッセージが表示されます。"チェーンされた式のサブクエリでは 100 を超える結果を返すことができません。より限定的な条件を使用してください。" クエリを正常に実行するには、探している情報についてより具体的にする必要があります。
+> Azure API for FHIR と Cosmos DB によってサポートされるオープン ソースでは、チェーン検索とリバース チェーン検索に必要な各サブクエリで返される項目が 1,000 項目のみになるという制限があります。 1,000 を超える項目が見つかった場合は、次のエラー メッセージが表示されます。"チェーンされた式のサブクエリは 1000 を超える結果を返すはできないので、より選択的な条件を使用してください。" クエリを正常に実行するには、探している情報についてより具体的にする必要があります。
 
 ## <a name="pagination"></a>改ページ位置の自動修正
 

@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
-ms.date: 08/05/2021
-ms.openlocfilehash: d00d973bb589c7538c098821505dfdb0b10608c7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/29/2021
+ms.openlocfilehash: 1390ed2316c4891a23684223644bb976ff230fbc
+ms.sourcegitcommit: 66b6e640e2a294a7fbbdb3309b4829df526d863d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785541"
+ms.lasthandoff: 12/01/2021
+ms.locfileid: "133359666"
 ---
 # <a name="centers-for-medicare-and-medicaid-services-cms-interoperability-and-patient-access-rule-introduction"></a>センター for Medicare and Mediaid Services (CMS) の相互運用性と患者アクセス規則の概要
 
@@ -23,13 +23,13 @@ ms.locfileid: "121785541"
 
 ## <a name="rule-overview"></a>ルールの概要
 
-CMS は、2020 年 5 月 1 日に相互運用性と患者アクセス規則をリリースしました。 [](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) この規則では、患者が必要なときに医療情報にアクセスするために、患者の治療に関与しているすべての当事者 (患者、プロバイダー、支払者) 間の無料で安全なデータ フローが必要です。 相互運用性は何十年もの間、医療業界を悩らせてきたため、サイロ化されたデータが原因で、医療費が高く予測不可能なコストで、健康上の悪影響が生じる結果になります。 CMS は、連邦円滑化交換 (FFFEs) の医療アドバント (MA)、リサイダー、子医療保険プログラム (CHIP)、および適格医療計画 (QHP) 発行者を規制するために、その権限を使用してこの規則を適用しています。 
+CMS は、2020 年 5 月 1 日に相互運用性と患者アクセス規則をリリースしました。 [](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) この規則では、患者が必要なときに医療情報にアクセスするために、患者の治療に関与しているすべての当事者 (患者、プロバイダー、支払者) 間の無料で安全なデータ フローが必要です。 相互運用性は何十年もの間、医療業界を悩らせてきたため、サイロ化されたデータが原因で、医療費が高く予測不可能なコストで、健康上の悪影響が生じる結果になります。 CMS は、連邦円滑化交換 (FFFEs) に関する医療従事者 (MA)、タイタイド、子供医療保険プログラム (CHIP)、および適格医療計画 (QHP) 発行者を規制するために、権限を使用してこの規則を適用しています。 
 
 2020 年 8 月、CMS では、組織が義務を満たす方法について詳しく説明しました。 データを安全かつ標準化された方法で交換できるよう、CMS では、データ交換に必要な基礎標準として FHIR バージョン リリース 4 (R4) を特定しました。 
 
 相互運用性と患者アクセスには、主に次の 3 つの部分があります。
 
-* **Patient Access API (2021** 年 7 月 1 日に必要) – CMS 規制の支払者 (上記で定義) は、患者が要求に簡単にアクセスし、コストなどの情報を検出できる、セキュリティで保護された標準ベースの API を実装および維持するために必要です。また、選択したサードパーティのアプリケーションを通じて、定義された医療情報のサブセットも必要です。  
+* **Patient Access API (2021** 年 7 月 1 日に必要) – CMS 規制の支払者 (上記で定義) は、安全な標準ベースの API を実装して維持する必要があります。これにより、患者は自分の要求に簡単にアクセスし、コストなどの情報に遭遇できるだけでなく、選択したサードパーティ製のアプリケーションを通じて、定義された医療情報のサブセットを検出できます。  
 
 * **Provider Directory API (2021** 年 7 月 1 日に必要) – 標準ベースの API を介してプロバイダー ディレクトリ情報を一般公開するには、この規則のこの部分で CMS 規制の支払者が必要です。 この情報を利用できるサード パーティのアプリケーション開発者は、患者が特定の医療ニーズのプロバイダーを見つけ、医師が治療調整のための他のプロバイダーを見つけるのに役立つサービスを作成できます。  
 
@@ -54,7 +54,7 @@ Patient Access API では、次の 4 つの FHIR 実装ガイドへの準拠に�
 * [HL7 FHIR Da Vinci PDex IG:](http://hl7.org/fhir/us/davinci-pdex/STU1/index.html)Payer Data Exchange Implementation Guide (PDex IG) は、Payer Data Exchange Implementation Guide (PDex IG) は、患者アクセス API の要件を満たすために、支払者が関連するすべての患者の臨床データを確実に提供する方法に重点を置きます。 これには、R4 リソースの US Core プロファイルが使用され、(少なくとも) 検出、プロバイダー、組織、場所、サービスの日付、診断、手順、観察が含まれます。 このデータは FHIR 形式で使用できる場合があります。要求データ、HL7 V2 メッセージ、および C-CDA ドキュメントの形式の他のシステムから取得される場合もあります。
 * [HL7 US Core IG:](https://www.hl7.org/fhir/us/core/toc.html)HL7 US Core 実装ガイド (US Core IG) は、前述の PDex IG のバックボーンです。 PDex IG では、一部のリソースが US Core IG よりもさらに多く制限されているのに対し、多くのリソースは US Core IG の標準に従っているだけである。
 
-* [HL7 FHIR Da Vinci - PDex US Formulary IG:](http://hl7.org/fhir/us/Davinci-drug-formulary/index.html)パート D Medicare Advantage プランでは、Patient API を介して数式情報を使用できる必要があります。 PDex US ドラッグ数式実装ガイド (USDF IG) を使用してこれを行います。 USDF IG は、医療保険者の薬の数式情報に対する FHIR インターフェイスを定義します。これは、医療保険者が支払いを同意するブランド名と汎用的な化学薬の一覧です。 この主な使用例は、患者に対して規定されている代替の薬が利用可能な場合に患者が理解し、ドラッグ コストを比較できるようです。
+* [HL7 FHIR Da Vinci - PDex US Formulary IG](http://hl7.org/fhir/us/Davinci-drug-formulary/index.html): パート D の Medicare Advantage プランでは、Patient API を介して数式情報を使用できる必要があります。 PDex US ドラッグ数式実装ガイド (USDF IG) を使用してこれを行います。 USDF IG は、医療保険者の薬の数式情報に対する FHIR インターフェイスを定義します。これは、医療保険者が支払いを同意するブランド名と汎用的なジェネリックジェネリック薬の一覧です。 この主な使用例は、患者に対して規定されている代替の薬が利用可能な場合に患者が理解し、ドラッグ コストを比較できるようです。
 
 ## <a name="provider-directory-api-implementation-guide"></a>プロバイダー ディレクトリ API 実装ガイド
 
@@ -66,9 +66,9 @@ Provider Directory API では、1 つの実装ガイドへの準拠について�
 
 さまざまな実装ガイドへの準拠をテストするために [、Touchstone](https://touchstone.aegis.net/touchstone/) は最適なリソースです。 今後のチュートリアルでは、さまざまな Touchstone テストに合格するようにAzure API for FHIR構成されていることを確認する方法に焦点を当てる予定です。 Touchstone サイトには、立ち上げと実行に役立つ多くの素晴らしいドキュメントがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-相互運用性と患者アクセス規則、実装ガイド、使用可能なテスト ツール (Touchstone) の基本的な理解が得られるので、CARIN IG for Blue Button の Azure API for FHIR を設定する方法について説明します。 
+相互運用性と患者アクセス規則、実装ガイド、使用可能なテスト ツール (Touchstone) の基本的な理解が得られるので、CARIN IG for Blue Button の Azure API for FHIR の設定について説明します。 
 
 >[!div class="nextstepaction"]
->[CARIN Blue Button 実装ガイド](../fhir/carin-implementation-guide-blue-button-tutorial.md)  
+>[CARIN Blue Button 実装ガイド](carin-implementation-guide-blue-button-tutorial.md)  

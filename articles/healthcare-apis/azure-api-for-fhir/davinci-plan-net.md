@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - Da Vinci Plan Net - Azure Healthcare API
-description: このチュートリアルでは、Da Vinci Payer Data Azure API for FHIR実装ガイドの Touchstone テストに合格するExchangeを設定する方法について説明します。
+title: チュートリアル - Da Vinci Plan Net - Azure API for FHIR
+description: このチュートリアルでは、Da Vinci Payer Data Exchange Implementation Guide の Touchstone テストに合格するために、Azure API for FHIR で FHIR サービスを設定する方法について説明します。
 services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
@@ -9,23 +9,20 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: modillon
 ms.date: 11/29/2021
-ms.openlocfilehash: e9a6da0564c5338d8a62eb34ef6d213cd8835219
+ms.openlocfilehash: 84dd99b8712eda5cff23bd7702f1336598ab26df
 ms.sourcegitcommit: 66b6e640e2a294a7fbbdb3309b4829df526d863d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/01/2021
-ms.locfileid: "133358942"
+ms.locfileid: "133361775"
 ---
-# <a name="da-vinci-plan-net"></a>Da Vinci Plan Net
+# <a name="da-vinci-plan-net-for-azure-api-for-fhir"></a>Da Vinci Plan Net for Azure API for FHIR
 
-> [!IMPORTANT]
-> Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
-
-このチュートリアルでは、Azure Healthcare API (ここでは FHIR サービスと呼ばれる) で FHIR サービスを設定し、Da Vinci PDEX Payer Network (Plan-Net) 実装ガイドの [Touchstone](https://touchstone.aegis.net/touchstone/) テストに合格する方法について説明します。
+このチュートリアルでは、da Vinci PDEX Payer Network (Plan-Net) 実装ガイドの [Touchstone](https://touchstone.aegis.net/touchstone/) テストに合格するために Azure API for FHIR で FHIR サービスを設定する方法について説明します。
 
 ## <a name="touchstone-capability-statement"></a>Touchstone 機能ステートメント
 
-最初に注目するテストは [、Da Vinci](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/DaVinci/FHIR4-0-1-Test/PDEX/PlanNet/00-Capability&activeOnly=false&contentEntry=TEST_SCRIPTS)の機能ステートメント に対して FHIR サービスPlan-Netです。 更新なしでこのテストを実行すると、検索パラメーターが見つからないとプロファイルが見つからないので、テストは失敗します。
+最初に注目するテストは [、Da Vinci](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/DaVinci/FHIR4-0-1-Test/PDEX/PlanNet/00-Capability&activeOnly=false&contentEntry=TEST_SCRIPTS)Azure API for FHIR機能ステートメント に対してPlan-Netテストです。 更新なしでこのテストを実行すると、検索パラメーターが見つからないとプロファイルが見つからないので、テストは失敗します。
 
 ## <a name="define-search-parameters"></a>検索パラメーターを定義する
 
@@ -41,7 +38,7 @@ Da Vinci Plan-Net IG の一部として、医療サービス、保険プラン�
 > [!NOTE]
 > これらの検索パラメーターの未加工の JSON では、名前は に設定されます `Plannet_sp_<Resource Name>_<SearchParameter Name>` 。 Touchstone テストでは、これらの名前が (カバレッジ領域、プランの種類、またはネットワーク) のみである `SearchParameter Name` 必要があります。
 
-Da Vinci Plan-Net IG に必要な残りの検索パラメーターは基本仕様によって定義され、追加の更新なしで FHIR サービスで既に使用できます。
+Da Vinci Plan-Net IG に必要な残りの検索パラメーターは基本仕様によって定義され、追加の更新なしで Azure API for FHIR で既に使用できます。
 
 ## <a name="store-profiles"></a>プロファイルを保存する
 
@@ -78,11 +75,11 @@ Da Vinci Plan-Net IG に必要な残りの検索パラメーターは基本仕�
 > [!NOTE]
 > サンプル リソースが用意されている場合は、クエリ テストの成功率が 98% である必要があります。
 > FHIR サーバーに対GitHub問題が発生し、これらのテストの 1 つが失敗しています。
-リソースは、基本条件と条件の両方を満たしている場合に複数回_includeされます。 [#2037](https://github.com/microsoft/fhir-server/issues/2037)
+リソースは、基本条件と条件の両方を満たしている場合に複数回_includeされます。 [#2037](https://github.com/microsoft/fhir-server/issues/2037) 
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Da Vinci PDEX Payer Network (Plan-Net) 実装ガイドの Touchstone テストに合格するために Azure API for FHIR を設定する方法について説明しました。 次に、すべての FHIR サービス機能について学習できます。
+このチュートリアルでは、Da Vinci PDEX Payer Network (Plan-Net) 実装ガイドの Touchstone テストに合格するために Azure API for FHIR を設定する方法について説明しました。 Azure API for FHIR でサポートされている機能の詳細については、以下を参照してください。
 
 >[!div class="nextstepaction"]
 >[サポートされる機能](fhir-features-supported.md)
