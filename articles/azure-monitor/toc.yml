@@ -130,7 +130,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -1125,6 +1125,8 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
+            - name: v4.x Azure Red Hat OpenShiftから有効になっているクラスター Azure Arc移行
+              href: containers/container-insights-transition-hybrid.md
         - name: モニター
           items:
             - name: パフォーマンスの監視

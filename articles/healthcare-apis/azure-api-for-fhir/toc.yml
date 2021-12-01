@@ -1,7 +1,7 @@
 items:
-  - name: Azure の医療 Api (プレビュー) のドキュメント
+  - name: Azure Healthcare API (プレビュー) のドキュメント
     href: ../index.yml
-  - name: FHIR 用 Azure API のドキュメント
+  - name: Azure API for FHIRドキュメント
     href: index.yml
   - name: 概要
     expanded: true
@@ -59,13 +59,13 @@ items:
           - name: CMS 相互運用性と患者アクセスに関する規則の概要
             href: centers-for-medicare-tutorial-introduction.md
           - name: CARIN Blue Button 実装ガイド
-            href: ../fhir/carin-implementation-guide-blue-button-tutorial.md
+            href: carin-implementation-guide-blue-button-tutorial.md
           - name: Da Vinci 採用医薬品集
-            href: ../fhir/davinci-drug-formulary-tutorial.md
+            href: davinci-drug-formulary-tutorial.md
           - name: Da Vinci PDex
-            href: ../fhir/davinci-pdex-tutorial.md
+            href: davinci-pdex-tutorial.md
           - name: Da Vinci Plan Net
-            href: ../fhir/davinci-plan-net.md
+            href: davinci-plan-net.md
   - name: 操作方法ガイド
     expanded: true
     items:
@@ -85,7 +85,7 @@ items:
       - name: 設定の構成
         expanded: false
         items:
-          - name: FHIR 設定用に他の Azure API を構成する
+          - name: その他の設定Azure API for FHIR構成する
             href: azure-api-for-fhir-additional-settings.md
           - name: Azure RBAC を構成する
             href: configure-azure-rbac.md

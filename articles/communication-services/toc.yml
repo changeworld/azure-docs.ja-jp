@@ -166,6 +166,8 @@ items:
             href: concepts/detailed-call-flows.md
           - name: ユーザー向け診断
             href: concepts/voice-video-calling/user-facing-diagnostics.md
+          - name: メディア品質の統計
+            href: concepts/voice-video-calling/media-quality-sdk.md
           - name: Web のベスト プラクティス
             href: concepts/best-practices.md
           - name: 既知の問題
@@ -192,6 +194,8 @@ items:
         href: concepts/metrics.md
       - name: Azure Advisor
         href: concepts/advisor-overview.md
+      - name: サービスの制限
+        href: concepts/service-limits.md
       - name: トラブルシューティング
         href: concepts/troubleshooting-info.md
   - name: 操作方法ガイド

@@ -1,0 +1,59 @@
+### YamlMime:Hub
+title: Azure ロードテストのドキュメント
+summary: 高スケールの負荷を生成し、アプリのパフォーマンスのボトルネックを特定し、Azure ロードテストサービスを使用して回帰テストを自動化する方法について説明します。 チュートリアル、コード例、GitHub アクション、Azure Pipelines などがあります。
+metadata:
+  title: Azure ロードテストのドキュメント
+  description: 高スケールの負荷を生成し、アプリのパフォーマンスのボトルネックを特定し、Azure ロードテストサービスを使用して回帰テストを自動化する方法について説明します。 チュートリアル、コード例、GitHub アクション、Azure Pipelines などがあります。
+  services: load-testing
+  ms.service: load-testing
+  ms.topic: hub-page
+  ms.collection: collection
+  ms.author: jmartens
+  author: j-martens
+  ms.date: 11/30/2021
+highlightedContent:
+  items:
+    - title: Azure のロードテストとは
+      itemType: overview
+      url: overview-what-is-azure-load-testing.md
+    - title: パフォーマンスのボトルネックを特定する
+      itemType: tutorial
+      url: tutorial-identify-bottlenecks-azure-portal.md
+    - title: 継続的な回帰テストを設定する
+      itemType: tutorial
+      url: tutorial-cicd-azure-pipelines.md
+conceptualContent:
+  items:
+    - title: ロード テストの構成
+      links:
+        - url: how-to-high-scale-load.md
+          itemType: how-to-guide
+          text: 高スケール用に構成する
+        - url: how-to-parameterize-load-tests.md
+          itemType: how-to-guide
+          text: ロードテストのパラメーター化
+        - url: how-to-update-rerun-test.md
+          itemType: how-to-guide
+          text: ロードテストを更新 & 再実行する
+    - title: テスト結果の分析
+      links:
+        - url: how-to-compare-multiple-test-runs.md
+          itemType: how-to-guide
+          text: 実行を比較してパフォーマンスを分析する
+        - url: how-to-find-download-logs.md
+          itemType: how-to-guide
+          text: ロードテストログの検索 & ダウンロード
+        - url: how-to-appservice-insights.md
+          itemType: how-to-guide
+          text: AppService ワークロードから洞察を得る
+        - url: how-to-export-test-results.md
+          itemType: how-to-guide
+          text: 結果のエクスポート
+    - title: ロードテストの自動化
+      links:
+        - url: tutorial-cicd-azure-pipelines.md
+          itemType: tutorial
+          text: Azure Pipelines の CI/CD ワークフロー
+        - url: tutorial-cicd-github-actions.md
+          itemType: tutorial
+          text: GitHub アクションの CI/CD ワークフロー

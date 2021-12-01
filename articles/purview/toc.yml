@@ -54,6 +54,8 @@ items:
             href: concept-best-practices-network.md
           - name: スキャンのベスト プラクティス
             href: concept-best-practices-scanning.md
+          - name: 分類のベストプラクティス
+            href: concept-best-practices-classification.md
           - name: 自動化のベスト プラクティス
             href: concept-best-practices-automation.md
       - name: Azure Purview のアクセス許可

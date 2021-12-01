@@ -712,6 +712,12 @@ productDirectory:
       azureCategories:
         - devops
       url: /azure/devops/test/
+    - title: Azure のロードテスト
+      summary: 高スケールの負荷を生成し、アプリのパフォーマンスのボトルネックを特定する
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/load-testing.svg'
+      azureCategories:
+        - devops
+      url: load-testing/index.yml
     - title: Azure 向けの GitHub Actions
       summary: GitHub から Azure へのアプリのビルド、テスト、デプロイ
       imageSrc: ./media/index/github-actions-icon.svg
