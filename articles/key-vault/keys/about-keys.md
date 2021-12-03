@@ -23,7 +23,7 @@ Azure Key Vault には、暗号化キーを格納および管理するための 
 
 |リソースの種類|キーの保護方法|データプレーン エンドポイント ベース URL|
 |--|--|--|
-| **資格情報コンテナー** | ソフトウェアによる保護<br/><br/>および<br/><br/>HSM で保護された (Premium SKU の場合)</li></ul> | https://{vault-name}.vault.azure.net |
+| **コンテナー** | ソフトウェアによる保護<br/><br/>および<br/><br/>HSM で保護された (Premium SKU の場合)</li></ul> | https://{vault-name}.vault.azure.net |
 | **マネージド HSM ** | HSM で保護された | https://{hsm-name}.managedhsm.azure.net |
 ||||
 
