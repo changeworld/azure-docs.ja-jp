@@ -1,5 +1,5 @@
 ---
-title: NFS 共有を作成する - Azure Files (プレビュー)
+title: NFS 共有を作成する - Azure Files
 description: ネットワーク ファイル システム プロトコルを使用してマウントできる Azure ファイル共有を作成する方法について説明します。
 author: roygara
 ms.service: storage
