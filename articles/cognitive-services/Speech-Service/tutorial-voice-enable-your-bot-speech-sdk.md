@@ -232,16 +232,16 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 > [!TIP]
 > Azure App Service ページの上部にあるコントロールを使用して、サービスを停止または再起動することができます。 これは、トラブルシューティングを行うときに便利です。
 
-## <a name="create-a-channel-registration"></a>Azure Bot を作成する
+## <a name="create-a-channel-registration"></a>チャネル登録を作成する
 
-ボットをホストするための Azure App Service を作成したので、次の手順は **Azure Bot** の作成です。 Azure Bot の作成は、ボットを Direct Line Speech チャネルなどの Bot Framework チャネルに登録するための前提条件です。 ボットがチャネルを使用する方法の詳細については、「[ボットをチャネルに接続する](/azure/bot-service/bot-service-manage-channels)」を参照してください。
+ボットをホストするための Azure App Service を作成したので、次の手順は **ボット チャネル登録** の作成です。 チャネル登録の作成は、ボットを Direct Line Speech チャネルなどの Bot Framework チャネルに登録するための前提条件です。 ボットがチャネルを使用する方法の詳細については、「[ボットをチャネルに接続する](/azure/bot-service/bot-service-manage-channels)」を参照してください。
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.AzureBot" target="_blank">Azure Bot を作成します </a>
 2. いくつかの情報を指定するよう求められます。
    * **[ボット ハンドル]** には「**SpeechEchoBotTutorial-BotRegistration-####** 」と入力し、 **####** を任意の数に置き換えます。 ボット ハンドルはグローバルに一意である必要があることに注意してください。 ボット ハンドルを入力しても、_要求されたボット ID は使用できません_ というエラー メッセージが表示された場合は、別の番号を選択します。 次の例では、8726 を使用しました
    * **[サブスクリプション]** では **[無料試用版]** を選択します。
    * **[リソース グループ]** で、 **[SpeechEchoBotTutorial-ResourceGroup]** を選択します。
-     * **[場所]** では **[米国西部]** を選択します。
+   * **[場所]** では **[米国西部]** を選択します。
    * **[価格レベル]** では **[F0]** を選択します。
    * **[アプリ ID とパスワードの自動作成]** は無視します。
 3. **[Azure Bot]** ブレードの下部にある **[作成]** をクリックします。
@@ -280,7 +280,6 @@ Azure ボット ページには、 **[設定]** の下に **[Web チャットで
 }
 ```
 9. アプリを再発行します (Visual Studio ソリューション エクスプローラーで **[EchoBot]** プロジェクトを右クリックし、 **[発行...]** を選択し、 **[発行]** ボタンをクリックします)
-10. これで、Web チャットでボットをテストする準備が整いました。
 
 ## <a name="register-the-direct-line-speech-channel"></a>Direct Line Speech チャネルを登録する
 
