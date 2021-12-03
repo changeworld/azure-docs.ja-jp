@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "95999189"
 ---
-名前 | 商用の URL | 政府機関の URL | [説明]
+名前 | 商用の URL | 政府機関の URL | 説明
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Azure Active Directory を使用したアクセス制御と ID 管理に使用されます。 
 Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | レプリケーション データの転送と調整に使用。
