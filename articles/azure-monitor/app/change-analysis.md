@@ -36,7 +36,7 @@ ms.locfileid: "107010835"
 - 仮想マシン スケール セット
 - App Service
 - Azure Kubernetes Service
-- Azure 関数
+- Azure Functions
 - ネットワーク リソース:ネットワーク セキュリティ グループ、Virtual Network、Application Gateway など。
 - データ サービス:Storage、SQL、Redis Cache、Cosmos DB など。
 
