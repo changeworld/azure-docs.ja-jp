@@ -186,7 +186,7 @@ Query Performance Insight の 2 つのメトリック (実行時間と実行回�
    > カスタム DTU グラフを使用して、クエリのパフォーマンス グラフと比較することをお勧めします。
    >
 
-## <a name="review-top-queries-per-execution-count&quot;></a>実行回数あたりの上位クエリを確認する
+## <a name="review-top-queries-per-execution-count"></a>実行回数あたりの上位クエリを確認する
 
 実行回数が多くてもデータベース自体には影響しない場合や、リソース使用率が低い場合でも、データベースを使用するユーザー アプリケーションの処理速度は低下する可能性があります。
 
