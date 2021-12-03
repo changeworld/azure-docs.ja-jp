@@ -261,7 +261,7 @@ StorSimple がサポートするインフラストラクチャ コンポ―ネ�
 Microsoft Azure StorSimple ソリューションをデプロイする前に、以下の用語と定義を確認することをお勧めします。
 
 ### <a name="key-terms-and-definitions"></a>重要な用語と定義
-| 用語 (頭字語または省略形) | [説明] |
+| 用語 (頭字語または省略形) | 説明 |
 | --- | --- |
 | アクセス制御レコード (ACR) |ボリュームに接続できるホストを決定する、Microsoft Azure StorSimple デバイス上のボリュームに関連付けられているレコード。 決定は、StorSimple デバイスに接続している (ACR に含まれる) ホストの iSCSI 修飾名 (IQN) に基づいて行われます。 |
 | AES-256 |クラウドとの間でやり取りされるデータを暗号化するための 256 ビットの Advanced Encryption Standard (AES) アルゴリズム。 |
