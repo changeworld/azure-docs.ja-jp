@@ -37,8 +37,8 @@ Data Lake Storage 用に階層型名前空間が有効になっているアカ�
 
 - リリース状態:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (一般提供)
-  - [Azure Files](../files/storage-files-introduction.md) (一般公開)
-  - Azure Data Lake Storage Gen2 (一般公開)
+  - [Azure Files](../files/storage-files-introduction.md) (一般提供)
+  - Azure Data Lake Storage Gen2 (一般提供)
 - クラウド:<br>
     ✔ 商用クラウド<br>
     ✔ US Gov<br>
