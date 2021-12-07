@@ -12,7 +12,7 @@
         "/dotnet",
         "/python"
       ],
-      "open_to_public_contributors": true,
+      "open_to_public_contributors": false,
       "type_mapping": {
         "ZonePivotGroups": "Toc",
         "Conceptual": "Content",
