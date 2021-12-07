@@ -40,7 +40,7 @@ sections:
       少なくとも Azure AD Premium P1 または P2 ライセンスと、Azure AD アプリケーション プロキシ コネクタがインストールされていることを確認します。 最初のコネクタを正常にインストールすると、Azure AD アプリケーション プロキシ サービスが自動的に有効になります。
   - question: >
       コネクタの構成
-    answer: ''
+    answer: ' '
   - question: >
       コネクタでまだ古いバージョンが使用されていて、最新バージョンに自動アップグレードされていないのはなぜですか?
     answer: "アップデーター サービスが正常に動作していないか、このサービスでインストールできる新しい更新プログラムがないことが原因の可能性があります。\n\nアップデーター サービスが実行されていて、イベント ログにエラーが記録されていない場合は、正常です ([アプリケーションとサービス ログ] -> [Microsoft] -> [AadApplicationProxy] -> [アップデーター] -> [管理者])。 \n\n> [!IMPORTANT]\n> 自動アップグレードでは、メジャー バージョンのみがリリースされます。 コネクタは、必要な場合にのみ手動で更新することをお勧めします。 たとえば、既知の問題を修正したり、新機能を使用したりする必要があるため、メジャー リリースまで待てないような場合です。 新しいリリース、リリースの種類 (ダウンロード、自動アップグレード)、バグ修正、および新機能の詳細については、「[Azure AD アプリケーション プロキシ: バージョンのリリース履歴](./application-proxy-release-version-history.md)」を参照してください。\n\nコネクタを手動でアップグレードするには、次の手順を実行します。\n\n- 最新バージョンのコネクタをダウンロードします。 Azure portal の [アプリケーション プロキシ] の下に表示されます。 「[Azure AD アプリケーション プロキシ: バージョンのリリース履歴](./application-proxy-release-version-history.md)」でもリンクを見つけることができます。\n-   インストーラーによって、Azure AD アプリケーション プロキシのコネクタ サービスが再起動されます。 場合によっては、インストーラーですべてのファイルを置き換えることができない場合、サーバーの再起動が必要になることがあります。 そのため、アップグレードを開始する前に、すべてのアプリケーション (つまり、イベント ビューアー) を終了することをお勧めします。\n-   インストーラーを実行します。 アップグレード プロセスは迅速であり、資格情報を提供する必要がないため、コネクタは再登録されません。\n"
@@ -88,7 +88,7 @@ sections:
     answer: "アプリケーション プロキシには、Windows Server 2012 R2 以降が必要です。 現時点、Windows Server 2019 では HTTP2 に対して制限があります。 Windows Server 2019 でコネクタを正常に使用するには、次のレジストリ キーを追加し、サーバーを再起動する必要があります。\n\n```\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp\\EnableDefaultHttp2 (DWORD) Value: 0 \n```\n"
   - question: >
       アプリケーションの構成
-    answer: ''
+    answer: ' '
   - question: >
       証明書が無効か、パスワードが間違っている可能性があるというエラーが返されます
     answer: >
@@ -143,7 +143,7 @@ sections:
       アプリケーション プロキシでは、HTTP の Strict-Transport-Security ヘッダーは HTTPS 応答に自動的に追加されませんが、公開されたアプリケーションによって送信された元の応答にそのヘッダーがある場合、それは保持されます。 この機能を有効にするための設定の証明は、ロードマップ上にあります。
   - question: >
       統合 Windows 認証
-    answer: ''
+    answer: ' '
   - question: >
       Kerberos の制約付き委任 (KCD) の設定時に PrincipalsAllowedToDelegateToAccount メソッドを使用する必要があるのはどのような場合ですか。
     answer: >
@@ -168,7 +168,7 @@ sections:
       この場合、"ユーザー プリンシパル名" へのフォールバックが発生します。 B2B シナリオの詳細については、「[Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する](../external-identities/hybrid-cloud-to-on-premises.md)」を参照してください。
   - question: >
       パススルー認証
-    answer: ''
+    answer: ' '
   - question: >
       パススルー認証で公開されたアプリケーションに対して条件付きアクセス ポリシーを使用できますか。
     answer: >
@@ -178,7 +178,7 @@ sections:
     answer: "いいえ。アプリケーション プロキシは TLS トラフィックを終了するため、このシナリオはサポートされていません。  \n"
   - question: >
       リモート デスクトップ ゲートウェイ 公開
-    answer: ''
+    answer: ' '
   - question: >
       Azure AD アプリケーション プロキシを使用してリモート デスクトップ ゲートウェイを公開するにはどうすればよいですか。
     answer: >
@@ -202,7 +202,7 @@ sections:
     answer: このオプションを利用すると、ユーザーは rdp ファイルをダウンロードし、別の RDP クライアントでそれを利用できます (Remote Desktop Web Client の外で)。 一般的に、別の RDP クライアント (Microsoft Remote Desktop Client など) では事前承認をネイティブ処理できません。 これが機能しない理由です。
   - question: >
       SharePoint の公開
-    answer: ''
+    answer: ' '
   - question: >
       Azure AD アプリケーション プロキシを使用して SharePoint を公開するにはどうすればよいですか。
     answer: >
@@ -212,7 +212,7 @@ sections:
     answer: >
       [SharePoint モバイルアプリ](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises)では、現在、Azure Active Directory 事前認証はサポートされていません。
   - question: "Active Directory フェデレーション サービス (AD FS) の公開 \n"
-    answer: ''
+    answer: ' '
   - question: >
       Azure AD アプリケーション プロキシを AD FS プロキシ (Web アプリケーション プロキシなど) として使用できますか。
     answer: >
@@ -222,7 +222,7 @@ sections:
     answer: "いいえ、これはサポートされていません。\n         \n"
   - question: >
       WebSocket
-    answer: ''
+    answer: ' '
   - question: >
       WebSocket のサポートは、QlikSense やリモート デスクトップ Web クライアント (HTML5) 以外のアプリケーションでも有効ですか。
     answer: >
@@ -232,13 +232,13 @@ sections:
       Windows Admin Center (WAC) の機能 (イベント ログ、PowerShell、リモート デスクトップ サービス) は現在、Azure AD アプリケーション プロキシ経由では動作しません。
   - question: >
       リンク変換
-    answer: ''
+    answer: ' '
   - question: >
       リンク変換の使用はパフォーマンスに影響しますか。
     answer: "はい。 リンク変換の使用はパフォーマンスに影響します。 アプリケーション プロキシ サービスは、アプリケーションでハードコードされたリンクをスキャンし、ユーザーに公開する前にそれぞれ公開されている外部 URL で置換します。 \n\n最適なパフォーマンスを得るには、[カスタム ドメイン](./application-proxy-configure-custom-domain.md)を構成して、同じ内部 URL と外部 URL を使用することをお勧めします。 カスタム ドメインを使用できない場合は、マイ アプリによるセキュリティで保護されたサインイン拡張機能またはモバイルの Microsoft Edge ブラウザーを使用することで、リンク変換のパフォーマンスを向上させることができます。 「[Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする](./application-proxy-configure-hard-coded-link-translation.md)」を参照してください。\n"
   - question: >
       ワイルドカード
-    answer: ''
+    answer: ' '
   - question: >
       ワイルドカードを使用して、共通のカスタム ドメイン名と異なるプロトコル (HTTP 用と HTTPS 用それぞれ 1 つ) を持つ 2 つのアプリケーションを公開するにはどうすればよいですか。
     answer: >-
